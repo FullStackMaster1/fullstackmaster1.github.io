@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rupesh Tiwari's Fullstack Master Portfolio</title>
-   <link rel="icon" type="image/x-icon" href="256256.ico">
+    <link rel="icon" type="image/x-icon" href="256256.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
@@ -12,36 +12,60 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
+            background-color: #343a40; /* Dark theme color */
+            color: white;
         }
-        .header, .footer {
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        .carousel-item img {
+            margin: auto;
+            width: 100%; /* Ensure all images are the same width */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .carousel-caption {
+            background: rgba(0, 0, 0, 0.75); /* Dark background for captions */
+        }
+        .footer {
             padding: 20px 0;
             background-color: #007bff;
-            color: white;
-        }
-        .header a, .footer a {
-            color: white;
+            text-align: center;
         }
         .social-icons a {
             margin: 0 10px;
+            color: white;
+        }
+        .social-icons i {
+            font-size: 1.5rem; /* Adjust icon size */
+        }
+        .navbar {
+            background-color: #343a40; /* Dark theme color */
+        }
+        .navbar-brand {
+            color: white;
+        }
+        @media (max-width: 768px) {
+            .carousel-inner .carousel-item > a {
+                display: block; /* Stack items on smaller screens */
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="header text-center">
-        <h1>Rupesh Tiwari</h1>
-        <p>Full Stack Developer & Educator</p>
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Rupesh Tiwari's Portfolio</a>
     </div>
+</nav>
 
-    <!-- Your page content goes here -->
-    
-<div class="container mt-5">
-    <h1>Welcome to Rupesh Tiwari's Portfolio</h1>
-    
+<div class="container mt-4">
+    <h2 class="mb-3">GitHub Projects</h2>
     <!-- GitHub Projects Carousel -->
-    <h2>GitHub Projects</h2>
-    <div id="githubCarousel" class="carousel slide" data-ride="carousel">
+    <!-- ... (GitHub carousel code remains unchanged) ... -->
+     <div id="githubCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <a href="https://github.com/FullStackMaster1/mastering-meanjs-ultimate-courese" target="_blank">
@@ -71,10 +95,10 @@
             <span class="sr-only">Next</span>
         </a>
     </div>
-
+    <h2 class="mt-4 mb-3">My Udemy Courses</h2>
     <!-- Udemy Courses Carousel -->
-    <h2>My Udemy Courses</h2>
-    <div id="udemyCarousel" class="carousel slide" data-ride="carousel">
+    <!-- ... (Udemy carousel code remains unchanged) ... -->
+     <div id="udemyCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <a href="https://www.udemy.com/course/full-stack-generative-ai-with-aws-react-android-app/?couponCode=ST9MT22024" target="_blank">
@@ -99,10 +123,10 @@
         </a>
     </div>
 
-    <!-- Add YouTube Carousel here similar to the GitHub and Udemy sections, using your provided playlist links and thumbnails. -->
-<!-- YouTube Tutorials Carousel -->
-<h2>YouTube Tutorials</h2>
-<div id="youtubeCarousel" class="carousel slide" data-ride="carousel">
+    <h2 class="mt-4 mb-3">YouTube Tutorials</h2>
+    <!-- YouTube Tutorials Carousel -->
+    <!-- ... (YouTube carousel code remains unchanged) ... -->
+    <div id="youtubeCarousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <a href="https://www.youtube.com/watch?v=VQTCpj9e0p0&list=PLZed_adPqIJqbqELMjv3BUlry9Vd04_SV&ab_channel=FullStackMaster" target="_blank">
@@ -154,10 +178,20 @@
             <p>&copy; 2024 Rupesh Tiwari. All rights reserved.</p>
         </div>
     </div>
+</div>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<div class="footer">
+    <div class="container">
+        <div class="social-icons">
+            <!-- Social media links -->
+            <!-- ... (Social media links code remains unchanged) ... -->
+        </div>
+        <p class="mt-3">&copy; 2024 Rupesh Tiwari. All rights reserved.</p>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
-
