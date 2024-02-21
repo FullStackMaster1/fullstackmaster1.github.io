@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Rupesh Tiwari's Portfolio</title>
-      <!-- Example for adding favicon -->
-    <link rel="icon" type="image/x-icon" href="256256.ico">
+    <title>Rupesh Tiwari's Fullstack Master Portfolio</title>
+   <link rel="icon" type="image/x-icon" href="256256.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
@@ -14,29 +12,30 @@
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            text-align: center;
             background-color: #f4f4f4;
-            color: #333;
         }
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 20px;
+        .header, .footer {
+            padding: 20px 0;
+            background-color: #007bff;
+            color: white;
         }
-        .carousel-item img {
-            margin: auto;
-            max-width: 100%;
-            height: auto;
+        .header a, .footer a {
+            color: white;
         }
-        .carousel-caption {
-            background-color: rgba(0,0,0,0.5);
-            color: #fff;
-            padding: 10px;
+        .social-icons a {
+            margin: 0 10px;
         }
     </style>
 </head>
 <body>
 
+    <div class="header text-center">
+        <h1>Rupesh Tiwari</h1>
+        <p>Full Stack Developer & Educator</p>
+    </div>
+
+    <!-- Your page content goes here -->
+    
 <div class="container mt-5">
     <h1>Welcome to Rupesh Tiwari's Portfolio</h1>
     
@@ -140,10 +139,25 @@
     </a>
 </div>
 
-</div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <div class="footer mt-5">
+        <div class="container text-center">
+            <p>Connect with me on social media</p>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/rupesh-tiwari/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                <a href="https://twitter.com/RupeshTiwari" target="_blank"><i class="fab fa-twitter fa-2x"></i></a>
+                <a href="https://www.facebook.com/FullStackMaster1" target="_blank"><i class="fab fa-facebook fa-2x"></i></a>
+                <a href="https://www.instagram.com/rupeshtiwari/" target="_blank"><i class="fab fa-instagram fa-2x"></i></a>
+                <a href="https://www.youtube.com/FullStackMaster" target="_blank"><i class="fab fa-youtube fa-2x"></i></a>
+                <!-- Add other social media icons as necessary -->
+            </div>
+            <p>&copy; 2024 Rupesh Tiwari. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
+
