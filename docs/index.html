@@ -5,14 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to Rupesh Tiwari's Fullstack Master Page</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
             text-align: center;
-            padding: 50px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
         }
         h1, h2 {
-            color: #333;
+            color: #007bff;
         }
         ul {
             list-style-type: none;
@@ -20,40 +29,73 @@
         }
         li {
             margin: 20px 0;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         a {
             text-decoration: none;
             color: #007bff;
         }
         a:hover {
-            text-decoration: underline;
+            color: #0056b3;
         }
         .fa {
-            padding-right: 8px;
+            margin-right: 8px;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            margin: 0 10px;
+            display: inline-block;
+        }
+        .social-icons i {
+            font-size: 24px;
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <h1>Welcome to Rupesh Tiwari's Github Showcase</h1>
-    <p>Discover some of my projects:</p>
-    <ul>
-        <li><a href="https://github.com/FullStackMaster1/mastering-meanjs-ultimate-courese" target="_blank"><i class="fab fa-github"></i>Mastering MeanJS Ultimate Course</a></li>
-        <li><a href="https://github.com/FullStackMaster1/higher-order-observables" target="_blank"><i class="fab fa-github"></i>RxJS Higher Order Observable</a></li>
-        <li><a href="https://github.com/FullStackMaster1/fsms-angular-pubsub" target="_blank"><i class="fab fa-github"></i>Angular Pub Sub Node.js Library</a></li>
-    </ul>
-    
-    <h2>My Udemy Courses</h2>
-    <p>Check out my courses on Udemy:</p>
-    <ul>
-        <!-- Replace # with your course URLs and course names with actual names -->
-        <li><a href="https://www.udemy.com/course/full-stack-generative-ai-with-aws-react-android-app/?couponCode=ST9MT22024" target="_blank"><i class="fab fa-udemy"></i>Full Stack Generative AI with AWS & React | Comprehensive
-</a></li>
-        <li><a href="https://www.udemy.com/course/mastering-meanjs-fullstack-ultimate-course/?couponCode=ST9MT22024" target="_blank"><i class="fab fa-udemy"></i>Mastering Meanjs Fullstack Ultimate Course</a></li>
- 
-    </ul>
-    
-    <p>Let's connect! <a href="https://www.linkedin.com/in/rupesh-tiwari/"><i class="fab fa-linkedin"></i>Find me on LinkedIn</a></p>
-    <p>🏢 <a href="https://www.linkedin.com/company/fullstack-master">Follow FullStack Master on LinkedIn</a></p>
-    <p>📧 <a href="mailto:roopkt@gmail.com"><i class="fas fa-envelope"></i>roopkt@gmail.com</a></p>
+    <div class="container">
+        <h1>Welcome to Rupesh Tiwari's Github Showcase</h1>
+        <p>Discover some of my projects:</p>
+        <ul>
+            <li><a href="https://github.com/FullStackMaster1/mastering-meanjs-ultimate-courese" target="_blank"><i class="fab fa-github"></i>Mastering MeanJS Ultimate Course</a></li>
+            <li><a href="https://github.com/FullStackMaster1/higher-order-observables" target="_blank"><i class="fab fa-github"></i>RxJS Higher Order Observable</a></li>
+            <li><a href="https://github.com/FullStackMaster1/fsms-angular-pubsub" target="_blank"><i class="fab fa-github"></i>Angular Pub Sub Node.js Library</a></li>
+        </ul>
+        
+        <h2>My Udemy Courses</h2>
+        <ul>
+            <li><a href="https://www.udemy.com/course/full-stack-generative-ai-with-aws-react-android-app/?couponCode=ST9MT22024" target="_blank"><i class="fab fa-udemy"></i>Full Stack Generative AI with AWS & React | Comprehensive</a></li>
+            <li><a href="https://www.udemy.com/course/mastering-meanjs-fullstack-ultimate-course/?couponCode=ST9MT22024" target="_blank"><i class="fab fa-udemy"></i>Mastering Meanjs Fullstack Ultimate Course</a></li>
+        </ul>
+        
+        <div class="social-icons">
+            <p>Let's connect!</p>
+            <a href="https://www.linkedin.com/in/rupesh-tiwari/"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/company/fullstack-master"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:roopkt@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Example jQuery: Add smooth scrolling to all links
+            $('a').on('click', function(event) {
+                if (this.hash !== "") {
+                    event.preventDefault();
+                    var hash = this.hash;
+                    $('html, body').animate({
+                        scrollTop: $(hash).offset().top
+                    }, 800, function(){
+                        window.location.hash = hash;
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
