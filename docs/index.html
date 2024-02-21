@@ -19,83 +19,79 @@
             max-width: 1200px;
             margin: auto;
             padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
         }
-        h1, h2 {
-            color: #007bff;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            margin: 20px 0;
+        .card {
             background-color: #fff;
-            padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            width: calc(33.333% - 20px);
+            overflow: hidden;
         }
-        a {
-            text-decoration: none;
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .card h3 {
             color: #007bff;
         }
-        a:hover {
-            color: #0056b3;
-        }
-        .fa {
-            margin-right: 8px;
+        .card p, .social-icons p {
+            color: #666;
         }
         .social-icons {
-            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
         }
         .social-icons a {
-            margin: 0 10px;
-            display: inline-block;
+            color: #333;
         }
         .social-icons i {
             font-size: 24px;
-            color: #333;
+        }
+        @media (max-width: 768px) {
+            .card {
+                width: calc(50% - 20px);
+            }
+        }
+        @media (max-width: 480px) {
+            .card {
+                width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to Rupesh Tiwari's Github Showcase</h1>
-        <p>Discover some of my projects:</p>
-        <ul>
-            <li><a href="https://github.com/FullStackMaster1/mastering-meanjs-ultimate-courese" target="_blank"><i class="fab fa-github"></i>Mastering MeanJS Ultimate Course</a></li>
-            <li><a href="https://github.com/FullStackMaster1/higher-order-observables" target="_blank"><i class="fab fa-github"></i>RxJS Higher Order Observable</a></li>
-            <li><a href="https://github.com/FullStackMaster1/fsms-angular-pubsub" target="_blank"><i class="fab fa-github"></i>Angular Pub Sub Node.js Library</a></li>
-        </ul>
-        
-        <h2>My Udemy Courses</h2>
-        <ul>
-            <li><a href="https://www.udemy.com/course/full-stack-generative-ai-with-aws-react-android-app/?couponCode=ST9MT22024" target="_blank"><i class="fab fa-udemy"></i>Full Stack Generative AI with AWS & React | Comprehensive</a></li>
-            <li><a href="https://www.udemy.com/course/mastering-meanjs-fullstack-ultimate-course/?couponCode=ST9MT22024" target="_blank"><i class="fab fa-udemy"></i>Mastering Meanjs Fullstack Ultimate Course</a></li>
-        </ul>
-        
-        <div class="social-icons">
-            <p>Let's connect!</p>
-            <a href="https://www.linkedin.com/in/rupesh-tiwari/"><i class="fab fa-linkedin"></i></a>
-            <a href="https://www.linkedin.com/company/fullstack-master"><i class="fab fa-linkedin-in"></i></a>
-            <a href="mailto:roopkt@gmail.com"><i class="fas fa-envelope"></i></a>
+        <div class="card">
+            <img src="path/to/your/image.jpg" alt="Project Image">
+            <h3>Project 1</h3>
+            <p>Short project description.</p>
+            <a href="https://github.com/FullStackMaster1/mastering-meanjs-ultimate-courese" target="_blank"><i class="fab fa-github"></i> View Project</a>
+        </div>
+        <div class="card">
+            <img src="path/to/your/image.jpg" alt="Project Image">
+            <h3>Project 2</h3>
+            <p>Short project description.</p>
+            <a href="https://github.com/FullStackMaster1/higher-order-observables" target="_blank"><i class="fab fa-github"></i> View Project</a>
+        </div>
+        <div class="card">
+            <img src="path/to/your/image.jpg" alt="Project Image">
+            <h3>Project 3</h3>
+            <p>Short project description.</p>
+            <a href="https://github.com/FullStackMaster1/fsms-angular-pubsub" target="_blank"><i class="fab fa-github"></i> View Project</a>
         </div>
     </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            // Example jQuery: Add smooth scrolling to all links
-            $('a').on('click', function(event) {
-                if (this.hash !== "") {
-                    event.preventDefault();
-                    var hash = this.hash;
-                    $('html, body').animate({
-                        scrollTop: $(hash).offset().top
-                    }, 800, function(){
-                        window.location.hash = hash;
-                    });
-                }
-            });
-        });
-    </script>
+    
+    <div class="social-icons">
+        <p>Let's connect!</p>
+        <a href="https://www.linkedin.com/in/rupesh-tiwari/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.linkedin.com/company/fullstack-master"><i class="fab fa-linkedin-in"></i></a>
+        <a href="mailto:roopkt@gmail.com"><i class="fas fa-envelope"></i></a>
+    </div>
 </body>
 </html>
