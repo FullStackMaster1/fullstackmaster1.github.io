@@ -15,32 +15,20 @@
             background-color: #f4f4f4;
             color: #333;
         }
-        .container, .footer {
+        .container {
             max-width: 1200px;
             margin: auto;
             padding: 20px;
         }
-        .carousel-item img, .social-icons img {
-            margin: auto; /* Center the image within the carousel */
+        .carousel-item img {
+            margin: auto;
             max-width: 100%;
             height: auto;
         }
-        .social-icons {
-            margin: 40px 0;
-        }
-        .social-icons a {
-            margin: 0 15px;
-            color: #333;
-            text-decoration: none;
-        }
-        .social-icons i {
-            font-size: 24px;
-        }
-        .footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #ddd;
-            margin-top: 20px;
+        .carousel-caption {
+            background-color: rgba(0,0,0,0.5);
+            color: #fff;
+            padding: 10px;
         }
     </style>
 </head>
@@ -48,49 +36,69 @@
 
 <div class="container mt-5">
     <h1>Welcome to Rupesh Tiwari's Portfolio</h1>
-    <p>Explore my projects, Udemy courses, and YouTube tutorials.</p>
     
-    <!-- GitHub Projects Section -->
+    <!-- GitHub Projects Carousel -->
     <h2>GitHub Projects</h2>
-    <!-- Example project; replace with your own -->
-    <p><a href="https://github.com/FullStackMaster1/project-name" target="_blank"><i class="fab fa-github"></i> Project Name</a></p>
-    
-    <!-- Udemy Courses Section -->
-    <h2>My Udemy Courses</h2>
-    <!-- Example course; replace with your own -->
-    <p><a href="https://www.udemy.com/course-name" target="_blank"><i class="fab fa-udemy"></i> Course Name</a></p>
-    
-    <!-- YouTube Tutorials Section -->
-    <h2>YouTube Tutorials</h2>
-    <div id="youtubeCarousel" class="carousel slide" data-ride="carousel">
+    <div id="githubCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <!-- Thumbnail for the first video in the playlist -->
-                <img src="https://img.youtube.com/vi/VQTCpj9e0p0/mqdefault.jpg" alt="Tutorial Name">
+                <a href="https://github.com/FullStackMaster1/mastering-meanjs-ultimate-courese" target="_blank">
+                    <img src="https://via.placeholder.com/600x300?text=Mastering+MeanJS+Ultimate+Course" alt="Mastering MeanJS Ultimate Course">
+                    <div class="carousel-caption">Mastering MeanJS Ultimate Course</div>
+                </a>
             </div>
-            <!-- Additional carousel items for more tutorials -->
+            <div class="carousel-item">
+                <a href="https://github.com/FullStackMaster1/higher-order-observables" target="_blank">
+                    <img src="https://via.placeholder.com/600x300?text=RxJS+Higher+Order+Observable" alt="RxJS Higher Order Observable">
+                    <div class="carousel-caption">RxJS Higher Order Observable</div>
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://github.com/FullStackMaster1/fsms-angular-pubsub" target="_blank">
+                    <img src="https://via.placeholder.com/600x300?text=Angular+Pub+Sub+Node.js+Library" alt="Angular Pub Sub Node.js Library">
+                    <div class="carousel-caption">Angular Pub Sub Node.js Library</div>
+                </a>
+            </div>
         </div>
-        <a class="carousel-control-prev" href="#youtubeCarousel" role="button" data-slide="prev">
+        <a class="carousel-control-prev" href="#githubCarousel" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
         </a>
-        <a class="carousel-control-next" href="#youtubeCarousel" role="button" data-slide="next">
+        <a class="carousel-control-next" href="#githubCarousel" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
     </div>
 
-    <!-- Social Icons -->
-    <div class="social-icons">
-        <a href="https://www.linkedin.com/in/rupesh-tiwari/"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        <a href="mailto:roopkt@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-        <a href="https://www.udemy.com/user/rupesh-k-tiwari/"><i class="fab fa-udemy"></i> Udemy</a>
-        <!-- Add more social icons as needed -->
+    <!-- Udemy Courses Carousel -->
+    <h2>My Udemy Courses</h2>
+    <div id="udemyCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="https://www.udemy.com/course/full-stack-generative-ai-with-aws-react-android-app/?couponCode=ST9MT22024" target="_blank">
+                    <img src="https://via.placeholder.com/600x300?text=Full+Stack+Generative+AI+with+AWS+%26+React" alt="Full Stack Generative AI with AWS & React | Comprehensive">
+                    <div class="carousel-caption">Full Stack Generative AI with AWS & React | Comprehensive</div>
+                </a>
+            </div>
+            <div class="carousel-item">
+                <a href="https://www.udemy.com/course/mastering-meanjs-fullstack-ultimate-course/?couponCode=ST9MT22024" target="_blank">
+                    <img src="https://via.placeholder.com/600x300?text=Mastering+Meanjs+Fullstack+Ultimate+Course" alt="Mastering Meanjs Fullstack Ultimate Course">
+                    <div class="carousel-caption">Mastering Meanjs Fullstack Ultimate Course</div>
+                </a>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#udemyCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#udemyCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
     </div>
-</div>
 
-<div class="footer">
-    <p>&copy; 2024 Rupesh Tiwari. All rights reserved.</p>
+    <!-- Add YouTube Carousel here similar to the GitHub and Udemy sections, using your provided playlist links and thumbnails. -->
+
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
