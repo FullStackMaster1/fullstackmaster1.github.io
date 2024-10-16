@@ -1,173 +1,341 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rupesh Tiwari's Fullstack Master Portfolio</title>
-    <link rel="icon" type="image/x-icon" href="256256.ico">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #343a40; /* Dark theme background */
-            color: white;
-        }
-        .header, .footer {
-            padding: 20px 0;
-            background-color: #212529; /* Darker shade for header and footer */
-        }
-        .header a, .footer a {
-            color: white;
-        }
-        .social-icons a {
-            margin: 0 10px;
-        }
-        .carousel-inner img {
-            width: 100%; /* Ensure the images are responsive */
-            height: auto;
-        }
-        .carousel-caption {
-            background-color: rgba(0,0,0,0.75); /* Dark background for captions */
-        }
-        .footer .container {
-            padding-top: 20px;
-        }
-        .footer p {
-            font-size: 0.9rem;
-        }
-        @media (max-width: 768px) {
-            .carousel-inner .carousel-caption {
-                display: none; /* Hide captions on smaller screens */
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Rupesh Tiwari | AWS Solutions Architect & Interview Coach</title>
+        <link rel="icon" type="image/x-icon" href="256256.ico">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+        <style>
+            body {
+                font-family: 'Poppins', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f8f9fa;
+                color: #212529;
             }
-        }
-    </style>
-</head>
-<body>
 
-<div class="header text-center">
-    <h1>Rupesh Tiwari</h1>
-    <p>Full Stack Developer & Educator</p>
-</div>
+            /* Hero Section */
+            .header {
+                background: linear-gradient(to bottom, rgba(62, 59, 59, 0.7), rgba(38, 36, 36, 0.7)), url('rupesh-amazon.jpg') no-repeat center center/cover;
+                height: 100vh;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                color: #f1f1f1;
+            }
 
-<div class="container mt-4">
-    <h2 class="mb-3">My GitHub Projects</h2>
-    <!-- GitHub Projects Carousel -->
-    <!-- ... (GitHub carousel code remains unchanged) ... -->
-     <div id="githubCarousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <a href="https://github.com/FullStackMaster1/mastering-meanjs-ultimate-courese" target="_blank">
-                    <img src="https://imgur.com/MSmAvjd.png" alt="Mastering MeanJS Ultimate Course">
-                    <div class="carousel-caption">Mastering MeanJS Ultimate Course</div>
-                </a>
-            </div>
-            <div class="carousel-item">
-                <a href="https://github.com/FullStackMaster1/higher-order-observables" target="_blank">
-                    <img src="https://imgur.com/CEglULb.png" alt="RxJS Higher Order Observable">
-                    <div class="carousel-caption">RxJS Higher Order Observable</div>
-                </a>
-            </div>
-            <div class="carousel-item">
-                <a href="https://github.com/FullStackMaster1/fsms-angular-pubsub" target="_blank">
-                    <img src="https://imgur.com/rPGiHmT.png" alt="Angular Pub Sub Node.js Library">
-                    <div class="carousel-caption">Angular Pub Sub Node.js Library</div>
-                </a>
+            .header h1 {
+                font-size: 3rem;
+                font-weight: 600;
+                margin: 20px 0;
+            }
+
+            .header p {
+                font-size: 1.5rem;
+                margin-bottom: 30px;
+            }
+
+            .btn-custom {
+                background-color: #17a2b8;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+            }
+
+            /* About Me Section */
+            .credentials-section {
+                padding: 60px 0;
+                background-color: #e8ecef;
+            }
+
+            .credentials-section h2 {
+                font-size: 2.5rem;
+                text-align: center;
+                margin-bottom: 20px;
+                font-weight: 600;
+                color: #333;
+            }
+
+            .credentials-section p {
+                text-align: center;
+                font-size: 1.2rem;
+                max-width: 800px;
+                margin: 0 auto;
+            }
+
+            /* Projects Section */
+            .projects-section {
+                padding: 60px 0;
+                background-color:  #e8ecef;
+            }
+
+            /* Carousel Styles */
+            .carousel-inner img {
+                width: 100%;
+                height: auto;
+            }
+
+            .carousel-caption {
+                background-color: rgba(0, 0, 0, 0.75);
+                padding: 10px;
+                border-radius: 8px;
+                font-size: 1rem;
+            }
+
+            .carousel-control-prev-icon,
+            .carousel-control-next-icon {
+                background-color: #17a2b8;
+                border-radius: 50%;
+            }
+
+            /* Testimonial Section */
+            .testimonial-section {
+                position: relative;
+                padding: 100px 0;
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('rupesh-desk.jpg') no-repeat center center/cover;
+                color: rgb(113, 111, 111);
+                text-align: center;
+            }
+
+            .testimonial-container {
+                position: relative;
+                z-index: 2;
+                max-width: 800px;
+                margin: 0 auto;
+                padding: 30px;
+                background-color: rgba(255, 255, 255, 0.85);
+                border-radius: 10px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .testimonial h2 {
+                font-size: 2.5rem;
+                margin-bottom: 40px;
+                font-weight: 600;
+                color: #212529;
+            }
+
+            .testimonial-card {
+                background-color: rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .testimonial-card h5 {
+                font-size: 1.3rem;
+                font-weight: bold;
+                margin-bottom: 10px;
+                color: #17a2b8;
+            }
+
+            .testimonial-card p {
+                font-size: 1rem;
+                color: #333;
+            }
+
+            .btn-testimonial {
+                margin-top: 30px;
+                background-color: #17a2b8;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 5px;
+                text-decoration: none;
+            }
+
+            .btn-testimonial:hover {
+                background-color: #138f99;
+            }
+
+            /* Social Links Section */
+            .social-section {
+                padding: 60px 0;
+                text-align: center;
+                background-color: #343a40;
+                color: white;
+            }
+
+            .social-icons a {
+                margin: 0 15px;
+                color: #17a2b8;
+                font-size: 1.5rem;
+            }
+
+            /* Footer */
+            .footer {
+                padding: 20px 0;
+                background-color: #212529;
+                color: white;
+                text-align: center;
+            }
+
+            @media (max-width: 768px) {
+                .carousel-inner .carousel-caption {
+                    display: none;
+                }
+
+                .header {
+                    background-size: contain;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Header with Hero Image -->
+        <div class="header">
+            <h1>Rupesh Tiwari</h1>
+            <p>AWS Solutions Architect | Full Stack Developer | Interview Coach</p>
+            <a href="#credentials" class="btn-custom">Learn More</a>
+        </div>
+
+        <!-- Credentials Section -->
+        <div id="credentials" class="credentials-section">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>
+                    I am a Senior AWS Solutions Architect with 20+ years of experience, having successfully cracked
+                    interviews at top tech giants like Amazon, Microsoft, and Google Cloud. As an expert in cloud
+                    architecture, I’ve delivered over 100 large-scale, secure, and highly scalable cloud-native
+                    solutions. As an author on Pluralsight and Udemy, and a mentor with IGotAnOffer, I’ve helped over
+                    10,000
+                    students and coached more than 50 candidates into FAANG companies.
+                </p>
             </div>
         </div>
-        <a class="carousel-control-prev" href="#githubCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#githubCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
-    <h2 class="mt-4 mb-3">My Udemy Courses</h2>
-    <!-- Udemy Courses Carousel -->
-    <!-- ... (Udemy carousel code remains unchanged) ... -->
-     <div id="udemyCarousel" class="carousel slide" data-ride="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <a href="https://www.udemy.com/course/full-stack-generative-ai-with-aws-react-android-app/?couponCode=ST9MT22024" target="_blank">
-                    <img src="https://imgur.com/7OJGbI8.png" alt="Full Stack Generative AI with AWS & React | Comprehensive">
-                    <div class="carousel-caption">Full Stack Generative AI with AWS & React | Comprehensive</div>
-                </a>
-            </div>
-            <div class="carousel-item">
-                <a href="https://www.udemy.com/course/mastering-meanjs-fullstack-ultimate-course/?couponCode=ST9MT22024" target="_blank">
-                    <img src="https://imgur.com/fNxkHV6.png" alt="Mastering Meanjs Fullstack Ultimate Course">
-                    <div class="carousel-caption">Mastering Meanjs Fullstack Ultimate Course</div>
-                </a>
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#udemyCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#udemyCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
 
-    <h2 class="mt-4 mb-3">YouTube Tutorials</h2>
-    <!-- YouTube Tutorials Carousel -->
-    <!-- ... (YouTube carousel code remains unchanged) ... -->
-    <div id="youtubeCarousel" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <a href="https://www.youtube.com/watch?v=VQTCpj9e0p0&list=PLZed_adPqIJqbqELMjv3BUlry9Vd04_SV&ab_channel=FullStackMaster" target="_blank">
-                <img src="https://img.youtube.com/vi/VQTCpj9e0p0/mqdefault.jpg" alt="Building a Full Stack Generative AI Web Application with AWS, Next">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Building a Full Stack Generative AI Web Application with AWS, Next</h5>
+        <!-- Projects & Courses Section -->
+        <div id="projects" class="projects-section">
+            <div class="container">
+                <h2>Projects & Courses</h2>
+
+                <!-- GitHub Projects Carousel -->
+                <div id="githubCarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="https://github.com/FullStackMaster1/mastering-meanjs-ultimate-courese"
+                                target="_blank">
+                                <img src="https://imgur.com/MSmAvjd.png" alt="Mastering MeanJS Ultimate Course">
+                                <div class="carousel-caption">Mastering MeanJS Ultimate Course</div>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="https://github.com/FullStackMaster1/higher-order-observables" target="_blank">
+                                <img src="https://imgur.com/CEglULb.png" alt="RxJS Higher Order Observable">
+                                <div class="carousel-caption">RxJS Higher Order Observable</div>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="https://github.com/FullStackMaster1/fsms-angular-pubsub" target="_blank">
+                                <img src="https://imgur.com/rPGiHmT.png" alt="Angular Pub Sub Node.js Library">
+                                <div class="carousel-caption">Angular Pub Sub Node.js Library</div>
+                            </a>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#githubCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#githubCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
                 </div>
-            </a>
-        </div>
-        <div class="carousel-item">
-            <a href="https://www.youtube.com/watch?v=Y_fb6MSSf3U&list=PLZed_adPqIJpXgYjVl-3OkfxOV9iUmV6D&ab_channel=FullStackMaster" target="_blank">
-                <img src="https://img.youtube.com/vi/Y_fb6MSSf3U/mqdefault.jpg" alt="Mastering Docker the Ultimate Complete Course in Hindi">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Mastering Docker the Ultimate Complete Course in Hindi</h5>
-                </div>
-            </a>
-        </div>
-        <div class="carousel-item">
-            <a href="https://www.youtube.com/watch?v=p7uiWyGtIvY&list=PLZed_adPqIJqySuChzTikanRni8lsEfpT&ab_channel=FullStackMaster" target="_blank">
-                <img src="https://img.youtube.com/vi/p7uiWyGtIvY/mqdefault.jpg" alt="Higher Order RxJS Observables">
-                <div class="carousel-caption d-none d-md-block">
-                    <h5>Higher Order RxJS Observables</h5>
-                </div>
-            </a>
-        </div>
-    </div>
-    <a class="carousel-control-prev" href="#youtubeCarousel" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#youtubeCarousel" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
-</div>
-<div class="footer mt-5">
-    <div class="container text-center">
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/rupesh-tiwari/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-            <a href="https://twitter.com/RupeshTiwari" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
-            <a href="https://www.facebook.com/FullStackMaster1" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
-            <a href="https://www.instagram.com/rupeshtiwari/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-            <a href="https://www.youtube.com/FullStackMaster" target="_blank"><i class="fab fa-youtube"></i> YouTube</a>
-        </div>
-        <p>&copy; 2024 Rupesh Tiwari. All rights reserved.</p>
-    </div>
-</div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
+                <h2 class="mt-5">Udemy & YouTube Courses</h2>
+
+                <!-- Udemy Courses Carousel -->
+                <div id="udemyCarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <a href="https://www.udemy.com/user/rupesh-k-tiwari/" target="_blank">
+                                <img src="https://imgur.com/7OJGbI8.png"
+                                    alt="Full Stack Generative AI with AWS & React">
+                                <div class="carousel-caption">Full Stack Generative AI with AWS & React</div>
+                            </a>
+                        </div>
+                        <div class="carousel-item">
+                            <a href="https://www.udemy.com/course/mastering-meanjs-fullstack-ultimate-course/?couponCode=ST9MT22024"
+                                target="_blank">
+                                <img src="https://imgur.com/fNxkHV6.png"
+                                    alt="Mastering MeanJS Fullstack Ultimate Course">
+                                <div class="carousel-caption">Mastering MeanJS Fullstack Ultimate Course</div>
+                            </a>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#udemyCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#udemyCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Testimonial Section -->
+        <div class="testimonial-section">
+            <div class="testimonial-container">
+                <h2>What My Clients Say</h2>
+
+                <div class="testimonial-card">
+                    <h5>Govind</h5>
+                    <p>“Rupesh’s coaching gave me the confidence I needed to ace my interview. His feedback was
+                        invaluable for
+                        both technical and behavioral preparation.”</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <h5>Xavier</h5>
+                    <p>“Rupesh was very attentive to my needs and offered insightful guidance. His personalized approach
+                        helped me improve significantly. Highly recommend!”</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <h5>Nikunj</h5>
+                    <p>“I highly recommend Rupesh for interview preparation. His deep technical knowledge and thoughtful
+                        feedback were critical to my success.”</p>
+                </div>
+
+                <a href="https://igotanoffer.com/en/coach/rupesh" target="_blank" class="btn-testimonial">Read More
+                    Reviews</a>
+            </div>
+        </div>
+
+        <!-- Social Links Section -->
+        <div class="social-section">
+            <h2>Connect with Me</h2>
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/rupesh-tiwari/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/rupeshtiwari" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.pluralsight.com/profile/author/rupesh-tiwari" target="_blank"><i
+                        class="fas fa-chalkboard-teacher"></i></a>
+                <a href="https://twitter.com/rupeshtiwari_co" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/fullstackmaster" target="_blank"><i class="fab fa-youtube"></i></a>
+                <a href="mailto:roopkt@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>&copy; 2024 Rupesh Tiwari. All rights reserved. <a href="/privacy-policy" target="_blank">Privacy
+                    Policy</a></p>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </body>
+
 </html>
