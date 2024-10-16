@@ -7,7 +7,7 @@
         <meta name="description"
             content="Rupesh Tiwari, AWS Solutions Architect, Full Stack Developer, and Interview Coach with expertise in Cloud Architecture. Learn from his Udemy, Pluralsight, and YouTube courses.">
         <title>Rupesh Tiwari | AWS Solutions Architect & Interview Coach</title>
-        <link rel="icon" type="image/x-icon" href="256256.ico">
+        <link rel="icon" type="image/x-icon" href="icons/256256.ico">
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -24,190 +24,17 @@
         <!-- AOS for scroll animations -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 
-        <style>
-            body {
-                font-family: 'Poppins', sans-serif;
-                margin: 0;
-                padding: 0;
-                background-color: #f8f9fa;
-                color: #212529;
-                scroll-behavior: smooth;
-            }
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="css/site.css">
 
-            /* General Animations */
-            .fade-in {
-                opacity: 0;
-                transform: translateY(20px);
-                transition: all 0.5s ease-in-out;
-            }
-
-            .fade-in.show {
-                opacity: 1;
-                transform: translateY(0);
-            }
-
-            /* Header Section with Hero Image */
-            .header {
-                background: linear-gradient(to bottom, rgba(67, 54, 54, 0.3), rgba(18, 16, 16, 0.3)), url('rupesh-amazon.jpg') no-repeat center center/cover;
-                height: 100vh;
-                text-align: center;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                color: #f1f1f1;
-                transition: background 0.5s ease;
-            }
-
-            .header h1 {
-                font-size: 3rem;
-                font-weight: 600;
-                margin: 20px 0;
-            }
-
-            .header p {
-                font-size: 1.5rem;
-                margin-bottom: 30px;
-            }
-
-            .btn-custom {
-                background-color: #17a2b8;
-                color: white;
-                padding: 10px 20px;
-                border-radius: 5px;
-                text-decoration: none;
-                transition: background-color 0.3s ease;
-            }
-
-            .btn-custom:hover {
-                background-color: #138f99;
-            }
-
-            /* About Me Section */
-            .credentials-section {
-                padding: 60px 0;
-                background-color: #e8ecef;
-                text-align: center;
-            }
-
-            .credentials-section h2 {
-                font-size: 2.5rem;
-                margin-bottom: 20px;
-                font-weight: 600;
-                color: #333;
-            }
-
-            .credentials-section p {
-                max-width: 800px;
-                margin: 0 auto;
-                font-size: 1.2rem;
-                color: #333;
-                line-height: 1.8;
-            }
-
-            .credentials-section b {
-                color: #17a2b8;
-            }
-
-            /* Carousel Styles */
-            .carousel-inner img {
-                width: 100%;
-                height: auto;
-            }
-
-            .carousel-caption {
-                background-color: rgba(0, 0, 0, 0.75);
-                padding: 10px;
-                border-radius: 8px;
-                font-size: 1rem;
-            }
-
-            .carousel-control-prev-icon,
-            .carousel-control-next-icon {
-                background-color: #17a2b8;
-                border-radius: 50%;
-            }
-
-            /* Testimonial Section */
-            .testimonial-section {
-                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('feedback-rupesh.jpg') no-repeat center center/cover;
-                color: white;
-                text-align: center;
-                padding: 100px 0;
-            }
-
-            .testimonial-card {
-                padding: 20px;
-                margin-bottom: 20px;
-                background-color: rgba(255, 255, 255, 0.2);
-                border-radius: 10px;
-            }
-
-            .testimonial-container {
-                max-width: 800px;
-                margin: 0 auto;
-            }
-
-            /* Call to Action */
-            .cta-section {
-                padding: 60px 0;
-                text-align: center;
-                background-color: #17a2b8;
-                color: white;
-            }
-
-            .cta-section a {
-                color: white;
-                font-weight: bold;
-            }
-
-            .btn-light {
-                background-color: #138f99;
-                color: white;
-            }
-
-            /* Social Links Section */
-            .social-section {
-                padding: 60px 0;
-                text-align: center;
-                background-color: #343a40;
-                color: white;
-            }
-
-            .social-icons a {
-                margin: 0 15px;
-                color: #17a2b8;
-                font-size: 1.5rem;
-            }
-
-            /* Footer */
-            .footer {
-                padding: 20px 0;
-                background-color: #212529;
-                color: white;
-                text-align: center;
-                position: relative;
-                animation: none !important;
-            }
-
-            @media (max-width: 768px) {
-                .header h1 {
-                    font-size: 2rem;
-                }
-
-                .header p {
-                    font-size: 1rem;
-                }
-            }
-        </style>
     </head>
 
     <body>
 
-        <!-- Header with Hero Image -->
+        <!-- Hero Section -->
         <div class="header" data-aos="fade-up">
-            <h1>Rupesh Tiwari</h1>
-            <p><b>AWS Solutions Architect</b> | <b>Full Stack Developer</b> | Interview Coach</p>
+            <h1 class="hero-text">Rupesh Tiwari</h1>
+            <p class="hero-subtitle">AWS Solutions Architect | Full Stack Developer | Interview Coach</p>
             <a href="#credentials" class="btn-custom">Learn More</a>
         </div>
 
@@ -215,19 +42,29 @@
         <div id="credentials" class="credentials-section" data-aos="fade-right">
             <div class="container">
                 <h2>About Me</h2>
-                <p>
-                    I am a <b>Senior AWS Solutions Architect</b> with over 20 years of experience in cloud architecture
-                    and development. I have successfully guided students through top tech interviews, including at
-                    <b>Amazon</b>, <b>Microsoft</b>, and <b>Google</b>. I’ve also designed and delivered more than 100
-                    large-scale, secure, and scalable cloud-native solutions.
-                    <br>
-                    As a coach, I've mentored over <b>50+ candidates</b> into FAANG companies. My courses on <a
-                        href="https://www.udemy.com/user/rupesh-k-tiwari/" target="_blank"><b>Udemy</b></a>, <a
-                        href="https://app.pluralsight.com/profile/author/rupesh-tiwari"
-                        target="_blank"><b>Pluralsight</b></a>, and <a href="https://www.youtube.com/fullstackmaster"
-                        target="_blank"><b>YouTube</b></a> have reached over <b>10,000 students</b>, empowering them
-                    with hands-on learning in modern technologies.
-                </p>
+                <div class="row">
+                    <div class="col-md-7 col-sm-12">
+                        <p>
+                            I am a <b>Senior AWS Solutions Architect</b> with over 20 years of experience in cloud
+                            architecture and development. I have successfully guided students through top tech
+                            interviews, including
+                            at <b>Amazon</b>, <b>Microsoft</b>, and <b>Google</b>. I’ve also designed and delivered more
+                            than 100 large-scale, secure, and scalable cloud-native solutions.
+                            <br>
+                            As a coach, I've mentored over <b>50+ candidates</b> into FAANG companies. My courses on <a
+                                href="https://www.udemy.com/user/rupesh-k-tiwari/" target="_blank"><b>Udemy</b></a>, <a
+                                href="https://app.pluralsight.com/profile/author/rupesh-tiwari"
+                                target="_blank"><b>Pluralsight</b></a>, and <a
+                                href="https://www.youtube.com/fullstackmaster" target="_blank"><b>YouTube</b></a> have
+                            reached over <b>10,000 students</b>, empowering them
+                            with hands-on learning in modern technologies.
+                        </p>
+                    </div>
+                    <div class="col-md-5 col-sm-12">
+                        <img src="assets/images/rupesh-speaking.jpg" alt="Rupesh Speaking" class="img-fluid"
+                            style="max-width: 90%" />
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -301,46 +138,47 @@
                 </div>
             </div>
         </div>
-<!-- Testimonial Section -->
-<div class="testimonial-section" data-aos="fade-up">
-    <div class="testimonial-container">
-        <h2>What My Clients Say</h2>
 
-        <div class="testimonial-card">
-            <h5>Govind</h5>
-            <p>“Rupesh’s coaching gave me the confidence I needed to ace my interview. His feedback was invaluable for
-                both technical and behavioral preparation. He provided opportunities to fine-tune and gather feedback,
-                which was quite interesting. Hopefully, I put this together and succeed at the interview!”</p>
+        <!-- Testimonial Section -->
+        <div class="testimonial-section" data-aos="fade-up">
+            <div class="testimonial-container">
+                <h2>What My Clients Say</h2>
+
+                <div class="testimonial-card">
+                    <h5>Govind</h5>
+                    <p>“Rupesh’s coaching gave me the confidence I needed to ace my interview. His feedback was
+                        invaluable for both technical and behavioral preparation. He provided opportunities to fine-tune
+                        and gather feedback, which was quite interesting. Hopefully, I put this together and succeed at
+                        the interview!”</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <h5>Nikunj</h5>
+                    <p>“Rupesh displayed a high level of professionalism and demonstrated deep knowledge of the subject
+                        matter. His guidance was invaluable in preparing me for my interview. If you're looking for
+                        thorough and insightful interview preparation, Rupesh is an excellent choice.”</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <h5>Mehmet</h5>
+                    <p>“I highly recommend Rupesh for interview preparation. He explained how Solution Architects work
+                        in AWS, which was very helpful. We also did a technical mock interview, and he provided valuable
+                        tips on structuring my answers better. His knowledge of AWS Leadership Principles was
+                        fundamental for my success.”</p>
+                </div>
+
+                <div class="testimonial-card">
+                    <h5>Manu</h5>
+                    <p>“Coach Rupesh's invaluable assistance and guidance during my tech interview preparation were
+                        truly exceptional. His deep knowledge and insightful coaching not only boosted my technical
+                        skills but also instilled confidence in navigating challenging interview scenarios. I am
+                        immensely grateful for his dedicated support!”</p>
+                </div>
+
+                <a href="https://igotanoffer.com/en/coach/rupesh" target="_blank" class="btn btn-outline-light">Read
+                    More Reviews</a>
+            </div>
         </div>
-
-        <div class="testimonial-card">
-            <h5>Nikunj</h5>
-            <p>“Rupesh displayed a high level of professionalism and demonstrated deep knowledge of the subject matter.
-                His guidance was invaluable in preparing me for my interview. If you're looking for thorough and
-                insightful interview preparation, Rupesh is an excellent choice.”</p>
-        </div>
-
-        <div class="testimonial-card">
-            <h5>Mehmet</h5>
-            <p>“I highly recommend Rupesh for interview preparation. He explained how Solution Architects work in AWS,
-                which was very helpful. We also did a technical mock interview, and he provided valuable tips on
-                structuring my answers better. His knowledge of AWS Leadership Principles was fundamental for my
-                success.”</p>
-        </div>
-
-        <div class="testimonial-card">
-            <h5>Manu</h5>
-            <p>“Coach Rupesh's invaluable assistance and guidance during my tech interview preparation were truly
-                exceptional. His deep knowledge and insightful coaching not only boosted my technical skills but also
-                instilled confidence in navigating challenging interview scenarios. I am immensely grateful for his
-                dedicated support!”</p>
-        </div>
-
-        <a href="https://igotanoffer.com/en/coach/rupesh" target="_blank" class="btn btn-outline-light">Read More
-            Reviews</a>
-    </div>
-</div>
-
 
         <!-- Call to Action Section -->
         <div class="cta-section" data-aos="fade-in">
@@ -348,21 +186,10 @@
             <p>Take your skills to the next level by enrolling in my courses on <a
                     href="https://www.udemy.com/user/rupesh-k-tiwari/" target="_blank">Udemy</a>, <a
                     href="https://app.pluralsight.com/profile/author/rupesh-tiwari" target="_blank">Pluralsight</a>, or
-                <a href="https://www.youtube.com/fullstackmaster" target="_blank">YouTube</a>.</p>
+                <a href="https://www.youtube.com/fullstackmaster" target="_blank">YouTube</a>.
+            </p>
             <a href="https://www.udemy.com/user/rupesh-k-tiwari/" target="_blank" class="btn btn-light">Start Learning
                 Now</a>
-        </div>
-
-        <!-- Social Links Section -->
-        <div class="social-section" data-aos="fade-in">
-            <h2>Connect with Me</h2>
-            <div class="social-icons">
-                <a href="https://linkedin.com/in/rupesh-tiwari/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="http://github.com/rupeshtiwari" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://twitter.com/rupeshtiwari_co" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.youtube.com/fullstackmaster" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="mailto:roopkt@gmail.com"><i class="fas fa-envelope"></i></a>
-            </div>
         </div>
 
         <!-- Footer -->
@@ -383,13 +210,8 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="js/site.js"></script>
 
-        <!-- Prevent carousel auto-scroll bug -->
-        <script>
-            $('.carousel').on('slid.bs.carousel', function () {
-                $(this).carousel('pause'); // Stops the auto-scrolling
-            });
-        </script>
 
     </body>
 

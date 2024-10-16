@@ -1,0 +1,265 @@
+/* --------------------------------------------------------------------
+   Global Styles
+-------------------------------------------------------------------- */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    /* Light background for a professional look */
+    color: #212529;
+    scroll-behavior: smooth;
+}
+
+/* --------------------------------------------------------------------
+   Header Section with Hero Image
+-------------------------------------------------------------------- */
+.header {
+    background: linear-gradient(to bottom, rgba(67, 54, 54, 0.3), rgba(18, 16, 16, 0.3)),
+    url('../assets/images/rupesh-amazon.jpg') no-repeat center center/cover;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #f1f1f1;
+    background-attachment: fixed;
+    background-size: cover;
+    animation: zoomInBg 5s ease forwards;
+}
+
+/* Background zoom-in animation for the hero section */
+@keyframes zoomInBg {
+    0% {
+        background-size: 100%;
+    }
+    100% {
+        background-size: 105%;
+    }
+}
+
+/* Header text animations */
+.header h1, .header p, .btn-custom {
+    opacity: 0;
+    animation: fadeIn 2s ease forwards;
+}
+
+/* Fade-in animation for the header content */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --------------------------------------------------------------------
+   Personal Image Animation
+-------------------------------------------------------------------- */
+.personal-image {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slideIn 2s ease forwards;
+}
+
+/* Slide-in animation for personal image */
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --------------------------------------------------------------------
+   Button Styling (Reused Across Sections)
+-------------------------------------------------------------------- */
+.btn-custom {
+    background-color: #17a2b8;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+/* Button hover effect */
+.btn-custom:hover {
+    background-color: #138f99;
+}
+
+/* --------------------------------------------------------------------
+   About Me Section
+-------------------------------------------------------------------- */
+.credentials-section {
+    padding: 60px 0;
+    background-color: #e8ecef;
+    text-align: center;
+}
+
+/* Styling for section headings */
+.credentials-section h2 {
+    font-size: 2.5rem;
+    color: #333;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* Styling for paragraph text */
+.credentials-section p {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+    color: #2a2a2a;
+    line-height: 1.8;
+}
+
+/* Highlighted text in About Me section */
+.credentials-section b {
+    color: #17a2b8;
+}
+
+/* --------------------------------------------------------------------
+   Projects & Courses Section (GitHub, Udemy, YouTube)
+-------------------------------------------------------------------- */
+.carousel-inner img {
+    width: 100%;
+    height: auto;
+}
+
+/* Styling for carousel captions */
+.carousel-caption {
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* Previous and next icons styling */
+.carousel-control-prev-icon, .carousel-control-next-icon {
+    background-color: #17a2b8;
+    border-radius: 50%;
+}
+
+/* --------------------------------------------------------------------
+   Testimonial Section
+-------------------------------------------------------------------- */
+.testimonial-section {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url('../assets/images/rupesh-feedback.jpg') no-repeat center center/cover;
+    color: white;
+    text-align: center;
+    padding: 100px 0;
+}
+
+/* Container for testimonials */
+.testimonial-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Individual testimonial card styling */
+.testimonial-card {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Increased opacity for better readability */
+    border-radius: 10px;
+}
+
+/* Styling for the name/title in testimonials */
+.testimonial-card h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #17a2b8;
+    margin-bottom: 10px;
+}
+
+/* Testimonial content styling */
+.testimonial-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------
+   Call to Action (CTA) Section
+-------------------------------------------------------------------- */
+.cta-section {
+    padding: 60px 0;
+    text-align: center;
+    background-color: #17a2b8;
+    color: white;
+    font-size: 1.2rem;
+    margin-bottom: 0; /* Remove bottom margin */
+    padding-bottom: 30px; /* Ensure padding without large gap */
+}
+
+/* Button styling within CTA */
+.cta-section a {
+    display: inline-block;
+    margin: 10px 10px; /* Space between buttons */
+    padding: 12px 25px; /* Button padding */
+    background-color: #007BFF; /* Professional button color */
+    color: white;
+    border-radius: 5px; /* Rounded corners */
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1rem;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for CTA buttons */
+.cta-section a:hover {
+    background-color: #0056b3;
+}
+
+/* --------------------------------------------------------------------
+   Social Icons Section
+-------------------------------------------------------------------- */
+.social-section {
+    padding: 30px 0;
+    text-align: center;
+    background-color: #343a40;
+    color: white;
+}
+
+/* Styling for social media icons */
+.social-icons a {
+    margin: 0 15px;
+    color: white;
+    font-size: 1.8rem;
+}
+
+/* --------------------------------------------------------------------
+   Footer Section
+-------------------------------------------------------------------- */
+.footer {
+    padding: 15px 0;
+    background-color: #212529;
+    color: white;
+    text-align: center;
+    font-size: 0.9rem; /* Smaller text for footer */
+    margin-top: 0; /* Ensure the footer doesn't have a large top margin */
+}
+
+/* --------------------------------------------------------------------
+   Fade-in Animation for Scroll Effects (Used for Sections)
+-------------------------------------------------------------------- */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease-in-out;
+}
+
+/* Show fade-in effect when element enters view */
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
