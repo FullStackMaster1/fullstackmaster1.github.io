@@ -6,7 +6,6 @@ body {
   margin: 0;
   padding: 0;
   background-color: #f8f9fa;
-  /* Light background for a professional look */
   color: #212529;
   scroll-behavior: smooth;
 }
@@ -88,7 +87,7 @@ body {
    Button Styling (Reused Across Sections)
 -------------------------------------------------------------------- */
 .btn-custom {
-  background-color: #17a2b8;
+  background-color: #007bff; /* Professional blue button */
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
@@ -96,22 +95,24 @@ body {
   transition: background-color 0.3s ease;
 }
 
-/* Button hover effect */
 .btn-custom:hover {
-  background-color: #138f99;
+  background-color: #0056b3; /* Darker hover color */
+  color: black;
 }
 
 /* --------------------------------------------------------------------
    About Me Section
 -------------------------------------------------------------------- */
 .credentials-section {
-   background: linear-gradient(to bottom, #bcdaf4, #e3e6ea); /* Light blue gradient */
+  background: linear-gradient(
+    to bottom,
+    #c0e0f7, /* Lighter blue */
+    #d9e8f4  /* Smooth transition */
+  ); /* Light blue gradient */
   padding: 60px 0;
-  background-color: #e8ecef;
   text-align: center;
 }
 
-/* Styling for section headings */
 .credentials-section h2 {
   font-size: 2.5rem;
   color: #333;
@@ -119,7 +120,6 @@ body {
   margin-bottom: 30px;
 }
 
-/* Styling for paragraph text */
 .credentials-section p {
   max-width: 800px;
   margin: 0 auto;
@@ -128,23 +128,26 @@ body {
   line-height: 1.8;
 }
 
-/* Highlighted text in About Me section */
 .credentials-section b {
-  color: #17a2b8;
+  color: #007bff; /* Accent color */
 }
+
 /* --------------------------------------------------------------------
    Projects & Courses Section (with a smooth transition)
 -------------------------------------------------------------------- */
 .projects-section {
-   background: linear-gradient(to bottom, #cee3f6, #e3e6ea); /* Light blue gradient */
-  background-color: #f0f8ff; /* Light blue color for smooth transition */
-  padding: 100px 0; /* Adequate padding for breathing space */
+  background: linear-gradient(
+    to bottom,
+    #d4e6f7, /* Softer blue start */
+    #e3e8f0  /* Lighter transition */
+  ); /* Light blue gradient */
+  padding: 100px 0;
   text-align: center;
 }
 
 .projects-section h2 {
-  color: #333;
   font-size: 2.5rem;
+  color: #333;
   margin-bottom: 30px;
 }
 
@@ -163,56 +166,36 @@ body {
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: #17a2b8;
+  background-color: #007bff;
   border-radius: 50%;
 }
 
 /* --------------------------------------------------------------------
    Testimonial Section with Blurred Background (only the background)
 -------------------------------------------------------------------- */
-
-
-.testimonial-section::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(10, 10, 10, 0.5), rgba(64, 63, 63, 0.5)), 
-                url('../assets/images/rupesh-feedback.jpg') no-repeat center center/cover;
-    filter: blur(7px); /* Apply the blur to the background */
-    z-index: -1; /* Ensure this stays behind the content */
-}
-
-/* Smooth transition to testimonial section */
 .testimonial-section {
   background: linear-gradient(
-      to bottom,
-      rgba(10, 10, 10, 0.5),
-      rgba(64, 63, 63, 0.5)
-    ),
-    url('../assets/images/rupesh-feedback.jpg') no-repeat center center/cover;
-  background-attachment: fixed; /* Parallax scrolling effect */
+    to bottom,
+    #bcdaf4, /* Light gradient */
+    #d9e8f4
+  ); /* Softer light blue for the testimonial background */
   color: white;
   text-align: center;
   padding: 100px 0;
-  transition: background 0.5s ease; /* Smooth transition effect */
+  background-attachment: fixed;
+  transition: background 0.5s ease;
 }
 
-/* Container for testimonials */
 .testimonial-container {
   max-width: 800px;
   margin: 0 auto;
   position: relative;
-  z-index: 1;
-  background-color: rgba(0, 0, 0, 0.5); /* Dark translucent background */
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Slight shadow for depth */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Individual testimonial card styling */
 .testimonial-card {
   padding: 20px;
   margin-bottom: 20px;
@@ -220,21 +203,18 @@ body {
   border-radius: 10px;
 }
 
-/* Styling for the name/title in testimonials */
 .testimonial-card h5 {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #17a2b8;
+  color: #007bff;
   margin-bottom: 10px;
 }
 
-/* Testimonial content styling */
 .testimonial-card p {
   font-size: 1rem;
   line-height: 1.6;
 }
 
-/* Button styling */
 .btn-outline-light {
   color: white;
   border: 1px solid white;
@@ -245,41 +225,41 @@ body {
 }
 
 .btn-outline-light:hover {
-  background-color: #17a2b8;
+  background-color: #007bff;
   color: white;
-  border-color: #17a2b8;
+  border-color: #007bff;
 }
+
 /* --------------------------------------------------------------------
    Call to Action (CTA) Section
 -------------------------------------------------------------------- */
 .cta-section {
-    background: linear-gradient(to bottom,  #17a2b8, #e3e6ea); /* Light blue gradient */
+  background: linear-gradient(
+    to bottom,
+    #7ebbfc, /* Primary blue */
+    #5b81a9  /* Darker blue for smooth gradient */
+  );
   padding: 60px 0;
   text-align: center;
-  background-color: #17a2b8;
   color: white;
   font-size: 1.2rem;
-  margin-bottom: 0; /* Remove bottom margin */
-  padding-bottom: 30px; /* Ensure padding without large gap */
 }
 
-/* Button styling within CTA */
 .cta-section a {
   display: inline-block;
-  margin: 10px 10px; /* Space between buttons */
-  padding: 12px 25px; /* Button padding */
-  background-color: #007bff; /* Professional button color */
+  margin: 10px 10px;
+  padding: 12px 25px;
+  background-color: #1a63b1;
   color: white;
-  border-radius: 5px; /* Rounded corners */
+  border-radius: 5px;
   text-decoration: none;
   font-weight: bold;
   font-size: 1.1rem;
   transition: background-color 0.3s ease;
 }
 
-/* Hover effect for CTA buttons */
 .cta-section a:hover {
-  background-color: #0056b3;
+  background-color: #285697;
 }
 
 /* --------------------------------------------------------------------
@@ -292,7 +272,6 @@ body {
   color: white;
 }
 
-/* Styling for social media icons */
 .social-icons a {
   margin: 0 15px;
   color: white;
@@ -307,8 +286,8 @@ body {
   background-color: #212529;
   color: white;
   text-align: center;
-  font-size: 0.9rem; /* Smaller text for footer */
-  margin-top: 0; /* Ensure the footer doesn't have a large top margin */
+  font-size: 0.9rem;
+  margin-top: 0;
 }
 
 /* --------------------------------------------------------------------
@@ -320,7 +299,6 @@ body {
   transition: all 0.5s ease-in-out;
 }
 
-/* Show fade-in effect when element enters view */
 .fade-in.show {
   opacity: 1;
   transform: translateY(0);
