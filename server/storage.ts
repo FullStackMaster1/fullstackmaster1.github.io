@@ -1,13 +1,16 @@
-import { type User, type InsertUser } from "@shared/schema";
+import { type User, type InsertUser, type WebinarRegistration, type InsertWebinarRegistration, webinarRegistrations } from "@shared/schema";
 import { randomUUID } from "crypto";
-
-// modify the interface with any CRUD methods
-// you might need
+import { db } from "./db";
+import { desc, eq } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
   createUser(user: InsertUser): Promise<User>;
+  createWebinarRegistration(registration: InsertWebinarRegistration): Promise<WebinarRegistration>;
+  getWebinarRegistrations(): Promise<WebinarRegistration[]>;
+  getWebinarRegistrationsByWebinarId(webinarId: string): Promise<WebinarRegistration[]>;
+  getWebinarRegistrationByEmail(email: string, webinarId: string): Promise<WebinarRegistration | undefined>;
 }
 
 export class MemStorage implements IStorage {
@@ -32,6 +35,26 @@ export class MemStorage implements IStorage {
     const user: User = { ...insertUser, id };
     this.users.set(id, user);
     return user;
+  }
+
+  async createWebinarRegistration(registration: InsertWebinarRegistration): Promise<WebinarRegistration> {
+    const [result] = await db.insert(webinarRegistrations).values(registration).returning();
+    return result;
+  }
+
+  async getWebinarRegistrations(): Promise<WebinarRegistration[]> {
+    return await db.select().from(webinarRegistrations).orderBy(desc(webinarRegistrations.registeredAt));
+  }
+
+  async getWebinarRegistrationsByWebinarId(webinarId: string): Promise<WebinarRegistration[]> {
+    return await db.select().from(webinarRegistrations).where(eq(webinarRegistrations.webinarId, webinarId)).orderBy(desc(webinarRegistrations.registeredAt));
+  }
+
+  async getWebinarRegistrationByEmail(email: string, webinarId: string): Promise<WebinarRegistration | undefined> {
+    const [result] = await db.select().from(webinarRegistrations)
+      .where(eq(webinarRegistrations.email, email))
+      .where(eq(webinarRegistrations.webinarId, webinarId));
+    return result;
   }
 }
 
