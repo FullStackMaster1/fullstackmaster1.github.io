@@ -38,15 +38,15 @@ export default function AnnouncementBar() {
 
   return (
     <div
-      className="relative bg-primary text-primary-foreground py-2.5 px-4"
+      className="relative bg-slate-900 text-white py-3 px-4"
       data-testid="announcement-bar"
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-center gap-2 text-sm pr-8">
-        <Sparkles className="w-4 h-4 flex-shrink-0" />
+      <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-sm">
+        <Sparkles className="w-4 h-4 flex-shrink-0 text-yellow-400" />
         {current.highlight && (
-          <span className="font-semibold">{current.highlight}:</span>
+          <span className="font-semibold text-yellow-400">{current.highlight}:</span>
         )}
-        <span className="text-primary-foreground/90" data-testid="text-announcement">
+        <span data-testid="text-announcement">
           {current.message}
         </span>
         {current.linkText && current.linkHref && (
@@ -54,22 +54,22 @@ export default function AnnouncementBar() {
             href={current.linkHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-semibold underline underline-offset-2 hover:no-underline ml-1 whitespace-nowrap"
+            className="inline-flex items-center gap-1 font-semibold bg-white text-slate-900 px-3 py-1 rounded-full text-xs hover:bg-yellow-400 transition-colors ml-2"
             data-testid="link-announcement-cta"
           >
             {current.linkText}
             <ArrowRight className="w-3 h-3" />
           </a>
         )}
+        <button
+          onClick={handleDismiss}
+          className="absolute right-4 p-1.5 rounded-full hover:bg-white/10 transition-colors"
+          aria-label="Dismiss announcement"
+          data-testid="button-dismiss-announcement"
+        >
+          <X className="w-4 h-4" />
+        </button>
       </div>
-      <button
-        onClick={handleDismiss}
-        className="absolute right-3 top-1/2 -translate-y-1/2 p-1 rounded hover:bg-primary-foreground/10 transition-colors"
-        aria-label="Dismiss announcement"
-        data-testid="button-dismiss-announcement"
-      >
-        <X className="w-4 h-4" />
-      </button>
     </div>
   );
 }
