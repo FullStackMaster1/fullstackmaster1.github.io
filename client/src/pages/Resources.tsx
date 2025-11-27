@@ -1,5 +1,6 @@
 import Navigation from "@/components/Navigation";
 import AnnouncementBar from "@/components/AnnouncementBar";
+import GumroadSection from "@/components/GumroadSection";
 import CoursesCarousel from "@/components/CoursesCarousel";
 import PlaylistsCarousel from "@/components/PlaylistsCarousel";
 import ArticlesSection from "@/components/ArticlesSection";
@@ -29,6 +30,7 @@ export default function Resources() {
             </p>
           </div>
         </section>
+        <GumroadSection />
         <CoursesCarousel />
         <PlaylistsCarousel />
         <ArticlesSection />

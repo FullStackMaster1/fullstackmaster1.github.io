@@ -65,6 +65,10 @@
     "facebook": {
       "url": "https://www.facebook.com/fullstackmaster1",
       "label": "Facebook"
+    },
+    "gumroad": {
+      "url": "https://rupeshtiwari.gumroad.com/l/rupesh-kit",
+      "label": "Gumroad"
     }
   },
   "stats": {
