@@ -1,7 +1,7 @@
 import { type User, type InsertUser, type WebinarRegistration, type InsertWebinarRegistration, webinarRegistrations } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { db } from "./db";
-import { desc, eq } from "drizzle-orm";
+import { desc, eq, and } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
@@ -52,8 +52,10 @@ export class MemStorage implements IStorage {
 
   async getWebinarRegistrationByEmail(email: string, webinarId: string): Promise<WebinarRegistration | undefined> {
     const [result] = await db.select().from(webinarRegistrations)
-      .where(eq(webinarRegistrations.email, email))
-      .where(eq(webinarRegistrations.webinarId, webinarId));
+      .where(and(
+        eq(webinarRegistrations.email, email),
+        eq(webinarRegistrations.webinarId, webinarId)
+      ));
     return result;
   }
 }

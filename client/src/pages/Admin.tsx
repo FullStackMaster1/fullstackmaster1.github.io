@@ -3,6 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Table,
   TableBody,
@@ -11,21 +12,157 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Download, Users, Mail, Phone, Calendar, ArrowLeft, Search, Copy, CheckCircle } from "lucide-react";
+import { Download, Users, Mail, Phone, ArrowLeft, Search, Copy, CheckCircle, Lock, LogOut } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import { Link } from "wouter";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import type { WebinarRegistration } from "@shared/schema";
 
+const ADMIN_TOKEN_KEY = "admin_token";
+
+function getStoredToken(): string | null {
+  return sessionStorage.getItem(ADMIN_TOKEN_KEY);
+}
+
+function setStoredToken(token: string) {
+  sessionStorage.setItem(ADMIN_TOKEN_KEY, token);
+}
+
+function clearStoredToken() {
+  sessionStorage.removeItem(ADMIN_TOKEN_KEY);
+}
+
+function LoginForm({ onLogin }: { onLogin: (token: string) => void }) {
+  const [token, setToken] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/webinar/registrations", {
+        headers: { "x-admin-token": token },
+      });
+
+      if (response.ok) {
+        setStoredToken(token);
+        onLogin(token);
+        toast({
+          title: "Logged in successfully",
+          description: "Welcome to the admin dashboard.",
+        });
+      } else {
+        setError("Invalid admin token. Please try again.");
+      }
+    } catch (err) {
+      setError("Connection error. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+      <Card className="w-full max-w-md">
+        <CardHeader className="text-center">
+          <div className="mx-auto mb-4 p-3 bg-primary/10 rounded-full w-fit">
+            <Lock className="w-6 h-6 text-primary" />
+          </div>
+          <CardTitle>Admin Access</CardTitle>
+          <CardDescription>
+            Enter your admin token to view webinar registrations
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="token">Admin Token</Label>
+              <Input
+                id="token"
+                type="password"
+                placeholder="Enter admin token"
+                value={token}
+                onChange={(e) => setToken(e.target.value)}
+                required
+                data-testid="input-admin-token"
+              />
+            </div>
+            {error && (
+              <p className="text-sm text-destructive">{error}</p>
+            )}
+            <Button type="submit" className="w-full" disabled={loading} data-testid="button-admin-login">
+              {loading ? "Verifying..." : "Access Dashboard"}
+            </Button>
+          </form>
+          <div className="mt-6 text-center">
+            <Link href="/">
+              <Button variant="ghost" size="sm" data-testid="link-back-home-login">
+                <ArrowLeft className="w-4 h-4 mr-2" />
+                Back to Website
+              </Button>
+            </Link>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
 export default function Admin() {
+  const [adminToken, setAdminToken] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [copiedEmails, setCopiedEmails] = useState(false);
   const { toast } = useToast();
 
-  const { data: registrations = [], isLoading, error } = useQuery<WebinarRegistration[]>({
+  useEffect(() => {
+    const stored = getStoredToken();
+    if (stored) {
+      setAdminToken(stored);
+    }
+  }, []);
+
+  const { data: registrations = [], isLoading, error, refetch } = useQuery<WebinarRegistration[]>({
     queryKey: ["/api/webinar/registrations"],
+    queryFn: async () => {
+      if (!adminToken) throw new Error("No token");
+      const response = await fetch("/api/webinar/registrations", {
+        headers: { "x-admin-token": adminToken },
+      });
+      if (!response.ok) {
+        if (response.status === 401) {
+          clearStoredToken();
+          setAdminToken(null);
+          throw new Error("Unauthorized");
+        }
+        throw new Error("Failed to fetch");
+      }
+      return response.json();
+    },
+    enabled: !!adminToken,
   });
+
+  const handleLogout = () => {
+    clearStoredToken();
+    setAdminToken(null);
+    toast({
+      title: "Logged out",
+      description: "You have been logged out of the admin dashboard.",
+    });
+  };
+
+  const handleLogin = (token: string) => {
+    setAdminToken(token);
+    refetch();
+  };
+
+  if (!adminToken) {
+    return <LoginForm onLogin={handleLogin} />;
+  }
 
   const filteredRegistrations = registrations.filter(
     (r) =>
@@ -43,6 +180,34 @@ export default function Admin() {
       description: `${filteredRegistrations.length} email addresses copied to clipboard.`,
     });
     setTimeout(() => setCopiedEmails(false), 2000);
+  };
+
+  const downloadCsv = async () => {
+    try {
+      const response = await fetch("/api/webinar/export", {
+        headers: { "x-admin-token": adminToken },
+      });
+      if (!response.ok) throw new Error("Export failed");
+      const blob = await response.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "webinar-registrations.csv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+      toast({
+        title: "Export Complete",
+        description: "CSV file downloaded successfully.",
+      });
+    } catch (err) {
+      toast({
+        title: "Export Failed",
+        description: "Could not download CSV file.",
+        variant: "destructive",
+      });
+    }
   };
 
   const webinarStats = registrations.reduce((acc, r) => {
@@ -73,12 +238,18 @@ export default function Admin() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <Link href="/">
-              <Button variant="ghost" size="sm" className="mb-2" data-testid="link-back-home">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to Website
+            <div className="flex items-center gap-2 mb-2">
+              <Link href="/">
+                <Button variant="ghost" size="sm" data-testid="link-back-home">
+                  <ArrowLeft className="w-4 h-4 mr-2" />
+                  Back to Website
+                </Button>
+              </Link>
+              <Button variant="ghost" size="sm" onClick={handleLogout} data-testid="button-logout">
+                <LogOut className="w-4 h-4 mr-2" />
+                Logout
               </Button>
-            </Link>
+            </div>
             <h1 className="text-3xl font-bold" data-testid="text-admin-title">
               Webinar Registrations
             </h1>
@@ -86,11 +257,9 @@ export default function Admin() {
               Manage and export your webinar registrations
             </p>
           </div>
-          <Button asChild data-testid="button-export-csv">
-            <a href="/api/webinar/export" download>
-              <Download className="w-4 h-4 mr-2" />
-              Export CSV
-            </a>
+          <Button onClick={downloadCsv} data-testid="button-export-csv">
+            <Download className="w-4 h-4 mr-2" />
+            Export CSV
           </Button>
         </div>
 

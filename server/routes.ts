@@ -1,8 +1,18 @@
-import type { Express, Request, Response } from "express";
+import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertWebinarRegistrationSchema } from "@shared/schema";
 import { z } from "zod";
+
+const ADMIN_TOKEN = process.env.ADMIN_TOKEN || "rupesh-admin-2024";
+
+function requireAdminAuth(req: Request, res: Response, next: NextFunction) {
+  const token = req.headers["x-admin-token"];
+  if (token !== ADMIN_TOKEN) {
+    return res.status(401).json({ error: "Unauthorized. Invalid admin token." });
+  }
+  next();
+}
 
 export async function registerRoutes(
   httpServer: Server,
@@ -37,7 +47,7 @@ export async function registerRoutes(
     }
   });
 
-  app.get("/api/webinar/registrations", async (_req: Request, res: Response) => {
+  app.get("/api/webinar/registrations", requireAdminAuth, async (_req: Request, res: Response) => {
     try {
       const registrations = await storage.getWebinarRegistrations();
       res.json(registrations);
@@ -47,7 +57,7 @@ export async function registerRoutes(
     }
   });
 
-  app.get("/api/webinar/registrations/:webinarId", async (req: Request, res: Response) => {
+  app.get("/api/webinar/registrations/:webinarId", requireAdminAuth, async (req: Request, res: Response) => {
     try {
       const registrations = await storage.getWebinarRegistrationsByWebinarId(req.params.webinarId);
       res.json(registrations);
@@ -57,7 +67,7 @@ export async function registerRoutes(
     }
   });
 
-  app.get("/api/webinar/export", async (_req: Request, res: Response) => {
+  app.get("/api/webinar/export", requireAdminAuth, async (_req: Request, res: Response) => {
     try {
       const registrations = await storage.getWebinarRegistrations();
       
