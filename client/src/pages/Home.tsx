@@ -1,4 +1,5 @@
 import Navigation from "@/components/Navigation";
+import AnnouncementBar from "@/components/AnnouncementBar";
 import HeroSection from "@/components/HeroSection";
 import TrustBar from "@/components/TrustBar";
 import ServicesSection from "@/components/ServicesSection";
@@ -19,6 +20,7 @@ import WhatsAppWidget from "@/components/WhatsAppWidget";
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
+      <AnnouncementBar />
       <Navigation />
       <main>
         <HeroSection />
