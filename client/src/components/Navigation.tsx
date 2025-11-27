@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
 import siteContent from "@/data/siteContent.json";
+import profileData from "@/data/profile.json";
 import { trackCTAClick } from "@/lib/analytics";
 
 interface NavLink {
@@ -17,6 +18,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { navigation } = siteContent;
+  const { contact } = profileData;
   const navLinks = navigation.links as NavLink[];
 
   useEffect(() => {
@@ -93,10 +95,10 @@ export default function Navigation() {
               asChild
             >
               <a
-                href={navigation.ctaButtons.whatsapp.link}
+                href={contact.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackCTAClick('nav_whatsapp', navigation.ctaButtons.whatsapp.link)}
+                onClick={() => trackCTAClick('nav_whatsapp', contact.whatsappLink)}
                 data-testid="button-whatsapp-nav"
               >
                 <SiWhatsapp className="w-4 h-4 mr-1 text-green-500" />
@@ -148,7 +150,7 @@ export default function Navigation() {
                   asChild
                 >
                   <a
-                    href={navigation.ctaButtons.whatsapp.link}
+                    href={contact.whatsappLink}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-testid="button-mobile-whatsapp"

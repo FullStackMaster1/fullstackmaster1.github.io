@@ -68,28 +68,43 @@ The application prioritizes simplicity with the database layer prepared but not 
 
 **Content Storage**: ALL user-facing content is stored in JSON files in `client/src/data/` directory, enabling marketing teams to update content without code changes:
 
+**Master Profile Data** (profile.json) - Single source of truth for all personal/business information:
+- `personal`: Name, title, company, full name
+- `contact`: Phone (+1-609-442-4081), email, WhatsApp link, booking link, WhatsApp message template
+- `brand`: Name, tagline, description
+- `socialLinks`: LinkedIn (personal, newsletter, company), YouTube, GitHub, IGotAnOffer, Udemy, Pluralsight
+- `stats`: Coaching years, professionals coached, success rate, rating details
+- `credentials`: Education (ISB CTO Scholar), certifications (AWS, GCP, Azure)
+- `descriptions`: Short, medium, long descriptions for various contexts, expertise keywords
+- `careerPath`: Timeline from SDE to Senior CSM with dates and companies
+
 **Site-Wide Content** (siteContent.json):
 - `navigation`: Brand name, menu links, CTA buttons (WhatsApp, Book Session)
-- `hero`: Badges (AWS Senior CSM, Coaching Since 2018, ISB CTO Scholar), proof points (4000+ coached, 7+ years, 85%+ offers, 5.0 rating), company logos, CTAs, LinkedIn link
+- `hero`: Badges, proof points, company logos, CTAs
+- `seo`: Title, description, keywords, canonical URL, Open Graph image
 
 **Section-Specific Content**:
-- `about.json`: Founder story, credentials, coaching philosophy, career journey timeline (SDE → Architect → AWS SA → Sr. CSM), LinkedIn profile link, certifications
+- `about.json`: Founder story, credentials, coaching philosophy, career journey timeline
 - `methodology.json`: 5-step coaching process with detailed descriptions
 - `services.json`: Service offerings with session demos carousel and embedded YouTube videos
 - `packages.json`: Pricing with "Investment Options" badge, package details
-- `faq.json`: Frequently asked questions
+- `faqs.json`: Frequently asked questions
 - `reviews.json`: Client testimonials with ratings and session types
 - `courses.json`: Udemy and Pluralsight course listings
 - `playlists.json`: YouTube playlist metadata
 - `articles.json`: LinkedIn newsletter articles
 - `opensource.json`: GitHub project showcases
-- `whyLeadersFail.json`: Pain points for senior leaders, Engineer/SA vs Director/VP comparison table, tableHeaders
-- `successStories.json`: Verified IGotAnOffer reviews with "Got Offer" badges, labels, overallRating
+- `whyLeadersFail.json`: Pain points for senior leaders, Engineer/SA vs Director/VP comparison table
+- `successStories.json`: Verified IGotAnOffer reviews with "Got Offer" badges, verification links
+- `trustMetrics.json`: Trust bar statistics and platform links
+- `footer.json`: Footer links, social media icons, contact info display
+- `booking.json`: Booking section content, process steps, session info
+- `whatsapp.json`: WhatsApp widget messages and prompts
 
 **Homepage Flow** (conversion-optimized for senior leaders):
-1. Hero → 2. TrustBar → 3. Why Leaders Fail (pain points) → 4. About → 5. Methodology → 6. Services → 7. Success Stories → 8. Reviews → 9. Pricing → 10. FAQ → 11. Booking
+1. Hero → 2. TrustBar → 3. Success Stories → 4. Reviews → 5. About → 6. Methodology → 7. Services → 8. Pricing → 9. Why Leaders Fail → 10. FAQ → 11. Booking
 
-This approach enables easy content updates without backend changes and provides type-safe data access.
+**JSON Update Workflow**: When role/company changes, edit only `profile.json` - all components read from this single source. No code changes required.
 
 **Database Schema** (prepared but not active):
 - PostgreSQL with Drizzle ORM

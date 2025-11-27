@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Briefcase, Award, Users, Star, CheckCircle, Calendar, Code, Layers, Cloud, Rocket, ExternalLink, LucideIcon } from "lucide-react";
 import { SiWhatsapp, SiLinkedin } from "react-icons/si";
 import aboutData from "@/data/about.json";
+import profileData from "@/data/profile.json";
 import profileImage from "@assets/rupesh-seating-confidently_1764278393371.png";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -33,7 +34,8 @@ interface Milestone {
 }
 
 export default function AboutSection() {
-  const { sectionBadge, name, title, tagline, linkedIn, linkedInText, story, careerJourney, credentials, certifications, philosophy, cta } = aboutData;
+  const { sectionBadge, tagline, linkedInText, story, careerJourney, credentials, certifications, philosophy, cta } = aboutData;
+  const { personal, contact, socialLinks } = profileData;
 
   return (
     <section
@@ -52,11 +54,11 @@ export default function AboutSection() {
               <div className="aspect-square max-w-md mx-auto lg:mx-0 relative">
                 <img
                   src={profileImage}
-                  alt={name}
+                  alt={personal.name}
                   className="w-full h-full object-cover rounded-2xl shadow-lg"
                 />
                 <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-4 py-2 rounded-lg shadow-lg">
-                  <p className="font-semibold text-sm">{title}</p>
+                  <p className="font-semibold text-sm">{personal.title}</p>
                 </div>
               </div>
             </div>
@@ -92,11 +94,11 @@ export default function AboutSection() {
           <div className="space-y-6">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold mb-2" data-testid="text-about-name">
-                {name}
+                {personal.name}
               </h2>
               <p className="text-lg text-primary font-medium mb-3">{tagline}</p>
               <a
-                href={linkedIn}
+                href={socialLinks.linkedIn.personal}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
@@ -156,7 +158,7 @@ export default function AboutSection() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Button size="lg" asChild>
                 <a
-                  href={cta.link}
+                  href={`${contact.whatsappLink}?text=${encodeURIComponent(contact.whatsappMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid="button-about-cta"
@@ -167,7 +169,7 @@ export default function AboutSection() {
               </Button>
               <Button size="lg" variant="outline" asChild>
                 <a
-                  href={linkedIn}
+                  href={socialLinks.linkedIn.personal}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid="button-linkedin"

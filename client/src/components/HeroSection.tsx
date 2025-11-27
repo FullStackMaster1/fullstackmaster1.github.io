@@ -5,6 +5,7 @@ import { SiWhatsapp, SiAmazon, SiGoogle, SiMeta, SiApple, SiNetflix, SiLinkedin 
 import { FaMicrosoft } from "react-icons/fa";
 import profileImage from "@assets/rupesh-headshot_1764261897457.png";
 import siteContent from "@/data/siteContent.json";
+import profileData from "@/data/profile.json";
 import { trackCTAClick } from "@/lib/analytics";
 
 const companyIcons: Record<string, typeof SiAmazon | typeof FaMicrosoft | typeof Building2> = {
@@ -45,6 +46,7 @@ interface ProofPoint {
 
 export default function HeroSection() {
   const { hero } = siteContent;
+  const { personal, contact, socialLinks } = profileData;
 
   return (
     <section
@@ -175,10 +177,10 @@ export default function HeroSection() {
                 asChild
               >
                 <a
-                  href={hero.buttons.primaryLink}
+                  href={contact.bookingLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackCTAClick('hero_book_discovery_call', hero.buttons.primaryLink)}
+                  onClick={() => trackCTAClick('hero_book_discovery_call', contact.bookingLink)}
                   data-testid="button-hero-primary"
                 >
                   <Calendar className="w-4 h-4 mr-2" />
@@ -192,10 +194,10 @@ export default function HeroSection() {
                 asChild
               >
                 <a
-                  href={hero.buttons.secondaryLink}
+                  href={`${contact.whatsappLink}?text=${encodeURIComponent(contact.whatsappMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackCTAClick('hero_whatsapp_chat', hero.buttons.secondaryLink)}
+                  onClick={() => trackCTAClick('hero_whatsapp_chat', contact.whatsappLink)}
                   data-testid="button-hero-secondary"
                 >
                   <SiWhatsapp className="w-4 h-4 mr-2" />
@@ -206,25 +208,25 @@ export default function HeroSection() {
 
             <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
               <a
-                href={hero.contact.whatsapp}
+                href={contact.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-foreground transition-colors"
                 data-testid="link-whatsapp"
               >
                 <SiWhatsapp className="w-4 h-4 text-green-500" />
-                {hero.contact.phone}
+                {contact.phone}
               </a>
               <a
-                href={`mailto:${hero.contact.email}`}
+                href={`mailto:${contact.email}`}
                 className="flex items-center gap-2 hover:text-foreground transition-colors"
                 data-testid="link-email"
               >
                 <Mail className="w-4 h-4 text-primary" />
-                {hero.contact.email}
+                {contact.email}
               </a>
               <a
-                href={hero.linkedIn}
+                href={socialLinks.linkedIn.personal}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-foreground transition-colors"
@@ -241,7 +243,7 @@ export default function HeroSection() {
               <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
                 <img
                   src={profileImage}
-                  alt="Rupesh Tiwari - AWS Senior CSM & Technical Coach"
+                  alt={`${personal.name} - ${personal.title}`}
                   className="w-full h-full object-cover"
                   data-testid="img-profile"
                 />
