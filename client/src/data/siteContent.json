@@ -32,19 +32,29 @@
       },
       {
         "icon": "Award",
-        "text": "20+ Years in Tech",
+        "text": "Coaching Since 2018",
+        "variant": "secondary"
+      },
+      {
+        "icon": "GraduationCap",
+        "text": "ISB CTO Scholar",
         "variant": "secondary"
       }
     ],
-    "titleLine1": "From Engineer to",
-    "titleHighlight": "Technical Leader",
-    "titleLine2": "Coaching",
-    "description": "I help Senior Managers, Directors, and VPs crack FAANG interviews. 20+ years in tech, now coaching full-time. Real experience, not just frameworks.",
+    "titleLine1": "I've Been In Your Seat.",
+    "titleHighlight": "SDE → Architect → AWS Leader",
+    "titleLine2": "Now I Coach Leaders Like You.",
+    "description": "From Software Engineer to Solutions Architect to AWS Senior CSM — I've lived every role you're interviewing for. 7+ years coaching 4,000+ professionals. I know exactly what FAANG bar raisers look for at Director/VP level.",
     "proofPoints": [
       {
         "icon": "Users",
-        "value": "100+",
-        "label": "Leaders Coached"
+        "value": "4,000+",
+        "label": "Professionals Coached"
+      },
+      {
+        "icon": "Calendar",
+        "value": "7+",
+        "label": "Years Coaching"
       },
       {
         "icon": "Trophy",
@@ -54,10 +64,10 @@
       {
         "icon": "Star",
         "value": "5.0",
-        "label": "Average Rating"
+        "label": "Rating (50+ Reviews)"
       }
     ],
-    "targetCompanies": ["Amazon", "Google", "Meta", "Apple"],
+    "targetCompanies": ["Amazon", "Google", "Meta", "Apple", "Netflix"],
     "targetRoles": [
       "Senior Manager",
       "Director", 
@@ -67,15 +77,15 @@
       "Solutions Architect"
     ],
     "coachingAreas": [
-      "System Design",
+      "System Design for Leaders",
       "Leadership Principles",
       "Behavioral Interviews",
       "Executive Presence"
     ],
     "buttons": {
-      "primary": "Schedule Free Call",
+      "primary": "Schedule Free Discovery Call",
       "primaryLink": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'd%20like%20to%20schedule%20a%20free%20discovery%20call.",
-      "secondary": "View on IGotAnOffer",
+      "secondary": "View 50+ Reviews on IGotAnOffer",
       "secondaryLink": "https://igotanoffer.com/en/coach/rupesh"
     },
     "contact": {
@@ -83,11 +93,12 @@
       "email": "rupesh@fullstackmaster.net",
       "whatsapp": "https://wa.me/16094424081"
     },
-    "companiesText": "Helping professionals land roles at",
+    "companiesText": "Helping leaders land roles at",
     "ratingBadge": {
       "rating": "5.0",
-      "text": "50+ Verified Reviews"
-    }
+      "text": "50+ Verified Reviews on IGotAnOffer"
+    },
+    "linkedIn": "https://www.linkedin.com/in/rupesh-tiwari/"
   },
   "services": {
     "badge": "For Senior Leaders",

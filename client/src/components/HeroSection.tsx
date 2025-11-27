@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Star, Award, Users, CheckCircle, Mail, Trophy, LucideIcon } from "lucide-react";
-import { SiWhatsapp, SiAmazon, SiGoogle, SiMeta, SiApple } from "react-icons/si";
+import { Star, Award, Users, CheckCircle, Mail, Trophy, Calendar, GraduationCap, LucideIcon } from "lucide-react";
+import { SiWhatsapp, SiAmazon, SiGoogle, SiMeta, SiApple, SiNetflix, SiLinkedin } from "react-icons/si";
 import profileImage from "@assets/rupesh-headshot_1764261897457.png";
 import siteContent from "@/data/siteContent.json";
 
@@ -10,17 +10,20 @@ const companyIcons: Record<string, typeof SiAmazon> = {
   Google: SiGoogle,
   Meta: SiMeta,
   Apple: SiApple,
+  Netflix: SiNetflix,
 };
 
 const badgeIcons: Record<string, typeof SiAmazon | LucideIcon> = {
   SiAmazon,
   Award,
+  GraduationCap,
 };
 
 const proofIcons: Record<string, LucideIcon> = {
   Users,
   Trophy,
   Star,
+  Calendar,
 };
 
 interface HeroBadge {
@@ -82,7 +85,7 @@ export default function HeroSection() {
               {hero.description}
             </p>
 
-            <div className="grid grid-cols-3 gap-4 mb-8 p-4 bg-muted/30 rounded-lg">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 p-4 bg-muted/30 rounded-lg">
               {(hero.proofPoints as ProofPoint[]).map((point) => {
                 const IconComponent = proofIcons[point.icon] || Users;
                 return (
@@ -161,6 +164,16 @@ export default function HeroSection() {
               >
                 <Mail className="w-4 h-4 text-primary" />
                 {hero.contact.email}
+              </a>
+              <a
+                href={hero.linkedIn}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 hover:text-foreground transition-colors"
+                data-testid="link-linkedin"
+              >
+                <SiLinkedin className="w-4 h-4 text-[#0077b5]" />
+                LinkedIn
               </a>
             </div>
           </div>
