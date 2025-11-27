@@ -10,41 +10,65 @@
       "title": "Leadership Principles",
       "subtitle": "Behavioral & LP Coaching",
       "imagePath": "2_1764272631453.png",
-      "icon": "Lightbulb"
+      "icon": "Lightbulb",
+      "showcaseTitle": "Leadership Principles Coaching",
+      "showcaseDescription": "Master Amazon's 16 Leadership Principles and behavioral interviews with real stories, not buzzwords. I'll help you structure compelling STAR answers that demonstrate senior-level impact and bar-raiser readiness.",
+      "showcaseFeatures": [
+        "1:1 video sessions via Google Meet",
+        "Deep-dive into Amazon Leadership Principles",
+        "STAR story structuring and refinement",
+        "Post-session notes & action items"
+      ]
     },
     {
       "id": "system-design",
       "title": "System Design",
       "subtitle": "Architecture Deep-Dive",
       "imagePath": "1_1764272631453.png",
-      "icon": "Presentation"
+      "icon": "Presentation",
+      "showcaseTitle": "Real-Time System Design Whiteboarding",
+      "showcaseDescription": "Every session is a live, interactive experience. I use Excalidraw for real-time system design diagrams, walking you through architecture decisions, trade-offs, and the exact patterns FAANG interviewers look for.",
+      "showcaseFeatures": [
+        "1:1 video sessions via Google Meet",
+        "Live whiteboarding with real-time feedback",
+        "Session recordings for later review",
+        "Post-session notes & action items"
+      ]
     },
     {
       "id": "resume-review",
       "title": "Resume Review",
       "subtitle": "Bar-Raiser Optimization",
       "imagePath": "3_1764272631453.png",
-      "icon": "FileText"
+      "icon": "FileText",
+      "showcaseTitle": "Resume Optimization & Review",
+      "showcaseDescription": "Transform your resume to showcase leadership impact, not just tasks. I'll help you craft quantified achievements that pass senior-level screens and position you for Director/VP roles at FAANG companies.",
+      "showcaseFeatures": [
+        "1:1 video sessions via Google Meet",
+        "Impact-driven bullet point rewrites",
+        "ATS optimization for senior roles",
+        "Post-session notes & revised resume"
+      ]
     },
     {
       "id": "coding-interview",
       "title": "Coding Practice",
       "subtitle": "Live Problem Solving",
       "imagePath": "image_1764273039071.png",
-      "icon": "Code"
+      "icon": "Code",
+      "showcaseTitle": "Live Coding Practice",
+      "showcaseDescription": "Practice coding interviews in real-time with instant feedback. I'll guide you through problem-solving strategies, optimal solutions, and communication techniques that senior engineers are expected to demonstrate.",
+      "showcaseFeatures": [
+        "1:1 video sessions via Google Meet",
+        "Live coding with real-time guidance",
+        "Problem-solving strategy coaching",
+        "Post-session notes & solution review"
+      ]
     }
   ],
   "liveSessionShowcase": {
     "badge": "How I Coach",
-    "title": "Real-Time Interactive Whiteboarding",
-    "description": "Every session is a live, interactive experience. I use Excalidraw for real-time diagrams, walking you through architecture decisions, trade-offs, and the exact patterns FAANG interviewers look for.",
     "liveBadge": "Live Session",
-    "features": [
-      "1:1 video sessions via Google Meet",
-      "Live whiteboarding with real-time feedback",
-      "Session recordings for later review",
-      "Post-session notes & action items"
-    ],
     "buttonText": "Book Your Session",
     "buttonLink": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'd%20like%20to%20book%20a%20coaching%20session."
   },

@@ -5,6 +5,7 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  type CarouselApi,
 } from "@/components/ui/carousel";
 import {
   Target,
@@ -23,7 +24,7 @@ import {
 import { SiWhatsapp } from "react-icons/si";
 import servicesData from "@/data/services.json";
 import Autoplay from "embla-carousel-autoplay";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 import lpImage from "@assets/2_1764272631453.png";
 import sysDesignImage from "@assets/1_1764272631453.png";
@@ -63,14 +64,36 @@ interface SessionDemo {
   subtitle: string;
   imagePath: string;
   icon: string;
+  showcaseTitle: string;
+  showcaseDescription: string;
+  showcaseFeatures: string[];
 }
 
 export default function ServicesSection() {
   const { sectionBadge, sectionTitle, sectionTitleHighlight, sectionDescription, liveSessionShowcase, services, ctaButtons, sessionDemos, popularBadgeText } = servicesData;
+  const [api, setApi] = useState<CarouselApi>();
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const autoplayPlugin = useRef(
     Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })
   );
+
+  useEffect(() => {
+    if (!api) return;
+
+    const onSelect = () => {
+      setCurrentIndex(api.selectedScrollSnap());
+    };
+
+    api.on("select", onSelect);
+    onSelect();
+
+    return () => {
+      api.off("select", onSelect);
+    };
+  }, [api]);
+
+  const currentDemo = (sessionDemos as SessionDemo[])[currentIndex];
 
   return (
     <section
@@ -99,6 +122,7 @@ export default function ServicesSection() {
                 opts={{ align: "start", loop: true }}
                 plugins={[autoplayPlugin.current]}
                 className="w-full"
+                setApi={setApi}
                 onMouseEnter={() => autoplayPlugin.current.stop()}
                 onMouseLeave={() => autoplayPlugin.current.play()}
               >
@@ -138,14 +162,14 @@ export default function ServicesSection() {
             </div>
             <CardContent className="p-6 lg:p-8 flex flex-col justify-center">
               <Badge variant="outline" className="w-fit mb-4">{liveSessionShowcase.badge}</Badge>
-              <h3 className="text-2xl font-bold mb-4">
-                {liveSessionShowcase.title}
+              <h3 className="text-2xl font-bold mb-4 transition-all duration-300" data-testid="text-showcase-title">
+                {currentDemo?.showcaseTitle}
               </h3>
-              <p className="text-muted-foreground mb-6">
-                {liveSessionShowcase.description}
+              <p className="text-muted-foreground mb-6 transition-all duration-300">
+                {currentDemo?.showcaseDescription}
               </p>
               <ul className="space-y-3 mb-6">
-                {liveSessionShowcase.features.map((feature, index) => (
+                {currentDemo?.showcaseFeatures.map((feature, index) => (
                   <li key={index} className="flex items-center gap-2 text-sm">
                     <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
                     <span>{feature}</span>
