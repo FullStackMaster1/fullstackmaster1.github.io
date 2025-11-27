@@ -16,7 +16,6 @@ import {
 import { SiWhatsapp } from "react-icons/si";
 import teachingImage from "@assets/image_1764264908413.png";
 import servicesData from "@/data/services.json";
-import siteContent from "@/data/siteContent.json";
 
 const iconMap: Record<string, LucideIcon> = {
   Target,
@@ -37,7 +36,7 @@ interface Service {
 }
 
 export default function ServicesSection() {
-  const { services: servicesContent } = siteContent;
+  const { sectionBadge, sectionTitle, sectionDescription, liveSessionShowcase, services, ctaButtons } = servicesData;
 
   return (
     <section
@@ -47,17 +46,16 @@ export default function ServicesSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <Badge variant="secondary" className="mb-4">{servicesContent.badge}</Badge>
+          <Badge variant="secondary" className="mb-4">{sectionBadge}</Badge>
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
             data-testid="text-services-title"
           >
-            {servicesContent.title.replace("Technical Leaders", "")}
+            {sectionTitle.replace("Technical Leaders", "")}
             <span className="text-primary">Technical Leaders</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Structured, rubric-based coaching for Senior Managers, Directors, and VPs 
-            targeting FAANG and top-tier tech companies.
+            {sectionDescription}
           </p>
         </div>
 
@@ -66,54 +64,42 @@ export default function ServicesSection() {
             <div className="relative aspect-video lg:aspect-auto">
               <img
                 src={teachingImage}
-                alt="Rupesh Tiwari coaching a student on system design with live whiteboarding"
+                alt={liveSessionShowcase.imageAlt}
                 className="w-full h-full object-cover"
                 data-testid="img-teaching"
               />
               <div className="absolute top-4 left-4">
                 <Badge className="bg-red-500 text-white">
                   <Video className="w-3 h-3 mr-1" />
-                  Live Session
+                  {liveSessionShowcase.liveBadge}
                 </Badge>
               </div>
             </div>
             <CardContent className="p-6 lg:p-8 flex flex-col justify-center">
-              <Badge variant="outline" className="w-fit mb-4">{servicesContent.coachingMethodTitle}</Badge>
+              <Badge variant="outline" className="w-fit mb-4">{liveSessionShowcase.badge}</Badge>
               <h3 className="text-2xl font-bold mb-4">
-                {servicesContent.coachingMethodSubtitle}
+                {liveSessionShowcase.title}
               </h3>
               <p className="text-muted-foreground mb-6">
-                Every session is a live, interactive experience. I use Excalidraw for real-time 
-                system design diagrams, walking you through architecture decisions, trade-offs, 
-                and the exact patterns FAANG interviewers look for.
+                {liveSessionShowcase.description}
               </p>
               <ul className="space-y-3 mb-6">
-                <li className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  <span>1:1 video sessions via Google Meet</span>
-                </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  <span>Live whiteboarding with real-time feedback</span>
-                </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  <span>Session recordings for later review</span>
-                </li>
-                <li className="flex items-center gap-2 text-sm">
-                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                  <span>Post-session notes & action items</span>
-                </li>
+                {liveSessionShowcase.features.map((feature, index) => (
+                  <li key={index} className="flex items-center gap-2 text-sm">
+                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                    <span>{feature}</span>
+                  </li>
+                ))}
               </ul>
               <Button asChild className="w-fit">
                 <a
-                  href="https://wa.me/16094424081?text=Hi%20Rupesh,%20I'd%20like%20to%20book%20a%20coaching%20session."
+                  href={liveSessionShowcase.buttonLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid="button-book-session-preview"
                 >
                   <SiWhatsapp className="w-4 h-4 mr-2" />
-                  Book Your Session
+                  {liveSessionShowcase.buttonText}
                 </a>
               </Button>
             </CardContent>
@@ -121,7 +107,7 @@ export default function ServicesSection() {
         </Card>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {(servicesData as Service[]).map((service) => {
+          {(services as Service[]).map((service) => {
             const IconComponent = iconMap[service.icon] || Target;
             return (
               <Card
@@ -161,13 +147,13 @@ export default function ServicesSection() {
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" asChild>
               <a
-                href="https://wa.me/16094424081?text=Hi%20Rupesh,%20I'm%20interested%20in%20your%20coaching%20services."
+                href={ctaButtons.primary.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="button-services-whatsapp"
               >
                 <SiWhatsapp className="w-4 h-4 mr-2" />
-                Connect on WhatsApp
+                {ctaButtons.primary.text}
               </a>
             </Button>
             <Button
@@ -179,7 +165,7 @@ export default function ServicesSection() {
               }}
               data-testid="button-view-pricing"
             >
-              View Pricing
+              {ctaButtons.secondary.text}
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>

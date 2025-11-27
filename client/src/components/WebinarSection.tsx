@@ -18,39 +18,21 @@ import { useState } from "react";
 import { useMutation } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import webinarsData from "@/data/webinars.json";
 
-const upcomingWebinars = [
-  {
-    id: "system-design-leaders",
-    title: "System Design for Senior Leaders",
-    description: "Learn the frameworks and communication patterns that Staff+ engineers and Directors use in FAANG interviews.",
-    date: "Coming Soon",
-    time: "Free Webinar",
-    spots: "Register Interest",
-    topics: ["Scalability", "Trade-offs", "Communication"],
-  },
-  {
-    id: "amazon-leadership-principles",
-    title: "Mastering Amazon Leadership Principles",
-    description: "Deep-dive into LPs with real examples. How to structure stories that resonate with bar-raisers.",
-    date: "Coming Soon",
-    time: "Free Webinar",
-    spots: "Register Interest",
-    topics: ["STAR Method", "Story Crafting", "Bar-raiser Tips"],
-  },
-  {
-    id: "executive-communication",
-    title: "Executive Communication Masterclass",
-    description: "How to compress complex technical ideas into executive-ready narratives for VP and C-suite interviews.",
-    date: "Coming Soon",
-    time: "Free Webinar",
-    spots: "Register Interest",
-    topics: ["Exec Framing", "Stakeholder Influence", "Brevity"],
-  },
-];
+interface Webinar {
+  id: string;
+  title: string;
+  description: string;
+  date: string;
+  time: string;
+  spots: string;
+  topics: string[];
+  active: boolean;
+}
 
 interface RegistrationFormProps {
-  webinar: typeof upcomingWebinars[0];
+  webinar: Webinar;
   onSuccess: () => void;
 }
 
@@ -180,6 +162,7 @@ function RegistrationForm({ webinar, onSuccess }: RegistrationFormProps) {
 
 export default function WebinarSection() {
   const [openDialogId, setOpenDialogId] = useState<string | null>(null);
+  const activeWebinars = (webinarsData.webinars as Webinar[]).filter(w => w.active);
 
   return (
     <section
@@ -191,7 +174,7 @@ export default function WebinarSection() {
         <div className="text-center mb-12">
           <Badge variant="secondary" className="mb-4">
             <Video className="w-3 h-3 mr-1" />
-            Free Learning
+            {webinarsData.sectionBadge}
           </Badge>
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
@@ -200,13 +183,12 @@ export default function WebinarSection() {
             Upcoming <span className="text-primary">Free Webinars</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Join my free webinars to learn interview strategies, system design patterns, 
-            and leadership communication skills.
+            {webinarsData.sectionDescription}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {upcomingWebinars.map((webinar) => (
+          {activeWebinars.map((webinar) => (
             <Card
               key={webinar.id}
               className="hover-elevate transition-all duration-200"
@@ -237,7 +219,7 @@ export default function WebinarSection() {
                   <DialogTrigger asChild>
                     <Button className="w-full" data-testid={`button-register-${webinar.id}`}>
                       <Bell className="w-4 h-4 mr-2" />
-                      Register Interest
+                      {webinar.spots}
                     </Button>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-md">
@@ -262,33 +244,32 @@ export default function WebinarSection() {
           <Card className="max-w-2xl mx-auto border-primary/20 bg-primary/5">
             <CardContent className="p-6">
               <h3 className="font-semibold text-lg mb-2">
-                Stay Updated on All Webinars
+                {webinarsData.stayUpdatedTitle}
               </h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Follow me on WhatsApp or YouTube to never miss a free webinar. 
-                I announce new sessions there first!
+                {webinarsData.stayUpdatedDescription}
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Button asChild>
                   <a
-                    href="https://wa.me/16094424081?text=Hi%20Rupesh,%20please%20notify%20me%20about%20your%20upcoming%20free%20webinars."
+                    href={webinarsData.socialLinks.whatsapp.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-testid="button-webinar-whatsapp"
                   >
                     <SiWhatsapp className="w-4 h-4 mr-2" />
-                    WhatsApp Updates
+                    {webinarsData.socialLinks.whatsapp.label}
                   </a>
                 </Button>
                 <Button variant="outline" asChild>
                   <a
-                    href="https://www.youtube.com/@FullStackMaster?sub_confirmation=1"
+                    href={webinarsData.socialLinks.youtube.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-testid="button-webinar-youtube"
                   >
                     <SiYoutube className="w-4 h-4 mr-2 text-red-500" />
-                    Subscribe on YouTube
+                    {webinarsData.socialLinks.youtube.label}
                   </a>
                 </Button>
               </div>

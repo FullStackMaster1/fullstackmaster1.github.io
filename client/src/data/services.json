@@ -1,50 +1,80 @@
-[
-  {
-    "id": "system-design",
-    "title": "System Design for Leaders",
-    "description": "End-to-end system design coaching for Staff+, Director, and VP-level technical interviews. Learn to communicate architecture decisions under pressure.",
-    "icon": "Target",
-    "features": ["FAANG-style prompts", "Trade-off analysis", "Scalability patterns"],
-    "popular": true
+{
+  "sectionBadge": "For Senior Leaders",
+  "sectionTitle": "Coaching Services for Technical Leaders",
+  "sectionDescription": "Structured, rubric-based coaching for Senior Managers, Directors, and VPs targeting FAANG and top-tier tech companies.",
+  "liveSessionShowcase": {
+    "badge": "How I Coach",
+    "title": "Real-Time System Design Whiteboarding",
+    "description": "Every session is a live, interactive experience. I use Excalidraw for real-time system design diagrams, walking you through architecture decisions, trade-offs, and the exact patterns FAANG interviewers look for.",
+    "imagePath": "@assets/image_1764264908413.png",
+    "imageAlt": "Rupesh Tiwari coaching a student on system design with live whiteboarding",
+    "liveBadge": "Live Session",
+    "features": [
+      "1:1 video sessions via Google Meet",
+      "Live whiteboarding with real-time feedback",
+      "Session recordings for later review",
+      "Post-session notes & action items"
+    ],
+    "buttonText": "Book Your Session",
+    "buttonLink": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'd%20like%20to%20book%20a%20coaching%20session."
   },
-  {
-    "id": "behavioral",
-    "title": "Behavioral & LP Mastery",
-    "description": "Master Amazon Leadership Principles and behavioral interviews with real stories, not buzzwords. Bar-raiser ready answers for senior roles.",
-    "icon": "MessageSquare",
-    "features": ["STAR framework", "Amazon LPs deep-dive", "Story structuring"],
-    "popular": true
-  },
-  {
-    "id": "executive-comm",
-    "title": "Executive Communication",
-    "description": "Learn to speak to Directors, VPs, and C-suite with confidence. Compress complex ideas into executive-ready narratives.",
-    "icon": "Presentation",
-    "features": ["Exec-level framing", "Stakeholder influence", "Presentation skills"],
-    "popular": false
-  },
-  {
-    "id": "intro-pitch",
-    "title": "Strategic Intro Pitch",
-    "description": "Craft a compelling 2-minute introduction that positions you as the obvious hire. First impressions that open doors.",
-    "icon": "Sparkles",
-    "features": ["Value proposition", "Personal branding", "Interview opening"],
-    "popular": false
-  },
-  {
-    "id": "resume",
-    "title": "Resume Optimization",
-    "description": "Transform your resume to showcase leadership impact, not just tasks. Quantified achievements that pass senior-level screens.",
-    "icon": "FileText",
-    "features": ["Impact-driven bullets", "ATS optimization", "Role alignment"],
-    "popular": false
-  },
-  {
-    "id": "package",
-    "title": "5-Session Coaching Package",
-    "description": "Comprehensive interview prep covering all areas. Book directly and save $105 vs platform pricing. Same quality, better value.",
-    "icon": "Users",
-    "features": ["$600 total ($120/session)", "Personalized prep plan", "Priority scheduling"],
-    "popular": true
+  "services": [
+    {
+      "id": "system-design",
+      "title": "System Design for Leaders",
+      "description": "End-to-end system design coaching for Staff+, Director, and VP-level technical interviews. Learn to communicate architecture decisions under pressure.",
+      "icon": "Target",
+      "features": ["FAANG-style prompts", "Trade-off analysis", "Scalability patterns"],
+      "popular": true
+    },
+    {
+      "id": "behavioral",
+      "title": "Behavioral & LP Mastery",
+      "description": "Master Amazon Leadership Principles and behavioral interviews with real stories, not buzzwords. Bar-raiser ready answers for senior roles.",
+      "icon": "MessageSquare",
+      "features": ["STAR framework", "Amazon LPs deep-dive", "Story structuring"],
+      "popular": true
+    },
+    {
+      "id": "executive-comm",
+      "title": "Executive Communication",
+      "description": "Learn to speak to Directors, VPs, and C-suite with confidence. Compress complex ideas into executive-ready narratives.",
+      "icon": "Presentation",
+      "features": ["Exec-level framing", "Stakeholder influence", "Presentation skills"],
+      "popular": false
+    },
+    {
+      "id": "intro-pitch",
+      "title": "Strategic Intro Pitch",
+      "description": "Craft a compelling 2-minute introduction that positions you as the obvious hire. First impressions that open doors.",
+      "icon": "Sparkles",
+      "features": ["Value proposition", "Personal branding", "Interview opening"],
+      "popular": false
+    },
+    {
+      "id": "resume",
+      "title": "Resume Optimization",
+      "description": "Transform your resume to showcase leadership impact, not just tasks. Quantified achievements that pass senior-level screens.",
+      "icon": "FileText",
+      "features": ["Impact-driven bullets", "ATS optimization", "Role alignment"],
+      "popular": false
+    },
+    {
+      "id": "package",
+      "title": "5-Session Coaching Package",
+      "description": "Comprehensive interview prep covering all areas. Book directly and save $105 vs platform pricing. Same quality, better value.",
+      "icon": "Users",
+      "features": ["$600 total ($120/session)", "Personalized prep plan", "Priority scheduling"],
+      "popular": true
+    }
+  ],
+  "ctaButtons": {
+    "primary": {
+      "text": "Connect on WhatsApp",
+      "link": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'm%20interested%20in%20your%20coaching%20services."
+    },
+    "secondary": {
+      "text": "View Pricing"
+    }
   }
-]
+}

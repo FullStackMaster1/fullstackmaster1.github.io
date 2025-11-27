@@ -1,0 +1,93 @@
+{
+  "sectionBadge": "Simple Pricing",
+  "sectionTitle": "Invest in Your Career Growth",
+  "sectionDescription": "Book directly with me and save. Same quality coaching, better value for your interview preparation.",
+  "packages": [
+    {
+      "id": "5-session-package",
+      "name": "5-Session Package",
+      "icon": "Zap",
+      "price": "$600",
+      "originalPrice": "$705",
+      "perSession": "$120 per session",
+      "savings": "Save $105 vs platform",
+      "badge": "Best Value",
+      "featured": true,
+      "features": [
+        "5 x 60-minute 1:1 sessions",
+        "System design deep-dive",
+        "Behavioral/LP coaching",
+        "Executive communication training",
+        "Resume & intro pitch review",
+        "Priority WhatsApp support",
+        "Personalized prep plan",
+        "Mock interview practice"
+      ],
+      "buttonText": "Book Package via WhatsApp",
+      "buttonLink": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I%20want%20to%20book%20the%205-session%20coaching%20package%20for%20$600.",
+      "paymentNote": "Payment via Zelle to +1-609-442-4081"
+    },
+    {
+      "id": "single-session",
+      "name": "Single Session",
+      "icon": "Clock",
+      "price": "$141",
+      "originalPrice": null,
+      "perSession": "60-minute session",
+      "savings": null,
+      "badge": "Via IGotAnOffer",
+      "featured": false,
+      "features": [
+        "60-minute 1:1 session",
+        "Focused topic of your choice",
+        "Actionable feedback",
+        "Recording available"
+      ],
+      "buttonText": "Book on IGotAnOffer",
+      "buttonLink": "https://igotanoffer.com/en/coach/rupesh",
+      "secondaryButtonText": "Or contact me directly",
+      "secondaryButtonLink": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'd%20like%20to%20book%20a%20single%20coaching%20session.",
+      "paymentNote": null
+    }
+  ],
+  "directBookingProcess": {
+    "title": "How Direct Booking Works",
+    "steps": [
+      {
+        "icon": "MessageCircle",
+        "text": "1. Message me on WhatsApp"
+      },
+      {
+        "icon": "Calendar",
+        "text": "2. We schedule your sessions"
+      },
+      {
+        "icon": "Video",
+        "text": "3. Meet via Google Meet/Zoom"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "What clients say about the investment",
+    "items": [
+      {
+        "quote": "Worth every penny! Rupesh's coaching helped me land a Sr. Manager role at AWS.",
+        "author": "Former Client",
+        "role": "Now Sr. Manager at AWS",
+        "rating": 5
+      },
+      {
+        "quote": "The 5-session package was perfect. Got offers from both Google and Meta.",
+        "author": "Engineering Director",
+        "role": "FAANG Interview Success",
+        "rating": 5
+      },
+      {
+        "quote": "Best investment in my career. Rupesh's LP coaching is unmatched.",
+        "author": "Principal Engineer",
+        "role": "Amazon Leadership Prep",
+        "rating": 5
+      }
+    ]
+  }
+}
