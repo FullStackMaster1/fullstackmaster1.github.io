@@ -4,7 +4,6 @@ import GumroadSection from "@/components/GumroadSection";
 import CoursesCarousel from "@/components/CoursesCarousel";
 import PlaylistsCarousel from "@/components/PlaylistsCarousel";
 import ArticlesSection from "@/components/ArticlesSection";
-import OpenSourceSection from "@/components/OpenSourceSection";
 import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import { Badge } from "@/components/ui/badge";
@@ -26,7 +25,7 @@ export default function Resources() {
               Learn & <span className="text-primary">Grow</span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Free courses, YouTube content, articles, and open-source projects to accelerate your career growth.
+              Free courses, YouTube content, and articles to accelerate your career growth.
             </p>
           </div>
         </section>
@@ -34,7 +33,6 @@ export default function Resources() {
         <CoursesCarousel />
         <PlaylistsCarousel />
         <ArticlesSection />
-        <OpenSourceSection />
       </main>
       <Footer />
       <WhatsAppWidget />
