@@ -14,7 +14,7 @@ import { Users, Code, FileText, Lightbulb } from "lucide-react";
 import lpImage from "@assets/2_1764272631453.png";
 import sysDesignImage from "@assets/1_1764272631453.png";
 import resumeImage from "@assets/3_1764272631453.png";
-import codingImage from "@assets/image_1764272813360.png";
+import codingImage from "@assets/image_1764273039071.png";
 
 const teachingDemos = [
   {
