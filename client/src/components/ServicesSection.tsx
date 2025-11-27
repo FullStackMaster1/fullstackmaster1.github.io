@@ -9,8 +9,11 @@ import {
   Users,
   Sparkles,
   ArrowRight,
+  Video,
+  CheckCircle,
 } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
+import teachingImage from "@assets/image_1764264908413.png";
 
 const services = [
   {
@@ -79,6 +82,65 @@ export default function ServicesSection() {
             targeting FAANG and top-tier tech companies.
           </p>
         </div>
+
+        <Card className="mb-12 overflow-hidden border-primary/20" data-testid="card-coaching-preview">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+            <div className="relative aspect-video lg:aspect-auto">
+              <img
+                src={teachingImage}
+                alt="Rupesh Tiwari coaching a student on system design with live whiteboarding"
+                className="w-full h-full object-cover"
+                data-testid="img-teaching"
+              />
+              <div className="absolute top-4 left-4">
+                <Badge className="bg-red-500 text-white">
+                  <Video className="w-3 h-3 mr-1" />
+                  Live Session
+                </Badge>
+              </div>
+            </div>
+            <CardContent className="p-6 lg:p-8 flex flex-col justify-center">
+              <Badge variant="outline" className="w-fit mb-4">How I Coach</Badge>
+              <h3 className="text-2xl font-bold mb-4">
+                Real-Time System Design Whiteboarding
+              </h3>
+              <p className="text-muted-foreground mb-6">
+                Every session is a live, interactive experience. I use Excalidraw for real-time 
+                system design diagrams, walking you through architecture decisions, trade-offs, 
+                and the exact patterns FAANG interviewers look for.
+              </p>
+              <ul className="space-y-3 mb-6">
+                <li className="flex items-center gap-2 text-sm">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                  <span>1:1 video sessions via Google Meet</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                  <span>Live whiteboarding with real-time feedback</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                  <span>Session recordings for later review</span>
+                </li>
+                <li className="flex items-center gap-2 text-sm">
+                  <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
+                  <span>Post-session notes & action items</span>
+                </li>
+              </ul>
+              <Button asChild className="w-fit">
+                <a
+                  href="https://wa.me/16094424081?text=Hi%20Rupesh,%20I'd%20like%20to%20book%20a%20coaching%20session."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="button-book-session-preview"
+                >
+                  <SiWhatsapp className="w-4 h-4 mr-2" />
+                  Book Your Session
+                </a>
+              </Button>
+            </CardContent>
+          </div>
+        </Card>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {services.map((service) => (
