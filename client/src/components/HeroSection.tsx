@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Star, Award, Users, CheckCircle, Mail, Trophy, Calendar, GraduationCap, Building2, LucideIcon } from "lucide-react";
 import { SiWhatsapp, SiAmazon, SiGoogle, SiMeta, SiApple, SiNetflix, SiLinkedin } from "react-icons/si";
 import { FaMicrosoft } from "react-icons/fa";
-import profileImage from "@assets/rupesh-headshot_1764261897457.png";
+import profileImage from "@assets/rupesh-dark-style_1764281832549.png";
 import siteContent from "@/data/siteContent.json";
 import profileData from "@/data/profile.json";
 import { trackCTAClick } from "@/lib/analytics";
