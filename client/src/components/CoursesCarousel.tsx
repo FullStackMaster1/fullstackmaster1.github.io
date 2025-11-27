@@ -105,7 +105,7 @@ export default function CoursesCarousel() {
                 }),
               ]}
               className="w-full"
-            4>
+            >
               <CarouselContent className="-ml-4">
                 {coursesData.pluralsight.map((course) => (
                   <CarouselItem
