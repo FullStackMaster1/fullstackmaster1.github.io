@@ -1,103 +1,143 @@
 {
-  "sectionBadge": "Verified Results",
-  "sectionTitle": "Leaders Who Got",
-  "sectionTitleHighlight": "Offers",
-  "sectionDescription": "Real results from real coaching sessions. These leaders trusted the process and landed roles at top companies.",
-  "sourceNote": "All reviews sourced from IGotAnOffer.com with permission",
-  "sourceLink": "https://www.igotanoffer.com/en/coaches/rupesh",
+  "sectionBadge": "Verified Offers",
+  "sectionTitle": "Leaders Who",
+  "sectionTitleHighlight": "Landed Roles",
+  "sectionDescription": "Real coaching clients. Real offers. Verify every review yourself.",
+  "sourceNote": "Verify all reviews on IGotAnOffer.com",
+  "sourceLink": "https://igotanoffer.com/en/coach/rupesh",
+  "verifyBanner": {
+    "text": "Don't trust fake reviews. Click to verify every testimonial below.",
+    "buttonText": "Verify Reviews on IGotAnOffer",
+    "link": "https://igotanoffer.com/en/coach/rupesh"
+  },
   "labels": {
     "gotOffer": "Got Offer",
-    "coachNote": "Coach's Note:",
+    "verified": "Verified Review",
+    "coachNote": "Coach's Confirmation:",
     "ratingText": "• 50+ verified reviews on IGotAnOffer",
-    "viewAllReviews": "View All 50+ Reviews"
+    "viewAllReviews": "Verify All 50+ Reviews",
+    "landedAt": "Landed role at"
   },
   "overallRating": {
     "score": "5.0",
     "stars": 5
   },
+  "offerHighlights": [
+    {
+      "name": "Vaughn",
+      "company": "DraftKings",
+      "companyIcon": "draftkings",
+      "role": "Software Engineer",
+      "date": "Apr 2025"
+    }
+  ],
   "successStories": [
     {
       "id": "vaughn-draftkings",
       "name": "Vaughn",
       "role": "Software Engineer",
       "company": "DraftKings",
-      "companyLogo": "draftkings",
+      "companyIcon": "draftkings",
       "outcome": "Landed Role",
       "review": "THANK YOU RUPESH!!!",
       "coachReply": "Vaughn landed a role at DraftKings after our coaching session. Appreciate the kind note. Wishing you continued success!",
       "sessionType": "Object-Oriented Design Interview",
       "date": "Apr 2025",
       "rating": 5,
-      "featured": true
+      "featured": true,
+      "verified": true
     },
     {
-      "id": "ann-solutions-architect",
+      "id": "ann-databricks",
       "name": "Ann",
       "role": "Solutions Architect",
       "company": "Databricks",
-      "companyLogo": "databricks",
+      "companyIcon": "databricks",
       "outcome": "Multiple Sessions",
       "review": "This was my >2 times with Rupesh for mock interview! He holds a very high bar and treats each mock interview as seriously as if it were his own team's hiring process. The session was incredibly valuable, and I truly believe his guidance will help me ace the interview!",
+      "coachReply": "Your dedication and progress are inspiring — I'm truly honored to be part of your journey. Wishing you all the best for the final panel!",
       "sessionType": "System Design & Panel Prep",
       "date": "Aug 2025",
       "rating": 5,
-      "featured": true
-    },
-    {
-      "id": "muhammad-sa",
-      "name": "Muhammad",
-      "role": "Solution Architect",
-      "company": "Tech Company",
-      "companyLogo": "generic",
-      "outcome": "Interview Ready",
-      "review": "I had my first mock interview session with Rupesh, and it was extremely insightful. He not only reviewed my technical approach, but also coached me on how to structure and communicate my design decisions clearly and confidently. In just one hour, I gained a clear picture of my strengths and the areas I need to refine.",
-      "sessionType": "System Design Interview",
-      "date": "Jul 2025",
-      "rating": 5,
-      "featured": true
-    },
-    {
-      "id": "melvin-sa",
-      "name": "Melvin",
-      "role": "Solutions Architect",
-      "company": "Cloud Company",
-      "companyLogo": "generic",
-      "outcome": "90-Day Roadmap",
-      "review": "Rupesh was amazing to work with. As a beginning Solutions Architect, I was stuck in my career, and he provided guidance for sharpening my skills, demonstrating competence, building my brand, and engaging with other cloud professionals and recruiters. By the end of the session, I had a 90-day step-by-step plan to turn my career around.",
-      "sessionType": "Career Coaching",
-      "date": "Apr 2025",
-      "rating": 5,
-      "featured": true
+      "featured": true,
+      "verified": true
     },
     {
       "id": "andre-amazon",
       "name": "Andre",
       "role": "Technical Professional",
       "company": "Amazon",
-      "companyLogo": "amazon",
-      "outcome": "Interview Prep",
-      "review": "I had a prep session with Rupesh for my Amazon interview. His experience as an Amazon Solutions Architect shows in his coaching. Rupesh gave clear feedback on my technical answers and communication style, spotting weaknesses I missed. With his background conducting numerous interviews, I felt better prepared after our session.",
+      "companyIcon": "amazon",
+      "outcome": "Interview Ready",
+      "review": "I had a prep session with Rupesh for my Amazon interview. His experience as an Amazon Solutions Architect shows in his coaching. Rupesh gave clear feedback on my technical answers and communication style, spotting weaknesses I missed. I recommend Rupesh to anyone preparing for a technical interview.",
+      "coachReply": "I don't do generic coaching — I focus on what actually works in real Amazon interviews.",
       "sessionType": "Amazon Interview Prep",
       "date": "May 2025",
       "rating": 5,
-      "featured": true
+      "featured": true,
+      "verified": true
     },
     {
-      "id": "aman-system-design",
-      "name": "Aman",
-      "role": "Engineer",
-      "company": "Tech Company",
-      "companyLogo": "generic",
-      "outcome": "Confidence Boost",
-      "review": "Rupesh is a wonderful and kind coach who helped me through a full session of understanding System Design fundamentals. Prior to our session, I was intimidated by the thoughts of my upcoming interview but Rupesh has given me a solid framework which I can use to be confident in my questions/answers. I highly recommend a learning session with Rupesh!",
-      "sessionType": "System Design Fundamentals",
-      "date": "Jul 2025",
+      "id": "shiv-google",
+      "name": "Shiv",
+      "role": "Senior SRE",
+      "company": "Google",
+      "companyIcon": "google",
+      "outcome": "Interview Ready",
+      "review": "I had the opportunity to interview with Rupesh for the Senior Site Reliability Engineer role. The session was very engaging, he created a comfortable environment. His questions focused not only on technical depth but also on collaboration, ownership, and leadership.",
+      "coachReply": "Glad the session helped you sharpen both the technical and leadership side of your prep. Wishing you the best with Google!",
+      "sessionType": "Google SRE Prep",
+      "date": "Sep 2025",
       "rating": 5,
-      "featured": false
+      "featured": true,
+      "verified": true
+    },
+    {
+      "id": "ca-devops",
+      "name": "Ca",
+      "role": "DevOps Engineer",
+      "company": "Enterprise",
+      "companyIcon": "enterprise",
+      "outcome": "Multiple Sessions",
+      "review": "I took multiple sessions with Rupesh and have consistently been impressed by his deep expertise in DevOps and the AWS cloud domain. He is genuinely passionate about his work and goes above and beyond to support his students. I highly recommend him for coaching in Java, DevOps, Cloud (AWS), and SRE domains.",
+      "sessionType": "DevOps & AWS Cloud",
+      "date": "Sep 2025",
+      "rating": 5,
+      "featured": true,
+      "verified": true
+    },
+    {
+      "id": "bijan-tpm",
+      "name": "Bijan",
+      "role": "TPM",
+      "company": "Tech Company",
+      "companyIcon": "tech",
+      "outcome": "Interview Ready",
+      "review": "A fantastic call. I learned a huge amount of practical and valuable information. I now have a clear, structured plan towards my interviews.",
+      "coachReply": "You asked sharp questions and leaned into the frameworks fast — that's why you left with a clear plan. Most people walk into TPM interviews unstructured; you're already fixing that.",
+      "sessionType": "TPM Interview Prep",
+      "date": "Sep 2025",
+      "rating": 5,
+      "featured": false,
+      "verified": true
+    },
+    {
+      "id": "melvin-sa",
+      "name": "Melvin",
+      "role": "Solutions Architect",
+      "company": "Cloud Company",
+      "companyIcon": "cloud",
+      "outcome": "90-Day Roadmap",
+      "review": "Rupesh was amazing to work with. As a beginning Solutions Architect, I was stuck in my career, and he provided guidance for sharpening my skills, demonstrating competence, building my brand. By the end of the session, I had a 90-day step-by-step plan to turn my career around.",
+      "sessionType": "Career Coaching",
+      "date": "Apr 2025",
+      "rating": 5,
+      "featured": false,
+      "verified": true
     }
   ],
   "ctaButton": {
-    "text": "Join These Success Stories",
-    "link": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I%20want%20to%20join%20your%20success%20stories.%20Let's%20discuss%20coaching."
+    "text": "Book Your Coaching Session",
+    "link": "https://consult.fullstackmaster.net"
   }
 }
