@@ -9,14 +9,18 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import ReviewCard from "./ReviewCard";
 import reviewsData from "@/data/reviews.json";
-import { useState } from "react";
-import { ExternalLink, Star, Users } from "lucide-react";
+import { useState, useRef } from "react";
+import { ExternalLink, Star } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 
 export default function ReviewsCarousel() {
   const [showAll, setShowAll] = useState(false);
   const displayedReviews = showAll ? reviewsData : reviewsData.slice(0, 9);
   const totalReviews = reviewsData.length;
+
+  const autoplayPlugin = useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
 
   return (
     <section
@@ -49,14 +53,10 @@ export default function ReviewsCarousel() {
             align: "start",
             loop: true,
           }}
-          plugins={[
-            Autoplay({
-              delay: 4000,
-              stopOnInteraction: true,
-              stopOnMouseEnter: true,
-            }),
-          ]}
+          plugins={[autoplayPlugin.current]}
           className="w-full"
+          onMouseEnter={() => autoplayPlugin.current.stop()}
+          onMouseLeave={() => autoplayPlugin.current.play()}
         >
           <CarouselContent className="-ml-4">
             {displayedReviews.map((review) => (
@@ -84,7 +84,7 @@ export default function ReviewsCarousel() {
           <p className="text-sm text-muted-foreground">
             Showing {displayedReviews.length} of {totalReviews} reviews
           </p>
-          <div className="flex justify-center gap-4">
+          <div className="flex flex-wrap justify-center gap-4">
             {!showAll && reviewsData.length > 9 && (
               <Button
                 variant="outline"

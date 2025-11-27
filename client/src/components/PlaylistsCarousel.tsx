@@ -10,8 +10,13 @@ import PlaylistCard from "./PlaylistCard";
 import playlistsData from "@/data/playlists.json";
 import { ExternalLink, Youtube } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
 
 export default function PlaylistsCarousel() {
+  const autoplayPlugin = useRef(
+    Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
+
   return (
     <section
       id="youtube"
@@ -40,14 +45,10 @@ export default function PlaylistsCarousel() {
             align: "start",
             loop: true,
           }}
-          plugins={[
-            Autoplay({
-              delay: 3000,
-              stopOnInteraction: true,
-              stopOnMouseEnter: true,
-            }),
-          ]}
+          plugins={[autoplayPlugin.current]}
           className="w-full"
+          onMouseEnter={() => autoplayPlugin.current.stop()}
+          onMouseLeave={() => autoplayPlugin.current.play()}
         >
           <CarouselContent className="-ml-4">
             {playlistsData.map((playlist) => (

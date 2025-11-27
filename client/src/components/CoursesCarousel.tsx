@@ -10,8 +10,17 @@ import CourseCard from "./CourseCard";
 import coursesData from "@/data/courses.json";
 import { SiUdemy, SiPluralsight } from "react-icons/si";
 import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
 
 export default function CoursesCarousel() {
+  const udemyAutoplay = useRef(
+    Autoplay({ delay: 3500, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
+  
+  const pluralsightAutoplay = useRef(
+    Autoplay({ delay: 3500, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
+
   return (
     <section
       id="courses"
@@ -58,14 +67,10 @@ export default function CoursesCarousel() {
                 align: "start",
                 loop: true,
               }}
-              plugins={[
-                Autoplay({
-                  delay: 3500,
-                  stopOnInteraction: true,
-                  stopOnMouseEnter: true,
-                }),
-              ]}
+              plugins={[udemyAutoplay.current]}
               className="w-full"
+              onMouseEnter={() => udemyAutoplay.current.stop()}
+              onMouseLeave={() => udemyAutoplay.current.play()}
             >
               <CarouselContent className="-ml-4">
                 {coursesData.udemy.map((course) => (
@@ -97,14 +102,10 @@ export default function CoursesCarousel() {
                 align: "start",
                 loop: true,
               }}
-              plugins={[
-                Autoplay({
-                  delay: 3500,
-                  stopOnInteraction: true,
-                  stopOnMouseEnter: true,
-                }),
-              ]}
+              plugins={[pluralsightAutoplay.current]}
               className="w-full"
+              onMouseEnter={() => pluralsightAutoplay.current.stop()}
+              onMouseLeave={() => pluralsightAutoplay.current.play()}
             >
               <CarouselContent className="-ml-4">
                 {coursesData.pluralsight.map((course) => (
