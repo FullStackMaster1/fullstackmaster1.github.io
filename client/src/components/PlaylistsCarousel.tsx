@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import PlaylistCard from "./PlaylistCard";
 import playlistsData from "@/data/playlists.json";
 import { ExternalLink, Youtube } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function PlaylistsCarousel() {
   return (
@@ -39,6 +40,13 @@ export default function PlaylistsCarousel() {
             align: "start",
             loop: true,
           }}
+          plugins={[
+            Autoplay({
+              delay: 3000,
+              stopOnInteraction: true,
+              stopOnMouseEnter: true,
+            }),
+          ]}
           className="w-full"
         >
           <CarouselContent className="-ml-4">

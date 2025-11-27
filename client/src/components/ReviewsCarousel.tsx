@@ -11,6 +11,7 @@ import ReviewCard from "./ReviewCard";
 import reviewsData from "@/data/reviews.json";
 import { useState } from "react";
 import { ExternalLink, Star, Users } from "lucide-react";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function ReviewsCarousel() {
   const [showAll, setShowAll] = useState(false);
@@ -48,6 +49,13 @@ export default function ReviewsCarousel() {
             align: "start",
             loop: true,
           }}
+          plugins={[
+            Autoplay({
+              delay: 4000,
+              stopOnInteraction: true,
+              stopOnMouseEnter: true,
+            }),
+          ]}
           className="w-full"
         >
           <CarouselContent className="-ml-4">

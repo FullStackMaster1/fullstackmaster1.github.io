@@ -9,6 +9,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CourseCard from "./CourseCard";
 import coursesData from "@/data/courses.json";
 import { SiUdemy, SiPluralsight } from "react-icons/si";
+import Autoplay from "embla-carousel-autoplay";
 
 export default function CoursesCarousel() {
   return (
@@ -57,6 +58,13 @@ export default function CoursesCarousel() {
                 align: "start",
                 loop: true,
               }}
+              plugins={[
+                Autoplay({
+                  delay: 3500,
+                  stopOnInteraction: true,
+                  stopOnMouseEnter: true,
+                }),
+              ]}
               className="w-full"
             >
               <CarouselContent className="-ml-4">
@@ -89,8 +97,15 @@ export default function CoursesCarousel() {
                 align: "start",
                 loop: true,
               }}
+              plugins={[
+                Autoplay({
+                  delay: 3500,
+                  stopOnInteraction: true,
+                  stopOnMouseEnter: true,
+                }),
+              ]}
               className="w-full"
-            >
+            4>
               <CarouselContent className="-ml-4">
                 {coursesData.pluralsight.map((course) => (
                   <CarouselItem
