@@ -1,42 +1,69 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Card, CardContent } from "@/components/ui/card";
-import { Star, Award, Users, CheckCircle, Phone, Mail, MessageCircle } from "lucide-react";
-import { SiWhatsapp, SiAmazon } from "react-icons/si";
+import { Star, Award, Users, CheckCircle, Mail, Trophy, LucideIcon } from "lucide-react";
+import { SiWhatsapp, SiAmazon, SiGoogle, SiMeta, SiApple } from "react-icons/si";
 import profileImage from "@assets/rupesh-headshot_1764261897457.png";
 import siteContent from "@/data/siteContent.json";
+
+const companyIcons: Record<string, typeof SiAmazon> = {
+  Amazon: SiAmazon,
+  Google: SiGoogle,
+  Meta: SiMeta,
+  Apple: SiApple,
+};
+
+const badgeIcons: Record<string, typeof SiAmazon | LucideIcon> = {
+  SiAmazon,
+  Award,
+};
+
+const proofIcons: Record<string, LucideIcon> = {
+  Users,
+  Trophy,
+  Star,
+};
+
+interface HeroBadge {
+  icon: string;
+  text: string;
+  variant: string;
+}
+
+interface ProofPoint {
+  icon: string;
+  value: string;
+  label: string;
+}
 
 export default function HeroSection() {
   const { hero } = siteContent;
 
-  const handleScrollTo = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
   return (
     <section
-      className="min-h-screen flex items-center pt-20 pb-12 bg-gradient-to-br from-background via-background to-primary/5"
+      className="min-h-[90vh] flex items-center pt-20 pb-12 bg-gradient-to-br from-background via-background to-primary/5"
       data-testid="section-hero"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="order-2 lg:order-1">
             <div className="flex flex-wrap items-center gap-2 mb-6">
-              <Badge className="bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20">
-                <SiAmazon className="w-3 h-3 mr-1" />
-                AWS Senior CSM
-              </Badge>
-              <Badge variant="secondary">
-                <Award className="w-3 h-3 mr-1" />
-                20+ Years Experience
-              </Badge>
-              <Badge variant="outline">
-                <Star className="w-3 h-3 mr-1 fill-yellow-500 text-yellow-500" />
-                50+ 5-Star Reviews
-              </Badge>
+              {(hero.badges as HeroBadge[]).map((badge, index) => {
+                const IconComponent = badgeIcons[badge.icon];
+                const isAmazon = badge.variant === "amazon";
+                return (
+                  <Badge
+                    key={index}
+                    className={isAmazon 
+                      ? "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20" 
+                      : ""
+                    }
+                    variant={isAmazon ? "default" : "secondary"}
+                  >
+                    {IconComponent && <IconComponent className="w-3 h-3 mr-1" />}
+                    {badge.text}
+                  </Badge>
+                );
+              })}
             </div>
 
             <h1
@@ -44,15 +71,31 @@ export default function HeroSection() {
               data-testid="text-hero-title"
             >
               {hero.titleLine1}{" "}
-              <span className="text-primary">{hero.titleHighlight}</span> {hero.titleLine2}
+              <span className="text-primary">{hero.titleHighlight}</span>{" "}
+              {hero.titleLine2}
             </h1>
 
             <p
-              className="text-lg md:text-xl text-muted-foreground mb-6 leading-relaxed"
+              className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed"
               data-testid="text-hero-description"
             >
               {hero.description}
             </p>
+
+            <div className="grid grid-cols-3 gap-4 mb-8 p-4 bg-muted/30 rounded-lg">
+              {(hero.proofPoints as ProofPoint[]).map((point) => {
+                const IconComponent = proofIcons[point.icon] || Users;
+                return (
+                  <div key={point.label} className="text-center">
+                    <div className="flex items-center justify-center gap-1 mb-1">
+                      <IconComponent className="w-4 h-4 text-primary" />
+                      <span className="text-2xl font-bold">{point.value}</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground">{point.label}</p>
+                  </div>
+                );
+              })}
+            </div>
 
             <div className="flex flex-wrap gap-2 mb-8">
               {hero.coachingAreas.map((area) => (
@@ -68,43 +111,21 @@ export default function HeroSection() {
               ))}
             </div>
 
-            <Card className="mb-8 border-primary/20 bg-primary/5">
-              <CardContent className="p-4">
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  <div>
-                    <p className="text-sm text-muted-foreground mb-1">{hero.package.name}</p>
-                    <div className="flex items-baseline gap-2">
-                      <span className="text-2xl font-bold text-primary">{hero.package.price}</span>
-                      <span className="text-sm text-muted-foreground line-through">{hero.package.originalPrice}</span>
-                      <Badge variant="secondary" className="text-xs">{hero.package.savings}</Badge>
-                    </div>
-                    <p className="text-xs text-muted-foreground mt-1">{hero.package.perSession}</p>
-                  </div>
-                  <Button
-                    asChild
-                    className="bg-green-600 hover:bg-green-700"
-                  >
-                    <a
-                      href={`${hero.contact.whatsapp}?text=Hi%20Rupesh,%20I'm%20interested%20in%20the%205-session%20coaching%20package.`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      data-testid="button-hero-whatsapp"
-                    >
-                      <SiWhatsapp className="w-4 h-4 mr-2" />
-                      Book via WhatsApp
-                    </a>
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-
             <div className="flex flex-wrap gap-3 mb-8">
               <Button
                 size="lg"
-                onClick={() => handleScrollTo("#booking")}
-                data-testid="button-book-session"
+                className="bg-green-600 hover:bg-green-700"
+                asChild
               >
-                {hero.buttons.primary}
+                <a
+                  href={hero.buttons.primaryLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="button-hero-primary"
+                >
+                  <SiWhatsapp className="w-4 h-4 mr-2" />
+                  {hero.buttons.primary}
+                </a>
               </Button>
               <Button
                 size="lg"
@@ -112,10 +133,10 @@ export default function HeroSection() {
                 asChild
               >
                 <a
-                  href="https://igotanoffer.com/en/coach/rupesh"
+                  href={hero.buttons.secondaryLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-testid="button-igotanoffer"
+                  data-testid="button-hero-secondary"
                 >
                   {hero.buttons.secondary}
                 </a>
@@ -149,12 +170,12 @@ export default function HeroSection() {
               <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
                 <img
                   src={profileImage}
-                  alt="Rupesh Tiwari - AWS Solutions Architect & Technical Coach"
+                  alt="Rupesh Tiwari - AWS Senior CSM & Technical Coach"
                   className="w-full h-full object-cover"
                   data-testid="img-profile"
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 bg-card rounded-lg p-3 shadow-lg border border-card-border">
+              <div className="absolute -bottom-4 -right-4 bg-card rounded-lg p-3 shadow-lg border border-border">
                 <div className="flex items-center gap-2">
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
@@ -164,34 +185,35 @@ export default function HeroSection() {
                       />
                     ))}
                   </div>
-                  <span className="text-sm font-semibold">5.0</span>
+                  <span className="text-sm font-semibold">{hero.ratingBadge.rating}</span>
                 </div>
                 <p className="text-xs text-muted-foreground mt-1">
-                  IGotAnOffer Verified
+                  {hero.ratingBadge.text}
                 </p>
-              </div>
-              <div className="absolute -top-2 -left-2 bg-green-500 text-white rounded-full p-2 shadow-lg">
-                <MessageCircle className="w-5 h-5" />
               </div>
             </div>
           </div>
         </div>
 
         <div className="mt-16 pt-8 border-t border-border">
-          <p className="text-center text-sm text-muted-foreground mb-4">
+          <p className="text-center text-sm text-muted-foreground mb-6">
             {hero.companiesText}
           </p>
-          <div className="flex flex-wrap justify-center gap-2">
-            {hero.targetRoles.map((role) => (
-              <Badge
-                key={role}
-                variant="outline"
-                className="text-xs"
-                data-testid={`badge-role-${role.toLowerCase().replace(/ /g, "-")}`}
-              >
-                {role}
-              </Badge>
-            ))}
+          <div className="flex flex-wrap justify-center items-center gap-8">
+            {hero.targetCompanies.map((company) => {
+              const IconComponent = companyIcons[company];
+              if (!IconComponent) return null;
+              return (
+                <div
+                  key={company}
+                  className="flex items-center gap-2 text-muted-foreground/60 hover:text-muted-foreground transition-colors"
+                  data-testid={`company-${company.toLowerCase()}`}
+                >
+                  <IconComponent className="w-6 h-6" />
+                  <span className="font-medium">{company}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

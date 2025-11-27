@@ -43,14 +43,6 @@ interface ProcessStep {
   text: string;
 }
 
-function ZelleLogo({ className }: { className?: string }) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor">
-      <path d="M13.559 24h-2.902a.674.674 0 0 1-.673-.673v-5.849H4.321A.673.673 0 0 1 3.766 16l9.69-13.521a.673.673 0 0 1 1.103.044.674.674 0 0 1 .098.35v7.633h5.663a.673.673 0 0 1 .554 1.06L11.184 23.53a.673.673 0 0 1-.554.291l-.03-.001a.673.673 0 0 1-.041.18Zm-2.229-1.346h1.528l8.09-10.748h-5.212a.674.674 0 0 1-.673-.673V5.099l-7.807 10.89h4.74c.371 0 .673.302.673.673v5.992h-.339Z"/>
-    </svg>
-  );
-}
-
 export default function PricingSection() {
   const packages = packagesData.packages as Package[];
   const testimonials = packagesData.testimonials.items as Testimonial[];
@@ -136,31 +128,9 @@ export default function PricingSection() {
                         </a>
                       </Button>
                       {pkg.paymentNote && (
-                        <div className="mt-4 p-3 bg-muted/50 rounded-lg border border-border">
-                          <div className="flex items-center justify-center gap-2 mb-2">
-                            <div className="flex items-center gap-1.5 px-2 py-1 bg-purple-600 text-white rounded text-xs font-semibold">
-                              <ZelleLogo className="w-3 h-3" />
-                              Zelle
-                            </div>
-                            <div className="flex items-center gap-1 text-green-600">
-                              <ShieldCheck className="w-4 h-4" />
-                              <span className="text-xs font-medium">Secure</span>
-                            </div>
-                          </div>
-                          <p className="text-xs text-center text-muted-foreground">
-                            {pkg.paymentNote}
-                          </p>
-                          <div className="flex items-center justify-center gap-4 mt-2 pt-2 border-t border-border/50">
-                            <div className="flex items-center gap-1 text-muted-foreground">
-                              <Lock className="w-3 h-3" />
-                              <span className="text-[10px]">Bank-Level Security</span>
-                            </div>
-                            <div className="flex items-center gap-1 text-muted-foreground">
-                              <BadgeCheck className="w-3 h-3" />
-                              <span className="text-[10px]">Verified Seller</span>
-                            </div>
-                          </div>
-                        </div>
+                        <p className="mt-4 text-xs text-center text-muted-foreground">
+                          {pkg.paymentNote}
+                        </p>
                       )}
                     </>
                   ) : (

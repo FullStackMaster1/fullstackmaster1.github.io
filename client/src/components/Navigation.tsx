@@ -1,21 +1,22 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "wouter";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
+import siteContent from "@/data/siteContent.json";
 
-const navLinks = [
-  { label: "Services", href: "#services" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
-  { label: "Resources", href: "/resources", isPage: true },
-];
+interface NavLink {
+  label: string;
+  href: string;
+  isPage: boolean;
+}
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const { navigation } = siteContent;
+  const navLinks = navigation.links as NavLink[];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -63,11 +64,11 @@ export default function Navigation() {
           >
             <img
               src={logoImage}
-              alt="FullStack Master"
+              alt={navigation.brandName}
               className="h-10 w-auto rounded"
               data-testid="img-logo"
             />
-            <span className="hidden sm:block font-bold text-lg">FullStack Master</span>
+            <span className="hidden sm:block font-bold text-lg">{navigation.brandName}</span>
           </a>
 
           <div className="hidden lg:flex items-center gap-1">
@@ -76,7 +77,7 @@ export default function Navigation() {
                 key={link.href}
                 variant="ghost"
                 size="sm"
-                onClick={() => handleNavClick(link.href, (link as any).isPage)}
+                onClick={() => handleNavClick(link.href, link.isPage)}
                 data-testid={`link-${link.label.toLowerCase().replace(" ", "-")}`}
               >
                 {link.label}
@@ -91,21 +92,21 @@ export default function Navigation() {
               asChild
             >
               <a
-                href="https://wa.me/16094424081"
+                href={navigation.ctaButtons.whatsapp.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="button-whatsapp-nav"
               >
                 <SiWhatsapp className="w-4 h-4 mr-1 text-green-500" />
-                WhatsApp
+                {navigation.ctaButtons.whatsapp.text}
               </a>
             </Button>
             <Button
               size="sm"
-              onClick={() => handleNavClick("#booking")}
+              onClick={() => handleNavClick(navigation.ctaButtons.book.scrollTo)}
               data-testid="button-book-now"
             >
-              Book Session
+              {navigation.ctaButtons.book.text}
             </Button>
           </div>
 
@@ -128,7 +129,7 @@ export default function Navigation() {
                   key={link.href}
                   variant="ghost"
                   className="justify-start"
-                  onClick={() => handleNavClick(link.href, (link as any).isPage)}
+                  onClick={() => handleNavClick(link.href, link.isPage)}
                   data-testid={`link-mobile-${link.label.toLowerCase().replace(" ", "-")}`}
                 >
                   {link.label}
@@ -142,22 +143,22 @@ export default function Navigation() {
                   asChild
                 >
                   <a
-                    href="https://wa.me/16094424081"
+                    href={navigation.ctaButtons.whatsapp.link}
                     target="_blank"
                     rel="noopener noreferrer"
                     data-testid="button-mobile-whatsapp"
                   >
                     <SiWhatsapp className="w-4 h-4 mr-1 text-green-500" />
-                    WhatsApp
+                    {navigation.ctaButtons.whatsapp.text}
                   </a>
                 </Button>
                 <Button
                   size="sm"
                   className="flex-1"
-                  onClick={() => handleNavClick("#booking")}
+                  onClick={() => handleNavClick(navigation.ctaButtons.book.scrollTo)}
                   data-testid="button-mobile-book"
                 >
-                  Book Now
+                  {navigation.ctaButtons.mobileBook.text}
                 </Button>
               </div>
             </div>

@@ -1,32 +1,31 @@
 {
-  "sectionBadge": "Simple Pricing",
-  "sectionTitle": "Invest in Your",
-  "sectionTitleHighlight": "Career Growth",
-  "sectionDescription": "Book directly with me and save. Same quality coaching, better value for your interview preparation.",
+  "sectionBadge": "Investment Options",
+  "sectionTitle": "Choose Your",
+  "sectionTitleHighlight": "Coaching Path",
+  "sectionDescription": "Two flexible options to fit your timeline and preparation needs.",
   "packages": [
     {
       "id": "5-session-package",
-      "name": "5-Session Package",
+      "name": "Comprehensive Package",
       "icon": "Zap",
       "price": "$600",
-      "originalPrice": "$705",
+      "originalPrice": null,
       "perSession": "$120 per session",
-      "savings": "Save $105 vs platform",
-      "badge": "Best Value",
+      "savings": "Most clients choose this",
+      "badge": "Recommended",
       "featured": true,
       "features": [
         "5 x 60-minute 1:1 sessions",
-        "System design deep-dive",
-        "Behavioral/LP coaching",
-        "Executive communication training",
+        "Full interview preparation coverage",
+        "System design + behavioral + LP",
         "Resume & intro pitch review",
         "Priority WhatsApp support",
-        "Personalized prep plan",
-        "Mock interview practice"
+        "Personalized prep roadmap",
+        "All session recordings"
       ],
-      "buttonText": "Book Package via WhatsApp",
-      "buttonLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%0A%0AI%27m%20interested%20in%20booking%20the%20%2A5-Session%20Coaching%20Package%20($600)%2A.%0A%0AMy%20details:%0A-%20Name:%20%0A-%20Target%20Role:%20%0A-%20Target%20Company:%20%0A-%20Interview%20Timeline:%20%0A%0ALooking%20forward%20to%20working%20with%20you!",
-      "paymentNote": "Payment via Zelle to +1-609-442-4081"
+      "buttonText": "Start Conversation",
+      "buttonLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%0A%0AI%27m%20interested%20in%20the%20Comprehensive%20Coaching%20Package.%0A%0AMy%20details:%0A-%20Name:%20%0A-%20Target%20Role:%20%0A-%20Target%20Company:%20%0A-%20Interview%20Timeline:%20%0A%0ALooking%20forward%20to%20working%20with%20you!",
+      "paymentNote": "Payment via Zelle after our first call"
     },
     {
       "id": "single-session",
@@ -34,57 +33,57 @@
       "icon": "Clock",
       "price": "$141",
       "originalPrice": null,
-      "perSession": "60-minute session",
+      "perSession": "60-minute deep-dive",
       "savings": null,
       "badge": "Via IGotAnOffer",
       "featured": false,
       "features": [
-        "60-minute 1:1 session",
-        "Focused topic of your choice",
-        "Actionable feedback",
-        "Recording available"
+        "60-minute focused session",
+        "Topic of your choice",
+        "Actionable next steps",
+        "Session recording included"
       ],
       "buttonText": "Book on IGotAnOffer",
       "buttonLink": "https://igotanoffer.com/en/coach/rupesh",
-      "secondaryButtonText": "Or contact me directly",
-      "secondaryButtonLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%0A%0AI%27m%20interested%20in%20a%20%2ASingle%20Coaching%20Session%2A.%0A%0AMy%20details:%0A-%20Name:%20%0A-%20Topic%20I%20need%20help%20with:%20%0A-%20Target%20Company:%20%0A%0ALooking%20forward%20to%20hearing%20from%20you!",
+      "secondaryButtonText": "Or message me directly",
+      "secondaryButtonLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%0A%0AI%27m%20interested%20in%20a%20single%20coaching%20session.%0A%0AMy%20details:%0A-%20Name:%20%0A-%20Topic%20I%20need%20help%20with:%20%0A-%20Target%20Company:%20%0A%0ALooking%20forward%20to%20hearing%20from%20you!",
       "paymentNote": null
     }
   ],
   "directBookingProcess": {
-    "title": "How Direct Booking Works",
+    "title": "How We Work Together",
     "steps": [
       {
         "icon": "MessageCircle",
-        "text": "1. Message me on WhatsApp"
+        "text": "1. Free discovery call to discuss your goals"
       },
       {
         "icon": "Calendar",
-        "text": "2. We schedule your sessions"
+        "text": "2. Create your personalized prep plan"
       },
       {
         "icon": "Video",
-        "text": "3. Meet via Google Meet/Zoom"
+        "text": "3. Start coaching via Google Meet"
       }
     ]
   },
   "testimonials": {
-    "title": "What clients say about the investment",
+    "title": "Client Outcomes",
     "items": [
       {
-        "quote": "Worth every penny! Rupesh's coaching helped me land a Sr. Manager role at AWS.",
+        "quote": "Rupesh's coaching helped me land a Sr. Manager role at AWS. The investment paid off 100x.",
         "author": "Former Client",
         "role": "Now Sr. Manager at AWS",
         "rating": 5
       },
       {
-        "quote": "The 5-session package was perfect. Got offers from both Google and Meta.",
+        "quote": "After 5 sessions, I received offers from both Google and Meta. Couldn't have done it without Rupesh.",
         "author": "Engineering Director",
         "role": "FAANG Interview Success",
         "rating": 5
       },
       {
-        "quote": "Best investment in my career. Rupesh's LP coaching is unmatched.",
+        "quote": "The LP coaching completely transformed how I tell my stories. Amazon bar-raiser approved.",
         "author": "Principal Engineer",
         "role": "Amazon Leadership Prep",
         "rating": 5
@@ -92,22 +91,22 @@
     ]
   },
   "satisfactionGuarantee": {
-    "title": "Satisfaction Guarantee",
+    "title": "My Commitment to You",
     "description": "If you're not satisfied after your first session, I'll refund it completely. No questions asked. I've coached 100+ leaders successfully - your career transformation is my priority.",
     "badges": [
       {
         "icon": "BadgeCheck",
-        "text": "50+ 5-Star Reviews",
+        "text": "50+ Five-Star Reviews",
         "color": "green"
       },
       {
         "icon": "ShieldCheck",
-        "text": "AWS Verified Expert",
+        "text": "AWS Senior CSM",
         "color": "blue"
       },
       {
         "icon": "Lock",
-        "text": "Confidential Sessions",
+        "text": "Confidential & Private",
         "color": "purple"
       }
     ]

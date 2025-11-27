@@ -1,0 +1,45 @@
+{
+  "sectionBadge": "About Your Coach",
+  "name": "Rupesh Tiwari",
+  "title": "AWS Senior Customer Solutions Manager",
+  "tagline": "From Senior Engineer to FAANG Leader - Now Helping You Do The Same",
+  "story": [
+    "I spent 20+ years navigating the tech industry - from hands-on coding to leading teams at enterprise scale. I've sat on both sides of the FAANG interview table.",
+    "After joining AWS as a Senior CSM, I realized something: the gap between talented engineers and their dream roles wasn't skill - it was how they communicated their value.",
+    "That's why I started coaching. Not to sell you frameworks, but to help you articulate the leader you already are."
+  ],
+  "credentials": [
+    {
+      "icon": "Briefcase",
+      "label": "20+ Years",
+      "description": "Enterprise Tech Experience"
+    },
+    {
+      "icon": "Award",
+      "label": "AWS",
+      "description": "Senior Customer Solutions Manager"
+    },
+    {
+      "icon": "Users",
+      "label": "100+",
+      "description": "Leaders Coached Successfully"
+    },
+    {
+      "icon": "Star",
+      "label": "5.0",
+      "description": "Average Rating (50+ Reviews)"
+    }
+  ],
+  "philosophy": {
+    "title": "My Coaching Philosophy",
+    "points": [
+      "No scripts or templates - we build YOUR authentic stories",
+      "Bar-raiser perspective - I know what interviewers actually look for",
+      "Outcome-focused - every session moves you closer to your offer"
+    ]
+  },
+  "cta": {
+    "text": "Let's Talk About Your Goals",
+    "link": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'd%20like%20to%20discuss%20my%20career%20goals%20and%20how%20coaching%20can%20help."
+  }
+}

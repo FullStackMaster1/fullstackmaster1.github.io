@@ -1,44 +1,93 @@
 {
+  "navigation": {
+    "brandName": "FullStack Master",
+    "links": [
+      { "label": "About", "href": "#about", "isPage": false },
+      { "label": "Process", "href": "#methodology", "isPage": false },
+      { "label": "Services", "href": "#services", "isPage": false },
+      { "label": "Reviews", "href": "#reviews", "isPage": false },
+      { "label": "Pricing", "href": "#pricing", "isPage": false },
+      { "label": "Resources", "href": "/resources", "isPage": true }
+    ],
+    "ctaButtons": {
+      "whatsapp": {
+        "text": "WhatsApp",
+        "link": "https://wa.me/16094424081"
+      },
+      "book": {
+        "text": "Book Session",
+        "scrollTo": "#booking"
+      },
+      "mobileBook": {
+        "text": "Book Now"
+      }
+    }
+  },
   "hero": {
-    "badge": "20+ Years Experience | 50+ 5-Star Reviews",
-    "titleLine1": "FAANG Interview &",
-    "titleHighlight": "System Design",
-    "titleLine2": "Coach",
-    "description": "I coach Senior Managers, Directors, VPs and technical leaders to crack FAANG interviews in system design, cloud architecture, and Amazon Leadership Principles with structured, rubric-based preparation.",
+    "badges": [
+      {
+        "icon": "SiAmazon",
+        "text": "AWS Senior CSM",
+        "variant": "amazon"
+      },
+      {
+        "icon": "Award",
+        "text": "20+ Years in Tech",
+        "variant": "secondary"
+      }
+    ],
+    "titleLine1": "From Engineer to",
+    "titleHighlight": "Technical Leader",
+    "titleLine2": "Coaching",
+    "description": "I help Senior Managers, Directors, and VPs crack FAANG interviews. 20+ years in tech, now coaching full-time. Real experience, not just frameworks.",
+    "proofPoints": [
+      {
+        "icon": "Users",
+        "value": "100+",
+        "label": "Leaders Coached"
+      },
+      {
+        "icon": "Trophy",
+        "value": "85%+",
+        "label": "Offer Success Rate"
+      },
+      {
+        "icon": "Star",
+        "value": "5.0",
+        "label": "Average Rating"
+      }
+    ],
+    "targetCompanies": ["Amazon", "Google", "Meta", "Apple"],
     "targetRoles": [
       "Senior Manager",
-      "Director",
+      "Director", 
       "VP",
       "Principal Engineer",
       "Staff Engineer",
-      "Solutions Architect",
-      "TPM Lead",
-      "Engineering Manager"
+      "Solutions Architect"
     ],
     "coachingAreas": [
-      "System Design for Leaders",
-      "Behavioral & LP Mastery",
-      "Executive Communication",
-      "Strategic Intro Pitch",
-      "Resume Optimization"
+      "System Design",
+      "Leadership Principles",
+      "Behavioral Interviews",
+      "Executive Presence"
     ],
-    "package": {
-      "name": "5-Session Package",
-      "price": "$600",
-      "originalPrice": "$705",
-      "savings": "Save $105",
-      "perSession": "$120/session - Direct booking discount"
-    },
     "buttons": {
-      "primary": "Book Free Discovery Call",
-      "secondary": "View on IGotAnOffer"
+      "primary": "Schedule Free Call",
+      "primaryLink": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'd%20like%20to%20schedule%20a%20free%20discovery%20call.",
+      "secondary": "View on IGotAnOffer",
+      "secondaryLink": "https://igotanoffer.com/en/coach/rupesh"
     },
     "contact": {
       "phone": "+1-609-442-4081",
       "email": "rupesh@fullstackmaster.net",
       "whatsapp": "https://wa.me/16094424081"
     },
-    "companiesText": "Coaching professionals targeting roles at"
+    "companiesText": "Helping professionals land roles at",
+    "ratingBadge": {
+      "rating": "5.0",
+      "text": "50+ Verified Reviews"
+    }
   },
   "services": {
     "badge": "For Senior Leaders",
@@ -48,55 +97,19 @@
     "coachingMethodDescription": "Learn the frameworks and communication patterns that Staff+ engineers and Directors use in FAANG interviews."
   },
   "pricing": {
-    "badge": "Simple Pricing",
-    "title": "Invest in Your Career Growth",
-    "description": "Book directly with me and save. Same quality coaching, better value for your interview preparation.",
-    "directBooking": {
-      "badge": "Best Value",
-      "title": "5-Session Package",
-      "price": "$600",
-      "originalPrice": "$705",
-      "savings": "Save $105 vs platform",
-      "perSession": "$120 per session",
-      "features": [
-        "5 x 60-minute coaching sessions",
-        "Personalized preparation plan",
-        "System Design + Behavioral prep",
-        "Async support between sessions",
-        "Priority scheduling"
-      ],
-      "buttonText": "Book via WhatsApp"
-    },
-    "platformBooking": {
-      "title": "Single Session",
-      "price": "$141",
-      "duration": "60-minute session",
-      "platform": "Via IGotAnOffer",
-      "features": [
-        "60-minute coaching session",
-        "Session recording available",
-        "Platform guarantee",
-        "Verified reviews"
-      ],
-      "buttonText": "Book on IGotAnOffer"
-    },
-    "processTitle": "How Direct Booking Works",
-    "processSteps": [
-      "Message me on WhatsApp",
-      "We schedule your sessions",
-      "Meet via Google Meet/Zoom"
-    ],
-    "testimonialTitle": "What clients say about the investment"
+    "badge": "Investment Options",
+    "title": "Choose Your Coaching Path",
+    "description": "Two flexible options to fit your timeline and preparation needs."
   },
   "faq": {
-    "badge": "FAQ",
-    "title": "Frequently Asked Questions",
-    "description": "Common questions about coaching, pricing, and preparation"
+    "badge": "Common Questions",
+    "title": "Before We Start",
+    "description": "What you need to know about working with me"
   },
   "reviews": {
-    "title": "Client Success Stories",
-    "description": "Real feedback from senior professionals who landed their dream roles",
+    "title": "Client Outcomes",
+    "description": "Real results from senior professionals who worked with me",
     "platformLink": "https://www.igotanoffer.com/en/coaches/rupesh-tiwari",
-    "platformLinkText": "View all reviews on IGotAnOffer"
+    "platformLinkText": "View all verified reviews"
   }
 }

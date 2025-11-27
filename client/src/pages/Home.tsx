@@ -2,6 +2,8 @@ import Navigation from "@/components/Navigation";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import HeroSection from "@/components/HeroSection";
 import TrustBar from "@/components/TrustBar";
+import AboutSection from "@/components/AboutSection";
+import MethodologySection from "@/components/MethodologySection";
 import ServicesSection from "@/components/ServicesSection";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 import PricingSection from "@/components/PricingSection";
@@ -18,6 +20,8 @@ export default function Home() {
       <main>
         <HeroSection />
         <TrustBar />
+        <AboutSection />
+        <MethodologySection />
         <ServicesSection />
         <ReviewsCarousel />
         <PricingSection />
