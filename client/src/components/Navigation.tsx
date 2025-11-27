@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
+import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, MessageCircle } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
 
@@ -8,10 +9,8 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Reviews", href: "#reviews" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Courses", href: "#courses" },
-  { label: "Blog", href: "#blog" },
   { label: "FAQ", href: "#faq" },
-  { label: "Book Now", href: "#booking" },
+  { label: "Resources", href: "/resources", isPage: true },
 ];
 
 export default function Navigation() {
@@ -26,11 +25,23 @@ export default function Navigation() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const handleNavClick = (href: string) => {
+  const [location, setLocation] = useLocation();
+
+  const handleNavClick = (href: string, isPage?: boolean) => {
     setIsOpen(false);
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (isPage) {
+      setLocation(href);
+    } else {
+      if (location !== "/") {
+        setLocation("/");
+        setTimeout(() => {
+          const element = document.querySelector(href);
+          if (element) element.scrollIntoView({ behavior: "smooth" });
+        }, 100);
+      } else {
+        const element = document.querySelector(href);
+        if (element) element.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
@@ -65,7 +76,7 @@ export default function Navigation() {
                 key={link.href}
                 variant="ghost"
                 size="sm"
-                onClick={() => handleNavClick(link.href)}
+                onClick={() => handleNavClick(link.href, (link as any).isPage)}
                 data-testid={`link-${link.label.toLowerCase().replace(" ", "-")}`}
               >
                 {link.label}
@@ -117,7 +128,7 @@ export default function Navigation() {
                   key={link.href}
                   variant="ghost"
                   className="justify-start"
-                  onClick={() => handleNavClick(link.href)}
+                  onClick={() => handleNavClick(link.href, (link as any).isPage)}
                   data-testid={`link-mobile-${link.label.toLowerCase().replace(" ", "-")}`}
                 >
                   {link.label}

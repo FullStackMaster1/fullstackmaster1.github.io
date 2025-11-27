@@ -1,6 +1,7 @@
 {
   "sectionBadge": "Simple Pricing",
-  "sectionTitle": "Invest in Your Career Growth",
+  "sectionTitle": "Invest in Your",
+  "sectionTitleHighlight": "Career Growth",
   "sectionDescription": "Book directly with me and save. Same quality coaching, better value for your interview preparation.",
   "packages": [
     {
@@ -87,6 +88,27 @@
         "author": "Principal Engineer",
         "role": "Amazon Leadership Prep",
         "rating": 5
+      }
+    ]
+  },
+  "satisfactionGuarantee": {
+    "title": "Satisfaction Guarantee",
+    "description": "If you're not satisfied after your first session, I'll refund it completely. No questions asked. I've coached 100+ leaders successfully - your career transformation is my priority.",
+    "badges": [
+      {
+        "icon": "BadgeCheck",
+        "text": "50+ 5-Star Reviews",
+        "color": "green"
+      },
+      {
+        "icon": "ShieldCheck",
+        "text": "AWS Verified Expert",
+        "color": "blue"
+      },
+      {
+        "icon": "Lock",
+        "text": "Confidential Sessions",
+        "color": "purple"
       }
     ]
   }

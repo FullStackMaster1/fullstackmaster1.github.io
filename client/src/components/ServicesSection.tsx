@@ -2,6 +2,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
+import {
   Target,
   MessageSquare,
   Presentation,
@@ -12,10 +17,18 @@ import {
   Video,
   CheckCircle,
   LucideIcon,
+  Lightbulb,
+  Code,
 } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
-import teachingImage from "@assets/image_1764264908413.png";
 import servicesData from "@/data/services.json";
+import Autoplay from "embla-carousel-autoplay";
+import { useRef } from "react";
+
+import lpImage from "@assets/2_1764272631453.png";
+import sysDesignImage from "@assets/1_1764272631453.png";
+import resumeImage from "@assets/3_1764272631453.png";
+import codingImage from "@assets/image_1764273039071.png";
 
 const iconMap: Record<string, LucideIcon> = {
   Target,
@@ -24,6 +37,15 @@ const iconMap: Record<string, LucideIcon> = {
   FileText,
   Users,
   Sparkles,
+  Lightbulb,
+  Code,
+};
+
+const imageMap: Record<string, string> = {
+  "2_1764272631453.png": lpImage,
+  "1_1764272631453.png": sysDesignImage,
+  "3_1764272631453.png": resumeImage,
+  "image_1764273039071.png": codingImage,
 };
 
 interface Service {
@@ -35,8 +57,20 @@ interface Service {
   popular: boolean;
 }
 
+interface SessionDemo {
+  id: string;
+  title: string;
+  subtitle: string;
+  imagePath: string;
+  icon: string;
+}
+
 export default function ServicesSection() {
-  const { sectionBadge, sectionTitle, sectionDescription, liveSessionShowcase, services, ctaButtons } = servicesData;
+  const { sectionBadge, sectionTitle, sectionTitleHighlight, sectionDescription, liveSessionShowcase, services, ctaButtons, sessionDemos, popularBadgeText } = servicesData;
+
+  const autoplayPlugin = useRef(
+    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })
+  );
 
   return (
     <section
@@ -51,8 +85,7 @@ export default function ServicesSection() {
             className="text-3xl md:text-4xl font-bold mb-4"
             data-testid="text-services-title"
           >
-            {sectionTitle.replace("Technical Leaders", "")}
-            <span className="text-primary">Technical Leaders</span>
+            {sectionTitle} <span className="text-primary">{sectionTitleHighlight}</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {sectionDescription}
@@ -61,19 +94,47 @@ export default function ServicesSection() {
 
         <Card className="mb-12 overflow-hidden border-primary/20" data-testid="card-coaching-preview">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-            <div className="relative aspect-video lg:aspect-auto">
-              <img
-                src={teachingImage}
-                alt={liveSessionShowcase.imageAlt}
-                className="w-full h-full object-cover"
-                data-testid="img-teaching"
-              />
-              <div className="absolute top-4 left-4">
-                <Badge className="bg-red-500 text-white">
-                  <Video className="w-3 h-3 mr-1" />
-                  {liveSessionShowcase.liveBadge}
-                </Badge>
-              </div>
+            <div className="relative">
+              <Carousel
+                opts={{ align: "start", loop: true }}
+                plugins={[autoplayPlugin.current]}
+                className="w-full"
+                onMouseEnter={() => autoplayPlugin.current.stop()}
+                onMouseLeave={() => autoplayPlugin.current.play()}
+              >
+                <CarouselContent>
+                  {(sessionDemos as SessionDemo[]).map((demo) => {
+                    const IconComponent = iconMap[demo.icon] || Presentation;
+                    const imageSrc = imageMap[demo.imagePath];
+                    return (
+                      <CarouselItem key={demo.id}>
+                        <div className="relative aspect-video">
+                          <img
+                            src={imageSrc}
+                            alt={demo.title}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute top-4 left-4 flex gap-2">
+                            <Badge className="bg-red-500 text-white">
+                              <Video className="w-3 h-3 mr-1" />
+                              {liveSessionShowcase.liveBadge}
+                            </Badge>
+                          </div>
+                          <div className="absolute bottom-4 left-4 right-4">
+                            <div className="bg-black/70 backdrop-blur-sm rounded-lg p-3">
+                              <div className="flex items-center gap-2">
+                                <IconComponent className="w-4 h-4 text-white" />
+                                <span className="text-white font-medium text-sm">{demo.title}</span>
+                                <span className="text-white/70 text-xs">• {demo.subtitle}</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </CarouselItem>
+                    );
+                  })}
+                </CarouselContent>
+              </Carousel>
             </div>
             <CardContent className="p-6 lg:p-8 flex flex-col justify-center">
               <Badge variant="outline" className="w-fit mb-4">{liveSessionShowcase.badge}</Badge>
@@ -119,7 +180,7 @@ export default function ServicesSection() {
               >
                 {service.popular && (
                   <div className="absolute -top-3 left-4">
-                    <Badge className="bg-primary">Popular</Badge>
+                    <Badge className="bg-primary">{popularBadgeText}</Badge>
                   </div>
                 )}
                 <CardContent className="p-6 pt-8">

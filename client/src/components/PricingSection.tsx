@@ -69,7 +69,7 @@ export default function PricingSection() {
             className="text-3xl md:text-4xl font-bold mb-4"
             data-testid="text-pricing-title"
           >
-            Invest in Your <span className="text-primary">Career Growth</span>
+            {packagesData.sectionTitle} <span className="text-primary">{packagesData.sectionTitleHighlight}</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             {packagesData.sectionDescription}
@@ -238,6 +238,34 @@ export default function PricingSection() {
             ))}
           </div>
         </div>
+
+        {packagesData.satisfactionGuarantee && (
+          <div className="mt-12 border border-green-200 dark:border-green-900 bg-green-50/50 dark:bg-green-950/20 rounded-lg p-6">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-6 text-center md:text-left">
+              <div className="flex items-center justify-center w-16 h-16 rounded-full bg-green-100 dark:bg-green-900/50">
+                <ShieldCheck className="w-8 h-8 text-green-600" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-semibold text-lg mb-1">{packagesData.satisfactionGuarantee.title}</h3>
+                <p className="text-sm text-muted-foreground">
+                  {packagesData.satisfactionGuarantee.description}
+                </p>
+              </div>
+              <div className="flex flex-wrap justify-center gap-3">
+                {packagesData.satisfactionGuarantee.badges.map((badge, index) => {
+                  const BadgeIcon = badge.icon === "BadgeCheck" ? BadgeCheck : badge.icon === "ShieldCheck" ? ShieldCheck : Lock;
+                  const colorClass = badge.color === "green" ? "text-green-600" : badge.color === "blue" ? "text-blue-600" : "text-purple-600";
+                  return (
+                    <Badge key={index} variant="outline" className="bg-background">
+                      <BadgeIcon className={`w-3 h-3 mr-1 ${colorClass}`} />
+                      {badge.text}
+                    </Badge>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
