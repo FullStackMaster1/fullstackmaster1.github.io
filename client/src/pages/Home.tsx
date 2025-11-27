@@ -13,27 +13,31 @@ import FAQSection from "@/components/FAQSection";
 import BookingSection from "@/components/BookingSection";
 import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import SEOHead from "@/components/SEOHead";
+import StickyMobileCTA from "@/components/StickyMobileCTA";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-background">
+      <SEOHead page="home" />
       <AnnouncementBar />
       <Navigation />
       <main>
         <HeroSection />
         <TrustBar />
-        <WhyLeadersFailSection />
+        <SuccessStoriesSection />
+        <ReviewsCarousel />
         <AboutSection />
         <MethodologySection />
         <ServicesSection />
-        <SuccessStoriesSection />
-        <ReviewsCarousel />
         <PricingSection />
+        <WhyLeadersFailSection />
         <FAQSection />
         <BookingSection />
       </main>
       <Footer />
       <WhatsAppWidget />
+      <StickyMobileCTA />
     </div>
   );
 }
