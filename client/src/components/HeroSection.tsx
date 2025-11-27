@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Star, Award, Users } from "lucide-react";
-import profileImage from "@assets/generated_images/professional_coach_headshot_portrait.png";
+import profileImage from "@assets/rupesh headshot_1764259349659.jpeg";
 
 const roles = [
   "Cloud Engineer",
