@@ -98,7 +98,32 @@
       "rating": "5.0",
       "text": "50+ Verified Reviews on IGotAnOffer"
     },
-    "linkedIn": "https://www.linkedin.com/in/rupesh-tiwari/"
+    "linkedIn": "https://www.linkedin.com/in/rupesh-tiwari/",
+    "passedInterviews": {
+      "title": "I Passed Interviews At",
+      "subtitle": "Chose AWS for fast process & best fit",
+      "companies": [
+        {
+          "name": "Microsoft",
+          "role": "Solutions Architect",
+          "icon": "microsoft",
+          "status": "Passed"
+        },
+        {
+          "name": "Google",
+          "role": "Customer Engineer",
+          "icon": "google",
+          "status": "Passed"
+        },
+        {
+          "name": "AWS",
+          "role": "Senior CSM",
+          "icon": "amazon",
+          "status": "Joined",
+          "highlight": true
+        }
+      ]
+    }
   },
   "services": {
     "badge": "For Senior Leaders",

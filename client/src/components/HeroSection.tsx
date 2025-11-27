@@ -1,16 +1,20 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Star, Award, Users, CheckCircle, Mail, Trophy, Calendar, GraduationCap, LucideIcon } from "lucide-react";
+import { Star, Award, Users, CheckCircle, Mail, Trophy, Calendar, GraduationCap, Building2, LucideIcon } from "lucide-react";
 import { SiWhatsapp, SiAmazon, SiGoogle, SiMeta, SiApple, SiNetflix, SiLinkedin } from "react-icons/si";
+import { FaMicrosoft } from "react-icons/fa";
 import profileImage from "@assets/rupesh-headshot_1764261897457.png";
 import siteContent from "@/data/siteContent.json";
 
-const companyIcons: Record<string, typeof SiAmazon> = {
+const companyIcons: Record<string, typeof SiAmazon | typeof FaMicrosoft | typeof Building2> = {
   Amazon: SiAmazon,
   Google: SiGoogle,
   Meta: SiMeta,
   Apple: SiApple,
   Netflix: SiNetflix,
+  microsoft: FaMicrosoft,
+  google: SiGoogle,
+  amazon: SiAmazon,
 };
 
 const badgeIcons: Record<string, typeof SiAmazon | LucideIcon> = {
@@ -85,7 +89,7 @@ export default function HeroSection() {
               {hero.description}
             </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8 p-4 bg-muted/30 rounded-lg">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6 p-4 bg-muted/30 rounded-lg">
               {(hero.proofPoints as ProofPoint[]).map((point) => {
                 const IconComponent = proofIcons[point.icon] || Users;
                 return (
@@ -99,6 +103,56 @@ export default function HeroSection() {
                 );
               })}
             </div>
+
+            {hero.passedInterviews && (
+              <div className="mb-6 p-4 bg-gradient-to-r from-green-500/10 via-blue-500/10 to-orange-500/10 rounded-lg border border-primary/10">
+                <p className="text-xs text-muted-foreground mb-3 text-center font-medium uppercase tracking-wide">
+                  {hero.passedInterviews.title}
+                </p>
+                <div className="flex flex-wrap justify-center items-center gap-4">
+                  {hero.passedInterviews.companies.map((company: { name: string; role: string; icon: string; status: string; highlight?: boolean }) => {
+                    const IconComponent = companyIcons[company.icon];
+                    return (
+                      <div 
+                        key={company.name}
+                        className={`flex items-center gap-2 px-3 py-2 rounded-lg ${
+                          company.highlight 
+                            ? "bg-orange-500/20 border border-orange-500/30" 
+                            : "bg-card/50"
+                        }`}
+                        data-testid={`passed-interview-${company.name.toLowerCase()}`}
+                      >
+                        {IconComponent && (
+                          <IconComponent className={`w-5 h-5 ${
+                            company.icon === 'microsoft' ? 'text-[#00a4ef]' :
+                            company.icon === 'google' ? 'text-[#4285f4]' :
+                            company.icon === 'amazon' ? 'text-orange-500' : 'text-primary'
+                          }`} />
+                        )}
+                        <div>
+                          <p className="text-sm font-semibold">{company.name}</p>
+                          <p className="text-xs text-muted-foreground">{company.role}</p>
+                        </div>
+                        <Badge 
+                          className={`text-xs ml-1 ${
+                            company.highlight 
+                              ? "bg-orange-500 text-white" 
+                              : "bg-green-500/20 text-green-600 border-green-500/30"
+                          }`}
+                          variant={company.highlight ? "default" : "outline"}
+                        >
+                          <CheckCircle className="w-3 h-3 mr-1" />
+                          {company.status}
+                        </Badge>
+                      </div>
+                    );
+                  })}
+                </div>
+                <p className="text-xs text-muted-foreground text-center mt-2 italic">
+                  {hero.passedInterviews.subtitle}
+                </p>
+              </div>
+            )}
 
             <div className="flex flex-wrap gap-2 mb-8">
               {hero.coachingAreas.map((area) => (
