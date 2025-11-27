@@ -6,7 +6,7 @@ import { z } from "zod";
 
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
-const YOUTUBE_CHANNEL_ID = "UC3mta5lIwyKgeXfEYNg-FPw"; // FullStackMaster channel
+const YOUTUBE_CHANNEL_ID = "UCfjBZHutgAYon-T8sqt1rwg"; // FullStackMaster channel
 
 function requireAdminAuth(req: Request, res: Response, next: NextFunction) {
   if (!ADMIN_TOKEN) {
