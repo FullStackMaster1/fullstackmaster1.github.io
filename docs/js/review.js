@@ -5,11 +5,15 @@ async function loadTestimonials() {
   const indicatorsContainer = document.getElementById('carouselIndicators');
   const innerContainer = document.getElementById('carouselInner');
 
-  // Define the path to your JSON file (assuming reviews.json is in the root directory)
+  // ⭐️ CORRECTED PATH: Since GitHub Pages serves from the /docs folder,
+  // the path is relative to the root of that published folder.
   const dataPath = 'assets/reviews.json';
 
   try {
     const response = await fetch(dataPath);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const reviews = await response.json();
 
     // Clear the "Loading" message
@@ -40,9 +44,20 @@ async function loadTestimonials() {
                     <span class="fa fa-star text-warning"></span>
                     <span class="fa fa-star text-warning"></span>
                     <span class="fa fa-star text-warning"></span> 
-                    <strong class="ml-2">5.0 stars</strong>
+                    <strong class="ml-2">${review.stars.toFixed(
+                      1
+                    )} stars</strong>
                 </div>
             `;
+
+      // Rupesh's reply section (conditionally added)
+      const replyHtml =
+        review.reply && review.reply.trim() !== ''
+          ? `<div class="testimonial-reply">
+                       <strong>Rupesh's Reply:</strong> ${review.reply}
+                   </div>`
+          : '';
+
       // -----------------------------
 
       carouselItem.innerHTML = `
@@ -51,6 +66,7 @@ async function loadTestimonials() {
                     <p class="testimonial-quote mt-3">${review.text}</p>
                     <strong class="testimonial-author">${review.author}</strong>
                     <span class="testimonial-date">${review.date}</span>
+                    ${replyHtml} 
                 </div>
             `;
 
@@ -58,14 +74,16 @@ async function loadTestimonials() {
     });
 
     // Re-initialize the carousel after content is loaded
-    // Note: $ is available because you included jQuery earlier in the HTML.
     $('#reviewCarousel').carousel();
   } catch (error) {
     console.error('Error loading testimonials:', error);
-    innerContainer.innerHTML =
-      '<div class="text-danger text-center p-5">Could not load testimonials. Please check reviews.json path.</div>';
+    innerContainer.innerHTML = `<div class="text-danger text-center p-5">
+            Could not load testimonials. Please check the 'reviews.json' path: ${dataPath}.
+        </div>`;
   }
 }
 
 // Call the function on page load
-window.addEventListener('load', loadTestimonials);
+window.addEventListener('load', () => {
+  setTimeout(loadTestimonials, 100);
+});
