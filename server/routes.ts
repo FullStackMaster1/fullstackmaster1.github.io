@@ -4,9 +4,12 @@ import { storage } from "./storage";
 import { insertWebinarRegistrationSchema } from "@shared/schema";
 import { z } from "zod";
 
-const ADMIN_TOKEN = process.env.ADMIN_TOKEN || "rupesh-admin-2024";
+const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 
 function requireAdminAuth(req: Request, res: Response, next: NextFunction) {
+  if (!ADMIN_TOKEN) {
+    return res.status(500).json({ error: "Admin token not configured. Please contact the administrator." });
+  }
   const token = req.headers["x-admin-token"];
   if (token !== ADMIN_TOKEN) {
     return res.status(401).json({ error: "Unauthorized. Invalid admin token." });
