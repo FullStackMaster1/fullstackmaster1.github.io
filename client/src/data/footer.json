@@ -7,6 +7,9 @@
     { "label": "Articles", "href": "#articles" },
     { "label": "Book Session", "href": "#booking" }
   ],
+  "legalLinks": [
+    { "label": "Privacy Policy", "href": "/privacy-policy" }
+  ],
   "quickLinks": {
     "title": "Quick Links"
   },

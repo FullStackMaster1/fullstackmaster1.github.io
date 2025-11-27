@@ -10,6 +10,7 @@ import { useAnalytics } from "./hooks/use-analytics";
 import Home from "@/pages/Home";
 import Resources from "@/pages/Resources";
 import Admin from "@/pages/Admin";
+import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -20,6 +21,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/resources" component={Resources} />
       <Route path="/admin" component={Admin} />
+      <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route component={NotFound} />
     </Switch>
   );

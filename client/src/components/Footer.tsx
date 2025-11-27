@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { ExternalLink, Mail } from "lucide-react";
+import { ExternalLink, Mail, Shield } from "lucide-react";
 import { SiYoutube, SiLinkedin, SiUdemy, SiPluralsight, SiWhatsapp, SiGithub } from "react-icons/si";
+import { Link } from "wouter";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
 import profileData from "@/data/profile.json";
 import footerData from "@/data/footer.json";
@@ -30,7 +31,7 @@ const getSocialUrl = (name: string): string => {
 
 export default function Footer() {
   const { personal, contact, brand, socialLinks, descriptions } = profileData;
-  const { links, socialIcons, quickLinks, contact: footerContact, verification, copyright } = footerData;
+  const { links, legalLinks, socialIcons, quickLinks, contact: footerContact, verification, copyright } = footerData;
 
   const handleScrollTo = (href: string) => {
     const element = document.querySelector(href);
@@ -152,7 +153,18 @@ export default function Footer() {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
           <p>&copy; {copyright.showYear ? new Date().getFullYear() : ''} {copyright.text}</p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap justify-center">
+            {legalLinks?.map((link: { label: string; href: string }) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="hover:text-foreground transition-colors flex items-center gap-1"
+                data-testid={`link-footer-${link.label.toLowerCase().replace(" ", "-")}`}
+              >
+                <Shield className="w-3 h-3" />
+                {link.label}
+              </Link>
+            ))}
             <a
               href={socialLinks.igotanoffer.url}
               target="_blank"
