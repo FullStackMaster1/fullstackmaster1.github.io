@@ -6,16 +6,87 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { Button } from "@/components/ui/button";
-import PlaylistCard from "./PlaylistCard";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Skeleton } from "@/components/ui/skeleton";
 import playlistsData from "@/data/playlists.json";
-import { ExternalLink, Youtube } from "lucide-react";
+import { ExternalLink, Youtube, PlayCircle, Loader2 } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
+import { useQuery } from "@tanstack/react-query";
+
+interface Playlist {
+  id: string | number;
+  title: string;
+  description: string;
+  thumbnail?: string;
+  videoCount: number;
+  url: string;
+}
+
+function PlaylistCard({ playlist }: { playlist: Playlist }) {
+  return (
+    <Card className="overflow-hidden h-full hover-elevate" data-testid={`card-playlist-${playlist.id}`}>
+      <a
+        href={playlist.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
+      >
+        {playlist.thumbnail ? (
+          <div className="aspect-video relative overflow-hidden bg-muted">
+            <img
+              src={playlist.thumbnail}
+              alt={playlist.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
+              <PlayCircle className="w-12 h-12 text-white" />
+            </div>
+            <Badge className="absolute bottom-2 right-2 bg-black/70 text-white">
+              {playlist.videoCount} videos
+            </Badge>
+          </div>
+        ) : (
+          <div className="aspect-video bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
+            <Youtube className="w-12 h-12 text-white" />
+          </div>
+        )}
+        <CardContent className="p-4">
+          <h3 className="font-semibold text-sm line-clamp-2 mb-2">{playlist.title}</h3>
+          <p className="text-xs text-muted-foreground line-clamp-2">
+            {playlist.description || "Watch the full playlist on YouTube"}
+          </p>
+        </CardContent>
+      </a>
+    </Card>
+  );
+}
+
+function PlaylistSkeleton() {
+  return (
+    <Card className="overflow-hidden h-full">
+      <Skeleton className="aspect-video" />
+      <CardContent className="p-4">
+        <Skeleton className="h-4 w-3/4 mb-2" />
+        <Skeleton className="h-3 w-full" />
+      </CardContent>
+    </Card>
+  );
+}
 
 export default function PlaylistsCarousel() {
   const autoplayPlugin = useRef(
     Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })
   );
+
+  const { data: playlists, isLoading, isError } = useQuery<Playlist[]>({
+    queryKey: ["/api/youtube/playlists"],
+    staleTime: 1000 * 60 * 60,
+    retry: 1,
+  });
+
+  const displayPlaylists = playlists && playlists.length > 0 ? playlists : playlistsData;
 
   return (
     <section
@@ -40,36 +111,39 @@ export default function PlaylistsCarousel() {
           </p>
         </div>
 
-        <Carousel
-          opts={{
-            align: "start",
-            loop: true,
-          }}
-          plugins={[autoplayPlugin.current]}
-          className="w-full"
-          onMouseEnter={() => autoplayPlugin.current.stop()}
-          onMouseLeave={() => autoplayPlugin.current.play()}
-        >
-          <CarouselContent className="-ml-4">
-            {playlistsData.map((playlist) => (
-              <CarouselItem
-                key={playlist.id}
-                className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4"
-              >
-                <PlaylistCard
-                  title={playlist.title}
-                  url={playlist.url}
-                  videoCount={playlist.videoCount}
-                  description={playlist.description}
-                />
-              </CarouselItem>
+        {isLoading ? (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            {[1, 2, 3, 4].map((i) => (
+              <PlaylistSkeleton key={i} />
             ))}
-          </CarouselContent>
-          <div className="hidden md:block">
-            <CarouselPrevious className="-left-12" data-testid="button-youtube-prev" />
-            <CarouselNext className="-right-12" data-testid="button-youtube-next" />
           </div>
-        </Carousel>
+        ) : (
+          <Carousel
+            opts={{
+              align: "start",
+              loop: true,
+            }}
+            plugins={[autoplayPlugin.current]}
+            className="w-full"
+            onMouseEnter={() => autoplayPlugin.current.stop()}
+            onMouseLeave={() => autoplayPlugin.current.play()}
+          >
+            <CarouselContent className="-ml-4">
+              {displayPlaylists.map((playlist: Playlist) => (
+                <CarouselItem
+                  key={playlist.id}
+                  className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4"
+                >
+                  <PlaylistCard playlist={playlist} />
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <div className="hidden md:block">
+              <CarouselPrevious className="-left-12" data-testid="button-youtube-prev" />
+              <CarouselNext className="-right-12" data-testid="button-youtube-next" />
+            </div>
+          </Carousel>
+        )}
 
         <div className="flex justify-center mt-8">
           <Button variant="outline" asChild>

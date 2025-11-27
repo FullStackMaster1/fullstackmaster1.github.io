@@ -5,6 +5,8 @@ import { insertWebinarRegistrationSchema } from "@shared/schema";
 import { z } from "zod";
 
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
+const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
+const YOUTUBE_CHANNEL_ID = "UC3mta5lIwyKgeXfEYNg-FPw"; // FullStackMaster channel
 
 function requireAdminAuth(req: Request, res: Response, next: NextFunction) {
   if (!ADMIN_TOKEN) {
@@ -85,6 +87,38 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Export error:", error);
       res.status(500).json({ error: "Failed to export registrations." });
+    }
+  });
+
+  app.get("/api/youtube/playlists", async (_req: Request, res: Response) => {
+    try {
+      if (!YOUTUBE_API_KEY) {
+        return res.status(500).json({ error: "YouTube API key not configured" });
+      }
+
+      const playlistsUrl = `https://www.googleapis.com/youtube/v3/playlists?part=snippet,contentDetails&channelId=${YOUTUBE_CHANNEL_ID}&maxResults=20&key=${YOUTUBE_API_KEY}`;
+      
+      const response = await fetch(playlistsUrl);
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.error("YouTube API error:", data);
+        return res.status(response.status).json({ error: data.error?.message || "Failed to fetch playlists" });
+      }
+
+      const playlists = data.items?.map((item: any) => ({
+        id: item.id,
+        title: item.snippet.title,
+        description: item.snippet.description,
+        thumbnail: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url,
+        videoCount: item.contentDetails.itemCount,
+        url: `https://www.youtube.com/playlist?list=${item.id}`,
+      })) || [];
+
+      res.json(playlists);
+    } catch (error) {
+      console.error("YouTube fetch error:", error);
+      res.status(500).json({ error: "Failed to fetch YouTube playlists" });
     }
   });
 
