@@ -75,7 +75,7 @@ The application prioritizes simplicity with the database layer prepared but not 
 **Section-Specific Content**:
 - `about.json`: Founder story, credentials, coaching philosophy
 - `methodology.json`: 5-step coaching process with detailed descriptions
-- `services.json`: Service offerings with session demos carousel
+- `services.json`: Service offerings with session demos carousel and embedded YouTube videos
 - `packages.json`: Pricing with "Investment Options" badge, package details
 - `faq.json`: Frequently asked questions
 - `reviews.json`: Client testimonials with ratings and session types
@@ -83,9 +83,11 @@ The application prioritizes simplicity with the database layer prepared but not 
 - `playlists.json`: YouTube playlist metadata
 - `articles.json`: LinkedIn newsletter articles
 - `opensource.json`: GitHub project showcases
+- `whyLeadersFail.json`: Pain points for senior leaders, Engineer/SA vs Director/VP comparison table, tableHeaders
+- `successStories.json`: Verified IGotAnOffer reviews with "Got Offer" badges, labels, overallRating
 
-**Homepage Flow** (trust-first conversion optimization):
-1. Hero → 2. About (founder story) → 3. Methodology (process) → 4. Services → 5. Reviews → 6. Pricing → 7. FAQ → 8. Booking
+**Homepage Flow** (conversion-optimized for senior leaders):
+1. Hero → 2. TrustBar → 3. Why Leaders Fail (pain points) → 4. About → 5. Methodology → 6. Services → 7. Success Stories → 8. Reviews → 9. Pricing → 10. FAQ → 11. Booking
 
 This approach enables easy content updates without backend changes and provides type-safe data access.
 
