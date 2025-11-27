@@ -3,7 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
 import { Star, Award, Users, CheckCircle, Phone, Mail, MessageCircle } from "lucide-react";
 import { SiWhatsapp, SiAmazon } from "react-icons/si";
-import profileImage from "@assets/rupesh headshot_1764259349659.jpeg";
+import profileImage from "@assets/rupesh-headshot_1764261897457.png";
 
 const targetRoles = [
   "Senior Manager",

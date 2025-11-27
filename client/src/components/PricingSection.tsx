@@ -1,8 +1,29 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Check, Zap, Clock, Video, Calendar, MessageCircle } from "lucide-react";
+import { Check, Zap, Clock, Video, Calendar, MessageCircle, Star, Quote } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
+
+const pricingTestimonials = [
+  {
+    quote: "Worth every penny! Rupesh's coaching helped me land a Sr. Manager role at AWS.",
+    author: "Former Client",
+    role: "Now Sr. Manager at AWS",
+    rating: 5,
+  },
+  {
+    quote: "The 5-session package was perfect. Got offers from both Google and Meta.",
+    author: "Engineering Director",
+    role: "FAANG Interview Success",
+    rating: 5,
+  },
+  {
+    quote: "Best investment in my career. Rupesh's LP coaching is unmatched.",
+    author: "Principal Engineer",
+    role: "Amazon Leadership Prep",
+    rating: 5,
+  },
+];
 
 const packageFeatures = [
   "5 x 60-minute 1:1 sessions",
@@ -143,7 +164,7 @@ export default function PricingSection() {
           </Card>
         </div>
 
-        <div className="bg-muted/50 rounded-lg p-6 text-center">
+        <div className="bg-muted/50 rounded-lg p-6 text-center mb-12">
           <h3 className="font-semibold mb-2">How Direct Booking Works</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-muted-foreground">
             <div className="flex items-center justify-center gap-2">
@@ -158,6 +179,31 @@ export default function PricingSection() {
               <Video className="w-4 h-4 text-blue-500" />
               <span>3. Meet via Google Meet/Zoom</span>
             </div>
+          </div>
+        </div>
+
+        <div className="border-t border-border pt-8">
+          <p className="text-center text-sm text-muted-foreground mb-6">
+            What clients say about the investment
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {pricingTestimonials.map((testimonial, index) => (
+              <Card key={index} className="bg-card/50" data-testid={`testimonial-pricing-${index}`}>
+                <CardContent className="pt-6">
+                  <div className="flex gap-0.5 mb-3">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
+                    ))}
+                  </div>
+                  <Quote className="w-6 h-6 text-primary/30 mb-2" />
+                  <p className="text-sm italic mb-4">"{testimonial.quote}"</p>
+                  <div>
+                    <p className="font-medium text-sm">{testimonial.author}</p>
+                    <p className="text-xs text-muted-foreground">{testimonial.role}</p>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </div>

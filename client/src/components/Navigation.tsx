@@ -9,7 +9,8 @@ const navLinks = [
   { label: "Reviews", href: "#reviews" },
   { label: "Pricing", href: "#pricing" },
   { label: "Courses", href: "#courses" },
-  { label: "Articles", href: "#articles" },
+  { label: "Blog", href: "#blog" },
+  { label: "FAQ", href: "#faq" },
   { label: "Book Now", href: "#booking" },
 ];
 
