@@ -271,6 +271,13 @@
                 Now</a>
         </div>
 
+        <!-- Booking Section -->
+        <div class="container my-5 text-center">
+            <h2>Book a Call</h2>
+            <p>Schedule a 1:1 session with Rupesh</p>
+            <div id="gcal-booking"></div>
+        </div>
+        <!-- Load Google Calendar Booking Widget -->
         <!-- Footer -->
         <div class="footer">
             <p>&copy; 2024 Rupesh Tiwari. All rights reserved. <a href="/privacy-policy" target="_blank">Privacy
@@ -291,6 +298,21 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="js/site.js"></script>
 
+        <!-- Google Calendar Appointment Scheduling -->
+        <link href="https://calendar.google.com/calendar/scheduling-button-script.css" rel="stylesheet">
+
+        <script src="https://calendar.google.com/calendar/scheduling-button-script.js" async></script>
+
+        <script>
+            window.addEventListener('load', function () {
+                calendar.schedulingButton.load({
+                    url: "https://calendar.google.com/calendar/appointments/AcZssZ2dMNXqXzYcl2NKLpclDV9w0p4-9cp4UvTHii0=?gv=true",
+                    color: "#039BE5",
+                    label: "Book an Appointment",
+                    target: document.getElementById("gcal-booking")
+                });
+            });
+        </script>
 
     </body>
 
