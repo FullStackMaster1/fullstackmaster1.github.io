@@ -1,12 +1,27 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar, Clock, Users, Video, Bell, ArrowRight } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Calendar, Clock, Users, Video, Bell, ArrowRight, CheckCircle, Loader2 } from "lucide-react";
 import { SiWhatsapp, SiYoutube } from "react-icons/si";
+import { useState } from "react";
+import { useMutation } from "@tanstack/react-query";
+import { apiRequest } from "@/lib/queryClient";
+import { useToast } from "@/hooks/use-toast";
 
 const upcomingWebinars = [
   {
-    id: 1,
+    id: "system-design-leaders",
     title: "System Design for Senior Leaders",
     description: "Learn the frameworks and communication patterns that Staff+ engineers and Directors use in FAANG interviews.",
     date: "Coming Soon",
@@ -15,7 +30,7 @@ const upcomingWebinars = [
     topics: ["Scalability", "Trade-offs", "Communication"],
   },
   {
-    id: 2,
+    id: "amazon-leadership-principles",
     title: "Mastering Amazon Leadership Principles",
     description: "Deep-dive into LPs with real examples. How to structure stories that resonate with bar-raisers.",
     date: "Coming Soon",
@@ -24,7 +39,7 @@ const upcomingWebinars = [
     topics: ["STAR Method", "Story Crafting", "Bar-raiser Tips"],
   },
   {
-    id: 3,
+    id: "executive-communication",
     title: "Executive Communication Masterclass",
     description: "How to compress complex technical ideas into executive-ready narratives for VP and C-suite interviews.",
     date: "Coming Soon",
@@ -34,7 +49,138 @@ const upcomingWebinars = [
   },
 ];
 
+interface RegistrationFormProps {
+  webinar: typeof upcomingWebinars[0];
+  onSuccess: () => void;
+}
+
+function RegistrationForm({ webinar, onSuccess }: RegistrationFormProps) {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [whatsappOptIn, setWhatsappOptIn] = useState(true);
+  const { toast } = useToast();
+
+  const registerMutation = useMutation({
+    mutationFn: async () => {
+      const response = await apiRequest("POST", "/api/webinar/register", {
+        name,
+        email,
+        phone: phone || null,
+        webinarId: webinar.id,
+        webinarTitle: webinar.title,
+        whatsappOptIn,
+      });
+      return response.json();
+    },
+    onSuccess: (data) => {
+      toast({
+        title: "Registration Successful!",
+        description: data.message || "You will receive updates about this webinar.",
+      });
+      onSuccess();
+    },
+    onError: async (error: Error & { response?: Response }) => {
+      let errorMessage = "Failed to register. Please try again.";
+      if (error.response) {
+        const data = await error.response.json();
+        errorMessage = data.error || errorMessage;
+      }
+      toast({
+        title: "Registration Failed",
+        description: errorMessage,
+        variant: "destructive",
+      });
+    },
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name || !email) {
+      toast({
+        title: "Please fill required fields",
+        description: "Name and email are required.",
+        variant: "destructive",
+      });
+      return;
+    }
+    registerMutation.mutate();
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="space-y-2">
+        <Label htmlFor="name">Full Name *</Label>
+        <Input
+          id="name"
+          placeholder="Your name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+          data-testid="input-registration-name"
+        />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="email">Email Address *</Label>
+        <Input
+          id="email"
+          type="email"
+          placeholder="your@email.com"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+          data-testid="input-registration-email"
+        />
+      </div>
+      <div className="space-y-2">
+        <Label htmlFor="phone">Phone/WhatsApp (Optional)</Label>
+        <Input
+          id="phone"
+          placeholder="+1 234 567 8900"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          data-testid="input-registration-phone"
+        />
+      </div>
+      <div className="flex items-center space-x-2">
+        <Checkbox
+          id="whatsapp-optin"
+          checked={whatsappOptIn}
+          onCheckedChange={(checked) => setWhatsappOptIn(checked as boolean)}
+          data-testid="checkbox-whatsapp-optin"
+        />
+        <Label htmlFor="whatsapp-optin" className="text-sm text-muted-foreground cursor-pointer">
+          Send me webinar reminders via WhatsApp
+        </Label>
+      </div>
+      <Button 
+        type="submit" 
+        className="w-full" 
+        disabled={registerMutation.isPending}
+        data-testid="button-submit-registration"
+      >
+        {registerMutation.isPending ? (
+          <>
+            <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+            Registering...
+          </>
+        ) : (
+          <>
+            <CheckCircle className="w-4 h-4 mr-2" />
+            Register for Free Webinar
+          </>
+        )}
+      </Button>
+      <p className="text-xs text-center text-muted-foreground">
+        You'll receive the Google Meet link closer to the webinar date.
+      </p>
+    </form>
+  );
+}
+
 export default function WebinarSection() {
+  const [openDialogId, setOpenDialogId] = useState<string | null>(null);
+
   return (
     <section
       id="webinars"
@@ -87,12 +233,26 @@ export default function WebinarSection() {
                     </Badge>
                   ))}
                 </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-xs text-muted-foreground flex items-center gap-1">
-                    <Bell className="w-3 h-3" />
-                    {webinar.spots}
-                  </span>
-                </div>
+                <Dialog open={openDialogId === webinar.id} onOpenChange={(open) => setOpenDialogId(open ? webinar.id : null)}>
+                  <DialogTrigger asChild>
+                    <Button className="w-full" data-testid={`button-register-${webinar.id}`}>
+                      <Bell className="w-4 h-4 mr-2" />
+                      Register Interest
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="sm:max-w-md">
+                    <DialogHeader>
+                      <DialogTitle>Register for {webinar.title}</DialogTitle>
+                      <DialogDescription>
+                        Get notified when this webinar is scheduled. It's free!
+                      </DialogDescription>
+                    </DialogHeader>
+                    <RegistrationForm 
+                      webinar={webinar} 
+                      onSuccess={() => setOpenDialogId(null)} 
+                    />
+                  </DialogContent>
+                </Dialog>
               </CardContent>
             </Card>
           ))}
@@ -102,11 +262,11 @@ export default function WebinarSection() {
           <Card className="max-w-2xl mx-auto border-primary/20 bg-primary/5">
             <CardContent className="p-6">
               <h3 className="font-semibold text-lg mb-2">
-                Get Notified About Upcoming Webinars
+                Stay Updated on All Webinars
               </h3>
               <p className="text-sm text-muted-foreground mb-4">
-                Be the first to know when I announce new free webinars. 
-                Connect with me on WhatsApp or subscribe to my YouTube channel.
+                Follow me on WhatsApp or YouTube to never miss a free webinar. 
+                I announce new sessions there first!
               </p>
               <div className="flex flex-wrap justify-center gap-3">
                 <Button asChild>
@@ -117,7 +277,7 @@ export default function WebinarSection() {
                     data-testid="button-webinar-whatsapp"
                   >
                     <SiWhatsapp className="w-4 h-4 mr-2" />
-                    Get Notified
+                    WhatsApp Updates
                   </a>
                 </Button>
                 <Button variant="outline" asChild>
