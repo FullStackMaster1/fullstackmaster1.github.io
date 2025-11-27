@@ -70,10 +70,10 @@ The application prioritizes simplicity with the database layer prepared but not 
 
 **Site-Wide Content** (siteContent.json):
 - `navigation`: Brand name, menu links, CTA buttons (WhatsApp, Book Session)
-- `hero`: Badges, proof points (100+ coached, 85%+ offers, 5.0 rating), company logos, CTAs
+- `hero`: Badges (AWS Senior CSM, Coaching Since 2018, ISB CTO Scholar), proof points (4000+ coached, 7+ years, 85%+ offers, 5.0 rating), company logos, CTAs, LinkedIn link
 
 **Section-Specific Content**:
-- `about.json`: Founder story, credentials, coaching philosophy
+- `about.json`: Founder story, credentials, coaching philosophy, career journey timeline (SDE → Architect → AWS SA → Sr. CSM), LinkedIn profile link, certifications
 - `methodology.json`: 5-step coaching process with detailed descriptions
 - `services.json`: Service offerings with session demos carousel and embedded YouTube videos
 - `packages.json`: Pricing with "Investment Options" badge, package details
