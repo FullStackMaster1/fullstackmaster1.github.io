@@ -94,7 +94,10 @@ export default function ServicesSection() {
     };
   }, [api]);
 
-  const currentDemo = (sessionDemos as SessionDemo[])[currentIndex];
+  const demos = sessionDemos as SessionDemo[];
+  const currentDemo = demos[currentIndex] || demos[0];
+
+  if (!currentDemo) return null;
 
   return (
     <section

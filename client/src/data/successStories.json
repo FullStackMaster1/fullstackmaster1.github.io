@@ -1,0 +1,103 @@
+{
+  "sectionBadge": "Verified Results",
+  "sectionTitle": "Leaders Who Got",
+  "sectionTitleHighlight": "Offers",
+  "sectionDescription": "Real results from real coaching sessions. These leaders trusted the process and landed roles at top companies.",
+  "sourceNote": "All reviews sourced from IGotAnOffer.com with permission",
+  "sourceLink": "https://www.igotanoffer.com/en/coaches/rupesh",
+  "labels": {
+    "gotOffer": "Got Offer",
+    "coachNote": "Coach's Note:",
+    "ratingText": "• 50+ verified reviews on IGotAnOffer",
+    "viewAllReviews": "View All 50+ Reviews"
+  },
+  "overallRating": {
+    "score": "5.0",
+    "stars": 5
+  },
+  "successStories": [
+    {
+      "id": "vaughn-draftkings",
+      "name": "Vaughn",
+      "role": "Software Engineer",
+      "company": "DraftKings",
+      "companyLogo": "draftkings",
+      "outcome": "Landed Role",
+      "review": "THANK YOU RUPESH!!!",
+      "coachReply": "Vaughn landed a role at DraftKings after our coaching session. Appreciate the kind note. Wishing you continued success!",
+      "sessionType": "Object-Oriented Design Interview",
+      "date": "Apr 2025",
+      "rating": 5,
+      "featured": true
+    },
+    {
+      "id": "ann-solutions-architect",
+      "name": "Ann",
+      "role": "Solutions Architect",
+      "company": "Databricks",
+      "companyLogo": "databricks",
+      "outcome": "Multiple Sessions",
+      "review": "This was my >2 times with Rupesh for mock interview! He holds a very high bar and treats each mock interview as seriously as if it were his own team's hiring process. The session was incredibly valuable, and I truly believe his guidance will help me ace the interview!",
+      "sessionType": "System Design & Panel Prep",
+      "date": "Aug 2025",
+      "rating": 5,
+      "featured": true
+    },
+    {
+      "id": "muhammad-sa",
+      "name": "Muhammad",
+      "role": "Solution Architect",
+      "company": "Tech Company",
+      "companyLogo": "generic",
+      "outcome": "Interview Ready",
+      "review": "I had my first mock interview session with Rupesh, and it was extremely insightful. He not only reviewed my technical approach, but also coached me on how to structure and communicate my design decisions clearly and confidently. In just one hour, I gained a clear picture of my strengths and the areas I need to refine.",
+      "sessionType": "System Design Interview",
+      "date": "Jul 2025",
+      "rating": 5,
+      "featured": true
+    },
+    {
+      "id": "melvin-sa",
+      "name": "Melvin",
+      "role": "Solutions Architect",
+      "company": "Cloud Company",
+      "companyLogo": "generic",
+      "outcome": "90-Day Roadmap",
+      "review": "Rupesh was amazing to work with. As a beginning Solutions Architect, I was stuck in my career, and he provided guidance for sharpening my skills, demonstrating competence, building my brand, and engaging with other cloud professionals and recruiters. By the end of the session, I had a 90-day step-by-step plan to turn my career around.",
+      "sessionType": "Career Coaching",
+      "date": "Apr 2025",
+      "rating": 5,
+      "featured": true
+    },
+    {
+      "id": "andre-amazon",
+      "name": "Andre",
+      "role": "Technical Professional",
+      "company": "Amazon",
+      "companyLogo": "amazon",
+      "outcome": "Interview Prep",
+      "review": "I had a prep session with Rupesh for my Amazon interview. His experience as an Amazon Solutions Architect shows in his coaching. Rupesh gave clear feedback on my technical answers and communication style, spotting weaknesses I missed. With his background conducting numerous interviews, I felt better prepared after our session.",
+      "sessionType": "Amazon Interview Prep",
+      "date": "May 2025",
+      "rating": 5,
+      "featured": true
+    },
+    {
+      "id": "aman-system-design",
+      "name": "Aman",
+      "role": "Engineer",
+      "company": "Tech Company",
+      "companyLogo": "generic",
+      "outcome": "Confidence Boost",
+      "review": "Rupesh is a wonderful and kind coach who helped me through a full session of understanding System Design fundamentals. Prior to our session, I was intimidated by the thoughts of my upcoming interview but Rupesh has given me a solid framework which I can use to be confident in my questions/answers. I highly recommend a learning session with Rupesh!",
+      "sessionType": "System Design Fundamentals",
+      "date": "Jul 2025",
+      "rating": 5,
+      "featured": false
+    }
+  ],
+  "ctaButton": {
+    "text": "Join These Success Stories",
+    "link": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I%20want%20to%20join%20your%20success%20stories.%20Let's%20discuss%20coaching."
+  }
+}
