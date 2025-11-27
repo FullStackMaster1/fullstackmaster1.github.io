@@ -1,0 +1,74 @@
+{
+  "metrics": [
+    {
+      "id": "reviews",
+      "icon": "Star",
+      "value": 50,
+      "suffix": "+",
+      "label": "5-Star Reviews",
+      "color": "text-yellow-500"
+    },
+    {
+      "id": "experience",
+      "icon": "Award",
+      "value": 20,
+      "suffix": "+",
+      "label": "Years Experience",
+      "color": "text-primary"
+    },
+    {
+      "id": "articles",
+      "icon": "FileText",
+      "value": 300,
+      "suffix": "+",
+      "label": "Technical Articles",
+      "color": "text-blue-500"
+    },
+    {
+      "id": "coached",
+      "icon": "Users",
+      "value": 100,
+      "suffix": "+",
+      "label": "Leaders Coached",
+      "color": "text-green-500"
+    }
+  ],
+  "platforms": [
+    {
+      "name": "IGotAnOffer",
+      "icon": "CheckCircle",
+      "label": "Verified Coach",
+      "url": "https://igotanoffer.com/en/coach/rupesh",
+      "color": "text-green-500"
+    },
+    {
+      "name": "Pluralsight",
+      "icon": "SiPluralsight",
+      "label": "Author",
+      "url": "https://www.pluralsight.com/authors/rupesh-tiwari",
+      "color": "text-pink-600"
+    },
+    {
+      "name": "Udemy",
+      "icon": "SiUdemy",
+      "label": "Instructor",
+      "url": "https://www.udemy.com/user/rupesh-k-tiwari/",
+      "color": "text-purple-600"
+    },
+    {
+      "name": "YouTube",
+      "icon": "SiYoutube",
+      "label": "Creator",
+      "url": "https://www.youtube.com/@FullStackMaster",
+      "color": "text-red-500"
+    },
+    {
+      "name": "LinkedIn",
+      "icon": "SiLinkedin",
+      "label": "Newsletter",
+      "url": "https://www.linkedin.com/newsletters/technical-blogs-6871207419859615744/",
+      "color": "text-blue-600"
+    }
+  ],
+  "featuredOnText": "As Featured On"
+}

@@ -1,73 +1,101 @@
 import { Badge } from "@/components/ui/badge";
-import { Star, Award, Users, FileText, CheckCircle } from "lucide-react";
+import { Star, Award, Users, FileText, CheckCircle, LucideIcon } from "lucide-react";
 import { SiYoutube, SiLinkedin, SiUdemy, SiPluralsight } from "react-icons/si";
+import { useEffect, useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+import trustData from "@/data/trustMetrics.json";
+import { IconType } from "react-icons";
 
-const trustMetrics = [
-  {
-    icon: Star,
-    value: "50+",
-    label: "5-Star Reviews",
-    color: "text-yellow-500",
-  },
-  {
-    icon: Award,
-    value: "20+",
-    label: "Years Experience",
-    color: "text-primary",
-  },
-  {
-    icon: FileText,
-    value: "300+",
-    label: "Technical Articles",
-    color: "text-blue-500",
-  },
-  {
-    icon: Users,
-    value: "100+",
-    label: "Leaders Coached",
-    color: "text-green-500",
-  },
-];
+const lucideIconMap: Record<string, LucideIcon> = {
+  Star,
+  Award,
+  FileText,
+  Users,
+  CheckCircle,
+};
 
-const platformLogos = [
-  {
-    name: "IGotAnOffer",
-    icon: CheckCircle,
-    label: "Verified Coach",
-    url: "https://igotanoffer.com/en/coach/rupesh",
-    color: "text-green-500",
-  },
-  {
-    name: "Pluralsight",
-    icon: SiPluralsight,
-    label: "Author",
-    url: "https://www.pluralsight.com/authors/rupesh-tiwari",
-    color: "text-pink-600",
-  },
-  {
-    name: "Udemy",
-    icon: SiUdemy,
-    label: "Instructor",
-    url: "https://www.udemy.com/user/rupesh-k-tiwari/",
-    color: "text-purple-600",
-  },
-  {
-    name: "YouTube",
-    icon: SiYoutube,
-    label: "Creator",
-    url: "https://www.youtube.com/@FullStackMaster",
-    color: "text-red-500",
-  },
-  {
-    name: "LinkedIn",
-    icon: SiLinkedin,
-    label: "Newsletter",
-    url: "https://www.linkedin.com/newsletters/technical-blogs-6871207419859615744/",
-    color: "text-blue-600",
-  },
-];
+const siIconMap: Record<string, IconType> = {
+  SiYoutube,
+  SiLinkedin,
+  SiUdemy,
+  SiPluralsight,
+};
+
+interface Metric {
+  id: string;
+  icon: string;
+  value: number;
+  suffix: string;
+  label: string;
+  color: string;
+}
+
+interface Platform {
+  name: string;
+  icon: string;
+  label: string;
+  url: string;
+  color: string;
+}
+
+function AnimatedCounter({ 
+  target, 
+  suffix, 
+  duration = 2000 
+}: { 
+  target: number; 
+  suffix: string; 
+  duration?: number;
+}) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const hasAnimated = useRef(false);
+
+  useEffect(() => {
+    if (!isInView || hasAnimated.current) return;
+    hasAnimated.current = true;
+
+    const startTime = Date.now();
+    const endTime = startTime + duration;
+
+    const updateCount = () => {
+      const now = Date.now();
+      const progress = Math.min((now - startTime) / duration, 1);
+      
+      // Easing function for smooth deceleration
+      const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+      const currentCount = Math.floor(easeOutQuart * target);
+      
+      setCount(currentCount);
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCount);
+      } else {
+        setCount(target);
+      }
+    };
+
+    requestAnimationFrame(updateCount);
+  }, [isInView, target, duration]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.5 }}
+      className="text-2xl md:text-3xl font-bold"
+    >
+      {count}{suffix}
+    </motion.div>
+  );
+}
 
 export default function TrustBar() {
+  const metrics = trustData.metrics as Metric[];
+  const platforms = trustData.platforms as Platform[];
+
   return (
     <section
       className="py-8 bg-card border-y border-card-border"
@@ -75,49 +103,82 @@ export default function TrustBar() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-          {trustMetrics.map((metric) => (
-            <div
-              key={metric.label}
-              className="text-center"
-              data-testid={`metric-${metric.label.toLowerCase().replace(/ /g, "-")}`}
-            >
-              <div className="flex justify-center mb-2">
-                <metric.icon className={`w-6 h-6 ${metric.color}`} />
-              </div>
-              <div className="text-2xl md:text-3xl font-bold">{metric.value}</div>
-              <div className="text-sm text-muted-foreground">{metric.label}</div>
-            </div>
-          ))}
+          {metrics.map((metric, index) => {
+            const IconComponent = lucideIconMap[metric.icon];
+            return (
+              <motion.div
+                key={metric.id}
+                className="text-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                data-testid={`metric-${metric.label.toLowerCase().replace(/ /g, "-")}`}
+              >
+                <motion.div 
+                  className="flex justify-center mb-2"
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ 
+                    type: "spring", 
+                    stiffness: 200, 
+                    delay: index * 0.1 + 0.2 
+                  }}
+                >
+                  {IconComponent && (
+                    <IconComponent className={`w-6 h-6 ${metric.color}`} />
+                  )}
+                </motion.div>
+                <AnimatedCounter 
+                  target={metric.value} 
+                  suffix={metric.suffix}
+                  duration={1500 + index * 200}
+                />
+                <div className="text-sm text-muted-foreground">{metric.label}</div>
+              </motion.div>
+            );
+          })}
         </div>
 
         <div className="border-t border-border pt-6">
           <p className="text-center text-sm text-muted-foreground mb-4">
-            As Featured On
+            {trustData.featuredOnText}
           </p>
           <div className="flex flex-wrap justify-center items-center gap-4 md:gap-8">
-            {platformLogos.map((platform) => (
-              <a
-                key={platform.name}
-                href={platform.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-lg bg-background border border-border hover-elevate transition-all"
-                data-testid={`link-platform-${platform.name.toLowerCase()}`}
-              >
-                {platform.icon && (
-                  <platform.icon className={`w-5 h-5 ${platform.color || ""}`} />
-                )}
-                {platform.name === "IGotAnOffer" && (
-                  <span className="font-semibold text-primary">iGotAnOffer</span>
-                )}
-                {platform.name !== "IGotAnOffer" && (
-                  <span className="font-medium">{platform.name}</span>
-                )}
-                <Badge variant="secondary" className="text-xs">
-                  {platform.label}
-                </Badge>
-              </a>
-            ))}
+            {platforms.map((platform, index) => {
+              const LucideIcon = lucideIconMap[platform.icon];
+              const SiIcon = siIconMap[platform.icon];
+              const IconComponent = LucideIcon || SiIcon;
+              
+              return (
+                <motion.a
+                  key={platform.name}
+                  href={platform.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg bg-background border border-border hover-elevate transition-all"
+                  data-testid={`link-platform-${platform.name.toLowerCase()}`}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                >
+                  {IconComponent && (
+                    <IconComponent className={`w-5 h-5 ${platform.color || ""}`} />
+                  )}
+                  {platform.name === "IGotAnOffer" && (
+                    <span className="font-semibold text-primary">iGotAnOffer</span>
+                  )}
+                  {platform.name !== "IGotAnOffer" && (
+                    <span className="font-medium">{platform.name}</span>
+                  )}
+                  <Badge variant="secondary" className="text-xs">
+                    {platform.label}
+                  </Badge>
+                </motion.a>
+              );
+            })}
           </div>
         </div>
       </div>
