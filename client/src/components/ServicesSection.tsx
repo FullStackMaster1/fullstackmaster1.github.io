@@ -67,6 +67,7 @@ interface SessionDemo {
   showcaseTitle: string;
   showcaseDescription: string;
   showcaseFeatures: string[];
+  youtubeVideoId?: string;
 }
 
 export default function ServicesSection() {
@@ -133,18 +134,31 @@ export default function ServicesSection() {
                     return (
                       <CarouselItem key={demo.id}>
                         <div className="relative aspect-video">
-                          <img
-                            src={imageSrc}
-                            alt={demo.title}
-                            className="w-full h-full object-cover"
-                          />
-                          <div className="absolute top-4 left-4 flex gap-2">
-                            <Badge className="bg-red-500 text-white">
-                              <Video className="w-3 h-3 mr-1" />
-                              {liveSessionShowcase.liveBadge}
-                            </Badge>
-                          </div>
-                          <div className="absolute bottom-4 left-4 right-4">
+                          {demo.youtubeVideoId ? (
+                            <iframe
+                              src={`https://www.youtube.com/embed/${demo.youtubeVideoId}?rel=0&modestbranding=1`}
+                              title={demo.title}
+                              className="w-full h-full"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                              data-testid={`video-${demo.id}`}
+                            />
+                          ) : (
+                            <>
+                              <img
+                                src={imageSrc}
+                                alt={demo.title}
+                                className="w-full h-full object-cover"
+                              />
+                              <div className="absolute top-4 left-4 flex gap-2">
+                                <Badge className="bg-red-500 text-white">
+                                  <Video className="w-3 h-3 mr-1" />
+                                  {liveSessionShowcase.liveBadge}
+                                </Badge>
+                              </div>
+                            </>
+                          )}
+                          <div className="absolute bottom-4 left-4 right-4 pointer-events-none">
                             <div className="bg-black/70 backdrop-blur-sm rounded-lg p-3">
                               <div className="flex items-center gap-2">
                                 <IconComponent className="w-4 h-4 text-white" />
