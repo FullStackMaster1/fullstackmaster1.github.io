@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone, MessageCircle } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
+import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
 
 const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Reviews", href: "#reviews" },
+  { label: "Pricing", href: "#pricing" },
   { label: "Courses", href: "#courses" },
-  { label: "YouTube", href: "#youtube" },
-  { label: "Book Session", href: "#booking" },
+  { label: "Articles", href: "#articles" },
+  { label: "Book Now", href: "#booking" },
 ];
 
 export default function Navigation() {
@@ -34,7 +37,7 @@ export default function Navigation() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-sm border-b border-border"
+          ? "bg-background/95 backdrop-blur-sm border-b border-border shadow-sm"
           : "bg-transparent"
       }`}
       data-testid="navigation"
@@ -43,29 +46,54 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16">
           <a
             href="#"
-            className="text-xl font-bold text-foreground"
+            className="flex items-center gap-2"
             data-testid="link-home"
           >
-            Rupesh Tiwari
+            <img
+              src={logoImage}
+              alt="FullStack Master"
+              className="h-10 w-auto rounded"
+              data-testid="img-logo"
+            />
+            <span className="hidden sm:block font-bold text-lg">FullStack Master</span>
           </a>
 
-          <div className="hidden md:flex items-center gap-1">
+          <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <Button
                 key={link.href}
                 variant="ghost"
+                size="sm"
                 onClick={() => handleNavClick(link.href)}
                 data-testid={`link-${link.label.toLowerCase().replace(" ", "-")}`}
               >
                 {link.label}
               </Button>
             ))}
+          </div>
+
+          <div className="hidden md:flex items-center gap-2">
             <Button
-              className="ml-2"
+              variant="outline"
+              size="sm"
+              asChild
+            >
+              <a
+                href="https://wa.me/16094424081"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="button-whatsapp-nav"
+              >
+                <SiWhatsapp className="w-4 h-4 mr-1 text-green-500" />
+                WhatsApp
+              </a>
+            </Button>
+            <Button
+              size="sm"
               onClick={() => handleNavClick("#booking")}
               data-testid="button-book-now"
             >
-              Book Now
+              Book Session
             </Button>
           </div>
 
@@ -81,8 +109,8 @@ export default function Navigation() {
         </div>
 
         {isOpen && (
-          <div className="md:hidden pb-4 bg-background/95 backdrop-blur-sm">
-            <div className="flex flex-col gap-2">
+          <div className="lg:hidden pb-4 bg-background/95 backdrop-blur-sm border-t border-border">
+            <div className="flex flex-col gap-1 pt-4">
               {navLinks.map((link) => (
                 <Button
                   key={link.href}
@@ -94,13 +122,32 @@ export default function Navigation() {
                   {link.label}
                 </Button>
               ))}
-              <Button
-                className="mt-2"
-                onClick={() => handleNavClick("#booking")}
-                data-testid="button-mobile-book-now"
-              >
-                Book Now
-              </Button>
+              <div className="flex gap-2 mt-4 px-4">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="flex-1"
+                  asChild
+                >
+                  <a
+                    href="https://wa.me/16094424081"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-testid="button-mobile-whatsapp"
+                  >
+                    <SiWhatsapp className="w-4 h-4 mr-1 text-green-500" />
+                    WhatsApp
+                  </a>
+                </Button>
+                <Button
+                  size="sm"
+                  className="flex-1"
+                  onClick={() => handleNavClick("#booking")}
+                  data-testid="button-mobile-book"
+                >
+                  Book Now
+                </Button>
+              </div>
             </div>
           </div>
         )}

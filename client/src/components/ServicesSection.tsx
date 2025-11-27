@@ -1,67 +1,59 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
-  Cloud,
-  Database,
-  Package,
+  Target,
+  MessageSquare,
+  Presentation,
+  FileText,
   Users,
-  ClipboardList,
-  Cog,
-  Server,
-  Building2,
-  Code2,
-  FileCheck,
+  Sparkles,
+  ArrowRight,
 } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
 
 const services = [
   {
-    role: "Cloud Engineer",
-    description: "AWS, Azure, GCP cloud architecture and certifications",
-    icon: Cloud,
+    title: "System Design for Leaders",
+    description: "End-to-end system design coaching for Staff+, Director, and VP-level technical interviews. Learn to communicate architecture decisions under pressure.",
+    icon: Target,
+    features: ["FAANG-style prompts", "Trade-off analysis", "Scalability patterns"],
+    popular: true,
   },
   {
-    role: "Data Engineer",
-    description: "Data pipelines, ETL, and big data technologies",
-    icon: Database,
+    title: "Behavioral & LP Mastery",
+    description: "Master Amazon Leadership Principles and behavioral interviews with real stories, not buzzwords. Bar-raiser ready answers for senior roles.",
+    icon: MessageSquare,
+    features: ["STAR framework", "Amazon LPs deep-dive", "Story structuring"],
+    popular: true,
   },
   {
-    role: "Product Manager",
-    description: "Product strategy, roadmaps, and stakeholder management",
-    icon: Package,
+    title: "Executive Communication",
+    description: "Learn to speak to Directors, VPs, and C-suite with confidence. Compress complex ideas into executive-ready narratives.",
+    icon: Presentation,
+    features: ["Exec-level framing", "Stakeholder influence", "Presentation skills"],
+    popular: false,
   },
   {
-    role: "Engineering Manager",
-    description: "Team leadership, hiring, and engineering culture",
+    title: "Strategic Intro Pitch",
+    description: "Craft a compelling 2-minute introduction that positions you as the obvious hire. First impressions that open doors.",
+    icon: Sparkles,
+    features: ["Value proposition", "Personal branding", "Interview opening"],
+    popular: false,
+  },
+  {
+    title: "Resume Optimization",
+    description: "Transform your resume to showcase leadership impact, not just tasks. Quantified achievements that pass senior-level screens.",
+    icon: FileText,
+    features: ["Impact-driven bullets", "ATS optimization", "Role alignment"],
+    popular: false,
+  },
+  {
+    title: "5-Session Coaching Package",
+    description: "Comprehensive interview prep covering all areas. Book directly and save $105 vs platform pricing. Same quality, better value.",
     icon: Users,
-  },
-  {
-    role: "Manager of TPMs",
-    description: "TPM leadership and program excellence",
-    icon: ClipboardList,
-  },
-  {
-    role: "Program Manager",
-    description: "Cross-functional programs and delivery excellence",
-    icon: FileCheck,
-  },
-  {
-    role: "Site Reliability Engineer",
-    description: "SRE practices, observability, and incident management",
-    icon: Server,
-  },
-  {
-    role: "Solutions Architect",
-    description: "System design, AWS architecture, and customer solutions",
-    icon: Building2,
-  },
-  {
-    role: "Staff Software Engineer",
-    description: "Technical leadership and system design at scale",
-    icon: Code2,
-  },
-  {
-    role: "Technical Program Manager",
-    description: "Technical delivery, risk management, and execution",
-    icon: Cog,
+    features: ["$600 total ($120/session)", "Personalized prep plan", "Priority scheduling"],
+    popular: true,
   },
 ];
 
@@ -74,36 +66,80 @@ export default function ServicesSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
+          <Badge variant="secondary" className="mb-4">For Senior Leaders</Badge>
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
             data-testid="text-services-title"
           >
-            Coaching Services
+            Coaching Services for{" "}
+            <span className="text-primary">Technical Leaders</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Specialized interview preparation and career coaching for technical
-            and leadership roles at top tech companies.
+            Structured, rubric-based coaching for Senior Managers, Directors, and VPs 
+            targeting FAANG and top-tier tech companies.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {services.map((service) => (
             <Card
-              key={service.role}
-              className="hover-elevate cursor-pointer transition-all duration-200"
-              data-testid={`card-service-${service.role.toLowerCase().replace(/ /g, "-")}`}
+              key={service.title}
+              className={`hover-elevate cursor-pointer transition-all duration-200 relative ${
+                service.popular ? "border-primary/50" : ""
+              }`}
+              data-testid={`card-service-${service.title.toLowerCase().replace(/ /g, "-")}`}
             >
-              <CardContent className="p-6">
+              {service.popular && (
+                <div className="absolute -top-3 left-4">
+                  <Badge className="bg-primary">Popular</Badge>
+                </div>
+              )}
+              <CardContent className="p-6 pt-8">
                 <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
                   <service.icon className="w-6 h-6 text-primary" />
                 </div>
-                <h3 className="font-semibold text-lg mb-2">{service.role}</h3>
-                <p className="text-sm text-muted-foreground">
+                <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
+                <p className="text-sm text-muted-foreground mb-4">
                   {service.description}
                 </p>
+                <div className="flex flex-wrap gap-2">
+                  {service.features.map((feature) => (
+                    <Badge key={feature} variant="outline" className="text-xs">
+                      {feature}
+                    </Badge>
+                  ))}
+                </div>
               </CardContent>
             </Card>
           ))}
+        </div>
+
+        <div className="text-center">
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button size="lg" asChild>
+              <a
+                href="https://wa.me/16094424081?text=Hi%20Rupesh,%20I'm%20interested%20in%20your%20coaching%20services."
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="button-services-whatsapp"
+              >
+                <SiWhatsapp className="w-4 h-4 mr-2" />
+                Connect on WhatsApp
+              </a>
+            </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              onClick={() => {
+                const element = document.querySelector("#pricing");
+                if (element) element.scrollIntoView({ behavior: "smooth" });
+              }}
+              data-testid="button-view-pricing"
+            >
+              View Pricing
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </Button>
+          </div>
         </div>
       </div>
     </section>

@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "title": "System Design Interview: The Complete Guide for Senior Engineers",
+    "excerpt": "A comprehensive framework for tackling system design interviews at FAANG companies. Learn the patterns that helped my clients land Staff+ roles.",
+    "url": "https://www.linkedin.com/newsletters/technical-blogs-6871207419859615744/",
+    "date": "2024",
+    "readTime": "8 min read",
+    "category": "System Design"
+  },
+  {
+    "id": 2,
+    "title": "Amazon Leadership Principles: What Bar Raisers Really Look For",
+    "excerpt": "Insider insights on how Amazon evaluates LP responses. Real examples of strong vs weak answers from my coaching experience.",
+    "url": "https://www.linkedin.com/newsletters/technical-blogs-6871207419859615744/",
+    "date": "2024",
+    "readTime": "6 min read",
+    "category": "Behavioral"
+  },
+  {
+    "id": 3,
+    "title": "From Engineer to Director: The Communication Shift",
+    "excerpt": "How to transform your communication style for executive-level roles. Practical tips for speaking to VPs and C-suite.",
+    "url": "https://www.linkedin.com/newsletters/technical-blogs-6871207419859615744/",
+    "date": "2024",
+    "readTime": "5 min read",
+    "category": "Leadership"
+  },
+  {
+    "id": 4,
+    "title": "Cloud Architecture Patterns for Scale",
+    "excerpt": "Deep-dive into cloud architecture patterns used at AWS. Learn how to discuss scalability in your interviews.",
+    "url": "https://www.linkedin.com/newsletters/technical-blogs-6871207419859615744/",
+    "date": "2024",
+    "readTime": "10 min read",
+    "category": "Architecture"
+  },
+  {
+    "id": 5,
+    "title": "The 2-Minute Intro Pitch That Gets You Hired",
+    "excerpt": "Craft a compelling introduction that positions you as the obvious hire. Templates and examples from successful candidates.",
+    "url": "https://www.linkedin.com/newsletters/technical-blogs-6871207419859615744/",
+    "date": "2024",
+    "readTime": "4 min read",
+    "category": "Interview Tips"
+  }
+]
