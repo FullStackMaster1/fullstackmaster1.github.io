@@ -8,6 +8,7 @@ import MethodologySection from "@/components/MethodologySection";
 import ServicesSection from "@/components/ServicesSection";
 import SuccessStoriesSection from "@/components/SuccessStoriesSection";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
+import CoursesCarousel from "@/components/CoursesCarousel";
 import PlaylistsCarousel from "@/components/PlaylistsCarousel";
 import PricingSection from "@/components/PricingSection";
 import FAQSection from "@/components/FAQSection";
@@ -31,6 +32,7 @@ export default function Home() {
         <AboutSection />
         <MethodologySection />
         <ServicesSection />
+        <CoursesCarousel />
         <PlaylistsCarousel />
         <PricingSection />
         <WhyLeadersFailSection />
