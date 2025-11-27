@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "Bijan",
+    "date": "Sep 25, 2025",
+    "rating": 5,
+    "text": "A fantastic call. I learned a huge amount of practical and valuable information. I now have a clear, structured plan towards my interviews.",
+    "session": "TPM Interview Prep"
+  },
+  {
+    "id": 2,
+    "name": "Ca",
+    "date": "Sep 23, 2025",
+    "rating": 5,
+    "text": "I took multiple sessions with Rupesh and have consistently been impressed by his deep expertise in DevOps and the AWS cloud domain. His background in development provides a solid foundation that enhances his ability to explain complex concepts clearly and effectively.",
+    "session": "DevOps & AWS Coaching"
+  },
+  {
+    "id": 3,
+    "name": "Shiv",
+    "date": "Sep 21, 2025",
+    "rating": 5,
+    "text": "I had the opportunity to interview with Rupesh for the Senior Site Reliability Engineer role. The session was very engaging, he created a comfortable environment that allowed me to share my experiences openly.",
+    "session": "SRE Interview Mock"
+  },
+  {
+    "id": 4,
+    "name": "Faiz",
+    "date": "Sep 04, 2025",
+    "rating": 5,
+    "text": "Rupesh was great to work with again; I'm glad I booked him for a second session! He familiarized me with crucial design principles and patterns. The exercises we went through highlighted areas I could improve on.",
+    "session": "System Design"
+  },
+  {
+    "id": 5,
+    "name": "Nicholas",
+    "date": "Aug 15, 2025",
+    "rating": 5,
+    "text": "I really enjoyed my session with Rupesh. He was able to quickly understand my position in my career, provide a clear, outside perspective, and leave me with both concrete action items for the short-term and big questions to think about.",
+    "session": "Career Roadmap"
+  },
+  {
+    "id": 6,
+    "name": "Abhishek",
+    "date": "Aug 08, 2025",
+    "rating": 5,
+    "text": "Rupesh is amazing! He has extensive knowledge in technology and really helped me think at a higher level. His coaching has given me a framework to answer questions with numbers and always aim to raise the bar.",
+    "session": "Leadership Interview"
+  },
+  {
+    "id": 7,
+    "name": "Ann",
+    "date": "Aug 06, 2025",
+    "rating": 5,
+    "text": "This was my >2 times with Rupesh for mock interview! He holds a very high bar and treats each mock interview as seriously as if it were his own team's hiring process. The session was incredibly valuable!",
+    "session": "Solutions Architect"
+  },
+  {
+    "id": 8,
+    "name": "Ricardo",
+    "date": "Aug 01, 2025",
+    "rating": 5,
+    "text": "Rupesh is great! He provided me with more information in one hour than I could ever get in weeks of research. I now have a 6 month roadmap to data engineering.",
+    "session": "Data Engineering"
+  },
+  {
+    "id": 9,
+    "name": "Muhammad",
+    "date": "Jul 01, 2025",
+    "rating": 5,
+    "text": "I had my first mock interview session with Rupesh, and it was extremely insightful. He quickly identified the areas I needed to focus on and tailored the session specifically for the Solution Architect role I'm targeting.",
+    "session": "Solution Architect"
+  },
+  {
+    "id": 10,
+    "name": "Aman",
+    "date": "Jul 15, 2025",
+    "rating": 5,
+    "text": "Rupesh is a wonderful and kind coach who helped me through a full session of understanding System Design fundamentals. Prior to our session, I was intimidated by the thoughts of my upcoming interview but Rupesh has given me a solid framework.",
+    "session": "System Design"
+  },
+  {
+    "id": 11,
+    "name": "Andre",
+    "date": "May 16, 2025",
+    "rating": 5,
+    "text": "I had a prep session with Rupesh for my Amazon interview. His experience as an Amazon Solutions Architect shows in his coaching. Rupesh gave clear feedback on my technical answers and communication style.",
+    "session": "Amazon Interview"
+  },
+  {
+    "id": 12,
+    "name": "Melvin",
+    "date": "Apr 30, 2025",
+    "rating": 5,
+    "text": "Rupesh was amazing to work with. As a beginning Solutions Architect, I was stuck in my career, and he provided guidance for sharpening my skills, demonstrating competence, building my brand. By the end, I had a 90-day step-by-step plan.",
+    "session": "Career Coaching"
+  },
+  {
+    "id": 13,
+    "name": "Vaughn",
+    "date": "Mar 12, 2025",
+    "rating": 5,
+    "text": "I had a great experience working with Rupesh! He helped me approach object-oriented design interview problems with structure, confidence, and competency. His patience stood out.",
+    "session": "OOD Interview"
+  },
+  {
+    "id": 14,
+    "name": "Michael",
+    "date": "Jan 15, 2025",
+    "rating": 5,
+    "text": "I recently had a coaching session with Rupesh and it was amazing. He has strong experience with interview structure and walked me through the parts that I would face in the interview process.",
+    "session": "Interview Strategy"
+  },
+  {
+    "id": 15,
+    "name": "Shamir",
+    "date": "Oct 21, 2024",
+    "rating": 5,
+    "text": "I had my first mock interview session with Rupesh. He focused on exactly what I was looking for. He brings a ton of data engineering and interview experience. I highly recommend Rupesh for data engineering interview coaching.",
+    "session": "Data Engineering"
+  }
+]
