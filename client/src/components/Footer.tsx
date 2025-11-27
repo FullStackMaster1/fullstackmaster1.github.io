@@ -30,7 +30,7 @@ const getSocialUrl = (name: string): string => {
 
 export default function Footer() {
   const { personal, contact, brand, socialLinks, descriptions } = profileData;
-  const { links, socialIcons, quickLinks, verification, copyright } = footerData;
+  const { links, socialIcons, quickLinks, contact: footerContact, verification, copyright } = footerData;
 
   const handleScrollTo = (href: string) => {
     const element = document.querySelector(href);
@@ -45,7 +45,7 @@ export default function Footer() {
       data-testid="footer"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <img
@@ -62,7 +62,28 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground mb-4 max-w-md">
               {descriptions.short}
             </p>
-            <div className="space-y-2 text-sm">
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-4">{quickLinks.title}</h3>
+            <ul className="space-y-2">
+              {links.map((link: { label: string; href: string }) => (
+                <li key={link.href}>
+                  <button
+                    onClick={() => handleScrollTo(link.href)}
+                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                    data-testid={`link-footer-${link.label.toLowerCase().replace(" ", "-")}`}
+                  >
+                    {link.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold mb-4">{footerContact.title}</h3>
+            <div className="space-y-3 text-sm">
               <a
                 href={contact.whatsappLink}
                 target="_blank"
@@ -81,24 +102,10 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-primary" />
                 {contact.email}
               </a>
+              <p className="text-muted-foreground pt-2">
+                {footerContact.availabilityText}
+              </p>
             </div>
-          </div>
-
-          <div>
-            <h3 className="font-semibold mb-4">{quickLinks.title}</h3>
-            <ul className="space-y-2">
-              {links.map((link: { label: string; href: string }) => (
-                <li key={link.href}>
-                  <button
-                    onClick={() => handleScrollTo(link.href)}
-                    className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                    data-testid={`link-footer-${link.label.toLowerCase().replace(" ", "-")}`}
-                  >
-                    {link.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div>
