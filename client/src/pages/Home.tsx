@@ -3,6 +3,7 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 import HeroSection from "@/components/HeroSection";
 import TrustBar from "@/components/TrustBar";
 import ServicesSection from "@/components/ServicesSection";
+import TeachingDemosSection from "@/components/TeachingDemosSection";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 import PricingSection from "@/components/PricingSection";
 import CoursesCarousel from "@/components/CoursesCarousel";
@@ -26,6 +27,7 @@ export default function Home() {
         <HeroSection />
         <TrustBar />
         <ServicesSection />
+        <TeachingDemosSection />
         <ReviewsCarousel />
         <PricingSection />
         <CoursesCarousel />
