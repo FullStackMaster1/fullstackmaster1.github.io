@@ -11,56 +11,34 @@ import {
   ArrowRight,
   Video,
   CheckCircle,
+  LucideIcon,
 } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import teachingImage from "@assets/image_1764264908413.png";
+import servicesData from "@/data/services.json";
+import siteContent from "@/data/siteContent.json";
 
-const services = [
-  {
-    title: "System Design for Leaders",
-    description: "End-to-end system design coaching for Staff+, Director, and VP-level technical interviews. Learn to communicate architecture decisions under pressure.",
-    icon: Target,
-    features: ["FAANG-style prompts", "Trade-off analysis", "Scalability patterns"],
-    popular: true,
-  },
-  {
-    title: "Behavioral & LP Mastery",
-    description: "Master Amazon Leadership Principles and behavioral interviews with real stories, not buzzwords. Bar-raiser ready answers for senior roles.",
-    icon: MessageSquare,
-    features: ["STAR framework", "Amazon LPs deep-dive", "Story structuring"],
-    popular: true,
-  },
-  {
-    title: "Executive Communication",
-    description: "Learn to speak to Directors, VPs, and C-suite with confidence. Compress complex ideas into executive-ready narratives.",
-    icon: Presentation,
-    features: ["Exec-level framing", "Stakeholder influence", "Presentation skills"],
-    popular: false,
-  },
-  {
-    title: "Strategic Intro Pitch",
-    description: "Craft a compelling 2-minute introduction that positions you as the obvious hire. First impressions that open doors.",
-    icon: Sparkles,
-    features: ["Value proposition", "Personal branding", "Interview opening"],
-    popular: false,
-  },
-  {
-    title: "Resume Optimization",
-    description: "Transform your resume to showcase leadership impact, not just tasks. Quantified achievements that pass senior-level screens.",
-    icon: FileText,
-    features: ["Impact-driven bullets", "ATS optimization", "Role alignment"],
-    popular: false,
-  },
-  {
-    title: "5-Session Coaching Package",
-    description: "Comprehensive interview prep covering all areas. Book directly and save $105 vs platform pricing. Same quality, better value.",
-    icon: Users,
-    features: ["$600 total ($120/session)", "Personalized prep plan", "Priority scheduling"],
-    popular: true,
-  },
-];
+const iconMap: Record<string, LucideIcon> = {
+  Target,
+  MessageSquare,
+  Presentation,
+  FileText,
+  Users,
+  Sparkles,
+};
+
+interface Service {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  features: string[];
+  popular: boolean;
+}
 
 export default function ServicesSection() {
+  const { services: servicesContent } = siteContent;
+
   return (
     <section
       id="services"
@@ -69,12 +47,12 @@ export default function ServicesSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <Badge variant="secondary" className="mb-4">For Senior Leaders</Badge>
+          <Badge variant="secondary" className="mb-4">{servicesContent.badge}</Badge>
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
             data-testid="text-services-title"
           >
-            Coaching Services for{" "}
+            {servicesContent.title.replace("Technical Leaders", "")}
             <span className="text-primary">Technical Leaders</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -100,9 +78,9 @@ export default function ServicesSection() {
               </div>
             </div>
             <CardContent className="p-6 lg:p-8 flex flex-col justify-center">
-              <Badge variant="outline" className="w-fit mb-4">How I Coach</Badge>
+              <Badge variant="outline" className="w-fit mb-4">{servicesContent.coachingMethodTitle}</Badge>
               <h3 className="text-2xl font-bold mb-4">
-                Real-Time System Design Whiteboarding
+                {servicesContent.coachingMethodSubtitle}
               </h3>
               <p className="text-muted-foreground mb-6">
                 Every session is a live, interactive experience. I use Excalidraw for real-time 
@@ -143,37 +121,40 @@ export default function ServicesSection() {
         </Card>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {services.map((service) => (
-            <Card
-              key={service.title}
-              className={`hover-elevate cursor-pointer transition-all duration-200 relative ${
-                service.popular ? "border-primary/50" : ""
-              }`}
-              data-testid={`card-service-${service.title.toLowerCase().replace(/ /g, "-")}`}
-            >
-              {service.popular && (
-                <div className="absolute -top-3 left-4">
-                  <Badge className="bg-primary">Popular</Badge>
-                </div>
-              )}
-              <CardContent className="p-6 pt-8">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <service.icon className="w-6 h-6 text-primary" />
-                </div>
-                <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  {service.description}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {service.features.map((feature) => (
-                    <Badge key={feature} variant="outline" className="text-xs">
-                      {feature}
-                    </Badge>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+          {(servicesData as Service[]).map((service) => {
+            const IconComponent = iconMap[service.icon] || Target;
+            return (
+              <Card
+                key={service.id}
+                className={`hover-elevate cursor-pointer transition-all duration-200 relative ${
+                  service.popular ? "border-primary/50" : ""
+                }`}
+                data-testid={`card-service-${service.id}`}
+              >
+                {service.popular && (
+                  <div className="absolute -top-3 left-4">
+                    <Badge className="bg-primary">Popular</Badge>
+                  </div>
+                )}
+                <CardContent className="p-6 pt-8">
+                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                    <IconComponent className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-lg mb-2">{service.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {service.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {service.features.map((feature) => (
+                      <Badge key={feature} variant="outline" className="text-xs">
+                        {feature}
+                      </Badge>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
 
         <div className="text-center">

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "system-design",
+    "title": "System Design for Leaders",
+    "description": "End-to-end system design coaching for Staff+, Director, and VP-level technical interviews. Learn to communicate architecture decisions under pressure.",
+    "icon": "Target",
+    "features": ["FAANG-style prompts", "Trade-off analysis", "Scalability patterns"],
+    "popular": true
+  },
+  {
+    "id": "behavioral",
+    "title": "Behavioral & LP Mastery",
+    "description": "Master Amazon Leadership Principles and behavioral interviews with real stories, not buzzwords. Bar-raiser ready answers for senior roles.",
+    "icon": "MessageSquare",
+    "features": ["STAR framework", "Amazon LPs deep-dive", "Story structuring"],
+    "popular": true
+  },
+  {
+    "id": "executive-comm",
+    "title": "Executive Communication",
+    "description": "Learn to speak to Directors, VPs, and C-suite with confidence. Compress complex ideas into executive-ready narratives.",
+    "icon": "Presentation",
+    "features": ["Exec-level framing", "Stakeholder influence", "Presentation skills"],
+    "popular": false
+  },
+  {
+    "id": "intro-pitch",
+    "title": "Strategic Intro Pitch",
+    "description": "Craft a compelling 2-minute introduction that positions you as the obvious hire. First impressions that open doors.",
+    "icon": "Sparkles",
+    "features": ["Value proposition", "Personal branding", "Interview opening"],
+    "popular": false
+  },
+  {
+    "id": "resume",
+    "title": "Resume Optimization",
+    "description": "Transform your resume to showcase leadership impact, not just tasks. Quantified achievements that pass senior-level screens.",
+    "icon": "FileText",
+    "features": ["Impact-driven bullets", "ATS optimization", "Role alignment"],
+    "popular": false
+  },
+  {
+    "id": "package",
+    "title": "5-Session Coaching Package",
+    "description": "Comprehensive interview prep covering all areas. Book directly and save $105 vs platform pricing. Same quality, better value.",
+    "icon": "Users",
+    "features": ["$600 total ($120/session)", "Personalized prep plan", "Priority scheduling"],
+    "popular": true
+  }
+]

@@ -1,0 +1,42 @@
+[
+  {
+    "id": "faq-1",
+    "question": "What roles do you specialize in coaching?",
+    "answer": "I specialize in coaching for senior technical leadership roles: Staff Engineers, Principal Engineers, Engineering Managers, Senior Managers, Directors, VPs, and Solutions Architects targeting FAANG and top-tier tech companies."
+  },
+  {
+    "id": "faq-2",
+    "question": "How is your coaching different from other interview coaches?",
+    "answer": "I bring 20+ years of real industry experience at companies like AWS, having conducted 100+ interviews myself. I focus on the communication patterns and strategic thinking that senior leaders need, not just technical answers. Every session uses structured rubrics matching actual FAANG evaluation criteria."
+  },
+  {
+    "id": "faq-3",
+    "question": "Why should I book directly instead of through IGotAnOffer?",
+    "answer": "Booking directly saves you $105 on the 5-session package ($600 vs $705). You get the exact same coaching quality, personalized prep plan, and async support. The only difference is the platform fee savings go directly to your pocket."
+  },
+  {
+    "id": "faq-4",
+    "question": "What does a typical coaching session look like?",
+    "answer": "Each 60-minute session is highly interactive. We start with a brief check-in, then dive into practice (system design whiteboarding, behavioral mock, or resume review). I provide real-time feedback and structured frameworks. Sessions end with actionable next steps and resources."
+  },
+  {
+    "id": "faq-5",
+    "question": "How many sessions do I need before my interview?",
+    "answer": "Most clients see significant improvement with 3-5 sessions. The 5-session package covers system design, behavioral prep, and mock interviews comprehensively. For single-topic focus (like Amazon LP prep), 2-3 sessions may suffice."
+  },
+  {
+    "id": "faq-6",
+    "question": "Do you offer a free consultation before I commit?",
+    "answer": "Yes! I offer a free 15-minute discovery call to understand your background, target role, and coaching needs. This helps us determine if we're a good fit and create a customized prep plan."
+  },
+  {
+    "id": "faq-7",
+    "question": "What is your cancellation policy?",
+    "answer": "Sessions can be rescheduled with 24-hour notice at no charge. Cancellations with less than 24 hours notice forfeit the session. Unused sessions from packages remain valid for 6 months from purchase."
+  },
+  {
+    "id": "faq-8",
+    "question": "Can you help with specific companies like Amazon, Google, or Meta?",
+    "answer": "Absolutely. I tailor coaching to your target company's interview format and culture. For Amazon, we deep-dive into Leadership Principles. For Google/Meta, we focus on system design communication patterns and coding interview strategies specific to those companies."
+  }
+]

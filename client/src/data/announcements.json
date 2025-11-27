@@ -1,0 +1,26 @@
+[
+  {
+    "id": "winter-2024",
+    "highlight": "New Year Special",
+    "message": "Book 5 sessions and get 1 FREE consultation call!",
+    "linkText": "Claim Offer",
+    "linkHref": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'm%20interested%20in%20the%20New%20Year%20special%20offer.",
+    "active": true
+  },
+  {
+    "id": "course-launch",
+    "highlight": "New Course",
+    "message": "AWS Solutions Architect Interview Prep course now available!",
+    "linkText": "Learn More",
+    "linkHref": "#courses",
+    "active": false
+  },
+  {
+    "id": "webinar-promo",
+    "highlight": "Free Webinar",
+    "message": "Join our live session on cracking FAANG interviews",
+    "linkText": "Register Now",
+    "linkHref": "#webinar",
+    "active": false
+  }
+]

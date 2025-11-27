@@ -4,27 +4,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Star, Award, Users, CheckCircle, Phone, Mail, MessageCircle } from "lucide-react";
 import { SiWhatsapp, SiAmazon } from "react-icons/si";
 import profileImage from "@assets/rupesh-headshot_1764261897457.png";
-
-const targetRoles = [
-  "Senior Manager",
-  "Director",
-  "VP",
-  "Principal Engineer",
-  "Staff Engineer",
-  "Solutions Architect",
-  "TPM Lead",
-  "Engineering Manager",
-];
-
-const coachingAreas = [
-  "System Design for Leaders",
-  "Behavioral & LP Mastery",
-  "Executive Communication",
-  "Strategic Intro Pitch",
-  "Resume Optimization",
-];
+import siteContent from "@/data/siteContent.json";
 
 export default function HeroSection() {
+  const { hero } = siteContent;
+
   const handleScrollTo = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
@@ -59,22 +43,19 @@ export default function HeroSection() {
               className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6"
               data-testid="text-hero-title"
             >
-              FAANG Interview &{" "}
-              <span className="text-primary">System Design</span> Coach
+              {hero.titleLine1}{" "}
+              <span className="text-primary">{hero.titleHighlight}</span> {hero.titleLine2}
             </h1>
 
             <p
               className="text-lg md:text-xl text-muted-foreground mb-6 leading-relaxed"
               data-testid="text-hero-description"
             >
-              I coach <span className="font-semibold text-foreground">Senior Managers, Directors, VPs</span> and 
-              technical leaders to crack FAANG interviews in system design, 
-              cloud architecture, and Amazon Leadership Principles with structured, 
-              rubric-based preparation.
+              {hero.description}
             </p>
 
             <div className="flex flex-wrap gap-2 mb-8">
-              {coachingAreas.map((area) => (
+              {hero.coachingAreas.map((area) => (
                 <Badge
                   key={area}
                   variant="outline"
@@ -91,20 +72,20 @@ export default function HeroSection() {
               <CardContent className="p-4">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   <div>
-                    <p className="text-sm text-muted-foreground mb-1">5-Session Package</p>
+                    <p className="text-sm text-muted-foreground mb-1">{hero.package.name}</p>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-2xl font-bold text-primary">$600</span>
-                      <span className="text-sm text-muted-foreground line-through">$705</span>
-                      <Badge variant="secondary" className="text-xs">Save $105</Badge>
+                      <span className="text-2xl font-bold text-primary">{hero.package.price}</span>
+                      <span className="text-sm text-muted-foreground line-through">{hero.package.originalPrice}</span>
+                      <Badge variant="secondary" className="text-xs">{hero.package.savings}</Badge>
                     </div>
-                    <p className="text-xs text-muted-foreground mt-1">$120/session - Direct booking discount</p>
+                    <p className="text-xs text-muted-foreground mt-1">{hero.package.perSession}</p>
                   </div>
                   <Button
                     asChild
                     className="bg-green-600 hover:bg-green-700"
                   >
                     <a
-                      href="https://wa.me/16094424081?text=Hi%20Rupesh,%20I'm%20interested%20in%20the%205-session%20coaching%20package."
+                      href={`${hero.contact.whatsapp}?text=Hi%20Rupesh,%20I'm%20interested%20in%20the%205-session%20coaching%20package.`}
                       target="_blank"
                       rel="noopener noreferrer"
                       data-testid="button-hero-whatsapp"
@@ -123,7 +104,7 @@ export default function HeroSection() {
                 onClick={() => handleScrollTo("#booking")}
                 data-testid="button-book-session"
               >
-                Book Free Discovery Call
+                {hero.buttons.primary}
               </Button>
               <Button
                 size="lg"
@@ -136,29 +117,29 @@ export default function HeroSection() {
                   rel="noopener noreferrer"
                   data-testid="button-igotanoffer"
                 >
-                  View on IGotAnOffer
+                  {hero.buttons.secondary}
                 </a>
               </Button>
             </div>
 
             <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
               <a
-                href="https://wa.me/16094424081"
+                href={hero.contact.whatsapp}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 hover:text-foreground transition-colors"
                 data-testid="link-whatsapp"
               >
                 <SiWhatsapp className="w-4 h-4 text-green-500" />
-                +1-609-442-4081
+                {hero.contact.phone}
               </a>
               <a
-                href="mailto:rupesh@fullstackmaster.net"
+                href={`mailto:${hero.contact.email}`}
                 className="flex items-center gap-2 hover:text-foreground transition-colors"
                 data-testid="link-email"
               >
                 <Mail className="w-4 h-4 text-primary" />
-                rupesh@fullstackmaster.net
+                {hero.contact.email}
               </a>
             </div>
           </div>
@@ -198,10 +179,10 @@ export default function HeroSection() {
 
         <div className="mt-16 pt-8 border-t border-border">
           <p className="text-center text-sm text-muted-foreground mb-4">
-            Coaching professionals targeting roles at
+            {hero.companiesText}
           </p>
           <div className="flex flex-wrap justify-center gap-2">
-            {targetRoles.map((role) => (
+            {hero.targetRoles.map((role) => (
               <Badge
                 key={role}
                 variant="outline"

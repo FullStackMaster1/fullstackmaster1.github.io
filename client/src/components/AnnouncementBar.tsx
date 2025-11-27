@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X, Sparkles, ArrowRight } from "lucide-react";
+import announcementsData from "@/data/announcements.json";
 
 interface Announcement {
   id: string;
@@ -10,21 +11,10 @@ interface Announcement {
   active: boolean;
 }
 
-const announcements: Announcement[] = [
-  {
-    id: "winter-2024",
-    highlight: "New Year Special",
-    message: "Book 5 sessions and get 1 FREE consultation call!",
-    linkText: "Claim Offer",
-    linkHref: "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'm%20interested%20in%20the%20New%20Year%20special%20offer.",
-    active: true,
-  },
-];
-
 export default function AnnouncementBar() {
   const [dismissed, setDismissed] = useState<Set<string>>(new Set());
 
-  const activeAnnouncements = announcements.filter(
+  const activeAnnouncements = (announcementsData as Announcement[]).filter(
     (a) => a.active && !dismissed.has(a.id)
   );
 

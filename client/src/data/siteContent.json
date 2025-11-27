@@ -1,0 +1,102 @@
+{
+  "hero": {
+    "badge": "20+ Years Experience | 50+ 5-Star Reviews",
+    "titleLine1": "FAANG Interview &",
+    "titleHighlight": "System Design",
+    "titleLine2": "Coach",
+    "description": "I coach Senior Managers, Directors, VPs and technical leaders to crack FAANG interviews in system design, cloud architecture, and Amazon Leadership Principles with structured, rubric-based preparation.",
+    "targetRoles": [
+      "Senior Manager",
+      "Director",
+      "VP",
+      "Principal Engineer",
+      "Staff Engineer",
+      "Solutions Architect",
+      "TPM Lead",
+      "Engineering Manager"
+    ],
+    "coachingAreas": [
+      "System Design for Leaders",
+      "Behavioral & LP Mastery",
+      "Executive Communication",
+      "Strategic Intro Pitch",
+      "Resume Optimization"
+    ],
+    "package": {
+      "name": "5-Session Package",
+      "price": "$600",
+      "originalPrice": "$705",
+      "savings": "Save $105",
+      "perSession": "$120/session - Direct booking discount"
+    },
+    "buttons": {
+      "primary": "Book Free Discovery Call",
+      "secondary": "View on IGotAnOffer"
+    },
+    "contact": {
+      "phone": "+1-609-442-4081",
+      "email": "rupesh@fullstackmaster.net",
+      "whatsapp": "https://wa.me/16094424081"
+    },
+    "companiesText": "Coaching professionals targeting roles at"
+  },
+  "services": {
+    "badge": "For Senior Leaders",
+    "title": "Coaching Services for Technical Leaders",
+    "coachingMethodTitle": "How I Coach",
+    "coachingMethodSubtitle": "Real-Time System Design Whiteboarding",
+    "coachingMethodDescription": "Learn the frameworks and communication patterns that Staff+ engineers and Directors use in FAANG interviews."
+  },
+  "pricing": {
+    "badge": "Simple Pricing",
+    "title": "Invest in Your Career Growth",
+    "description": "Book directly with me and save. Same quality coaching, better value for your interview preparation.",
+    "directBooking": {
+      "badge": "Best Value",
+      "title": "5-Session Package",
+      "price": "$600",
+      "originalPrice": "$705",
+      "savings": "Save $105 vs platform",
+      "perSession": "$120 per session",
+      "features": [
+        "5 x 60-minute coaching sessions",
+        "Personalized preparation plan",
+        "System Design + Behavioral prep",
+        "Async support between sessions",
+        "Priority scheduling"
+      ],
+      "buttonText": "Book via WhatsApp"
+    },
+    "platformBooking": {
+      "title": "Single Session",
+      "price": "$141",
+      "duration": "60-minute session",
+      "platform": "Via IGotAnOffer",
+      "features": [
+        "60-minute coaching session",
+        "Session recording available",
+        "Platform guarantee",
+        "Verified reviews"
+      ],
+      "buttonText": "Book on IGotAnOffer"
+    },
+    "processTitle": "How Direct Booking Works",
+    "processSteps": [
+      "Message me on WhatsApp",
+      "We schedule your sessions",
+      "Meet via Google Meet/Zoom"
+    ],
+    "testimonialTitle": "What clients say about the investment"
+  },
+  "faq": {
+    "badge": "FAQ",
+    "title": "Frequently Asked Questions",
+    "description": "Common questions about coaching, pricing, and preparation"
+  },
+  "reviews": {
+    "title": "Client Success Stories",
+    "description": "Real feedback from senior professionals who landed their dream roles",
+    "platformLink": "https://www.igotanoffer.com/en/coaches/rupesh-tiwari",
+    "platformLinkText": "View all reviews on IGotAnOffer"
+  }
+}
