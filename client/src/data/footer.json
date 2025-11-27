@@ -43,6 +43,11 @@
       "name": "pluralsight",
       "label": "Pluralsight",
       "color": "text-pink-600"
+    },
+    {
+      "name": "facebook",
+      "label": "Facebook",
+      "color": "text-blue-500"
     }
   ],
   "contact": {

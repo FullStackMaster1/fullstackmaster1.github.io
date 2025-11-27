@@ -61,6 +61,10 @@
     "whatsapp": {
       "url": "https://wa.me/16094424081",
       "label": "WhatsApp"
+    },
+    "facebook": {
+      "url": "https://www.facebook.com/fullstackmaster1",
+      "label": "Facebook"
     }
   },
   "stats": {

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ExternalLink, Mail, Shield } from "lucide-react";
-import { SiYoutube, SiLinkedin, SiUdemy, SiPluralsight, SiWhatsapp, SiGithub } from "react-icons/si";
+import { SiYoutube, SiLinkedin, SiUdemy, SiPluralsight, SiWhatsapp, SiGithub, SiFacebook } from "react-icons/si";
 import { Link } from "wouter";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
 import profileData from "@/data/profile.json";
@@ -14,6 +14,7 @@ const socialIconComponents: Record<string, typeof SiWhatsapp> = {
   github: SiGithub,
   udemy: SiUdemy,
   pluralsight: SiPluralsight,
+  facebook: SiFacebook,
 };
 
 const getSocialUrl = (name: string): string => {
@@ -25,6 +26,7 @@ const getSocialUrl = (name: string): string => {
     case 'github': return socialLinks.github.url;
     case 'udemy': return socialLinks.udemy.url;
     case 'pluralsight': return socialLinks.pluralsight.url;
+    case 'facebook': return (socialLinks as any).facebook.url;
     default: return '#';
   }
 };
