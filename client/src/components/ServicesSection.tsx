@@ -5,6 +5,8 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselPrevious,
+  CarouselNext,
   type CarouselApi,
 } from "@/components/ui/carousel";
 import {
@@ -121,7 +123,7 @@ export default function ServicesSection() {
 
         <Card className="mb-12 overflow-hidden border-primary/20" data-testid="card-coaching-preview">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-            <div className="relative">
+            <div className="relative group">
               <Carousel
                 opts={{ align: "start", loop: true }}
                 plugins={[autoplayPlugin.current]}
@@ -175,7 +177,30 @@ export default function ServicesSection() {
                     );
                   })}
                 </CarouselContent>
+                <CarouselPrevious 
+                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white border-none h-10 w-10 opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                  data-testid="button-carousel-prev"
+                />
+                <CarouselNext 
+                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white border-none h-10 w-10 opacity-0 group-hover:opacity-100 transition-opacity z-10"
+                  data-testid="button-carousel-next"
+                />
               </Carousel>
+              
+              <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                {(sessionDemos as SessionDemo[]).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => api?.scrollTo(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === currentIndex 
+                        ? "bg-white w-6" 
+                        : "bg-white/50 hover:bg-white/70"
+                    }`}
+                    data-testid={`button-carousel-dot-${index}`}
+                  />
+                ))}
+              </div>
             </div>
             <CardContent className="p-6 lg:p-8 flex flex-col justify-center">
               <Badge variant="outline" className="w-fit mb-4">{liveSessionShowcase.badge}</Badge>
