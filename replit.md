@@ -66,12 +66,26 @@ The application prioritizes simplicity with the database layer prepared but not 
 
 ## Data Layer
 
-**Content Storage**: Static JSON files in `client/src/data/` directory containing:
+**Content Storage**: ALL user-facing content is stored in JSON files in `client/src/data/` directory, enabling marketing teams to update content without code changes:
+
+**Site-Wide Content** (siteContent.json):
+- `navigation`: Brand name, menu links, CTA buttons (WhatsApp, Book Session)
+- `hero`: Badges, proof points (100+ coached, 85%+ offers, 5.0 rating), company logos, CTAs
+
+**Section-Specific Content**:
+- `about.json`: Founder story, credentials, coaching philosophy
+- `methodology.json`: 5-step coaching process with detailed descriptions
+- `services.json`: Service offerings with session demos carousel
+- `packages.json`: Pricing with "Investment Options" badge, package details
+- `faq.json`: Frequently asked questions
 - `reviews.json`: Client testimonials with ratings and session types
 - `courses.json`: Udemy and Pluralsight course listings
 - `playlists.json`: YouTube playlist metadata
 - `articles.json`: LinkedIn newsletter articles
 - `opensource.json`: GitHub project showcases
+
+**Homepage Flow** (trust-first conversion optimization):
+1. Hero → 2. About (founder story) → 3. Methodology (process) → 4. Services → 5. Reviews → 6. Pricing → 7. FAQ → 8. Booking
 
 This approach enables easy content updates without backend changes and provides type-safe data access.
 
