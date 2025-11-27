@@ -117,7 +117,6 @@ export default function HeroSection() {
             <div className="flex flex-wrap gap-3 mb-8">
               <Button
                 size="lg"
-                className="bg-green-600 hover:bg-green-700"
                 asChild
               >
                 <a
@@ -126,13 +125,14 @@ export default function HeroSection() {
                   rel="noopener noreferrer"
                   data-testid="button-hero-primary"
                 >
-                  <SiWhatsapp className="w-4 h-4 mr-2" />
+                  <Calendar className="w-4 h-4 mr-2" />
                   {hero.buttons.primary}
                 </a>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
+                className="border-green-500 text-green-600 hover:bg-green-50 dark:hover:bg-green-950"
                 asChild
               >
                 <a
@@ -141,6 +141,7 @@ export default function HeroSection() {
                   rel="noopener noreferrer"
                   data-testid="button-hero-secondary"
                 >
+                  <SiWhatsapp className="w-4 h-4 mr-2" />
                   {hero.buttons.secondary}
                 </a>
               </Button>
