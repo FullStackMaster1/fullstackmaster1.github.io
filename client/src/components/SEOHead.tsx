@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import siteContent from '@/data/siteContent.json';
-import aboutData from '@/data/about.json';
+import profileData from '@/data/profile.json';
 import faqsData from '@/data/faqs.json';
 
 interface SEOHeadProps {
@@ -8,41 +8,29 @@ interface SEOHeadProps {
 }
 
 export default function SEOHead({ page = 'home' }: SEOHeadProps) {
-  const seo = siteContent.seo || {
-    title: "Rupesh Tiwari | FAANG Interview Coach for Directors & VPs",
-    description: "15+ years coaching 4,000+ senior engineers, architects, and executives for FAANG interviews. AWS Senior CSM with 85%+ offer success rate. Book your free discovery call.",
-    keywords: "FAANG interview coach, AWS interview preparation, Director interview coaching, VP interview prep, system design interview, leadership principles, senior engineer coaching, solutions architect interview",
-    canonical: "https://fullstackmaster.net",
-    ogImage: "/og-image.png"
-  };
+  const seo = siteContent.seo;
+  const { personal, contact, brand, socialLinks, stats, credentials, descriptions } = profileData;
 
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": aboutData.name,
-    "jobTitle": aboutData.title,
-    "description": siteContent.hero.description,
+    "name": personal.name,
+    "jobTitle": personal.title,
+    "description": descriptions.medium,
     "url": seo.canonical,
     "sameAs": [
-      aboutData.linkedIn,
-      "https://www.igotanoffer.com/en/coaches/rupesh-tiwari",
-      "https://www.udemy.com/user/rupesh-tiwari-2/"
+      socialLinks.linkedIn.personal,
+      socialLinks.igotanoffer.reviewsUrl,
+      socialLinks.udemy.url
     ],
-    "knowsAbout": [
-      "AWS",
-      "System Design",
-      "FAANG Interviews",
-      "Technical Leadership",
-      "Solutions Architecture",
-      "Cloud Computing"
-    ],
+    "knowsAbout": descriptions.expertise,
     "alumniOf": {
       "@type": "Organization",
-      "name": "Indian School of Business"
+      "name": credentials.education.institution
     },
     "worksFor": {
       "@type": "Organization",
-      "name": "Amazon Web Services"
+      "name": personal.company
     }
   };
 
@@ -52,15 +40,15 @@ export default function SEOHead({ page = 'home' }: SEOHeadProps) {
     "name": "FAANG Interview Coaching",
     "provider": {
       "@type": "Person",
-      "name": aboutData.name
+      "name": personal.name
     },
     "description": "1-on-1 interview coaching for senior engineers, architects, and executives targeting FAANG companies",
     "serviceType": "Career Coaching",
     "areaServed": "Worldwide",
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "reviewCount": "50",
+      "ratingValue": String(stats.rating.number),
+      "reviewCount": String(stats.rating.reviewCount),
       "bestRating": "5"
     }
   };
@@ -81,8 +69,8 @@ export default function SEOHead({ page = 'home' }: SEOHeadProps) {
   const pageTitle = page === 'home' 
     ? seo.title 
     : page === 'resources' 
-    ? `Resources | ${aboutData.name} - Courses, Articles & Playlists`
-    : `Admin | ${aboutData.name}`;
+    ? `Resources | ${personal.name} - Courses, Articles & Playlists`
+    : `Admin | ${personal.name}`;
 
   return (
     <Helmet>
@@ -96,14 +84,14 @@ export default function SEOHead({ page = 'home' }: SEOHeadProps) {
       <meta property="og:description" content={seo.description} />
       <meta property="og:url" content={seo.canonical} />
       <meta property="og:image" content={seo.ogImage} />
-      <meta property="og:site_name" content={siteContent.navigation.brandName} />
+      <meta property="og:site_name" content={brand.name} />
       
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={seo.ogImage} />
       
-      <meta name="author" content={aboutData.name} />
+      <meta name="author" content={personal.name} />
       <meta name="robots" content="index, follow" />
       
       <script type="application/ld+json">

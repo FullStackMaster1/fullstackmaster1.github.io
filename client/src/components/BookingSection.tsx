@@ -1,39 +1,57 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, Video, MessageCircle, ExternalLink, CheckCircle } from "lucide-react";
+import { Calendar, Clock, Video, MessageCircle, ExternalLink, LucideIcon } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
+import profileData from "@/data/profile.json";
+import bookingData from "@/data/booking.json";
 
-const bookingOptions = [
-  {
-    title: "WhatsApp (Fastest)",
-    description: "Message me directly for quick responses and scheduling",
-    icon: MessageCircle,
-    cta: "Start Chat",
-    url: "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'm%20interested%20in%20coaching%20sessions.",
-    primary: true,
-    color: "bg-green-600 hover:bg-green-700",
-  },
-  {
-    title: "IGotAnOffer",
-    description: "Book through the verified coaching platform",
-    icon: Calendar,
-    cta: "View Profile",
-    url: "https://igotanoffer.com/en/coach/rupesh",
-    primary: false,
-    color: "",
-  },
-];
+const iconMap: Record<string, LucideIcon> = {
+  Calendar,
+  MessageCircle,
+  Clock,
+  Video,
+};
 
-const processSteps = [
-  "Connect via WhatsApp or IGotAnOffer",
-  "Free 15-min discovery call to discuss goals",
-  "Personalized coaching plan created",
-  "Schedule sessions at your convenience",
-  "1:1 sessions via Google Meet or Zoom",
-];
+interface BookingOption {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  cta: string;
+  primary: boolean;
+  color: string;
+}
 
 export default function BookingSection() {
+  const { contact, socialLinks } = profileData;
+  const { 
+    sectionBadge, 
+    sectionTitle, 
+    sectionTitleHighlight, 
+    sectionDescription,
+    connectTitle,
+    scheduleTitle,
+    bookingOptions,
+    processSteps,
+    howItWorksTitle,
+    calendarEmbed,
+    sessionInfo,
+    fastestConnect,
+    labels
+  } = bookingData;
+
+  const getOptionUrl = (optionId: string): string => {
+    switch (optionId) {
+      case 'whatsapp':
+        return `${contact.whatsappLink}?text=${encodeURIComponent(contact.whatsappMessage)}`;
+      case 'igotanoffer':
+        return socialLinks.igotanoffer.url;
+      default:
+        return '#';
+    }
+  };
+
   return (
     <section
       id="booking"
@@ -44,91 +62,97 @@ export default function BookingSection() {
         <div className="text-center mb-12">
           <Badge variant="secondary" className="mb-4">
             <Calendar className="w-3 h-3 mr-1" />
-            Get Started
+            {sectionBadge}
           </Badge>
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
             data-testid="text-booking-title"
           >
-            Ready to <span className="text-primary">Transform Your Career?</span>
+            {sectionTitle} <span className="text-primary">{sectionTitleHighlight}</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Book a free discovery call to discuss your goals and create a personalized coaching plan.
+            {sectionDescription}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           <div>
-            <h3 className="font-semibold text-xl mb-6">Choose How to Connect</h3>
+            <h3 className="font-semibold text-xl mb-6">{connectTitle}</h3>
             <div className="space-y-4">
-              {bookingOptions.map((option) => (
-                <Card
-                  key={option.title}
-                  className={`hover-elevate transition-all duration-200 ${
-                    option.primary ? "border-green-500/50" : ""
-                  }`}
-                  data-testid={`card-booking-${option.title.toLowerCase().replace(/ /g, "-")}`}
-                >
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div
-                        className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${
-                          option.primary
-                            ? "bg-green-500/10"
-                            : "bg-primary/10"
-                        }`}
-                      >
-                        <option.icon
-                          className={`w-6 h-6 ${
-                            option.primary ? "text-green-500" : "text-primary"
+              {(bookingOptions as BookingOption[]).map((option) => {
+                const IconComponent = iconMap[option.icon];
+                const url = getOptionUrl(option.id);
+                return (
+                  <Card
+                    key={option.title}
+                    className={`hover-elevate transition-all duration-200 ${
+                      option.primary ? "border-green-500/50" : ""
+                    }`}
+                    data-testid={`card-booking-${option.title.toLowerCase().replace(/ /g, "-")}`}
+                  >
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <div
+                          className={`w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 ${
+                            option.primary
+                              ? "bg-green-500/10"
+                              : "bg-primary/10"
                           }`}
-                        />
-                      </div>
-                      <div className="flex-1">
-                        <div className="flex items-center gap-2 mb-1">
-                          <h4 className="font-semibold">{option.title}</h4>
-                          {option.primary && (
-                            <Badge variant="secondary" className="text-xs">
-                              Recommended
-                            </Badge>
+                        >
+                          {IconComponent && (
+                            <IconComponent
+                              className={`w-6 h-6 ${
+                                option.primary ? "text-green-500" : "text-primary"
+                              }`}
+                            />
                           )}
                         </div>
-                        <p className="text-sm text-muted-foreground mb-3">
-                          {option.description}
-                        </p>
-                        <Button
-                          size="sm"
-                          className={option.primary ? option.color : ""}
-                          variant={option.primary ? "default" : "outline"}
-                          asChild
-                        >
-                          <a
-                            href={option.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            data-testid={`button-booking-${option.title.toLowerCase().replace(/ /g, "-")}`}
-                          >
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <h4 className="font-semibold">{option.title}</h4>
                             {option.primary && (
-                              <SiWhatsapp className="w-4 h-4 mr-2" />
+                              <Badge variant="secondary" className="text-xs">
+                                {labels.recommended}
+                              </Badge>
                             )}
-                            {option.cta}
-                            {!option.primary && (
-                              <ExternalLink className="w-3 h-3 ml-2" />
-                            )}
-                          </a>
-                        </Button>
+                          </div>
+                          <p className="text-sm text-muted-foreground mb-3">
+                            {option.description}
+                          </p>
+                          <Button
+                            size="sm"
+                            className={option.primary ? option.color : ""}
+                            variant={option.primary ? "default" : "outline"}
+                            asChild
+                          >
+                            <a
+                              href={url}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              data-testid={`button-booking-${option.title.toLowerCase().replace(/ /g, "-")}`}
+                            >
+                              {option.primary && (
+                                <SiWhatsapp className="w-4 h-4 mr-2" />
+                              )}
+                              {option.cta}
+                              {!option.primary && (
+                                <ExternalLink className="w-3 h-3 ml-2" />
+                              )}
+                            </a>
+                          </Button>
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    </CardContent>
+                  </Card>
+                );
+              })}
             </div>
 
             <Card className="mt-6">
               <CardContent className="p-6">
-                <h4 className="font-semibold mb-4">How It Works</h4>
+                <h4 className="font-semibold mb-4">{howItWorksTitle}</h4>
                 <ul className="space-y-3">
-                  {processSteps.map((step, index) => (
+                  {processSteps.map((step: string, index: number) => (
                     <li key={index} className="flex items-start gap-3">
                       <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
                         <span className="text-xs font-semibold text-primary">
@@ -144,13 +168,13 @@ export default function BookingSection() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-xl mb-6">Schedule Directly</h3>
+            <h3 className="font-semibold text-xl mb-6">{scheduleTitle}</h3>
             <Card className="overflow-hidden">
               <CardContent className="p-0">
                 <iframe
-                  src="https://calendar.google.com/calendar/appointments/AcZssZ2dMNXqXzYcl2NKLpclDV9w0p4-9cp4UvTHii0=?gv=true"
+                  src={calendarEmbed.url}
                   className="w-full h-[500px] border-0"
-                  title="Schedule a coaching session with Rupesh Tiwari"
+                  title={`${calendarEmbed.title} with ${profileData.personal.name}`}
                   data-testid="iframe-calendar"
                 />
               </CardContent>
@@ -158,11 +182,11 @@ export default function BookingSection() {
             <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4" />
-                <span>60-min sessions</span>
+                <span>{sessionInfo.duration}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Video className="w-4 h-4" />
-                <span>Google Meet / Zoom</span>
+                <span>{sessionInfo.platform}</span>
               </div>
             </div>
           </div>
@@ -173,20 +197,20 @@ export default function BookingSection() {
             <CardContent className="p-6">
               <div className="flex items-center justify-center gap-2 mb-3">
                 <SiWhatsapp className="w-5 h-5 text-green-500" />
-                <span className="font-semibold">Fastest Way to Connect</span>
+                <span className="font-semibold">{fastestConnect.title}</span>
               </div>
               <p className="text-sm text-muted-foreground mb-4">
-                Send me a WhatsApp message and I'll respond within a few hours.
+                {fastestConnect.description}
               </p>
               <Button size="lg" className="bg-green-600 hover:bg-green-700" asChild>
                 <a
-                  href="https://wa.me/16094424081"
+                  href={contact.whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
                   data-testid="button-booking-whatsapp-main"
                 >
                   <SiWhatsapp className="w-4 h-4 mr-2" />
-                  +1-609-442-4081
+                  {contact.phone}
                 </a>
               </Button>
             </CardContent>

@@ -1,0 +1,51 @@
+{
+  "sectionBadge": "Get Started",
+  "sectionTitle": "Ready to",
+  "sectionTitleHighlight": "Transform Your Career?",
+  "sectionDescription": "Book a free discovery call to discuss your goals and create a personalized coaching plan.",
+  "connectTitle": "Choose How to Connect",
+  "scheduleTitle": "Schedule Directly",
+  "bookingOptions": [
+    {
+      "id": "whatsapp",
+      "title": "WhatsApp (Fastest)",
+      "description": "Message me directly for quick responses and scheduling",
+      "icon": "MessageCircle",
+      "cta": "Start Chat",
+      "primary": true,
+      "color": "bg-green-600 hover:bg-green-700"
+    },
+    {
+      "id": "igotanoffer",
+      "title": "IGotAnOffer",
+      "description": "Book through the verified coaching platform",
+      "icon": "Calendar",
+      "cta": "View Profile",
+      "primary": false,
+      "color": ""
+    }
+  ],
+  "processSteps": [
+    "Connect via WhatsApp or IGotAnOffer",
+    "Free 15-min discovery call to discuss goals",
+    "Personalized coaching plan created",
+    "Schedule sessions at your convenience",
+    "1:1 sessions via Google Meet or Zoom"
+  ],
+  "howItWorksTitle": "How It Works",
+  "calendarEmbed": {
+    "title": "Schedule a coaching session",
+    "url": "https://calendar.google.com/calendar/appointments/AcZssZ2dMNXqXzYcl2NKLpclDV9w0p4-9cp4UvTHii0=?gv=true"
+  },
+  "sessionInfo": {
+    "duration": "60-min sessions",
+    "platform": "Google Meet / Zoom"
+  },
+  "fastestConnect": {
+    "title": "Fastest Way to Connect",
+    "description": "Send me a WhatsApp message and I'll respond within a few hours."
+  },
+  "labels": {
+    "recommended": "Recommended"
+  }
+}

@@ -1,10 +1,16 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { X, MessageCircle } from "lucide-react";
+import { X } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
+import profileData from "@/data/profile.json";
+import whatsappData from "@/data/whatsapp.json";
 
 export default function WhatsAppWidget() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const { personal, contact } = profileData;
+  const { widget } = whatsappData;
+
+  const whatsappUrl = `${contact.whatsappLink}?text=${encodeURIComponent(widget.defaultMessage)}`;
 
   return (
     <div className="fixed bottom-6 right-6 z-50" data-testid="whatsapp-widget">
@@ -16,8 +22,8 @@ export default function WhatsAppWidget() {
                 <SiWhatsapp className="w-5 h-5 text-white" />
               </div>
               <div>
-                <p className="font-semibold text-sm">Rupesh Tiwari</p>
-                <p className="text-xs text-muted-foreground">Usually replies instantly</p>
+                <p className="font-semibold text-sm">{personal.name}</p>
+                <p className="text-xs text-muted-foreground">{widget.replyTime}</p>
               </div>
             </div>
             <Button
@@ -32,10 +38,7 @@ export default function WhatsAppWidget() {
           </div>
           
           <div className="bg-muted/50 rounded-lg p-3 mb-3">
-            <p className="text-sm">
-              Hi! Ready to accelerate your FAANG interview prep? 
-              Message me for a free consultation.
-            </p>
+            <p className="text-sm">{widget.greeting}</p>
           </div>
 
           <Button
@@ -43,13 +46,13 @@ export default function WhatsAppWidget() {
             asChild
           >
             <a
-              href="https://wa.me/16094424081?text=Hi%20Rupesh,%20I'm%20interested%20in%20your%20coaching%20services."
+              href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
               data-testid="button-whatsapp-chat"
             >
               <SiWhatsapp className="w-4 h-4 mr-2" />
-              Start Chat
+              {widget.buttonText}
             </a>
           </Button>
         </div>

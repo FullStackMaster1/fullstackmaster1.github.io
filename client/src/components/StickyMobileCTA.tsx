@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Calendar, MessageCircle } from "lucide-react";
+import { Calendar } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
-import siteContent from "@/data/siteContent.json";
+import profileData from "@/data/profile.json";
 import { trackCTAClick } from "@/lib/analytics";
 
 export default function StickyMobileCTA() {
   const [isVisible, setIsVisible] = useState(false);
-  const { hero } = siteContent;
+  const { contact } = profileData;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,10 +33,10 @@ export default function StickyMobileCTA() {
           asChild
         >
           <a
-            href={hero.buttons.primaryLink}
+            href={contact.bookingLink}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackCTAClick('sticky_book_call', hero.buttons.primaryLink)}
+            onClick={() => trackCTAClick('sticky_book_call', contact.bookingLink)}
             data-testid="button-sticky-book"
           >
             <Calendar className="w-4 h-4 mr-1" />
@@ -50,10 +50,10 @@ export default function StickyMobileCTA() {
           asChild
         >
           <a
-            href={hero.buttons.secondaryLink}
+            href={contact.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackCTAClick('sticky_whatsapp', hero.buttons.secondaryLink)}
+            onClick={() => trackCTAClick('sticky_whatsapp', contact.whatsappLink)}
             data-testid="button-sticky-whatsapp"
           >
             <SiWhatsapp className="w-4 h-4 mr-1" />

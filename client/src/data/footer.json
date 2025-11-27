@@ -1,0 +1,56 @@
+{
+  "links": [
+    { "label": "Services", "href": "#services" },
+    { "label": "Reviews", "href": "#reviews" },
+    { "label": "Pricing", "href": "#pricing" },
+    { "label": "Courses", "href": "#courses" },
+    { "label": "Articles", "href": "#articles" },
+    { "label": "Book Session", "href": "#booking" }
+  ],
+  "quickLinks": {
+    "title": "Quick Links"
+  },
+  "socialIcons": [
+    {
+      "name": "whatsapp",
+      "label": "WhatsApp",
+      "color": "text-green-500"
+    },
+    {
+      "name": "youtube",
+      "label": "YouTube",
+      "color": "text-red-500"
+    },
+    {
+      "name": "linkedin",
+      "label": "LinkedIn",
+      "color": "text-blue-600"
+    },
+    {
+      "name": "github",
+      "label": "GitHub",
+      "color": ""
+    },
+    {
+      "name": "udemy",
+      "label": "Udemy",
+      "color": "text-purple-600"
+    },
+    {
+      "name": "pluralsight",
+      "label": "Pluralsight",
+      "color": "text-pink-600"
+    }
+  ],
+  "contact": {
+    "title": "Contact"
+  },
+  "verification": {
+    "text": "Verified on IGotAnOffer",
+    "badgeColor": "bg-green-500"
+  },
+  "copyright": {
+    "text": "FullStack Master. All rights reserved.",
+    "showYear": true
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "personal": {
+    "name": "Rupesh Tiwari",
+    "firstName": "Rupesh",
+    "lastName": "Tiwari",
+    "title": "AWS Senior Customer Solutions Manager",
+    "shortTitle": "Senior CSM",
+    "tagline": "by Rupesh Tiwari",
+    "company": "Amazon Web Services",
+    "companyShort": "AWS",
+    "previousRoles": [
+      "Software Engineer",
+      "Senior Software Architect",
+      "AWS Global Senior SA",
+      "AWS Senior CSM"
+    ]
+  },
+  "contact": {
+    "phone": "+1-609-442-4081",
+    "phoneClean": "16094424081",
+    "email": "rupesh@fullstackmaster.net",
+    "whatsappLink": "https://wa.me/16094424081",
+    "whatsappMessage": "Hi Rupesh, I'd like to discuss my FAANG interview preparation.",
+    "bookingLink": "https://consult.fullstackmaster.net",
+    "calendlyLink": "https://consult.fullstackmaster.net"
+  },
+  "brand": {
+    "name": "FullStack Master",
+    "tagline": "Interview Coaching for Senior Tech Leaders",
+    "website": "https://fullstackmaster.net",
+    "logoAlt": "FullStack Master Logo"
+  },
+  "socialLinks": {
+    "linkedIn": {
+      "personal": "https://www.linkedin.com/in/rupesh-tiwari/",
+      "company": "https://www.linkedin.com/company/fullstack-master",
+      "label": "LinkedIn"
+    },
+    "youtube": {
+      "channel": "https://www.youtube.com/@FullStackMaster",
+      "channelId": "UC3mta5lIwyKgeXfEYNg-FPw",
+      "label": "YouTube"
+    },
+    "github": {
+      "url": "https://github.com/FullStackMaster1",
+      "label": "GitHub"
+    },
+    "udemy": {
+      "url": "https://www.udemy.com/user/rupesh-k-tiwari/",
+      "label": "Udemy"
+    },
+    "pluralsight": {
+      "url": "https://www.pluralsight.com/authors/rupesh-tiwari",
+      "label": "Pluralsight"
+    },
+    "igotanoffer": {
+      "url": "https://igotanoffer.com/en/coach/rupesh",
+      "reviewsUrl": "https://www.igotanoffer.com/en/coaches/rupesh-tiwari",
+      "label": "IGotAnOffer"
+    },
+    "whatsapp": {
+      "url": "https://wa.me/16094424081",
+      "label": "WhatsApp"
+    }
+  },
+  "stats": {
+    "professionalsCoached": {
+      "value": "4,000+",
+      "number": 4000,
+      "label": "Professionals Coached"
+    },
+    "yearsCoaching": {
+      "value": "15+",
+      "number": 15,
+      "label": "Years Coaching",
+      "startYear": 2010
+    },
+    "offerSuccessRate": {
+      "value": "85%+",
+      "number": 85,
+      "label": "Offer Success Rate"
+    },
+    "rating": {
+      "value": "5.0",
+      "number": 5.0,
+      "label": "Rating",
+      "reviewCount": 50,
+      "platform": "IGotAnOffer"
+    },
+    "yearsExperience": {
+      "value": "20+",
+      "number": 20,
+      "label": "Years of Experience"
+    }
+  },
+  "credentials": {
+    "currentRole": {
+      "title": "Senior Customer Solutions Manager",
+      "company": "Amazon Web Services",
+      "badge": "AWS Senior CSM",
+      "icon": "SiAmazon",
+      "variant": "amazon"
+    },
+    "education": {
+      "institution": "Indian School of Business",
+      "program": "CTO Program",
+      "badge": "ISB CTO Scholar",
+      "icon": "GraduationCap"
+    },
+    "coachingSince": {
+      "year": 2010,
+      "badge": "Coaching Since 2010",
+      "icon": "Award"
+    }
+  },
+  "passedInterviews": [
+    {
+      "company": "Microsoft",
+      "role": "Solutions Architect",
+      "icon": "microsoft",
+      "status": "Passed"
+    },
+    {
+      "company": "Google",
+      "role": "Customer Engineer",
+      "icon": "google",
+      "status": "Passed"
+    },
+    {
+      "company": "AWS",
+      "role": "Senior CSM",
+      "icon": "amazon",
+      "status": "Joined",
+      "highlight": true
+    }
+  ],
+  "targetAudience": {
+    "companies": ["Amazon", "Google", "Meta", "Apple", "Netflix"],
+    "roles": [
+      "Senior Manager",
+      "Director",
+      "VP",
+      "Principal Engineer",
+      "Staff Engineer",
+      "Solutions Architect"
+    ],
+    "coachingAreas": [
+      "System Design for Leaders",
+      "Leadership Principles",
+      "Behavioral Interviews",
+      "Executive Presence"
+    ]
+  },
+  "descriptions": {
+    "short": "Senior Customer Solutions Manager at AWS with 20+ years of experience. Helping engineers, architects, and leaders ace FAANG interviews with structured, rubric-based coaching.",
+    "medium": "From Software Engineer to Solutions Architect to AWS Senior CSM — I've lived every role you're interviewing for. 15+ years coaching 4,000+ professionals. I know exactly what FAANG bar raisers look for at Director/VP level.",
+    "seo": "15+ years coaching 4,000+ senior engineers, architects, and executives for FAANG interviews. AWS Senior CSM with 85%+ offer success rate. System design, leadership principles, behavioral interviews. Book your free discovery call.",
+    "expertise": [
+      "AWS",
+      "System Design",
+      "FAANG Interviews",
+      "Technical Leadership",
+      "Solutions Architecture",
+      "Cloud Computing"
+    ]
+  }
+}
