@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Briefcase, Award, Users, Star, CheckCircle, Calendar, Code, Layers, Cloud, Rocket, ExternalLink, LucideIcon } from "lucide-react";
 import { SiWhatsapp, SiLinkedin } from "react-icons/si";
 import aboutData from "@/data/about.json";
-import profileImage from "@assets/rupesh-headshot_1764261897457.png";
+import profileImage from "@assets/rupesh-seating-confidently_1764278393371.png";
 
 const iconMap: Record<string, LucideIcon> = {
   Briefcase,
