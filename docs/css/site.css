@@ -87,7 +87,7 @@ body {
    Button Styling (Reused Across Sections)
 -------------------------------------------------------------------- */
 .btn-custom {
-  background-color: #007bff;
+  background-color: #007bff; /* Professional blue button */
   color: white;
   padding: 10px 20px;
   border-radius: 5px;
@@ -96,7 +96,7 @@ body {
 }
 
 .btn-custom:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Darker hover color */
   color: black;
 }
 
@@ -105,29 +105,31 @@ body {
 -------------------------------------------------------------------- */
 .about-section {
   padding: 80px 0;
-  background: linear-gradient(to bottom, #c0e0f7, #d9e8f4);
+  background: linear-gradient(to bottom, #c0e0f7, #d9e8f4); /* Light blue gradient */
   color: #2a2a2a;
 }
 
+/* Styling for the About Me Rows */
 .about-row {
   margin-bottom: 60px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 15px;
 }
 
 .about-row .about-image {
   width: 100%;
   border-radius: 10px;
-  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  transition: transform 0.5s ease;
 }
 
+/* Hover effect on images */
 .about-row .about-image:hover {
-  transform: scale(1.1);
-  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
 }
 
+/* About Me Section Text */
 .about-text {
   display: flex;
   flex-direction: column;
@@ -140,8 +142,6 @@ body {
   color: #333;
   font-weight: 700;
   margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
 }
 
 .about-text p {
@@ -151,49 +151,110 @@ body {
 }
 
 .about-text b {
-  color: #007bff;
+  color: #007bff; /* Accent color */
 }
 
+/* Hover effect for bold text */
 .about-text b:hover {
   text-decoration: underline;
 }
 
-/* Responsive fixes */
+/* Adjusting for smaller screens */
 @media (max-width: 768px) {
   .about-row {
     flex-direction: column;
     text-align: center;
   }
+
   .about-text {
     text-align: center;
     padding-top: 20px;
   }
+
   .about-image {
     margin-bottom: 30px;
   }
 }
 
+/* Additional Modifications for Small Devices (Mobile-First Design) */
 @media (max-width: 576px) {
   .about-text h2 {
     font-size: 2rem;
   }
+
   .about-text p {
     font-size: 1.1rem;
   }
+
+  .about-row {
+    margin-bottom: 40px;
+  }
+
+  .about-image {
+    margin-bottom: 20px;
+  }
+}
+
+/* Enhancements for consistent padding on different screen sizes */
+.about-row {
+  padding: 15px;
+}
+
+.about-text h2 {
+  text-transform: uppercase; /* Uppercase for a more professional tone */
+  letter-spacing: 1px; /* Letter spacing for readability */
 }
 
 /* --------------------------------------------------------------------
-   Projects & Courses Section
+   Image Transitions & Enhancements
 -------------------------------------------------------------------- */
+.about-row .about-image {
+  width: 100%;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.about-row .about-image:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2); /* Deeper shadow for hover */
+}
+
+/* Making sure images align correctly */
+.about-image {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Vertical alignment for mid-sized screens */
+@media (min-width: 768px) and (max-width: 992px) {
+  .about-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about-text {
+    text-align: center;
+    padding: 30px;
+  }
+
+  .about-image {
+    margin-bottom: 40px;
+  }
+}
+
+
+/* --------------------------------------------------------------------
+   Projects & Courses Section (with a smooth transition)
+-------------------------------------------------------------------- */
+/* Subtitle Styling */
 .section-subtitle {
   font-size: 1.2rem;
-  color: #007bff;
+  color: #007bff; /* Matching your accent color */
   margin-bottom: 30px;
   text-align: center;
 }
 
 .projects-section {
-  background: linear-gradient(to bottom, #c0e0f7, #d9e8f4);
+  background: linear-gradient(to bottom, #c0e0f7, #d9e8f4); /* Light blue gradient */
   padding: 100px 0;
   text-align: center;
 }
@@ -201,18 +262,19 @@ body {
 .projects-section h2 {
   font-size: 2.5rem;
   color: #333;
+  margin-bottom: 30px;
 }
 
 .carousel-inner img {
   width: 100%;
   height: auto;
-  border-radius: 8px;
 }
 
 .carousel-caption {
   background-color: rgba(0, 0, 0, 0.75);
   padding: 10px;
   border-radius: 8px;
+  font-size: 1rem;
   color: white;
 }
 
@@ -223,74 +285,184 @@ body {
 }
 
 /* --------------------------------------------------------------------
-   Testimonial Section
+   Testimonial Section with Blurred Background (Improved Readability)
 -------------------------------------------------------------------- */
+
 .testimonial-section {
-  background: linear-gradient(
+  background: 
+    linear-gradient(
       to bottom,
-      rgba(192, 224, 247, 0.5),
-      rgba(217, 232, 244, 0.5)
+      rgba(192, 224, 247, 0.5), /* Light blue gradient with transparency */
+      rgba(217, 232, 244, 0.5)  /* Light blue gradient with transparency */
     ),
     url('../assets/images/rupesh-testimonial.jpg') no-repeat center center/cover;
   padding: 100px 0;
   background-attachment: fixed;
+  background-size: cover;
   text-align: center;
   color: white;
+  transition: background 0.5s ease;
 }
 
+/* Testimonial Container */
 .testimonial-container {
   max-width: 800px;
   margin: 0 auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.5); /* Increased opacity for better readability */
   padding: 30px;
   border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
 }
 
+/* Individual Testimonial Cards */
 .testimonial-card {
   padding: 25px;
   margin-bottom: 20px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7); /* Darker background for contrast */
   border-radius: 10px;
+  color: #f1f1f1;
+  transition: background-color 0.3s ease;
 }
 
+/* Headings within the cards */
 .testimonial-card h5 {
   font-size: 1.6rem;
   font-weight: bold;
-  color: #00a2ff;
+  color: #00a2ff; /* Lighter blue for accent */
+  margin-bottom: 10px;
 }
 
+/* Testimonial text */
 .testimonial-card p {
   font-size: 1.1rem;
   line-height: 1.8;
+  color: #e0e0e0; /* Softer white for readability */
 }
 
+/* Button Styling */
+.btn-outline-light {
+  color: white;
+  border: 1px solid white;
+  padding: 12px 25px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Button Hover Effect */
 .btn-outline-light:hover {
   background-color: #007bff;
+  color: white;
   border-color: #007bff;
 }
 
-/* --------------------------------------------------------------------
-   CTA Section
--------------------------------------------------------------------- */
-.cta-section {
-  background: linear-gradient(to bottom, #c0e0f7, #d9e8f4);
-  padding: 60px 0;
-  text-align: center;
-  color: #666;
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .testimonial-container {
+    padding: 20px;
+  }
+
+  .testimonial-card h5 {
+    font-size: 1.4rem;
+  }
+
+  .testimonial-card p {
+    font-size: 1rem;
+  }
+
+  .btn-outline-light {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
 }
 
 /* --------------------------------------------------------------------
-   Footer
+   Global Button Styling (reuse the style across sections)
+-------------------------------------------------------------------- */
+.btn-custom {
+  background-color: #17a2b8;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #138f99;
+}
+
+/* --------------------------------------------------------------------
+   Call to Action (CTA) Section (Smoothed gradient and consistent colors)
+-------------------------------------------------------------------- */
+.cta-section {
+  background: linear-gradient(
+    to bottom,
+ #c0e0f7, #d9e8f4
+  ); /* Light blue gradient */
+  padding: 60px 0;
+  text-align: center;
+  color: rgb(102, 101, 101);
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  padding-bottom: 30px;
+}
+
+.cta-section p {
+  margin-bottom: 20px;
+  color: rgb(87, 85, 85);
+}
+
+.cta-section a {
+  display: inline-block;
+  margin: 10px 10px;
+  padding: 12px 25px;
+  background-color: #0056b3; /* Professional button color */
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease;
+}
+
+.cta-section a:hover {
+  background-color: #003f7d; /* Darker blue hover */
+}
+
+
+/* --------------------------------------------------------------------
+   Social Icons Section
+-------------------------------------------------------------------- */
+.social-section {
+  padding: 30px 0;
+  text-align: center;
+  background-color: #343a40;
+  color: white;
+}
+
+.social-icons a {
+  margin: 0 15px;
+  color: white;
+  font-size: 1.8rem;
+}
+
+/* --------------------------------------------------------------------
+   Footer Section
 -------------------------------------------------------------------- */
 .footer {
   padding: 15px 0;
   background-color: #212529;
   color: white;
   text-align: center;
+  font-size: 0.9rem;
+  margin-top: 0;
 }
 
 /* --------------------------------------------------------------------
-   Scroll Fade Animation
+   Fade-in Animation for Scroll Effects (Used for Sections)
 -------------------------------------------------------------------- */
 .fade-in {
   opacity: 0;
@@ -301,33 +473,4 @@ body {
 .fade-in.show {
   opacity: 1;
   transform: translateY(0);
-}
-
-/* --------------------------------------------------------------------
-   GLOBAL IMAGE ZOOM ON SCROLL
-   (Works automatically for ALL images)
--------------------------------------------------------------------- */
-img {
-  transition: transform 1.2s ease, opacity 0.8s ease !important;
-  transform: scale(1.05);
-  opacity: 0;
-}
-
-img.aos-animate {
-  transform: scale(1) !important;
-  opacity: 1 !important;
-}
-
-/* --------------------------------------------------------------------
-   GLOBAL BACKGROUND IMAGE ZOOM
--------------------------------------------------------------------- */
-*[style*="background-image"] {
-  background-size: 105% !important;
-  transition: background-size 1.2s ease, opacity 0.8s ease;
-  opacity: 0;
-}
-
-.aos-animate[style*="background-image"] {
-  background-size: 100% !important;
-  opacity: 1;
 }
