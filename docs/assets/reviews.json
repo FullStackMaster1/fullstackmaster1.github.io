@@ -1,0 +1,342 @@
+[
+    {
+        "author": "Madhurima",
+        "date": "Nov 09, 2025",
+        "stars": 5.0,
+        "text": "Rupesh was great to work with. He has good knowledge, and provided valuable feedback and actionable items.",
+        "reply": "Appreciate the kind words! It was a pleasure working together. Glad the session added value and gave you actionable next steps.",
+        "private": true
+    },
+    {
+        "author": "Achille",
+        "date": "Nov 04, 2025",
+        "stars": 5.0,
+        "text": "No comment was left.",
+        "reply": "",
+        "private": false
+    },
+    {
+        "author": "Bijan",
+        "date": "Sep 25, 2025",
+        "stars": 5.0,
+        "text": "A fantastic call. I learned a huge amount of practical and valuable information. I now have a clear, structured plan towards my interviews.",
+        "reply": "Loved working with you on this. You asked sharp questions and leaned into the frameworks fast — that’s why you left with a clear plan. Most people walk into TPM interviews unstructured; you’re already fixing that. Anyone else preparing for AI redteaming or bar-raiser loops — this is exactly the kind of prep that changes the game.",
+        "private": false
+    },
+    {
+        "author": "Ca",
+        "date": "Sep 23, 2025",
+        "stars": 5.0,
+        "text": "I took multiple sessions with Rupesh and have consistently been impressed by his deep expertise in DevOps and the AWS cloud domain. His background in development provides a solid foundation that enhances his ability to explain complex concepts clearly and effectively. He is genuinely passionate about his work and goes above and beyond to support his students — often adjusting his schedule to accommodate individual needs. He takes the time to ensure your queries are thoroughly addressed and is always willing to provide guidance. This is not just a one-time engagement for him; he brings a long-term mentorship mindset to his coaching. I highly recommend him for coaching in Java, DevOps, Cloud (AWS), and SRE domains.",
+        "reply": "Thank you so much for sharing this detailed feedback. I’m glad the sessions gave you clarity on DevOps and AWS concepts — and that my development background added value to our discussions. I always aim to keep explanations practical and grounded so you can apply them right away. Your words about long-term mentorship mean a lot. I believe growth in tech isn’t just about passing one interview, but building confidence and depth over time. Happy to know that came through in our sessions. Appreciate your recommendation — and I look forward to seeing you continue growing in Java, DevOps, Cloud, and SRE.",
+        "private": false
+    },
+    {
+        "author": "Shiv",
+        "date": "Sep 21, 2025",
+        "stars": 5.0,
+        "text": "I had the opportunity to interview with Rupesh for the Senior Site Reliability Engineer role. The session was very engaging, he created a comfortable environment that allowed me to share my experiences openly. His questions were thoughtful and well-structured, focusing not only on technical depth but also on collaboration, ownership, and leadership, which made the conversation meaningful. He actively listened, gave me the space to explain my stories in detail, and probed deeper in a constructive way. Overall, I found him professional, approachable, and genuinely interested in assessing both technical and cultural fit.",
+        "reply": "Thanks, Shiv — glad the session helped you sharpen both the technical and leadership side of your prep. I focus on making candidates comfortable and pushing them to think like bar-raisers. Wishing you the best with Google — and for others reading, if you want the same level of prep, let’s connect.",
+        "private": false
+    },
+    {
+        "author": "Sairaj",
+        "date": "Sep 05, 2025",
+        "stars": 5.0,
+        "text": "It was great to work with Rupesh, learned new things about behavioral interview. It was a very detailed and informative session. He also shared lot of resources which are helpful for preparation.",
+        "reply": "Glad you found it valuable—keep applying those frameworks and you’ll walk into your loop with confidence.",
+        "private": false
+    },
+    {
+        "author": "Faiz",
+        "date": "Sep 04, 2025",
+        "stars": 5.0,
+        "text": "Rupesh was great to work with again; I'm glad I booked him for a second session! He familiarized me with crucial design principles and patterns. The exercises we went through highlighted areas I could improve on, in which I otherwise wouldn't have been aware of. He told me exactly what I need to study to increase my chances of success.",
+        "reply": "Thank you Faiz, I really appreciate your kind words — your effort made the session productive, and I’m excited to see your continued progress.",
+        "private": false
+    },
+    {
+        "author": "Faiz",
+        "date": "Aug 30, 2025",
+        "stars": 5.0,
+        "text": "Rupesh has been a great help and mentor for preparing for my interview. He has provided invaluable insights, advice, and highlighted my strengths and weaknesses that I wasn’t aware of in the first place. He is very communicative and motivated to ensure I am successful in my interview. I would highly recommend him!",
+        "reply": "Thanks, Faiz! I really enjoyed working with you on coding interview prep. Glad the frameworks, feedback, and practice sessions helped you sharpen both strengths and blind spots. Wishing you the best for your upcoming rounds!",
+        "private": false
+    },
+    {
+        "author": "Sena",
+        "date": "Aug 28, 2025",
+        "stars": 5.0,
+        "text": "Rupesh was very helpful with giving resume review and roadmap for next steps.",
+        "reply": "Thank you, Sena — we refined your resume and set a 90-day roadmap. Wishing you success in landing your next software engineering role.",
+        "private": true
+    },
+    {
+        "author": "Madi",
+        "date": "Aug 27, 2025",
+        "stars": 5.0,
+        "text": "Rupes pointed a lot of helpful things during our mock interview. I really appreciated it and he also provided some extra resources which are really helpful. I'll be booking another session with him. recommended",
+        "reply": "Thanks Madi — glad the session added value! Excited to see your progress and happy to support you through the next rounds 🚀",
+        "private": false
+    },
+    {
+        "author": "Taras",
+        "date": "Aug 24, 2025",
+        "stars": 5.0,
+        "text": "The best coaching session that I had",
+        "reply": "Thanks a lot, Taras 🙏 Glad you found the session valuable. Wishing you the best for your interview 🚀.",
+        "private": false
+    },
+    {
+        "author": "Nicholas",
+        "date": "Aug 15, 2025",
+        "stars": 5.0,
+        "text": "I really enjoyed my session with Rupesh. He was able to quickly understand my position in my career, provide a clear, outside perspective, and leave me with both concrete action items for the short-term and big questions to think about in the long-term. I found his feedback to be very direct, sincere, and helpful.",
+        "reply": "Thank you, Nicholas! I'm glad the session gave you clarity and direction — excited to see you grow into the architect you’re already thinking like. 💪",
+        "private": false
+    },
+    {
+        "author": "Abhishek",
+        "date": "Aug 08, 2025",
+        "stars": 5.0,
+        "text": "Rupesh is amazing! He has extensive knowledge in technology and really helped me think at a higher level. His coaching has given me a framework to answer questions with numbers and always aim to raise the bar. Highly recommend him.",
+        "reply": "Thanks, Abhishek—thrilled the frameworks helped you think with numbers and raise the bar. Let’s lock the next HM mock; send your resume + JD and I’ll prep a targeted grill on your top two bullets.",
+        "private": false
+    },
+    {
+        "author": "Abhirup",
+        "date": "Aug 08, 2025",
+        "stars": 5.0,
+        "text": "Resume Review for Mid- to Senior Full-Stack Engineer - The session was well-timed and interactive. Rupesh helped me positively re-frame a career gap/personal project situation, and pointed out parts of my resume where I could expand on the business impact. Also, he is friendly and positive, and gave some long-term career path guidance too.",
+        "reply": "Thank you for the kind words! It was a pleasure working with you on refining your resume and turning your career gap into a powerful story. I’m glad you found the session interactive and actionable. Looking forward to seeing you implement the impact-driven changes we discussed — and I’m excited about the career path we outlined for your next level-up!",
+        "private": false
+    },
+    {
+        "author": "Ann",
+        "date": "Aug 06, 2025",
+        "stars": 5.0,
+        "text": "This was my >2 times with Rupesh for mock interview! I had the opportunity to work with Rupesh to prepare for a panel session for a Solutions Architect role. Coming from a more technical background, I realized that the storytelling and communication aspect of the conversation needed more practice and refinement. Rupesh provided highly actionable feedback—he helped me improve the overall structure of the panel discussion, identify key focus areas, flag red flags, and even suggested thoughtful questions to ask during the session. He holds a very high bar and treats each mock interview as seriously as if it were his own team’s hiring process. The session was incredibly valuable, and I truly believe his guidance will help me ace the interview!",
+        "reply": "Thank you so much, An! Your dedication and progress are inspiring — I’m truly honored to be part of your journey. Wishing you all the best for the final panel!",
+        "private": false
+    },
+    {
+        "author": "Ricardo",
+        "date": "Aug 01, 2025",
+        "stars": 5.0,
+        "text": "Rupesh is great! He provided me with more information in one hour than I could ever get in weeks of research. I now have a 6 month roadmap to data engineering. Look forward to keep working with him.",
+        "reply": "🙏 Thank you Ricardo! It was a pleasure building your roadmap — excited to keep mentoring you on your journey to become a top-tier Data Engineer! 🚀💡",
+        "private": false
+    },
+    {
+        "author": "Ann",
+        "date": "Jul 28, 2025",
+        "stars": 5.0,
+        "text": "Another session with Rupesh to help prepare for the technical round – Rupesh quickly identified my strengths and weaknesses in a few data engineering areas and helped me structure my responses in a more professional way. His feedback was valuable and really helped me improve my approach. I feel more confident in tackling technical questions and presenting myself effectively.",
+        "reply": "Thank you so much, An! I'm really glad the session helped sharpen your technical narrative — you're on the right path to nailing this role! 🚀",
+        "private": false
+    },
+    {
+        "author": "Ann",
+        "date": "Jul 18, 2025",
+        "stars": 5.0,
+        "text": "I’m currently preparing for a Solutions Architect role with a data background. Rupesh started the session by proposing a clear structure, which helped set the tone for a productive conversation - definitely five stars. What I truly appreciated was his thoughtful and caring approach. He made sure I left the session with a clear framework and practical guidance I can continue to practice on my own...",
+        "reply": "Thank you so much, An! It was a pleasure guiding you—your sharp thinking and curiosity made the session deeply engaging. Wishing you all the best for your Databricks journey!",
+        "private": false
+    },
+    {
+        "author": "Fernando",
+        "date": "Jul 18, 2025",
+        "stars": 5.0,
+        "text": "Rupesh is an exceptional professional who can provide me with all the necessary guidance to excel in my next interviews. Your view and tips surely will help me stand out in the crowd and be more prepared to prevent the common pitfalls during interviews.",
+        "reply": "Thank you, Fernando! I'm truly glad the session helped you feel more prepared and confident. Wishing you standout success in your upcoming interviews!",
+        "private": false
+    },
+    {
+        "author": "Sina",
+        "date": "Jul 16, 2025",
+        "stars": 5.0,
+        "text": "I learned a lot from Rupesh. He gave me actionable feedback on how to better present my my past experiences.",
+        "reply": "Thank you! I’m glad the feedback helped — wishing you continued success in your journey! 🚀",
+        "private": false
+    },
+    {
+        "author": "Aman",
+        "date": "Jul 15, 2025",
+        "stars": 5.0,
+        "text": "Rupesh is a wonderful and kind coach who helped me through a full session of understanding System Design fundamentals, and how to have a proper discussion with my interviewer regarding System Design. Prior to our session, I was intimidated by the thoughts of my upcoming interview but Rupesh has given me a solid framework which I can use to be confident in my questions/answers.",
+        "reply": "Thank you so much, Aman - I'm really glad the framework helped boost your confidence for system design! Wishing you the very best in your interview!",
+        "private": false
+    },
+    {
+        "author": "Muhammad",
+        "date": "Jul 01, 2025",
+        "stars": 5.0,
+        "text": "I had my first mock interview session with Rupesh, and it was extremely insightful. He quickly identified the areas I needed to focus on and tailored the session specifically for the Solution Architect role I’m targeting. Rupesh brings deep experience in system design and architecture interviews... He not only reviewed my technical approach, but also coached me on how to structure and communicate my design decisions clearly and confidently. He emphasized how to align my answers with the business context of the role, and gave actionable feedback on my tone and overall presence. In just one hour, I gained a clear picture of my strengths and the areas I need to refine.",
+        "reply": "Thank you Muhammad for the detailed feedback! I'm glad I could help you identify key focus areas and provide structured guidance for your Solution Architect interview preparation. Wishing you the best in your upcoming interviews!",
+        "private": false
+    },
+    {
+        "author": "Prapul",
+        "date": "Jun 24, 2025",
+        "stars": 5.0,
+        "text": "Awesome experience. I got great insights about how to prepare well for the data modeling and how to structure my answers for designing systems. Strongly recommend anyone who is looking for interview preparation/mock interview practice to reach out to Rupesh.",
+        "reply": "Thank you so much! It was a pleasure working with you Prapul—wishing you the best in your upcoming interviews!",
+        "private": false
+    },
+    {
+        "author": "Praveen",
+        "date": "Jun 20, 2025",
+        "stars": 5.0,
+        "text": "Rupesh was great . He gave good feedback on how to prepare stories for Amazon and how the thought process needs to be of a senior software engineer. He gave many insights on how Amazon works and what are the points they look in interview process.",
+        "reply": "Thank you! I'm glad the session helped you align your stories and mindset with what Amazon looks for.",
+        "private": false
+    },
+    {
+        "author": "Tak",
+        "date": "Jun 07, 2025",
+        "stars": 5.0,
+        "text": "It was a very informative session. Rupesh shared his journey to becoming a Solutions Architect, walked through the interview process, and gave me the confidence to start my own transition into the role. Thank you!",
+        "reply": "Thanks so much for the thoughtful feedback, Tak — really glad the session helped you feel confident about your SA transition. Wishing you the best on the journey!",
+        "private": false
+    },
+    {
+        "author": "Denzeyl",
+        "date": "Jun 01, 2025",
+        "stars": 5.0,
+        "text": "Rupesh gave insightful, honest feedback. He clearly defined best pathways and methods to get in front of hiring managers and break down the initial barrier. He also shared insight to the value and scope I should be adding to my most recent experience. I highly recommend Rupesh",
+        "reply": "Thank you for your thoughtful feedback, Denzeyl. It was great working with you—your commitment and openness made our collaboration truly effective. Wishing you all the best as you move forward!",
+        "private": false
+    },
+    {
+        "author": "Andre",
+        "date": "May 16, 2025",
+        "stars": 5.0,
+        "text": "I had a prep session with Rupesh for my Amazon interview. His experience as an Amazon Solutions Architect shows in his coaching. Rupesh gave clear feedback on my technical answers and communication style, spotting weaknesses I missed. He focused on key topics and provided practical strategies I could use. With his background conducting numerous interviews, I felt better prepared after our session. I recommend Rupesh to anyone preparing for a technical interview.",
+        "reply": "Appreciate it! I don’t do generic coaching — I focus on what actually works in real Amazon interviews.",
+        "company": "Amazon",
+        "private": false
+    },
+    {
+        "author": "Melvin",
+        "date": "Apr 30, 2025",
+        "stars": 5.0,
+        "text": "Rupesh was amazing to work with. As a beginning Solutions Architect, I was stuck in my career, and he provided guidance for sharpening my skills, demonstrating competence, building my brand, and engaging with other cloud professionals and recruiters. By the end of the session, I had a 90-day step-by-step plan to turn my career around. I'll be coming back to him again for mock interviews in the next month or so!",
+        "reply": "Thank you for the kind words—I'm glad our session gave you clarity and a solid 90-day action plan; looking forward to helping with your mock interviews soon!",
+        "company": "Amazon",
+        "private": false
+    },
+    {
+        "author": "Vaughn",
+        "date": "Apr 22, 2025",
+        "stars": 5.0,
+        "text": "THANK YOU RUPESH!!!",
+        "reply": "Vaughn landed a role at DraftKings after our coaching session. Appreciate the kind note: 'Thank you Rupesh.' Wishing you continued success, Vaughn!",
+        "company": "DraftKings",
+        "private": false
+    },
+    {
+        "author": "Vaughn",
+        "date": "Mar 12, 2025",
+        "stars": 5.0,
+        "text": "I had a great experience working with Rupesh! He helped me approach object-oriented design interview problems with structure, confidence, and competency. His patience stood out—he took the time to ensure I fully understood each concept before moving on. I also appreciated how he provided clear next steps to continue improving my skills. Highly recommend him for anyone looking to strengthen their SWE interview prep!",
+        "reply": "Thanks, Vaughn! It was a pleasure working with you. Glad to hear the session helped—wishing you the best in your interviews!",
+        "private": false
+    },
+    {
+        "author": "Yu",
+        "date": "Mar 05, 2025",
+        "stars": 5.0,
+        "text": "very helpful for the resume review!",
+        "reply": "Thanks Yu! Glad you found it helpful for your resume review. Let me know if you have any other questions!",
+        "private": false
+    },
+    {
+        "author": "Aishwarya",
+        "date": "Mar 02, 2025",
+        "stars": 5.0,
+        "text": "I loved the session with Rupesh. It has allowed me to gain a lot of confidence in a span of an hour. I got a structure on how to answer questions from him. Thank you sir!",
+        "reply": "I'm glad you found the session helpful and gained confidence! Let me know if you need any further guidance. Thanks for your feedack Aishwarya!",
+        "private": false
+    },
+    {
+        "author": "Omotola",
+        "date": "Jan 23, 2025",
+        "stars": 5.0,
+        "text": "Rupesh is patient, thorough, and a confidence-booster. I had an excellent experience learning from him!",
+        "reply": "Thank you, Omotola! I'm glad you had a great learning experience. Wishing you continued success! 🚀",
+        "company": "Red Hat",
+        "private": false
+    },
+    {
+        "author": "Michael",
+        "date": "Jan 15, 2025",
+        "stars": 5.0,
+        "text": "I recently had a coaching session with Rupesh and it was amazing. He have strong experience with interview structure and walked me through the parts that I would face in the interview process, and provided me detailed resources on how I should be preparing for both technical and behavioral parts of the interview. We also had a short mock interview on the behavioral and he pointed out the areas I should be improving, and provided me a structure that I could use for frequent questions that I would face in the interview.",
+        "reply": "Thank you Michael for the thoughtful feedback! I'm glad the session and strategies were helpful—wishing you great success in your interviews!",
+        "private": false
+    },
+    {
+        "author": "Shamir",
+        "date": "Oct 21, 2024",
+        "stars": 5.0,
+        "text": "I had my first mock interview session with Rupesh. He focused on exactly what I was looking for. He brings a ton of data engineering and interview experience. He not only coached me technically, but also coached me on how I approach a question, how I should answer each question that suits the role that I am applying for, and how my tone and body language should be while answering a question. Now I know my strengths and weaknesses properly. All of these in a single hour of interview. I highly recommend Rupesh for data engineering interview coaching.",
+        "reply": "Thank you so much for your kind words! I'm glad the session was helpful in preparing you for your interview. It was great working with you, and I'm confident you'll excel with your strengths. Wishing you all the best in your data engineering career!",
+        "private": false
+    },
+    {
+        "author": "Govind",
+        "date": "Sep 14, 2024",
+        "stars": 5.0,
+        "text": "Rupesh was great to work with. His comments were quite helpful and he also provided pointers to further improve and learn. He provided opportunities to fine tune and present and gather feedback which was quite interesting. He provided pointers to both technical and behavioural questions which is extremely helpful. He provided confidence with his personal experience. Hopefully I put this together and succeed at the interview :)",
+        "reply": "Thank you, Govind, for your kind words. I'm glad I could help, and I'm confident you'll do great in your interview! Best of luck!",
+        "private": false
+    },
+    {
+        "author": "Xavier",
+        "date": "May 14, 2024",
+        "stars": 5.0,
+        "text": "Rupesh was really helpful and gave insightful advice. I appreciated that he was actively listening and adapting to the situation, not dumping random tips.",
+        "reply": "Thank you for your thoughtful review! I'm dedicated to providing personalized and insightful guidance. Your feedback motivates me to continue striving for excellence.",
+        "private": false
+    },
+    {
+        "author": "Nikunj",
+        "date": "Apr 29, 2024",
+        "stars": 5.0,
+        "text": "I recently had the pleasure of undergoing interview coaching with Rupesh Tewari at Igotanoffer, and I highly recommend his services. Rupesh displayed a high level of professionalism and demonstrated deep knowledge of the subject matter. During our session, he effectively identified several areas I needed to improve and helped me develop a comprehensive strategy to address these blind spots. His guidance was invaluable in preparing me for my interview. If you're looking for thorough and insightful interview preparation, Rupesh is an excellent choice.",
+        "reply": "Thank you for the glowing review, it was a pleasure working with you Nikunj!",
+        "private": false
+    },
+    {
+        "author": "Mehmet",
+        "date": "Feb 03, 2024",
+        "stars": 5.0,
+        "text": "I recently had a coaching session to prepare for my upcoming AWS interview. During the session, Rupesh explained how Solution Architects work in AWS, which was very helpful for my preparation. We also did a technical mock interview... We go through some of the Leadership Principles, that are fundamental of AWS interviews.",
+        "reply": "Dear Mehmet, Thank you for your thoughtful review. I'm delighted to hear that our coaching session was helpful in preparing you for your AWS interview...",
+        "private": false
+    },
+    {
+        "author": "Anas",
+        "date": "Nov 14, 2023",
+        "stars": 5.0,
+        "text": "Rupesh was great to work with! I now have a better understanding of how to prep for the LP interview.",
+        "reply": "Thank you for the feedback! I'm glad I could help. Wishing you the best in your interview!",
+        "private": false
+    },
+    {
+        "author": "Manu",
+        "date": "Nov 10, 2023",
+        "stars": 5.0,
+        "text": "Coach Rupesh's invaluable assistance and guidance during my tech interview preparation were truly exceptional. His deep knowledge and insightful coaching not only boosted my technical skills but also instilled confidence in navigating challenging interview scenarios. I am immensely grateful for Rupesh's dedicated support!",
+        "reply": "Thank you for your kind words! It's rewarding to see your progress and confidence grow. Your hard work and dedication made all the difference. Wishing you great success in your future endeavors!",
+        "private": false
+    },
+    {
+        "author": "Sam",
+        "date": "Sep 21, 2022",
+        "stars": 5.0,
+        "text": "Rupesh was great to work with! I now have a better understanding how to prep for LP questions.",
+        "reply": "Thanks Sam",
+        "private": false
+    }
+]
