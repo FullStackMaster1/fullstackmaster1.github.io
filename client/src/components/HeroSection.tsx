@@ -50,7 +50,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="min-h-[90vh] flex items-center pt-20 pb-12 bg-gradient-to-br from-background via-background to-primary/5"
+      className="min-h-[90vh] flex items-center pt-0 pb-12 bg-gradient-to-br from-background via-background to-primary/5"
       data-testid="section-hero"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
