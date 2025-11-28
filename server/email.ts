@@ -49,9 +49,12 @@ interface WebinarRegistrationData {
 
 export async function sendWebinarRegistrationNotification(registration: WebinarRegistrationData): Promise<boolean> {
   try {
+    console.log('Attempting to send email notification for:', registration.name, registration.email);
     const { client, fromEmail } = await getResendClient();
+    console.log('Resend client obtained, fromEmail:', fromEmail);
     
     const adminEmail = 'rupesh@fullstackmaster.net';
+    console.log('Sending email to:', adminEmail);
     
     const { data, error } = await client.emails.send({
       from: fromEmail || 'FullStack Master <onboarding@resend.dev>',
@@ -104,14 +107,14 @@ export async function sendWebinarRegistrationNotification(registration: WebinarR
     });
 
     if (error) {
-      console.error('Email send error:', error);
+      console.error('Email send error:', JSON.stringify(error, null, 2));
       return false;
     }
 
-    console.log('Email sent successfully:', data?.id);
+    console.log('Email sent successfully! ID:', data?.id);
     return true;
-  } catch (error) {
-    console.error('Failed to send email notification:', error);
+  } catch (error: any) {
+    console.error('Failed to send email notification:', error?.message || error);
     return false;
   }
 }
