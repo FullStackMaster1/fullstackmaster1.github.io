@@ -98,11 +98,11 @@ export default function TrustBar() {
 
   return (
     <section
-      className="py-8 bg-card border-y border-card-border"
+      className="py-6 bg-card border-y border-card-border"
       data-testid="section-trust"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
           {metrics.map((metric, index) => {
             const IconComponent = lucideIconMap[metric.icon];
             return (
