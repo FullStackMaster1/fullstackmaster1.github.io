@@ -49,59 +49,62 @@ interface WebinarRegistrationData {
 
 export async function sendWebinarRegistrationNotification(registration: WebinarRegistrationData): Promise<boolean> {
   try {
-    console.log('Attempting to send email notification for:', registration.name, registration.email);
+    console.log('Attempting to send confirmation email to registrant:', registration.name, registration.email);
     const { client, fromEmail } = await getResendClient();
     console.log('Resend client obtained, fromEmail:', fromEmail);
     
-    const adminEmail = 'rupesh@fullstackmaster.net';
-    console.log('Sending email to:', adminEmail);
-    
     const { data, error } = await client.emails.send({
-      from: fromEmail || 'FullStack Master <onboarding@resend.dev>',
-      to: adminEmail,
-      subject: `New Webinar Registration: ${registration.webinarTitle}`,
+      from: fromEmail || 'Rupesh Tiwari <onboarding@resend.dev>',
+      to: registration.email,
+      replyTo: 'rupesh@fullstackmaster.net',
+      subject: `You're registered: ${registration.webinarTitle}`,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #1a365d; border-bottom: 2px solid #eab308; padding-bottom: 10px;">
-            New Webinar Registration
-          </h2>
-          
-          <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #334155; margin-top: 0;">Registrant Details</h3>
-            <table style="width: 100%; border-collapse: collapse;">
-              <tr>
-                <td style="padding: 8px 0; color: #64748b; width: 120px;"><strong>Name:</strong></td>
-                <td style="padding: 8px 0; color: #1e293b;">${registration.name}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; color: #64748b;"><strong>Email:</strong></td>
-                <td style="padding: 8px 0; color: #1e293b;">
-                  <a href="mailto:${registration.email}" style="color: #2563eb;">${registration.email}</a>
-                </td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; color: #64748b;"><strong>Phone:</strong></td>
-                <td style="padding: 8px 0; color: #1e293b;">${registration.phone || 'Not provided'}</td>
-              </tr>
-              <tr>
-                <td style="padding: 8px 0; color: #64748b;"><strong>WhatsApp:</strong></td>
-                <td style="padding: 8px 0; color: #1e293b;">
-                  ${registration.whatsappOptIn 
-                    ? '<span style="color: #16a34a;">Yes, opted in</span>' 
-                    : '<span style="color: #dc2626;">No</span>'}
-                </td>
-              </tr>
-            </table>
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+          <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 20px; text-align: center; border-radius: 8px 8px 0 0;">
+            <h1 style="color: #fff; margin: 0; font-size: 24px;">You're In! 🎯</h1>
+            <p style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 16px;">Your spot is reserved for:</p>
           </div>
           
-          <div style="background: #fef3c7; padding: 15px; border-radius: 8px; border-left: 4px solid #eab308;">
-            <strong style="color: #92400e;">Webinar:</strong>
-            <span style="color: #78350f;">${registration.webinarTitle}</span>
+          <div style="background: #f8fafc; padding: 30px 20px;">
+            <h2 style="color: #1a365d; margin: 0 0 20px 0; font-size: 20px;">${registration.webinarTitle}</h2>
+            
+            <div style="background: #fff; padding: 20px; border-left: 4px solid #667eea; margin-bottom: 20px;">
+              <p style="margin: 0; color: #555; line-height: 1.6;">
+                Hi <strong>${registration.name.split(' ')[0]}</strong>,
+              </p>
+              <p style="margin: 15px 0 0 0; color: #555; line-height: 1.6;">
+                Thanks for registering! I'm excited to dive deep with you on the strategies and frameworks that help senior leaders crack high-stakes interviews at top tech companies.
+              </p>
+            </div>
+            
+            <div style="background: #fff3cd; padding: 15px; border-radius: 6px; margin-bottom: 20px;">
+              <p style="margin: 0; color: #856404; font-size: 14px;">
+                <strong>Next step:</strong> Look for details about the webinar schedule, any prep materials, or how to join when the time comes.
+              </p>
+            </div>
+            
+            <div style="background: #fff; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+              <p style="margin: 0 0 12px 0; color: #333; font-weight: 600;">Have questions before the webinar?</p>
+              <p style="margin: 0; color: #666; font-size: 14px; line-height: 1.6;">
+                Just reply to this email. I read every message and love connecting with leaders who are serious about their next level. Your questions might even shape what we cover.
+              </p>
+            </div>
+            
+            <div style="background: #e8f4f8; padding: 20px; border-radius: 6px; margin-bottom: 20px;">
+              <p style="margin: 0 0 10px 0; color: #333; font-weight: 600;">Want to book 1-on-1 coaching?</p>
+              <p style="margin: 0; color: #666; font-size: 14px;">
+                If you'd like personalized interview prep before or after your target role interviews, 
+                <a href="https://bit.ly/book-rupesh" style="color: #667eea; text-decoration: none; font-weight: 600;">book a session here</a>.
+              </p>
+            </div>
+            
+            <p style="margin: 20px 0 0 0; color: #999; font-size: 12px; line-height: 1.5; border-top: 1px solid #e2e8f0; padding-top: 20px;">
+              Best,<br/>
+              <strong>Rupesh Tiwari</strong><br/>
+              AWS Senior Customer Solutions Manager<br/>
+              Full Stack Master Coaching
+            </p>
           </div>
-          
-          <p style="color: #64748b; font-size: 12px; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
-            This notification was sent from your FullStack Master coaching platform.
-          </p>
         </div>
       `
     });
@@ -111,10 +114,10 @@ export async function sendWebinarRegistrationNotification(registration: WebinarR
       return false;
     }
 
-    console.log('Email sent successfully! ID:', data?.id);
+    console.log('Confirmation email sent successfully! ID:', data?.id, 'to:', registration.email);
     return true;
   } catch (error: any) {
-    console.error('Failed to send email notification:', error?.message || error);
+    console.error('Failed to send confirmation email:', error?.message || error);
     return false;
   }
 }
