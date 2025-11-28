@@ -40,39 +40,69 @@
   "pluralsight": [
     {
       "id": 5,
-      "title": "Angular Architecture and Best Practices",
-      "url": "https://www.pluralsight.com/courses/angular-architecture-best-practices",
-      "thumbnail": "https://pluralsight.imgix.net/course-images/angular-architecture-best-practices-v1.png",
-      "students": 25000,
+      "title": "Orchestrating and Automating AWS Data Pipelines",
+      "url": "https://www.pluralsight.com/courses/orchestrating-automating-aws-data-pipelines",
+      "thumbnail": "/aws-data-pipelines-orchestrating.png",
+      "students": 5000,
       "rating": 4.8,
-      "platform": "pluralsight"
+      "platform": "pluralsight",
+      "level": "Intermediate",
+      "duration": "1h 2m"
     },
     {
       "id": 6,
-      "title": "RxJS Fundamentals",
-      "url": "https://www.pluralsight.com/courses/rxjs-fundamentals",
-      "thumbnail": "https://pluralsight.imgix.net/course-images/rxjs-fundamentals-v1.png",
-      "students": 18000,
+      "title": "Designing Resilient AWS Data Pipelines",
+      "url": "https://www.pluralsight.com/courses/designing-resilient-aws-data-pipelines",
+      "thumbnail": "/aws-data-pipelines-resilient.png",
+      "students": 4500,
       "rating": 4.7,
-      "platform": "pluralsight"
+      "platform": "pluralsight",
+      "level": "Intermediate",
+      "duration": "1h 21m"
     },
     {
       "id": 7,
-      "title": "Azure DevOps: Getting Started",
-      "url": "https://www.pluralsight.com/courses/azure-devops-getting-started",
-      "thumbnail": "https://pluralsight.imgix.net/course-images/azure-devops-getting-started-v1.png",
-      "students": 32000,
+      "title": "Operating Secure, Observable, and Cost-efficient AWS Data Pipelines",
+      "url": "https://www.pluralsight.com/courses/operating-secure-observable-cost-efficient-aws-data-pipelines",
+      "thumbnail": "/aws-data-pipelines-secure.png",
+      "students": 4000,
       "rating": 4.9,
-      "platform": "pluralsight"
+      "platform": "pluralsight",
+      "level": "Intermediate",
+      "duration": "1h 4m"
     },
     {
       "id": 8,
-      "title": "Enterprise Angular Applications",
-      "url": "https://www.pluralsight.com/courses/enterprise-angular-applications",
-      "thumbnail": "https://pluralsight.imgix.net/course-images/enterprise-angular-applications-v1.png",
-      "students": 14000,
-      "rating": 4.6,
-      "platform": "pluralsight"
+      "title": "Spring Cloud AWS Fundamentals",
+      "url": "https://www.pluralsight.com/courses/spring-cloud-aws-fundamentals",
+      "thumbnail": "/spring-cloud-aws.png",
+      "students": 8000,
+      "rating": 4.8,
+      "platform": "pluralsight",
+      "level": "Intermediate",
+      "duration": "3h"
+    },
+    {
+      "id": 9,
+      "title": "Node.js Microservices: Advanced Topics and Best Practices",
+      "url": "https://www.pluralsight.com/courses/nodejs-microservices-advanced-topics-best-practices",
+      "thumbnail": "/nodejs-microservices.png",
+      "students": 12000,
+      "rating": 4.7,
+      "platform": "pluralsight",
+      "level": "Advanced",
+      "duration": "2h 50m"
+    },
+    {
+      "id": 10,
+      "title": "Unit Testing RxJS with Marble Diagrams",
+      "url": "https://www.pluralsight.com/courses/unit-testing-rxjs-marble-diagrams",
+      "thumbnail": "/rxjs-marble-testing.png",
+      "students": 15000,
+      "rating": 4.5,
+      "platform": "pluralsight",
+      "level": "Beginner",
+      "duration": "2h 43m"
     }
   ]
 }
