@@ -10,6 +10,7 @@ import SuccessStoriesSection from "@/components/SuccessStoriesSection";
 import ReviewsCarousel from "@/components/ReviewsCarousel";
 import CoursesCarousel from "@/components/CoursesCarousel";
 import PlaylistsCarousel from "@/components/PlaylistsCarousel";
+import WebinarSection from "@/components/WebinarSection";
 import PricingSection from "@/components/PricingSection";
 import FAQSection from "@/components/FAQSection";
 import BookingSection from "@/components/BookingSection";
@@ -34,6 +35,7 @@ export default function Home() {
         <ServicesSection />
         <CoursesCarousel />
         <PlaylistsCarousel />
+        <WebinarSection />
         <PricingSection />
         <WhyLeadersFailSection />
         <FAQSection />

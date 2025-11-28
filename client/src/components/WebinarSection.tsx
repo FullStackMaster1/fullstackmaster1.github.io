@@ -29,6 +29,7 @@ interface Webinar {
   spots: string;
   topics: string[];
   active: boolean;
+  interested?: number;
 }
 
 interface RegistrationFormProps {
@@ -167,7 +168,7 @@ export default function WebinarSection() {
   return (
     <section
       id="webinars"
-      className="py-16 md:py-24 bg-gradient-to-br from-primary/5 via-background to-accent/10"
+      className="py-10 md:py-14 bg-gradient-to-br from-primary/5 via-background to-accent/10"
       data-testid="section-webinars"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -205,6 +206,11 @@ export default function WebinarSection() {
                   </Badge>
                 </div>
                 <h3 className="font-semibold text-lg mb-2">{webinar.title}</h3>
+                {webinar.interested && (
+                  <div className="mb-2 text-xs text-primary font-medium">
+                    👥 {webinar.interested}+ people interested
+                  </div>
+                )}
                 <p className="text-sm text-muted-foreground mb-4">
                   {webinar.description}
                 </p>

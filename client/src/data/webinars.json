@@ -13,7 +13,8 @@
       "time": "Free Webinar",
       "spots": "Register Interest",
       "topics": ["Scalability", "Trade-offs", "Communication"],
-      "active": true
+      "active": true,
+      "interested": 47
     },
     {
       "id": "amazon-leadership-principles",
@@ -23,7 +24,8 @@
       "time": "Free Webinar",
       "spots": "Register Interest",
       "topics": ["STAR Method", "Story Crafting", "Bar-raiser Tips"],
-      "active": true
+      "active": true,
+      "interested": 52
     },
     {
       "id": "executive-communication",
@@ -33,7 +35,8 @@
       "time": "Free Webinar",
       "spots": "Register Interest",
       "topics": ["Exec Framing", "Stakeholder Influence", "Brevity"],
-      "active": true
+      "active": true,
+      "interested": 38
     }
   ],
   "socialLinks": {
