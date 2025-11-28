@@ -50,7 +50,7 @@ export default function WhyLeadersFailSection() {
   return (
     <section
       id="why-leaders-fail"
-      className="py-16 md:py-24 bg-gradient-to-b from-destructive/5 to-background"
+      className="py-10 md:py-14 bg-gradient-to-b from-destructive/5 to-background"
       data-testid="section-why-leaders-fail"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -77,22 +77,20 @@ export default function WhyLeadersFailSection() {
             return (
               <Card
                 key={point.id}
-                className="border-destructive/20 bg-destructive/5"
+                className="border-destructive/20 bg-destructive/5 overflow-hidden"
                 data-testid={`card-pain-${point.id}`}
               >
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-lg bg-destructive/10 flex items-center justify-center flex-shrink-0">
-                      <IconComponent className="w-6 h-6 text-destructive" />
+                <CardContent className="p-4 sm:p-6">
+                  <div className="flex items-start gap-3 sm:gap-4">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-lg bg-destructive/10 flex items-center justify-center flex-shrink-0">
+                      <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 text-destructive" />
                     </div>
-                    <div className="flex-1">
-                      <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3 mb-2">
-                        <h3 className="font-semibold text-lg">{point.title}</h3>
-                        <Badge variant="outline" className="text-destructive border-destructive/30 w-fit text-xs md:text-sm">
-                          {point.stat} {point.statLabel}
-                        </Badge>
-                      </div>
-                      <p className="text-muted-foreground text-sm">
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-semibold text-base sm:text-lg leading-tight mb-1">{point.title}</h3>
+                      <Badge variant="outline" className="text-destructive border-destructive/30 text-[10px] sm:text-xs mb-2 whitespace-normal leading-tight">
+                        {point.stat} {point.statLabel}
+                      </Badge>
+                      <p className="text-muted-foreground text-xs sm:text-sm">
                         {point.description}
                       </p>
                     </div>

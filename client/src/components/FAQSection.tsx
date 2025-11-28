@@ -21,7 +21,7 @@ export default function FAQSection() {
   return (
     <section
       id="faq"
-      className="py-16 md:py-24 bg-card"
+      className="py-10 md:py-14 bg-card"
       data-testid="section-faq"
     >
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

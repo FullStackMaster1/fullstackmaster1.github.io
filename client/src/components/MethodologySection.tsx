@@ -28,7 +28,7 @@ export default function MethodologySection() {
   return (
     <section
       id="methodology"
-      className="py-16 md:py-24 bg-muted/30"
+      className="py-10 md:py-14 bg-muted/30"
       data-testid="section-methodology"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

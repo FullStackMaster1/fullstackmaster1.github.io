@@ -25,7 +25,7 @@ export default function ReviewsCarousel() {
   return (
     <section
       id="reviews"
-      className="py-16 md:py-24"
+      className="py-10 md:py-14"
       data-testid="section-reviews"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

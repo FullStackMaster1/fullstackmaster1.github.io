@@ -40,7 +40,7 @@ export default function AboutSection() {
   return (
     <section
       id="about"
-      className="py-16 md:py-24"
+      className="py-10 md:py-14"
       data-testid="section-about"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">

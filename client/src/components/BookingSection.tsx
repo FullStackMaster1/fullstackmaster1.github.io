@@ -55,7 +55,7 @@ export default function BookingSection() {
   return (
     <section
       id="booking"
-      className="py-16 md:py-24 bg-gradient-to-br from-primary/5 via-background to-accent/10"
+      className="py-10 md:py-14 bg-gradient-to-br from-primary/5 via-background to-accent/10"
       data-testid="section-booking"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
