@@ -35,3 +35,19 @@ export const insertWebinarRegistrationSchema = createInsertSchema(webinarRegistr
 
 export type InsertWebinarRegistration = z.infer<typeof insertWebinarRegistrationSchema>;
 export type WebinarRegistration = typeof webinarRegistrations.$inferSelect;
+
+export const webinarInterests = pgTable("webinar_interests", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  webinarId: text("webinar_id").notNull(),
+  sessionId: text("session_id").notNull(),
+  vote: text("vote").notNull(), // "upvote" or "downvote"
+  votedAt: timestamp("voted_at").defaultNow(),
+});
+
+export const insertWebinarInterestSchema = createInsertSchema(webinarInterests).omit({
+  id: true,
+  votedAt: true,
+});
+
+export type InsertWebinarInterest = z.infer<typeof insertWebinarInterestSchema>;
+export type WebinarInterest = typeof webinarInterests.$inferSelect;
