@@ -2,39 +2,27 @@
   "udemy": [
     {
       "id": 1,
-      "title": "Azure DevOps for Beginners",
-      "url": "https://www.udemy.com/course/azure-devops-for-beginners/",
-      "thumbnail": "/azure-devops-course.png",
-      "students": 15000,
-      "rating": 4.6,
-      "platform": "udemy"
+      "title": "AI Apps with AWS & React: Full-Stack & Mobile Mastery",
+      "url": "https://www.udemy.com/course/ai-apps-with-aws-react-full-stack-mobile-mastery/",
+      "thumbnail": "/ai-apps-aws-react.png",
+      "students": 500,
+      "rating": 4.1,
+      "platform": "udemy",
+      "level": "Intermediate",
+      "duration": "2 hours",
+      "lectures": 29
     },
     {
       "id": 2,
-      "title": "Angular Architecture Best Practices",
-      "url": "https://www.udemy.com/course/angular-architecture-best-practices/",
-      "thumbnail": "/angular-architecture-course.png",
-      "students": 8500,
-      "rating": 4.7,
-      "platform": "udemy"
-    },
-    {
-      "id": 3,
-      "title": "RxJS in Angular",
-      "url": "https://www.udemy.com/course/rxjs-in-angular/",
-      "thumbnail": "/rxjs-angular-course.png",
-      "students": 12000,
-      "rating": 4.8,
-      "platform": "udemy"
-    },
-    {
-      "id": 4,
-      "title": "NgRx State Management",
-      "url": "https://www.udemy.com/course/ngrx-state-management/",
-      "thumbnail": "/ngrx-course.png",
-      "students": 7500,
-      "rating": 4.5,
-      "platform": "udemy"
+      "title": "Mastering MEAN.JS: Fullstack Ultimate Course",
+      "url": "https://www.udemy.com/course/mastering-meanjs-fullstack-ultimate-course/",
+      "thumbnail": "/meanjs-fullstack.png",
+      "students": 1500,
+      "rating": 4.4,
+      "platform": "udemy",
+      "level": "Beginner",
+      "duration": "19 hours",
+      "lectures": 86
     }
   ],
   "pluralsight": [
