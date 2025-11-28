@@ -109,22 +109,22 @@ export default function WhyLeadersFailSection() {
             <h3 className="text-2xl font-bold mb-2">{systemDesignDifference.title}</h3>
             <p className="text-muted-foreground">{systemDesignDifference.subtitle}</p>
           </div>
-          <CardContent className="p-0">
-            <div className="overflow-x-auto">
+          <CardContent className="p-0 overflow-x-auto">
+            <div className="min-w-full">
               <table className="w-full">
                 <thead>
                   <tr className="border-b bg-muted/30">
-                    <th className="text-left p-4 font-semibold">{tableHeaders.category}</th>
-                    <th className="text-left p-4 font-semibold text-muted-foreground">{tableHeaders.engineer}</th>
-                    <th className="text-left p-4 font-semibold text-primary">{tableHeaders.leader}</th>
+                    <th className="text-left p-2 md:p-4 font-semibold text-xs md:text-base">{tableHeaders.category}</th>
+                    <th className="text-left p-2 md:p-4 font-semibold text-muted-foreground text-xs md:text-base">{tableHeaders.engineer}</th>
+                    <th className="text-left p-2 md:p-4 font-semibold text-primary text-xs md:text-base">{tableHeaders.leader}</th>
                   </tr>
                 </thead>
                 <tbody>
                   {(systemDesignDifference.comparison as ComparisonRow[]).map((row, index) => (
                     <tr key={index} className="border-b last:border-0">
-                      <td className="p-4 font-medium">{row.category}</td>
-                      <td className="p-4 text-muted-foreground text-sm">{row.engineer}</td>
-                      <td className="p-4 text-sm font-medium">{row.leader}</td>
+                      <td className="p-2 md:p-4 font-medium text-xs md:text-sm">{row.category}</td>
+                      <td className="p-2 md:p-4 text-muted-foreground text-xs md:text-sm">{row.engineer}</td>
+                      <td className="p-2 md:p-4 text-xs md:text-sm font-medium">{row.leader}</td>
                     </tr>
                   ))}
                 </tbody>
