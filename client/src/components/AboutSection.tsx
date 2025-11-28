@@ -51,15 +51,15 @@ export default function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           <div className="space-y-6">
             <div className="relative">
-              <div className="aspect-square max-w-md mx-auto lg:mx-0 relative">
+              <div className="aspect-square max-w-md mx-auto lg:mx-0">
                 <img
                   src={profileImage}
                   alt={personal.name}
                   className="w-full h-full object-cover rounded-2xl shadow-lg"
                 />
-                <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-4 py-2 rounded-lg shadow-lg">
-                  <p className="font-semibold text-sm">{personal.title}</p>
-                </div>
+              </div>
+              <div className="bg-primary text-primary-foreground px-4 py-2 rounded-lg shadow-lg text-center mt-4 mx-auto max-w-md lg:mx-0">
+                <p className="font-semibold text-sm">{personal.title}</p>
               </div>
             </div>
 
