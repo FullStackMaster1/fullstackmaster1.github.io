@@ -28,6 +28,35 @@
       "mobileBook": {
         "text": "Book Now"
       }
+    },
+    "quickActions": {
+      "title": "Quick Actions",
+      "items": [
+        {
+          "label": "Register for Free Webinar",
+          "icon": "Video",
+          "href": "#webinars",
+          "description": "Join 130+ waiting"
+        },
+        {
+          "label": "Browse My Courses",
+          "icon": "BookOpen",
+          "href": "#courses",
+          "description": "Udemy & Pluralsight"
+        },
+        {
+          "label": "View Coaching Packages",
+          "icon": "Zap",
+          "href": "#pricing",
+          "description": "From $141/session"
+        },
+        {
+          "label": "See What I Offer",
+          "icon": "Briefcase",
+          "href": "#services",
+          "description": "All my services"
+        }
+      ]
     }
   },
   "hero": {

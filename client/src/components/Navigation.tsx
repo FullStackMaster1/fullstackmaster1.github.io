@@ -1,12 +1,19 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, LucideIcon } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
 import siteContent from "@/data/siteContent.json";
 import profileData from "@/data/profile.json";
 import { trackCTAClick } from "@/lib/analytics";
+
+const quickActionIcons: Record<string, LucideIcon> = {
+  Video,
+  BookOpen,
+  Zap,
+  Briefcase,
+};
 
 interface NavLink {
   label: string;
@@ -130,19 +137,56 @@ export default function Navigation() {
 
         {isOpen && (
           <div className="lg:hidden pb-4 bg-background/95 backdrop-blur-sm border-t border-border">
-            <div className="flex flex-col gap-1 pt-4">
-              {navLinks.map((link) => (
-                <Button
-                  key={link.href}
-                  variant="ghost"
-                  className="justify-start"
-                  onClick={() => handleNavClick(link.href, link.isPage)}
-                  data-testid={`link-mobile-${link.label.toLowerCase().replace(" ", "-")}`}
-                >
-                  {link.label}
-                </Button>
-              ))}
-              <div className="flex gap-2 mt-4 px-4">
+            <div className="flex flex-col pt-4">
+              {/* Quick Actions */}
+              {navigation.quickActions && (
+                <div className="px-4 mb-4">
+                  <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
+                    {navigation.quickActions.title}
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {navigation.quickActions.items.map((action: { label: string; icon: string; href: string; description: string }) => {
+                      const IconComponent = quickActionIcons[action.icon] || Briefcase;
+                      return (
+                        <button
+                          key={action.href}
+                          onClick={() => handleNavClick(action.href)}
+                          className="flex flex-col items-start p-3 rounded-lg bg-muted/50 hover:bg-muted transition-colors text-left"
+                          data-testid={`quick-action-${action.icon.toLowerCase()}`}
+                        >
+                          <IconComponent className="w-5 h-5 text-primary mb-1" />
+                          <span className="text-sm font-medium leading-tight">{action.label}</span>
+                          <span className="text-[10px] text-muted-foreground">{action.description}</span>
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Navigation Links */}
+              <div className="border-t border-border pt-3">
+                <p className="px-4 text-xs font-semibold text-muted-foreground uppercase tracking-wide mb-2">
+                  Navigate
+                </p>
+                <div className="flex flex-col gap-0">
+                  {navLinks.map((link) => (
+                    <Button
+                      key={link.href}
+                      variant="ghost"
+                      className="justify-between h-10"
+                      onClick={() => handleNavClick(link.href, link.isPage)}
+                      data-testid={`link-mobile-${link.label.toLowerCase().replace(" ", "-")}`}
+                    >
+                      {link.label}
+                      <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                    </Button>
+                  ))}
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="flex gap-2 mt-4 px-4 border-t border-border pt-4">
                 <Button
                   variant="outline"
                   size="sm"
