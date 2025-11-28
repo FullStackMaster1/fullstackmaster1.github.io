@@ -3,6 +3,12 @@
   "sectionTitle": "Two Paths to",
   "sectionTitleHighlight": "Your Offer",
   "sectionDescription": "Most leaders waste months on generic prep. We fix your specific gaps in weeks.",
+  "referralBanner": {
+    "title": "Know someone preparing for FAANG?",
+    "description": "Refer a friend and you both get a free session when they book a package.",
+    "buttonText": "Refer a Friend",
+    "buttonLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%20I%20want%20to%20refer%20a%20friend%20for%20coaching.%20My%20name%20is%20______%20and%20my%20friend's%20name%20is%20______.%20Please%20let%20us%20know%20how%20to%20claim%20the%20free%20session!"
+  },
   "packages": [
     {
       "id": "5-session-package",

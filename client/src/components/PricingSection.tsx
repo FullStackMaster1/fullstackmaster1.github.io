@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Check, Zap, Clock, Video, Calendar, MessageCircle, Star, Quote, LucideIcon, ShieldCheck, Lock, BadgeCheck } from "lucide-react";
+import { Check, Zap, Clock, Video, Calendar, MessageCircle, Star, Quote, LucideIcon, ShieldCheck, Lock, BadgeCheck, Gift, Users } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import packagesData from "@/data/packages.json";
 
@@ -233,6 +233,37 @@ export default function PricingSection() {
                   );
                 })}
               </div>
+            </div>
+          </div>
+        )}
+
+        {packagesData.referralBanner && (
+          <div className="mt-8 bg-gradient-to-r from-primary/90 to-primary rounded-lg p-4 text-primary-foreground">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-white/20">
+                  <Users className="w-5 h-5" />
+                </div>
+                <div>
+                  <p className="font-semibold">{packagesData.referralBanner.title}</p>
+                  <p className="text-sm opacity-90">{packagesData.referralBanner.description}</p>
+                </div>
+              </div>
+              <Button 
+                variant="secondary" 
+                className="whitespace-nowrap"
+                asChild
+              >
+                <a
+                  href={packagesData.referralBanner.buttonLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="button-referral"
+                >
+                  <Gift className="w-4 h-4 mr-2" />
+                  {packagesData.referralBanner.buttonText}
+                </a>
+              </Button>
             </div>
           </div>
         )}
