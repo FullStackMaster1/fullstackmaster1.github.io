@@ -24,7 +24,32 @@ interface Playlist {
   url: string;
 }
 
+const isValidThumbnail = (url?: string): boolean => {
+  if (!url) return false;
+  if (url.includes("no_thumbnail.jpg")) return false;
+  if (url.includes("default.jpg") && url.includes("vi/")) return true;
+  return true;
+};
+
+const getPlaylistGradient = (title: string): string => {
+  const lowerTitle = title.toLowerCase();
+  if (lowerTitle.includes("system design")) return "from-blue-600 to-indigo-700";
+  if (lowerTitle.includes("behavioral") || lowerTitle.includes("leadership")) return "from-amber-500 to-orange-600";
+  if (lowerTitle.includes("coding") || lowerTitle.includes("swe") || lowerTitle.includes("software")) return "from-green-600 to-emerald-700";
+  if (lowerTitle.includes("tpm") || lowerTitle.includes("program")) return "from-purple-600 to-violet-700";
+  if (lowerTitle.includes("resume") || lowerTitle.includes("linkedin")) return "from-cyan-500 to-blue-600";
+  if (lowerTitle.includes("director") || lowerTitle.includes("executive")) return "from-slate-600 to-zinc-800";
+  if (lowerTitle.includes("data") || lowerTitle.includes("engineer")) return "from-teal-500 to-cyan-600";
+  if (lowerTitle.includes("sre") || lowerTitle.includes("reliability")) return "from-rose-500 to-red-600";
+  if (lowerTitle.includes("career") || lowerTitle.includes("coach")) return "from-pink-500 to-rose-600";
+  if (lowerTitle.includes("aws") || lowerTitle.includes("cloud")) return "from-orange-500 to-amber-600";
+  return "from-red-500 to-red-700";
+};
+
 function PlaylistCard({ playlist }: { playlist: Playlist }) {
+  const hasValidThumbnail = isValidThumbnail(playlist.thumbnail);
+  const gradientClass = getPlaylistGradient(playlist.title);
+  
   return (
     <Card className="overflow-hidden h-full hover-elevate" data-testid={`card-playlist-${playlist.id}`}>
       <a
@@ -33,7 +58,7 @@ function PlaylistCard({ playlist }: { playlist: Playlist }) {
         rel="noopener noreferrer"
         className="block"
       >
-        {playlist.thumbnail ? (
+        {hasValidThumbnail ? (
           <div className="aspect-video relative overflow-hidden bg-muted">
             <img
               src={playlist.thumbnail}
@@ -48,8 +73,16 @@ function PlaylistCard({ playlist }: { playlist: Playlist }) {
             </Badge>
           </div>
         ) : (
-          <div className="aspect-video bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
-            <Youtube className="w-12 h-12 text-white" />
+          <div className={`aspect-video bg-gradient-to-br ${gradientClass} flex items-center justify-center relative`}>
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-4">
+              <Youtube className="w-10 h-10 text-white/90 mb-2" />
+              <p className="text-white/90 text-xs font-medium text-center line-clamp-2 px-2">
+                {playlist.title.length > 40 ? playlist.title.substring(0, 40) + "..." : playlist.title}
+              </p>
+            </div>
+            <Badge className="absolute bottom-2 right-2 bg-black/50 text-white">
+              {playlist.videoCount} videos
+            </Badge>
           </div>
         )}
         <CardContent className="p-4">
