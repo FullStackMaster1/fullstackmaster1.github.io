@@ -63,11 +63,10 @@ function RegistrationForm({ webinar, onSuccess }: RegistrationFormProps) {
       });
       onSuccess();
     },
-    onError: async (error: Error & { response?: Response }) => {
+    onError: (error: Error) => {
       let errorMessage = "Failed to register. Please try again.";
-      if (error.response) {
-        const data = await error.response.json();
-        errorMessage = data.error || errorMessage;
+      if (error.message) {
+        errorMessage = error.message;
       }
       toast({
         title: "Registration Failed",
