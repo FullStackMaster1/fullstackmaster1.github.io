@@ -86,9 +86,9 @@ export default function WhyLeadersFailSection() {
                       <IconComponent className="w-6 h-6 text-destructive" />
                     </div>
                     <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
+                      <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3 mb-2">
                         <h3 className="font-semibold text-lg">{point.title}</h3>
-                        <Badge variant="outline" className="text-destructive border-destructive/30">
+                        <Badge variant="outline" className="text-destructive border-destructive/30 w-fit text-xs md:text-sm">
                           {point.stat} {point.statLabel}
                         </Badge>
                       </div>
