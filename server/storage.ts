@@ -1,7 +1,7 @@
-import { type User, type InsertUser, type WebinarRegistration, type InsertWebinarRegistration, webinarRegistrations } from "@shared/schema";
+import { type User, type InsertUser, type WebinarRegistration, type InsertWebinarRegistration, webinarRegistrations, type WebinarInterest, type InsertWebinarInterest, webinarInterests } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { db } from "./db";
-import { desc, eq, and } from "drizzle-orm";
+import { desc, eq, and, sql } from "drizzle-orm";
 
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
@@ -11,6 +11,10 @@ export interface IStorage {
   getWebinarRegistrations(): Promise<WebinarRegistration[]>;
   getWebinarRegistrationsByWebinarId(webinarId: string): Promise<WebinarRegistration[]>;
   getWebinarRegistrationByEmail(email: string, webinarId: string): Promise<WebinarRegistration | undefined>;
+  getRegistrationCountByWebinarId(webinarId: string): Promise<number>;
+  upsertWebinarInterest(interest: InsertWebinarInterest): Promise<WebinarInterest>;
+  getWebinarInterestCounts(webinarId: string): Promise<{ upvotes: number; downvotes: number }>;
+  getWebinarInterestBySession(webinarId: string, sessionId: string): Promise<WebinarInterest | undefined>;
 }
 
 export class MemStorage implements IStorage {
@@ -55,6 +59,52 @@ export class MemStorage implements IStorage {
       .where(and(
         eq(webinarRegistrations.email, email),
         eq(webinarRegistrations.webinarId, webinarId)
+      ));
+    return result;
+  }
+
+  async getRegistrationCountByWebinarId(webinarId: string): Promise<number> {
+    const result = await db.select({ count: sql<number>`count(*)` })
+      .from(webinarRegistrations)
+      .where(eq(webinarRegistrations.webinarId, webinarId));
+    return Number(result[0]?.count || 0);
+  }
+
+  async upsertWebinarInterest(interest: InsertWebinarInterest): Promise<WebinarInterest> {
+    const existing = await this.getWebinarInterestBySession(interest.webinarId, interest.sessionId);
+    
+    if (existing) {
+      const [updated] = await db.update(webinarInterests)
+        .set({ vote: interest.vote })
+        .where(eq(webinarInterests.id, existing.id))
+        .returning();
+      return updated;
+    }
+    
+    const [created] = await db.insert(webinarInterests).values(interest).returning();
+    return created;
+  }
+
+  async getWebinarInterestCounts(webinarId: string): Promise<{ upvotes: number; downvotes: number }> {
+    const upvoteResult = await db.select({ count: sql<number>`count(*)` })
+      .from(webinarInterests)
+      .where(and(eq(webinarInterests.webinarId, webinarId), eq(webinarInterests.vote, "upvote")));
+    
+    const downvoteResult = await db.select({ count: sql<number>`count(*)` })
+      .from(webinarInterests)
+      .where(and(eq(webinarInterests.webinarId, webinarId), eq(webinarInterests.vote, "downvote")));
+    
+    return {
+      upvotes: Number(upvoteResult[0]?.count || 0),
+      downvotes: Number(downvoteResult[0]?.count || 0)
+    };
+  }
+
+  async getWebinarInterestBySession(webinarId: string, sessionId: string): Promise<WebinarInterest | undefined> {
+    const [result] = await db.select().from(webinarInterests)
+      .where(and(
+        eq(webinarInterests.webinarId, webinarId),
+        eq(webinarInterests.sessionId, sessionId)
       ));
     return result;
   }

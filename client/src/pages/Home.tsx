@@ -26,20 +26,29 @@ export default function Home() {
       <AnnouncementBar />
       <Navigation />
       <main>
+        {/* Above the fold: Hero + Urgency + Trust */}
         <HeroSection />
+        <WhyLeadersFailSection />
         <TrustBar />
+        
+        {/* Social proof: Peer validation before process */}
         <SuccessStoriesSection />
         <ReviewsCarousel />
-        <AboutSection />
+        
+        {/* Decision journey: Process → Services → Investment */}
         <MethodologySection />
         <ServicesSection />
+        <PricingSection />
+        
+        {/* Primary CTA */}
+        <BookingSection />
+        
+        {/* Nurture content: Webinars, Courses, Background */}
+        <WebinarSection />
         <CoursesCarousel />
         <PlaylistsCarousel />
-        <WebinarSection />
-        <PricingSection />
-        <WhyLeadersFailSection />
+        <AboutSection />
         <FAQSection />
-        <BookingSection />
       </main>
       <Footer />
       <WhatsAppWidget />

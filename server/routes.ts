@@ -1,13 +1,35 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertWebinarRegistrationSchema } from "@shared/schema";
+import { insertWebinarRegistrationSchema, insertWebinarInterestSchema } from "@shared/schema";
 import { z } from "zod";
 import { sendWebinarRegistrationNotification } from "./email";
 
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const YOUTUBE_CHANNEL_ID = "UCfjBZHutgAYon-T8sqt1rwg"; // FullStackMaster channel
+
+// Simple in-memory rate limiter for voting
+const voteRateLimiter = new Map<string, { count: number; resetTime: number }>();
+const VOTE_RATE_LIMIT = 10; // Max votes per window
+const VOTE_RATE_WINDOW = 60000; // 1 minute window
+
+function checkVoteRateLimit(identifier: string): boolean {
+  const now = Date.now();
+  const record = voteRateLimiter.get(identifier);
+  
+  if (!record || now > record.resetTime) {
+    voteRateLimiter.set(identifier, { count: 1, resetTime: now + VOTE_RATE_WINDOW });
+    return true;
+  }
+  
+  if (record.count >= VOTE_RATE_LIMIT) {
+    return false;
+  }
+  
+  record.count++;
+  return true;
+}
 
 function requireAdminAuth(req: Request, res: Response, next: NextFunction) {
   if (!ADMIN_TOKEN) {
@@ -131,6 +153,73 @@ export async function registerRoutes(
     } catch (error) {
       console.error("YouTube fetch error:", error);
       res.status(500).json({ error: "Failed to fetch YouTube playlists" });
+    }
+  });
+
+  // Get webinar stats (registration count + interest votes) - public endpoint
+  app.get("/api/webinar/stats/:webinarId", async (req: Request, res: Response) => {
+    try {
+      const { webinarId } = req.params;
+      const sessionId = req.query.sessionId as string | undefined;
+      
+      const [registrationCount, interestCounts] = await Promise.all([
+        storage.getRegistrationCountByWebinarId(webinarId),
+        storage.getWebinarInterestCounts(webinarId)
+      ]);
+      
+      let userVote: string | null = null;
+      if (sessionId) {
+        const existing = await storage.getWebinarInterestBySession(webinarId, sessionId);
+        userVote = existing?.vote || null;
+      }
+      
+      res.json({
+        registrations: registrationCount,
+        upvotes: interestCounts.upvotes,
+        downvotes: interestCounts.downvotes,
+        userVote
+      });
+    } catch (error) {
+      console.error("Stats fetch error:", error);
+      res.status(500).json({ error: "Failed to fetch webinar stats" });
+    }
+  });
+
+  // Vote for webinar interest
+  app.post("/api/webinar/vote", async (req: Request, res: Response) => {
+    try {
+      const schema = z.object({
+        webinarId: z.string(),
+        sessionId: z.string(),
+        vote: z.enum(["upvote", "downvote"])
+      });
+      
+      const validatedData = schema.parse(req.body);
+      
+      // Rate limit by sessionId + IP combination
+      const clientIp = req.ip || req.headers["x-forwarded-for"] || "unknown";
+      const rateLimitKey = `${validatedData.sessionId}_${clientIp}`;
+      
+      if (!checkVoteRateLimit(rateLimitKey)) {
+        return res.status(429).json({ error: "Too many votes. Please wait a moment before trying again." });
+      }
+      
+      const interest = await storage.upsertWebinarInterest(validatedData);
+      
+      const counts = await storage.getWebinarInterestCounts(validatedData.webinarId);
+      
+      res.json({
+        success: true,
+        interest,
+        upvotes: counts.upvotes,
+        downvotes: counts.downvotes
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
+      console.error("Vote error:", error);
+      res.status(500).json({ error: "Failed to record vote" });
     }
   });
 
