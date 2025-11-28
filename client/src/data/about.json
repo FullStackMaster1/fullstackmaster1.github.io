@@ -1,14 +1,14 @@
 {
-  "sectionBadge": "About Your Coach",
+  "sectionBadge": "Why Me?",
   "name": "Rupesh Tiwari",
-  "title": "AWS Senior Customer Solutions Manager | ISB CTO Scholar",
-  "tagline": "SDE to Solutions Architect to AWS Leader. I've walked the path you're on.",
+  "title": "AWS Senior CSM | Bar Raiser Perspective | 4,000+ Leaders Coached",
+  "tagline": "I've sat on both sides of the FAANG interview table. I know exactly what gets you in.",
   "linkedIn": "https://www.linkedin.com/in/rupesh-tiwari/",
   "linkedInText": "View Full Profile on LinkedIn",
   "story": [
-    "I started as a Software Engineer, writing code and shipping products. Then I became a Solutions Architect, designing large-scale distributed systems for Fortune 500 clients. In 2021, I joined AWS as a Global Senior Solutions Architect, then rose to Senior Customer Solutions Manager working with Salesforce, Intuit, and other enterprise giants on $100M+ digital transformations.",
-    "I've been on both sides of the FAANG interview table. I know what bar raisers look for. I understand why brilliant technologists fail Director/VP interviews and more importantly, how to fix it.",
-    "Since 2010, I've coached 4,000+ professionals from Senior Engineers to VPs. My 5.0 rating on IGotAnOffer isn't luck. It's the result of 15+ years understanding the entire tech career ladder and knowing exactly how to position YOUR experience for the next level."
+    "Here's the thing nobody tells you: Director and VP interviews aren't harder versions of engineer interviews. They're completely different games. The bar raisers aren't looking for better code. They're looking for signals you probably don't know exist.",
+    "I spent 20 years climbing from SDE to AWS Senior CSM. I've been the candidate sweating through system design. I've been the bar raiser deciding who gets in. That's why I know exactly where senior leaders go wrong, and exactly how to fix it.",
+    "4,000+ professionals coached. 85% offer rate. 50+ verified 5-star reviews. These aren't vanity metrics. They're proof that when you understand what bar raisers actually want, you stop guessing and start landing offers."
   ],
   "careerJourney": {
     "title": "My Career Journey",
@@ -74,15 +74,15 @@
     "Microsoft Azure Certified"
   ],
   "philosophy": {
-    "title": "Why Leaders Choose Me",
+    "title": "What Makes This Different",
     "points": [
-      "I've lived every role: SDE, Architect, AWS SA, Sr. CSM. Real experience, not theory",
-      "I know the bar raiser perspective: what impresses vs. what fails at Director/VP level",
-      "4,000+ coached professionals means I've seen every scenario and know how to position YOUR unique story"
+      "I don't give you scripts to memorize. I teach you how bar raisers actually think.",
+      "Every session attacks YOUR specific blind spots. No generic prep that wastes your time.",
+      "You'll know exactly where you stand against the rubric, not vague 'you're doing great' feedback."
     ]
   },
   "cta": {
-    "text": "Let's Discuss Your Goals",
-    "link": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'd%20like%20to%20discuss%20my%20career%20goals%20and%20how%20coaching%20can%20help."
+    "text": "Let's Find Your Blind Spots",
+    "link": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I%20have%20a%20FAANG%20interview%20coming%20up%20and%20need%20help%20identifying%20my%20gaps."
   }
 }

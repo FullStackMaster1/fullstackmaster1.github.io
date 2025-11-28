@@ -1,8 +1,8 @@
 {
-  "sectionBadge": "For Senior Leaders",
-  "sectionTitle": "Coaching Services for",
-  "sectionTitleHighlight": "Technical Leaders",
-  "sectionDescription": "Structured, rubric-based coaching for Senior Managers, Directors, and VPs targeting FAANG and top-tier tech companies.",
+  "sectionBadge": "Where Leaders Get Stuck",
+  "sectionTitle": "The Gaps That Kill",
+  "sectionTitleHighlight": "Senior Interviews",
+  "sectionDescription": "These are the blind spots I see in almost every Director and VP candidate. Let's fix yours before the bar raiser finds them.",
   "popularBadgeText": "Popular",
   "sessionDemos": [
     {
@@ -78,50 +78,50 @@
   "services": [
     {
       "id": "system-design",
-      "title": "System Design for Leaders",
-      "description": "End-to-end system design coaching for Staff+, Director, and VP-level technical interviews. Learn to communicate architecture decisions under pressure.",
+      "title": "System Design Gaps",
+      "description": "Most senior candidates can design systems. But can you explain WHY you made each decision? That's where bar raisers catch you.",
       "icon": "Target",
-      "features": ["FAANG-style prompts", "Trade-off analysis", "Scalability patterns"],
+      "features": ["Trade-off articulation", "Executive-level depth", "Pressure practice"],
       "popular": true
     },
     {
       "id": "behavioral",
-      "title": "Behavioral & LP Mastery",
-      "description": "Master Amazon Leadership Principles and behavioral interviews with real stories, not buzzwords. Bar-raiser ready answers for senior roles.",
+      "title": "Weak Leadership Stories",
+      "description": "Your stories sound like project updates, not leadership impact. Bar raisers want conflict, stakes, and measurable outcomes.",
       "icon": "MessageSquare",
-      "features": ["STAR framework", "Amazon LPs deep-dive", "Story structuring"],
+      "features": ["Story restructuring", "LP alignment", "Impact quantification"],
       "popular": true
     },
     {
       "id": "executive-comm",
-      "title": "Executive Communication",
-      "description": "Learn to speak to Directors, VPs, and C-suite with confidence. Compress complex ideas into executive-ready narratives.",
+      "title": "Missing Executive Presence",
+      "description": "You're being evaluated as a future leader, not just a contributor. Can you command a room? Compress complexity? Lead up?",
       "icon": "Presentation",
-      "features": ["Exec-level framing", "Stakeholder influence", "Presentation skills"],
+      "features": ["Exec-level framing", "Stakeholder influence", "Confidence building"],
       "popular": false
     },
     {
       "id": "intro-pitch",
-      "title": "Strategic Intro Pitch",
-      "description": "Craft a compelling 2-minute introduction that positions you as the obvious hire. First impressions that open doors.",
+      "title": "Forgettable First Impression",
+      "description": "Your opening 2 minutes set the tone. Most candidates waste them with a resume recap. You need a hook that opens doors.",
       "icon": "Sparkles",
-      "features": ["Value proposition", "Personal branding", "Interview opening"],
+      "features": ["Value proposition", "Memorable positioning", "Interview control"],
       "popular": false
     },
     {
       "id": "resume",
-      "title": "Resume Optimization",
-      "description": "Transform your resume to showcase leadership impact, not just tasks. Quantified achievements that pass senior-level screens.",
+      "title": "Tasks Instead of Impact",
+      "description": "Your resume lists what you did, not what you achieved. Senior screens look for quantified business outcomes.",
       "icon": "FileText",
-      "features": ["Impact-driven bullets", "ATS optimization", "Role alignment"],
+      "features": ["Impact reframing", "Metrics that matter", "Senior positioning"],
       "popular": false
     },
     {
       "id": "package",
-      "title": "5-Session Coaching Package",
-      "description": "Comprehensive interview prep covering all areas. Book directly and save $105 vs platform pricing. Same quality, better value.",
+      "title": "Full Gap Coverage",
+      "description": "5 sessions to systematically close every gap. We cover it all: stories, system design, presence, and positioning.",
       "icon": "Users",
-      "features": ["$600 total ($120/session)", "Personalized prep plan", "Priority scheduling"],
+      "features": ["$600 total ($120/session)", "Complete preparation", "Priority support"],
       "popular": true
     }
   ],

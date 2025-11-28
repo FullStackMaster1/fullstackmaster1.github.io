@@ -34,24 +34,24 @@
     "badges": [
       {
         "icon": "SiAmazon",
-        "text": "AWS Senior CSM",
+        "text": "AWS Bar Raiser Insider",
         "variant": "amazon"
       },
       {
         "icon": "Award",
-        "text": "Coaching Since 2010",
+        "text": "4,000+ Leaders Coached",
         "variant": "secondary"
       },
       {
-        "icon": "GraduationCap",
-        "text": "ISB CTO Scholar",
+        "icon": "Trophy",
+        "text": "85% Offer Rate",
         "variant": "secondary"
       }
     ],
-    "titleLine1": "I've Been In Your Seat.",
-    "titleHighlight": "SDE → Architect → AWS Leader",
-    "titleLine2": "Now I Coach Leaders Like You.",
-    "description": "From Software Engineer to Solutions Architect to AWS Senior CSM, I've lived every role you're interviewing for. 15+ years coaching 4,000+ professionals. I know exactly what FAANG bar raisers look for at Director/VP level.",
+    "titleLine1": "Every Director Has a Blind Spot.",
+    "titleHighlight": "FAANG Bar Raisers Will Find Yours.",
+    "titleLine2": "Unless You Find It First.",
+    "description": "You've got weeks until your loop. Your stories feel weak. Your system design lacks executive depth. I've coached 4,000+ senior leaders through this exact moment. I know what bar raisers really look for, because I've been one.",
     "proofPoints": [
       {
         "icon": "Users",
@@ -90,10 +90,10 @@
       "Executive Presence"
     ],
     "buttons": {
-      "primary": "Book Free Discovery Call",
+      "primary": "Find My Blind Spots",
       "primaryLink": "https://consult.fullstackmaster.net",
-      "secondary": "Chat on WhatsApp Now",
-      "secondaryLink": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'd%20like%20to%20discuss%20my%20FAANG%20interview%20preparation."
+      "secondary": "Message Me on WhatsApp",
+      "secondaryLink": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I%20have%20a%20FAANG%20loop%20coming%20up%20and%20need%20help%20finding%20my%20blind%20spots."
     },
     "contact": {
       "phone": "+1-609-442-4081",
@@ -133,16 +133,16 @@
     }
   },
   "services": {
-    "badge": "For Senior Leaders",
-    "title": "Coaching Services for Technical Leaders",
-    "coachingMethodTitle": "How I Coach",
-    "coachingMethodSubtitle": "Real-Time System Design Whiteboarding",
-    "coachingMethodDescription": "Learn the frameworks and communication patterns that Staff+ engineers and Directors use in FAANG interviews."
+    "badge": "What We Fix Together",
+    "title": "Where Senior Leaders Get Stuck",
+    "coachingMethodTitle": "How We Work",
+    "coachingMethodSubtitle": "Real-Time Whiteboarding. Real Feedback.",
+    "coachingMethodDescription": "I don't lecture. We work through your actual stories, your system designs, your gaps. You leave every session knowing exactly what to fix."
   },
   "pricing": {
-    "badge": "Investment Options",
-    "title": "Choose Your Coaching Path",
-    "description": "Two flexible options to fit your timeline and preparation needs."
+    "badge": "Your Investment",
+    "title": "Two Paths to Your Offer",
+    "description": "Whether you need a quick tune-up or deep preparation, I've got you covered."
   },
   "faq": {
     "badge": "Common Questions",
@@ -150,9 +150,9 @@
     "description": "What you need to know about working with me"
   },
   "reviews": {
-    "title": "Client Outcomes",
-    "description": "Real results from senior professionals who worked with me",
+    "title": "What Happens After We Work Together",
+    "description": "These leaders found their blind spots. Then they got offers.",
     "platformLink": "https://www.igotanoffer.com/en/coaches/rupesh-tiwari",
-    "platformLinkText": "View all verified reviews"
+    "platformLinkText": "See all 50+ verified reviews"
   }
 }

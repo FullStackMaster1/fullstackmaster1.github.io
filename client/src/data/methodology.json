@@ -1,61 +1,61 @@
 {
-  "sectionBadge": "The Process",
-  "sectionTitle": "How I",
-  "sectionTitleHighlight": "Coach You",
-  "sectionDescription": "Transparent, structured, outcome-driven. Here's exactly what happens when we work together.",
+  "sectionBadge": "How It Works",
+  "sectionTitle": "From Blind Spots to",
+  "sectionTitleHighlight": "Offer Ready",
+  "sectionDescription": "Most coaches give you generic advice. I give you the exact playbook bar raisers use to evaluate you.",
   "steps": [
     {
       "number": "01",
-      "title": "Discovery Call",
-      "description": "We start with a free 15-minute call. I learn about your background, target role, and timeline. No pressure - just clarity on whether we're a fit.",
+      "title": "15-Min Reality Check",
+      "description": "Quick call. I ask hard questions about your prep. You find out if you're actually ready, or just think you are.",
       "icon": "Phone",
       "duration": "15 min",
       "free": true
     },
     {
       "number": "02",
-      "title": "Gap Assessment",
-      "description": "In our first session, I evaluate where you stand against FAANG interview rubrics. We identify the 2-3 areas that will make the biggest impact.",
+      "title": "Blind Spot Audit",
+      "description": "I run you through the actual rubrics FAANG uses. You'll see exactly where you'd fail, and what we need to fix first.",
       "icon": "Target",
       "duration": "60 min",
       "free": false
     },
     {
       "number": "03",
-      "title": "Personalized Roadmap",
-      "description": "You get a clear action plan: what we'll cover, in what order, with specific milestones. No generic prep - everything is tailored to your target role.",
+      "title": "Your Attack Plan",
+      "description": "No fluff. A clear list of what to fix, in what order, based on your interview date. Everything prioritized by impact.",
       "icon": "Map",
       "duration": "Included",
       "free": false
     },
     {
       "number": "04",
-      "title": "Live Coaching Sessions",
-      "description": "We meet via Google Meet with real-time whiteboarding. Mock interviews, story crafting, system design - all recorded for your review.",
+      "title": "Live Pressure Sessions",
+      "description": "Real-time whiteboarding. Mock interviews that feel like the real thing. Direct feedback. All recorded for your review.",
       "icon": "Video",
       "duration": "60 min each",
       "free": false
     },
     {
       "number": "05",
-      "title": "Ongoing Support",
-      "description": "Between sessions, you have WhatsApp access for quick questions. I review your materials and provide async feedback when needed.",
+      "title": "Until You Get In",
+      "description": "WhatsApp access for quick questions. Async feedback on your stories and designs. I'm with you until you get the offer.",
       "icon": "MessageCircle",
       "duration": "Continuous",
       "free": false
     }
   ],
   "transparency": {
-    "title": "Full Transparency",
+    "title": "No Games",
     "points": [
-      "Session recordings are yours to keep",
-      "Detailed notes after every session",
-      "No lock-in - book as you go",
-      "Refund if not satisfied after first session"
+      "All sessions recorded. Yours to keep.",
+      "Written notes after every session.",
+      "Pay as you go. No packages you don't need.",
+      "Not happy after session one? Full refund."
     ]
   },
   "cta": {
-    "text": "Start with a Free Discovery Call",
-    "link": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'd%20like%20to%20schedule%20a%20free%20discovery%20call."
+    "text": "Get Your Free Reality Check",
+    "link": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I%20need%20a%20reality%20check%20on%20my%20FAANG%20prep.%20Got%2015%20minutes?"
   }
 }

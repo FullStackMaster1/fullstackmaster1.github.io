@@ -1,89 +1,88 @@
 {
-  "sectionBadge": "Investment Options",
-  "sectionTitle": "Choose Your",
-  "sectionTitleHighlight": "Coaching Path",
-  "sectionDescription": "Two flexible options to fit your timeline and preparation needs.",
+  "sectionBadge": "Your Investment",
+  "sectionTitle": "Two Paths to",
+  "sectionTitleHighlight": "Your Offer",
+  "sectionDescription": "Most leaders waste months on generic prep. We fix your specific gaps in weeks.",
   "packages": [
     {
       "id": "5-session-package",
-      "name": "Comprehensive Package",
+      "name": "Full Preparation",
       "icon": "Zap",
       "price": "$600",
       "originalPrice": null,
       "perSession": "$120 per session",
-      "savings": "Most clients choose this",
-      "badge": "Recommended",
+      "savings": "85% of clients choose this",
+      "badge": "Best Value",
       "featured": true,
       "features": [
-        "5 x 60-minute 1:1 sessions",
-        "Full interview preparation coverage",
-        "System design + behavioral + LP",
-        "Resume & intro pitch review",
-        "Priority WhatsApp support",
-        "Personalized prep roadmap",
-        "All session recordings"
+        "5 sessions to close every gap",
+        "System design + stories + presence",
+        "Resume and pitch overhaul",
+        "WhatsApp access between sessions",
+        "Your personalized attack plan",
+        "All recordings yours to keep"
       ],
-      "buttonText": "Start Conversation",
-      "buttonLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%0A%0AI%27m%20interested%20in%20the%20Comprehensive%20Coaching%20Package.%0A%0AMy%20details:%0A-%20Name:%20%0A-%20Target%20Role:%20%0A-%20Target%20Company:%20%0A-%20Interview%20Timeline:%20%0A%0ALooking%20forward%20to%20working%20with%20you!",
-      "paymentNote": "Payment via Zelle after our first call"
+      "buttonText": "Let's Talk",
+      "buttonLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%0A%0AI%27m%20ready%20to%20find%20my%20blind%20spots%20and%20close%20them.%0A%0AMy%20details:%0A-%20Target%20Role:%20%0A-%20Target%20Company:%20%0A-%20Interview%20Timeline:%20%0A%0AWhat%20are%20the%20next%20steps?",
+      "paymentNote": "Pay after our first call. Zelle accepted."
     },
     {
       "id": "single-session",
-      "name": "Single Session",
+      "name": "Single Deep-Dive",
       "icon": "Clock",
       "price": "$141",
       "originalPrice": null,
-      "perSession": "60-minute deep-dive",
+      "perSession": "60 focused minutes",
       "savings": null,
-      "badge": "Via IGotAnOffer",
+      "badge": "Quick Fix",
       "featured": false,
       "features": [
-        "60-minute focused session",
-        "Topic of your choice",
-        "Actionable next steps",
-        "Session recording included"
+        "One gap. One hour. Fixed.",
+        "Pick your weakest area",
+        "Walk out with action items",
+        "Recording included"
       ],
       "buttonText": "Book on IGotAnOffer",
       "buttonLink": "https://igotanoffer.com/en/coach/rupesh",
       "secondaryButtonText": "Or message me directly",
-      "secondaryButtonLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%0A%0AI%27m%20interested%20in%20a%20single%20coaching%20session.%0A%0AMy%20details:%0A-%20Name:%20%0A-%20Topic%20I%20need%20help%20with:%20%0A-%20Target%20Company:%20%0A%0ALooking%20forward%20to%20hearing%20from%20you!",
+      "secondaryButtonLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%0A%0AI%20need%20a%20quick%20session%20to%20fix%20a%20specific%20gap.%0A%0AMy%20biggest%20weakness:%20%0A%0ACan%20you%20help?",
       "paymentNote": null
     }
   ],
   "directBookingProcess": {
-    "title": "How We Work Together",
+    "title": "Here's What Happens Next",
     "steps": [
       {
         "icon": "MessageCircle",
-        "text": "1. Free discovery call to discuss your goals"
+        "text": "1. We talk. 15 minutes. No pitch, just clarity."
       },
       {
         "icon": "Calendar",
-        "text": "2. Create your personalized prep plan"
+        "text": "2. I map your gaps and build your attack plan."
       },
       {
         "icon": "Video",
-        "text": "3. Start coaching via Google Meet"
+        "text": "3. We start fixing. First session within days."
       }
     ]
   },
   "testimonials": {
-    "title": "Client Outcomes",
+    "title": "They Found Their Gaps. Then Got Offers.",
     "items": [
       {
-        "quote": "Rupesh's coaching helped me land a Sr. Manager role at AWS. The investment paid off 100x.",
+        "quote": "Rupesh found gaps I didn't know I had. Landed Sr. Manager at AWS. Best investment I ever made.",
         "author": "Former Client",
         "role": "Now Sr. Manager at AWS",
         "rating": 5
       },
       {
-        "quote": "After 5 sessions, I received offers from both Google and Meta. Couldn't have done it without Rupesh.",
+        "quote": "5 sessions. Offers from Google AND Meta. He knew exactly what bar raisers wanted.",
         "author": "Engineering Director",
-        "role": "FAANG Interview Success",
+        "role": "Multiple FAANG Offers",
         "rating": 5
       },
       {
-        "quote": "The LP coaching completely transformed how I tell my stories. Amazon bar-raiser approved.",
+        "quote": "My stories were all wrong. Rupesh rebuilt them. Amazon bar-raiser signed off.",
         "author": "Principal Engineer",
         "role": "Amazon Leadership Prep",
         "rating": 5
@@ -91,8 +90,8 @@
     ]
   },
   "satisfactionGuarantee": {
-    "title": "My Commitment to You",
-    "description": "If you're not satisfied after your first session, I'll refund it completely. No questions asked. I've coached 100+ leaders successfully - your career transformation is my priority.",
+    "title": "Zero Risk",
+    "description": "Not happy after session one? Full refund. No questions. But in 15 years and 4,000+ clients, almost nobody asks. Because this works.",
     "badges": [
       {
         "icon": "BadgeCheck",
@@ -101,12 +100,12 @@
       },
       {
         "icon": "ShieldCheck",
-        "text": "AWS Senior CSM",
+        "text": "85% Offer Rate",
         "color": "blue"
       },
       {
         "icon": "Lock",
-        "text": "Confidential & Private",
+        "text": "100% Confidential",
         "color": "purple"
       }
     ]
