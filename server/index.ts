@@ -80,13 +80,12 @@ app.use((req, res, next) => {
   if (process.env.NODE_ENV === "production") {
     serveStatic(app);
   } else {
+    // Serve static files from public folder BEFORE Vite (for images, logos, etc)
+    const publicPath = path.resolve(__dirname, "..", "public");
+    app.use(express.static(publicPath));
+    
     const { setupVite } = await import("./vite");
     await setupVite(httpServer, app);
-    // Also serve static files in development for images, logos, etc
-    const express_import = await import("express");
-    const path_import = await import("path");
-    const distPath = path_import.default.resolve(__dirname, "..", "public");
-    app.use(express_import.static(distPath));
   }
 
   // ALWAYS serve the app on the port specified in the environment variable PORT
