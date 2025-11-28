@@ -196,6 +196,16 @@ export default function SuccessStoriesSection() {
                     "{story.review}"
                   </blockquote>
 
+                  {story.outcome === "Landed Role" && (
+                    <div className="flex items-center gap-2 bg-amber-100 dark:bg-amber-900/30 text-amber-900 dark:text-amber-100 rounded-md px-3 py-2 mb-4">
+                      <span className="text-sm font-medium">{story.name} got an offer at</span>
+                      <div className="flex items-center gap-1.5 bg-white dark:bg-card rounded px-2 py-1">
+                        <IconComponent className={`w-4 h-4 ${colorClass}`} />
+                        <span className="text-sm font-semibold text-foreground">{story.company}</span>
+                      </div>
+                    </div>
+                  )}
+
                   {story.coachReply && (
                     <div className="bg-muted/50 rounded-lg p-3 mb-4">
                       <p className="text-xs text-muted-foreground mb-1">{labels.coachNote}</p>
