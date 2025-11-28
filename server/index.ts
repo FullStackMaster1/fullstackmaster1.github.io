@@ -2,6 +2,10 @@ import express, { type Request, Response, NextFunction } from "express";
 import { registerRoutes } from "./routes";
 import { serveStatic } from "./static";
 import { createServer } from "http";
+import { fileURLToPath } from "url";
+import path from "path";
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const app = express();
 const httpServer = createServer(app);
@@ -78,6 +82,11 @@ app.use((req, res, next) => {
   } else {
     const { setupVite } = await import("./vite");
     await setupVite(httpServer, app);
+    // Also serve static files in development for images, logos, etc
+    const express_import = await import("express");
+    const path_import = await import("path");
+    const distPath = path_import.default.resolve(__dirname, "..", "public");
+    app.use(express_import.static(distPath));
   }
 
   // ALWAYS serve the app on the port specified in the environment variable PORT
