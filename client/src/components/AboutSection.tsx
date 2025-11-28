@@ -155,8 +155,8 @@ export default function AboutSection() {
               </CardContent>
             </Card>
 
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Button size="lg" asChild>
+            <div className="flex flex-col sm:flex-row gap-0 w-full">
+              <Button size="lg" asChild className="flex-1">
                 <a
                   href={`${contact.whatsappLink}?text=${encodeURIComponent(contact.whatsappMessage)}`}
                   target="_blank"
@@ -167,7 +167,7 @@ export default function AboutSection() {
                   {cta.text}
                 </a>
               </Button>
-              <Button size="lg" variant="outline" asChild>
+              <Button size="lg" variant="outline" asChild className="flex-1">
                 <a
                   href={socialLinks.linkedIn.personal}
                   target="_blank"
