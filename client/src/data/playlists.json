@@ -3,7 +3,7 @@
     "id": 1,
     "title": "AWS Interview Tips",
     "url": "https://www.youtube.com/@FullStackMaster/playlists",
-    "thumbnail": "https://i.ytimg.com/vi/placeholder1/hqdefault.jpg",
+    "thumbnail": "/aws-interview-tips.png",
     "videoCount": 25,
     "description": "Essential tips for AWS technical interviews"
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "title": "System Design Shorts",
     "url": "https://www.youtube.com/@FullStackMaster/playlists",
-    "thumbnail": "https://i.ytimg.com/vi/placeholder2/hqdefault.jpg",
+    "thumbnail": "/system-design-shorts.png",
     "videoCount": 40,
     "description": "Quick system design concepts"
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "title": "DevOps Fundamentals",
     "url": "https://www.youtube.com/@FullStackMaster/playlists",
-    "thumbnail": "https://i.ytimg.com/vi/placeholder3/hqdefault.jpg",
+    "thumbnail": "/devops-fundamentals.png",
     "videoCount": 30,
     "description": "DevOps practices and tools"
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "title": "Angular Best Practices",
     "url": "https://www.youtube.com/@FullStackMaster/playlists",
-    "thumbnail": "https://i.ytimg.com/vi/placeholder4/hqdefault.jpg",
+    "thumbnail": "/angular-best-practices.png",
     "videoCount": 35,
     "description": "Angular architecture and patterns"
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "title": "Leadership Principles",
     "url": "https://www.youtube.com/@FullStackMaster/playlists",
-    "thumbnail": "https://i.ytimg.com/vi/placeholder5/hqdefault.jpg",
+    "thumbnail": "/leadership-principles.png",
     "videoCount": 20,
     "description": "Amazon LP interview prep"
   },
@@ -43,7 +43,7 @@
     "id": 6,
     "title": "Career Growth Tips",
     "url": "https://www.youtube.com/@FullStackMaster/playlists",
-    "thumbnail": "https://i.ytimg.com/vi/placeholder6/hqdefault.jpg",
+    "thumbnail": "/career-growth-tips.png",
     "videoCount": 15,
     "description": "Career advancement strategies"
   }
