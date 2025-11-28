@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { insertWebinarRegistrationSchema } from "@shared/schema";
 import { z } from "zod";
+import { sendWebinarRegistrationNotification } from "./email";
 
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
@@ -39,6 +40,17 @@ export async function registerRoutes(
       }
       
       const registration = await storage.createWebinarRegistration(validatedData);
+      
+      // Send email notification to admin
+      sendWebinarRegistrationNotification({
+        name: validatedData.name,
+        email: validatedData.email,
+        phone: validatedData.phone,
+        webinarId: validatedData.webinarId,
+        webinarTitle: validatedData.webinarTitle,
+        whatsappOptIn: validatedData.whatsappOptIn ?? false
+      }).catch(err => console.error('Email notification failed:', err));
+      
       res.status(201).json({ 
         message: "Registration successful! You will receive updates about this webinar.",
         registration 
