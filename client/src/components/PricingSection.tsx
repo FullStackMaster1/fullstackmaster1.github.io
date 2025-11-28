@@ -56,9 +56,9 @@ export default function PricingSection() {
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <Badge variant="secondary" className="mb-4">{packagesData.sectionBadge}</Badge>
+          <Badge variant="secondary" className="mb-2">{packagesData.sectionBadge}</Badge>
           <h2
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-4xl font-bold mb-2"
             data-testid="text-pricing-title"
           >
             {packagesData.sectionTitle} <span className="text-primary">{packagesData.sectionTitleHighlight}</span>
