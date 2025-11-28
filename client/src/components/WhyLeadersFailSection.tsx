@@ -55,12 +55,12 @@ export default function WhyLeadersFailSection() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <Badge variant="destructive" className="mb-4">
+          <Badge variant="destructive" className="mb-2">
             <AlertTriangle className="w-3 h-3 mr-1" />
             {sectionBadge}
           </Badge>
           <h2
-            className="text-3xl md:text-4xl font-bold mb-4"
+            className="text-3xl md:text-4xl font-bold mb-2"
             data-testid="text-why-fail-title"
           >
             {sectionTitle}{" "}
