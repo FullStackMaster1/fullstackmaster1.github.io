@@ -2,7 +2,33 @@
 
 ## GitHub Pages + Custom Domain Deployment
 
-Deploy your site to production at `fullstackmaster.net`
+Deploy your site to production at `www.fullstackmaster.net`
+
+---
+
+## Quick Start
+
+For fastest deployment, see: **[QUICK_DEPLOY.md](./QUICK_DEPLOY.md)**
+
+Or run the setup script:
+```bash
+./docs/deploy.sh
+```
+
+---
+
+## Deployment Files Included
+
+| File | Description |
+|------|-------------|
+| `github-actions-deploy.yml` | GitHub Actions workflow (copy to `.github/workflows/deploy.yml`) |
+| `vite.config.static.ts` | Static build configuration for reference |
+| `package-scripts.json` | NPM scripts to add to package.json |
+| `CNAME` | Custom domain file (copy to `public/CNAME`) |
+| `404.html` | SPA routing fallback (copy to `public/404.html`) |
+| `_headers` | CDN cache headers (for Netlify/Cloudflare) |
+| `deploy.sh` | Automated setup script |
+| `QUICK_DEPLOY.md` | Quick deployment guide |
 
 ---
 
@@ -10,18 +36,22 @@ Deploy your site to production at `fullstackmaster.net`
 
 - GitHub account with repository access
 - Domain: `fullstackmaster.net`
-- Resend account for email service
-- All environment variables configured
+- All content configured in `client/src/data/*.json`
 
 ---
 
-## Step 1: Build the Project
+## Step 1: Run Setup Script
 
 ```bash
-npm run build
+# From project root
+./docs/deploy.sh
 ```
 
-This creates a production bundle ready for deployment.
+This automatically:
+- Creates `.github/workflows/` directory
+- Copies GitHub Actions workflow
+- Sets up CNAME for custom domain
+- Configures SPA routing
 
 ---
 

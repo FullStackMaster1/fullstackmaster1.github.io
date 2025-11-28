@@ -1,0 +1,16 @@
+{
+  "_comment": "Add these scripts to your package.json for GitHub Pages deployment",
+  
+  "scripts_to_add": {
+    "build:static": "vite build --config vite.config.static.ts",
+    "preview:static": "vite preview --config vite.config.static.ts",
+    "predeploy": "npm run build:static",
+    "deploy": "gh-pages -d dist"
+  },
+  
+  "devDependencies_to_add": {
+    "gh-pages": "^6.1.1"
+  },
+  
+  "installation_command": "npm install --save-dev gh-pages"
+}
