@@ -6,7 +6,7 @@ import { FaMicrosoft } from "react-icons/fa";
 import profileImage from "@assets/image_1764282508840.png";
 import siteContent from "@/data/siteContent.json";
 import profileData from "@/data/profile.json";
-import { trackCTAClick } from "@/lib/analytics";
+import { trackBookCall, trackWhatsApp, trackEmailClick, trackLinkedInClick } from "@/lib/analytics";
 
 const companyIcons: Record<string, typeof SiAmazon | typeof FaMicrosoft | typeof Building2> = {
   Amazon: SiAmazon,
@@ -180,7 +180,7 @@ export default function HeroSection() {
                   href={contact.bookingLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackCTAClick('hero_book_discovery_call', contact.bookingLink)}
+                  onClick={() => trackBookCall('hero')}
                   data-testid="button-hero-primary"
                 >
                   <Calendar className="w-4 h-4 mr-2" />
@@ -197,7 +197,7 @@ export default function HeroSection() {
                   href={`${contact.whatsappLink}?text=${encodeURIComponent(contact.whatsappMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  onClick={() => trackCTAClick('hero_whatsapp_chat', contact.whatsappLink)}
+                  onClick={() => trackWhatsApp('hero')}
                   data-testid="button-hero-secondary"
                 >
                   <SiWhatsapp className="w-4 h-4 mr-2" />

@@ -4,6 +4,7 @@ import { X } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import profileData from "@/data/profile.json";
 import whatsappData from "@/data/whatsapp.json";
+import { trackWhatsApp } from "@/lib/analytics";
 
 export default function WhatsAppWidget() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -49,6 +50,7 @@ export default function WhatsAppWidget() {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsApp('widget')}
               data-testid="button-whatsapp-chat"
             >
               <SiWhatsapp className="w-4 h-4 mr-2" />

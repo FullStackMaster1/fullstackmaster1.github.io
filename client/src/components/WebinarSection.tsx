@@ -19,6 +19,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import webinarsData from "@/data/webinars.json";
+import { trackWebinarRegister, trackFormStart } from "@/lib/analytics";
 
 function getOrCreateSessionId(): string {
   const key = "webinar_session_id";
@@ -79,6 +80,7 @@ function RegistrationForm({ webinar, onSuccess }: RegistrationFormProps) {
       return response.json();
     },
     onSuccess: (data) => {
+      trackWebinarRegister(webinar.title);
       toast({
         title: "Registration Successful!",
         description: data.message || "You will receive updates about this webinar.",

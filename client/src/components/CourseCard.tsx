@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Users, ExternalLink } from "lucide-react";
+import { trackCourseClick } from "@/lib/analytics";
 
 interface CourseCardProps {
   title: string;
@@ -37,6 +38,7 @@ export default function CourseCard({
       target="_blank"
       rel="noopener noreferrer"
       className="block group"
+      onClick={() => trackCourseClick(platform, title)}
       data-testid={`link-course-${title.toLowerCase().replace(/ /g, "-")}`}
     >
       <Card className="overflow-hidden h-full hover-elevate transition-all duration-200">

@@ -6,7 +6,7 @@ import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
 import siteContent from "@/data/siteContent.json";
 import profileData from "@/data/profile.json";
-import { trackCTAClick } from "@/lib/analytics";
+import { trackWhatsApp, trackBookCall, trackSectionView } from "@/lib/analytics";
 
 const quickActionIcons: Record<string, LucideIcon> = {
   Video,
@@ -105,7 +105,7 @@ export default function Navigation() {
                 href={contact.whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                onClick={() => trackCTAClick('nav_whatsapp', contact.whatsappLink)}
+                onClick={() => trackWhatsApp('navigation')}
                 data-testid="button-whatsapp-nav"
               >
                 <SiWhatsapp className="w-4 h-4 mr-1 text-green-500" />
@@ -115,7 +115,7 @@ export default function Navigation() {
             <Button
               size="sm"
               onClick={() => {
-                trackCTAClick('nav_book_session', navigation.ctaButtons.book.scrollTo);
+                trackBookCall('navigation');
                 handleNavClick(navigation.ctaButtons.book.scrollTo);
               }}
               data-testid="button-book-now"

@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import profileData from "@/data/profile.json";
-import { trackCTAClick } from "@/lib/analytics";
+import { trackBookCall, trackWhatsApp } from "@/lib/analytics";
 
 export default function StickyMobileCTA() {
   const [isVisible, setIsVisible] = useState(false);
@@ -36,7 +36,7 @@ export default function StickyMobileCTA() {
             href={contact.bookingLink}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackCTAClick('sticky_book_call', contact.bookingLink)}
+            onClick={() => trackBookCall('sticky_mobile')}
             data-testid="button-sticky-book"
           >
             <Calendar className="w-4 h-4 mr-1" />
@@ -53,7 +53,7 @@ export default function StickyMobileCTA() {
             href={contact.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => trackCTAClick('sticky_whatsapp', contact.whatsappLink)}
+            onClick={() => trackWhatsApp('sticky_mobile')}
             data-testid="button-sticky-whatsapp"
           >
             <SiWhatsapp className="w-4 h-4 mr-1" />
