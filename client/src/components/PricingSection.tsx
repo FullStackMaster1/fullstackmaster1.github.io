@@ -166,14 +166,14 @@ export default function PricingSection() {
           })}
         </div>
 
-        <div className="bg-muted/50 rounded-lg p-6 text-center mb-12">
-          <h3 className="font-semibold mb-2">{packagesData.directBookingProcess.title}</h3>
+        <div className="bg-muted/50 rounded-lg p-6 mb-12">
+          <h3 className="font-semibold mb-4 text-center">{packagesData.directBookingProcess.title}</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-muted-foreground">
             {processSteps.map((step, index) => {
               const StepIcon = iconMap[step.icon] || MessageCircle;
               return (
-                <div key={index} className="flex items-center justify-center gap-2">
-                  <StepIcon className={`w-4 h-4 ${
+                <div key={index} className="flex items-start gap-3">
+                  <StepIcon className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
                     step.icon === "MessageCircle" ? "text-green-500" : 
                     step.icon === "Calendar" ? "text-primary" : "text-blue-500"
                   }`} />
