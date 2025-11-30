@@ -1,0 +1,65 @@
+{
+  "branding": {
+    "logoUrl": "https://fullstackmaster.net/assets/fullstack_master_logo_1764259679495-DjmD_HY1.jpeg",
+    "photoUrl": "https://fullstackmaster.net/assets/rupesh-seating-confidently_1764278393371-B6L2zwSc.png",
+    "primaryColor": "#667eea",
+    "secondaryColor": "#764ba2",
+    "accentColor": "#22c55e",
+    "textColor": "#333333",
+    "backgroundColor": "#f8fafc"
+  },
+  "contact": {
+    "name": "Rupesh Tiwari",
+    "title": "AWS Senior Customer Solutions Manager",
+    "email": "rupesh@fullstackmaster.net",
+    "phone": "+1-609-442-4081",
+    "whatsappLink": "https://wa.me/16094424081",
+    "whatsappMessage": "Hi Rupesh, I registered for your webinar and have some questions.",
+    "bookingLink": "http://consult.fullstackmaster.net",
+    "website": "https://fullstackmaster.net"
+  },
+  "social": {
+    "linkedin": "https://www.linkedin.com/in/rupesh-tiwari/",
+    "youtube": "https://www.youtube.com/@FullStackMaster",
+    "igotanoffer": "https://igotanoffer.com/en/coach/rupesh"
+  },
+  "registrationConfirmation": {
+    "subject": "You're registered: {{webinarTitle}}",
+    "headerText": "You're In!",
+    "headerEmoji": "🎯",
+    "subheaderText": "Your spot is reserved for:",
+    "greeting": "Hi {{firstName}},",
+    "mainMessage": "Thanks for registering! I'm excited to dive deep with you on the strategies and frameworks that help senior leaders crack high-stakes interviews at top tech companies.",
+    "nextStepTitle": "Next step:",
+    "nextStepMessage": "Look for details about the webinar schedule, any prep materials, or how to join when the time comes.",
+    "questionsTitle": "Have questions before the webinar?",
+    "questionsMessage": "Just reply to this email or reach out on WhatsApp. I read every message and love connecting with leaders who are serious about their next level.",
+    "coachingTitle": "Want personalized 1-on-1 coaching?",
+    "coachingMessage": "If you'd like dedicated interview prep before or after your target role interviews, book a session with me.",
+    "coachingButtonText": "Book a Session",
+    "whatsappTitle": "Prefer WhatsApp?",
+    "whatsappMessage": "Connect with me directly for quick questions or to discuss your interview goals.",
+    "whatsappButtonText": "Message on WhatsApp",
+    "signature": {
+      "name": "Rupesh Tiwari",
+      "title": "AWS Senior Customer Solutions Manager",
+      "company": "Full Stack Master Coaching",
+      "tagline": "15+ Years Coaching | 4,000+ Professionals | 85% Offer Success Rate"
+    },
+    "footer": {
+      "unsubscribeText": "You received this email because you registered for a webinar.",
+      "copyrightText": "© 2024 Full Stack Master. All rights reserved."
+    }
+  },
+  "adminNotification": {
+    "subject": "New Registration: {{webinarTitle}}",
+    "headerText": "New Webinar Registration!",
+    "viewDashboardText": "View all registrations",
+    "dashboardUrl": "https://fullstackmaster.net/admin"
+  },
+  "trustBadges": {
+    "rating": "5.0 ⭐ Rating on IGotAnOffer",
+    "coached": "4,000+ Professionals Coached",
+    "experience": "15+ Years Experience"
+  }
+}
