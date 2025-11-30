@@ -72,6 +72,7 @@ async function deployToGitHub() {
   const repo = 'fullstackmaster1.github.io';
   const branch = 'main';
   const docsDir = './docs';
+  const rootDir = './github-root';
   
   console.log('🚀 Starting GitHub deployment...');
   console.log(`📁 Repository: ${owner}/${repo}`);
@@ -98,11 +99,34 @@ async function deployToGitHub() {
     
     // Get all files from docs directory
     const files = await getAllFiles(docsDir);
-    console.log(`📄 Found ${files.length} files to upload`);
     
-    // Create blobs for each file - prefix with docs/ to place in docs folder
+    // Get root files (README.md, CNAME)
+    const rootFiles = await getAllFiles(rootDir);
+    
+    console.log(`📄 Found ${files.length} docs files + ${rootFiles.length} root files to upload`);
+    
+    // Create blobs for each file
     const blobs: {path: string, sha: string, mode: string, type: string}[] = [];
     
+    // Add root files first (README.md, CNAME at repo root)
+    for (const file of rootFiles) {
+      const { data: blobData } = await octokit.git.createBlob({
+        owner,
+        repo,
+        content: file.isBinary ? file.content : Buffer.from(file.content).toString('base64'),
+        encoding: 'base64'
+      });
+      
+      blobs.push({
+        path: file.path,
+        sha: blobData.sha,
+        mode: '100644',
+        type: 'blob'
+      });
+      console.log(`  ✓ ${file.path} (root)`);
+    }
+    
+    // Add docs files
     for (const file of files) {
       // Binary files are already base64 encoded when read
       // Text files need to be converted to base64 for the API
