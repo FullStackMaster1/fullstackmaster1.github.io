@@ -44,8 +44,8 @@ async function getGitHubClient() {
   return new Octokit({ auth: accessToken });
 }
 
-async function getAllFiles(dir: string, baseDir: string = dir): Promise<{path: string, content: string}[]> {
-  const files: {path: string, content: string}[] = [];
+async function getAllFiles(dir: string, baseDir: string = dir): Promise<{path: string, content: string, isBinary: boolean}[]> {
+  const files: {path: string, content: string, isBinary: boolean}[] = [];
   const entries = fs.readdirSync(dir, { withFileTypes: true });
   
   for (const entry of entries) {
@@ -56,10 +56,11 @@ async function getAllFiles(dir: string, baseDir: string = dir): Promise<{path: s
       const subFiles = await getAllFiles(fullPath, baseDir);
       files.push(...subFiles);
     } else {
-      // Read file as base64 for binary files, utf8 for text
-      const isBinary = /\.(png|jpg|jpeg|gif|ico|woff|woff2|ttf|eot)$/i.test(entry.name);
+      // Only images are truly binary - read as base64
+      // Text files (html, css, js, md, etc) - read as utf8
+      const isBinary = /\.(png|jpg|jpeg|gif|ico|woff|woff2|ttf|eot|webp)$/i.test(entry.name);
       const content = fs.readFileSync(fullPath, isBinary ? 'base64' : 'utf8');
-      files.push({ path: relativePath, content });
+      files.push({ path: relativePath, content, isBinary });
     }
   }
   
@@ -103,12 +104,12 @@ async function deployToGitHub() {
     const blobs: {path: string, sha: string, mode: string, type: string}[] = [];
     
     for (const file of files) {
-      const isBinary = /\.(png|jpg|jpeg|gif|ico|woff|woff2|ttf|eot|css|js)$/i.test(file.path);
-      
+      // Binary files are already base64 encoded when read
+      // Text files need to be converted to base64 for the API
       const { data: blobData } = await octokit.git.createBlob({
         owner,
         repo,
-        content: isBinary ? file.content : Buffer.from(file.content).toString('base64'),
+        content: file.isBinary ? file.content : Buffer.from(file.content).toString('base64'),
         encoding: 'base64'
       });
       
