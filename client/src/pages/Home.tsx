@@ -18,6 +18,7 @@ import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import SEOHead from "@/components/SEOHead";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   return (
@@ -26,31 +27,65 @@ export default function Home() {
       <AnnouncementBar />
       <Navigation />
       <main>
-        {/* Above the fold: Hero + Urgency + Trust */}
         <HeroSection />
-        <WhyLeadersFailSection />
-        <TrustBar />
         
-        {/* Social proof: Peer validation before process */}
-        <SuccessStoriesSection />
-        <ReviewsCarousel />
+        <ScrollReveal>
+          <WhyLeadersFailSection />
+        </ScrollReveal>
         
-        {/* Decision journey: Process → Services → Investment */}
-        <MethodologySection />
-        <ServicesSection />
-        <PricingSection />
+        <ScrollReveal delay={0.1}>
+          <TrustBar />
+        </ScrollReveal>
         
-        {/* Primary CTA */}
-        <BookingSection />
+        <ScrollReveal>
+          <SuccessStoriesSection />
+        </ScrollReveal>
         
-        {/* Nurture content: Webinars, Courses, Background */}
-        <WebinarSection />
-        <CoursesCarousel />
-        <PlaylistsCarousel />
-        <AboutSection />
-        <FAQSection />
+        <ScrollReveal delay={0.1}>
+          <ReviewsCarousel />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <MethodologySection />
+        </ScrollReveal>
+        
+        <ScrollReveal delay={0.1}>
+          <ServicesSection />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <PricingSection />
+        </ScrollReveal>
+        
+        <ScrollReveal delay={0.1}>
+          <BookingSection />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <WebinarSection />
+        </ScrollReveal>
+        
+        <ScrollReveal delay={0.1}>
+          <CoursesCarousel />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <PlaylistsCarousel />
+        </ScrollReveal>
+        
+        <ScrollReveal delay={0.1}>
+          <AboutSection />
+        </ScrollReveal>
+        
+        <ScrollReveal>
+          <FAQSection />
+        </ScrollReveal>
       </main>
-      <Footer />
+      
+      <ScrollReveal>
+        <Footer />
+      </ScrollReveal>
+      
       <WhatsAppWidget />
       <StickyMobileCTA />
     </div>
