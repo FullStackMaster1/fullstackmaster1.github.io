@@ -35,6 +35,10 @@ localPort = 41069
 externalPort = 5173
 
 [[ports]]
+localPort = 42967
+externalPort = 6000
+
+[[ports]]
 localPort = 44961
 externalPort = 3001
 
@@ -68,3 +72,8 @@ waitForPort = 5000
 
 [agent]
 integrations = ["resend:1.0.0"]
+
+[userenv]
+
+[userenv.shared]
+VITE_GA_MEASUREMENT_ID = "G-SJ08J6PQ7M"
