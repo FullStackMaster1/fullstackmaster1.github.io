@@ -14,7 +14,9 @@
       "spots": "Register Interest",
       "topics": ["Scalability", "Trade-offs", "Communication"],
       "active": true,
-      "interested": 47
+      "interested": 47,
+      "registrationUrl": "https://rupeshtiwari.gumroad.com/l/system-design-webinar",
+      "registrationLabel": "Register Free"
     },
     {
       "id": "amazon-leadership-principles",
@@ -25,7 +27,9 @@
       "spots": "Register Interest",
       "topics": ["STAR Method", "Story Crafting", "Bar-raiser Tips"],
       "active": true,
-      "interested": 52
+      "interested": 52,
+      "registrationUrl": "https://rupeshtiwari.gumroad.com/l/amazon-lp-webinar",
+      "registrationLabel": "Register Free"
     },
     {
       "id": "executive-communication",
@@ -36,7 +40,9 @@
       "spots": "Register Interest",
       "topics": ["Exec Framing", "Stakeholder Influence", "Brevity"],
       "active": true,
-      "interested": 38
+      "interested": 38,
+      "registrationUrl": "https://rupeshtiwari.gumroad.com/l/exec-comm-webinar",
+      "registrationLabel": "Register Free"
     }
   ],
   "socialLinks": {
@@ -48,5 +54,11 @@
       "url": "https://www.youtube.com/@FullStackMaster?sub_confirmation=1",
       "label": "Subscribe on YouTube"
     }
+  },
+  "freeKit": {
+    "url": "https://rupeshtiwari.gumroad.com/l/rupesh-kit",
+    "title": "Free Career Coaching Vault",
+    "description": "CAMPERSO Framework, IFRAIL+T System Design, STAR Builder, Resume Checklist",
+    "label": "Get Free Kit"
   }
 }

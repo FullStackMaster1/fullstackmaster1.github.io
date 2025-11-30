@@ -8,12 +8,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Skeleton } from "@/components/ui/skeleton";
 import playlistsData from "@/data/playlists.json";
-import { ExternalLink, Youtube, PlayCircle, Loader2 } from "lucide-react";
+import { ExternalLink, Youtube, PlayCircle } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
-import { useQuery } from "@tanstack/react-query";
 
 interface Playlist {
   id: string | number;
@@ -96,30 +94,12 @@ function PlaylistCard({ playlist }: { playlist: Playlist }) {
   );
 }
 
-function PlaylistSkeleton() {
-  return (
-    <Card className="overflow-hidden h-full">
-      <Skeleton className="aspect-video" />
-      <CardContent className="p-4">
-        <Skeleton className="h-4 w-3/4 mb-2" />
-        <Skeleton className="h-3 w-full" />
-      </CardContent>
-    </Card>
-  );
-}
-
 export default function PlaylistsCarousel() {
   const autoplayPlugin = useRef(
     Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true })
   );
 
-  const { data: playlists, isLoading, isError } = useQuery<Playlist[]>({
-    queryKey: ["/api/youtube/playlists"],
-    staleTime: 1000 * 60 * 60,
-    retry: 1,
-  });
-
-  const displayPlaylists = playlists && playlists.length > 0 ? playlists : playlistsData;
+  const playlists = playlistsData as Playlist[];
 
   return (
     <section
@@ -144,39 +124,31 @@ export default function PlaylistsCarousel() {
           </p>
         </div>
 
-        {isLoading ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[1, 2, 3, 4].map((i) => (
-              <PlaylistSkeleton key={i} />
+        <Carousel
+          opts={{
+            align: "start",
+            loop: true,
+          }}
+          plugins={[autoplayPlugin.current]}
+          className="w-full"
+          onMouseEnter={() => autoplayPlugin.current.stop()}
+          onMouseLeave={() => autoplayPlugin.current.play()}
+        >
+          <CarouselContent className="-ml-4">
+            {playlists.map((playlist: Playlist) => (
+              <CarouselItem
+                key={playlist.id}
+                className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4"
+              >
+                <PlaylistCard playlist={playlist} />
+              </CarouselItem>
             ))}
+          </CarouselContent>
+          <div className="hidden md:block">
+            <CarouselPrevious className="-left-12" data-testid="button-youtube-prev" />
+            <CarouselNext className="-right-12" data-testid="button-youtube-next" />
           </div>
-        ) : (
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            plugins={[autoplayPlugin.current]}
-            className="w-full"
-            onMouseEnter={() => autoplayPlugin.current.stop()}
-            onMouseLeave={() => autoplayPlugin.current.play()}
-          >
-            <CarouselContent className="-ml-4">
-              {displayPlaylists.map((playlist: Playlist) => (
-                <CarouselItem
-                  key={playlist.id}
-                  className="pl-4 basis-1/2 md:basis-1/3 lg:basis-1/4"
-                >
-                  <PlaylistCard playlist={playlist} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <div className="hidden md:block">
-              <CarouselPrevious className="-left-12" data-testid="button-youtube-prev" />
-              <CarouselNext className="-right-12" data-testid="button-youtube-next" />
-            </div>
-          </Carousel>
-        )}
+        </Carousel>
 
         <div className="flex justify-center mt-8">
           <Button variant="outline" asChild>

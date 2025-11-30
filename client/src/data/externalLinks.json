@@ -1,0 +1,46 @@
+{
+  "gumroad": {
+    "store": "https://rupeshtiwari.gumroad.com",
+    "freeKit": {
+      "url": "https://rupeshtiwari.gumroad.com/l/rupesh-kit",
+      "title": "Free Career Coaching Vault",
+      "description": "CAMPERSO Framework, IFRAIL+T System Design, STAR Builder, Resume Checklist",
+      "buttonText": "Get Free Kit"
+    },
+    "webinars": {
+      "systemDesign": "https://rupeshtiwari.gumroad.com/l/system-design-webinar",
+      "amazonLP": "https://rupeshtiwari.gumroad.com/l/amazon-lp-webinar",
+      "execComm": "https://rupeshtiwari.gumroad.com/l/exec-comm-webinar"
+    },
+    "courses": {
+      "systemDesignMastery": "https://rupeshtiwari.gumroad.com/l/system-design-mastery",
+      "leadershipPrinciples": "https://rupeshtiwari.gumroad.com/l/amazon-lp-course"
+    }
+  },
+  "booking": {
+    "calendly": "http://consult.fullstackmaster.net",
+    "igotanoffer": "https://igotanoffer.com/en/coach/rupesh",
+    "whatsapp": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'd%20like%20to%20discuss%20my%20FAANG%20interview%20preparation."
+  },
+  "social": {
+    "youtube": {
+      "channel": "https://www.youtube.com/@FullStackMaster",
+      "subscribe": "https://www.youtube.com/@FullStackMaster?sub_confirmation=1"
+    },
+    "linkedin": {
+      "personal": "https://www.linkedin.com/in/rupesh-tiwari/",
+      "company": "https://www.linkedin.com/company/fullstack-master"
+    },
+    "github": "https://github.com/FullStackMaster1",
+    "facebook": "https://www.facebook.com/fullstackmaster1"
+  },
+  "courses": {
+    "udemy": "https://www.udemy.com/user/rupesh-k-tiwari/",
+    "pluralsight": "https://www.pluralsight.com/authors/rupesh-tiwari"
+  },
+  "funnel": {
+    "description": "Website → Gumroad → Email List → Zoom → Coaching → Payment",
+    "primaryCTA": "freeKit",
+    "secondaryCTA": "booking"
+  }
+}
