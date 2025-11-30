@@ -27,10 +27,10 @@ function WebinarCard({ webinar }: { webinar: Webinar }) {
 
   return (
     <Card
-      className="hover-elevate transition-all duration-200"
+      className="hover-elevate transition-all duration-200 h-full"
       data-testid={`card-webinar-${webinar.id}`}
     >
-      <CardContent className="p-6">
+      <CardContent className="p-6 h-full flex flex-col">
         <div className="flex items-center gap-2 mb-4">
           <Badge variant="outline" className="text-xs">
             <Calendar className="w-3 h-3 mr-1" />
@@ -50,16 +50,16 @@ function WebinarCard({ webinar }: { webinar: Webinar }) {
         <p className="text-sm text-muted-foreground mb-4">
           {webinar.description}
         </p>
-        <div className="flex flex-wrap gap-2 mb-4">
+        <div className="flex flex-wrap gap-2 mb-4 flex-grow">
           {webinar.topics.map((topic) => (
-            <Badge key={topic} variant="outline" className="text-xs">
+            <Badge key={topic} variant="outline" className="text-xs h-fit">
               {topic}
             </Badge>
           ))}
         </div>
         
         <Button 
-          className="w-full" 
+          className="w-full mt-auto" 
           asChild
           data-testid={`button-register-${webinar.id}`}
         >
