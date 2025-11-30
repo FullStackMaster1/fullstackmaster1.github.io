@@ -7,6 +7,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { useEffect } from "react";
 import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
+import StickyBanner from "@/components/StickyBanner";
 import Home from "@/pages/Home";
 import Resources from "@/pages/Resources";
 import Admin from "@/pages/Admin";
@@ -38,6 +39,7 @@ function App() {
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
+          <StickyBanner />
           <Toaster />
           <Router />
         </TooltipProvider>
