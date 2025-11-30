@@ -31,21 +31,21 @@ async function fixPagesConfig() {
   const octokit = new Octokit({ auth: accessToken });
   
   try {
-    console.log('Updating GitHub Pages to serve from root...');
+    console.log('Updating GitHub Pages to serve from /docs folder...');
     
-    // Update source to root
+    // Update source to /docs folder
     await octokit.repos.updateInformationAboutPagesSite({
       owner,
       repo,
       source: {
         branch: 'main',
-        path: '/'
+        path: '/docs'
       },
       cname: 'www.fullstackmaster.net',
       https_enforced: true
     });
     
-    console.log('✅ GitHub Pages now serving from root (/)');
+    console.log('✅ GitHub Pages now serving from /docs folder');
     console.log('✅ Custom domain: www.fullstackmaster.net');
     console.log('\n⏱️  Wait 2-3 minutes for changes to take effect.');
     

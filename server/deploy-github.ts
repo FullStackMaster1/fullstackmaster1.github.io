@@ -99,7 +99,7 @@ async function deployToGitHub() {
     const files = await getAllFiles(docsDir);
     console.log(`📄 Found ${files.length} files to upload`);
     
-    // Create blobs for each file
+    // Create blobs for each file - prefix with docs/ to place in docs folder
     const blobs: {path: string, sha: string, mode: string, type: string}[] = [];
     
     for (const file of files) {
@@ -112,21 +112,22 @@ async function deployToGitHub() {
         encoding: 'base64'
       });
       
+      // Push to docs/ folder in the repository
       blobs.push({
-        path: file.path,
+        path: `docs/${file.path}`,
         sha: blobData.sha,
         mode: '100644',
         type: 'blob'
       });
-      console.log(`  ✓ ${file.path}`);
+      console.log(`  ✓ docs/${file.path}`);
     }
     
-    // Create a new tree
+    // Create a new tree - use base_tree to preserve other files in repo
     const { data: treeData } = await octokit.git.createTree({
       owner,
       repo,
       tree: blobs as any,
-      base_tree: undefined // Replace entire tree
+      base_tree: commitData.tree.sha // Preserve existing files, only update docs/
     });
     console.log(`🌳 Created new tree: ${treeData.sha.substring(0, 7)}`);
     
