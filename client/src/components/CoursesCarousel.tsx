@@ -69,8 +69,6 @@ export default function CoursesCarousel() {
               }}
               plugins={[udemyAutoplay.current]}
               className="w-full"
-              onMouseEnter={() => udemyAutoplay.current.stop()}
-              onMouseLeave={() => udemyAutoplay.current.play()}
             >
               <CarouselContent className="-ml-4">
                 {coursesData.udemy.map((course) => (
@@ -104,8 +102,6 @@ export default function CoursesCarousel() {
               }}
               plugins={[pluralsightAutoplay.current]}
               className="w-full"
-              onMouseEnter={() => pluralsightAutoplay.current.stop()}
-              onMouseLeave={() => pluralsightAutoplay.current.play()}
             >
               <CarouselContent className="-ml-4">
                 {coursesData.pluralsight.map((course) => (
