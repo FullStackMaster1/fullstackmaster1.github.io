@@ -115,9 +115,71 @@ export async function sendWebinarRegistrationNotification(registration: WebinarR
     }
 
     console.log('Confirmation email sent successfully! ID:', data?.id, 'to:', registration.email);
+    
+    // Also send notification to admin
+    await sendAdminNotification(client, fromEmail, registration);
+    
     return true;
   } catch (error: any) {
     console.error('Failed to send confirmation email:', error?.message || error);
     return false;
+  }
+}
+
+async function sendAdminNotification(client: Resend, fromEmail: string, registration: WebinarRegistrationData): Promise<void> {
+  const adminEmail = 'rupesh@fullstackmaster.net';
+  
+  try {
+    const { data, error } = await client.emails.send({
+      from: fromEmail || 'Webinar System <onboarding@resend.dev>',
+      to: adminEmail,
+      subject: `New Registration: ${registration.webinarTitle}`,
+      html: `
+        <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+          <div style="background: #22c55e; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
+            <h1 style="color: #fff; margin: 0; font-size: 20px;">New Webinar Registration!</h1>
+          </div>
+          
+          <div style="background: #f8fafc; padding: 25px;">
+            <h2 style="color: #1a365d; margin: 0 0 20px 0; font-size: 18px;">${registration.webinarTitle}</h2>
+            
+            <table style="width: 100%; border-collapse: collapse;">
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: 600; width: 120px;">Name:</td>
+                <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">${registration.name}</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: 600;">Email:</td>
+                <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">
+                  <a href="mailto:${registration.email}" style="color: #667eea;">${registration.email}</a>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: 600;">Phone:</td>
+                <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">${registration.phone || 'Not provided'}</td>
+              </tr>
+              <tr>
+                <td style="padding: 10px; border-bottom: 1px solid #e2e8f0; font-weight: 600;">WhatsApp:</td>
+                <td style="padding: 10px; border-bottom: 1px solid #e2e8f0;">${registration.whatsappOptIn ? '✅ Opted in' : '❌ Not opted in'}</td>
+              </tr>
+            </table>
+            
+            <div style="margin-top: 20px; padding: 15px; background: #e8f4f8; border-radius: 6px;">
+              <p style="margin: 0; font-size: 14px; color: #666;">
+                View all registrations: <a href="https://fullstackmaster.net/admin" style="color: #667eea;">Admin Dashboard</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      `
+    });
+
+    if (error) {
+      console.error('Admin notification error:', JSON.stringify(error, null, 2));
+    } else {
+      console.log('Admin notification sent! ID:', data?.id);
+    }
+  } catch (error: any) {
+    console.error('Failed to send admin notification:', error?.message || error);
   }
 }
