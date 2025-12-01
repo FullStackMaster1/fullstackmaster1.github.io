@@ -99,13 +99,27 @@ function LoginForm({ onLogin }: { onLogin: (token: string) => void }) {
               {loading ? "Verifying..." : "Access Dashboard"}
             </Button>
           </form>
-          <div className="mt-6 text-center">
+          <div className="mt-6 text-center space-y-3">
             <Link href="/">
               <Button variant="ghost" size="sm" data-testid="link-back-home-login">
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Website
               </Button>
             </Link>
+            <div className="pt-2 border-t">
+              <p className="text-xs text-muted-foreground">
+                Forgot your token?{" "}
+                <a 
+                  href="https://replit.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-primary hover:underline"
+                >
+                  Open Replit
+                </a>
+                {" "}→ Secrets tab → View or update ADMIN_TOKEN
+              </p>
+            </div>
           </div>
         </CardContent>
       </Card>
