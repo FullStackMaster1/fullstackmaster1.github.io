@@ -3,6 +3,12 @@
   "sectionTitle": "Ready to",
   "sectionTitleHighlight": "Transform Your Career?",
   "sectionDescription": "Book a free discovery call to discuss your goals and create a personalized coaching plan.",
+  "capacity": {
+    "totalWeeklySlots": 6,
+    "bookedSlots": 2,
+    "timezone": "US Eastern",
+    "note": "Based on 4-6 USA timezone evening slots per week"
+  },
   "connectTitle": "Choose How to Connect",
   "scheduleTitle": "Schedule Directly",
   "bookingOptions": [

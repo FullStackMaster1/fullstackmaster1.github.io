@@ -11,6 +11,15 @@
       "color": "text-yellow-500"
     },
     {
+      "id": "rebooking",
+      "icon": "RefreshCw",
+      "value": 50,
+      "suffix": "%+",
+      "label": "Rebooking Rate",
+      "context": "Clients come back",
+      "color": "text-green-500"
+    },
+    {
       "id": "experience",
       "icon": "Award",
       "value": 20,
@@ -19,16 +28,6 @@
       "context": "Enterprise & Cloud",
       "verifyLink": "https://www.linkedin.com/in/nickleus/details/experience/",
       "color": "text-primary"
-    },
-    {
-      "id": "articles",
-      "icon": "FileText",
-      "value": 300,
-      "suffix": "+",
-      "label": "Technical Articles",
-      "context": "on LinkedIn",
-      "verifyLink": "https://www.linkedin.com/newsletters/technical-blogs-6871207419859615744/",
-      "color": "text-blue-500"
     },
     {
       "id": "coached",

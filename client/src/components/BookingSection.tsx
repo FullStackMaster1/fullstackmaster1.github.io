@@ -5,6 +5,7 @@ import { Calendar, Clock, Video, MessageCircle, ExternalLink, LucideIcon } from 
 import { SiWhatsapp } from "react-icons/si";
 import profileData from "@/data/profile.json";
 import bookingData from "@/data/booking.json";
+import CapacityIndicator from "@/components/CapacityIndicator";
 
 const iconMap: Record<string, LucideIcon> = {
   Calendar,
@@ -70,9 +71,12 @@ export default function BookingSection() {
           >
             {sectionTitle} <span className="text-primary">{sectionTitleHighlight}</span>
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
             {sectionDescription}
           </p>
+          <div className="flex justify-center">
+            <CapacityIndicator />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">

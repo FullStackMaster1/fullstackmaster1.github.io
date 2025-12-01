@@ -84,13 +84,21 @@ export default function VideoIntroSection() {
           >
             <div className="aspect-video rounded-xl overflow-hidden shadow-2xl border border-border bg-card">
               {!isPlaying ? (
-                <div 
+                <button 
                   className="relative w-full h-full cursor-pointer group"
                   onClick={handlePlay}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handlePlay();
+                    }
+                  }}
+                  aria-label="Play introduction video from Rupesh Tiwari"
+                  data-testid="button-play-intro-video"
                 >
                   <img
                     src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
-                    alt="Video thumbnail"
+                    alt="Video thumbnail - Introduction from Coach Rupesh Tiwari"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors flex items-center justify-center">
@@ -104,7 +112,7 @@ export default function VideoIntroSection() {
                       2:34
                     </Badge>
                   </div>
-                </div>
+                </button>
               ) : (
                 <iframe
                   src={`https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`}

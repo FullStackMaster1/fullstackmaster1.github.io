@@ -1,12 +1,19 @@
 import { motion } from "framer-motion";
 import { Clock, Calendar, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import bookingData from "@/data/booking.json";
 
-export default function CapacityIndicator() {
-  const currentWeekSlots = 2;
-  const totalWeeklySlots = 6;
-  const slotsRemaining = totalWeeklySlots - currentWeekSlots;
-  const percentFilled = (currentWeekSlots / totalWeeklySlots) * 100;
+interface CapacityProps {
+  totalWeeklySlots?: number;
+  bookedSlots?: number;
+}
+
+export default function CapacityIndicator({ 
+  totalWeeklySlots = bookingData.capacity?.totalWeeklySlots || 6, 
+  bookedSlots = bookingData.capacity?.bookedSlots || 2 
+}: CapacityProps) {
+  const slotsRemaining = totalWeeklySlots - bookedSlots;
+  const percentFilled = (bookedSlots / totalWeeklySlots) * 100;
 
   return (
     <motion.div
@@ -46,13 +53,17 @@ export default function CapacityIndicator() {
 }
 
 export function MiniCapacityBadge() {
+  const totalSlots = bookingData.capacity?.totalWeeklySlots || 6;
+  const booked = bookingData.capacity?.bookedSlots || 2;
+  const remaining = totalSlots - booked;
+  
   return (
     <Badge 
       variant="outline" 
       className="gap-1.5 border-green-500/30 text-green-600 dark:text-green-400 bg-green-500/5"
     >
       <span className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse" />
-      <span className="text-xs">4 slots left this week</span>
+      <span className="text-xs">{remaining} slots left this week</span>
     </Badge>
   );
 }

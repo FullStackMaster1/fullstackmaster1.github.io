@@ -112,15 +112,16 @@ export default function PlaylistsCarousel() {
           <div className="flex items-center justify-center gap-2 mb-4">
             <Youtube className="w-8 h-8 text-red-500" />
           </div>
+          <Badge variant="secondary" className="mb-3">Free Resources</Badge>
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
             data-testid="text-youtube-title"
           >
-            YouTube Playlists
+            Learn Before You <span className="text-primary">Invest</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Free educational content on system design, AWS, DevOps, and career
-            growth.
+            Watch how I teach. See if my style works for you. 500+ free videos on 
+            system design, behavioral interviews, and FAANG prep.
           </p>
         </div>
 

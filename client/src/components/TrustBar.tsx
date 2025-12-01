@@ -1,5 +1,5 @@
 import { Badge } from "@/components/ui/badge";
-import { Star, Award, Users, FileText, CheckCircle, LucideIcon } from "lucide-react";
+import { Star, Award, Users, FileText, CheckCircle, RefreshCw, LucideIcon } from "lucide-react";
 import { SiYoutube, SiLinkedin, SiUdemy, SiPluralsight } from "react-icons/si";
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
@@ -12,6 +12,7 @@ const lucideIconMap: Record<string, LucideIcon> = {
   FileText,
   Users,
   CheckCircle,
+  RefreshCw,
 };
 
 const siIconMap: Record<string, IconType> = {
