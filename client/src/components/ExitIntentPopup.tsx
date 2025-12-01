@@ -72,10 +72,10 @@ export default function ExitIntentPopup() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-[101] w-full max-w-lg mx-4"
+            className="fixed inset-0 z-[101] flex items-center justify-center p-4"
             data-testid="popup-exit-intent"
           >
-            <div className="bg-card border border-border rounded-xl shadow-2xl overflow-hidden">
+            <div className="bg-card border border-border rounded-xl shadow-2xl overflow-hidden w-full max-w-lg">
               <div className="bg-gradient-to-r from-primary to-primary/80 p-6 text-primary-foreground relative">
                 <button
                   onClick={handleClose}
