@@ -105,7 +105,7 @@ export default function ReviewsCarousel() {
             )}
             <Button variant="outline" asChild>
               <a
-                href="https://www.igotanoffer.com/en/coaching/rupesh-tiwari"
+                href="https://igotanoffer.com/en/coach/rupesh"
                 target="_blank"
                 rel="noopener noreferrer"
                 data-testid="link-all-reviews"

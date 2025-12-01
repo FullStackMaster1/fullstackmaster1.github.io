@@ -89,7 +89,7 @@ export default function RecentlyBookedPopup() {
 
   const handleClick = () => {
     trackEvent("highlight_clicked", "buy_intent", currentHighlight?.title || "unknown");
-    window.open("https://www.igotanoffer.com/en/coaches/rupesh-tiwari", "_blank");
+    window.open("https://igotanoffer.com/en/coach/rupesh", "_blank");
   };
 
   if (!currentHighlight) return null;
