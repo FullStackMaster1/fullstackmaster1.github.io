@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
 import StickyBanner from "@/components/StickyBanner";
+import SEOStructuredData from "@/components/SEOStructuredData";
 import Home from "@/pages/Home";
 import Resources from "@/pages/Resources";
 import Admin from "@/pages/Admin";
@@ -39,6 +40,7 @@ function App() {
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
+          <SEOStructuredData />
           <StickyBanner />
           <Toaster />
           <Router />
