@@ -99,9 +99,9 @@ export default function ExitIntentPopup() {
                 <div className="flex items-center gap-3 p-3 bg-muted/50 rounded-lg">
                   <Clock className="w-5 h-5 text-primary flex-shrink-0" />
                   <div>
-                    <p className="text-sm font-medium">Limited Availability</p>
+                    <p className="text-sm font-medium">Schedule at Your Convenience</p>
                     <p className="text-xs text-muted-foreground">
-                      Only 3 slots left this week for new clients
+                      Flexible slots available across all US timezones
                     </p>
                   </div>
                 </div>

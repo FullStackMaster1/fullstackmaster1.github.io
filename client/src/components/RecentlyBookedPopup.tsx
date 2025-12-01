@@ -1,42 +1,59 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, CheckCircle, MapPin } from "lucide-react";
+import { X, TrendingUp, Award, Users } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
 
-interface BookingNotification {
-  name: string;
-  location: string;
-  sessionType: string;
-  timeAgo: string;
+interface Highlight {
+  icon: "trending" | "award" | "users";
+  title: string;
+  description: string;
 }
 
-const recentBookings: BookingNotification[] = [
-  { name: "Michael T.", location: "San Francisco, CA", sessionType: "Full Preparation Package", timeAgo: "2 hours ago" },
-  { name: "Sarah K.", location: "Seattle, WA", sessionType: "System Design Deep-Dive", timeAgo: "5 hours ago" },
-  { name: "David L.", location: "Austin, TX", sessionType: "Leadership Interview Prep", timeAgo: "8 hours ago" },
-  { name: "Jennifer M.", location: "New York, NY", sessionType: "Full Preparation Package", timeAgo: "12 hours ago" },
-  { name: "Robert C.", location: "Boston, MA", sessionType: "Mock Interview Session", timeAgo: "1 day ago" },
-  { name: "Emily W.", location: "Denver, CO", sessionType: "Full Preparation Package", timeAgo: "1 day ago" },
-  { name: "James P.", location: "Los Angeles, CA", sessionType: "Career Strategy Session", timeAgo: "2 days ago" },
-  { name: "Amanda R.", location: "Chicago, IL", sessionType: "System Design Deep-Dive", timeAgo: "2 days ago" },
+const highlights: Highlight[] = [
+  { 
+    icon: "trending", 
+    title: "Popular This Month", 
+    description: "Full Preparation Package is the most requested service" 
+  },
+  { 
+    icon: "award", 
+    title: "High Success Rate", 
+    description: "85% of coached professionals receive offers" 
+  },
+  { 
+    icon: "users", 
+    title: "Senior Leaders Trust Us", 
+    description: "Directors, VPs & Staff Engineers from top tech companies" 
+  },
+  { 
+    icon: "trending", 
+    title: "System Design Focus", 
+    description: "Deep-dive sessions are highly recommended for L6+" 
+  },
 ];
+
+const iconMap = {
+  trending: TrendingUp,
+  award: Award,
+  users: Users,
+};
 
 export default function RecentlyBookedPopup() {
   const [isVisible, setIsVisible] = useState(false);
-  const [currentBooking, setCurrentBooking] = useState<BookingNotification | null>(null);
-  const [bookingIndex, setBookingIndex] = useState(0);
+  const [currentHighlight, setCurrentHighlight] = useState<Highlight | null>(null);
+  const [highlightIndex, setHighlightIndex] = useState(0);
   const [hasInteracted, setHasInteracted] = useState(false);
 
   useEffect(() => {
-    const dismissed = sessionStorage.getItem("booking-popup-dismissed");
+    const dismissed = sessionStorage.getItem("highlight-popup-dismissed");
     if (dismissed) {
       setHasInteracted(true);
       return;
     }
 
     const initialDelay = setTimeout(() => {
-      showNextBooking();
-    }, 8000);
+      showNextHighlight();
+    }, 12000);
 
     return () => clearTimeout(initialDelay);
   }, []);
@@ -45,46 +62,50 @@ export default function RecentlyBookedPopup() {
     if (hasInteracted) return;
 
     const interval = setInterval(() => {
-      showNextBooking();
-    }, 25000);
+      showNextHighlight();
+    }, 30000);
 
     return () => clearInterval(interval);
-  }, [bookingIndex, hasInteracted]);
+  }, [highlightIndex, hasInteracted]);
 
-  const showNextBooking = () => {
-    const randomIndex = Math.floor(Math.random() * recentBookings.length);
-    setCurrentBooking(recentBookings[randomIndex]);
+  const showNextHighlight = () => {
+    const nextIndex = highlightIndex % highlights.length;
+    setCurrentHighlight(highlights[nextIndex]);
     setIsVisible(true);
-    setBookingIndex(prev => prev + 1);
-    trackEvent("social_proof_shown", "engagement", recentBookings[randomIndex].sessionType);
+    setHighlightIndex(prev => prev + 1);
+    trackEvent("highlight_shown", "engagement", highlights[nextIndex].title);
 
     setTimeout(() => {
       setIsVisible(false);
-    }, 6000);
+    }, 7000);
   };
 
   const handleDismiss = () => {
     setIsVisible(false);
     setHasInteracted(true);
-    sessionStorage.setItem("booking-popup-dismissed", "true");
-    trackEvent("social_proof_dismissed", "engagement", "popup");
+    sessionStorage.setItem("highlight-popup-dismissed", "true");
+    trackEvent("highlight_dismissed", "engagement", "popup");
   };
 
   const handleClick = () => {
-    trackEvent("social_proof_clicked", "buy_intent", currentBooking?.sessionType || "unknown");
+    trackEvent("highlight_clicked", "buy_intent", currentHighlight?.title || "unknown");
     window.open("https://www.igotanoffer.com/en/coaches/rupesh-tiwari", "_blank");
   };
 
+  if (!currentHighlight) return null;
+
+  const IconComponent = iconMap[currentHighlight.icon];
+
   return (
     <AnimatePresence>
-      {isVisible && currentBooking && (
+      {isVisible && (
         <motion.div
           initial={{ opacity: 0, x: -100, y: 20 }}
           animate={{ opacity: 1, x: 0, y: 0 }}
           exit={{ opacity: 0, x: -100 }}
           transition={{ type: "spring", damping: 20, stiffness: 300 }}
           className="fixed bottom-20 left-4 z-50 max-w-sm"
-          data-testid="popup-recently-booked"
+          data-testid="popup-highlight"
         >
           <div 
             className="bg-card border border-border rounded-lg shadow-lg p-4 cursor-pointer hover-elevate transition-all"
@@ -97,7 +118,7 @@ export default function RecentlyBookedPopup() {
               }}
               className="absolute top-2 right-2 text-muted-foreground hover:text-foreground transition-colors"
               aria-label="Dismiss notification"
-              data-testid="button-dismiss-booking-popup"
+              data-testid="button-dismiss-highlight-popup"
             >
               <X className="w-4 h-4" />
             </button>
@@ -105,29 +126,23 @@ export default function RecentlyBookedPopup() {
             <div className="flex items-start gap-3">
               <div className="flex-shrink-0">
                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-                  <CheckCircle className="w-5 h-5 text-primary" />
+                  <IconComponent className="w-5 h-5 text-primary" />
                 </div>
               </div>
               
-              <div className="flex-1 min-w-0">
+              <div className="flex-1 min-w-0 pr-4">
                 <p className="text-sm font-medium text-foreground">
-                  {currentBooking.name} just booked
+                  {currentHighlight.title}
                 </p>
-                <p className="text-sm text-primary font-medium">
-                  {currentBooking.sessionType}
+                <p className="text-sm text-muted-foreground mt-1">
+                  {currentHighlight.description}
                 </p>
-                <div className="flex items-center gap-1 mt-1">
-                  <MapPin className="w-3 h-3 text-muted-foreground" />
-                  <span className="text-xs text-muted-foreground">
-                    {currentBooking.location} • {currentBooking.timeAgo}
-                  </span>
-                </div>
               </div>
             </div>
             
             <div className="mt-2 pt-2 border-t border-border">
               <p className="text-xs text-muted-foreground">
-                Click to view available slots →
+                Learn more →
               </p>
             </div>
           </div>
