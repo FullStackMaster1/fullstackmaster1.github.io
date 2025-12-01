@@ -27,6 +27,8 @@ interface Metric {
   value: number;
   suffix: string;
   label: string;
+  context?: string;
+  verifyLink?: string;
   color: string;
 }
 
@@ -105,10 +107,10 @@ export default function TrustBar() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-6">
           {metrics.map((metric, index) => {
             const IconComponent = lucideIconMap[metric.icon];
-            return (
+            const MetricContent = (
               <motion.div
                 key={metric.id}
-                className="text-center"
+                className={`text-center ${metric.verifyLink ? 'cursor-pointer group' : ''}`}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
@@ -135,9 +137,27 @@ export default function TrustBar() {
                   suffix={metric.suffix}
                   duration={1500 + index * 200}
                 />
-                <div className="text-sm text-muted-foreground">{metric.label}</div>
+                <div className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">{metric.label}</div>
+                {metric.context && (
+                  <div className="text-xs text-muted-foreground/70 mt-1 group-hover:text-primary transition-colors">
+                    {metric.context}
+                    {metric.verifyLink && <span className="ml-1 opacity-0 group-hover:opacity-100 transition-opacity">→</span>}
+                  </div>
+                )}
               </motion.div>
             );
+            
+            return metric.verifyLink ? (
+              <a 
+                key={metric.id}
+                href={metric.verifyLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block"
+              >
+                {MetricContent}
+              </a>
+            ) : MetricContent;
           })}
         </div>
 

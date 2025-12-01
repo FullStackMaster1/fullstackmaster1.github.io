@@ -23,6 +23,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import RecentlyBookedPopup from "@/components/RecentlyBookedPopup";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 import PWAInstallPrompt from "@/components/PWAInstallPrompt";
+import VideoIntroSection from "@/components/VideoIntroSection";
 
 export default function Home() {
   return (
@@ -47,6 +48,10 @@ export default function Home() {
         
         <ScrollReveal type="slide-up" delay={0.1}>
           <ReviewsCarousel />
+        </ScrollReveal>
+        
+        <ScrollReveal type="fade" duration={0.7}>
+          <VideoIntroSection />
         </ScrollReveal>
         
         <ScrollReveal type="slide-up" duration={0.8}>

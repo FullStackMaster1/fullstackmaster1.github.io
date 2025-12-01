@@ -3,6 +3,17 @@
   "sectionTitle": "Two Paths to",
   "sectionTitleHighlight": "Your Offer",
   "sectionDescription": "Most leaders waste months on generic prep. We fix your specific gaps in weeks.",
+  "roiSection": {
+    "title": "The Real ROI",
+    "subtitle": "What a FAANG offer means for you:",
+    "items": [
+      { "label": "Average salary increase", "value": "$80K-150K/year", "icon": "TrendingUp" },
+      { "label": "Stock + signing bonus", "value": "$100K-400K", "icon": "DollarSign" },
+      { "label": "Your investment today", "value": "$600", "icon": "Gift" }
+    ],
+    "calculation": "Your $600 investment can unlock $200K+ in first-year compensation gains.",
+    "context": "That's a 300x+ return. This isn't an expense — it's the highest-ROI career investment you'll make."
+  },
   "referralBanner": {
     "title": "Know someone preparing for FAANG?",
     "description": "Refer a friend and you both get a free session when they book a package.",

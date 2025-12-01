@@ -6,6 +6,8 @@
       "value": 50,
       "suffix": "+",
       "label": "5-Star Reviews",
+      "context": "on IGotAnOffer",
+      "verifyLink": "https://igotanoffer.com/en/coach/rupesh",
       "color": "text-yellow-500"
     },
     {
@@ -13,7 +15,9 @@
       "icon": "Award",
       "value": 20,
       "suffix": "+",
-      "label": "Years Experience",
+      "label": "Years in Tech",
+      "context": "Enterprise & Cloud",
+      "verifyLink": "https://www.linkedin.com/in/nickleus/details/experience/",
       "color": "text-primary"
     },
     {
@@ -22,6 +26,8 @@
       "value": 300,
       "suffix": "+",
       "label": "Technical Articles",
+      "context": "on LinkedIn",
+      "verifyLink": "https://www.linkedin.com/newsletters/technical-blogs-6871207419859615744/",
       "color": "text-blue-500"
     },
     {
@@ -30,6 +36,8 @@
       "value": 100,
       "suffix": "+",
       "label": "Leaders Coached",
+      "context": "Directors, VPs, PEs",
+      "verifyLink": "https://igotanoffer.com/en/coach/rupesh",
       "color": "text-green-500"
     }
   ],

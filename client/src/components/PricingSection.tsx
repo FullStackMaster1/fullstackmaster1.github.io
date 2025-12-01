@@ -1,10 +1,11 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Check, Zap, Clock, Video, Calendar, MessageCircle, Star, Quote, LucideIcon, ShieldCheck, Lock, BadgeCheck, Gift, Users } from "lucide-react";
+import { Check, Zap, Clock, Video, Calendar, MessageCircle, Star, Quote, LucideIcon, ShieldCheck, Lock, BadgeCheck, Gift, Users, TrendingUp, DollarSign, ArrowRight } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import packagesData from "@/data/packages.json";
 import UrgencyBanner from "@/components/UrgencyBanner";
+import { motion } from "framer-motion";
 
 const iconMap: Record<string, LucideIcon> = {
   Zap,
@@ -12,6 +13,9 @@ const iconMap: Record<string, LucideIcon> = {
   Video,
   Calendar,
   MessageCircle,
+  TrendingUp,
+  DollarSign,
+  Gift,
 };
 
 interface Package {
@@ -168,6 +172,47 @@ export default function PricingSection() {
             );
           })}
         </div>
+
+        {packagesData.roiSection && (
+          <motion.div 
+            className="mb-12 bg-gradient-to-br from-primary/5 via-card to-primary/5 border border-primary/20 rounded-xl p-6"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="text-center mb-6">
+              <Badge variant="secondary" className="mb-2">
+                <TrendingUp className="w-3 h-3 mr-1" />
+                {packagesData.roiSection.title}
+              </Badge>
+              <p className="text-sm text-muted-foreground">{packagesData.roiSection.subtitle}</p>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+              {packagesData.roiSection.items.map((item: { label: string; value: string; icon: string }, index: number) => {
+                const ItemIcon = iconMap[item.icon] || TrendingUp;
+                return (
+                  <div 
+                    key={index}
+                    className={`text-center p-4 rounded-lg ${
+                      index === 2 ? 'bg-primary/10 border-2 border-primary/30' : 'bg-card'
+                    }`}
+                  >
+                    <ItemIcon className={`w-6 h-6 mx-auto mb-2 ${index === 2 ? 'text-primary' : 'text-muted-foreground'}`} />
+                    <p className={`text-2xl font-bold ${index === 2 ? 'text-primary' : ''}`}>{item.value}</p>
+                    <p className="text-xs text-muted-foreground">{item.label}</p>
+                  </div>
+                );
+              })}
+            </div>
+            
+            <div className="text-center space-y-2">
+              <p className="font-semibold text-lg">{packagesData.roiSection.calculation}</p>
+              <p className="text-sm text-muted-foreground">{packagesData.roiSection.context}</p>
+            </div>
+          </motion.div>
+        )}
 
         <div className="bg-muted/50 rounded-lg p-6 mb-12">
           <h3 className="font-semibold mb-4 text-center">{packagesData.directBookingProcess.title}</h3>
