@@ -1,0 +1,64 @@
+{
+  "sectionBadge": "Executive Outcomes",
+  "sectionTitle": "Real Results for",
+  "sectionTitleHighlight": "Senior Leaders",
+  "sectionDescription": "Anonymized case studies from Directors, VPs, and Principal Engineers. These are typical outcomes, not outliers.",
+  "confidentialityNote": "Client identities protected. Details verified by coaching records.",
+  "caseStudies": [
+    {
+      "id": "director-to-l7",
+      "beforeRole": "Director of Engineering",
+      "beforeCompany": "Series B Startup",
+      "afterRole": "L7 Principal Engineer",
+      "afterCompany": "Amazon",
+      "timeline": "6 weeks",
+      "compUplift": "+$320K",
+      "compDetails": "Base: $280K → $340K, RSUs: $180K → $400K/yr",
+      "sessions": 5,
+      "challenge": "System design answers lacked executive depth. Stories focused on technical wins, not business impact.",
+      "solution": "Restructured 8 leadership stories with quantified P&L impact. Practiced executive-level system design with board-ready trade-off explanations.",
+      "quote": "Rupesh helped me stop answering like a senior IC and start answering like a leader who happens to be technical.",
+      "icon": "TrendingUp",
+      "featured": true
+    },
+    {
+      "id": "vp-to-vp",
+      "beforeRole": "VP of Engineering",
+      "beforeCompany": "Mid-size Tech",
+      "afterRole": "VP of Engineering",
+      "afterCompany": "Meta",
+      "timeline": "8 weeks",
+      "compUplift": "+$450K",
+      "compDetails": "Base: $320K → $400K, RSUs: $300K → $650K/yr",
+      "sessions": 8,
+      "challenge": "Struggled to articulate organizational transformation at scale. Interviewing skills rusty after 5 years in role.",
+      "solution": "Developed portfolio of org-level impact stories. Practiced exec presence for VP-level bar raisers. Negotiation strategy for competing offers.",
+      "quote": "I hadn't interviewed in 5 years. Rupesh got me back to sharp in 8 sessions. The comp negotiation advice alone was worth 10x the investment.",
+      "icon": "Crown",
+      "featured": true
+    },
+    {
+      "id": "principal-to-staff",
+      "beforeRole": "Principal Architect",
+      "beforeCompany": "Enterprise SaaS",
+      "afterRole": "Staff Engineer",
+      "afterCompany": "Google",
+      "timeline": "4 weeks",
+      "compUplift": "+$280K",
+      "compDetails": "Base: $250K → $300K, RSUs: $150K → $350K/yr",
+      "sessions": 4,
+      "challenge": "Technical depth was strong but struggled to demonstrate leadership without direct reports.",
+      "solution": "Reframed influence stories to show technical leadership. Built system design narratives that showed organizational impact.",
+      "quote": "I thought I was ready. Rupesh showed me the 5 blind spots that would have killed my loop. Fixed them all in 4 sessions.",
+      "icon": "Rocket",
+      "featured": true
+    }
+  ],
+  "aggregateStats": {
+    "avgCompUplift": "$285K",
+    "avgTimeline": "6 weeks",
+    "successRate": "92%",
+    "clientsAtLevel": "L6+ / Director+"
+  },
+  "disclaimer": "Results vary based on candidate background, preparation effort, and market conditions. Comp figures represent total annual compensation changes."
+}

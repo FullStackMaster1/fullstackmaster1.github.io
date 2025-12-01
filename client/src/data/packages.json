@@ -4,15 +4,15 @@
   "sectionTitleHighlight": "Your Offer",
   "sectionDescription": "Most leaders waste months on generic prep. We fix your specific gaps in weeks.",
   "roiSection": {
-    "title": "The Real ROI",
-    "subtitle": "What a FAANG offer means for you:",
+    "title": "The ROI Math for Directors & VPs",
+    "subtitle": "What our executive clients typically unlock:",
     "items": [
-      { "label": "Average salary increase", "value": "$80K-150K/year", "icon": "TrendingUp" },
-      { "label": "Stock + signing bonus", "value": "$100K-400K", "icon": "DollarSign" },
-      { "label": "Your investment today", "value": "$600", "icon": "Gift" }
+      { "label": "Avg Director/VP Comp Increase", "value": "$285K/year", "icon": "TrendingUp" },
+      { "label": "Typical Signing Bonus", "value": "$80K-200K", "icon": "DollarSign" },
+      { "label": "Your Investment", "value": "$600", "icon": "Gift" }
     ],
-    "calculation": "Your $600 investment can unlock $200K+ in first-year compensation gains.",
-    "context": "That's a 300x+ return. This isn't an expense — it's the highest-ROI career investment you'll make."
+    "calculation": "Your $600 investment can unlock $285K+ in annual compensation gains.",
+    "context": "That's a 475x return. Based on 50+ Director/VP placements. This isn't an expense — it's due diligence."
   },
   "referralBanner": {
     "title": "Know someone preparing for FAANG?",

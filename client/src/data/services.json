@@ -117,9 +117,17 @@
       "popular": false
     },
     {
+      "id": "negotiation",
+      "title": "Comp Negotiation Strategy",
+      "description": "You've earned the offer. Now maximize it. Most candidates leave $50-150K on the table because they don't know how to leverage competing offers.",
+      "icon": "DollarSign",
+      "features": ["Offer comparison framework", "Counter-offer strategy", "RSU/sign-on optimization"],
+      "popular": true
+    },
+    {
       "id": "package",
       "title": "Full Gap Coverage",
-      "description": "5 sessions to systematically close every gap. We cover it all: stories, system design, presence, and positioning.",
+      "description": "5 sessions to systematically close every gap. We cover it all: stories, system design, presence, negotiation, and positioning.",
       "icon": "Users",
       "features": ["$600 total ($120/session)", "Complete preparation", "Priority support"],
       "popular": true

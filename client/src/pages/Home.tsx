@@ -24,6 +24,7 @@ import RecentlyBookedPopup from "@/components/RecentlyBookedPopup";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 import VideoIntroSection from "@/components/VideoIntroSection";
+import ExecutiveCaseStudies from "@/components/ExecutiveCaseStudies";
 
 export default function Home() {
   return (
@@ -33,6 +34,10 @@ export default function Home() {
       <Navigation />
       <main>
         <HeroSection />
+        
+        <ScrollReveal type="fade" duration={0.7}>
+          <ExecutiveCaseStudies />
+        </ScrollReveal>
         
         <ScrollReveal type="slide-up" duration={0.8}>
           <WhyLeadersFailSection />

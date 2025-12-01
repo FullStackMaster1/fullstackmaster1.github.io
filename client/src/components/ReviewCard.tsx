@@ -5,6 +5,8 @@ import { Star, Quote } from "lucide-react";
 
 interface ReviewCardProps {
   name: string;
+  title?: string;
+  company?: string;
   date: string;
   rating: number;
   text: string;
@@ -13,6 +15,8 @@ interface ReviewCardProps {
 
 export default function ReviewCard({
   name,
+  title,
+  company,
   date,
   rating,
   text,
@@ -32,6 +36,12 @@ export default function ReviewCard({
               <p className="font-semibold" data-testid={`text-reviewer-${name.toLowerCase()}`}>
                 {name}
               </p>
+              {title && (
+                <p className="text-xs font-medium text-primary">{title}</p>
+              )}
+              {company && (
+                <p className="text-xs text-muted-foreground">{company}</p>
+              )}
               <p className="text-xs text-muted-foreground">{date}</p>
             </div>
           </div>

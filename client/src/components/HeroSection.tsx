@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Star, Award, Users, CheckCircle, Mail, Trophy, Calendar, GraduationCap, Building2, LucideIcon } from "lucide-react";
+import { Star, Award, Users, CheckCircle, Mail, Trophy, Calendar, GraduationCap, Building2, LucideIcon, Crown, TrendingUp, Shield, Download } from "lucide-react";
 import { SiWhatsapp, SiAmazon, SiGoogle, SiMeta, SiApple, SiNetflix, SiLinkedin } from "react-icons/si";
 import { FaMicrosoft } from "react-icons/fa";
 import profileImage from "@assets/image_1764282508840.png";
@@ -23,6 +23,9 @@ const badgeIcons: Record<string, typeof SiAmazon | LucideIcon> = {
   SiAmazon,
   Award,
   GraduationCap,
+  Crown,
+  TrendingUp,
+  Trophy,
 };
 
 const proofIcons: Record<string, LucideIcon> = {
@@ -30,6 +33,8 @@ const proofIcons: Record<string, LucideIcon> = {
   Trophy,
   Star,
   Calendar,
+  Crown,
+  TrendingUp,
 };
 
 interface HeroBadge {
@@ -56,18 +61,30 @@ export default function HeroSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="order-2 lg:order-1">
+            {hero.executiveTagline && (
+              <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-3" data-testid="text-executive-tagline">
+                {hero.executiveTagline}
+              </p>
+            )}
             <div className="flex flex-wrap items-center gap-2 mb-6">
               {(hero.badges as HeroBadge[]).map((badge, index) => {
                 const IconComponent = badgeIcons[badge.icon];
                 const isAmazon = badge.variant === "amazon";
+                const isExecutive = badge.variant === "executive";
+                const isSuccess = badge.variant === "success";
                 return (
                   <Badge
                     key={index}
-                    className={isAmazon 
-                      ? "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20" 
-                      : ""
+                    className={
+                      isAmazon 
+                        ? "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20" 
+                        : isExecutive
+                        ? "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20"
+                        : isSuccess
+                        ? "bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20"
+                        : ""
                     }
-                    variant={isAmazon ? "default" : "secondary"}
+                    variant={isAmazon || isExecutive || isSuccess ? "default" : "secondary"}
                   >
                     {IconComponent && <IconComponent className="w-3 h-3 mr-1" />}
                     {badge.text}
@@ -171,7 +188,7 @@ export default function HeroSection() {
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-3 mb-8">
+            <div className="flex flex-wrap gap-3 mb-4">
               <Button
                 size="lg"
                 asChild
@@ -205,6 +222,37 @@ export default function HeroSection() {
                 </a>
               </Button>
             </div>
+
+            {hero.leadCapture && (
+              <div className="mb-4 p-4 bg-card/50 rounded-lg border border-border/50">
+                <p className="text-sm font-medium mb-1">{hero.leadCapture.title}</p>
+                <p className="text-xs text-muted-foreground mb-3">{hero.leadCapture.description}</p>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="w-full sm:w-auto"
+                  asChild
+                >
+                  <a
+                    href={hero.leadCapture.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-testid="button-lead-capture"
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    {hero.leadCapture.buttonText}
+                  </a>
+                </Button>
+              </div>
+            )}
+
+            {hero.confidentiality && (
+              <div className="flex items-center gap-2 mb-6 text-sm text-muted-foreground" data-testid="confidentiality-badge">
+                <Shield className="w-4 h-4 text-green-500" />
+                <span className="font-medium">{hero.confidentiality.badge}</span>
+                <span className="text-xs">- {hero.confidentiality.text}</span>
+              </div>
+            )}
 
             <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
               <a

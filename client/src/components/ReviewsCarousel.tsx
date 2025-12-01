@@ -66,6 +66,8 @@ export default function ReviewsCarousel() {
               >
                 <ReviewCard
                   name={review.name}
+                  title={(review as any).title}
+                  company={(review as any).company}
                   date={review.date}
                   rating={review.rating}
                   text={review.text}

@@ -60,49 +60,61 @@
     }
   },
   "hero": {
+    "executiveTagline": "I Coach Directors, VPs & Principal Engineers Exclusively",
     "badges": [
       {
         "icon": "SiAmazon",
-        "text": "AWS Bar Raiser Insider",
+        "text": "AWS Sr. CSM & Bar Raiser Insider",
         "variant": "amazon"
       },
       {
-        "icon": "Award",
-        "text": "4,000+ Leaders Coached",
-        "variant": "secondary"
+        "icon": "Crown",
+        "text": "Director/VP Specialist",
+        "variant": "executive"
       },
       {
-        "icon": "Trophy",
-        "text": "85% Offer Rate",
-        "variant": "secondary"
+        "icon": "TrendingUp",
+        "text": "Avg +$285K Comp Uplift",
+        "variant": "success"
       }
     ],
-    "titleLine1": "Every Director Has a Blind Spot.",
-    "titleHighlight": "FAANG Bar Raisers Will Find Yours.",
-    "titleLine2": "Unless You Find It First.",
-    "description": "You've got weeks until your loop. Your stories feel weak. Your system design lacks executive depth. I've coached 4,000+ senior leaders through this exact moment. I know what bar raisers really look for, because I've been one.",
+    "titleLine1": "Directors Leave",
+    "titleHighlight": "$200K+ on the Table",
+    "titleLine2": "Because They Interview Like Senior ICs.",
+    "description": "Your technical skills got you here. But VP-level interviews test executive presence, org-level impact, and stakeholder influence. I've coached 50+ Directors and VPs to FAANG offers with average $285K comp increases. Let's find your blind spots before the bar raiser does.",
     "proofPoints": [
       {
-        "icon": "Users",
-        "value": "4,000+",
-        "label": "Professionals Coached"
+        "icon": "Crown",
+        "value": "50+",
+        "label": "Directors & VPs Coached"
       },
       {
-        "icon": "Calendar",
-        "value": "15+",
-        "label": "Years Coaching"
+        "icon": "TrendingUp",
+        "value": "$285K",
+        "label": "Avg Comp Increase"
       },
       {
         "icon": "Trophy",
-        "value": "85%+",
-        "label": "Offer Success Rate"
+        "value": "92%",
+        "label": "Offer Rate (L6+)"
       },
       {
         "icon": "Star",
         "value": "5.0",
-        "label": "Rating (50+ Reviews)"
+        "label": "50+ Verified Reviews"
       }
     ],
+    "confidentiality": {
+      "badge": "100% Confidential",
+      "text": "Your job search stays private. NDA available on request.",
+      "icon": "Shield"
+    },
+    "leadCapture": {
+      "title": "Download Executive Interview Playbook",
+      "description": "6-page guide: What bar raisers look for at Director/VP level",
+      "buttonText": "Get Free Playbook",
+      "link": "https://rupeshtiwari.gumroad.com/l/faang-director-playbook"
+    },
     "targetCompanies": ["Amazon", "Google", "Meta", "Apple", "Netflix"],
     "targetRoles": [
       "Senior Manager",
