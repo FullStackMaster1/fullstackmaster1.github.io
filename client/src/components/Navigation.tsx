@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, LucideIcon } from "lucide-react";
+import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, LucideIcon } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
 import siteContent from "@/data/siteContent.json";
@@ -93,6 +93,21 @@ export default function Navigation() {
                 {link.label}
               </Button>
             ))}
+          </div>
+
+          {/* Mobile Center CTA - Book Session button */}
+          <div className="flex md:hidden items-center">
+            <Button
+              size="sm"
+              onClick={() => {
+                trackBookCall('mobile-nav-center');
+                handleNavClick(navigation.ctaButtons.book.scrollTo);
+              }}
+              data-testid="button-mobile-book-center"
+            >
+              <Calendar className="w-4 h-4 mr-1" />
+              Book Session
+            </Button>
           </div>
 
           <div className="hidden md:flex items-center gap-2">
