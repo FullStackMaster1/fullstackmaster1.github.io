@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Check, Zap, Clock, Video, Calendar, MessageCircle, Star, Quote, LucideIcon, ShieldCheck, Lock, BadgeCheck, Gift, Users } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import packagesData from "@/data/packages.json";
+import UrgencyBanner from "@/components/UrgencyBanner";
 
 const iconMap: Record<string, LucideIcon> = {
   Zap,
@@ -55,7 +56,7 @@ export default function PricingSection() {
       data-testid="section-pricing"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <Badge variant="secondary" className="mb-2">{packagesData.sectionBadge}</Badge>
           <h2
             className="text-3xl md:text-4xl font-bold mb-2"
@@ -67,6 +68,8 @@ export default function PricingSection() {
             {packagesData.sectionDescription}
           </p>
         </div>
+        
+        <UrgencyBanner />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           {packages.map((pkg) => {

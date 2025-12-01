@@ -20,6 +20,8 @@ import SEOHead from "@/components/SEOHead";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 import ArticlesSection from "@/components/ArticlesSection";
 import ScrollReveal from "@/components/ScrollReveal";
+import RecentlyBookedPopup from "@/components/RecentlyBookedPopup";
+import ExitIntentPopup from "@/components/ExitIntentPopup";
 
 export default function Home() {
   return (
@@ -93,6 +95,8 @@ export default function Home() {
       
       <WhatsAppWidget />
       <StickyMobileCTA />
+      <RecentlyBookedPopup />
+      <ExitIntentPopup />
     </div>
   );
 }
