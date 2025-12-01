@@ -22,6 +22,7 @@ import ArticlesSection from "@/components/ArticlesSection";
 import ScrollReveal from "@/components/ScrollReveal";
 import RecentlyBookedPopup from "@/components/RecentlyBookedPopup";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
+import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 
 export default function Home() {
   return (
@@ -97,6 +98,7 @@ export default function Home() {
       <StickyMobileCTA />
       <RecentlyBookedPopup />
       <ExitIntentPopup />
+      <PWAInstallPrompt />
     </div>
   );
 }
