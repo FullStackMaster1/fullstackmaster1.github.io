@@ -72,6 +72,8 @@ export default function ReviewsCarousel() {
                   rating={review.rating}
                   text={review.text}
                   session={review.session}
+                  gotOffer={(review as any).gotOffer}
+                  offerCompany={(review as any).offerCompany}
                 />
               </CarouselItem>
             ))}
