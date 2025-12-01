@@ -41,58 +41,25 @@ export default function CoursesCarousel() {
           </p>
         </div>
 
-        <Tabs defaultValue="udemy" className="w-full">
+        <Tabs defaultValue="pluralsight" className="w-full">
           <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 mb-8">
-            <TabsTrigger
-              value="udemy"
-              className="flex items-center gap-2"
-              data-testid="tab-udemy"
-            >
-              <SiUdemy className="w-4 h-4" />
-              Udemy
-            </TabsTrigger>
             <TabsTrigger
               value="pluralsight"
               className="flex items-center gap-2"
               data-testid="tab-pluralsight"
             >
               <SiPluralsight className="w-4 h-4" />
-              Pluralsight
+              Pluralsight ({coursesData.pluralsight.length})
+            </TabsTrigger>
+            <TabsTrigger
+              value="udemy"
+              className="flex items-center gap-2"
+              data-testid="tab-udemy"
+            >
+              <SiUdemy className="w-4 h-4" />
+              Udemy ({coursesData.udemy.length})
             </TabsTrigger>
           </TabsList>
-
-          <TabsContent value="udemy">
-            <Carousel
-              opts={{
-                align: "start",
-                loop: true,
-              }}
-              plugins={[udemyAutoplay.current]}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-4">
-                {coursesData.udemy.map((course) => (
-                  <CarouselItem
-                    key={course.id}
-                    className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
-                  >
-                    <CourseCard
-                      title={course.title}
-                      url={course.url}
-                      thumbnail={course.thumbnail}
-                      students={course.students}
-                      rating={course.rating}
-                      platform="udemy"
-                    />
-                  </CarouselItem>
-                ))}
-              </CarouselContent>
-              <div className="hidden md:block">
-                <CarouselPrevious className="-left-12" data-testid="button-udemy-prev" />
-                <CarouselNext className="-right-12" data-testid="button-udemy-next" />
-              </div>
-            </Carousel>
-          </TabsContent>
 
           <TabsContent value="pluralsight">
             <Carousel
@@ -123,6 +90,39 @@ export default function CoursesCarousel() {
               <div className="hidden md:block">
                 <CarouselPrevious className="-left-12" data-testid="button-pluralsight-prev" />
                 <CarouselNext className="-right-12" data-testid="button-pluralsight-next" />
+              </div>
+            </Carousel>
+          </TabsContent>
+
+          <TabsContent value="udemy">
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              plugins={[udemyAutoplay.current]}
+              className="w-full"
+            >
+              <CarouselContent className="-ml-4">
+                {coursesData.udemy.map((course) => (
+                  <CarouselItem
+                    key={course.id}
+                    className="pl-4 md:basis-1/2 lg:basis-1/3 xl:basis-1/4"
+                  >
+                    <CourseCard
+                      title={course.title}
+                      url={course.url}
+                      thumbnail={course.thumbnail}
+                      students={course.students}
+                      rating={course.rating}
+                      platform="udemy"
+                    />
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <div className="hidden md:block">
+                <CarouselPrevious className="-left-12" data-testid="button-udemy-prev" />
+                <CarouselNext className="-right-12" data-testid="button-udemy-next" />
               </div>
             </Carousel>
           </TabsContent>
