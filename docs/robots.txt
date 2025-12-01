@@ -1,0 +1,11 @@
+# Robots.txt for www.fullstackmaster.net
+# FAANG Interview Coaching by Rupesh Tiwari
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.fullstackmaster.net/sitemap.xml
+
+# Crawl-delay for polite crawling
+Crawl-delay: 1
