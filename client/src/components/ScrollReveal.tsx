@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ReactNode } from "react";
 
 type AnimationType = "fade" | "slide-up" | "slide-down" | "slide-left" | "slide-right" | "scale" | "blur";
@@ -90,7 +90,12 @@ export default function ScrollReveal({
   type = "slide-up",
   className = ""
 }: ScrollRevealProps) {
+  const prefersReducedMotion = useReducedMotion();
   const animationProps = getAnimationProps(type, direction);
+
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div

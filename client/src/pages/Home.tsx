@@ -18,6 +18,7 @@ import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import SEOHead from "@/components/SEOHead";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
+import ArticlesSection from "@/components/ArticlesSection";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
@@ -29,60 +30,64 @@ export default function Home() {
       <main>
         <HeroSection />
         
-        <ScrollReveal>
+        <ScrollReveal type="slide-up" duration={0.8}>
           <WhyLeadersFailSection />
         </ScrollReveal>
         
-        <ScrollReveal delay={0.1}>
+        <ScrollReveal type="fade" delay={0.1} duration={0.6}>
           <TrustBar />
         </ScrollReveal>
         
-        <ScrollReveal>
+        <ScrollReveal type="scale" duration={0.7}>
           <SuccessStoriesSection />
         </ScrollReveal>
         
-        <ScrollReveal delay={0.1}>
+        <ScrollReveal type="slide-up" delay={0.1}>
           <ReviewsCarousel />
         </ScrollReveal>
         
-        <ScrollReveal>
+        <ScrollReveal type="slide-up" duration={0.8}>
           <MethodologySection />
         </ScrollReveal>
         
-        <ScrollReveal delay={0.1}>
+        <ScrollReveal type="scale" delay={0.1}>
           <ServicesSection />
         </ScrollReveal>
         
-        <ScrollReveal>
+        <ScrollReveal type="slide-up" duration={0.7}>
           <PricingSection />
         </ScrollReveal>
         
-        <ScrollReveal delay={0.1}>
+        <ScrollReveal type="fade" delay={0.1}>
           <BookingSection />
         </ScrollReveal>
         
-        <ScrollReveal>
+        <ScrollReveal type="slide-up">
           <WebinarSection />
         </ScrollReveal>
         
-        <ScrollReveal delay={0.1}>
+        <ScrollReveal type="slide-up" delay={0.1}>
+          <ArticlesSection />
+        </ScrollReveal>
+        
+        <ScrollReveal type="scale">
           <CoursesCarousel />
         </ScrollReveal>
         
-        <ScrollReveal>
+        <ScrollReveal type="slide-up" delay={0.1}>
           <PlaylistsCarousel />
         </ScrollReveal>
         
-        <ScrollReveal delay={0.1}>
+        <ScrollReveal type="fade">
           <AboutSection />
         </ScrollReveal>
         
-        <ScrollReveal>
+        <ScrollReveal type="slide-up">
           <FAQSection />
         </ScrollReveal>
       </main>
       
-      <ScrollReveal>
+      <ScrollReveal type="fade">
         <Footer />
       </ScrollReveal>
       
