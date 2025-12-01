@@ -8,7 +8,8 @@
     { "label": "Book Session", "href": "#booking" }
   ],
   "legalLinks": [
-    { "label": "Privacy Policy", "href": "/privacy-policy" }
+    { "label": "Privacy Policy", "href": "/privacy-policy" },
+    { "label": "Confidentiality & NDA", "href": "/confidentiality" }
   ],
   "quickLinks": {
     "title": "Quick Links"

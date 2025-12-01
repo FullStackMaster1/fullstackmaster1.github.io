@@ -14,7 +14,8 @@
       { "label": "Services", "href": "#services", "isPage": false },
       { "label": "Reviews", "href": "#reviews", "isPage": false },
       { "label": "Pricing", "href": "#pricing", "isPage": false },
-      { "label": "Resources", "href": "/resources", "isPage": true }
+      { "label": "Resources", "href": "/resources", "isPage": true },
+      { "label": "NDA", "href": "/confidentiality", "isPage": true }
     ],
     "ctaButtons": {
       "whatsapp": {

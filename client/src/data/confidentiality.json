@@ -1,0 +1,144 @@
+{
+  "page": {
+    "title": "Your Privacy & Confidentiality",
+    "subtitle": "Executive-Level Discretion Guaranteed",
+    "description": "I understand that career moves at the Director/VP level require absolute discretion. Your conversations, interview preparation, and career goals remain completely confidential."
+  },
+  "hero": {
+    "badge": "100% Confidential",
+    "title": "Your Career Move Stays Between Us",
+    "description": "As a senior leader, you can't afford to have your job search become office gossip. I provide the same level of confidentiality you'd expect from executive recruiters and career advisors."
+  },
+  "commitments": [
+    {
+      "icon": "Shield",
+      "title": "Complete Discretion",
+      "description": "I never share client names, companies, or any identifying information. Your coaching engagement is known only to you and me."
+    },
+    {
+      "icon": "Lock",
+      "title": "Secure Communications",
+      "description": "All our conversations happen through encrypted channels. No recordings without explicit consent. No written notes shared externally."
+    },
+    {
+      "icon": "FileCheck",
+      "title": "NDA Available",
+      "description": "For executives who require formal protection, I offer a mutual Non-Disclosure Agreement before our first session."
+    },
+    {
+      "icon": "UserX",
+      "title": "No Public Testimonials Required",
+      "description": "Unlike other coaches, I never pressure clients for public reviews. Your success story remains private unless you choose otherwise."
+    },
+    {
+      "icon": "Building2",
+      "title": "No Employer Contact",
+      "description": "I will never contact your current or prospective employers. Your job search timeline and targets are strictly confidential."
+    },
+    {
+      "icon": "Trash2",
+      "title": "Data Deletion on Request",
+      "description": "Upon request, I permanently delete all notes, communications, and any records related to our coaching engagement."
+    }
+  ],
+  "ndaSection": {
+    "title": "Formal NDA Protection",
+    "description": "Many of my executive clients prefer the added security of a formal Non-Disclosure Agreement. I'm happy to sign a mutual NDA before we begin working together.",
+    "benefits": [
+      "Legally binding confidentiality protection",
+      "Covers all coaching sessions and communications",
+      "Mutual obligation - protects both parties",
+      "Standard executive coaching terms",
+      "Can be signed electronically via DocuSign"
+    ],
+    "cta": {
+      "primary": {
+        "text": "Request NDA",
+        "description": "Get the NDA template sent to your email"
+      },
+      "secondary": {
+        "text": "WhatsApp for NDA",
+        "description": "Quick response within 2 hours"
+      }
+    }
+  },
+  "processSection": {
+    "title": "How the NDA Process Works",
+    "steps": [
+      {
+        "step": "1",
+        "title": "Request",
+        "description": "Click the button below or message me on WhatsApp to request the NDA"
+      },
+      {
+        "step": "2",
+        "title": "Review",
+        "description": "I'll send you the mutual NDA template within 24 hours (usually same day)"
+      },
+      {
+        "step": "3",
+        "title": "Sign",
+        "description": "Review the terms, sign electronically via DocuSign, and I'll countersign"
+      },
+      {
+        "step": "4",
+        "title": "Begin",
+        "description": "Once signed, we proceed with your coaching with full legal protection"
+      }
+    ]
+  },
+  "electronicSignature": {
+    "title": "Electronic Signature Options",
+    "description": "I use industry-standard electronic signature platforms for convenience and legal validity:",
+    "platforms": [
+      {
+        "name": "DocuSign",
+        "description": "Enterprise-grade, legally binding e-signatures",
+        "preferred": true
+      },
+      {
+        "name": "HelloSign",
+        "description": "Simple, fast electronic signatures"
+      },
+      {
+        "name": "Adobe Sign",
+        "description": "If your company prefers Adobe ecosystem"
+      }
+    ],
+    "note": "All e-signatures are legally binding in the US under the ESIGN Act and internationally under eIDAS regulations."
+  },
+  "faq": [
+    {
+      "question": "Will anyone know I'm working with a coach?",
+      "answer": "Absolutely not. I never disclose client relationships. Your colleagues, HR, or recruiters will never hear from me or know about our work together."
+    },
+    {
+      "question": "What if my company has a strict social media policy?",
+      "answer": "I never tag, mention, or reference clients on any platform. You won't appear in any of my marketing materials unless you explicitly request to share your success story."
+    },
+    {
+      "question": "Can I use a personal email instead of work email?",
+      "answer": "Absolutely. Many executives prefer to use personal email and phone for coaching communications. I recommend this for maximum privacy."
+    },
+    {
+      "question": "What happens to my session notes?",
+      "answer": "Session notes are stored securely and shared only with you. Upon request, I permanently delete all records of our engagement."
+    },
+    {
+      "question": "Do you work with my competitors?",
+      "answer": "I maintain strict separation between clients at competing companies and never share strategies, approaches, or insights between them."
+    }
+  ],
+  "trustBadges": [
+    "50+ Executive Clients Served Confidentially",
+    "Zero Confidentiality Breaches",
+    "NDA Signed with 100% of Requesting Clients",
+    "AWS Senior Solutions Architect (Professional Standards)"
+  ],
+  "finalCta": {
+    "title": "Ready to Discuss Your Career Move?",
+    "description": "Schedule a confidential consultation. No commitment required.",
+    "buttonText": "Book Confidential Call",
+    "ndaButtonText": "Request NDA First"
+  }
+}

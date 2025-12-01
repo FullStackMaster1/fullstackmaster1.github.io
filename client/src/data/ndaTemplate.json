@@ -1,0 +1,87 @@
+{
+  "document": {
+    "title": "Mutual Non-Disclosure Agreement",
+    "subtitle": "Executive Coaching Confidentiality Agreement",
+    "effectiveDate": "[Date]",
+    "version": "1.0"
+  },
+  "parties": {
+    "coach": {
+      "name": "Rupesh Tiwari",
+      "business": "FullStackMaster / Interview Coaching Services",
+      "role": "Coach/Advisor"
+    },
+    "client": {
+      "placeholder": "[Client Name]",
+      "role": "Client/Coachee"
+    }
+  },
+  "sections": [
+    {
+      "number": "1",
+      "title": "Purpose",
+      "content": "This Agreement is entered into for the purpose of protecting confidential information exchanged during executive interview coaching and career advisory services."
+    },
+    {
+      "number": "2",
+      "title": "Definition of Confidential Information",
+      "content": "\"Confidential Information\" includes, but is not limited to: (a) Client's current employment status, job title, and employer; (b) Client's career goals, target companies, and interview timeline; (c) Compensation details, both current and target; (d) Interview feedback, preparation materials, and coaching session content; (e) Any personal or professional information shared during coaching sessions."
+    },
+    {
+      "number": "3",
+      "title": "Obligations of Receiving Party",
+      "content": "Each party agrees to: (a) Keep all Confidential Information strictly confidential; (b) Not disclose any Confidential Information to third parties without prior written consent; (c) Use Confidential Information solely for the purpose of the coaching engagement; (d) Take reasonable measures to protect the confidentiality of the information."
+    },
+    {
+      "number": "4",
+      "title": "Exclusions",
+      "content": "Confidential Information does not include information that: (a) Is or becomes publicly available through no fault of the receiving party; (b) Was rightfully in the receiving party's possession before disclosure; (c) Is independently developed without use of Confidential Information; (d) Is required to be disclosed by law or court order."
+    },
+    {
+      "number": "5",
+      "title": "Term",
+      "content": "This Agreement shall remain in effect for a period of two (2) years from the date of last disclosure of Confidential Information, or until the coaching relationship ends, whichever is later."
+    },
+    {
+      "number": "6",
+      "title": "No Testimonials Without Consent",
+      "content": "Coach agrees not to use Client's name, likeness, company name, or any identifying information in marketing materials, case studies, or testimonials without Client's explicit written consent."
+    },
+    {
+      "number": "7",
+      "title": "Data Deletion",
+      "content": "Upon Client's written request, Coach agrees to permanently delete all notes, communications, and records related to the coaching engagement within 30 days."
+    },
+    {
+      "number": "8",
+      "title": "Governing Law",
+      "content": "This Agreement shall be governed by the laws of the State of New Jersey, United States."
+    }
+  ],
+  "signatures": {
+    "coach": {
+      "label": "Coach Signature",
+      "name": "Rupesh Tiwari",
+      "title": "Executive Interview Coach",
+      "date": "[Date]"
+    },
+    "client": {
+      "label": "Client Signature",
+      "name": "[Client Name]",
+      "title": "[Client Title]",
+      "date": "[Date]"
+    }
+  },
+  "gumroadProduct": {
+    "title": "Executive Coaching NDA Template",
+    "description": "Mutual Non-Disclosure Agreement for Executive Interview Coaching. Download, review, and request signing.",
+    "price": "0",
+    "suggestedLink": "https://rupeshtiwari.gumroad.com/l/coaching-nda"
+  },
+  "downloadInfo": {
+    "title": "Download NDA Template",
+    "description": "Get the mutual NDA template. Review the terms, and if you'd like to proceed, reply with your signed copy or request electronic signing via DocuSign.",
+    "buttonText": "Download NDA (Free)",
+    "emailCapture": true
+  }
+}

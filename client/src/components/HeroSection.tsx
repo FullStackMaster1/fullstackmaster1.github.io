@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Star, Award, Users, CheckCircle, Mail, Trophy, Calendar, GraduationCap, Building2, LucideIcon, Crown, TrendingUp, Shield, Download } from "lucide-react";
+import { Star, Award, Users, CheckCircle, Mail, Trophy, Calendar, GraduationCap, Building2, LucideIcon, Crown, TrendingUp, Shield, Download, FileCheck } from "lucide-react";
 import { SiWhatsapp, SiAmazon, SiGoogle, SiMeta, SiApple, SiNetflix, SiLinkedin } from "react-icons/si";
 import { FaMicrosoft } from "react-icons/fa";
 import profileImage from "@assets/image_1764282508840.png";
@@ -247,10 +247,26 @@ export default function HeroSection() {
             )}
 
             {hero.confidentiality && (
-              <div className="flex items-center gap-2 mb-6 text-sm text-muted-foreground" data-testid="confidentiality-badge">
-                <Shield className="w-4 h-4 text-green-500" />
-                <span className="font-medium">{hero.confidentiality.badge}</span>
-                <span className="text-xs">- {hero.confidentiality.text}</span>
+              <div className="flex flex-wrap items-center gap-3 mb-6" data-testid="confidentiality-badge">
+                <a 
+                  href="/confidentiality"
+                  className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  <Shield className="w-4 h-4 text-green-500" />
+                  <span className="font-medium">{hero.confidentiality.badge}</span>
+                  <span className="text-xs">- {hero.confidentiality.text}</span>
+                </a>
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="text-xs text-muted-foreground hover:text-foreground"
+                  asChild
+                >
+                  <a href="/confidentiality#nda" data-testid="button-request-nda-hero">
+                    <FileCheck className="w-3 h-3 mr-1" />
+                    Request NDA
+                  </a>
+                </Button>
               </div>
             )}
 
