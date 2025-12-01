@@ -28,32 +28,36 @@ export default function AnnouncementBar() {
 
   return (
     <div
-      className="relative bg-slate-900 text-white py-3 px-4"
+      className="relative bg-slate-900 text-white py-2.5 px-4"
       data-testid="announcement-bar"
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-center gap-3 text-sm">
-        <Sparkles className="w-4 h-4 flex-shrink-0 text-yellow-400" />
-        {current.highlight && (
-          <span className="font-semibold text-yellow-400">{current.highlight}:</span>
-        )}
-        <span data-testid="text-announcement">
-          {current.message}
-        </span>
-        {current.linkText && current.linkHref && (
-          <a
-            href={current.linkHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 font-semibold bg-white text-slate-900 px-3 py-1 rounded-full text-xs hover:bg-yellow-400 transition-colors ml-2"
-            data-testid="link-announcement-cta"
-          >
-            {current.linkText}
-            <ArrowRight className="w-3 h-3" />
-          </a>
-        )}
+      <div className="max-w-7xl mx-auto px-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm">
+          <div className="flex items-center gap-2">
+            <Sparkles className="w-4 h-4 flex-shrink-0 text-yellow-400" />
+            {current.highlight && (
+              <span className="font-semibold text-yellow-400">{current.highlight}:</span>
+            )}
+            <span data-testid="text-announcement" className="text-center sm:text-left">
+              {current.message}
+            </span>
+          </div>
+          {current.linkText && current.linkHref && (
+            <a
+              href={current.linkHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-1.5 font-semibold bg-yellow-400 text-slate-900 px-4 py-1.5 rounded-md text-sm border-2 border-yellow-400 hover:bg-transparent hover:text-yellow-400 transition-all duration-200 min-w-[120px]"
+              data-testid="link-announcement-cta"
+            >
+              {current.linkText}
+              <ArrowRight className="w-4 h-4" />
+            </a>
+          )}
+        </div>
         <button
           onClick={handleDismiss}
-          className="absolute right-4 p-1.5 rounded-full hover:bg-white/10 transition-colors"
+          className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-md hover:bg-white/10 transition-colors"
           aria-label="Dismiss announcement"
           data-testid="button-dismiss-announcement"
         >
