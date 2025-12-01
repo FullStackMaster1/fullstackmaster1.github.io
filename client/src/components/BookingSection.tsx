@@ -169,26 +169,39 @@ export default function BookingSection() {
 
           <div>
             <h3 className="font-semibold text-xl mb-6">{scheduleTitle}</h3>
-            <Card className="overflow-hidden">
-              <CardContent className="p-0">
-                <iframe
-                  src={calendarEmbed.url}
-                  className="w-full h-[500px] border-0"
-                  title={`${calendarEmbed.title} with ${profileData.personal.name}`}
-                  data-testid="iframe-calendar"
-                />
+            <Card className="hover-elevate">
+              <CardContent className="p-8 text-center">
+                <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
+                  <Calendar className="w-10 h-10 text-primary" />
+                </div>
+                <h4 className="text-xl font-semibold mb-3">{calendarEmbed.title}</h4>
+                <p className="text-muted-foreground mb-6">
+                  Pick a time that works for you. Free 15-min discovery call to discuss your career goals.
+                </p>
+                <div className="flex flex-wrap items-center justify-center gap-4 mb-6 text-sm text-muted-foreground">
+                  <div className="flex items-center gap-2">
+                    <Clock className="w-4 h-4" />
+                    <span>{sessionInfo.duration}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Video className="w-4 h-4" />
+                    <span>{sessionInfo.platform}</span>
+                  </div>
+                </div>
+                <Button size="lg" asChild>
+                  <a
+                    href={calendarEmbed.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-testid="button-schedule-calendar"
+                  >
+                    <Calendar className="w-4 h-4 mr-2" />
+                    Open Calendar & Book
+                    <ExternalLink className="w-4 h-4 ml-2" />
+                  </a>
+                </Button>
               </CardContent>
             </Card>
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-2">
-                <Clock className="w-4 h-4" />
-                <span>{sessionInfo.duration}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Video className="w-4 h-4" />
-                <span>{sessionInfo.platform}</span>
-              </div>
-            </div>
           </div>
         </div>
 
