@@ -111,10 +111,11 @@
       "icon": "Shield"
     },
     "leadCapture": {
-      "title": "Download Executive Interview Playbook",
-      "description": "6-page guide: What bar raisers look for at Director/VP level",
-      "buttonText": "Get Free Playbook",
-      "link": "https://rupeshtiwari.gumroad.com/l/faang-director-playbook"
+      "title": "Got Questions About Your Interview?",
+      "description": "Message me directly - I respond personally to every inquiry",
+      "buttonText": "Message Me for Free Tips",
+      "link": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I%27d%20love%20some%20tips%20on%20preparing%20for%20my%20FAANG%20interview.",
+      "type": "whatsapp"
     },
     "targetCompanies": ["Amazon", "Google", "Meta", "Apple", "Netflix"],
     "targetRoles": [

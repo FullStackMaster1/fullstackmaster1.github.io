@@ -147,3 +147,16 @@ The application prioritizes simplicity with the database layer prepared but not 
 - Open Graph meta tags configured
 - Twitter Card meta tags for social previews
 - Structured metadata for professional appearance
+
+## Future Improvements (Reminders)
+
+**Lead Generation Enhancement**:
+- **Executive Interview Playbook PDF** - Create a 6-page guide for Directors/VPs covering what bar raisers look for at senior levels. This can be uploaded to Gumroad as a $0 product to capture emails for lead nurturing. This is a common USA startup trust-building tactic.
+- Currently using WhatsApp for direct communication (more personal), but a downloadable playbook could scale lead capture
+
+**Video Section**:
+- The "Meet Your Coach" video section needs a real YouTube video. User should record a 2-minute intro video and provide the YouTube video ID to replace the placeholder.
+
+**NDA Process**:
+- NDAs are handled personally via WhatsApp/Email (professional approach)
+- Internal NDA document available at `/nda-document` for printing/sending

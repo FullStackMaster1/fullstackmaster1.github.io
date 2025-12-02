@@ -246,7 +246,7 @@ export default function HeroSection() {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="w-full sm:w-auto"
+                  className={`w-full sm:w-auto ${hero.leadCapture.type === 'whatsapp' ? 'border-green-500 text-green-600 hover:bg-green-50 dark:hover:bg-green-950' : ''}`}
                   asChild
                 >
                   <a
@@ -255,7 +255,11 @@ export default function HeroSection() {
                     rel="noopener noreferrer"
                     data-testid="button-lead-capture"
                   >
-                    <Download className="w-4 h-4 mr-2" />
+                    {hero.leadCapture.type === 'whatsapp' ? (
+                      <SiWhatsapp className="w-4 h-4 mr-2" />
+                    ) : (
+                      <Download className="w-4 h-4 mr-2" />
+                    )}
                     {hero.leadCapture.buttonText}
                   </a>
                 </Button>
