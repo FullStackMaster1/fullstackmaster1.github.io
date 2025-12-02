@@ -23,25 +23,35 @@
   "packages": [
     {
       "id": "5-session-package",
-      "name": "Full Preparation",
+      "name": "Complete Interview Mastery",
       "icon": "Zap",
       "price": "$600",
-      "originalPrice": null,
-      "perSession": "$120 per session",
-      "savings": "85% of clients choose this",
-      "badge": "Best Value",
+      "originalPrice": "$705",
+      "perSession": "$120/session",
+      "savings": "SAVE $105",
+      "savingsPercent": "15% OFF",
+      "platformComparison": "vs $141/session on coaching platforms",
+      "badge": "Most Popular",
       "featured": true,
-      "features": [
-        "5 sessions to close every gap",
-        "System design + stories + presence",
-        "Resume and pitch overhaul",
-        "WhatsApp access between sessions",
-        "Your personalized attack plan",
-        "Written session notes after each call"
+      "topBenefits": [
+        { "icon": "Infinity", "text": "Never Expires", "highlight": true },
+        { "icon": "Calendar", "text": "Book Anytime", "highlight": true },
+        { "icon": "BookOpen", "text": "Homework Between Sessions", "highlight": false }
       ],
-      "buttonText": "Let's Talk",
-      "buttonLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%0A%0AI%27m%20ready%20to%20find%20my%20blind%20spots%20and%20close%20them.%0A%0AMy%20details:%0A-%20Target%20Role:%20%0A-%20Target%20Company:%20%0A-%20Interview%20Timeline:%20%0A%0AWhat%20are%20the%20next%20steps?",
-      "paymentNote": "Pay after our first call. Zelle accepted."
+      "features": [
+        "5 deep-dive sessions (60 min each)",
+        "System Design + Behavioral + Leadership",
+        "Resume & LinkedIn pitch overhaul",
+        "Personalized homework after each session",
+        "WhatsApp access for quick questions",
+        "You book when YOU'RE ready — no rush",
+        "Session notes + action items delivered"
+      ],
+      "howItWorks": "You choose sessions from my calendar whenever you need. Prepare with homework. Practice. Book next session when ready.",
+      "buttonText": "Start My Transformation",
+      "buttonLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%0A%0AI%27m%20ready%20for%20the%205-session%20package.%0A%0AMy%20details:%0A-%20Target%20Role:%20%0A-%20Target%20Company:%20%0A-%20Interview%20Timeline:%20%0A%0AWhat%20are%20the%20next%20steps?",
+      "paymentNote": "Pay after our first call. Zelle, PayPal, or Card accepted.",
+      "trustBadges": ["85% Offer Rate", "50+ Five-Star Reviews", "Money-Back Guarantee"]
     },
     {
       "id": "single-session",
@@ -51,7 +61,7 @@
       "originalPrice": null,
       "perSession": "60 focused minutes",
       "savings": null,
-      "badge": "Quick Fix",
+      "badge": "Try First",
       "featured": false,
       "features": [
         "One gap. One hour. Fixed.",
