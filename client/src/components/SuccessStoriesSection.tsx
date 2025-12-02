@@ -1,14 +1,16 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, Award, CheckCircle, ExternalLink, Shield, Building2 } from "lucide-react";
-import { SiWhatsapp, SiAmazon, SiGoogle, SiDatabricks } from "react-icons/si";
+import { Star, Award, CheckCircle, ExternalLink, Shield, Building2, Sparkles } from "lucide-react";
+import { SiAmazon, SiGoogle, SiDatabricks, SiRedhat } from "react-icons/si";
 import successStoriesData from "@/data/successStories.json";
 
-const companyIcons: Record<string, typeof SiAmazon | typeof Building2> = {
+const companyIcons: Record<string, typeof SiAmazon | typeof Building2 | typeof Sparkles> = {
   amazon: SiAmazon,
   google: SiGoogle,
   databricks: SiDatabricks,
+  redhat: SiRedhat,
+  faang: Sparkles,
   draftkings: Building2,
   enterprise: Building2,
   cloud: Building2,
@@ -19,6 +21,8 @@ const companyColors: Record<string, string> = {
   amazon: "text-orange-500",
   google: "text-blue-500",
   databricks: "text-red-500",
+  redhat: "text-red-600",
+  faang: "text-purple-500",
   draftkings: "text-green-600",
   enterprise: "text-primary",
   cloud: "text-blue-400",

@@ -29,6 +29,27 @@
       "companyIcon": "draftkings",
       "role": "Software Engineer",
       "date": "Apr 2025"
+    },
+    {
+      "name": "Andre",
+      "company": "Amazon",
+      "companyIcon": "amazon",
+      "role": "Solutions Architect",
+      "date": "May 2025"
+    },
+    {
+      "name": "Omotola",
+      "company": "Red Hat",
+      "companyIcon": "redhat",
+      "role": "Senior Engineer",
+      "date": "Jan 2025"
+    },
+    {
+      "name": "Karthik",
+      "company": "FAANG",
+      "companyIcon": "faang",
+      "role": "Senior Software Engineer",
+      "date": "Sep 2023"
     }
   ],
   "successStories": [
@@ -143,6 +164,40 @@
       "review": "Rupesh was amazing to work with. As a beginning Solutions Architect, I was stuck in my career, and he provided guidance for sharpening my skills, demonstrating competence, building my brand. By the end of the session, I had a 90-day step-by-step plan to turn my career around.",
       "sessionType": "Career Coaching",
       "date": "May 2025",
+      "rating": 5,
+      "featured": true,
+      "verified": true,
+      "verificationSource": "IGotAnOffer",
+      "verificationLink": "https://igotanoffer.com/en/coach/rupesh"
+    },
+    {
+      "id": "omotola-redhat",
+      "name": "Omotola",
+      "role": "Senior Engineer",
+      "company": "Red Hat",
+      "companyIcon": "redhat",
+      "outcome": "Landed Role",
+      "review": "Rupesh is patient, thorough, and a confidence-booster. I had an excellent experience learning from him!",
+      "coachReply": "Omotola landed a Senior Engineer role at Red Hat. Your preparation and dedication made the difference!",
+      "sessionType": "Interview Coaching",
+      "date": "Jan 2025",
+      "rating": 5,
+      "featured": true,
+      "verified": true,
+      "verificationSource": "IGotAnOffer",
+      "verificationLink": "https://igotanoffer.com/en/coach/rupesh"
+    },
+    {
+      "id": "karthik-faang",
+      "name": "Karthik",
+      "role": "Senior Software Engineer",
+      "company": "FAANG",
+      "companyIcon": "faang",
+      "outcome": "Landed Role",
+      "review": "Rupesh helped me crack my dream role! His insights on how to approach technical and behavioral rounds were spot-on. I can't recommend him enough for anyone serious about landing a senior tech role.",
+      "coachReply": "Karthik's dedication to the process was exceptional. Well-deserved offer at a top FAANG company!",
+      "sessionType": "Interview Coaching",
+      "date": "Sep 2023",
       "rating": 5,
       "featured": true,
       "verified": true,

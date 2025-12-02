@@ -1,12 +1,14 @@
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent } from "@/components/ui/card";
-import { TrendingUp, Crown, Rocket, Clock, DollarSign, Target, Shield, ArrowRight } from "lucide-react";
+import { TrendingUp, Crown, Rocket, Clock, DollarSign, Target, Shield, ArrowRight, Code, Gamepad2 } from "lucide-react";
 import caseStudiesData from "@/data/executiveCaseStudies.json";
 
 const iconMap: Record<string, typeof TrendingUp> = {
   TrendingUp,
   Crown,
   Rocket,
+  Code,
+  Gamepad2,
 };
 
 export default function ExecutiveCaseStudies() {
