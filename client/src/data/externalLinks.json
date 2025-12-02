@@ -14,7 +14,7 @@
     }
   },
   "booking": {
-    "calendly": "http://consult.fullstackmaster.net",
+    "calendly": "https://consult.fullstackmaster.net",
     "igotanoffer": "https://igotanoffer.com/en/coach/rupesh",
     "whatsapp": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'd%20like%20to%20discuss%20my%20FAANG%20interview%20preparation."
   },
