@@ -14,6 +14,7 @@ import Resources from "@/pages/Resources";
 import Admin from "@/pages/Admin";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import Confidentiality from "@/pages/Confidentiality";
+import NDADocument from "@/pages/NDADocument";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -26,6 +27,7 @@ function Router() {
       <Route path="/admin" component={Admin} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/confidentiality" component={Confidentiality} />
+      <Route path="/nda-document" component={NDADocument} />
       <Route component={NotFound} />
     </Switch>
   );

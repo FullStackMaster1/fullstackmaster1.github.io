@@ -4,7 +4,9 @@ import profileData from '@/data/profile.json';
 import faqsData from '@/data/faqs.json';
 
 interface SEOHeadProps {
-  page?: 'home' | 'resources' | 'admin' | 'confidentiality' | 'privacy';
+  page?: 'home' | 'resources' | 'admin' | 'confidentiality' | 'privacy' | 'nda';
+  customTitle?: string;
+  customDescription?: string;
 }
 
 const pageSEO: Record<string, { title: string; description: string; canonical: string }> = {
@@ -20,11 +22,14 @@ const pageSEO: Record<string, { title: string; description: string; canonical: s
   }
 };
 
-export default function SEOHead({ page = 'home' }: SEOHeadProps) {
+export default function SEOHead({ page = 'home', customTitle, customDescription }: SEOHeadProps) {
   const seo = siteContent.seo;
   const { personal, contact, brand, socialLinks, stats, credentials, descriptions } = profileData;
   
   const currentPageSEO = pageSEO[page] || null;
+  
+  const finalTitle = customTitle || currentPageSEO?.title || seo.title;
+  const finalDescription = customDescription || currentPageSEO?.description || seo.description;
 
   const personSchema = {
     "@context": "https://schema.org",
