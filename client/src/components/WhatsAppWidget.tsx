@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { X } from "lucide-react";
-import { SiWhatsapp } from "react-icons/si";
+import { X, MessageCircle } from "lucide-react";
+import { SiWhatsapp, SiLinkedin } from "react-icons/si";
 import profileData from "@/data/profile.json";
 import whatsappData from "@/data/whatsapp.json";
 import { trackWhatsApp } from "@/lib/analytics";
 
 export default function WhatsAppWidget() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const { personal, contact } = profileData;
+  const { personal, contact, socialLinks } = profileData;
   const { widget } = whatsappData;
 
   const whatsappUrl = `${contact.whatsappLink}?text=${encodeURIComponent(widget.defaultMessage)}`;
@@ -19,8 +19,8 @@ export default function WhatsAppWidget() {
         <div className="mb-3 bg-card border border-card-border rounded-lg shadow-xl p-4 w-72 animate-in slide-in-from-bottom-2">
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center">
-                <SiWhatsapp className="w-5 h-5 text-white" />
+              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
+                <MessageCircle className="w-5 h-5 text-primary-foreground" />
               </div>
               <div>
                 <p className="font-semibold text-sm">{personal.name}</p>
@@ -42,28 +42,45 @@ export default function WhatsAppWidget() {
             <p className="text-sm">{widget.greeting}</p>
           </div>
 
-          <Button
-            className="w-full bg-green-600 hover:bg-green-700"
-            asChild
-          >
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackWhatsApp('widget')}
-              data-testid="button-whatsapp-chat"
+          <div className="flex flex-col gap-2">
+            <Button
+              className="w-full bg-green-600 hover:bg-green-700"
+              asChild
             >
-              <SiWhatsapp className="w-4 h-4 mr-2" />
-              {widget.buttonText}
-            </a>
-          </Button>
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackWhatsApp('widget')}
+                data-testid="button-whatsapp-chat"
+              >
+                <SiWhatsapp className="w-4 h-4 mr-2" />
+                {widget.buttonText}
+              </a>
+            </Button>
+            <Button
+              variant="outline"
+              className="w-full border-[#0077b5] text-[#0077b5] hover:bg-blue-50 dark:hover:bg-blue-950"
+              asChild
+            >
+              <a
+                href={socialLinks.linkedIn.personal}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="button-linkedin-chat"
+              >
+                <SiLinkedin className="w-4 h-4 mr-2" />
+                Message on LinkedIn
+              </a>
+            </Button>
+          </div>
         </div>
       )}
 
       <Button
         size="lg"
         className={`rounded-full h-14 w-14 shadow-lg ${
-          isExpanded ? "bg-muted hover:bg-muted" : "bg-green-600 hover:bg-green-700"
+          isExpanded ? "bg-muted hover:bg-muted" : "bg-primary hover:bg-primary/90"
         }`}
         onClick={() => setIsExpanded(!isExpanded)}
         data-testid="button-whatsapp-toggle"
@@ -71,7 +88,7 @@ export default function WhatsAppWidget() {
         {isExpanded ? (
           <X className="w-6 h-6" />
         ) : (
-          <SiWhatsapp className="w-6 h-6" />
+          <MessageCircle className="w-6 h-6" />
         )}
       </Button>
     </div>

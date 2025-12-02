@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
-import { SiWhatsapp } from "react-icons/si";
+import { SiWhatsapp, SiLinkedin } from "react-icons/si";
 import profileData from "@/data/profile.json";
 import { trackBookCall, trackWhatsApp } from "@/lib/analytics";
 
 export default function StickyMobileCTA() {
   const [isVisible, setIsVisible] = useState(false);
-  const { contact } = profileData;
+  const { contact, socialLinks } = profileData;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -40,7 +40,7 @@ export default function StickyMobileCTA() {
             data-testid="button-sticky-book"
           >
             <Calendar className="w-4 h-4 mr-1" />
-            Book Call
+            Book
           </a>
         </Button>
         <Button
@@ -58,6 +58,22 @@ export default function StickyMobileCTA() {
           >
             <SiWhatsapp className="w-4 h-4 mr-1" />
             WhatsApp
+          </a>
+        </Button>
+        <Button
+          size="sm"
+          variant="outline"
+          className="flex-1 border-[#0077b5] text-[#0077b5]"
+          asChild
+        >
+          <a
+            href={socialLinks.linkedIn.personal}
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="button-sticky-linkedin"
+          >
+            <SiLinkedin className="w-4 h-4 mr-1" />
+            LinkedIn
           </a>
         </Button>
       </div>

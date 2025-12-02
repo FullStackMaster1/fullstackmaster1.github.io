@@ -221,6 +221,22 @@ export default function HeroSection() {
                   {hero.buttons.secondary}
                 </a>
               </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-[#0077b5] text-[#0077b5] hover:bg-blue-50 dark:hover:bg-blue-950"
+                asChild
+              >
+                <a
+                  href={socialLinks.linkedIn.personal}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="button-hero-linkedin"
+                >
+                  <SiLinkedin className="w-4 h-4 mr-2" />
+                  Message on LinkedIn
+                </a>
+              </Button>
             </div>
 
             {hero.leadCapture && (
