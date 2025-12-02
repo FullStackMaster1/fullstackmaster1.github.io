@@ -72,16 +72,11 @@
       "date": "[Date]"
     }
   },
-  "gumroadProduct": {
-    "title": "Executive Coaching NDA Template",
-    "description": "Mutual Non-Disclosure Agreement for Executive Interview Coaching. Download, review, and request signing.",
-    "price": "0",
-    "suggestedLink": "https://rupeshtiwari.gumroad.com/l/coaching-nda"
-  },
-  "downloadInfo": {
-    "title": "Download NDA Template",
-    "description": "Get the mutual NDA template. Review the terms, and if you'd like to proceed, reply with your signed copy or request electronic signing via DocuSign.",
-    "buttonText": "Download NDA (Free)",
-    "emailCapture": true
+  "requestInfo": {
+    "title": "Request NDA Template",
+    "description": "Request the mutual NDA template via WhatsApp or email. Rupesh will personally send you the document for review and signing.",
+    "primaryButtonText": "Request via WhatsApp",
+    "secondaryButtonText": "Request via Email",
+    "note": "NDAs are handled personally to ensure proper customization and legal compliance."
   }
 }

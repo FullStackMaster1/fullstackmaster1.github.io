@@ -38,7 +38,7 @@ export default function Confidentiality() {
     "Hi Rupesh, I'm interested in your executive coaching services and would like to request an NDA before we proceed. Please send me the mutual NDA template. Thank you."
   );
 
-  const gumroadNdaLink = "https://rupeshtiwari.gumroad.com/l/coaching-nda";
+  const ndaWhatsAppLink = `${contact.whatsappLink}?text=${ndaWhatsAppMessage}`;
 
   return (
     <div className="min-h-screen bg-background">
@@ -125,20 +125,16 @@ export default function Confidentiality() {
             </Card>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button size="lg" asChild data-testid="button-request-nda">
-                <a href={gumroadNdaLink} target="_blank" rel="noopener noreferrer">
-                  <Download className="w-4 h-4 mr-2" />
-                  {ndaSection.cta.primary.text}
+              <Button size="lg" className="bg-green-600 hover:bg-green-700" asChild data-testid="button-request-nda">
+                <a href={ndaWhatsAppLink} target="_blank" rel="noopener noreferrer">
+                  <SiWhatsapp className="w-4 h-4 mr-2" />
+                  Request NDA via WhatsApp
                 </a>
               </Button>
-              <Button size="lg" variant="outline" className="border-green-500 text-green-600" asChild data-testid="button-whatsapp-nda">
-                <a 
-                  href={`${contact.whatsappLink}?text=${ndaWhatsAppMessage}`}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  <SiWhatsapp className="w-4 h-4 mr-2" />
-                  {ndaSection.cta.secondary.text}
+              <Button size="lg" variant="outline" asChild data-testid="button-email-nda">
+                <a href={`mailto:${contact.email}?subject=NDA%20Request%20for%20Executive%20Coaching&body=Hi%20Rupesh,%0A%0AI'm%20interested%20in%20your%20executive%20coaching%20services%20and%20would%20like%20to%20request%20an%20NDA%20before%20we%20proceed.%0A%0APlease%20send%20me%20the%20mutual%20NDA%20template.%0A%0AThank%20you.`}>
+                  <MessageCircle className="w-4 h-4 mr-2" />
+                  Request via Email
                 </a>
               </Button>
             </div>
@@ -232,9 +228,9 @@ export default function Confidentiality() {
                   {finalCta.buttonText}
                 </a>
               </Button>
-              <Button size="lg" variant="outline" asChild data-testid="button-request-nda-final">
-                <a href={gumroadNdaLink} target="_blank" rel="noopener noreferrer">
-                  <FileCheck className="w-4 h-4 mr-2" />
+              <Button size="lg" variant="outline" className="border-green-500 text-green-600" asChild data-testid="button-request-nda-final">
+                <a href={ndaWhatsAppLink} target="_blank" rel="noopener noreferrer">
+                  <SiWhatsapp className="w-4 h-4 mr-2" />
                   {finalCta.ndaButtonText}
                 </a>
               </Button>
