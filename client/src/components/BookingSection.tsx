@@ -227,7 +227,7 @@ export default function BookingSection() {
                   data-testid="button-booking-whatsapp-main"
                 >
                   <SiWhatsapp className="w-4 h-4 mr-2" />
-                  {contact.phone}
+                  Chat on WhatsApp
                 </a>
               </Button>
             </CardContent>

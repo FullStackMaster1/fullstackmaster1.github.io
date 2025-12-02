@@ -95,7 +95,7 @@ export default function Footer() {
                 data-testid="link-footer-whatsapp"
               >
                 <SiWhatsapp className="w-4 h-4 text-green-500" />
-                {contact.phone}
+                Chat on WhatsApp
               </a>
               <a
                 href={`mailto:${contact.email}`}

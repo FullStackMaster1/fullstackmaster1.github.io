@@ -279,7 +279,7 @@ export default function HeroSection() {
                 data-testid="link-whatsapp"
               >
                 <SiWhatsapp className="w-4 h-4 text-green-500" />
-                {contact.phone}
+                WhatsApp
               </a>
               <a
                 href={`mailto:${contact.email}`}
