@@ -1,7 +1,26 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Star, Quote, CheckCircle } from "lucide-react";
+import { Star, Quote, CheckCircle, Building2, Sparkles } from "lucide-react";
+import { SiAmazon, SiGoogle, SiDatabricks, SiRedhat } from "react-icons/si";
+
+const companyIcons: Record<string, any> = {
+  "Amazon": SiAmazon,
+  "Google": SiGoogle,
+  "Databricks": SiDatabricks,
+  "Red Hat": SiRedhat,
+  "DraftKings": Building2,
+  "FAANG": Sparkles,
+};
+
+const companyColors: Record<string, string> = {
+  "Amazon": "text-orange-500",
+  "Google": "text-blue-500",
+  "Databricks": "text-red-500",
+  "Red Hat": "text-red-600",
+  "DraftKings": "text-green-600",
+  "FAANG": "text-purple-500",
+};
 
 interface ReviewCardProps {
   name: string;
@@ -26,6 +45,11 @@ export default function ReviewCard({
   gotOffer,
   offerCompany,
 }: ReviewCardProps) {
+  const CompanyIcon = company ? companyIcons[company] : null;
+  const companyColor = company ? companyColors[company] || "text-muted-foreground" : "";
+  const OfferIcon = offerCompany ? companyIcons[offerCompany] : null;
+  const offerColor = offerCompany ? companyColors[offerCompany] || "text-green-600" : "";
+
   return (
     <Card className={`h-full ${gotOffer ? 'border-green-500/50 bg-green-500/5' : ''}`} data-testid={`card-review-${name.toLowerCase()}`}>
       <CardContent className="p-6 flex flex-col h-full">
@@ -36,7 +60,11 @@ export default function ReviewCard({
               Got Offer
             </Badge>
             {offerCompany && (
-              <span className="text-xs font-medium text-green-600">at {offerCompany}</span>
+              <div className="flex items-center gap-1">
+                <span className="text-xs text-muted-foreground">at</span>
+                {OfferIcon && <OfferIcon className={`w-4 h-4 ${offerColor}`} />}
+                <span className={`text-xs font-semibold ${offerColor}`}>{offerCompany}</span>
+              </div>
             )}
           </div>
         )}
@@ -55,7 +83,10 @@ export default function ReviewCard({
                 <p className="text-xs font-medium text-primary">{title}</p>
               )}
               {company && (
-                <p className="text-xs text-muted-foreground">{company}</p>
+                <div className="flex items-center gap-1.5">
+                  {CompanyIcon && <CompanyIcon className={`w-3.5 h-3.5 ${companyColor}`} />}
+                  <p className={`text-xs font-medium ${CompanyIcon ? companyColor : 'text-muted-foreground'}`}>{company}</p>
+                </div>
               )}
               <p className="text-xs text-muted-foreground">{date}</p>
             </div>
