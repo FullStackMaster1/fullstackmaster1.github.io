@@ -76,6 +76,21 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
+  // Debug endpoint - shows token status
+  app.get("/api/debug/token-status", (req: Request, res: Response) => {
+    const hasToken = !!ADMIN_TOKEN;
+    const tokenLength = ADMIN_TOKEN?.length || 0;
+    res.json({
+      isTokenConfigured: hasToken,
+      tokenLength: tokenLength,
+      firstChars: hasToken ? ADMIN_TOKEN.substring(0, 5) + "..." : "NO_TOKEN",
+      environment: process.env.NODE_ENV,
+      message: hasToken 
+        ? `✅ Token configured (${tokenLength} chars)` 
+        : "❌ Token NOT found in environment"
+    });
+  });
+
   app.post("/api/webinar/register", async (req: Request, res: Response) => {
     try {
       const validatedData = insertWebinarRegistrationSchema.parse(req.body);
