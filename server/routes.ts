@@ -5,9 +5,14 @@ import { insertWebinarRegistrationSchema, insertWebinarInterestSchema } from "@s
 import { z } from "zod";
 import { sendWebinarRegistrationNotification } from "./email";
 
-const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
+const ADMIN_TOKEN = (process.env.ADMIN_TOKEN || "").trim();
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const YOUTUBE_CHANNEL_ID = "UCfjBZHutgAYon-T8sqt1rwg"; // FullStackMaster channel
+
+// Log on startup for debugging
+if (process.env.NODE_ENV === "development") {
+  console.log("🔐 Server initialized - ADMIN_TOKEN is", ADMIN_TOKEN ? "configured" : "NOT SET");
+}
 
 // Simple in-memory rate limiter for voting
 const voteRateLimiter = new Map<string, { count: number; resetTime: number }>();
@@ -33,7 +38,7 @@ function checkVoteRateLimit(identifier: string): boolean {
 
 function requireAdminAuth(req: Request, res: Response, next: NextFunction) {
   if (!ADMIN_TOKEN) {
-    console.error("ADMIN_TOKEN environment variable is not set");
+    console.error("❌ ADMIN_TOKEN environment variable is not set");
     return res.status(500).json({ error: "Admin token not configured. Please contact the administrator." });
   }
   
@@ -46,14 +51,24 @@ function requireAdminAuth(req: Request, res: Response, next: NextFunction) {
   
   // Ensure token is a string and trim whitespace
   token = String(token || "").trim();
-  const expectedToken = String(ADMIN_TOKEN).trim();
+  const expectedToken = ADMIN_TOKEN;
   
-  console.log("Auth attempt - token length:", token.length, "expected length:", expectedToken.length);
+  console.log(`🔐 Auth attempt - received token length: ${token.length}, expected length: ${expectedToken.length}`);
+  
+  if (!token) {
+    console.error("❌ No token provided in request");
+    return res.status(401).json({ error: "Unauthorized. No admin token provided." });
+  }
   
   if (token !== expectedToken) {
-    console.error("Token mismatch - attempt with token starting with:", token.substring(0, 10));
+    // Debug: show character-by-character comparison for first 5 chars
+    const receivedStart = token.substring(0, 5);
+    const expectedStart = expectedToken.substring(0, 5);
+    console.error(`❌ Token mismatch - received start: [${receivedStart}], expected start: [${expectedStart}]`);
     return res.status(401).json({ error: "Unauthorized. Invalid admin token." });
   }
+  
+  console.log("✅ Admin authentication successful");
   next();
 }
 
