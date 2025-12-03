@@ -47,12 +47,6 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
-  const handleNavigationClick = (e: React.MouseEvent) => {
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }, 0);
-  };
-
   return (
     <footer
       className="bg-card border-t border-card-border md:pb-0 pb-24"
@@ -171,7 +165,6 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                onClick={handleNavigationClick}
                 className="hover:text-foreground transition-colors flex items-center gap-1"
                 data-testid={`link-footer-${link.label.toLowerCase().replace(" ", "-")}`}
               >
