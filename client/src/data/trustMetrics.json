@@ -40,6 +40,58 @@
       "color": "text-green-500"
     }
   ],
+  "certifications": [
+    {
+      "name": "AWS Certified",
+      "icon": "SiAmazonwebservices",
+      "label": "Solutions Architect",
+      "color": "text-orange-500"
+    },
+    {
+      "name": "Google Cloud",
+      "icon": "SiGooglecloud",
+      "label": "Professional Architect",
+      "color": "text-blue-500"
+    },
+    {
+      "name": "Microsoft Azure",
+      "icon": "FaMicrosoft",
+      "label": "Certified",
+      "color": "text-sky-500"
+    },
+    {
+      "name": "ISB Executive",
+      "icon": "GraduationCap",
+      "label": "CTO Program Scholar",
+      "color": "text-purple-600"
+    }
+  ],
+  "securityBadges": [
+    {
+      "name": "Confidential",
+      "icon": "Shield",
+      "label": "100% Private",
+      "description": "Your career move stays between us"
+    },
+    {
+      "name": "NDA Available",
+      "icon": "FileCheck",
+      "label": "Legal Protection",
+      "description": "Formal NDA for executives"
+    },
+    {
+      "name": "Secure Comms",
+      "icon": "Lock",
+      "label": "Encrypted",
+      "description": "All sessions are private"
+    },
+    {
+      "name": "Zero Breaches",
+      "icon": "ShieldCheck",
+      "label": "Track Record",
+      "description": "Trusted by senior leaders"
+    }
+  ],
   "platforms": [
     {
       "name": "IGotAnOffer",
@@ -77,5 +129,7 @@
       "color": "text-blue-600"
     }
   ],
-  "featuredOnText": "As Featured On"
+  "featuredOnText": "As Featured On",
+  "certificationsText": "Certified & Verified",
+  "securityText": "Enterprise-Level Confidentiality"
 }

@@ -21,7 +21,7 @@ const socialIconComponents: Record<string, typeof SiWhatsapp> = {
 const getSocialUrl = (name: string): string => {
   const socialLinks = profileData.socialLinks;
   switch (name) {
-    case 'whatsapp': return socialLinks.whatsapp.url;
+    case 'whatsapp': return `${socialLinks.whatsapp.url}?text=${encodeURIComponent(whatsappData.widget.defaultMessage)}`;
     case 'youtube': return socialLinks.youtube.channel;
     case 'linkedin': return socialLinks.linkedIn.company;
     case 'github': return socialLinks.github.url;

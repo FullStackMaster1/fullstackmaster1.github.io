@@ -41,6 +41,74 @@
       "description": "Upon request, I permanently delete all notes, communications, and any records related to our coaching engagement."
     }
   ],
+  "ndaSection": {
+    "title": "Formal NDA Protection",
+    "description": "For executives who require additional legal protection, I offer a mutual Non-Disclosure Agreement. This provides formal legal backing for our confidentiality commitment.",
+    "benefits": [
+      "Legally binding mutual confidentiality obligations",
+      "Protection of your current employer information",
+      "Safeguarding of interview strategies and preparation materials",
+      "Coverage for all career discussions and target companies",
+      "Clear terms for data handling and deletion"
+    ],
+    "cta": {
+      "primary": {
+        "text": "Request NDA via WhatsApp",
+        "description": "Get the NDA template within 24 hours"
+      },
+      "secondary": {
+        "text": "Request via Email",
+        "description": "Typical response time: within 24 business hours"
+      }
+    }
+  },
+  "processSection": {
+    "title": "How the NDA Process Works",
+    "steps": [
+      {
+        "step": "1",
+        "title": "Request",
+        "description": "Reach out via WhatsApp or email to request the NDA template"
+      },
+      {
+        "step": "2",
+        "title": "Review",
+        "description": "I'll send you the mutual NDA for your review within 24 hours"
+      },
+      {
+        "step": "3",
+        "title": "Sign",
+        "description": "Sign electronically using DocuSign, Adobe Sign, or PandaDoc"
+      },
+      {
+        "step": "4",
+        "title": "Begin",
+        "description": "Start your confidential coaching journey with full protection"
+      }
+    ]
+  },
+  "electronicSignature": {
+    "title": "Electronic Signature Options",
+    "description": "For your convenience, I accept electronic signatures through industry-standard platforms that are legally binding.",
+    "platforms": [
+      {
+        "name": "DocuSign",
+        "description": "Industry standard for legal documents",
+        "preferred": true
+      },
+      {
+        "name": "Adobe Sign",
+        "description": "Adobe's trusted e-signature solution",
+        "preferred": false
+      },
+      {
+        "name": "PandaDoc",
+        "description": "Simple and secure signing",
+        "preferred": false
+      }
+    ],
+    "note": "All e-signatures are ESIGN and UETA compliant, making them legally equivalent to handwritten signatures."
+  },
   "faq": [
     {
       "question": "Will anyone know I'm working with a coach?",
@@ -71,6 +139,7 @@
   "finalCta": {
     "title": "Ready to Discuss Your Career Move?",
     "description": "Schedule a confidential consultation. No commitment required.",
-    "buttonText": "Book Confidential Call"
+    "buttonText": "Book Confidential Call",
+    "ndaButtonText": "Request NDA First"
   }
 }

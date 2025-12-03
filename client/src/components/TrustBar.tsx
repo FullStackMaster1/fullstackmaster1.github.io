@@ -1,6 +1,7 @@
 import { Badge } from "@/components/ui/badge";
-import { Star, Award, Users, FileText, CheckCircle, RefreshCw, LucideIcon } from "lucide-react";
-import { SiYoutube, SiLinkedin, SiUdemy, SiPluralsight } from "react-icons/si";
+import { Star, Award, Users, FileText, CheckCircle, RefreshCw, LucideIcon, Shield, Lock, FileCheck, ShieldCheck, GraduationCap } from "lucide-react";
+import { SiYoutube, SiLinkedin, SiUdemy, SiPluralsight, SiAmazonwebservices, SiGooglecloud } from "react-icons/si";
+import { FaMicrosoft } from "react-icons/fa";
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import trustData from "@/data/trustMetrics.json";
@@ -13,6 +14,11 @@ const lucideIconMap: Record<string, LucideIcon> = {
   Users,
   CheckCircle,
   RefreshCw,
+  Shield,
+  Lock,
+  FileCheck,
+  ShieldCheck,
+  GraduationCap,
 };
 
 const siIconMap: Record<string, IconType> = {
@@ -20,6 +26,9 @@ const siIconMap: Record<string, IconType> = {
   SiLinkedin,
   SiUdemy,
   SiPluralsight,
+  SiAmazonwebservices,
+  SiGooglecloud,
+  FaMicrosoft,
 };
 
 interface Metric {
@@ -39,6 +48,20 @@ interface Platform {
   label: string;
   url: string;
   color: string;
+}
+
+interface Certification {
+  name: string;
+  icon: string;
+  label: string;
+  color: string;
+}
+
+interface SecurityBadge {
+  name: string;
+  icon: string;
+  label: string;
+  description: string;
 }
 
 function AnimatedCounter({ 
@@ -98,6 +121,8 @@ function AnimatedCounter({
 export default function TrustBar() {
   const metrics = trustData.metrics as Metric[];
   const platforms = trustData.platforms as Platform[];
+  const certifications = (trustData as any).certifications as Certification[] || [];
+  const securityBadges = (trustData as any).securityBadges as SecurityBadge[] || [];
 
   return (
     <section
@@ -161,6 +186,74 @@ export default function TrustBar() {
             ) : MetricContent;
           })}
         </div>
+
+        {certifications.length > 0 && (
+          <div className="border-t border-border pt-6 mb-6">
+            <p className="text-center text-sm text-muted-foreground mb-4">
+              {(trustData as any).certificationsText || "Certified & Verified"}
+            </p>
+            <div className="flex flex-wrap justify-center items-center gap-3 md:gap-4">
+              {certifications.map((cert, index) => {
+                const LucideIcon = lucideIconMap[cert.icon];
+                const SiIcon = siIconMap[cert.icon];
+                const IconComponent = LucideIcon || SiIcon;
+                
+                return (
+                  <motion.div
+                    key={cert.name}
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg bg-background border border-border"
+                    data-testid={`cert-${cert.name.toLowerCase().replace(/ /g, "-")}`}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                  >
+                    {IconComponent && (
+                      <IconComponent className={`w-5 h-5 ${cert.color || ""}`} />
+                    )}
+                    <div className="text-left">
+                      <span className="font-medium text-sm">{cert.name}</span>
+                      <p className="text-xs text-muted-foreground">{cert.label}</p>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {securityBadges.length > 0 && (
+          <div className="border-t border-border pt-6 mb-6">
+            <p className="text-center text-sm text-muted-foreground mb-4">
+              {(trustData as any).securityText || "Enterprise-Level Confidentiality"}
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+              {securityBadges.map((badge, index) => {
+                const IconComponent = lucideIconMap[badge.icon];
+                
+                return (
+                  <motion.div
+                    key={badge.name}
+                    className="flex flex-col items-center text-center p-3 rounded-lg bg-green-500/5 border border-green-500/20"
+                    data-testid={`security-${badge.name.toLowerCase().replace(/ /g, "-")}`}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: index * 0.05 }}
+                  >
+                    {IconComponent && (
+                      <IconComponent className="w-5 h-5 text-green-600 mb-2" />
+                    )}
+                    <span className="font-medium text-sm">{badge.name}</span>
+                    <Badge variant="secondary" className="text-xs mt-1 bg-green-500/10 text-green-600 border-green-500/20">
+                      {badge.label}
+                    </Badge>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        )}
 
         <div className="border-t border-border pt-6">
           <p className="text-center text-sm text-muted-foreground mb-4">
