@@ -7,8 +7,9 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import profile from "@/data/profile.json";
 import externalLinks from "@/data/externalLinks.json";
-import { MessageCircle, Calendar, CheckCircle, Star, Users, Trophy, ArrowLeft } from "lucide-react";
+import { MessageCircle, Calendar, CheckCircle, Star, Users, Trophy, ArrowLeft, Linkedin } from "lucide-react";
 import { useLocation } from "wouter";
+import rupeshPhoto from "@assets/rupesh-seating-confidently_1764278393371.png";
 
 export default function Book() {
   const [, setLocation] = useLocation();
@@ -139,6 +140,64 @@ export default function Book() {
                   </Button>
                 </a>
               </Card>
+            </div>
+          </div>
+        </section>
+
+        {/* Meet Your Coach Section */}
+        <section className="py-16 md:py-24 px-4 md:px-8">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">Meet Your Coach</h2>
+            
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Photo */}
+              <div className="flex justify-center">
+                <div className="relative">
+                  <img
+                    src={rupeshPhoto}
+                    alt={profile.personal.name}
+                    className="rounded-lg shadow-lg w-full max-w-sm h-auto"
+                    data-testid="img-rupesh-coach"
+                  />
+                  <div className="absolute -bottom-4 -right-4 bg-primary text-primary-foreground px-4 py-2 rounded-lg shadow-md font-semibold">
+                    AWS Senior CSM
+                  </div>
+                </div>
+              </div>
+              
+              {/* Bio */}
+              <div>
+                <h3 className="text-2xl md:text-3xl font-bold mb-4">{profile.personal.name}</h3>
+                <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+                  {profile.descriptions.medium}
+                </p>
+                
+                <div className="space-y-4 mb-8">
+                  <div className="flex items-start gap-3">
+                    <Trophy className="w-5 h-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                    <span>20+ years in tech - from Software Engineer to AWS Senior CSM</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Users className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <span>Coached 4,000+ professionals - 85% landing FAANG offers</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Star className="w-5 h-5 text-yellow-600 mt-0.5 flex-shrink-0" />
+                    <span>5.0/5.0 rating from 50+ verified reviews</span>
+                  </div>
+                </div>
+                
+                <a
+                  href={profile.socialLinks.linkedIn.personal}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" className="gap-2">
+                    <Linkedin className="w-4 h-4" />
+                    Connect on LinkedIn
+                  </Button>
+                </a>
+              </div>
             </div>
           </div>
         </section>
