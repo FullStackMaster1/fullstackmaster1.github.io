@@ -10,11 +10,6 @@ import externalLinks from "@/data/externalLinks.json";
 import { MessageCircle, Calendar, CheckCircle, Star, Users, Trophy } from "lucide-react";
 
 export default function Book() {
-  const openGoogleCalendarPopup = () => {
-    const calendarUrl = 'https://calendar.google.com/calendar/appointments/AcZssZ2dMNXqXzYcl2NKLpclDV9w0p4-9cp4UvTHii0=?gv=true';
-    window.open(calendarUrl, 'GoogleCalendarBooking', 'width=800,height=700,left=100,top=100');
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <SEOHead 
@@ -111,15 +106,20 @@ export default function Book() {
                     <span className="text-sm">Calendar invite sent to email</span>
                   </div>
                 </div>
-                <Button 
-                  size="lg" 
-                  className="w-full" 
-                  onClick={openGoogleCalendarPopup}
-                  data-testid="button-google-calendar-book"
+                <a
+                  href="https://calendar.google.com/calendar/appointments/AcZssZ2dMNXqXzYcl2NKLpclDV9w0p4-9cp4UvTHii0=?gv=true"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  <Calendar className="w-4 h-4 mr-2" />
-                  Schedule on Google Calendar
-                </Button>
+                  <Button 
+                    size="lg" 
+                    className="w-full" 
+                    data-testid="button-google-calendar-book"
+                  >
+                    <Calendar className="w-4 h-4 mr-2" />
+                    Schedule on Google Calendar
+                  </Button>
+                </a>
               </Card>
             </div>
           </div>
@@ -230,16 +230,21 @@ export default function Book() {
                   WhatsApp Me
                 </Button>
               </a>
-              <Button 
-                size="lg" 
-                variant="outline" 
-                className="w-full sm:w-auto" 
-                onClick={openGoogleCalendarPopup}
-                data-testid="button-google-calendar-cta"
+              <a
+                href="https://calendar.google.com/calendar/appointments/AcZssZ2dMNXqXzYcl2NKLpclDV9w0p4-9cp4UvTHii0=?gv=true"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Calendar className="w-5 h-5 mr-2" />
-                Schedule Now
-              </Button>
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="w-full sm:w-auto" 
+                  data-testid="button-google-calendar-cta"
+                >
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Schedule Now
+                </Button>
+              </a>
             </div>
           </div>
         </section>
