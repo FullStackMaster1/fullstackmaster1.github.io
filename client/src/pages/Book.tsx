@@ -10,6 +10,21 @@ import externalLinks from "@/data/externalLinks.json";
 import { MessageCircle, Calendar, CheckCircle, Star, Users, Trophy } from "lucide-react";
 import { useEffect, useRef } from "react";
 
+declare global {
+  interface Window {
+    calendar?: {
+      schedulingButton: {
+        load: (config: {
+          url: string;
+          color: string;
+          label: string;
+          target: HTMLDivElement | null;
+        }) => void;
+      };
+    };
+  }
+}
+
 export default function Book() {
   const googleCalendarRef = useRef<HTMLDivElement>(null);
 
@@ -26,8 +41,8 @@ export default function Book() {
     document.head.appendChild(script);
 
     return () => {
-      document.head.removeChild(link);
-      document.head.removeChild(script);
+      if (document.head.contains(link)) document.head.removeChild(link);
+      if (document.head.contains(script)) document.head.removeChild(script);
     };
   }, []);
 
