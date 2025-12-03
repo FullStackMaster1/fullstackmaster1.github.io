@@ -8,8 +8,41 @@ import { Badge } from "@/components/ui/badge";
 import profile from "@/data/profile.json";
 import externalLinks from "@/data/externalLinks.json";
 import { MessageCircle, Calendar, CheckCircle, Star, Users, Trophy } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 export default function Book() {
+  const googleCalendarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Load Google Calendar scheduling script
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://calendar.google.com/calendar/scheduling-button-script.css';
+    document.head.appendChild(link);
+
+    const script = document.createElement('script');
+    script.src = 'https://calendar.google.com/calendar/scheduling-button-script.js';
+    script.async = true;
+    document.head.appendChild(script);
+
+    return () => {
+      document.head.removeChild(link);
+      document.head.removeChild(script);
+    };
+  }, []);
+
+  const openGoogleCalendar = () => {
+    const target = googleCalendarRef.current;
+    if (target && window.calendar?.schedulingButton) {
+      window.calendar.schedulingButton.load({
+        url: 'https://calendar.google.com/calendar/appointments/AcZssZ2dMNXqXzYcl2NKLpclDV9w0p4-9cp4UvTHii0=?gv=true',
+        color: '#039BE5',
+        label: 'Book an appointment',
+        target,
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead 
@@ -81,7 +114,7 @@ export default function Book() {
                 </a>
               </Card>
 
-              {/* Calendly Option */}
+              {/* Google Calendar Option */}
               <Card className="p-8 hover-elevate">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-lg">
@@ -90,7 +123,7 @@ export default function Book() {
                   <h3 className="text-2xl font-bold">Book Directly</h3>
                 </div>
                 <p className="text-slate-600 dark:text-slate-400 mb-6">
-                  Ready to book? Schedule your session directly on Calendly. Choose your preferred time and let's get started.
+                  Ready to book? Schedule your session directly through Google Calendar. Choose your preferred time and let's get started.
                 </p>
                 <div className="space-y-3 mb-6">
                   <div className="flex items-start gap-2">
@@ -106,16 +139,16 @@ export default function Book() {
                     <span className="text-sm">Calendar invite sent to email</span>
                   </div>
                 </div>
-                <a
-                  href={profile.contact.calendlyLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Button 
+                  size="lg" 
+                  className="w-full" 
+                  onClick={openGoogleCalendar}
+                  data-testid="button-google-calendar-book"
                 >
-                  <Button size="lg" className="w-full" data-testid="button-calendly-book">
-                    <Calendar className="w-4 h-4 mr-2" />
-                    Book on Calendly
-                  </Button>
-                </a>
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Schedule on Google Calendar
+                </Button>
+                <div ref={googleCalendarRef} className="mt-4" />
               </Card>
             </div>
           </div>
@@ -226,17 +259,18 @@ export default function Book() {
                   WhatsApp Me
                 </Button>
               </a>
-              <a
-                href={profile.contact.calendlyLink}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Button 
+                size="lg" 
+                variant="outline" 
+                className="w-full sm:w-auto" 
+                onClick={openGoogleCalendar}
+                data-testid="button-google-calendar-cta"
               >
-                <Button size="lg" variant="outline" className="w-full sm:w-auto" data-testid="button-calendly-cta">
-                  <Calendar className="w-5 h-5 mr-2" />
-                  Schedule Now
-                </Button>
-              </a>
+                <Calendar className="w-5 h-5 mr-2" />
+                Schedule Now
+              </Button>
             </div>
+            <div ref={googleCalendarRef} className="mt-8" />
           </div>
         </section>
       </main>
