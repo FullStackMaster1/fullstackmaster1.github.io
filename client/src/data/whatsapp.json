@@ -3,6 +3,6 @@
     "replyTime": "Usually replies instantly",
     "greeting": "Hi! Ready to accelerate your FAANG interview prep? Message me for a free consultation.",
     "buttonText": "Start Chat",
-    "defaultMessage": "Hi Rupesh, I'm interested in your coaching services."
+    "defaultMessage": "Hi Rupesh,\n\nI found your coaching website and I'm interested in preparing for FAANG interviews.\n\nCurrent Role: [Your Role]\nTarget Companies: [Amazon/Google/Meta/etc.]\nTarget Level: [L6/L7/Director/VP]\nInterview Timeline: [When]\n\nCould we schedule a free discovery call to discuss my preparation strategy?\n\nThank you!"
   }
 }
