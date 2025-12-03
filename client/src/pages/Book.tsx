@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import profile from "@/data/profile.json";
 import externalLinks from "@/data/externalLinks.json";
+import whatsappData from "@/data/whatsapp.json";
 import { MessageCircle, Calendar, CheckCircle, Star, Users, Trophy, ArrowLeft, Linkedin } from "lucide-react";
 import { useLocation } from "wouter";
 import rupeshPhoto from "@assets/rupesh-seating-confidently_1764278393371.png";
@@ -89,7 +90,7 @@ export default function Book() {
                   </div>
                 </div>
                 <a
-                  href={profile.contact.whatsappLink}
+                  href={`${profile.contact.whatsappLink}?text=${encodeURIComponent(whatsappData.widget.defaultMessage)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
