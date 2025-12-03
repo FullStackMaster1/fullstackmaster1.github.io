@@ -6,6 +6,7 @@ import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
 import siteContent from "@/data/siteContent.json";
 import profileData from "@/data/profile.json";
+import whatsappData from "@/data/whatsapp.json";
 import { trackWhatsApp, trackBookCall, trackSectionView } from "@/lib/analytics";
 
 const quickActionIcons: Record<string, LucideIcon> = {
@@ -117,7 +118,7 @@ export default function Navigation() {
               asChild
             >
               <a
-                href={contact.whatsappLink}
+                href={`${contact.whatsappLink}?text=${encodeURIComponent(whatsappData.widget.defaultMessage)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsApp('navigation')}

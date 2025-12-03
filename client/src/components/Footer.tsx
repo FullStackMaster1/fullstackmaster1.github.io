@@ -5,6 +5,7 @@ import { SiYoutube, SiLinkedin, SiUdemy, SiPluralsight, SiWhatsapp, SiGithub, Si
 import { Link } from "wouter";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
 import profileData from "@/data/profile.json";
+import whatsappData from "@/data/whatsapp.json";
 import footerData from "@/data/footer.json";
 
 const socialIconComponents: Record<string, typeof SiWhatsapp> = {
@@ -88,7 +89,7 @@ export default function Footer() {
             <h3 className="font-semibold mb-4">{footerContact.title}</h3>
             <div className="space-y-3 text-sm">
               <a
-                href={contact.whatsappLink}
+                href={`${contact.whatsappLink}?text=${encodeURIComponent(whatsappData.widget.defaultMessage)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"

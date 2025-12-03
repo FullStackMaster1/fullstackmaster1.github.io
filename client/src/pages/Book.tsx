@@ -17,9 +17,8 @@ export default function Book() {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead 
-        pageTitle="Book Your 1-on-1 Coaching Session | Rupesh Tiwari"
-        pageDescription="Schedule your personalized FAANG interview coaching with Rupesh Tiwari. 85%+ success rate. Directors, VPs, Principal Engineers, and Solutions Architects."
-        pageCanonical="https://www.fullstackmaster.net/book"
+        customTitle="Book Your 1-on-1 Coaching Session | Rupesh Tiwari"
+        customDescription="Schedule your personalized FAANG interview coaching with Rupesh Tiwari. 85%+ success rate. Directors, VPs, Principal Engineers, and Solutions Architects."
       />
       <AnnouncementBar />
       <Navigation />

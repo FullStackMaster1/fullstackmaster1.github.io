@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "lucide-react";
 import { SiWhatsapp, SiLinkedin } from "react-icons/si";
 import profileData from "@/data/profile.json";
+import whatsappData from "@/data/whatsapp.json";
 import { trackBookCall, trackWhatsApp } from "@/lib/analytics";
 
 export default function StickyMobileCTA() {
@@ -50,7 +51,7 @@ export default function StickyMobileCTA() {
           asChild
         >
           <a
-            href={contact.whatsappLink}
+            href={`${contact.whatsappLink}?text=${encodeURIComponent(whatsappData.widget.defaultMessage)}`}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => trackWhatsApp('sticky_mobile')}

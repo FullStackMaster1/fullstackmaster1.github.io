@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, Video, MessageCircle, ExternalLink, LucideIcon } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import profileData from "@/data/profile.json";
+import whatsappData from "@/data/whatsapp.json";
 import bookingData from "@/data/booking.json";
 import CapacityIndicator from "@/components/CapacityIndicator";
 
@@ -45,7 +46,7 @@ export default function BookingSection() {
   const getOptionUrl = (optionId: string): string => {
     switch (optionId) {
       case 'whatsapp':
-        return `${contact.whatsappLink}?text=${encodeURIComponent(contact.whatsappMessage)}`;
+        return `${contact.whatsappLink}?text=${encodeURIComponent(whatsappData.widget.defaultMessage)}`;
       case 'igotanoffer':
         return socialLinks.igotanoffer.url;
       default:
