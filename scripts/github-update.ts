@@ -79,6 +79,69 @@ async function updateDocsFolder() {
   // Update 404.html
   await updateFile(octokit, owner, repo, 'docs/404.html', notFoundHtml, 'Update 404.html with latest changes');
   
+  // Update PWA files (service worker, manifest, icons)
+  const pwaFiles = ['sw.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'CNAME'];
+  for (const file of pwaFiles) {
+    const filePath = `./docs/${file}`;
+    if (fs.existsSync(filePath)) {
+      const content = fs.readFileSync(filePath);
+      let sha: string | undefined;
+      try {
+        const { data } = await octokit.repos.getContent({
+          owner,
+          repo,
+          path: `docs/${file}`
+        });
+        if (!Array.isArray(data)) {
+          sha = data.sha;
+        }
+      } catch (e: any) {
+        if (e.status !== 404) throw e;
+      }
+      await octokit.repos.createOrUpdateFileContents({
+        owner,
+        repo,
+        path: `docs/${file}`,
+        message: `Update PWA file: ${file}`,
+        content: content.toString('base64'),
+        sha
+      });
+      console.log(`Updated PWA file: ${file}`);
+    }
+  }
+
+  // Update icons folder
+  const iconsDir = './docs/icons';
+  if (fs.existsSync(iconsDir)) {
+    const iconFiles = fs.readdirSync(iconsDir);
+    for (const file of iconFiles) {
+      const filePath = path.join(iconsDir, file);
+      const content = fs.readFileSync(filePath);
+      let sha: string | undefined;
+      try {
+        const { data } = await octokit.repos.getContent({
+          owner,
+          repo,
+          path: `docs/icons/${file}`
+        });
+        if (!Array.isArray(data)) {
+          sha = data.sha;
+        }
+      } catch (e: any) {
+        if (e.status !== 404) throw e;
+      }
+      await octokit.repos.createOrUpdateFileContents({
+        owner,
+        repo,
+        path: `docs/icons/${file}`,
+        message: `Update icon: ${file}`,
+        content: content.toString('base64'),
+        sha
+      });
+      console.log(`Updated icon: ${file}`);
+    }
+  }
+  
   // Update assets folder
   const assetsDir = './docs/assets';
   if (fs.existsSync(assetsDir)) {
