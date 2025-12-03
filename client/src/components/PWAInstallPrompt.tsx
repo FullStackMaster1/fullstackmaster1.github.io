@@ -9,11 +9,15 @@ interface BeforeInstallPromptEvent extends Event {
   userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
 }
 
+const PWA_INSTALLED_KEY = "pwa-installed";
+const PWA_DISMISSED_KEY = "pwa-prompt-dismissed";
+
 export default function PWAInstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showPrompt, setShowPrompt] = useState(false);
   const [isIOS, setIsIOS] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
+  const [isInstalled, setIsInstalled] = useState(false);
 
   useEffect(() => {
     const checkIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
@@ -23,49 +27,104 @@ export default function PWAInstallPrompt() {
     setIsIOS(checkIOS);
     setIsStandalone(checkStandalone);
 
-    const dismissed = sessionStorage.getItem("pwa-prompt-dismissed");
-    if (dismissed || checkStandalone) return;
+    // Check if already installed (persistent across sessions)
+    const wasInstalled = localStorage.getItem(PWA_INSTALLED_KEY) === "true";
+    
+    // If running in standalone mode, mark as installed
+    if (checkStandalone) {
+      localStorage.setItem(PWA_INSTALLED_KEY, "true");
+      setIsInstalled(true);
+      return;
+    }
+
+    // Check session dismissal
+    const dismissed = sessionStorage.getItem(PWA_DISMISSED_KEY);
+    if (dismissed || wasInstalled) {
+      setIsInstalled(wasInstalled);
+      return;
+    }
 
     const handleBeforeInstall = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
+      // Clear installed flag since beforeinstallprompt only fires when NOT installed
+      localStorage.removeItem(PWA_INSTALLED_KEY);
+      setIsInstalled(false);
+      
+      // Show prompt after receiving the event (app is installable)
+      setTimeout(() => {
+        setShowPrompt(true);
+        trackEvent("pwa_prompt_shown", "engagement", checkIOS ? "ios" : "android");
+      }, 15000);
+    };
+
+    // Listen for successful installation
+    const handleAppInstalled = () => {
+      localStorage.setItem(PWA_INSTALLED_KEY, "true");
+      setIsInstalled(true);
+      setShowPrompt(false);
+      setDeferredPrompt(null);
+      trackEvent("pwa_installed", "conversion", "success");
     };
 
     window.addEventListener("beforeinstallprompt", handleBeforeInstall);
+    window.addEventListener("appinstalled", handleAppInstalled);
 
-    const timer = setTimeout(() => {
-      if (!checkStandalone) {
+    // For iOS, show manual instructions after delay (no beforeinstallprompt event)
+    let iosTimer: ReturnType<typeof setTimeout> | null = null;
+    if (checkIOS && !wasInstalled) {
+      iosTimer = setTimeout(() => {
         setShowPrompt(true);
-        trackEvent("pwa_prompt_shown", "engagement", checkIOS ? "ios" : "android");
-      }
-    }, 15000);
+        trackEvent("pwa_prompt_shown", "engagement", "ios");
+      }, 15000);
+    }
 
     return () => {
       window.removeEventListener("beforeinstallprompt", handleBeforeInstall);
-      clearTimeout(timer);
+      window.removeEventListener("appinstalled", handleAppInstalled);
+      if (iosTimer) clearTimeout(iosTimer);
     };
   }, []);
 
   const handleInstall = async () => {
-    if (!deferredPrompt) return;
+    if (!deferredPrompt) {
+      // No install prompt available - shouldn't happen but handle gracefully
+      setShowPrompt(false);
+      return;
+    }
     
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    
-    trackEvent("pwa_install", outcome === "accepted" ? "conversion" : "engagement", outcome);
-    
-    setDeferredPrompt(null);
-    setShowPrompt(false);
-    sessionStorage.setItem("pwa-prompt-dismissed", "true");
+    try {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      trackEvent("pwa_install", outcome === "accepted" ? "conversion" : "engagement", outcome);
+      
+      if (outcome === "accepted") {
+        localStorage.setItem(PWA_INSTALLED_KEY, "true");
+        setIsInstalled(true);
+      }
+      
+      setDeferredPrompt(null);
+      setShowPrompt(false);
+      sessionStorage.setItem(PWA_DISMISSED_KEY, "true");
+    } catch (error) {
+      // Handle any errors during install
+      console.error("PWA install error:", error);
+      setShowPrompt(false);
+    }
   };
 
   const handleDismiss = () => {
     setShowPrompt(false);
-    sessionStorage.setItem("pwa-prompt-dismissed", "true");
+    sessionStorage.setItem(PWA_DISMISSED_KEY, "true");
     trackEvent("pwa_prompt_dismissed", "engagement", "closed");
   };
 
-  if (isStandalone || !showPrompt) return null;
+  // Don't show if: already in standalone mode, already installed, or prompt not ready
+  if (isStandalone || isInstalled || !showPrompt) return null;
+  
+  // For Android, only show if we have the deferred prompt (means browser says it's installable)
+  if (!isIOS && !deferredPrompt) return null;
 
   const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   if (!isMobile) return null;
