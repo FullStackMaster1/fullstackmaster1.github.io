@@ -33,10 +33,25 @@ function checkVoteRateLimit(identifier: string): boolean {
 
 function requireAdminAuth(req: Request, res: Response, next: NextFunction) {
   if (!ADMIN_TOKEN) {
+    console.error("ADMIN_TOKEN environment variable is not set");
     return res.status(500).json({ error: "Admin token not configured. Please contact the administrator." });
   }
-  const token = req.headers["x-admin-token"];
-  if (token !== ADMIN_TOKEN) {
+  
+  let token = req.headers["x-admin-token"];
+  
+  // Handle token being an array (Express sometimes does this)
+  if (Array.isArray(token)) {
+    token = token[0];
+  }
+  
+  // Ensure token is a string and trim whitespace
+  token = String(token || "").trim();
+  const expectedToken = String(ADMIN_TOKEN).trim();
+  
+  console.log("Auth attempt - token length:", token.length, "expected length:", expectedToken.length);
+  
+  if (token !== expectedToken) {
+    console.error("Token mismatch - attempt with token starting with:", token.substring(0, 10));
     return res.status(401).json({ error: "Unauthorized. Invalid admin token." });
   }
   next();
