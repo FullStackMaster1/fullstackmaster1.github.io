@@ -91,6 +91,26 @@ export async function registerRoutes(
     });
   });
 
+  // Test endpoint - verify token works
+  app.post("/api/debug/test-token", (req: Request, res: Response) => {
+    const testToken = req.body.token;
+    if (!testToken) {
+      return res.status(400).json({ error: "No token provided in body" });
+    }
+    
+    const cleanTestToken = String(testToken).trim();
+    const match = cleanTestToken === ADMIN_TOKEN;
+    
+    res.json({
+      match,
+      receivedLength: cleanTestToken.length,
+      expectedLength: ADMIN_TOKEN.length,
+      received: cleanTestToken.substring(0, 10) + "...",
+      expected: ADMIN_TOKEN.substring(0, 10) + "...",
+      message: match ? "✅ Token matches!" : "❌ Token does NOT match"
+    });
+  });
+
   app.post("/api/webinar/register", async (req: Request, res: Response) => {
     try {
       const validatedData = insertWebinarRegistrationSchema.parse(req.body);
