@@ -11,7 +11,6 @@ import StickyBanner from "@/components/StickyBanner";
 import SEOStructuredData from "@/components/SEOStructuredData";
 import Home from "@/pages/Home";
 import Resources from "@/pages/Resources";
-import Admin from "@/pages/Admin";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import Confidentiality from "@/pages/Confidentiality";
 import NDADocument from "@/pages/NDADocument";
@@ -26,7 +25,6 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/book" component={Book} />
       <Route path="/resources" component={Resources} />
-      <Route path="/admin" component={Admin} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/confidentiality" component={Confidentiality} />
       <Route path="/nda-document" component={NDADocument} />
