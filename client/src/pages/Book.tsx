@@ -7,9 +7,11 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import profile from "@/data/profile.json";
 import externalLinks from "@/data/externalLinks.json";
-import { MessageCircle, Calendar, CheckCircle, Star, Users, Trophy } from "lucide-react";
+import { MessageCircle, Calendar, CheckCircle, Star, Users, Trophy, ArrowLeft } from "lucide-react";
+import { useLocation } from "wouter";
 
 export default function Book() {
+  const [, setLocation] = useLocation();
   return (
     <div className="min-h-screen bg-background">
       <SEOHead 
@@ -21,7 +23,23 @@ export default function Book() {
       <Navigation />
 
       <main className="flex-1">
-        {/* Hero Section */}
+        {/* Back to Home Button */}
+        <div className="px-4 md:px-8 py-4 border-b">
+          <div className="max-w-5xl mx-auto">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => setLocation("/")}
+              data-testid="button-back-to-home"
+              className="gap-2"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Home
+            </Button>
+          </div>
+        </div>
+
+      {/* Hero Section */}
         <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800">
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-6 flex justify-center gap-2 flex-wrap">
