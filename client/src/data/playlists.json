@@ -2,7 +2,7 @@
   {
     "id": 1,
     "title": "AWS Interview Tips",
-    "url": "https://www.youtube.com/playlist?list=REPLACE_WITH_AWS_PLAYLIST_ID",
+    "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJqg4m6Prj8UW2VoOUTVe7wP",
     "thumbnail": "/aws-interview-tips.png",
     "videoCount": 25,
     "description": "Essential tips for AWS technical interviews"
@@ -10,7 +10,7 @@
   {
     "id": 2,
     "title": "System Design Shorts",
-    "url": "https://www.youtube.com/playlist?list=REPLACE_WITH_SYSTEM_DESIGN_ID",
+    "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJqvpYq5H9emqJeM8zV4LK2c",
     "thumbnail": "/system-design-shorts.png",
     "videoCount": 40,
     "description": "Quick system design concepts"
@@ -18,7 +18,7 @@
   {
     "id": 3,
     "title": "DevOps Fundamentals",
-    "url": "https://www.youtube.com/playlist?list=REPLACE_WITH_DEVOPS_ID",
+    "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJo7aNmMW_WSlSXA7fmiq1-e",
     "thumbnail": "/devops-fundamentals.png",
     "videoCount": 30,
     "description": "DevOps practices and tools"
@@ -26,7 +26,7 @@
   {
     "id": 4,
     "title": "Angular Best Practices",
-    "url": "https://www.youtube.com/playlist?list=REPLACE_WITH_ANGULAR_ID",
+    "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJpMrZnvVI6qBgnahpRrYXrp",
     "thumbnail": "/angular-best-practices.png",
     "videoCount": 35,
     "description": "Angular architecture and patterns"
@@ -34,7 +34,7 @@
   {
     "id": 5,
     "title": "Leadership Principles",
-    "url": "https://www.youtube.com/playlist?list=REPLACE_WITH_LEADERSHIP_ID",
+    "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJrfsK5cfoMyqyS58VRJ_Liu",
     "thumbnail": "/leadership-principles.png",
     "videoCount": 20,
     "description": "Amazon LP interview prep"
@@ -42,7 +42,7 @@
   {
     "id": 6,
     "title": "Career Growth Tips",
-    "url": "https://www.youtube.com/playlist?list=REPLACE_WITH_CAREER_GROWTH_ID",
+    "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJqdUI07gmFg4vBBYtx6ta_f",
     "thumbnail": "/career-growth-tips.png",
     "videoCount": 15,
     "description": "Career advancement strategies"
