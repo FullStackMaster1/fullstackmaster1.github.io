@@ -15,6 +15,7 @@ import Admin from "@/pages/Admin";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
 import Confidentiality from "@/pages/Confidentiality";
 import NDADocument from "@/pages/NDADocument";
+import Book from "@/pages/Book";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -23,6 +24,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/book" component={Book} />
       <Route path="/resources" component={Resources} />
       <Route path="/admin" component={Admin} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
