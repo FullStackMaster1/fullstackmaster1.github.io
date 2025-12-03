@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import AnnouncementBar from "@/components/AnnouncementBar";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -328,6 +329,7 @@ export default function Book() {
       </main>
 
       <Footer />
+      <WhatsAppWidget />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { ExternalLink, Mail, Shield, ArrowUp } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { ExternalLink, Mail, Shield, ArrowUp, Lock, FileCheck, CheckCircle } from "lucide-react";
 import { SiYoutube, SiLinkedin, SiUdemy, SiPluralsight, SiWhatsapp, SiGithub, SiFacebook } from "react-icons/si";
 import { Link } from "wouter";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
@@ -154,6 +155,35 @@ export default function Footer() {
               </a>
             </Button>
           </div>
+        </div>
+
+        {/* Trust & Compliance Badges */}
+        <div className="border border-green-500/20 bg-green-500/5 rounded-lg p-4 mt-8" data-testid="trust-badges-section">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Badge variant="outline" className="bg-background border-green-500/30 text-green-700 dark:text-green-400 px-3 py-1.5">
+              <Lock className="w-3 h-3 mr-1.5" />
+              SSL Secure
+            </Badge>
+            <Badge variant="outline" className="bg-background border-green-500/30 text-green-700 dark:text-green-400 px-3 py-1.5">
+              <Shield className="w-3 h-3 mr-1.5" />
+              256-bit Encryption
+            </Badge>
+            <Badge variant="outline" className="bg-background border-green-500/30 text-green-700 dark:text-green-400 px-3 py-1.5">
+              <FileCheck className="w-3 h-3 mr-1.5" />
+              NDA Available
+            </Badge>
+            <Badge variant="outline" className="bg-background border-green-500/30 text-green-700 dark:text-green-400 px-3 py-1.5">
+              <CheckCircle className="w-3 h-3 mr-1.5" />
+              GDPR Compliant
+            </Badge>
+            <Badge variant="outline" className="bg-background border-green-500/30 text-green-700 dark:text-green-400 px-3 py-1.5">
+              <CheckCircle className="w-3 h-3 mr-1.5" />
+              CCPA Compliant
+            </Badge>
+          </div>
+          <p className="text-xs text-center text-muted-foreground mt-3">
+            Your data is protected. We take privacy seriously.
+          </p>
         </div>
 
         <Separator className="my-8" />

@@ -20,6 +20,7 @@ import profileData from "@/data/profile.json";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 const iconMap: Record<string, any> = {
   Shield,
@@ -240,6 +241,7 @@ export default function Confidentiality() {
       </main>
 
       <Footer />
+      <WhatsAppWidget />
     </div>
   );
 }

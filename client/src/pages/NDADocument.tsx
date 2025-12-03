@@ -13,6 +13,7 @@ import ndaTemplate from "@/data/ndaTemplate.json";
 import profileData from "@/data/profile.json";
 import { Link } from "wouter";
 import SEOHead from "@/components/SEOHead";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 export default function NDADocument() {
   const { document, parties, sections, signatures } = ndaTemplate;
@@ -216,6 +217,7 @@ export default function NDADocument() {
           }
         }
       `}</style>
+      <WhatsAppWidget />
     </div>
   );
 }

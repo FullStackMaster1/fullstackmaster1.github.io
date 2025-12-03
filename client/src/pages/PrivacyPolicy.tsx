@@ -8,6 +8,7 @@ import { Link } from "wouter";
 import { Helmet } from "react-helmet-async";
 import privacyData from "@/data/privacyPolicy.json";
 import profileData from "@/data/profile.json";
+import WhatsAppWidget from "@/components/WhatsAppWidget";
 
 interface SubSection {
   subtitle: string;
@@ -212,6 +213,7 @@ export default function PrivacyPolicy() {
           </div>
         </div>
       </div>
+      <WhatsAppWidget />
     </>
   );
 }
