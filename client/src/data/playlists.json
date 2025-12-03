@@ -1,50 +1,50 @@
 [
   {
     "id": 1,
-    "title": "Career Growth Tips",
+    "title": "Senior Director System Design Playbook",
     "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJqg4m6Prj8UW2VoOUTVe7wP",
-    "thumbnail": "/career-growth-tips.png",
+    "thumbnail": "/system-design-shorts.png",
     "videoCount": 25,
-    "description": "Career advancement strategies"
+    "description": "Master system design for senior technical roles"
   },
   {
     "id": 2,
-    "title": "System Design Shorts",
+    "title": "Senior Director Behavioral Mastery",
     "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJqvpYq5H9emqJeM8zV4LK2c",
-    "thumbnail": "/system-design-shorts.png",
+    "thumbnail": "/leadership-principles.png",
     "videoCount": 40,
-    "description": "Quick system design concepts"
+    "description": "Behavioral interview preparation for directors"
   },
   {
     "id": 3,
-    "title": "DevOps Fundamentals",
+    "title": "Senior Director Behavioral Mastery",
     "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJo7aNmMW_WSlSXA7fmiq1-e",
-    "thumbnail": "/devops-fundamentals.png",
+    "thumbnail": "/leadership-principles.png",
     "videoCount": 30,
-    "description": "DevOps practices and tools"
+    "description": "Behavioral interview preparation for directors"
   },
   {
     "id": 4,
-    "title": "Angular Best Practices",
+    "title": "Senior Director Interview Kickstart",
     "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJpMrZnvVI6qBgnahpRrYXrp",
-    "thumbnail": "/angular-best-practices.png",
+    "thumbnail": "/aws-interview-tips.png",
     "videoCount": 35,
-    "description": "Angular architecture and patterns"
+    "description": "Quick start guide for senior director interviews"
   },
   {
     "id": 5,
-    "title": "Leadership Principles",
+    "title": "Senior Director Interview Kickstart",
     "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJrfsK5cfoMyqyS58VRJ_Liu",
-    "thumbnail": "/leadership-principles.png",
+    "thumbnail": "/aws-interview-tips.png",
     "videoCount": 20,
-    "description": "Amazon LP interview prep"
+    "description": "Quick start guide for senior director interviews"
   },
   {
     "id": 6,
-    "title": "AWS Interview Tips",
+    "title": "Amazon Behavioral Shorts Interview Mastery",
     "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJqdUI07gmFg4vBBYtx6ta_f",
-    "thumbnail": "/aws-interview-tips.png",
+    "thumbnail": "/career-growth-tips.png",
     "videoCount": 15,
-    "description": "Essential tips for AWS technical interviews"
+    "description": "Master Amazon behavioral interview techniques"
   }
 ]
