@@ -171,6 +171,7 @@ export default function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
+                onClick={handleNavigationClick}
                 className="hover:text-foreground transition-colors flex items-center gap-1"
                 data-testid={`link-footer-${link.label.toLowerCase().replace(" ", "-")}`}
               >
@@ -188,6 +189,16 @@ export default function Footer() {
               {verification.text}
               <ExternalLink className="w-3 h-3" />
             </a>
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleScrollToTop}
+              className="ml-4 flex items-center gap-1"
+              data-testid="button-footer-scroll-to-top"
+            >
+              <ArrowUp className="w-3 h-3" />
+              <span className="hidden sm:inline">Back to Top</span>
+            </Button>
           </div>
         </div>
       </div>
