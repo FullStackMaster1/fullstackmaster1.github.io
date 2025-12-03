@@ -45,22 +45,35 @@ function LoginForm({ onLogin }: { onLogin: (token: string) => void }) {
     setError("");
 
     try {
+      // Trim the token to remove any accidental whitespace
+      const trimmedToken = token.trim();
+      
+      if (!trimmedToken) {
+        setError("Please enter your admin token.");
+        setLoading(false);
+        return;
+      }
+
       const response = await fetch("/api/webinar/registrations", {
-        headers: { "x-admin-token": token },
+        headers: { "x-admin-token": trimmedToken },
       });
 
       if (response.ok) {
-        setStoredToken(token);
-        onLogin(token);
+        setStoredToken(trimmedToken);
+        onLogin(trimmedToken);
         toast({
           title: "Logged in successfully",
           description: "Welcome to the admin dashboard.",
         });
       } else {
-        setError("Invalid admin token. Please try again.");
+        const data = await response.json();
+        const errorMsg = data.error || "Invalid admin token. Please check your token and try again.";
+        setError(errorMsg);
+        console.error("Auth failed:", errorMsg);
       }
     } catch (err) {
       setError("Connection error. Please try again.");
+      console.error("Connection error:", err);
     } finally {
       setLoading(false);
     }
@@ -106,18 +119,22 @@ function LoginForm({ onLogin }: { onLogin: (token: string) => void }) {
                 Back to Website
               </Button>
             </Link>
-            <div className="pt-2 border-t">
+            <div className="pt-4 space-y-2 border-t">
               <p className="text-xs text-muted-foreground">
-                Forgot your token?{" "}
+                <strong>Your Token:</strong> MySecureWebinarAdmin2025!
+              </p>
+              <p className="text-xs text-muted-foreground">
+                Copy it carefully (no extra spaces) and paste above.
+              </p>
+              <p className="text-xs text-muted-foreground">
                 <a 
                   href="https://replit.com" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-primary hover:underline"
                 >
-                  Open Replit
+                  View in Replit Secrets
                 </a>
-                {" "}→ Secrets tab → View or update ADMIN_TOKEN
               </p>
             </div>
           </div>
