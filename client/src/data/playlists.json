@@ -1,11 +1,11 @@
 [
   {
     "id": 1,
-    "title": "AWS Interview Tips",
+    "title": "Career Growth Tips",
     "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJqg4m6Prj8UW2VoOUTVe7wP",
-    "thumbnail": "/aws-interview-tips.png",
+    "thumbnail": "/career-growth-tips.png",
     "videoCount": 25,
-    "description": "Essential tips for AWS technical interviews"
+    "description": "Career advancement strategies"
   },
   {
     "id": 2,
@@ -41,10 +41,10 @@
   },
   {
     "id": 6,
-    "title": "Career Growth Tips",
+    "title": "AWS Interview Tips",
     "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJqdUI07gmFg4vBBYtx6ta_f",
-    "thumbnail": "/career-growth-tips.png",
+    "thumbnail": "/aws-interview-tips.png",
     "videoCount": 15,
-    "description": "Career advancement strategies"
+    "description": "Essential tips for AWS technical interviews"
   }
 ]
