@@ -46,5 +46,13 @@
     "thumbnail": "/career-growth-tips.png",
     "videoCount": 15,
     "description": "Master Amazon behavioral interview techniques"
+  },
+  {
+    "id": 7,
+    "title": "System Design Mastery Shorts",
+    "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJrhB1lo3F65IjnOhgMHUR4C",
+    "thumbnail": "/system-design-shorts.png",
+    "videoCount": 20,
+    "description": "Quick system design concepts for technical interviews"
   }
 ]
