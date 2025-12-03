@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { ExternalLink, Mail, Shield } from "lucide-react";
+import { ExternalLink, Mail, Shield, ArrowUp } from "lucide-react";
 import { SiYoutube, SiLinkedin, SiUdemy, SiPluralsight, SiWhatsapp, SiGithub, SiFacebook } from "react-icons/si";
 import { Link } from "wouter";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
@@ -41,6 +41,16 @@ export default function Footer() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleNavigationClick = (e: React.MouseEvent) => {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, 0);
   };
 
   return (
