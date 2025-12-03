@@ -191,18 +191,14 @@ export default function HeroSection() {
             <div className="flex flex-wrap gap-3 mb-4">
               <Button
                 size="lg"
-                asChild
+                onClick={() => {
+                  trackBookCall('hero-primary');
+                  window.location.href = '/book';
+                }}
+                data-testid="button-hero-primary"
               >
-                <a
-                  href={contact.bookingLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => trackBookCall('hero')}
-                  data-testid="button-hero-primary"
-                >
-                  <Calendar className="w-4 h-4 mr-2" />
-                  {hero.buttons.primary}
-                </a>
+                <Calendar className="w-4 h-4 mr-2" />
+                {hero.buttons.primary}
               </Button>
               <Button
                 size="lg"

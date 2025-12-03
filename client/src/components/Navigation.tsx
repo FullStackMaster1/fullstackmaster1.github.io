@@ -101,7 +101,7 @@ export default function Navigation() {
               size="sm"
               onClick={() => {
                 trackBookCall('mobile-nav-center');
-                handleNavClick(navigation.ctaButtons.book.scrollTo);
+                setLocation('/book');
               }}
               data-testid="button-mobile-book-center"
             >
@@ -131,7 +131,7 @@ export default function Navigation() {
               size="sm"
               onClick={() => {
                 trackBookCall('navigation');
-                handleNavClick(navigation.ctaButtons.book.scrollTo);
+                setLocation('/book');
               }}
               data-testid="button-book-now"
             >
@@ -221,7 +221,10 @@ export default function Navigation() {
                 <Button
                   size="sm"
                   className="flex-1"
-                  onClick={() => handleNavClick(navigation.ctaButtons.book.scrollTo)}
+                  onClick={() => {
+                    trackBookCall('mobile-nav');
+                    setLocation('/book');
+                  }}
                   data-testid="button-mobile-book"
                 >
                   {navigation.ctaButtons.mobileBook.text}
