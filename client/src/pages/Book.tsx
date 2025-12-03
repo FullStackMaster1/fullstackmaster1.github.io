@@ -8,62 +8,19 @@ import { Badge } from "@/components/ui/badge";
 import profile from "@/data/profile.json";
 import externalLinks from "@/data/externalLinks.json";
 import { MessageCircle, Calendar, CheckCircle, Star, Users, Trophy } from "lucide-react";
-import { useEffect, useRef } from "react";
-
-declare global {
-  interface Window {
-    calendar?: {
-      schedulingButton: {
-        load: (config: {
-          url: string;
-          color: string;
-          label: string;
-          target: HTMLDivElement | null;
-        }) => void;
-      };
-    };
-  }
-}
 
 export default function Book() {
-  const googleCalendarRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Load Google Calendar scheduling script
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://calendar.google.com/calendar/scheduling-button-script.css';
-    document.head.appendChild(link);
-
-    const script = document.createElement('script');
-    script.src = 'https://calendar.google.com/calendar/scheduling-button-script.js';
-    script.async = true;
-    document.head.appendChild(script);
-
-    return () => {
-      if (document.head.contains(link)) document.head.removeChild(link);
-      if (document.head.contains(script)) document.head.removeChild(script);
-    };
-  }, []);
-
-  const openGoogleCalendar = () => {
-    const target = googleCalendarRef.current;
-    if (target && window.calendar?.schedulingButton) {
-      window.calendar.schedulingButton.load({
-        url: 'https://calendar.google.com/calendar/appointments/AcZssZ2dMNXqXzYcl2NKLpclDV9w0p4-9cp4UvTHii0=?gv=true',
-        color: '#039BE5',
-        label: 'Book an appointment',
-        target,
-      });
-    }
+  const openGoogleCalendarPopup = () => {
+    const calendarUrl = 'https://calendar.google.com/calendar/appointments/AcZssZ2dMNXqXzYcl2NKLpclDV9w0p4-9cp4UvTHii0=?gv=true';
+    window.open(calendarUrl, 'GoogleCalendarBooking', 'width=800,height=700,left=100,top=100');
   };
 
   return (
     <div className="min-h-screen bg-background">
       <SEOHead 
-        title="Book Your 1-on-1 Coaching Session | Rupesh Tiwari"
-        description="Schedule your personalized FAANG interview coaching with Rupesh Tiwari. 85%+ success rate. Directors, VPs, Principal Engineers, and Solutions Architects."
-        canonical="https://www.fullstackmaster.net/book"
+        pageTitle="Book Your 1-on-1 Coaching Session | Rupesh Tiwari"
+        pageDescription="Schedule your personalized FAANG interview coaching with Rupesh Tiwari. 85%+ success rate. Directors, VPs, Principal Engineers, and Solutions Architects."
+        pageCanonical="https://www.fullstackmaster.net/book"
       />
       <AnnouncementBar />
       <Navigation />
@@ -157,13 +114,12 @@ export default function Book() {
                 <Button 
                   size="lg" 
                   className="w-full" 
-                  onClick={openGoogleCalendar}
+                  onClick={openGoogleCalendarPopup}
                   data-testid="button-google-calendar-book"
                 >
                   <Calendar className="w-4 h-4 mr-2" />
                   Schedule on Google Calendar
                 </Button>
-                <div ref={googleCalendarRef} className="mt-4" />
               </Card>
             </div>
           </div>
@@ -278,14 +234,13 @@ export default function Book() {
                 size="lg" 
                 variant="outline" 
                 className="w-full sm:w-auto" 
-                onClick={openGoogleCalendar}
+                onClick={openGoogleCalendarPopup}
                 data-testid="button-google-calendar-cta"
               >
                 <Calendar className="w-5 h-5 mr-2" />
                 Schedule Now
               </Button>
             </div>
-            <div ref={googleCalendarRef} className="mt-8" />
           </div>
         </section>
       </main>
