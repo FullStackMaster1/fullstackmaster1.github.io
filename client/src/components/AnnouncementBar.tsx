@@ -9,13 +9,22 @@ interface Announcement {
   linkText?: string;
   linkHref?: string;
   active: boolean;
+  expiresAt?: string;
 }
 
 export default function AnnouncementBar() {
   const [dismissed, setDismissed] = useState<Set<string>>(new Set());
 
   const activeAnnouncements = (announcementsData as Announcement[]).filter(
-    (a) => a.active && !dismissed.has(a.id)
+    (a) => {
+      if (!a.active || dismissed.has(a.id)) return false;
+      if (a.expiresAt) {
+        const expiryDate = new Date(a.expiresAt);
+        const now = new Date();
+        if (now > expiryDate) return false;
+      }
+      return true;
+    }
   );
 
   if (activeAnnouncements.length === 0) return null;

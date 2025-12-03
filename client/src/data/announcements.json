@@ -5,7 +5,8 @@
     "message": "Book 5 sessions and get 1 FREE resume review call!",
     "linkText": "Claim Offer",
     "linkHref": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'm%20interested%20in%20the%20New%20Year%20special%20offer%20-%20Book%205%20sessions%20get%201%20FREE%20resume%20review.",
-    "active": true
+    "active": true,
+    "expiresAt": "2025-01-31T23:59:59Z"
   },
   {
     "id": "course-launch",
