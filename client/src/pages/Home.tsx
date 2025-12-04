@@ -24,6 +24,7 @@ import RecentlyBookedPopup from "@/components/RecentlyBookedPopup";
 import ExitIntentPopup from "@/components/ExitIntentPopup";
 import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 import ExecutiveCaseStudies from "@/components/ExecutiveCaseStudies";
+import FullServicesSection from "@/components/FullServicesSection";
 
 export default function Home() {
   return (
@@ -60,6 +61,10 @@ export default function Home() {
         
         <ScrollReveal type="scale" delay={0.1}>
           <ServicesSection />
+        </ScrollReveal>
+        
+        <ScrollReveal type="fade" duration={0.7}>
+          <FullServicesSection />
         </ScrollReveal>
         
         <ScrollReveal type="slide-up" duration={0.7}>
