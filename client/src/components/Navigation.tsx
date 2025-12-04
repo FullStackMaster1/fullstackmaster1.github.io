@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, LucideIcon } from "lucide-react";
+import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, Search, LucideIcon } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
 import siteContent from "@/data/siteContent.json";
@@ -25,15 +25,35 @@ interface NavLink {
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const { navigation } = siteContent;
   const { contact } = profileData;
   const navLinks = navigation.links as NavLink[];
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      
+      // Update scrolled state for styling
+      setIsScrolled(currentScrollY > 20);
+      
+      // PWA-style header hide/show behavior
+      // Show header when scrolling up or at top, hide when scrolling down
+      if (currentScrollY < 50) {
+        // Always show at top
+        setIsVisible(true);
+      } else if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        // Scrolling down - hide header (only after scrolling past 100px)
+        setIsVisible(false);
+      } else if (currentScrollY < lastScrollY.current) {
+        // Scrolling up - show header
+        setIsVisible(true);
+      }
+      
+      lastScrollY.current = currentScrollY;
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -63,24 +83,45 @@ export default function Navigation() {
         isScrolled
           ? "bg-background/95 backdrop-blur-sm border-b border-border shadow-sm"
           : "bg-background"
+      } ${
+        isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
       data-testid="navigation"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <button
-            onClick={() => setLocation("/")}
-            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
-            data-testid="link-home"
-          >
-            <img
-              src={logoImage}
-              alt={navigation.brandName}
-              className="h-10 w-auto rounded"
-              data-testid="img-logo"
-            />
-            <span className="hidden sm:block font-bold text-lg">{navigation.brandName}</span>
-          </button>
+          {/* Left side: Logo and Search */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setLocation("/")}
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              data-testid="link-home"
+            >
+              <img
+                src={logoImage}
+                alt={navigation.brandName}
+                className="h-10 w-auto rounded"
+                data-testid="img-logo"
+              />
+              <span className="hidden sm:block font-bold text-lg">{navigation.brandName}</span>
+            </button>
+            
+            {/* Search Icon */}
+            <Button
+              variant="ghost"
+              size="icon"
+              className="hidden md:flex"
+              onClick={() => {
+                // Scroll to FAQ section for now as search destination
+                const element = document.querySelector('#faq');
+                if (element) element.scrollIntoView({ behavior: 'smooth' });
+              }}
+              aria-label="Search frequently asked questions"
+              data-testid="button-search"
+            >
+              <Search className="h-5 w-5" />
+            </Button>
+          </div>
 
           <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (

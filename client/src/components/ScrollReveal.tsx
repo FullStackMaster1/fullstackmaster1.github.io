@@ -1,5 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, useState, useEffect } from "react";
 
 type AnimationType = "fade" | "slide-up" | "slide-down" | "slide-left" | "slide-right" | "scale" | "blur";
 
@@ -10,6 +10,31 @@ interface ScrollRevealProps {
   direction?: "up" | "down" | "left" | "right";
   type?: AnimationType;
   className?: string;
+}
+
+// Synchronously detect mobile on first render to prevent flash of hidden content
+const getInitialMobileState = () => {
+  if (typeof window === 'undefined') return false;
+  return window.matchMedia('(max-width: 767px)').matches;
+};
+
+// Hook to detect mobile devices - initializes synchronously
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(getInitialMobileState);
+  
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 767px)');
+    
+    const handleChange = (e: MediaQueryListEvent) => {
+      setIsMobile(e.matches);
+    };
+    
+    // Modern browsers
+    mediaQuery.addEventListener('change', handleChange);
+    return () => mediaQuery.removeEventListener('change', handleChange);
+  }, []);
+  
+  return isMobile;
 }
 
 const getAnimationProps = (type: AnimationType, direction: string) => {
@@ -91,9 +116,11 @@ export default function ScrollReveal({
   className = ""
 }: ScrollRevealProps) {
   const prefersReducedMotion = useReducedMotion();
+  const isMobile = useIsMobile();
   const animationProps = getAnimationProps(type, direction);
 
-  if (prefersReducedMotion) {
+  // Disable animations on mobile for better performance and UX
+  if (prefersReducedMotion || isMobile) {
     return <div className={className}>{children}</div>;
   }
 

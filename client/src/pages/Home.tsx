@@ -25,6 +25,7 @@ import ExitIntentPopup from "@/components/ExitIntentPopup";
 import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 import ExecutiveCaseStudies from "@/components/ExecutiveCaseStudies";
 import FullServicesSection from "@/components/FullServicesSection";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Home() {
   return (
@@ -105,6 +106,7 @@ export default function Home() {
       </ScrollReveal>
       
       <WhatsAppWidget />
+      <ScrollToTop />
       <StickyMobileCTA />
       <RecentlyBookedPopup />
       <ExitIntentPopup />
