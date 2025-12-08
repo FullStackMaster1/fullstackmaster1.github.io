@@ -4,71 +4,100 @@
   "sectionTitleHighlight": "Senior Interviews",
   "sectionDescription": "These are the blind spots I see in almost every Director and VP candidate. Let's fix yours before the bar raiser finds them.",
   "popularBadgeText": "Popular",
-  "sessionDemos": [
+  "caseStudies": [
     {
-      "id": "leadership-principles",
-      "title": "Leadership Principles",
-      "subtitle": "Behavioral & LP Coaching",
-      "imagePath": "2_1764272631453.png",
-      "icon": "Lightbulb",
-      "youtubeVideoId": "kCwlvfoR8nA",
-      "showcaseTitle": "Leadership Principles Coaching",
-      "showcaseDescription": "Master Amazon's 16 Leadership Principles and behavioral interviews with real stories, not buzzwords. I'll help you structure compelling STAR answers that demonstrate senior-level impact and bar-raiser readiness.",
-      "showcaseFeatures": [
-        "1:1 video sessions via Google Meet",
-        "Deep-dive into Amazon Leadership Principles",
-        "STAR story structuring and refinement",
-        "Post-session notes & action items"
-      ]
+      "id": "senior-manager-to-l6",
+      "icon": "TrendingUp",
+      "gradientFrom": "from-blue-600",
+      "gradientTo": "to-indigo-700",
+      "before": {
+        "title": "Senior Manager",
+        "subtitle": "Stuck at L5 for 3 years",
+        "details": "Strong technical skills but struggled to articulate leadership impact in behavioral interviews"
+      },
+      "coaching": {
+        "sessions": 4,
+        "focus": ["Leadership Principles", "STAR Stories", "Executive Presence"],
+        "approach": "Restructured 12 leadership stories with quantified outcomes and senior-level framing"
+      },
+      "after": {
+        "title": "L6 at Amazon",
+        "highlight": "Got the Offer",
+        "details": "Passed all 5 interview loops including bar raiser"
+      }
     },
     {
-      "id": "system-design",
-      "title": "System Design",
-      "subtitle": "Architecture Deep-Dive",
-      "imagePath": "1_1764272631453.png",
+      "id": "failed-loops-to-director",
+      "icon": "Target",
+      "gradientFrom": "from-amber-500",
+      "gradientTo": "to-orange-600",
+      "before": {
+        "title": "Principal Engineer",
+        "subtitle": "Failed 2 Director loops",
+        "details": "Technical depth was strong but missing strategic thinking and cross-functional leadership examples"
+      },
+      "coaching": {
+        "sessions": 5,
+        "focus": ["System Design", "Leadership Stories", "Stakeholder Influence"],
+        "approach": "Built end-to-end portfolio of strategic initiatives with measurable business outcomes"
+      },
+      "after": {
+        "title": "Director at Meta",
+        "highlight": "Got the Offer",
+        "details": "Received competing offers from 2 FAANG companies"
+      }
+    },
+    {
+      "id": "tpm-to-senior-tpm",
+      "icon": "Users",
+      "gradientFrom": "from-green-600",
+      "gradientTo": "to-emerald-700",
+      "before": {
+        "title": "TPM at Startup",
+        "subtitle": "No FAANG experience",
+        "details": "Excellent program management skills but resume didn't showcase scale or complexity"
+      },
+      "coaching": {
+        "sessions": 3,
+        "focus": ["Resume Optimization", "Program Complexity", "Influence Stories"],
+        "approach": "Reframed startup experience to highlight FAANG-relevant scope and cross-team impact"
+      },
+      "after": {
+        "title": "Senior TPM at Google",
+        "highlight": "Got the Offer",
+        "details": "40% compensation increase from previous role"
+      }
+    },
+    {
+      "id": "sa-to-principal",
       "icon": "Presentation",
-      "youtubeVideoId": "LyLDJQu2tYo",
-      "showcaseTitle": "Real-Time System Design Whiteboarding",
-      "showcaseDescription": "Every session is a live, interactive experience. I use Excalidraw for real-time system design diagrams, walking you through architecture decisions, trade-offs, and the exact patterns FAANG interviewers look for.",
-      "showcaseFeatures": [
-        "1:1 video sessions via Google Meet",
-        "Live whiteboarding with real-time feedback",
-        "Session recordings for later review",
-        "Post-session notes & action items"
-      ]
-    },
-    {
-      "id": "resume-review",
-      "title": "Resume Review",
-      "subtitle": "Bar-Raiser Optimization",
-      "imagePath": "3_1764272631453.png",
-      "icon": "FileText",
-      "youtubeVideoId": "nZsR-42QgRY",
-      "showcaseTitle": "Resume Optimization & Review",
-      "showcaseDescription": "Transform your resume to showcase leadership impact, not just tasks. I'll help you craft quantified achievements that pass senior-level screens and position you for Director/VP roles at FAANG companies.",
-      "showcaseFeatures": [
-        "1:1 video sessions via Google Meet",
-        "Impact-driven bullet point rewrites",
-        "ATS optimization for senior roles",
-        "Post-session notes & revised resume"
-      ]
-    },
-    {
-      "id": "coding-interview",
-      "title": "Coding Practice",
-      "subtitle": "Live Problem Solving",
-      "imagePath": "image_1764273039071.png",
-      "icon": "Code",
-      "showcaseTitle": "Live Coding Practice",
-      "showcaseDescription": "Practice coding interviews in real-time with instant feedback. I'll guide you through problem-solving strategies, optimal solutions, and communication techniques that senior engineers are expected to demonstrate.",
-      "showcaseFeatures": [
-        "1:1 video sessions via Google Meet",
-        "Live coding with real-time guidance",
-        "Problem-solving strategy coaching",
-        "Post-session notes & solution review"
-      ]
+      "gradientFrom": "from-purple-600",
+      "gradientTo": "to-violet-700",
+      "before": {
+        "title": "Solutions Architect",
+        "subtitle": "Rejected at Principal level",
+        "details": "Deep AWS expertise but couldn't demonstrate thought leadership and customer obsession at scale"
+      },
+      "coaching": {
+        "sessions": 4,
+        "focus": ["Executive Communication", "Customer Impact", "Technical Vision"],
+        "approach": "Developed compelling narratives around customer success and technical innovation"
+      },
+      "after": {
+        "title": "Principal SA at AWS",
+        "highlight": "Got the Offer",
+        "details": "Promoted within 6 months of joining"
+      }
     }
   ],
+  "caseStudyShowcase": {
+    "badge": "Real Results",
+    "title": "Client Transformations",
+    "description": "Every case study represents a real coaching engagement. Names and companies anonymized for privacy.",
+    "privacyNote": "All coaching sessions are 100% confidential. These outcomes are shared with client permission.",
+    "buttonText": "Start Your Transformation",
+    "buttonLink": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'd%20like%20to%20book%20a%20coaching%20session."
+  },
   "liveSessionShowcase": {
     "badge": "How I Coach",
     "liveBadge": "Live Session",
