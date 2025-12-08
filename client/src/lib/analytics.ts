@@ -12,30 +12,34 @@ let gaInitialized = false;
 export const initGA = () => {
   if (gaInitialized) return;
   
-  const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID;
+  // Check if gtag is already loaded (from index.html)
+  if (window.gtag) {
+    gaInitialized = true;
+    console.log('Google Analytics already loaded from HTML');
+    return;
+  }
+  
+  const measurementId = import.meta.env.VITE_GA_MEASUREMENT_ID || 'G-SJ08J6PQ7M';
 
-  if (!measurementId) {
-    console.warn('Google Analytics not configured - add VITE_GA_MEASUREMENT_ID to enable tracking');
+  if (document.getElementById('ga-script')) {
+    gaInitialized = true;
     return;
   }
 
-  if (document.getElementById('ga-script')) return;
+  // Initialize dataLayer and gtag function
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function(...args: unknown[]) {
+    window.dataLayer.push(args);
+  };
+  window.gtag('js', new Date());
+  window.gtag('config', measurementId);
 
-  const script1 = document.createElement('script');
-  script1.id = 'ga-script';
-  script1.async = true;
-  script1.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
-  document.head.appendChild(script1);
-
-  const script2 = document.createElement('script');
-  script2.id = 'ga-config';
-  script2.textContent = `
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', '${measurementId}');
-  `;
-  document.head.appendChild(script2);
+  // Load the gtag script
+  const script = document.createElement('script');
+  script.id = 'ga-script';
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+  document.head.appendChild(script);
   
   gaInitialized = true;
   console.log('Google Analytics initialized with ID:', measurementId);
