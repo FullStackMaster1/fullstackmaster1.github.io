@@ -17,21 +17,19 @@ import {
   Users,
   Sparkles,
   ArrowRight,
-  Video,
   CheckCircle,
   LucideIcon,
   Lightbulb,
   Code,
+  TrendingUp,
+  ChevronRight,
+  Shield,
+  Calendar,
 } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import servicesData from "@/data/services.json";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef, useState, useEffect } from "react";
-
-import lpImage from "@assets/2_1764272631453.png";
-import sysDesignImage from "@assets/1_1764272631453.png";
-import resumeImage from "@assets/3_1764272631453.png";
-import codingImage from "@assets/image_1764273039071.png";
 
 const iconMap: Record<string, LucideIcon> = {
   Target,
@@ -42,13 +40,7 @@ const iconMap: Record<string, LucideIcon> = {
   Sparkles,
   Lightbulb,
   Code,
-};
-
-const imageMap: Record<string, string> = {
-  "2_1764272631453.png": lpImage,
-  "1_1764272631453.png": sysDesignImage,
-  "3_1764272631453.png": resumeImage,
-  "image_1764273039071.png": codingImage,
+  TrendingUp,
 };
 
 interface Service {
@@ -60,25 +52,35 @@ interface Service {
   popular: boolean;
 }
 
-interface SessionDemo {
+interface CaseStudy {
   id: string;
-  title: string;
-  subtitle: string;
-  imagePath: string;
   icon: string;
-  showcaseTitle: string;
-  showcaseDescription: string;
-  showcaseFeatures: string[];
-  youtubeVideoId?: string;
+  gradientFrom: string;
+  gradientTo: string;
+  before: {
+    title: string;
+    subtitle: string;
+    details: string;
+  };
+  coaching: {
+    sessions: number;
+    focus: string[];
+    approach: string;
+  };
+  after: {
+    title: string;
+    highlight: string;
+    details: string;
+  };
 }
 
 export default function ServicesSection() {
-  const { sectionBadge, sectionTitle, sectionTitleHighlight, sectionDescription, liveSessionShowcase, services, ctaButtons, sessionDemos, popularBadgeText } = servicesData;
+  const { sectionBadge, sectionTitle, sectionTitleHighlight, sectionDescription, services, ctaButtons, caseStudies, caseStudyShowcase, popularBadgeText } = servicesData;
   const [api, setApi] = useState<CarouselApi>();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const autoplayPlugin = useRef(
-    Autoplay({ delay: 4000, stopOnInteraction: false, stopOnMouseEnter: true })
+    Autoplay({ delay: 5000, stopOnInteraction: false, stopOnMouseEnter: true })
   );
 
   useEffect(() => {
@@ -96,10 +98,7 @@ export default function ServicesSection() {
     };
   }, [api]);
 
-  const demos = sessionDemos as SessionDemo[];
-  const currentDemo = demos[currentIndex] || demos[0];
-
-  if (!currentDemo) return null;
+  const studies = caseStudies as CaseStudy[];
 
   return (
     <section
@@ -121,117 +120,122 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        <Card className="mb-12 overflow-hidden border-primary/20" data-testid="card-coaching-preview">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
-            <div className="relative group">
-              <Carousel
-                opts={{ align: "start", loop: true }}
-                plugins={[autoplayPlugin.current]}
-                className="w-full"
-                setApi={setApi}
-                onMouseEnter={() => autoplayPlugin.current.stop()}
-                onMouseLeave={() => autoplayPlugin.current.play()}
-              >
-                <CarouselContent>
-                  {(sessionDemos as SessionDemo[]).map((demo) => {
-                    const IconComponent = iconMap[demo.icon] || Presentation;
-                    const imageSrc = imageMap[demo.imagePath];
-                    return (
-                      <CarouselItem key={demo.id}>
-                        <div className="relative aspect-video">
-                          {demo.youtubeVideoId ? (
-                            <iframe
-                              src={`https://www.youtube.com/embed/${demo.youtubeVideoId}?rel=0&modestbranding=1`}
-                              title={demo.title}
-                              className="w-full h-full"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                              allowFullScreen
-                              data-testid={`video-${demo.id}`}
-                            />
-                          ) : (
-                            <>
-                              <img
-                                src={imageSrc}
-                                alt={demo.title}
-                                className="w-full h-full object-cover"
-                              />
-                              <div className="absolute top-4 left-4 flex gap-2">
-                                <Badge className="bg-red-500 text-white">
-                                  <Video className="w-3 h-3 mr-1" />
-                                  {liveSessionShowcase.liveBadge}
-                                </Badge>
-                              </div>
-                            </>
-                          )}
-                          <div className="absolute bottom-4 left-4 right-4 pointer-events-none">
-                            <div className="bg-black/70 backdrop-blur-sm rounded-lg p-3">
-                              <div className="flex items-center gap-2">
-                                <IconComponent className="w-4 h-4 text-white" />
-                                <span className="text-white font-medium text-sm">{demo.title}</span>
-                                <span className="text-white/70 text-xs">• {demo.subtitle}</span>
-                              </div>
-                            </div>
+        <div className="mb-12" data-testid="card-case-studies">
+          <div className="flex items-center justify-between mb-6">
+            <div>
+              <Badge variant="secondary" className="mb-2">{caseStudyShowcase.badge}</Badge>
+              <h3 className="text-2xl font-bold">{caseStudyShowcase.title}</h3>
+            </div>
+            <div className="hidden md:flex items-center gap-2 text-sm text-muted-foreground">
+              <Shield className="w-4 h-4" />
+              <span>{caseStudyShowcase.privacyNote}</span>
+            </div>
+          </div>
+          
+          <Carousel
+            opts={{ align: "start", loop: true }}
+            plugins={[autoplayPlugin.current]}
+            className="w-full"
+            setApi={setApi}
+            onMouseEnter={() => autoplayPlugin.current.stop()}
+            onMouseLeave={() => autoplayPlugin.current.play()}
+          >
+            <CarouselContent className="-ml-4">
+              {studies.map((study) => {
+                const IconComponent = iconMap[study.icon] || TrendingUp;
+                return (
+                  <CarouselItem key={study.id} className="pl-4 md:basis-1/2 lg:basis-1/2">
+                    <Card className="h-full overflow-hidden hover-elevate" data-testid={`card-case-${study.id}`}>
+                      <div className={`bg-gradient-to-r ${study.gradientFrom} ${study.gradientTo} p-4 text-white`}>
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+                            <IconComponent className="w-5 h-5" />
+                          </div>
+                          <div>
+                            <p className="text-white/80 text-xs uppercase tracking-wide">Transformation</p>
+                            <p className="font-semibold">{study.before.title} → {study.after.title}</p>
                           </div>
                         </div>
-                      </CarouselItem>
-                    );
-                  })}
-                </CarouselContent>
-                <CarouselPrevious 
-                  className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white border-none h-10 w-10 opacity-0 group-hover:opacity-100 transition-opacity z-10"
-                  data-testid="button-carousel-prev"
-                />
-                <CarouselNext 
-                  className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white border-none h-10 w-10 opacity-0 group-hover:opacity-100 transition-opacity z-10"
-                  data-testid="button-carousel-next"
-                />
-              </Carousel>
-              
-              <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-                {(sessionDemos as SessionDemo[]).map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => api?.scrollTo(index)}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      index === currentIndex 
-                        ? "bg-white w-6" 
-                        : "bg-white/50 hover:bg-white/70"
-                    }`}
-                    data-testid={`button-carousel-dot-${index}`}
-                  />
-                ))}
-              </div>
-            </div>
-            <CardContent className="p-6 lg:p-8 flex flex-col justify-center">
-              <Badge variant="outline" className="w-fit mb-4">{liveSessionShowcase.badge}</Badge>
-              <h3 className="text-2xl font-bold mb-4 transition-all duration-300" data-testid="text-showcase-title">
-                {currentDemo?.showcaseTitle}
-              </h3>
-              <p className="text-muted-foreground mb-6 transition-all duration-300">
-                {currentDemo?.showcaseDescription}
-              </p>
-              <ul className="space-y-3 mb-6">
-                {currentDemo?.showcaseFeatures.map((feature, index) => (
-                  <li key={index} className="flex items-center gap-2 text-sm">
-                    <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-              <Button asChild className="w-fit">
-                <a
-                  href={liveSessionShowcase.buttonLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  data-testid="button-book-session-preview"
-                >
-                  <SiWhatsapp className="w-4 h-4 mr-2" />
-                  {liveSessionShowcase.buttonText}
-                </a>
-              </Button>
-            </CardContent>
+                      </div>
+                      <CardContent className="p-5">
+                        <div className="grid grid-cols-3 gap-3 mb-4">
+                          <div className="text-center p-3 bg-red-50 dark:bg-red-950/30 rounded-lg">
+                            <p className="text-xs text-muted-foreground mb-1">Before</p>
+                            <p className="font-semibold text-sm text-red-600 dark:text-red-400">{study.before.subtitle}</p>
+                          </div>
+                          <div className="text-center p-3 bg-blue-50 dark:bg-blue-950/30 rounded-lg flex flex-col justify-center">
+                            <p className="text-xs text-muted-foreground mb-1">Sessions</p>
+                            <p className="font-bold text-lg text-primary">{study.coaching.sessions}</p>
+                          </div>
+                          <div className="text-center p-3 bg-green-50 dark:bg-green-950/30 rounded-lg">
+                            <p className="text-xs text-muted-foreground mb-1">Result</p>
+                            <p className="font-semibold text-sm text-green-600 dark:text-green-400">{study.after.highlight}</p>
+                          </div>
+                        </div>
+                        
+                        <div className="space-y-3">
+                          <div>
+                            <p className="text-xs font-medium text-muted-foreground mb-1">Challenge</p>
+                            <p className="text-sm">{study.before.details}</p>
+                          </div>
+                          <div>
+                            <p className="text-xs font-medium text-muted-foreground mb-1">Coaching Focus</p>
+                            <div className="flex flex-wrap gap-1">
+                              {study.coaching.focus.map((item) => (
+                                <Badge key={item} variant="outline" className="text-xs">{item}</Badge>
+                              ))}
+                            </div>
+                          </div>
+                          <div>
+                            <p className="text-xs font-medium text-muted-foreground mb-1">Outcome</p>
+                            <p className="text-sm text-green-600 dark:text-green-400 font-medium">{study.after.details}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </CarouselItem>
+                );
+              })}
+            </CarouselContent>
+            <CarouselPrevious 
+              className="hidden md:flex -left-4"
+              data-testid="button-carousel-prev"
+            />
+            <CarouselNext 
+              className="hidden md:flex -right-4"
+              data-testid="button-carousel-next"
+            />
+          </Carousel>
+          
+          <div className="flex justify-center gap-2 mt-4">
+            {studies.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => api?.scrollTo(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === currentIndex 
+                    ? "bg-primary w-6" 
+                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
+                }`}
+                data-testid={`button-carousel-dot-${index}`}
+              />
+            ))}
           </div>
-        </Card>
+          
+          <div className="text-center mt-6">
+            <Button asChild>
+              <a
+                href={caseStudyShowcase.buttonLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="button-book-session-preview"
+              >
+                <Calendar className="w-4 h-4 mr-2" />
+                {caseStudyShowcase.buttonText}
+              </a>
+            </Button>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {(services as Service[]).map((service) => {
