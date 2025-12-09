@@ -72,7 +72,8 @@
   "howItWorksTitle": "How It Works",
   "calendarEmbed": {
     "title": "Schedule a coaching session",
-    "url": "https://calendar.google.com/calendar/appointments/AcZssZ2dMNXqXzYcl2NKLpclDV9w0p4-9cp4UvTHii0=?gv=true"
+    "url": "https://calendar.google.com/calendar/appointments/AcZssZ2dMNXqXzYcl2NKLpclDV9w0p4-9cp4UvTHii0=?gv=true",
+    "iframeUrl": "https://calendar.google.com/calendar/appointments/schedules/AcZssZ0sqWPJCaFAjSg4aCNEPXKC03tzsyobzsyV6t_JC5M9SGXKvH3sTLj-x_FFFs_N-WjU0s8zEv6g?gv=true"
   },
   "sessionInfo": {
     "duration": "60-min sessions",

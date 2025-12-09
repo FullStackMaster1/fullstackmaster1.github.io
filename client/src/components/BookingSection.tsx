@@ -143,6 +143,28 @@ export default function BookingSection() {
               </div>
             )}
 
+            {/* Inline Google Calendar Embed */}
+            <Card className="mb-8" data-testid="card-calendar-embed">
+              <CardContent className="p-6">
+                <div className="flex items-center gap-2 mb-4">
+                  <Calendar className="w-5 h-5 text-primary" />
+                  <h3 className="font-semibold text-xl">{calendarEmbed.title}</h3>
+                </div>
+                <div className="rounded-lg overflow-hidden border">
+                  <iframe 
+                    src={calendarEmbed.iframeUrl || calendarEmbed.url}
+                    style={{ border: 0 }}
+                    width="100%"
+                    height="600"
+                    title="Book a coaching session"
+                    sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    data-testid="iframe-calendar"
+                  />
+                </div>
+              </CardContent>
+            </Card>
+
             <h3 className="font-semibold text-xl mb-6">{connectTitle}</h3>
             <div className="space-y-4">
               {(bookingOptions as BookingOption[]).map((option) => {

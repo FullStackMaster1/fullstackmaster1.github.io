@@ -451,6 +451,31 @@ export default function Book() {
           </div>
         </section>
 
+        <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-br from-primary/5 to-accent/10">
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
+              Schedule Your Session
+            </h2>
+            <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
+              Choose a time that works for you. Sessions available in EST/PST friendly timings.
+            </p>
+            <Card className="overflow-hidden" data-testid="card-inline-calendar">
+              <div className="rounded-lg overflow-hidden">
+                <iframe 
+                  src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0sqWPJCaFAjSg4aCNEPXKC03tzsyobzsyV6t_JC5M9SGXKvH3sTLj-x_FFFs_N-WjU0s8zEv6g?gv=true"
+                  style={{ border: 0 }}
+                  width="100%"
+                  height="600"
+                  title="Book a coaching session with Rupesh"
+                  sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  data-testid="iframe-calendar-book"
+                />
+              </div>
+            </Card>
+          </div>
+        </section>
+
         <section className="py-16 md:py-24 px-4 md:px-8 bg-muted/50">
           <div className="max-w-5xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">What Clients Say</h2>
