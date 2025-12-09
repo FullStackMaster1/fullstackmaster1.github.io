@@ -13,7 +13,7 @@ export const initGA = () => {
   if (gaInitialized) return;
   
   // Check if gtag is already loaded (from index.html)
-  if (window.gtag) {
+  if (typeof window.gtag === 'function') {
     gaInitialized = true;
     console.log('Google Analytics already loaded from HTML');
     return;
