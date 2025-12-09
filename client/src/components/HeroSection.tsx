@@ -318,38 +318,41 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="flex flex-col order-1 lg:order-2">
-            <div className="flex justify-center lg:justify-end">
-              <div className="relative w-fit">
-                <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
-                  <img
-                    src={profileImage}
-                    alt={`${personal.name} - ${personal.title}`}
-                    className="w-full h-full object-cover"
-                    data-testid="img-profile"
-                  />
-                </div>
-                <div className="absolute -bottom-4 -right-4 bg-card rounded-lg p-3 shadow-lg border border-border">
-                  <div className="flex items-center gap-2">
-                    <div className="flex">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="w-4 h-4 fill-yellow-500 text-yellow-500"
-                        />
-                      ))}
-                    </div>
-                    <span className="text-sm font-semibold">{hero.ratingBadge.rating}</span>
+          <div className="order-1 lg:order-2">
+            {/* Desktop: Photo + Highlights side by side, aligned at top */}
+            <div className="hidden lg:flex lg:items-start lg:gap-4">
+              {/* Photo Column */}
+              <div className="flex-shrink-0">
+                <div className="relative w-fit">
+                  <div className="w-72 h-72 xl:w-80 xl:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
+                    <img
+                      src={profileImage}
+                      alt={`${personal.name} - ${personal.title}`}
+                      className="w-full h-full object-cover"
+                      data-testid="img-profile"
+                    />
                   </div>
-                  <p className="text-xs text-muted-foreground mt-1">
-                    {hero.ratingBadge.text}
-                  </p>
+                  <div className="absolute -bottom-4 -right-4 bg-card rounded-lg p-3 shadow-lg border border-border">
+                    <div className="flex items-center gap-2">
+                      <div className="flex">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className="w-4 h-4 fill-yellow-500 text-yellow-500"
+                          />
+                        ))}
+                      </div>
+                      <span className="text-sm font-semibold">{hero.ratingBadge.rating}</span>
+                    </div>
+                    <p className="text-xs text-muted-foreground mt-1">
+                      {hero.ratingBadge.text}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            
-            {/* Coach Highlights - Below Photo */}
-            <div className="hidden lg:flex lg:flex-col gap-2 -mt-8 w-80" data-testid="coach-highlights">
+
+              {/* Highlights Column - aligned at top with photo */}
+              <div className="flex flex-col gap-2 w-64" data-testid="coach-highlights">
               {/* Experience Card */}
               <div className="bg-card/80 backdrop-blur-sm rounded-lg border border-border/50 p-4 shadow-lg">
                 <div className="flex items-center gap-2 mb-2">
@@ -469,6 +472,37 @@ export default function HeroSection() {
                     WhatsApp Me
                   </a>
                 </Button>
+              </div>
+            </div>
+          </div>
+
+            {/* Mobile Photo - shown only on smaller screens */}
+            <div className="flex justify-center lg:hidden">
+              <div className="relative w-fit">
+                <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
+                  <img
+                    src={profileImage}
+                    alt={`${personal.name} - ${personal.title}`}
+                    className="w-full h-full object-cover"
+                    data-testid="img-profile-mobile"
+                  />
+                </div>
+                <div className="absolute -bottom-4 -right-4 bg-card rounded-lg p-3 shadow-lg border border-border">
+                  <div className="flex items-center gap-2">
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="w-4 h-4 fill-yellow-500 text-yellow-500"
+                        />
+                      ))}
+                    </div>
+                    <span className="text-sm font-semibold">{hero.ratingBadge.rating}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    {hero.ratingBadge.text}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
