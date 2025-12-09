@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, Video, MessageCircle, ExternalLink, LucideIcon } from "lucide-react";
+import { Calendar, Clock, Video, MessageCircle, ExternalLink, LucideIcon, Heart, Shield, Infinity, AlertCircle } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import profileData from "@/data/profile.json";
 import whatsappData from "@/data/whatsapp.json";
@@ -25,6 +25,11 @@ interface BookingOption {
   color: string;
 }
 
+interface AvailabilitySlot {
+  time: string;
+  status: "available" | "expiringSoon" | "booked";
+}
+
 export default function BookingSection() {
   const { contact, socialLinks } = profileData;
   const { 
@@ -40,8 +45,25 @@ export default function BookingSection() {
     calendarEmbed,
     sessionInfo,
     fastestConnect,
-    labels
-  } = bookingData;
+    labels,
+    availability,
+    sidebarWidget
+  } = bookingData as typeof bookingData & {
+    availability?: {
+      title: string;
+      timezoneNote: string;
+      slots: AvailabilitySlot[];
+      expiringSoonLabel: string;
+      updateNote: string;
+    };
+    sidebarWidget?: {
+      credits: string;
+      perSession: string;
+      benefits: string[];
+      saveButton: string;
+      buyButton: string;
+    };
+  };
 
   const getOptionUrl = (optionId: string): string => {
     switch (optionId) {
@@ -80,8 +102,47 @@ export default function BookingSection() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          <div>
+        <div className="flex flex-col lg:flex-row gap-8 mb-12">
+          {/* Main Content - Left Side */}
+          <div className="flex-1 lg:max-w-3xl">
+            {/* Availability Section */}
+            {availability && (
+              <div className="mb-8">
+                <div className="flex items-center gap-2 mb-4">
+                  <Calendar className="w-5 h-5 text-primary" />
+                  <h3 className="font-semibold text-xl">{availability.title}</h3>
+                </div>
+                <p className="text-sm text-muted-foreground mb-4">{availability.timezoneNote}</p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {availability.slots.map((slot, index) => (
+                    <a
+                      key={index}
+                      href={calendarEmbed.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center justify-between p-3 border rounded-lg hover-elevate cursor-pointer ${
+                        slot.status === "expiringSoon" 
+                          ? "border-orange-300 bg-orange-50/50" 
+                          : "border-border"
+                      }`}
+                      data-testid={`slot-${index}`}
+                    >
+                      <span className="text-sm font-medium">{slot.time}</span>
+                      {slot.status === "expiringSoon" && (
+                        <div className="flex items-center gap-1">
+                          <Badge variant="outline" className="text-xs text-orange-600 border-orange-300 bg-orange-50">
+                            {availability.expiringSoonLabel}
+                          </Badge>
+                          <AlertCircle className="w-4 h-4 text-orange-500" />
+                        </div>
+                      )}
+                    </a>
+                  ))}
+                </div>
+                <p className="text-xs text-muted-foreground mt-3">{availability.updateNote}</p>
+              </div>
+            )}
+
             <h3 className="font-semibold text-xl mb-6">{connectTitle}</h3>
             <div className="space-y-4">
               {(bookingOptions as BookingOption[]).map((option) => {
@@ -172,41 +233,86 @@ export default function BookingSection() {
             </Card>
           </div>
 
-          <div>
-            <h3 className="font-semibold text-xl mb-6">{scheduleTitle}</h3>
-            <Card className="hover-elevate">
-              <CardContent className="p-8 text-center">
-                <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-                  <Calendar className="w-10 h-10 text-primary" />
-                </div>
-                <h4 className="text-xl font-semibold mb-3">{calendarEmbed.title}</h4>
-                <p className="text-muted-foreground mb-6">
-                  Pick a time that works for you. Free 15-min discovery call to discuss your career goals.
-                </p>
-                <div className="flex flex-wrap items-center justify-center gap-4 mb-6 text-sm text-muted-foreground">
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4" />
-                    <span>{sessionInfo.duration}</span>
+          {/* Sticky Sidebar - Right Side */}
+          <div className="lg:w-80" data-testid="sidebar-booking">
+            <div className="lg:sticky lg:top-24 z-40">
+              {/* Pricing Card */}
+              {sidebarWidget && (
+                <Card className="mb-6 border-2 border-primary/20" data-testid="card-sidebar-pricing">
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Calendar className="w-5 h-5 text-primary" />
+                      <span className="text-2xl font-bold" data-testid="text-credits">{sidebarWidget.credits}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground mb-6">{sidebarWidget.perSession}</p>
+                    
+                    <div className="space-y-3 mb-6">
+                      <Button variant="outline" className="w-full" size="lg" data-testid="button-save-coach">
+                        <Heart className="w-4 h-4 mr-2" />
+                        {sidebarWidget.saveButton}
+                      </Button>
+                      <Button className="w-full bg-primary" size="lg" asChild>
+                        <a 
+                          href={socialLinks.igotanoffer.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          data-testid="button-buy-credits"
+                        >
+                          <Calendar className="w-4 h-4 mr-2" />
+                          {sidebarWidget.buyButton}
+                        </a>
+                      </Button>
+                    </div>
+
+                    <div className="space-y-3 text-sm">
+                      {sidebarWidget.benefits.map((benefit, index) => (
+                        <div key={index} className="flex items-center gap-2" data-testid={`benefit-${index}`}>
+                          {index === 0 && <Shield className="w-4 h-4 text-muted-foreground" />}
+                          {index === 1 && <Infinity className="w-4 h-4 text-muted-foreground" />}
+                          {index === 2 && <Shield className="w-4 h-4 text-green-500" />}
+                          <span className="text-muted-foreground">{benefit}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              )}
+
+              {/* Schedule Card */}
+              <Card className="hover-elevate" data-testid="card-sidebar-schedule">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+                    <Calendar className="w-8 h-8 text-primary" />
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Video className="w-4 h-4" />
-                    <span>{sessionInfo.platform}</span>
+                  <h4 className="text-lg font-semibold mb-2">{calendarEmbed.title}</h4>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Pick a time that works for you.
+                  </p>
+                  <div className="flex flex-wrap items-center justify-center gap-3 mb-4 text-xs text-muted-foreground">
+                    <div className="flex items-center gap-1">
+                      <Clock className="w-3 h-3" />
+                      <span>{sessionInfo.duration}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Video className="w-3 h-3" />
+                      <span>{sessionInfo.platform}</span>
+                    </div>
                   </div>
-                </div>
-                <Button size="lg" asChild>
-                  <a
-                    href={calendarEmbed.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-testid="button-schedule-calendar"
-                  >
-                    <Calendar className="w-4 h-4 mr-2" />
-                    Open Calendar & Book
-                    <ExternalLink className="w-4 h-4 ml-2" />
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
+                  <Button size="default" className="w-full" asChild>
+                    <a
+                      href={calendarEmbed.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-testid="button-sidebar-schedule"
+                    >
+                      <Calendar className="w-4 h-4 mr-2" />
+                      Book Now
+                      <ExternalLink className="w-4 h-4 ml-2" />
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
 

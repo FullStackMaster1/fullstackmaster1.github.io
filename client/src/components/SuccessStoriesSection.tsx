@@ -45,6 +45,12 @@ interface SuccessStory {
   verified?: boolean;
 }
 
+// Helper to parse date strings like "Sep 2025" to Date objects
+const parseStoryDate = (dateStr: string): Date => {
+  const parsed = new Date(dateStr);
+  return isNaN(parsed.getTime()) ? new Date(0) : parsed;
+};
+
 export default function SuccessStoriesSection() {
   const {
     sectionBadge,
@@ -61,7 +67,11 @@ export default function SuccessStoriesSection() {
     ctaButton,
   } = successStoriesData;
 
-  const featuredStories = (successStories as SuccessStory[]).filter(s => s.featured);
+  // Sort by date (newest first) then filter for featured
+  const sortedStories = [...(successStories as SuccessStory[])].sort((a, b) => 
+    parseStoryDate(b.date).getTime() - parseStoryDate(a.date).getTime()
+  );
+  const featuredStories = sortedStories.filter(s => s.featured);
 
   return (
     <section

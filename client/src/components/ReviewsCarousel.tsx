@@ -15,15 +15,26 @@ import { ExternalLink, Star, Trophy, CheckCircle, Quote, ChevronRight, Sparkles,
 import Autoplay from "embla-carousel-autoplay";
 import { motion } from "framer-motion";
 
+// Helper to parse date strings like "Nov 09, 2025" to Date objects
+const parseReviewDate = (dateStr: string): Date => {
+  const parsed = new Date(dateStr);
+  return isNaN(parsed.getTime()) ? new Date(0) : parsed;
+};
+
+// Sort reviews by date (newest first)
+const sortedReviews = [...reviewsData].sort((a, b) => 
+  parseReviewDate(b.date).getTime() - parseReviewDate(a.date).getTime()
+);
+
 export default function ReviewsCarousel() {
   const [showAll, setShowAll] = useState(false);
-  const totalReviews = reviewsData.length;
+  const totalReviews = sortedReviews.length;
   
-  // Featured reviews with offers - these are static for SEO
-  const featuredReviews = reviewsData.filter((r: any) => r.gotOffer === true).slice(0, 3);
+  // Featured reviews with offers - sorted newest first
+  const featuredReviews = sortedReviews.filter((r: any) => r.gotOffer === true).slice(0, 3);
   
-  // Other reviews for carousel
-  const carouselReviews = reviewsData.filter((r: any) => !r.gotOffer).slice(0, showAll ? 30 : 12);
+  // Other reviews for carousel - sorted newest first
+  const carouselReviews = sortedReviews.filter((r: any) => !r.gotOffer).slice(0, showAll ? 30 : 12);
 
   const autoplayPlugin = useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true, stopOnMouseEnter: true })
