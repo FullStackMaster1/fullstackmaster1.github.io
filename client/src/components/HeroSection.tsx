@@ -318,31 +318,94 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="flex justify-center lg:justify-end order-1 lg:order-2">
-            <div className="relative">
-              <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
-                <img
-                  src={profileImage}
-                  alt={`${personal.name} - ${personal.title}`}
-                  className="w-full h-full object-cover"
-                  data-testid="img-profile"
-                />
-              </div>
-              <div className="absolute -bottom-4 -right-4 bg-card rounded-lg p-3 shadow-lg border border-border">
-                <div className="flex items-center gap-2">
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className="w-4 h-4 fill-yellow-500 text-yellow-500"
-                      />
-                    ))}
-                  </div>
-                  <span className="text-sm font-semibold">{hero.ratingBadge.rating}</span>
+          <div className="flex flex-col order-1 lg:order-2">
+            <div className="flex justify-center lg:justify-end">
+              <div className="relative">
+                <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
+                  <img
+                    src={profileImage}
+                    alt={`${personal.name} - ${personal.title}`}
+                    className="w-full h-full object-cover"
+                    data-testid="img-profile"
+                  />
                 </div>
-                <p className="text-xs text-muted-foreground mt-1">
-                  {hero.ratingBadge.text}
+                <div className="absolute -bottom-4 -right-4 bg-card rounded-lg p-3 shadow-lg border border-border">
+                  <div className="flex items-center gap-2">
+                    <div className="flex">
+                      {[...Array(5)].map((_, i) => (
+                        <Star
+                          key={i}
+                          className="w-4 h-4 fill-yellow-500 text-yellow-500"
+                        />
+                      ))}
+                    </div>
+                    <span className="text-sm font-semibold">{hero.ratingBadge.rating}</span>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">
+                    {hero.ratingBadge.text}
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Coach Highlights - Below Photo */}
+            <div className="hidden lg:block mt-12 max-w-sm ml-auto" data-testid="coach-highlights">
+              <div className="bg-card/80 backdrop-blur-sm rounded-lg border border-border/50 p-5 shadow-lg">
+                <div className="flex items-center gap-2 mb-4">
+                  <Building2 className="w-5 h-5 text-orange-500" />
+                  <h3 className="font-semibold text-sm">Experience</h3>
+                </div>
+                <p className="text-sm text-muted-foreground mb-4">
+                  <span className="font-medium text-foreground">2021-Present:</span> AWS, Senior Customer Solutions Manager
                 </p>
+                <p className="text-xs text-muted-foreground mb-4">
+                  Working with senior engineers, architects, engineering managers, directors, and VP-level leaders on system design, leadership behavior, and strategic thinking.
+                </p>
+                
+                <div className="border-t border-border/50 pt-4 mb-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Award className="w-5 h-5 text-primary" />
+                    <h3 className="font-semibold text-sm">Credentials</h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    <Badge variant="outline" className="text-xs bg-orange-500/10 border-orange-500/20">
+                      <SiAmazon className="w-3 h-3 mr-1 text-orange-500" />
+                      AWS Certified
+                    </Badge>
+                    <Badge variant="outline" className="text-xs bg-blue-500/10 border-blue-500/20">
+                      <SiGoogle className="w-3 h-3 mr-1 text-blue-500" />
+                      GCP Certified
+                    </Badge>
+                    <Badge variant="outline" className="text-xs">
+                      ISB CTO Scholar
+                    </Badge>
+                  </div>
+                </div>
+                
+                <div className="border-t border-border/50 pt-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Users className="w-5 h-5 text-green-500" />
+                    <h3 className="font-semibold text-sm">Coaching Stats</h3>
+                  </div>
+                  <div className="grid grid-cols-2 gap-3 text-sm">
+                    <div className="flex items-center gap-2">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span className="text-muted-foreground">100+ Sessions</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <TrendingUp className="w-4 h-4 text-primary" />
+                      <span className="text-muted-foreground">32% Rebook</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Trophy className="w-4 h-4 text-yellow-500" />
+                      <span className="text-muted-foreground">92% Success</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Star className="w-4 h-4 text-yellow-500" />
+                      <span className="text-muted-foreground">5.0 Rating</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
