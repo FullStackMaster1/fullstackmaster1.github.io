@@ -59,7 +59,7 @@ export default function HeroSection() {
       data-testid="section-hero"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center lg:items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-8 items-start">
           <div className="order-2 lg:order-1">
             {hero.executiveTagline && (
               <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-3" data-testid="text-executive-tagline">
@@ -318,10 +318,10 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="flex flex-col order-1 lg:order-2">
+          <div className="flex flex-col order-1 lg:order-2 lg:sticky lg:top-8">
             <div className="flex justify-center lg:justify-end">
               <div className="relative">
-                <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
+                <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl flex-shrink-0">
                   <img
                     src={profileImage}
                     alt={`${personal.name} - ${personal.title}`}
@@ -349,7 +349,7 @@ export default function HeroSection() {
             </div>
             
             {/* Coach Highlights - Below Photo */}
-            <div className="hidden lg:flex lg:flex-col gap-3 mt-6 w-80" data-testid="coach-highlights">
+            <div className="hidden lg:flex lg:flex-col gap-2.5 mt-4 w-80" data-testid="coach-highlights">
               {/* Experience Card */}
               <div className="bg-card/80 backdrop-blur-sm rounded-lg border border-border/50 p-4 shadow-lg">
                 <div className="flex items-center gap-2 mb-2">
