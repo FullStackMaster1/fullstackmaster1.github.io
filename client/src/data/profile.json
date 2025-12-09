@@ -8,6 +8,13 @@
     "tagline": "by Rupesh Tiwari",
     "company": "Amazon Web Services",
     "companyShort": "AWS",
+    "location": {
+      "city": "New Jersey",
+      "state": "NJ",
+      "country": "USA",
+      "timezone": "EST",
+      "badge": "Based in USA"
+    },
     "previousRoles": [
       "Software Engineer",
       "Senior Software Architect",
@@ -70,6 +77,20 @@
       "url": "https://rupeshtiwari.gumroad.com/l/rupesh-kit",
       "label": "Gumroad"
     }
+  },
+  "usaTrust": {
+    "location": "New Jersey, USA",
+    "timezone": "Eastern Time (EST/EDT)",
+    "availability": "Flexible hours for all US timezones",
+    "payment": "USD accepted via secure payment",
+    "clients": "500+ US-based professionals coached",
+    "companies": ["Amazon", "Google", "Meta", "Microsoft", "Apple", "Netflix"],
+    "badges": [
+      "Based in USA",
+      "US Phone: +1-609-442-4081",
+      "EST/PST Friendly",
+      "500+ US Clients"
+    ]
   },
   "stats": {
     "professionalsCoached": {

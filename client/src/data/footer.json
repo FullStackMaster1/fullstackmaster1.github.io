@@ -53,7 +53,10 @@
   ],
   "contact": {
     "title": "Contact Us",
-    "availabilityText": "Available for coaching sessions worldwide via video call."
+    "availabilityText": "Based in New Jersey, USA. Available for all US timezones via video call.",
+    "location": "New Jersey, USA",
+    "timezone": "Eastern Time (EST/EDT)",
+    "usaNote": "EST/PST Friendly Scheduling"
   },
   "verification": {
     "text": "Verified on IGotAnOffer",

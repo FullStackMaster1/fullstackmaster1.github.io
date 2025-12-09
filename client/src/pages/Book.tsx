@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import USATrustBar from "@/components/USATrustBar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -269,11 +270,12 @@ export default function Book() {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead 
-        customTitle="Book Your 1-on-1 Coaching Session | Rupesh Tiwari"
-        customDescription="Schedule your personalized FAANG interview coaching with Rupesh Tiwari. 85%+ success rate. Directors, VPs, Principal Engineers, and Solutions Architects."
+        customTitle="Book 1-on-1 FAANG Interview Coaching | USA-Based Coach | Rupesh Tiwari"
+        customDescription="Schedule personalized FAANG interview coaching with Rupesh Tiwari, USA-based AWS Senior CSM. 85%+ success rate. Directors, VPs, Principal Engineers. EST/PST friendly scheduling."
       />
       <AnnouncementBar />
       <Navigation />
+      <USATrustBar />
 
       <main className="flex-1">
         <div className="px-4 md:px-8 py-4 border-b">

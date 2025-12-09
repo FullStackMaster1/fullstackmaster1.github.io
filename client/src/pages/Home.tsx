@@ -1,6 +1,7 @@
 import Navigation from "@/components/Navigation";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import HeroSection from "@/components/HeroSection";
+import USATrustBar from "@/components/USATrustBar";
 import TrustBar from "@/components/TrustBar";
 import WhyLeadersFailSection from "@/components/WhyLeadersFailSection";
 import AboutSection from "@/components/AboutSection";
@@ -35,6 +36,7 @@ export default function Home() {
       <Navigation />
       <main>
         <HeroSection />
+        <USATrustBar />
         
         <ScrollReveal type="fade" duration={0.7}>
           <ExecutiveCaseStudies />

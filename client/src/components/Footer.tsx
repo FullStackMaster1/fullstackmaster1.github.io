@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Mail, Shield, ArrowUp, Lock, FileCheck, CheckCircle } from "lucide-react";
+import { ExternalLink, Mail, Shield, ArrowUp, Lock, FileCheck, CheckCircle, MapPin, Clock } from "lucide-react";
 import { SiYoutube, SiLinkedin, SiUdemy, SiPluralsight, SiWhatsapp, SiGithub, SiFacebook } from "react-icons/si";
 import { Link } from "wouter";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
@@ -93,6 +93,14 @@ export default function Footer() {
           <div>
             <h3 className="font-semibold mb-4">{footerContact.title}</h3>
             <div className="space-y-3 text-sm">
+              <div className="flex items-center gap-2 text-foreground font-medium">
+                <MapPin className="w-4 h-4 text-blue-500" />
+                {(footerContact as any).location || "New Jersey, USA"}
+              </div>
+              <div className="flex items-center gap-2 text-muted-foreground">
+                <Clock className="w-4 h-4 text-blue-400" />
+                {(footerContact as any).timezone || "Eastern Time (EST)"}
+              </div>
               <a
                 href={`${contact.whatsappLink}?text=${encodeURIComponent(whatsappData.widget.defaultMessage)}`}
                 target="_blank"
