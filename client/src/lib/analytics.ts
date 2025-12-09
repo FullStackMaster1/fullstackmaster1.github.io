@@ -77,11 +77,13 @@ export const trackEvent = (
 };
 
 export const trackBookCall = (source: string) => {
-  trackEvent('book_call_click', 'buy_intent', source);
+  // Maps to GA4 key event: close_convert_lead (booking = conversion)
+  trackEvent('close_convert_lead', 'buy_intent', source);
 };
 
 export const trackWhatsApp = (source: string) => {
-  trackEvent('whatsapp_click', 'contact_intent', source);
+  // Maps to GA4 key event: qualify_lead (contact = qualified interest)
+  trackEvent('qualify_lead', 'contact_intent', source);
 };
 
 export const trackWebinarRegister = (webinarTitle: string) => {
@@ -101,7 +103,8 @@ export const trackSocialClick = (platform: string, source: string) => {
 };
 
 export const trackCTAClick = (ctaName: string, destination: string) => {
-  trackEvent('cta_click', 'buy_intent', ctaName, undefined);
+  // Maps to GA4 key event: purchase (CTA clicks show buying intent)
+  trackEvent('purchase', 'buy_intent', ctaName, undefined);
   trackEvent('outbound_link', 'buy_intent', destination, undefined);
 };
 
