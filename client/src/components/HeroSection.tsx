@@ -349,18 +349,17 @@ export default function HeroSection() {
             </div>
             
             {/* Coach Highlights - Below Photo */}
-            <div className="hidden lg:flex lg:flex-col gap-4 mt-8 max-w-sm ml-auto" data-testid="coach-highlights">
+            <div className="hidden lg:flex lg:flex-col gap-3 mt-6 w-80" data-testid="coach-highlights">
               {/* Experience Card */}
               <div className="bg-card/80 backdrop-blur-sm rounded-lg border border-border/50 p-4 shadow-lg">
-                <div className="flex items-center gap-2 mb-3">
+                <div className="flex items-center gap-2 mb-2">
                   <Building2 className="w-5 h-5 text-orange-500" />
-                  <h3 className="font-semibold text-sm">Experience</h3>
+                  <h3 className="font-semibold text-sm">Current Role</h3>
                 </div>
-                <p className="text-sm text-muted-foreground mb-2">
-                  <span className="font-medium text-foreground">2021-Present:</span> AWS, Senior Customer Solutions Manager
-                </p>
-                <p className="text-xs text-muted-foreground">
-                  Working with senior engineers, architects, engineering managers, directors, and VP-level leaders.
+                <p className="text-xs font-medium text-foreground mb-1">AWS Senior CSM</p>
+                <p className="text-xs text-muted-foreground mb-3">Since 2021</p>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Helping senior engineers, architects, managers, directors, and VPs succeed at FAANG companies.
                 </p>
               </div>
 
@@ -415,20 +414,24 @@ export default function HeroSection() {
               <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg border border-primary/20 p-4 shadow-lg">
                 <div className="flex items-center gap-2 mb-3">
                   <Calendar className="w-5 h-5 text-primary" />
-                  <h3 className="font-semibold text-sm">Session Options</h3>
+                  <h3 className="font-semibold text-sm">Services</h3>
                 </div>
-                <div className="space-y-2 text-sm mb-3">
-                  <div className="flex justify-between items-center">
-                    <span className="text-muted-foreground">Mock Interview</span>
-                    <span className="font-medium">60 min</span>
+                <div className="space-y-2.5 text-xs mb-4">
+                  <div className="flex justify-between items-start">
+                    <span className="text-muted-foreground font-medium">Mock Interview</span>
+                    <Badge variant="outline" className="text-xs">60 min</Badge>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-muted-foreground">Resume Review</span>
-                    <span className="font-medium">45 min</span>
+                  <div className="flex justify-between items-start">
+                    <span className="text-muted-foreground font-medium">Resume Review</span>
+                    <Badge variant="outline" className="text-xs">45 min</Badge>
                   </div>
-                  <div className="flex justify-between items-center">
-                    <span className="text-muted-foreground">Career Strategy</span>
-                    <span className="font-medium">60 min</span>
+                  <div className="flex justify-between items-start">
+                    <span className="text-muted-foreground font-medium">Career Strategy</span>
+                    <Badge variant="outline" className="text-xs">60 min</Badge>
+                  </div>
+                  <div className="flex justify-between items-start">
+                    <span className="text-muted-foreground font-medium">System Design</span>
+                    <Badge variant="outline" className="text-xs">90 min</Badge>
                   </div>
                 </div>
                 <Button
@@ -441,7 +444,7 @@ export default function HeroSection() {
                   data-testid="button-coach-highlights-book"
                 >
                   <Calendar className="w-4 h-4 mr-2" />
-                  Book a Session
+                  Book Now
                 </Button>
               </div>
 
