@@ -188,7 +188,7 @@ export default function HeroSection() {
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-3 mb-4">
+            <div className="flex flex-wrap gap-3 mb-3">
               <Button
                 size="lg"
                 onClick={() => {
@@ -236,9 +236,9 @@ export default function HeroSection() {
             </div>
 
             {hero.leadCapture && (
-              <div className="mb-4 p-4 bg-card/50 rounded-lg border border-border/50">
+              <div className="mb-3 p-3 bg-card/50 rounded-lg border border-border/50">
                 <p className="text-sm font-medium mb-1">{hero.leadCapture.title}</p>
-                <p className="text-xs text-muted-foreground mb-3">{hero.leadCapture.description}</p>
+                <p className="text-xs text-muted-foreground mb-2">{hero.leadCapture.description}</p>
                 <Button
                   size="sm"
                   variant="outline"
@@ -263,7 +263,7 @@ export default function HeroSection() {
             )}
 
             {hero.confidentiality && (
-              <div className="flex flex-wrap items-center gap-3 mb-6" data-testid="confidentiality-badge">
+              <div className="flex flex-wrap items-center gap-3 mb-3" data-testid="confidentiality-badge">
                 <a 
                   href="/confidentiality"
                   className="flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
