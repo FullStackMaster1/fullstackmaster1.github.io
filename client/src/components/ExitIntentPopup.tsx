@@ -18,8 +18,16 @@ export default function ExitIntentPopup() {
       return;
     }
 
+    // Delay exit intent detection to avoid triggering during initial page interaction
+    let isReady = false;
+    const readyTimer = setTimeout(() => {
+      isReady = true;
+    }, 10000); // Wait 10 seconds before enabling exit intent
+
     const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY <= 0 && !hasShown) {
+      // Only trigger if mouse actually leaves top of viewport, user has scrolled, and enough time passed
+      const hasScrolled = window.scrollY > 300;
+      if (e.clientY <= 0 && !hasShown && isReady && hasScrolled) {
         setIsVisible(true);
         setHasShown(true);
         sessionStorage.setItem("exit-intent-shown", "true");
@@ -37,6 +45,7 @@ export default function ExitIntentPopup() {
     window.addEventListener("beforeunload", handleBeforeUnload);
 
     return () => {
+      clearTimeout(readyTimer);
       document.removeEventListener("mouseleave", handleMouseLeave);
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
