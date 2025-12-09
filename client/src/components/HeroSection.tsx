@@ -59,7 +59,7 @@ export default function HeroSection() {
       data-testid="section-hero"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center lg:items-start">
           <div className="order-2 lg:order-1">
             {hero.executiveTagline && (
               <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-3" data-testid="text-executive-tagline">
@@ -318,8 +318,8 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="flex justify-center lg:justify-end order-1 lg:order-2">
-            <div className="relative">
+          <div className="flex justify-center lg:justify-end order-1 lg:order-2 lg:pt-8">
+            <div className="relative lg:sticky lg:top-32">
               <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
                 <img
                   src={profileImage}
