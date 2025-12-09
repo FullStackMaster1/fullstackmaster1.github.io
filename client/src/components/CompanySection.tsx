@@ -1,3 +1,4 @@
+import type { ComponentType } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -6,7 +7,7 @@ import { SiLinkedin, SiFacebook, SiYoutube } from "react-icons/si";
 import companyData from "@/data/company.json";
 import profileData from "@/data/profile.json";
 
-const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+const iconMap: Record<string, ComponentType<{ className?: string }>> = {
   Target,
   Globe,
   Award,
