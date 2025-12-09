@@ -126,8 +126,54 @@ export default function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold mb-4">Connect</h3>
-            <div className="flex flex-wrap gap-2 mb-4">
+            <h3 className="font-semibold mb-4">Follow FullStack Master</h3>
+            <div className="space-y-2 mb-4">
+              <Button variant="outline" size="sm" className="w-full justify-start" asChild>
+                <a
+                  href={socialLinks.linkedIn.company}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="link-footer-linkedin-company"
+                >
+                  <SiLinkedin className="w-4 h-4 mr-2 text-blue-600" />
+                  Follow on LinkedIn
+                </a>
+              </Button>
+              <Button variant="outline" size="sm" className="w-full justify-start" asChild>
+                <a
+                  href={(socialLinks as any).facebook.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="link-footer-facebook-page"
+                >
+                  <SiFacebook className="w-4 h-4 mr-2 text-blue-500" />
+                  Follow on Facebook
+                </a>
+              </Button>
+              <Button variant="outline" size="sm" className="w-full justify-start" asChild>
+                <a
+                  href={socialLinks.youtube.channel}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="link-footer-youtube-channel"
+                >
+                  <SiYoutube className="w-4 h-4 mr-2 text-red-500" />
+                  Subscribe on YouTube
+                </a>
+              </Button>
+              <Button variant="outline" size="sm" className="w-full justify-start" asChild>
+                <a
+                  href="https://www.linkedin.com/newsletters/technical-blogs-6871207419859615744/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  data-testid="link-footer-newsletter"
+                >
+                  <SiLinkedin className="w-4 h-4 mr-2 text-blue-600" />
+                  Subscribe Newsletter
+                </a>
+              </Button>
+            </div>
+            <div className="flex flex-wrap gap-2">
               {socialIcons.map((social: { name: string; label: string; color: string }) => {
                 const IconComponent = socialIconComponents[social.name];
                 const url = getSocialUrl(social.name);
@@ -151,17 +197,6 @@ export default function Footer() {
                 );
               })}
             </div>
-            <Button variant="outline" size="sm" className="w-full" asChild>
-              <a
-                href="https://www.linkedin.com/newsletters/technical-blogs-6871207419859615744/"
-                target="_blank"
-                rel="noopener noreferrer"
-                data-testid="link-footer-newsletter"
-              >
-                <SiLinkedin className="w-4 h-4 mr-2 text-blue-600" />
-                Subscribe Newsletter
-              </a>
-            </Button>
           </div>
         </div>
 
