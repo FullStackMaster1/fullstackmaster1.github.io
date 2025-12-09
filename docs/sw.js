@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fullstack-master-v5-20241209';
+const CACHE_NAME = 'fullstack-master-v6-20241209';
 const OFFLINE_URL = '/';
 
 const ASSETS_TO_CACHE = [
