@@ -20,6 +20,7 @@ interface NavLink {
   label: string;
   href: string;
   isPage: boolean;
+  external?: boolean;
 }
 
 export default function Navigation() {
@@ -59,8 +60,12 @@ export default function Navigation() {
 
   const [location, setLocation] = useLocation();
 
-  const handleNavClick = (href: string, isPage?: boolean) => {
+  const handleNavClick = (href: string, isPage?: boolean, external?: boolean) => {
     setIsOpen(false);
+    if (external) {
+      window.open(href, "_blank", "noopener,noreferrer");
+      return;
+    }
     if (isPage) {
       setLocation(href);
     } else {
@@ -129,7 +134,7 @@ export default function Navigation() {
                 key={link.href}
                 variant="ghost"
                 size="sm"
-                onClick={() => handleNavClick(link.href, link.isPage)}
+                onClick={() => handleNavClick(link.href, link.isPage, link.external)}
                 data-testid={`link-${link.label.toLowerCase().replace(" ", "-")}`}
               >
                 {link.label}
@@ -232,7 +237,7 @@ export default function Navigation() {
                       key={link.href}
                       variant="ghost"
                       className="justify-between h-10"
-                      onClick={() => handleNavClick(link.href, link.isPage)}
+                      onClick={() => handleNavClick(link.href, link.isPage, link.external)}
                       data-testid={`link-mobile-${link.label.toLowerCase().replace(" ", "-")}`}
                     >
                       {link.label}
