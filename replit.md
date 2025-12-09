@@ -165,3 +165,11 @@ The application prioritizes simplicity with the database layer prepared but not 
 **NDA Process**:
 - NDAs are handled personally via WhatsApp/Email (professional approach)
 - Internal NDA document available at `/nda-document` for printing/sending
+
+**Review Updates Process**:
+- IGotAnOffer reviews cannot be automatically scraped (site uses JavaScript rendering, pagination, and blocks automated requests)
+- Script exists at `scripts/scrape-igotanoffer-reviews.ts` but doesn't reliably work
+- **Manual process**: Share screenshot or review details → Add to `client/src/data/reviews.json` → Run `npx tsx scripts/github-update.ts` to deploy
+- Review fields needed: name, title, company, date, rating, text, session type, gotOffer (true/false), offerCompany (if applicable)
+- Reviews display in two carousels: "Success Stories" (gotOffer=true) and "More Client Reviews" (gotOffer=false), both sorted newest-first
+- Recommended: Batch updates weekly or monthly to reduce overhead
