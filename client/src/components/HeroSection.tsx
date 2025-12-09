@@ -349,63 +349,123 @@ export default function HeroSection() {
             </div>
             
             {/* Coach Highlights - Below Photo */}
-            <div className="hidden lg:block mt-12 max-w-sm ml-auto" data-testid="coach-highlights">
-              <div className="bg-card/80 backdrop-blur-sm rounded-lg border border-border/50 p-5 shadow-lg">
-                <div className="flex items-center gap-2 mb-4">
+            <div className="hidden lg:flex lg:flex-col gap-4 mt-8 max-w-sm ml-auto" data-testid="coach-highlights">
+              {/* Experience Card */}
+              <div className="bg-card/80 backdrop-blur-sm rounded-lg border border-border/50 p-4 shadow-lg">
+                <div className="flex items-center gap-2 mb-3">
                   <Building2 className="w-5 h-5 text-orange-500" />
                   <h3 className="font-semibold text-sm">Experience</h3>
                 </div>
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-sm text-muted-foreground mb-2">
                   <span className="font-medium text-foreground">2021-Present:</span> AWS, Senior Customer Solutions Manager
                 </p>
-                <p className="text-xs text-muted-foreground mb-4">
-                  Working with senior engineers, architects, engineering managers, directors, and VP-level leaders on system design, leadership behavior, and strategic thinking.
+                <p className="text-xs text-muted-foreground">
+                  Working with senior engineers, architects, engineering managers, directors, and VP-level leaders.
                 </p>
-                
-                <div className="border-t border-border/50 pt-4 mb-4">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Award className="w-5 h-5 text-primary" />
-                    <h3 className="font-semibold text-sm">Credentials</h3>
+              </div>
+
+              {/* Credentials Card */}
+              <div className="bg-card/80 backdrop-blur-sm rounded-lg border border-border/50 p-4 shadow-lg">
+                <div className="flex items-center gap-2 mb-3">
+                  <Award className="w-5 h-5 text-primary" />
+                  <h3 className="font-semibold text-sm">Credentials</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline" className="text-xs bg-orange-500/10 border-orange-500/20">
+                    <SiAmazon className="w-3 h-3 mr-1 text-orange-500" />
+                    AWS Certified
+                  </Badge>
+                  <Badge variant="outline" className="text-xs bg-blue-500/10 border-blue-500/20">
+                    <SiGoogle className="w-3 h-3 mr-1 text-blue-500" />
+                    GCP Certified
+                  </Badge>
+                  <Badge variant="outline" className="text-xs">
+                    ISB CTO Scholar
+                  </Badge>
+                </div>
+              </div>
+
+              {/* Coaching Stats Card */}
+              <div className="bg-card/80 backdrop-blur-sm rounded-lg border border-border/50 p-4 shadow-lg">
+                <div className="flex items-center gap-2 mb-3">
+                  <Users className="w-5 h-5 text-green-500" />
+                  <h3 className="font-semibold text-sm">Coaching Stats</h3>
+                </div>
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-500" />
+                    <span className="text-muted-foreground">100+ Sessions</span>
                   </div>
-                  <div className="flex flex-wrap gap-2">
-                    <Badge variant="outline" className="text-xs bg-orange-500/10 border-orange-500/20">
-                      <SiAmazon className="w-3 h-3 mr-1 text-orange-500" />
-                      AWS Certified
-                    </Badge>
-                    <Badge variant="outline" className="text-xs bg-blue-500/10 border-blue-500/20">
-                      <SiGoogle className="w-3 h-3 mr-1 text-blue-500" />
-                      GCP Certified
-                    </Badge>
-                    <Badge variant="outline" className="text-xs">
-                      ISB CTO Scholar
-                    </Badge>
+                  <div className="flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4 text-primary" />
+                    <span className="text-muted-foreground">32% Rebook</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Trophy className="w-4 h-4 text-yellow-500" />
+                    <span className="text-muted-foreground">92% Success</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Star className="w-4 h-4 text-yellow-500" />
+                    <span className="text-muted-foreground">5.0 Rating</span>
                   </div>
                 </div>
-                
-                <div className="border-t border-border/50 pt-4">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Users className="w-5 h-5 text-green-500" />
-                    <h3 className="font-semibold text-sm">Coaching Stats</h3>
+              </div>
+
+              {/* Services Preview Card */}
+              <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-lg border border-primary/20 p-4 shadow-lg">
+                <div className="flex items-center gap-2 mb-3">
+                  <Calendar className="w-5 h-5 text-primary" />
+                  <h3 className="font-semibold text-sm">Session Options</h3>
+                </div>
+                <div className="space-y-2 text-sm mb-3">
+                  <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">Mock Interview</span>
+                    <span className="font-medium">60 min</span>
                   </div>
-                  <div className="grid grid-cols-2 gap-3 text-sm">
-                    <div className="flex items-center gap-2">
-                      <CheckCircle className="w-4 h-4 text-green-500" />
-                      <span className="text-muted-foreground">100+ Sessions</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <TrendingUp className="w-4 h-4 text-primary" />
-                      <span className="text-muted-foreground">32% Rebook</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Trophy className="w-4 h-4 text-yellow-500" />
-                      <span className="text-muted-foreground">92% Success</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Star className="w-4 h-4 text-yellow-500" />
-                      <span className="text-muted-foreground">5.0 Rating</span>
-                    </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">Resume Review</span>
+                    <span className="font-medium">45 min</span>
+                  </div>
+                  <div className="flex justify-between items-center">
+                    <span className="text-muted-foreground">Career Strategy</span>
+                    <span className="font-medium">60 min</span>
                   </div>
                 </div>
+                <Button
+                  size="sm"
+                  className="w-full"
+                  onClick={() => {
+                    trackBookCall('coach-highlights');
+                    window.location.href = '/book';
+                  }}
+                  data-testid="button-coach-highlights-book"
+                >
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Book a Session
+                </Button>
+              </div>
+
+              {/* Quick WhatsApp CTA */}
+              <div className="bg-green-500/10 rounded-lg border border-green-500/20 p-4">
+                <p className="text-sm font-medium mb-2">Have questions first?</p>
+                <p className="text-xs text-muted-foreground mb-3">Message me directly - I respond personally.</p>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="w-full border-green-500 text-green-600 hover:bg-green-50 dark:hover:bg-green-950"
+                  asChild
+                >
+                  <a
+                    href={`${contact.whatsappLink}?text=${encodeURIComponent(contact.whatsappMessage)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackWhatsApp('coach-highlights')}
+                    data-testid="button-coach-highlights-whatsapp"
+                  >
+                    <SiWhatsapp className="w-4 h-4 mr-2" />
+                    WhatsApp Me
+                  </a>
+                </Button>
               </div>
             </div>
           </div>
