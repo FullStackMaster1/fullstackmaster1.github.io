@@ -27,6 +27,7 @@ import PWAInstallPrompt from "@/components/PWAInstallPrompt";
 import ExecutiveCaseStudies from "@/components/ExecutiveCaseStudies";
 import FullServicesSection from "@/components/FullServicesSection";
 import ScrollToTop from "@/components/ScrollToTop";
+import CompanySection from "@/components/CompanySection";
 
 export default function Home() {
   return (
@@ -96,6 +97,10 @@ export default function Home() {
         
         <ScrollReveal type="fade">
           <AboutSection />
+        </ScrollReveal>
+        
+        <ScrollReveal type="scale" delay={0.1}>
+          <CompanySection />
         </ScrollReveal>
         
         <ScrollReveal type="slide-up">
