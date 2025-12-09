@@ -55,7 +55,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="min-h-[90vh] flex items-center pt-0 pb-6 bg-gradient-to-br from-background via-background to-primary/5"
+      className="py-8 lg:py-12 bg-gradient-to-br from-background via-background to-primary/5"
       data-testid="section-hero"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -318,8 +318,8 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <div className="flex justify-center lg:justify-end order-1 lg:order-2 lg:pt-8">
-            <div className="relative lg:sticky lg:top-32">
+          <div className="flex justify-center lg:justify-end order-1 lg:order-2">
+            <div className="relative">
               <div className="w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-primary/20 shadow-2xl">
                 <img
                   src={profileImage}
