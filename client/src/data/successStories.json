@@ -14,8 +14,8 @@
     "gotOffer": "Got Offer",
     "verified": "Verified Review",
     "coachNote": "Coach's Confirmation:",
-    "ratingText": "• 50+ verified reviews on IGotAnOffer",
-    "viewAllReviews": "Verify All 50+ Reviews",
+    "ratingText": "• 51+ verified reviews on IGotAnOffer",
+    "viewAllReviews": "Verify All 51+ Reviews",
     "landedAt": "Landed role at"
   },
   "overallRating": {
@@ -208,5 +208,6 @@
   "ctaButton": {
     "text": "Book Your Coaching Session",
     "link": "http://consult.fullstackmaster.net"
-  }
+  },
+  "lastUpdated": "2025-12-09T15:03:39.299Z"
 }
