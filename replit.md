@@ -85,6 +85,7 @@ The application prioritizes simplicity with the database layer prepared but not 
 
 **Section-Specific Content**:
 - `about.json`: Founder story, credentials, coaching philosophy, career journey timeline
+- `company.json`: FullStack Master company info, mission, founder highlight, stats, careers/hiring CTA
 - `methodology.json`: 5-step coaching process with detailed descriptions
 - `services.json`: Service offerings with session demos carousel and embedded YouTube videos
 - `packages.json`: Pricing with "Investment Options" badge, package details
@@ -102,7 +103,11 @@ The application prioritizes simplicity with the database layer prepared but not 
 - `whatsapp.json`: WhatsApp widget messages and prompts
 
 **Homepage Flow** (conversion-optimized for senior leaders):
-1. Hero → 2. TrustBar → 3. Success Stories → 4. Reviews → 5. About → 6. Methodology → 7. Services → 8. Pricing → 9. Why Leaders Fail → 10. FAQ → 11. Booking
+1. Hero → 2. USATrustBar → 3. Executive Case Studies → 4. Why Leaders Fail → 5. TrustBar → 6. Success Stories → 7. Reviews → 8. Methodology → 9. Services → 10. Full Services → 11. Pricing → 12. Booking → 13. Webinar → 14. Articles → 15. Courses → 16. Playlists → 17. About → 18. Company → 19. FAQ
+
+**Utility Scripts** (scripts/):
+- `github-update.ts`: Deploy built site to GitHub Pages (fullstackmaster1.github.io)
+- `scrape-igotanoffer-reviews.ts`: Fetch latest review stats from IGotAnOffer profile (run manually to update review count)
 
 **JSON Update Workflow**: When role/company changes, edit only `profile.json` - all components read from this single source. No code changes required.
 
