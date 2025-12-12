@@ -79,8 +79,8 @@ async function updateDocsFolder() {
   // Update 404.html
   await updateFile(octokit, owner, repo, 'docs/404.html', notFoundHtml, 'Update 404.html with latest changes');
   
-  // Update PWA files (service worker, manifest, icons, favicon)
-  const pwaFiles = ['sw.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'CNAME', 'og-image.png', 'favicon.png'];
+  // Update PWA files, SEO files, and root assets
+  const pwaFiles = ['sw.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'CNAME', 'og-image.png', 'favicon.png', 'apple-touch-icon.png', 'sitemap.xml', 'robots.txt'];
   for (const file of pwaFiles) {
     const filePath = `./docs/${file}`;
     if (fs.existsSync(filePath)) {

@@ -1,4 +1,52 @@
+# Robots.txt for www.fullstackmaster.net
+# FAANG Interview Coaching by Rupesh Tiwari
+# Last updated: December 12, 2025
+
+# Allow all search engine crawlers
 User-agent: *
 Allow: /
 
+# Disallow internal/admin paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Allow important static assets
+Allow: /assets/
+Allow: /favicon.png
+Allow: /apple-touch-icon.png
+Allow: /og-image.png
+
+# Sitemap location
 Sitemap: https://www.fullstackmaster.net/sitemap.xml
+
+# Crawl-delay for polite crawling (1 second between requests)
+Crawl-delay: 1
+
+# Google specific
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Google Image Bot
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /og-image.png
+
+# Bing specific
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Social media crawlers for rich previews
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
