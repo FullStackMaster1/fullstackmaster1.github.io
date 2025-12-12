@@ -9,6 +9,7 @@ import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
 import StickyBanner from "@/components/StickyBanner";
 import SEOStructuredData from "@/components/SEOStructuredData";
+import CookieConsent from "@/components/CookieConsent";
 import Home from "@/pages/Home";
 import Resources from "@/pages/Resources";
 import PrivacyPolicy from "@/pages/PrivacyPolicy";
@@ -47,6 +48,7 @@ function App() {
           <SEOStructuredData />
           <StickyBanner />
           <Toaster />
+          <CookieConsent />
           <Router />
         </TooltipProvider>
       </QueryClientProvider>
