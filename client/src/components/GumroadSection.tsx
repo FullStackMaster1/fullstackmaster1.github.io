@@ -35,12 +35,17 @@ export default function GumroadSection() {
     <section className="py-16 md:py-24 bg-gradient-to-br from-background via-background to-primary/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <Badge variant="secondary" className="mb-4">
-            <Download className="w-3 h-3 mr-1" />
-            Free Career Coaching Vault
-          </Badge>
+          <div className="flex justify-center gap-2 mb-4">
+            <Badge variant="secondary">
+              <Download className="w-3 h-3 mr-1" />
+              Career Coaching Vault
+            </Badge>
+            <Badge className="bg-green-500 text-white border-0 animate-pulse">
+              100% FREE
+            </Badge>
+          </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Frameworks & Resources
+            <span className="text-primary">Free</span> Frameworks & Resources
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Download my proven frameworks and checklists used to coach 4,000+ professionals through FAANG interviews
@@ -66,7 +71,7 @@ export default function GumroadSection() {
         </div>
 
         <div className="text-center">
-          <Button size="lg" asChild>
+          <Button size="lg" asChild className="bg-green-600 hover:bg-green-700 text-white">
             <a
               href="https://rupeshtiwari.gumroad.com/l/rupesh-kit"
               target="_blank"
@@ -74,11 +79,12 @@ export default function GumroadSection() {
               data-testid="button-download-gumroad"
             >
               <Download className="w-4 h-4 mr-2" />
-              Download All Resources (Free)
+              Download All Frameworks Now
+              <Badge className="ml-2 bg-white text-green-600 border-0 text-xs font-bold">FREE</Badge>
             </a>
           </Button>
           <p className="text-sm text-muted-foreground mt-4">
-            No payment required. All frameworks are completely free.
+            No payment required. No credit card needed. Instant download.
           </p>
         </div>
       </div>

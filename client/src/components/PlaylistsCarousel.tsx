@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import playlistsData from "@/data/playlists.json";
-import { ExternalLink, Youtube, PlayCircle } from "lucide-react";
+import { ExternalLink, Youtube, PlayCircle, Gift } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 
@@ -112,7 +112,15 @@ export default function PlaylistsCarousel() {
           <div className="flex items-center justify-center gap-2 mb-4">
             <Youtube className="w-8 h-8 text-red-500" />
           </div>
-          <Badge variant="secondary" className="mb-3">Free Resources</Badge>
+          <div className="flex justify-center gap-2 mb-3">
+            <Badge variant="secondary">
+              <Gift className="w-3 h-3 mr-1" />
+              YouTube Playlists
+            </Badge>
+            <Badge className="bg-green-500 text-white border-0">
+              100% FREE
+            </Badge>
+          </div>
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
             data-testid="text-youtube-title"
@@ -120,7 +128,7 @@ export default function PlaylistsCarousel() {
             Learn Before You <span className="text-primary">Invest</span>
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Watch how I teach. See if my style works for you. 500+ free videos on 
+            Watch how I teach. See if my style works for you. <span className="font-semibold text-primary">500+ free videos</span> on 
             system design, behavioral interviews, and FAANG prep.
           </p>
         </div>

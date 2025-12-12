@@ -9,6 +9,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CourseCard from "./CourseCard";
 import coursesData from "@/data/courses.json";
 import { SiUdemy, SiPluralsight } from "react-icons/si";
+import { Badge } from "@/components/ui/badge";
+import { GraduationCap } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
 
@@ -29,6 +31,15 @@ export default function CoursesCarousel() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
+          <div className="flex justify-center gap-2 mb-4">
+            <Badge variant="secondary">
+              <GraduationCap className="w-3 h-3 mr-1" />
+              Online Courses
+            </Badge>
+            <Badge variant="outline" className="text-primary border-primary/30">
+              Paid
+            </Badge>
+          </div>
           <h2
             className="text-3xl md:text-4xl font-bold mb-4"
             data-testid="text-courses-title"

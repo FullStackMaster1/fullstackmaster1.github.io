@@ -76,10 +76,15 @@ export default function ArticlesSection() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <Badge variant="secondary" className="mb-4">
-              <FileText className="w-3 h-3 mr-1" />
-              Technical Blogs
-            </Badge>
+            <div className="flex justify-center gap-2 mb-4">
+              <Badge variant="secondary">
+                <FileText className="w-3 h-3 mr-1" />
+                Technical Blogs
+              </Badge>
+              <Badge className="bg-green-500 text-white border-0">
+                FREE
+              </Badge>
+            </div>
             <h2
               className="text-3xl md:text-4xl font-bold mb-4"
               data-testid="text-articles-title"
@@ -88,6 +93,9 @@ export default function ArticlesSection() {
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               {sectionDescription}
+            </p>
+            <p className="text-sm text-primary font-medium mt-2">
+              System Design, Leadership Principles, AWS Architecture & more
             </p>
           </div>
 
@@ -167,7 +175,7 @@ export default function ArticlesSection() {
           </Carousel>
 
           <div className="flex flex-wrap justify-center gap-4 mt-8">
-            <Button asChild onClick={handleNewsletterClick}>
+            <Button size="lg" asChild onClick={handleNewsletterClick} className="bg-primary hover:bg-primary/90">
               <a
                 href={newsletterUrl}
                 target="_blank"
@@ -176,9 +184,10 @@ export default function ArticlesSection() {
               >
                 <SiLinkedin className="w-4 h-4 mr-2" />
                 Subscribe to Newsletter
+                <Badge className="ml-2 bg-green-500 text-white border-0 text-xs">FREE</Badge>
               </a>
             </Button>
-            <Button variant="outline" asChild>
+            <Button variant="outline" size="lg" asChild>
               <a
                 href={companyUrl}
                 target="_blank"
@@ -190,6 +199,9 @@ export default function ArticlesSection() {
               </a>
             </Button>
           </div>
+          <p className="text-center text-sm text-muted-foreground mt-4">
+            Join 10,000+ engineers getting weekly System Design & Interview tips
+          </p>
         </div>
       </section>
     </>
