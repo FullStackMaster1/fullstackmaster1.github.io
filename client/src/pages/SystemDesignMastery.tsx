@@ -30,7 +30,7 @@ import WhatsAppWidget from "@/components/WhatsAppWidget";
 import Breadcrumb from "@/components/Breadcrumb";
 import ScrollReveal from "@/components/ScrollReveal";
 import VideoTipsCarousel from "@/components/VideoTipsCarousel";
-import FlowDiagram from "@/components/FlowDiagram";
+import ArchitectureDiagram from "@/components/ArchitectureDiagram";
 import pageData from "@/data/systemDesignPage.json";
 import profile from "@/data/profile.json";
 import { trackEvent } from "@/lib/analytics";
@@ -368,9 +368,9 @@ export default function SystemDesignMastery() {
                         <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
                           Architecture Flow
                         </p>
-                        <FlowDiagram 
+                        <ArchitectureDiagram 
                           components={diagram.components}
-                          className="bg-background rounded-md p-2"
+                          className="bg-background rounded-md p-3"
                         />
                       </div>
 
