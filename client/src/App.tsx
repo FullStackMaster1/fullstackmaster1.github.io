@@ -30,7 +30,6 @@ const HiringManagerPrep = lazy(() => import("@/pages/HiringManagerPrep"));
 const DataEngineerRoadmap = lazy(() => import("@/pages/DataEngineerRoadmap"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
-const StickyBanner = lazy(() => import("@/components/StickyBanner"));
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
 
 function PageLoader() {
@@ -83,9 +82,6 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <SEOStructuredData />
-          <Suspense fallback={null}>
-            <StickyBanner />
-          </Suspense>
           <Toaster />
           <Suspense fallback={null}>
             <CookieConsent />
