@@ -24,6 +24,12 @@
   },
   "socialIcons": [
     {
+      "name": "personalWebsite",
+      "label": "Personal Blog",
+      "color": "text-orange-500",
+      "url": "https://rupeshtiwari.com"
+    },
+    {
       "name": "whatsapp",
       "label": "WhatsApp",
       "color": "text-green-500"

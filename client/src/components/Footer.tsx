@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Mail, Shield, ArrowUp, Lock, FileCheck, CheckCircle, MapPin, Clock, Star, Phone } from "lucide-react";
+import { ExternalLink, Mail, Shield, ArrowUp, Lock, FileCheck, CheckCircle, MapPin, Clock, Star, Phone, Globe } from "lucide-react";
 import { SiYoutube, SiLinkedin, SiUdemy, SiPluralsight, SiWhatsapp, SiGithub, SiFacebook } from "react-icons/si";
 import { Link } from "wouter";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
@@ -9,7 +9,8 @@ import profileData from "@/data/profile.json";
 import whatsappData from "@/data/whatsapp.json";
 import footerData from "@/data/footer.json";
 
-const socialIconComponents: Record<string, typeof SiWhatsapp> = {
+const socialIconComponents: Record<string, any> = {
+  personalWebsite: Globe,
   whatsapp: SiWhatsapp,
   youtube: SiYoutube,
   linkedin: SiLinkedin,
@@ -22,6 +23,7 @@ const socialIconComponents: Record<string, typeof SiWhatsapp> = {
 const getSocialUrl = (name: string): string => {
   const socialLinks = profileData.socialLinks;
   switch (name) {
+    case 'personalWebsite': return socialLinks.personalWebsite.url;
     case 'whatsapp': return `${socialLinks.whatsapp.url}?text=${encodeURIComponent(whatsappData.widget.defaultMessage)}`;
     case 'youtube': return socialLinks.youtube.channel;
     case 'linkedin': return socialLinks.linkedIn.company;
