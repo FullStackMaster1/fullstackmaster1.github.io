@@ -87,6 +87,8 @@ The application prioritizes simplicity with the database layer prepared but not 
 - `about.json`: Founder story, credentials, coaching philosophy, career journey timeline
 - `company.json`: FullStack Master company info, mission, founder highlight, stats, careers/hiring CTA
 - `methodology.json`: 5-step coaching process with detailed descriptions
+- `systemDesignPage.json`: Educational landing page content for /system-design (IFRAIL+T framework, FAQs, personas)
+- `behavioralPage.json`: Educational landing page content for /behavioral-interview (STAR method, Amazon LPs, FAQs)
 - `services.json`: Service offerings with session demos carousel and embedded YouTube videos
 - `packages.json`: Pricing with "Investment Options" badge, package details
 - `faqs.json`: Frequently asked questions
