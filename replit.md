@@ -89,6 +89,8 @@ The application prioritizes simplicity with the database layer prepared but not 
 - `methodology.json`: 5-step coaching process with detailed descriptions
 - `systemDesignPage.json`: Educational landing page content for /system-design (IFRAIL+T framework, FAQs, personas)
 - `behavioralPage.json`: Educational landing page content for /behavioral-interview (STAR method, Amazon LPs, FAQs)
+- `executiveCommunicationPage.json`: Educational landing page for /executive-communication (CLEAR framework, presentation types, FAQs)
+- `resumeChecklistPage.json`: Educational landing page for /resume-checklist (role-specific checklists for VP/Director/Staff/Data Engineer/SA)
 - `services.json`: Service offerings with session demos carousel and embedded YouTube videos
 - `packages.json`: Pricing with "Investment Options" badge, package details
 - `faqs.json`: Frequently asked questions
