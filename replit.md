@@ -91,6 +91,7 @@ The application prioritizes simplicity with the database layer prepared but not 
 - `behavioralPage.json`: Educational landing page content for /behavioral-interview (STAR method, Amazon LPs, FAQs)
 - `executiveCommunicationPage.json`: Educational landing page for /executive-communication (CLEAR framework, presentation types, FAQs)
 - `resumeChecklistPage.json`: Educational landing page for /resume-checklist (role-specific checklists for VP/Director/Staff/Data Engineer/SA)
+- `awsLoopPage.json`: Educational landing page for /aws-loop (AWS Loop interview process, 6 rounds, Bar Raiser, 16 Leadership Principles, 4-week prep roadmap, roles: SRE Manager, Principal Architect, Director, etc.)
 - `services.json`: Service offerings with session demos carousel and embedded YouTube videos
 - `packages.json`: Pricing with "Investment Options" badge, package details
 - `faqs.json`: Frequently asked questions
