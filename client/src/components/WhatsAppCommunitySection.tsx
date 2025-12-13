@@ -3,7 +3,6 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Users, Lightbulb, Gift, ArrowRight, CheckCircle, TrendingUp, Clock, Zap } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
-import profileData from "@/data/profile.json";
 import { trackEvent } from "@/lib/analytics";
 
 const MEMBER_COUNT = 500;
@@ -149,23 +148,18 @@ export default function WhatsAppCommunitySection() {
               <div className="bg-green-600 text-white text-center py-2 text-sm font-medium">
                 <span className="animate-pulse">Join {MEMBER_COUNT}+ professionals today</span>
               </div>
-              <CardContent className="p-8 text-center">
-                <div className="mb-6" id="community-qr">
-                  <div className="w-48 h-48 mx-auto bg-muted rounded-lg flex items-center justify-center border-2 border-dashed border-green-500/30">
-                    <div className="text-center p-4">
-                      <SiWhatsapp className="w-12 h-12 mx-auto text-green-600 mb-3" />
-                      <p className="text-sm text-muted-foreground">
-                        QR Code Coming Soon
-                      </p>
-                      <p className="text-xs text-muted-foreground mt-1">
-                        Scan to join instantly
-                      </p>
-                    </div>
+              <CardContent className="p-6 text-center">
+                <div className="mb-6">
+                  <div className="w-20 h-20 mx-auto rounded-full bg-green-500/10 flex items-center justify-center mb-4">
+                    <SiWhatsapp className="w-10 h-10 text-green-600" />
                   </div>
+                  <h3 className="text-xl font-bold mb-2">Start Here</h3>
+                  <p className="text-sm text-muted-foreground">
+                    Join the General Chat to get started, then explore other groups!
+                  </p>
                 </div>
 
                 <div className="space-y-3">
-                  <p className="text-sm font-medium">Or join via link:</p>
                   <Button 
                     size="lg" 
                     className="w-full bg-green-600 hover:bg-green-700 text-white group"
@@ -173,18 +167,37 @@ export default function WhatsAppCommunitySection() {
                     onClick={handleJoinClick}
                   >
                     <a 
-                      href={profileData.contact.whatsappLink}
+                      href="https://chat.whatsapp.com/Jeuap5XBXIqCQ52ZSrZ0iX"
                       target="_blank"
                       rel="noopener noreferrer"
                       data-testid="link-join-community"
                     >
                       <SiWhatsapp className="w-5 h-5 mr-2" />
-                      Join Free Community Now
+                      Join General Chat
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </a>
                   </Button>
-                  <p className="text-xs text-muted-foreground">
-                    Click to message Rupesh and get your invite link
+                  
+                  <Button 
+                    variant="outline" 
+                    size="lg"
+                    className="w-full border-green-500/30 text-green-600"
+                    asChild
+                    onClick={() => trackEvent("whatsapp_ask_rupesh", "homepage", "cta_click")}
+                  >
+                    <a 
+                      href="https://chat.whatsapp.com/IhjKvkdty0ACYtxIuXz6ZO"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-testid="link-ask-rupesh"
+                    >
+                      <MessageCircle className="w-5 h-5 mr-2" />
+                      Ask Rupesh Directly
+                    </a>
+                  </Button>
+                  
+                  <p className="text-xs text-muted-foreground pt-2">
+                    Click to join instantly - no approval needed
                   </p>
                   <div className="pt-3 border-t">
                     <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
