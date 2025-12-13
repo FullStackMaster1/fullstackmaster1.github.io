@@ -18,6 +18,8 @@ import NDADocument from "@/pages/NDADocument";
 import Book from "@/pages/Book";
 import SystemDesignMastery from "@/pages/SystemDesignMastery";
 import BehavioralMastery from "@/pages/BehavioralMastery";
+import ExecutiveCommunication from "@/pages/ExecutiveCommunication";
+import ResumeChecklist from "@/pages/ResumeChecklist";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -30,6 +32,8 @@ function Router() {
       <Route path="/resources" component={Resources} />
       <Route path="/system-design" component={SystemDesignMastery} />
       <Route path="/behavioral-interview" component={BehavioralMastery} />
+      <Route path="/executive-communication" component={ExecutiveCommunication} />
+      <Route path="/resume-checklist" component={ResumeChecklist} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/confidentiality" component={Confidentiality} />
       <Route path="/nda-document" component={NDADocument} />
