@@ -33,10 +33,12 @@ const benefits = [
 ];
 
 const communityGroups = [
-  { name: "System Design Tips", members: "180+" },
-  { name: "Behavioral Interview Prep", members: "150+" },
-  { name: "Job Postings & Referrals", members: "200+" },
-  { name: "Success Stories", members: "90+" },
+  { name: "General Chat", members: "200+", link: "https://chat.whatsapp.com/Jeuap5XBXIqCQ52ZSrZ0iX", description: "Welcome & networking" },
+  { name: "System Design Tips", members: "180+", link: "https://chat.whatsapp.com/Is6VetflBqVG5nQmyTm9Zl", description: "Daily questions & answers" },
+  { name: "Behavioral Prep", members: "150+", link: "https://chat.whatsapp.com/CLIUiMo2Xkd6lo1MRJFmEp", description: "STAR & Amazon LPs" },
+  { name: "Job Postings", members: "200+", link: "https://chat.whatsapp.com/CX7rDnioRC51AqAeZhX23J", description: "Opportunities & referrals" },
+  { name: "Success Stories", members: "90+", link: "https://chat.whatsapp.com/G6qP8XBBIZU7KzEvwfoQSR", description: "Celebrate wins" },
+  { name: "Ask Rupesh", members: "VIP", link: "https://chat.whatsapp.com/IhjKvkdty0ACYtxIuXz6ZO", description: "Direct Q&A" },
 ];
 
 export default function WhatsAppCommunitySection() {
@@ -116,19 +118,27 @@ export default function WhatsAppCommunitySection() {
             <div className="mt-6">
               <p className="text-sm font-semibold mb-3 flex items-center gap-2">
                 <Zap className="w-4 h-4 text-amber-500" />
-                Community Groups Inside:
+                Join Specific Groups (click to join):
               </p>
-              <div className="flex flex-wrap gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
                 {communityGroups.map((group, idx) => (
-                  <Badge 
-                    key={idx} 
-                    variant="outline" 
-                    className="text-xs py-1"
-                    data-testid={`badge-group-${idx}`}
+                  <a
+                    key={idx}
+                    href={group.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => trackEvent("whatsapp_group_join", "homepage", group.name)}
+                    className="group p-2 rounded-lg border border-green-500/20 bg-green-500/5 hover:bg-green-500/10 transition-colors text-left"
+                    data-testid={`link-group-${idx}`}
                   >
-                    {group.name}
-                    <span className="ml-1 text-muted-foreground">({group.members})</span>
-                  </Badge>
+                    <div className="flex items-center gap-2">
+                      <SiWhatsapp className="w-4 h-4 text-green-600 shrink-0" />
+                      <div className="min-w-0">
+                        <p className="text-xs font-medium truncate">{group.name}</p>
+                        <p className="text-[10px] text-muted-foreground truncate">{group.description}</p>
+                      </div>
+                    </div>
+                  </a>
                 ))}
               </div>
             </div>
