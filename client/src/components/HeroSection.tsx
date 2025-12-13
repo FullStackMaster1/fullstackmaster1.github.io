@@ -188,9 +188,10 @@ export default function HeroSection() {
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-3 mb-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
               <Button
                 size="lg"
+                className="w-full"
                 onClick={() => {
                   trackBookCall('hero-primary');
                   window.location.href = '/book';
@@ -203,7 +204,7 @@ export default function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-green-500 text-green-600 hover:bg-green-50 dark:hover:bg-green-950"
+                className="w-full border-green-500 text-green-600 hover:bg-green-50 dark:hover:bg-green-950"
                 asChild
               >
                 <a
@@ -220,7 +221,7 @@ export default function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-[#0077b5] text-[#0077b5] hover:bg-blue-50 dark:hover:bg-blue-950"
+                className="w-full border-[#0077b5] text-[#0077b5] hover:bg-blue-50 dark:hover:bg-blue-950"
                 asChild
               >
                 <a
