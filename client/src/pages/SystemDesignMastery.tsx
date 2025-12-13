@@ -30,6 +30,7 @@ import WhatsAppWidget from "@/components/WhatsAppWidget";
 import Breadcrumb from "@/components/Breadcrumb";
 import ScrollReveal from "@/components/ScrollReveal";
 import VideoTipsCarousel from "@/components/VideoTipsCarousel";
+import MermaidDiagram from "@/components/MermaidDiagram";
 import pageData from "@/data/systemDesignPage.json";
 import profile from "@/data/profile.json";
 import { trackEvent } from "@/lib/analytics";
@@ -40,6 +41,16 @@ const iconMap: Record<string, typeof GraduationCap> = {
   Users,
   Building
 };
+
+function generateMermaidChart(components: string[]): string {
+  const nodeIds = components.map((_, i) => `n${i}`);
+  const nodeDefinitions = components.map((comp, i) => `    ${nodeIds[i]}["${comp}"]`).join("\n");
+  const connections = nodeIds.slice(0, -1).map((id, i) => `    ${id} --> ${nodeIds[i + 1]}`).join("\n");
+  
+  return `flowchart LR
+${nodeDefinitions}
+${connections}`;
+}
 
 export default function SystemDesignMastery() {
   const handleCTAClick = (ctaType: string) => {
@@ -367,18 +378,10 @@ export default function SystemDesignMastery() {
                         <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
                           Architecture Flow
                         </p>
-                        <div className="flex flex-wrap items-center gap-1.5">
-                          {diagram.components.map((component, cIdx) => (
-                            <div key={cIdx} className="flex items-center">
-                              <div className="px-2 py-1 bg-background border border-border rounded text-xs font-medium">
-                                {component}
-                              </div>
-                              {cIdx < diagram.components.length - 1 && (
-                                <ArrowRight className="w-3 h-3 mx-1 text-muted-foreground flex-shrink-0" />
-                              )}
-                            </div>
-                          ))}
-                        </div>
+                        <MermaidDiagram 
+                          chart={generateMermaidChart(diagram.components)} 
+                          className="bg-background rounded-md p-2"
+                        />
                       </div>
 
                       <div>
