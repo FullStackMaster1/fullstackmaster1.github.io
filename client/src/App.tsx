@@ -8,6 +8,7 @@ import { useEffect, lazy, Suspense } from "react";
 import { initGA } from "./lib/analytics";
 import { useAnalytics } from "./hooks/use-analytics";
 import { useServiceWorker } from "./hooks/use-service-worker";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 import SEOStructuredData from "@/components/SEOStructuredData";
 import PWAUpdateNotification from "@/components/PWAUpdateNotification";
 import { Loader2 } from "lucide-react";
@@ -82,15 +83,17 @@ function App() {
   return (
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <SEOStructuredData />
-          <Toaster />
-          <Suspense fallback={null}>
-            <CookieConsent />
-          </Suspense>
-          <PWAUpdateNotification registration={registration} />
-          <Router />
-        </TooltipProvider>
+        <ThemeProvider>
+          <TooltipProvider>
+            <SEOStructuredData />
+            <Toaster />
+            <Suspense fallback={null}>
+              <CookieConsent />
+            </Suspense>
+            <PWAUpdateNotification registration={registration} />
+            <Router />
+          </TooltipProvider>
+        </ThemeProvider>
       </QueryClientProvider>
     </HelmetProvider>
   );

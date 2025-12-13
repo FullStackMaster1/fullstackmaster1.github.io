@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/collapsible";
 import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, LucideIcon, Target, Users, Sparkles, ChevronDown, Presentation, FileText, Rocket, MessageSquare, Award, Phone, UserCheck, Database } from "lucide-react";
 import SearchBox from "@/components/SearchBox";
+import ThemeToggle from "@/components/ThemeToggle";
 import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
 import siteContent from "@/data/siteContent.json";
@@ -338,6 +339,9 @@ export default function Navigation() {
           </div>
 
           <div className="hidden md:flex items-center gap-2">
+            {/* Theme Toggle */}
+            <ThemeToggle />
+            
             {/* Search Box */}
             <SearchBox className="w-40 lg:w-48" placeholder="Search..." />
             
