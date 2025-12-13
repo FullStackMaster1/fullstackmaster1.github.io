@@ -176,7 +176,7 @@ export default function Navigation() {
                   </div>
                   <div className="flex-1">
                     <div className="font-medium text-sm">System Design Mastery</div>
-                    <div className="text-xs text-muted-foreground">IFRAIL+T Framework Guide</div>
+                    <div className="text-xs text-muted-foreground">IFRAILST Framework Guide</div>
                   </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem
@@ -302,7 +302,7 @@ export default function Navigation() {
                     </div>
                     <div className="flex-1">
                       <span className="text-sm font-medium">System Design Mastery</span>
-                      <span className="block text-[10px] text-muted-foreground">IFRAIL+T Framework Guide</span>
+                      <span className="block text-[10px] text-muted-foreground">IFRAILST Framework Guide</span>
                     </div>
                     <ChevronRight className="w-4 h-4 text-muted-foreground" />
                   </button>

@@ -1,8 +1,8 @@
 {
   "seo": {
-    "title": "System Design Interview Mastery | Rupesh Tiwari Coaching",
-    "description": "Master system design interviews for FAANG companies. Learn the IFRAIL+T framework, common patterns, and get personalized coaching from an AWS Senior CSM with 20+ years experience.",
-    "keywords": ["system design interview", "FAANG interview prep", "system design coaching", "architecture interview", "senior engineer interview", "staff engineer interview", "principal engineer interview"]
+    "title": "System Design Interview Mastery | IFRAILST Framework | Rupesh Tiwari",
+    "description": "Master system design interviews for FAANG companies. Learn the IFRAILST framework - Intent, Functional, Rates, Architecture, Interfaces, Latency, Security, Trade-offs. Coaching from an AWS Senior CSM with 20+ years experience.",
+    "keywords": ["system design interview", "IFRAILST framework", "FAANG interview prep", "system design coaching", "architecture interview", "senior engineer interview", "staff engineer interview", "principal engineer interview"]
   },
   "hero": {
     "badge": "System Design Mastery",
@@ -90,51 +90,65 @@
   },
   "methodology": {
     "badge": "Proven Framework",
-    "title": "The IFRAIL+T Framework",
-    "subtitle": "A structured approach to tackle any system design question",
-    "description": "After coaching 200+ engineers, I've developed a repeatable framework that ensures you cover all the bases while keeping your interview on track.",
+    "title": "The IFRAILST Framework",
+    "subtitle": "A structured 8-step approach to tackle any system design question",
+    "description": "After coaching 200+ engineers, I've developed this repeatable framework that ensures you cover all the bases while keeping your interview on track. Each letter represents a critical pillar of system design.",
     "steps": [
       {
         "letter": "I",
-        "name": "Intent",
-        "description": "Clarify what you're building and why. Understanding the problem is 20% of the solution.",
-        "timeAllocation": "3-5 minutes"
+        "name": "Intent & Users",
+        "description": "Clarify scope & assumptions. Define who uses the system, their goals, scale expectations, and constraints.",
+        "timeAllocation": "2-3 minutes",
+        "output": "Clear problem boundaries"
       },
       {
         "letter": "F",
-        "name": "Functional Requirements",
-        "description": "Define what the system must do. List core features and user stories.",
-        "timeAllocation": "3-5 minutes"
+        "name": "Functional & Non-Functional",
+        "description": "Define what the system must do (features, workflows) and how well it must do it (SLA, latency, durability).",
+        "timeAllocation": "3-5 minutes",
+        "output": "Feature + SLA checklist"
       },
       {
         "letter": "R",
-        "name": "Resource Estimation",
-        "description": "Calculate scale: users, requests per second, storage needs. Shows quantitative thinking.",
-        "timeAllocation": "5 minutes"
+        "name": "Rates, Scale & Growth",
+        "description": "Quantify read/write QPS, data growth, cache hit ratios, and traffic patterns. All architecture decisions depend on scale.",
+        "timeAllocation": "3-5 minutes",
+        "output": "Realistic design sizing"
       },
       {
         "letter": "A",
-        "name": "Architecture (High-Level)",
-        "description": "Draw the box diagram. Start with major components: clients, servers, databases, caches.",
-        "timeAllocation": "10-15 minutes"
+        "name": "Architecture & Boundaries",
+        "description": "Draw the core architecture with 5-8 labeled components. Explain data flow and failure boundaries.",
+        "timeAllocation": "10-15 minutes",
+        "output": "High-level diagram"
       },
       {
         "letter": "I",
-        "name": "Interface Design",
-        "description": "Define APIs between components. Shows you think about contracts and boundaries.",
-        "timeAllocation": "5 minutes"
+        "name": "Interfaces & Data Model",
+        "description": "Define APIs (REST/GraphQL/gRPC), data schemas, indexing, partitioning, and versioning strategy.",
+        "timeAllocation": "5-7 minutes",
+        "output": "Versioned contracts"
       },
       {
         "letter": "L",
-        "name": "Logic & Data Flow",
-        "description": "Walk through how data flows for key operations. Show sequence diagrams if helpful.",
-        "timeAllocation": "5-10 minutes"
+        "name": "Latency, Reliability & Resilience",
+        "description": "Quantify p95/p99 latency targets. Define failover, retries, circuit breakers, and disaster recovery (RPO/RTO).",
+        "timeAllocation": "5-7 minutes",
+        "output": "Reliability strategy"
+      },
+      {
+        "letter": "S",
+        "name": "Security",
+        "description": "Authentication (OAuth2/IAM), authorization (RBAC/ABAC), encryption (TLS/KMS), rate limiting, and audit logging.",
+        "timeAllocation": "3-5 minutes",
+        "output": "Auth & encryption plan"
       },
       {
         "letter": "T",
-        "name": "Trade-offs & Bottlenecks",
-        "description": "Discuss what you'd optimize, alternative approaches, and known limitations.",
-        "timeAllocation": "5-10 minutes"
+        "name": "Trade-offs, Testing & Telemetry",
+        "description": "Highlight 2-3 explicit trade-offs. Define metrics to track, chaos/load testing strategy, and alerting setup.",
+        "timeAllocation": "5-7 minutes",
+        "output": "Measurable reasoning"
       }
     ]
   },

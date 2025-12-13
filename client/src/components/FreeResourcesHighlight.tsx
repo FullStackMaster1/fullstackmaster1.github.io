@@ -18,10 +18,10 @@ export default function FreeResourcesHighlight() {
   const educationalGuides = [
     {
       title: "System Design Mastery",
-      subtitle: "IFRAIL+T Framework",
+      subtitle: "IFRAILST Framework",
       description: "Learn the exact framework used by Amazon, Google & Meta engineers to ace system design interviews",
       highlights: [
-        "Step-by-step IFRAIL+T methodology",
+        "Step-by-step IFRAILST methodology",
         "Real FAANG interview examples",
         "Common mistakes to avoid",
         "Role-specific guidance"
