@@ -139,15 +139,7 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-primary" />
                 {contact.email}
               </a>
-              <a
-                href={`tel:${contact.phone}`}
-                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
-                data-testid="link-footer-phone"
-              >
-                <Phone className="w-4 h-4 text-blue-500" />
-                {contact.phone}
-              </a>
-              <p className="text-muted-foreground pt-2 text-xs">
+                            <p className="text-muted-foreground pt-2 text-xs">
                 {footerContact.availabilityText}
               </p>
             </div>

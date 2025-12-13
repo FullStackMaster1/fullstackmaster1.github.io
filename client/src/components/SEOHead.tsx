@@ -96,7 +96,6 @@ export default function SEOHead({ page = 'home', customTitle, customDescription 
     "name": brand.name,
     "description": descriptions.medium,
     "url": seo.canonical,
-    "telephone": contact.phone,
     "email": contact.email,
     "address": {
       "@type": "PostalAddress",

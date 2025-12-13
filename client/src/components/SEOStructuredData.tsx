@@ -39,7 +39,6 @@ export default function SEOStructuredData() {
     "logo": "https://www.fullstackmaster.net/icon-512.png",
     "image": "https://www.fullstackmaster.net/og-image.png",
     "description": profile.descriptions.seo,
-    "telephone": profile.contact.phone,
     "email": profile.contact.email,
     "priceRange": "$120-$150",
     "aggregateRating": {
@@ -268,7 +267,6 @@ export default function SEOStructuredData() {
     "name": "FullStack Master - FAANG Interview Coaching",
     "description": profile.descriptions.seo,
     "url": profile.brand.website,
-    "telephone": profile.contact.phone,
     "email": profile.contact.email,
     "priceRange": "$120-$600",
     "openingHoursSpecification": {

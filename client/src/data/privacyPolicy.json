@@ -3,8 +3,7 @@
   "companyName": "FullStack Master",
   "websiteUrl": "fullstackmaster.net",
   "contactEmail": "rupesh@fullstackmaster.net",
-  "contactPhone": "+1-609-442-4081",
-  "sections": [
+    "sections": [
     {
       "id": "introduction",
       "title": "Introduction",
@@ -198,7 +197,6 @@
         "company": "FullStack Master",
         "name": "Rupesh Tiwari",
         "email": "rupesh@fullstackmaster.net",
-        "phone": "+1-609-442-4081",
         "whatsapp": "https://wa.me/16094424081"
       },
       "supervisoryAuthority": "For EU/UK users: You have the right to lodge a complaint with your local data protection authority (e.g., UK ICO: ico.org.uk, or your country's equivalent)."

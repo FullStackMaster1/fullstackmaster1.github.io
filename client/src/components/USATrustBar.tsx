@@ -1,6 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import profile from "@/data/profile.json";
-import { MapPin, Clock, Phone, Users, Shield } from "lucide-react";
+import { MapPin, Clock, MessageCircle, Users, Shield } from "lucide-react";
 
 export default function USATrustBar() {
   const trust = profile.usaTrust;
@@ -19,10 +19,15 @@ export default function USATrustBar() {
             <span>{trust.timezone}</span>
           </div>
           
-          <div className="flex items-center gap-2">
-            <Phone className="w-4 h-4 text-blue-200" />
-            <span>{profile.contact.phone}</span>
-          </div>
+          <a 
+            href={profile.contact.whatsappLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:text-blue-100 transition-colors"
+          >
+            <MessageCircle className="w-4 h-4 text-green-300" />
+            <span>WhatsApp</span>
+          </a>
           
           <div className="hidden sm:flex items-center gap-2">
             <Users className="w-4 h-4 text-blue-200" />

@@ -89,7 +89,7 @@
     ],
     "usaSpecific": [
       { "icon": "MapPin", "label": "USA-Based", "description": "New Jersey, USA" },
-      { "icon": "Phone", "label": "US Phone", "description": "+1-609-442-4081" },
+      { "icon": "MessageCircle", "label": "WhatsApp", "description": "Chat Securely" },
       { "icon": "Clock", "label": "EST/PST Hours", "description": "Flexible Scheduling" }
     ]
   },

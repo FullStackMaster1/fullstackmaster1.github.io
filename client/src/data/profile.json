@@ -23,7 +23,6 @@
     ]
   },
   "contact": {
-    "phone": "+1-609-442-4081",
     "phoneClean": "16094424081",
     "email": "rupesh@fullstackmaster.net",
     "whatsappLink": "https://wa.me/16094424081",
@@ -92,7 +91,7 @@
     "companies": ["Amazon", "Google", "Meta", "Microsoft", "Apple", "Netflix"],
     "badges": [
       "Based in USA",
-      "US Phone: +1-609-442-4081",
+      "WhatsApp Available",
       "EST/PST Friendly",
       "500+ US Clients"
     ]
