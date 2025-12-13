@@ -38,6 +38,10 @@
     "logoAlt": "FullStack Master Logo"
   },
   "socialLinks": {
+    "personalWebsite": {
+      "url": "https://rupeshtiwari.com",
+      "label": "Personal Blog"
+    },
     "linkedIn": {
       "personal": "https://www.linkedin.com/in/rupesh-tiwari/",
       "company": "https://in.linkedin.com/company/fullstack-master",

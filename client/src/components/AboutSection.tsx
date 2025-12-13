@@ -1,7 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Briefcase, Award, Users, Star, CheckCircle, Calendar, Code, Layers, Cloud, Rocket, ExternalLink, LucideIcon } from "lucide-react";
+import { Briefcase, Award, Users, Star, CheckCircle, Calendar, Code, Layers, Cloud, Rocket, ExternalLink, LucideIcon, Globe } from "lucide-react";
 import { SiWhatsapp, SiLinkedin } from "react-icons/si";
 import aboutData from "@/data/about.json";
 import profileData from "@/data/profile.json";
@@ -155,7 +155,7 @@ export default function AboutSection() {
               </CardContent>
             </Card>
 
-            <div className="flex flex-col sm:flex-row gap-0 w-full">
+            <div className="flex flex-col sm:flex-row gap-2 w-full">
               <Button size="lg" asChild className="flex-1">
                 <a
                   href={`${contact.whatsappLink}?text=${encodeURIComponent(contact.whatsappMessage)}`}
@@ -175,9 +175,23 @@ export default function AboutSection() {
                   data-testid="button-linkedin"
                 >
                   <SiLinkedin className="w-4 h-4 mr-2" />
-                  View LinkedIn Profile
+                  View LinkedIn
                 </a>
               </Button>
+            </div>
+            
+            <div className="pt-4 border-t border-border">
+              <a
+                href={(socialLinks as any).personalWebsite?.url || "https://rupeshtiwari.com"}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary/80 transition-colors font-medium"
+                data-testid="link-personal-website"
+              >
+                <Globe className="w-4 h-4" />
+                Learn more about me at rupeshtiwari.com
+                <ExternalLink className="w-3 h-3" />
+              </a>
             </div>
           </div>
         </div>
