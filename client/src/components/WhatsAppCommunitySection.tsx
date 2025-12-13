@@ -2,7 +2,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Users, Lightbulb, Gift, ArrowRight, CheckCircle, TrendingUp, Clock, Zap, Calendar, Share2, Percent, Star, Sparkles, Copy } from "lucide-react";
-import { SiWhatsapp, SiLinkedin, SiTwitter } from "react-icons/si";
+import { SiWhatsapp, SiLinkedin, SiX } from "react-icons/si";
 import { trackEvent } from "@/lib/analytics";
 import { useState } from "react";
 
@@ -307,7 +307,7 @@ export default function WhatsAppCommunitySection() {
                     onClick={() => handleShareClick('twitter')}
                     data-testid="button-share-twitter"
                   >
-                    <SiTwitter className="w-3 h-3 mr-1 text-sky-500" />
+                    <SiX className="w-3 h-3 mr-1" />
                     Twitter
                   </Button>
                   <Button 

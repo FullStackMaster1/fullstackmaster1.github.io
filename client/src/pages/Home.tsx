@@ -35,6 +35,10 @@ const FreeResourcesHighlight = lazy(() => import("@/components/FreeResourcesHigh
 const SeasonalOffersSection = lazy(() => import("@/components/SeasonalOffersSection"));
 const WhatsAppCommunitySection = lazy(() => import("@/components/WhatsAppCommunitySection"));
 const InlineShortsCarousel = lazy(() => import("@/components/InlineShortsCarousel"));
+const EmailCapturePopup = lazy(() => import("@/components/EmailCapturePopup"));
+const VideoTestimonialsSection = lazy(() => import("@/components/VideoTestimonialsSection"));
+const AvailabilityBanner = lazy(() => import("@/components/AvailabilityBanner"));
+const BlogSection = lazy(() => import("@/components/BlogSection"));
 
 function SectionLoader() {
   return (
@@ -79,8 +83,20 @@ export default function Home() {
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
+          <ScrollReveal type="fade" duration={0.6}>
+            <AvailabilityBanner slotsLeft={3} />
+          </ScrollReveal>
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="slide-up" delay={0.1}>
             <ReviewsCarousel />
+          </ScrollReveal>
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <ScrollReveal type="fade" duration={0.7}>
+            <VideoTestimonialsSection />
           </ScrollReveal>
         </Suspense>
         
@@ -157,6 +173,12 @@ export default function Home() {
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
+          <ScrollReveal type="fade" duration={0.7}>
+            <BlogSection />
+          </ScrollReveal>
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="fade" delay={0.1}>
             <WhatsAppCommunitySection />
           </ScrollReveal>
@@ -192,6 +214,9 @@ export default function Home() {
       </Suspense>
       <Suspense fallback={null}>
         <PWAInstallPrompt />
+      </Suspense>
+      <Suspense fallback={null}>
+        <EmailCapturePopup />
       </Suspense>
     </div>
   );
