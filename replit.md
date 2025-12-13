@@ -106,16 +106,22 @@ The application prioritizes simplicity with the database layer prepared but not 
 - `footer.json`: Footer links, social media icons, contact info display
 - `booking.json`: Booking section content, process steps, session info
 - `whatsapp.json`: WhatsApp widget messages and prompts
+- `youtubeShorts.json`: YouTube Shorts playlist data with page mappings for contextual display
+
+**New Components** (December 13, 2025):
+- `WhatsAppCommunitySection.tsx`: Free WhatsApp community join section with QR code placeholder, benefit cards, and join CTA
+- `InlineShortsCarousel.tsx`: Inline video carousel that plays YouTube playlists in a modal without redirect (data-driven from youtubeShorts.json)
+- `SeasonalOffersSection.tsx`: Holiday/seasonal promotional bundles with special pricing
 
 **Homepage Flow** (conversion-optimized for senior leaders):
-1. Hero → 2. USATrustBar → 3. Executive Case Studies → 4. Why Leaders Fail → 5. TrustBar → 6. Success Stories → 7. Reviews → 8. Methodology → 9. Services → 10. Full Services → 11. Pricing → 12. Booking → 13. Webinar → 14. Articles → 15. Courses → 16. Playlists → 17. About → 18. Company → 19. FAQ
+1. Hero → 2. USATrustBar → 3. Executive Case Studies → 4. Why Leaders Fail → 5. TrustBar → 6. Success Stories → 7. Reviews → 8. Methodology → 9. Services → 10. Full Services → 11. Seasonal Offers → 12. Pricing → 13. Booking → 14. Webinar → 15. Articles → 16. Courses → 17. Playlists → 18. Inline Video Shorts → 19. WhatsApp Community → 20. About → 21. Company → 22. FAQ
 
-**SEO & Digital Marketing Infrastructure** (December 12, 2025):
+**SEO & Digital Marketing Infrastructure** (December 13, 2025):
 - **Google Analytics 4**: Comprehensive tracking via `client/src/lib/analytics.ts` including scroll depth (25/50/75/90/100%), exit intent detection, time on page (30s/1m/2m/5m/10m milestones), session tracking, CTA clicks, carousel interactions, form events, video plays
 - **Cookie Consent**: GDPR-compliant banner (`CookieConsent.tsx`) with Accept All/Essential Only options, localStorage persistence
 - **XML Sitemap**: Updated `public/sitemap.xml` with all pages and hash anchors, proper lastmod dates
 - **Robots.txt**: Enhanced `public/robots.txt` with bot-specific directives (Googlebot, Bingbot, social media crawlers)
-- **Structured Data Schemas** (`SEOStructuredData.tsx`): Person, Organization, Service, FAQ, Website, Breadcrumb, Review (with 10 real reviews), HowTo (coaching process), Course, LocalBusiness
+- **Structured Data Schemas** (`SEOHead.tsx`): Person, Service, FAQ, LocalBusiness, WebSite, Breadcrumb, Course (Udemy/Pluralsight), Review (top 5 testimonials), VideoObject (YouTube playlists)
 
 **Utility Scripts** (scripts/):
 - `github-update.ts`: Deploy built site to GitHub Pages (fullstackmaster1.github.io)
