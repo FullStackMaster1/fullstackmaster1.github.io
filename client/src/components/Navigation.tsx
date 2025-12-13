@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, LucideIcon, Target, Users, Sparkles, ChevronDown, Presentation, FileText, Rocket, MessageSquare } from "lucide-react";
+import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, LucideIcon, Target, Users, Sparkles, ChevronDown, Presentation, FileText, Rocket, MessageSquare, Award } from "lucide-react";
 import SearchBox from "@/components/SearchBox";
 import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
@@ -229,6 +229,19 @@ export default function Navigation() {
                     <div className="text-xs text-muted-foreground">Role-Specific Resume Guides</div>
                   </div>
                 </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="flex items-start gap-3 p-3 cursor-pointer"
+                  onClick={() => handleNavClick('/aws-loop', true)}
+                  data-testid="link-aws-loop-nav"
+                >
+                  <div className="p-2 rounded-md bg-orange-500/10">
+                    <Award className="w-4 h-4 text-orange-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">AWS Loop Prep</div>
+                    <div className="text-xs text-muted-foreground">Amazon Interview Mastery</div>
+                  </div>
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
@@ -413,6 +426,20 @@ export default function Navigation() {
                     <div className="flex-1">
                       <span className="text-sm font-medium">Resume Checklist</span>
                       <span className="block text-[10px] text-muted-foreground">Role-Specific Resume Guides</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/aws-loop', true)}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-orange-500/5 border border-orange-500/20 hover:bg-orange-500/10 transition-colors text-left"
+                    data-testid="mobile-link-aws-loop"
+                  >
+                    <div className="p-2 rounded-md bg-orange-500/10">
+                      <Award className="w-5 h-5 text-orange-600" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-sm font-medium">AWS Loop Prep</span>
+                      <span className="block text-[10px] text-muted-foreground">Amazon Interview Mastery</span>
                     </div>
                     <ChevronRight className="w-4 h-4 text-muted-foreground" />
                   </button>
