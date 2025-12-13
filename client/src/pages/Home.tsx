@@ -36,7 +36,6 @@ const SeasonalOffersSection = lazy(() => import("@/components/SeasonalOffersSect
 const WhatsAppCommunitySection = lazy(() => import("@/components/WhatsAppCommunitySection"));
 const InlineShortsCarousel = lazy(() => import("@/components/InlineShortsCarousel"));
 const EmailCapturePopup = lazy(() => import("@/components/EmailCapturePopup"));
-const VideoTestimonialsSection = lazy(() => import("@/components/VideoTestimonialsSection"));
 const AvailabilityBanner = lazy(() => import("@/components/AvailabilityBanner"));
 const BlogSection = lazy(() => import("@/components/BlogSection"));
 
@@ -94,11 +93,6 @@ export default function Home() {
           </ScrollReveal>
         </Suspense>
         
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="fade" duration={0.7}>
-            <VideoTestimonialsSection />
-          </ScrollReveal>
-        </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="slide-up" duration={0.8}>
