@@ -21,6 +21,7 @@ import BehavioralMastery from "@/pages/BehavioralMastery";
 import ExecutiveCommunication from "@/pages/ExecutiveCommunication";
 import ResumeChecklist from "@/pages/ResumeChecklist";
 import SolutionArchitectRoadmap from "@/pages/SolutionArchitectRoadmap";
+import SoftSkillsGuide from "@/pages/SoftSkillsGuide";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -36,6 +37,7 @@ function Router() {
       <Route path="/executive-communication" component={ExecutiveCommunication} />
       <Route path="/resume-checklist" component={ResumeChecklist} />
       <Route path="/solution-architect" component={SolutionArchitectRoadmap} />
+      <Route path="/soft-skills" component={SoftSkillsGuide} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/confidentiality" component={Confidentiality} />
       <Route path="/nda-document" component={NDADocument} />

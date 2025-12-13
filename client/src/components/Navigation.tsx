@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, LucideIcon, Target, Users, Sparkles, ChevronDown, Presentation, FileText, Rocket } from "lucide-react";
+import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, LucideIcon, Target, Users, Sparkles, ChevronDown, Presentation, FileText, Rocket, MessageSquare } from "lucide-react";
 import SearchBox from "@/components/SearchBox";
 import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
@@ -162,6 +162,19 @@ export default function Navigation() {
                   <div className="flex-1">
                     <div className="font-medium text-sm">Solution Architect Roadmap</div>
                     <div className="text-xs text-muted-foreground">From service company to FAANG</div>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="flex items-start gap-3 p-3 cursor-pointer"
+                  onClick={() => handleNavClick('/soft-skills', true)}
+                  data-testid="link-soft-skills-nav"
+                >
+                  <div className="p-2 rounded-md bg-purple-500/10">
+                    <MessageSquare className="w-4 h-4 text-purple-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">Soft Skills Guide</div>
+                    <div className="text-xs text-muted-foreground">Communication & Interview Tips</div>
                   </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem
@@ -330,6 +343,20 @@ export default function Navigation() {
                     <div className="flex-1">
                       <span className="text-sm font-medium">Solution Architect Roadmap</span>
                       <span className="block text-[10px] text-muted-foreground">From service company to FAANG</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/soft-skills', true)}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-purple-500/5 border border-purple-500/20 hover:bg-purple-500/10 transition-colors text-left"
+                    data-testid="mobile-link-soft-skills"
+                  >
+                    <div className="p-2 rounded-md bg-purple-500/10">
+                      <MessageSquare className="w-5 h-5 text-purple-600" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-sm font-medium">Soft Skills Guide</span>
+                      <span className="block text-[10px] text-muted-foreground">Communication & Interview Tips</span>
                     </div>
                     <ChevronRight className="w-4 h-4 text-muted-foreground" />
                   </button>

@@ -1,0 +1,348 @@
+{
+  "seo": {
+    "title": "Soft Skills for Solution Architects | Interview Guide | Rupesh Tiwari",
+    "description": "Master the soft skills that get you hired as a Solution Architect. Learn body language, rapport building, personality types, and interview techniques. Complete guide with examples.",
+    "keywords": ["solution architect soft skills", "SA interview soft skills", "cloud architect communication", "technical interview soft skills", "how to sell yourself in interview", "building rapport interview", "body language interview", "solution architect interview tips"]
+  },
+  "hero": {
+    "badge": "The Other 50%",
+    "title": "Technical Skills Get You Interviews",
+    "highlight": "Soft Skills Get You Offers",
+    "subtitle": "Why great engineers fail SA interviews (and how to fix it)",
+    "description": "You've mastered AWS, aced system design, and know your architecture patterns. But in Solution Architect interviews, 50% of the evaluation is how you communicate, build rapport, and handle stakeholders. This guide shows you exactly what hiring managers look for."
+  },
+  "whyItMatters": {
+    "badge": "The Truth",
+    "title": "Why Technical Excellence Isn't Enough",
+    "subtitle": "What hiring managers actually evaluate",
+    "stats": [
+      {
+        "percentage": "55%",
+        "label": "How you look when speaking",
+        "description": "Body language, eye contact, posture"
+      },
+      {
+        "percentage": "38%",
+        "label": "How you sound",
+        "description": "Tone, pace, confidence, enthusiasm"
+      },
+      {
+        "percentage": "7%",
+        "label": "What you actually say",
+        "description": "The technical content of your answer"
+      }
+    ],
+    "insight": "This is why brilliant engineers with poor communication skills lose to good engineers with great communication skills. Solution Architects talk to executives, not just developers."
+  },
+  "personalityTypes": {
+    "badge": "Read Your Interviewer",
+    "title": "The 4 Personality Types of Hiring Managers",
+    "subtitle": "Adapt your communication style to theirs",
+    "types": [
+      {
+        "name": "Analytical",
+        "icon": "BarChart",
+        "signs": "Asks for specifics, numbers, and details",
+        "approach": "Show them statistics, facts, details, correlations on charts",
+        "keywords": ["Data-driven", "Logical", "Detail-oriented"],
+        "example": "When they ask about your architecture, include metrics: 'Reduced latency by 40%, handled 10K RPS, saved $50K/month'"
+      },
+      {
+        "name": "Intuitive",
+        "icon": "Lightbulb",
+        "signs": "Wants to get to the point fast, impatient with details",
+        "approach": "Talk about the Big Picture, skip the implementation details",
+        "keywords": ["Vision-focused", "Strategic", "Fast-paced"],
+        "example": "Lead with outcomes: 'We built a real-time analytics platform that enabled same-day decision making for executives'"
+      },
+      {
+        "name": "Personal",
+        "icon": "Heart",
+        "signs": "Good listener, asks about team dynamics, collaborative",
+        "approach": "Share stories, talk about people, emphasize relationships",
+        "keywords": ["Empathetic", "Team-oriented", "Relationship-focused"],
+        "example": "Emphasize collaboration: 'I worked closely with the product team to understand their needs and built trust over time'"
+      },
+      {
+        "name": "Functional",
+        "icon": "ListChecks",
+        "signs": "Asks about processes, procedures, methodologies",
+        "approach": "Show them HOW things are done, be methodical and structured",
+        "keywords": ["Process-oriented", "Systematic", "Organized"],
+        "example": "Walk through your process: 'First, we gathered requirements, then created design docs, got approval, implemented in sprints...'"
+      }
+    ]
+  },
+  "bodyLanguage": {
+    "badge": "Non-Verbal Communication",
+    "title": "Read the Room",
+    "subtitle": "Body language cues that tell you exactly what to do",
+    "signals": [
+      {
+        "signal": "Leaning Forward",
+        "meaning": "They're interested",
+        "action": "Keep talking, you're on the right track",
+        "icon": "ThumbsUp"
+      },
+      {
+        "signal": "Leaning Back",
+        "meaning": "They've heard enough",
+        "action": "Stop talking, wrap up your point quickly",
+        "icon": "Hand"
+      },
+      {
+        "signal": "Crossing Arms",
+        "meaning": "They disagree or are skeptical",
+        "action": "Change what you're saying, acknowledge their concern",
+        "icon": "RotateCcw"
+      },
+      {
+        "signal": "Feet Pointing to Door",
+        "meaning": "They're ready to end the interview",
+        "action": "Stop immediately, don't hold them up",
+        "icon": "DoorOpen"
+      }
+    ],
+    "yourBody": {
+      "title": "Your Own Body Language",
+      "tips": [
+        "Maintain eye contact (but don't stare)",
+        "Sit up straight, lean slightly forward to show engagement",
+        "Use hand gestures naturally to emphasize points",
+        "Smile genuinely when appropriate",
+        "Mirror their energy level subtly"
+      ]
+    }
+  },
+  "interviewTechniques": {
+    "badge": "Advanced Techniques",
+    "title": "Interview Techniques That Work",
+    "techniques": [
+      {
+        "name": "The Shutdown Technique",
+        "description": "When asked a technical question you know well, answer with such depth that there's no doubt you're an expert. This 'shuts down' further technical probing and builds confidence.",
+        "how": "Pick 3-4 topics you know deeply. When asked about them, go into implementation details, trade-offs, and real-world examples.",
+        "example": "If asked about load balancers, don't just say 'distributes traffic'. Explain L4 vs L7, sticky sessions, health checks, connection draining, and when you'd choose each."
+      },
+      {
+        "name": "Building Rapport",
+        "description": "Create a personal and emotional connection with the interviewer. When rapport exists, every answer sounds better and knowledge gaps matter less.",
+        "how": "Research your interviewer. Find common ground. Show genuine interest in their challenges and goals.",
+        "example": "Start with: 'I read about your team's work on [X]. That's impressive. What's the biggest challenge you're facing now?'"
+      },
+      {
+        "name": "Selling Yourself",
+        "description": "Understand that hiring managers are solving a problem. Position yourself as the solution.",
+        "how": "Find their goals, show how your skills create value that exceeds your salary cost.",
+        "example": "At the end, say: 'What are your goals for this role? Because if I join, I want to know how I can help you achieve them.'"
+      }
+    ]
+  },
+  "commonQuestions": {
+    "badge": "Be Prepared",
+    "title": "Soft Skill Questions You Must Prepare",
+    "categories": [
+      {
+        "name": "About You",
+        "questions": [
+          {
+            "id": "soft-1",
+            "question": "Tell me about yourself",
+            "framework": "Present → Past → Future",
+            "answer": "Start with your current role and key achievement, briefly mention relevant past experience, then explain why you're excited about this opportunity. Keep it under 2 minutes.",
+            "example": "I'm currently a Sr. Software Architect at [Company] where I led the cloud migration of our core platform to AWS, reducing costs by 40%. I've spent 15 years building enterprise systems, starting as a developer and progressively taking on more architecture responsibility. I'm excited about this SA role because I want to help customers solve complex cloud challenges while continuing to grow my leadership skills."
+          },
+          {
+            "id": "soft-2",
+            "question": "What qualities make you a good fit?",
+            "framework": "Job Description → Your Proof",
+            "answer": "Map your experience directly to what they're looking for. Use specific examples.",
+            "example": "I see you need someone who can translate technical concepts for executives. In my current role, I present architecture decisions to our C-suite monthly. I've developed a skill for using analogies and visuals that make complex systems understandable to non-technical stakeholders."
+          },
+          {
+            "id": "soft-3",
+            "question": "Why do you want to join us?",
+            "framework": "Research → Alignment → Enthusiasm",
+            "answer": "Show you've done homework. Connect their mission to your goals. Be genuine.",
+            "example": "I've followed [Company's] innovation in [area]. Your approach to [specific thing] aligns with how I think about architecture. I want to be part of a team that's pushing boundaries, not just maintaining legacy systems."
+          }
+        ]
+      },
+      {
+        "name": "Your Work",
+        "questions": [
+          {
+            "id": "soft-4",
+            "question": "What's your biggest contribution to your last employer?",
+            "framework": "Situation → Action → Result (with numbers)",
+            "answer": "Pick a project where you had significant technical and business impact. Quantify everything.",
+            "example": "I designed and led the implementation of our event-driven architecture. This reduced system coupling, cut deployment time from 2 weeks to 2 days, and enabled us to scale to 3x traffic during Black Friday without incidents."
+          },
+          {
+            "id": "soft-5",
+            "question": "What was your biggest challenge and how did you overcome it?",
+            "framework": "Challenge → Your Approach → Learning",
+            "answer": "Show resilience and problem-solving. Be honest about the difficulty.",
+            "example": "Our legacy monolith was crashing under load, and we couldn't rewrite it fast enough. I proposed a strangler pattern - we incrementally extracted services while keeping the system running. It took 18 months, but we completed migration with zero downtime."
+          }
+        ]
+      },
+      {
+        "name": "Working with Others",
+        "questions": [
+          {
+            "id": "soft-6",
+            "question": "How do you handle disagreements with stakeholders?",
+            "framework": "Listen → Understand → Propose → Compromise",
+            "answer": "Show you can disagree professionally while maintaining relationships.",
+            "example": "I first seek to understand their perspective completely. Then I present data supporting my view. If we still disagree, I propose an experiment or proof-of-concept. Sometimes I'm wrong, and I'm comfortable admitting that."
+          },
+          {
+            "id": "soft-7",
+            "question": "How do you explain technical concepts to non-technical people?",
+            "framework": "Analogy → Visual → Outcome Focus",
+            "answer": "Demonstrate this skill by giving a simple example.",
+            "example": "I use analogies from everyday life. For load balancing, I compare it to a restaurant host distributing customers across waiters. For caching, it's like keeping frequently used items on your desk instead of walking to the filing cabinet each time."
+          }
+        ]
+      }
+    ]
+  },
+  "whatManagersWant": {
+    "badge": "Inside Knowledge",
+    "title": "What Hiring Managers Actually Want",
+    "subtitle": "Direct from people who've hired hundreds of SAs",
+    "qualities": [
+      {
+        "quality": "Technical Competency",
+        "description": "Can you actually do the job? Depth matters more than breadth.",
+        "howToShow": "Go deep on topics you know. Use the Shutdown Technique."
+      },
+      {
+        "quality": "Trustworthiness",
+        "description": "Can they rely on you with customers and executives?",
+        "howToShow": "Be honest about what you don't know. Follow through on small things in the interview."
+      },
+      {
+        "quality": "Emotional Intelligence",
+        "description": "Can you read rooms, manage conflicts, and build relationships?",
+        "howToShow": "Share stories about navigating difficult stakeholder situations."
+      },
+      {
+        "quality": "Communication Skills",
+        "description": "Can you explain complex things simply?",
+        "howToShow": "Practice the 'Explain it to my grandmother' test for every technical concept."
+      },
+      {
+        "quality": "Energy & Enthusiasm",
+        "description": "Will you bring positive energy to the team?",
+        "howToShow": "Show genuine excitement about the role, technology, and company."
+      },
+      {
+        "quality": "Team Player",
+        "description": "Will you make others better?",
+        "howToShow": "Use 'we' more than 'I'. Give credit to others in your stories."
+      }
+    ]
+  },
+  "practicalTips": {
+    "badge": "Do This",
+    "title": "Practical Tips for Your Interview",
+    "sections": [
+      {
+        "name": "Before the Interview",
+        "tips": [
+          "Research your interviewer on LinkedIn - find common ground",
+          "Prepare 15-20 STAR stories mapped to common behavioral questions",
+          "Practice your 'Tell me about yourself' until it's natural",
+          "Prepare 3 thoughtful questions to ask them",
+          "Know your weaknesses and how you're working on them"
+        ]
+      },
+      {
+        "name": "During the Interview",
+        "tips": [
+          "Be 10 minutes early - companies don't like procrastinators",
+          "Assume you're being evaluated from the moment you walk in",
+          "Listen more than you speak",
+          "Point conversations toward your strengths",
+          "Take a breath before answering complex questions"
+        ]
+      },
+      {
+        "name": "Honest Self-Presentation",
+        "tips": [
+          "Don't put skills on resume you can't discuss in depth",
+          "Admit when you don't know something - then pivot to what you do know",
+          "Being a specialist is fine - don't pretend to be a generalist",
+          "Never say anything negative about past employers"
+        ]
+      },
+      {
+        "name": "Closing Strong",
+        "tips": [
+          "Ask: 'What are your goals for this role? I want to know how I can help you achieve them.'",
+          "Express genuine interest in the next steps",
+          "Send a personalized thank-you note within 24 hours"
+        ]
+      }
+    ]
+  },
+  "roadmap": {
+    "badge": "Your Development Path",
+    "title": "Soft Skills Development Roadmap",
+    "subtitle": "A 4-week preparation plan",
+    "weeks": [
+      {
+        "week": 1,
+        "title": "Self-Awareness",
+        "focus": "Understand your communication style and gaps",
+        "activities": [
+          "Record yourself answering 'Tell me about yourself' - watch it critically",
+          "Take a personality assessment (DISC, Myers-Briggs)",
+          "Ask 3 colleagues for honest feedback on your communication",
+          "Identify your top 5 strengths and weaknesses"
+        ]
+      },
+      {
+        "week": 2,
+        "title": "Story Building",
+        "focus": "Create your narrative arsenal",
+        "activities": [
+          "Write 20 STAR stories from your career",
+          "Map each story to common behavioral questions",
+          "Practice telling each story in under 2 minutes",
+          "Get feedback from a trusted colleague or coach"
+        ]
+      },
+      {
+        "week": 3,
+        "title": "Executive Communication",
+        "focus": "Learn to speak to non-technical audiences",
+        "activities": [
+          "Practice explaining 5 technical concepts using only analogies",
+          "Create a 5-minute presentation of your best project for a CEO audience",
+          "Study how great tech leaders communicate (check YouTube talks)",
+          "Practice 'bottom-line up front' communication"
+        ]
+      },
+      {
+        "week": 4,
+        "title": "Mock Practice",
+        "focus": "Simulate real interview conditions",
+        "activities": [
+          "Do 3-5 mock interviews with feedback",
+          "Practice reading body language in conversations",
+          "Refine your questions to ask interviewers",
+          "Work on your energy and enthusiasm levels"
+        ]
+      }
+    ]
+  },
+  "cta": {
+    "title": "Ready to Develop Your Soft Skills?",
+    "description": "Technical coaching is important, but so is mastering the human side of interviews. I help senior engineers develop both.",
+    "primaryButton": "Book a Coaching Session",
+    "secondaryButton": "View Technical Roadmap"
+  }
+}
