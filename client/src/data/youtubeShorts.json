@@ -64,10 +64,15 @@
       "title": "Full Stack Generative AI with AWS",
       "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJqbqELMjv3BUlry9Vd04_SV",
       "description": "Build AI applications with AWS and React JS"
+    },
+    "emSystemDesign": {
+      "title": "Engineering Manager System Design & Leadership",
+      "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJrfsK5cfoMyqyS58VRJ_Liu",
+      "description": "System design and leadership mock interviews for Engineering Managers"
     }
   },
   "pageMapping": {
-    "systemDesign": ["systemDesign", "directorSystemDesign"],
+    "systemDesign": ["systemDesign", "directorSystemDesign", "emSystemDesign"],
     "behavioral": ["behavioralAmazon", "directorBehavioral"],
     "executiveCommunication": ["executiveComm", "directorKickstart"],
     "resumeChecklist": ["directorKickstart", "sweInterview"],
