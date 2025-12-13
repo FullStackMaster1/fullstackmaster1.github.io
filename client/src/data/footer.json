@@ -9,10 +9,14 @@
   ],
   "educationalLinks": [
     { "label": "System Design Guide", "href": "/system-design" },
-    { "label": "Behavioral Interview Guide", "href": "/behavioral-interview" }
+    { "label": "Behavioral Interview Guide", "href": "/behavioral-interview" },
+    { "label": "Executive Communication", "href": "/executive-communication" },
+    { "label": "Resume Checklist", "href": "/resume-checklist" },
+    { "label": "AWS Loop Interview", "href": "/aws-loop" }
   ],
   "legalLinks": [
     { "label": "Privacy Policy", "href": "/privacy-policy" },
+    { "label": "Terms of Service", "href": "/terms-of-service" },
     { "label": "Confidentiality & NDA", "href": "/confidentiality" }
   ],
   "quickLinks": {
@@ -64,10 +68,28 @@
   },
   "verification": {
     "text": "Verified on IGotAnOffer",
+    "reviewCount": "50+ Reviews",
+    "rating": "5.0 Rating",
     "badgeColor": "bg-green-500"
+  },
+  "trustBadges": {
+    "title": "Your Information is Protected",
+    "badges": [
+      { "icon": "Lock", "label": "SSL Secure", "description": "Encrypted Connection" },
+      { "icon": "Shield", "label": "256-bit Encryption", "description": "Bank-Level Security" },
+      { "icon": "FileCheck", "label": "NDA Available", "description": "Upon Request" },
+      { "icon": "CheckCircle", "label": "GDPR Compliant", "description": "EU Privacy Standards" },
+      { "icon": "CheckCircle", "label": "CCPA Compliant", "description": "California Privacy" }
+    ],
+    "usaSpecific": [
+      { "icon": "MapPin", "label": "USA-Based", "description": "New Jersey, USA" },
+      { "icon": "Phone", "label": "US Phone", "description": "+1-609-442-4081" },
+      { "icon": "Clock", "label": "EST/PST Hours", "description": "Flexible Scheduling" }
+    ]
   },
   "copyright": {
     "text": "FullStack Master. All rights reserved.",
-    "showYear": true
+    "showYear": true,
+    "additionalText": "Professional Interview Coaching for Senior Tech Leaders"
   }
 }

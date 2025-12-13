@@ -15,6 +15,7 @@ import { Loader2 } from "lucide-react";
 const Home = lazy(() => import("@/pages/Home"));
 const Resources = lazy(() => import("@/pages/Resources"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
+const TermsOfService = lazy(() => import("@/pages/TermsOfService"));
 const Confidentiality = lazy(() => import("@/pages/Confidentiality"));
 const NDADocument = lazy(() => import("@/pages/NDADocument"));
 const Book = lazy(() => import("@/pages/Book"));
@@ -60,6 +61,7 @@ function Router() {
         <Route path="/hiring-manager-round" component={HiringManagerPrep} />
         <Route path="/data-engineer" component={DataEngineerRoadmap} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
+        <Route path="/terms-of-service" component={TermsOfService} />
         <Route path="/confidentiality" component={Confidentiality} />
         <Route path="/nda-document" component={NDADocument} />
         <Route component={NotFound} />

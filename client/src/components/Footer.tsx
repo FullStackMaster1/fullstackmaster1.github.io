@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Mail, Shield, ArrowUp, Lock, FileCheck, CheckCircle, MapPin, Clock } from "lucide-react";
+import { ExternalLink, Mail, Shield, ArrowUp, Lock, FileCheck, CheckCircle, MapPin, Clock, Star, Phone } from "lucide-react";
 import { SiYoutube, SiLinkedin, SiUdemy, SiPluralsight, SiWhatsapp, SiGithub, SiFacebook } from "react-icons/si";
 import { Link } from "wouter";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
@@ -137,7 +137,15 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-primary" />
                 {contact.email}
               </a>
-              <p className="text-muted-foreground pt-2">
+              <a
+                href={`tel:${contact.phone}`}
+                className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
+                data-testid="link-footer-phone"
+              >
+                <Phone className="w-4 h-4 text-blue-500" />
+                {contact.phone}
+              </a>
+              <p className="text-muted-foreground pt-2 text-xs">
                 {footerContact.availabilityText}
               </p>
             </div>
@@ -257,7 +265,7 @@ export default function Footer() {
                 key={link.href}
                 href={link.href}
                 className="hover:text-foreground transition-colors flex items-center gap-1"
-                data-testid={`link-footer-${link.label.toLowerCase().replace(" ", "-")}`}
+                data-testid={`link-footer-${link.label.toLowerCase().replace(/ /g, "-")}`}
               >
                 <Shield className="w-3 h-3" />
                 {link.label}
@@ -270,7 +278,8 @@ export default function Footer() {
               className="hover:text-foreground transition-colors flex items-center gap-1"
               data-testid="link-igotanoffer-footer"
             >
-              {verification.text}
+              <Star className="w-3 h-3 text-yellow-500" />
+              {verification.text} ({(verification as any).reviewCount})
               <ExternalLink className="w-3 h-3" />
             </a>
             <Button

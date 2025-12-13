@@ -71,6 +71,62 @@
     <priority>0.3</priority>
   </url>
   
+  <!-- Terms of Service -->
+  <url>
+    <loc>https://www.fullstackmaster.net/terms-of-service</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- AWS Loop Interview Prep -->
+  <url>
+    <loc>https://www.fullstackmaster.net/aws-loop</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Solution Architect Roadmap -->
+  <url>
+    <loc>https://www.fullstackmaster.net/solution-architect</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+  <!-- Phone Screen Prep -->
+  <url>
+    <loc>https://www.fullstackmaster.net/phone-screen</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Hiring Manager Round -->
+  <url>
+    <loc>https://www.fullstackmaster.net/hiring-manager-round</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Data Engineer Roadmap -->
+  <url>
+    <loc>https://www.fullstackmaster.net/data-engineer</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  
+  <!-- Soft Skills Guide -->
+  <url>
+    <loc>https://www.fullstackmaster.net/soft-skills</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
   <!-- Homepage Sections (for anchor navigation) -->
   <url>
     <loc>https://www.fullstackmaster.net/#about</loc>

@@ -103,7 +103,8 @@ The application prioritizes simplicity with the database layer prepared but not 
 - `whyLeadersFail.json`: Pain points for senior leaders, Engineer/SA vs Director/VP comparison table
 - `successStories.json`: Verified IGotAnOffer reviews with "Got Offer" badges, verification links
 - `trustMetrics.json`: Trust bar statistics and platform links
-- `footer.json`: Footer links, social media icons, contact info display
+- `footer.json`: Footer links, social media icons, contact info display, trust badges, verification data
+- `termsOfService.json`: Terms of Service page content with 11 sections (Acceptance, Services, Booking, IP, Confidentiality, Disclaimer, Liability, Conduct, Modifications, Governing Law, Contact)
 - `booking.json`: Booking section content, process steps, session info
 - `whatsapp.json`: WhatsApp widget messages and prompts
 - `youtubeShorts.json`: YouTube Shorts playlist data with page mappings for contextual display
@@ -112,6 +113,15 @@ The application prioritizes simplicity with the database layer prepared but not 
 - `WhatsAppCommunitySection.tsx`: Free WhatsApp community join section with QR code placeholder, benefit cards, and join CTA
 - `InlineShortsCarousel.tsx`: Inline video carousel that plays YouTube playlists in a modal without redirect (data-driven from youtubeShorts.json)
 - `SeasonalOffersSection.tsx`: Holiday/seasonal promotional bundles with special pricing
+
+**Footer Trust Enhancements** (December 13, 2025):
+- Added Terms of Service page (`/terms-of-service`) with comprehensive legal terms
+- Enhanced legal links: Privacy Policy, Terms of Service, Confidentiality & NDA
+- Added US phone number display (+1-609-442-4081) in contact section
+- IGotAnOffer verification now shows rating and review count (50+ Reviews)
+- Expanded Free Guides section with all educational pages
+- Trust badges: SSL Secure, 256-bit Encryption, NDA Available, GDPR Compliant, CCPA Compliant
+- USA-focused trust signals: New Jersey location, EST/PST friendly scheduling
 
 **Homepage Flow** (conversion-optimized for senior leaders):
 1. Hero → 2. USATrustBar → 3. Executive Case Studies → 4. Why Leaders Fail → 5. TrustBar → 6. Success Stories → 7. Reviews → 8. Methodology → 9. Services → 10. Full Services → 11. Seasonal Offers → 12. Pricing → 13. Booking → 14. Webinar → 15. Articles → 16. Courses → 17. Playlists → 18. Inline Video Shorts → 19. WhatsApp Community → 20. About → 21. Company → 22. FAQ
