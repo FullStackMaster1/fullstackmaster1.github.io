@@ -1,0 +1,293 @@
+{
+  "seo": {
+    "title": "Resume Checklist for Senior Roles | VP Director Engineer Resume Guide | Rupesh Tiwari",
+    "description": "Complete resume checklist for VP, Director, Senior Manager, Staff Engineer, and Data Engineer roles. Learn what FAANG recruiters look for and how to format your resume for senior positions.",
+    "keywords": ["VP resume checklist", "director resume template", "senior manager resume tips", "data engineer resume format", "staff engineer resume", "principal engineer resume", "FAANG resume template", "Amazon resume format", "Google resume tips", "executive resume checklist", "tech leadership resume", "engineering manager resume", "how to write VP resume", "director level resume examples", "senior engineer resume ATS", "bar raiser resume keywords", "quantified impact resume", "resume for L7 L8 roles"]
+  },
+  "hero": {
+    "badge": "Resume Mastery",
+    "title": "The Resume Checklist for Senior Roles",
+    "subtitle": "What FAANG recruiters actually look for",
+    "description": "Your resume has 6 seconds to make an impression. At senior levels, the bar is even higher. I've reviewed 500+ resumes and helped professionals land at Amazon, Google, Meta, and more. Here's the checklist that works.",
+    "stats": [
+      { "value": "500+", "label": "Resumes Reviewed" },
+      { "value": "95%", "label": "Interview Rate" },
+      { "value": "20+", "label": "Years Experience" }
+    ]
+  },
+  "roleChecklists": {
+    "badge": "Role-Specific Checklists",
+    "title": "Resume Requirements by Role",
+    "subtitle": "Each role has different expectations",
+    "roles": [
+      {
+        "id": "vp-resume",
+        "title": "VP / Vice President",
+        "icon": "Crown",
+        "summary": "VPs must show organizational impact, P&L responsibility, and strategic vision across multiple teams or business units.",
+        "mustHaves": [
+          "Revenue or P&L impact ($X million influenced)",
+          "Org size managed (direct + indirect reports)",
+          "Strategic initiatives led (not just executed)",
+          "Board or C-suite stakeholder exposure",
+          "Cross-functional leadership examples",
+          "Industry recognition or thought leadership"
+        ],
+        "formatTips": [
+          "2 pages maximum, executive summary at top",
+          "Lead with business outcomes, not activities",
+          "Include company revenue/size for context",
+          "List board memberships, speaking engagements"
+        ],
+        "commonMistakes": [
+          "Too much tactical detail",
+          "Missing org scope and scale",
+          "No quantified business impact"
+        ]
+      },
+      {
+        "id": "director-resume",
+        "title": "Director / Senior Director",
+        "icon": "Building",
+        "summary": "Directors bridge strategy and execution. Show you can build teams, drive multi-team initiatives, and deliver measurable business results.",
+        "mustHaves": [
+          "Team building experience (hired X engineers)",
+          "Multi-team or cross-org projects",
+          "Budget or resource ownership",
+          "Mentoring and developing managers",
+          "Technical strategy contributions",
+          "Stakeholder management examples"
+        ],
+        "formatTips": [
+          "1.5-2 pages, focus on last 10 years",
+          "Balance technical credibility with leadership",
+          "Show progression (IC to Manager to Director)",
+          "Include team size and scope for each role"
+        ],
+        "commonMistakes": [
+          "Reading like an IC resume with 'manager' title",
+          "No evidence of team building",
+          "Missing strategic contributions"
+        ]
+      },
+      {
+        "id": "senior-manager-resume",
+        "title": "Senior Manager / Engineering Manager",
+        "icon": "Users",
+        "summary": "Senior Managers must show they can lead teams, deliver projects, and grow their people. Balance technical depth with leadership evidence.",
+        "mustHaves": [
+          "Direct reports managed (current and peak)",
+          "Project delivery with timelines and outcomes",
+          "Hiring and team scaling experience",
+          "Performance management examples",
+          "Technical decision ownership",
+          "Cross-team collaboration"
+        ],
+        "formatTips": [
+          "1-1.5 pages, recent 7-10 years",
+          "Clearly state team sizes for each role",
+          "Include both technical and people achievements",
+          "Show progression from IC if applicable"
+        ],
+        "commonMistakes": [
+          "Only technical achievements, no people leadership",
+          "Vague team descriptions ('managed engineers')",
+          "No metrics on delivery or team growth"
+        ]
+      },
+      {
+        "id": "staff-principal-resume",
+        "title": "Staff / Principal Engineer",
+        "icon": "Code",
+        "summary": "Staff+ engineers must show technical leadership beyond their team—architecture decisions, mentorship, and org-wide impact.",
+        "mustHaves": [
+          "Architecture or system design ownership",
+          "Cross-team technical influence",
+          "Mentoring other engineers",
+          "Technical standards or best practices established",
+          "Complex problem-solving examples",
+          "Patents, papers, or tech talks (if applicable)"
+        ],
+        "formatTips": [
+          "1-1.5 pages, emphasize impact scope",
+          "Use 'influenced' and 'architected' language",
+          "Show technical leadership without direct reports",
+          "Include open source or community contributions"
+        ],
+        "commonMistakes": [
+          "Reading like a senior engineer resume",
+          "No evidence of cross-team influence",
+          "Missing architecture-level contributions"
+        ]
+      },
+      {
+        "id": "data-engineer-resume",
+        "title": "Data Engineer / ML Engineer",
+        "icon": "Database",
+        "summary": "Data engineers must show they can build scalable data systems, work with large datasets, and enable data-driven decisions.",
+        "mustHaves": [
+          "Data pipeline scale (TB/PB processed)",
+          "Technologies: Spark, Kafka, Airflow, etc.",
+          "Cloud platforms: AWS, GCP, Azure",
+          "Data quality and governance experience",
+          "ML infrastructure (if applicable)",
+          "Business impact of data systems"
+        ],
+        "formatTips": [
+          "1 page for <10 years, 1.5 for senior",
+          "Lead with technologies and scale",
+          "Quantify data volumes and processing times",
+          "Show end-to-end pipeline ownership"
+        ],
+        "commonMistakes": [
+          "Listing tools without context",
+          "No scale or volume metrics",
+          "Missing business impact of data work"
+        ]
+      },
+      {
+        "id": "solutions-architect-resume",
+        "title": "Solutions Architect / CSM",
+        "icon": "Globe",
+        "summary": "Solutions Architects must show customer-facing skills, technical breadth, and ability to translate business needs to technical solutions.",
+        "mustHaves": [
+          "Customer-facing experience and deal sizes",
+          "Technical solution design examples",
+          "Cloud certifications (AWS, GCP, Azure)",
+          "Revenue influenced or protected",
+          "Cross-functional collaboration",
+          "Industry or domain expertise"
+        ],
+        "formatTips": [
+          "1-1.5 pages, balance technical and business",
+          "Highlight certifications prominently",
+          "Include customer success metrics",
+          "Show pre-sales and post-sales experience"
+        ],
+        "commonMistakes": [
+          "Too technical, missing customer focus",
+          "No revenue or deal size context",
+          "Missing certifications"
+        ]
+      }
+    ]
+  },
+  "universalChecklist": {
+    "badge": "Universal Standards",
+    "title": "Resume Checklist for All Senior Roles",
+    "items": [
+      {
+        "category": "Format & Structure",
+        "checks": [
+          "1-2 pages maximum (1 page for <10 years experience)",
+          "Clean, ATS-friendly format (no tables, columns, or graphics)",
+          "Consistent formatting (fonts, spacing, bullet styles)",
+          "Clear section headers (Experience, Education, Skills)",
+          "Reverse chronological order within each section",
+          "PDF format for submission (preserves formatting)"
+        ]
+      },
+      {
+        "category": "Contact & Header",
+        "checks": [
+          "Professional email address (firstname.lastname@)",
+          "LinkedIn URL (customized, not default)",
+          "Phone number with country code",
+          "City/State only (no full address)",
+          "No photo (US standard)"
+        ]
+      },
+      {
+        "category": "Experience Section",
+        "checks": [
+          "Company name, title, dates (month/year)",
+          "Brief company description if not well-known",
+          "3-5 bullet points per role (recent roles)",
+          "Action verb + context + result format",
+          "Quantified impact in every bullet",
+          "Scope indicators (team size, budget, users)"
+        ]
+      },
+      {
+        "category": "Quantification",
+        "checks": [
+          "Revenue impact ($X million, X% growth)",
+          "Scale metrics (users, transactions, data volume)",
+          "Team/org size (hired X, managed Y)",
+          "Time/efficiency gains (reduced X by Y%)",
+          "Cost savings (saved $X, reduced by Y%)",
+          "Delivery metrics (shipped X features, Y% on-time)"
+        ]
+      },
+      {
+        "category": "Keywords & ATS",
+        "checks": [
+          "Job description keywords naturally integrated",
+          "Industry-standard terminology",
+          "No acronyms without full form (first use)",
+          "Skills section with relevant technologies",
+          "Certifications with dates",
+          "Leadership keywords for senior roles"
+        ]
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "resume-faq-1",
+      "question": "How long should a VP or Director resume be?",
+      "answer": "VP and Director resumes should be 1.5-2 pages maximum. Focus on the last 10-15 years of experience. Earlier roles can be summarized in 1-2 lines. Quality over quantity—every bullet should demonstrate leadership impact. If you're struggling to fit everything, it usually means you're including too much tactical detail."
+    },
+    {
+      "id": "resume-faq-2",
+      "question": "Should I include a summary or objective statement?",
+      "answer": "For senior roles, yes—include a 2-3 line executive summary at the top. This should highlight your leadership scope, industry expertise, and key achievements. Avoid generic statements like 'results-driven leader.' Instead: 'VP of Engineering with 15 years building and scaling teams from 10 to 200+ engineers across fintech and e-commerce, delivering $50M+ in annual revenue impact.'"
+    },
+    {
+      "id": "resume-faq-3",
+      "question": "How do I quantify impact if my company doesn't share metrics?",
+      "answer": "Use estimates with qualifiers: 'approximately,' 'estimated,' or ranges. You can quantify team size, project scope, timelines, user growth, or relative improvements ('reduced latency by 40%'). If you truly can't quantify, describe scope: 'Led the company's largest cross-functional initiative' or 'Owned architecture serving 10M+ daily active users.'"
+    },
+    {
+      "id": "resume-faq-4",
+      "question": "Should I list all my technical skills as a Director or VP?",
+      "answer": "No—for leadership roles, a brief technical skills section is fine, but it shouldn't dominate. Focus on technologies relevant to the role you're targeting. Better to demonstrate technical credibility through your experience bullets than list every language you've ever used. Example: 'Led migration from on-prem to AWS (EKS, Lambda, DynamoDB)' shows skills in context."
+    },
+    {
+      "id": "resume-faq-5",
+      "question": "How do I show leadership on my resume if I don't have direct reports?",
+      "answer": "Leadership isn't just about direct reports. Highlight: technical leadership (architecture decisions adopted by multiple teams), project leadership (led cross-functional initiatives), mentorship (grew junior engineers to senior), and influence (drove adoption of best practices across the org). Use language like 'led,' 'drove,' 'established,' 'influenced,' 'mentored.'"
+    },
+    {
+      "id": "resume-faq-6",
+      "question": "What's the right format for a Data Engineer resume?",
+      "answer": "Data Engineer resumes should lead with a technical summary listing your primary stack (Spark, Kafka, Airflow, etc.) and cloud platforms. Each experience bullet should include scale metrics: data volume (TB/PB), processing frequency (real-time/batch), and business impact. Example: 'Built real-time pipeline processing 5TB/day, reducing analytics latency from hours to minutes and enabling $10M pricing optimization.'"
+    },
+    {
+      "id": "resume-faq-7",
+      "question": "How important are certifications for senior roles?",
+      "answer": "Certifications matter more for some roles than others. For Solutions Architects and Cloud Engineers, AWS/GCP/Azure certifications are expected. For VPs and Directors, they're nice-to-have but not essential. For Staff+ Engineers, certifications are less important than demonstrated impact. Always list relevant certifications with dates to show currency."
+    },
+    {
+      "id": "resume-faq-8",
+      "question": "Should I tailor my resume for each application?",
+      "answer": "Yes, especially for senior roles where competition is fierce. Create a 'master resume' with all your experience, then tailor for each application: 1) Match keywords from the job description, 2) Reorder bullets to highlight relevant experience, 3) Adjust your summary to align with the role. Don't rewrite from scratch—strategic adjustments are enough."
+    },
+    {
+      "id": "resume-faq-9",
+      "question": "How do I explain gaps or short tenures on my resume?",
+      "answer": "Address gaps honestly in your cover letter or be prepared to discuss in interviews. For short tenures: if you have a pattern, it's a red flag; if it's one role, explain the context (acquisition, layoff, role mismatch). Don't hide gaps with creative date formatting—recruiters will notice. Focus on what you learned or accomplished during that time."
+    },
+    {
+      "id": "resume-faq-10",
+      "question": "What's the difference between an Amazon resume and a Google resume?",
+      "answer": "Amazon values 'Leadership Principles' language—weave LP keywords naturally (customer obsession, ownership, bias for action). Google values technical depth and innovation—highlight novel solutions and intellectual contributions. Both want quantified impact. Amazon often prefers more structured formats; Google is slightly more flexible. Tailor your emphasis, not your entire resume."
+    }
+  ],
+  "cta": {
+    "title": "Get Your Resume Reviewed by an Expert",
+    "description": "Book a resume review session and get personalized feedback on how to position yourself for senior roles.",
+    "primaryButton": "Book Resume Review",
+    "secondaryButton": "View All Services"
+  }
+}
