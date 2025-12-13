@@ -82,12 +82,12 @@ interface DefaultOffer {
   footnote: string;
 }
 
-function CountdownTimer({ expiresAt }: { expiresAt: string }) {
+function CountdownTimer({ expiresAt }: { expiresAt: Date }) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   useEffect(() => {
     const calculateTimeLeft = () => {
-      const difference = new Date(expiresAt).getTime() - new Date().getTime();
+      const difference = expiresAt.getTime() - new Date().getTime();
       if (difference > 0) {
         setTimeLeft({
           days: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -126,17 +126,18 @@ function CountdownTimer({ expiresAt }: { expiresAt: string }) {
   );
 }
 
-function getActiveHoliday(): { holiday: HolidayOffer | null; endDate: string | null } {
+function getActiveHoliday(): { holiday: HolidayOffer | null; endDate: Date | null } {
   const now = new Date();
   const holidays = promotionalOffers.holidays as HolidayOffer[];
   
   for (const holiday of holidays) {
     const startDate = new Date(holiday.startDate);
+    startDate.setHours(0, 0, 0, 0);
     const endDate = new Date(holiday.endDate);
     endDate.setHours(23, 59, 59, 999);
     
     if (now >= startDate && now <= endDate) {
-      return { holiday, endDate: holiday.endDate + "T23:59:59Z" };
+      return { holiday, endDate };
     }
   }
   

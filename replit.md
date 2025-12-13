@@ -112,7 +112,35 @@ The application prioritizes simplicity with the database layer prepared but not 
 **New Components** (December 13, 2025):
 - `WhatsAppCommunitySection.tsx`: Free WhatsApp community join section with QR code placeholder, benefit cards, and join CTA
 - `InlineShortsCarousel.tsx`: Inline video carousel that plays YouTube playlists in a modal without redirect (data-driven from youtubeShorts.json)
-- `SeasonalOffersSection.tsx`: Holiday/seasonal promotional bundles with special pricing
+- `SeasonalOffersSection.tsx`: **AUTOMATIC** date-based seasonal offers system
+
+**Automatic Holiday Offers System** (promotionalOffers.json):
+The seasonal offers automatically rotate based on the current date. No manual updates needed for holidays!
+
+**How it works:**
+1. All holiday offers for 2025-2026 are stored in one JSON file
+2. Each holiday has `startDate` and `endDate` fields (YYYY-MM-DD format)
+3. Component auto-selects the active holiday based on current date
+4. If no holiday is active, shows year-round referral offer
+
+**Configured Holidays (2025-2026):**
+- New Year 2025: Dec 26, 2024 - Jan 31, 2025
+- Valentine's Day: Feb 7-17, 2025
+- Memorial Day: May 19-26, 2025
+- Independence Day: June 28 - July 7, 2025
+- Labor Day: Aug 25 - Sept 2, 2025
+- Black Friday: Nov 24 - Dec 2, 2025
+- Holiday Season: Dec 3-25, 2025
+- New Year 2026: Dec 26, 2025 - Jan 31, 2026
+
+**Annual Update Workflow:**
+1. Once a year (around November), update `client/src/data/promotionalOffers.json`
+2. Copy the holiday entries, update years from 2025 to 2026 (or 2026 to 2027)
+3. Adjust dates for each holiday based on actual calendar
+4. Deploy - the system handles everything automatically
+
+**Default Offer (shown between holidays):**
+- Referral bonus program (always available)
 
 **Footer Trust Enhancements** (December 13, 2025):
 - Added Terms of Service page (`/terms-of-service`) with comprehensive legal terms
