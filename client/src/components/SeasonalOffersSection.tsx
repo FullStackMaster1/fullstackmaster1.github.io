@@ -5,7 +5,7 @@ import { Sparkles, Zap, Users, ShieldCheck, Clock, Star, Gift, Check, ArrowRight
 import { SiWhatsapp } from "react-icons/si";
 import promotionalOffers from "@/data/promotionalOffers.json";
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 
 const iconMap: Record<string, LucideIcon> = {
   Sparkles,
@@ -60,6 +60,28 @@ interface TrustPoint {
   text: string;
 }
 
+interface HolidayOffer {
+  id: string;
+  startDate: string;
+  endDate: string;
+  sectionTitle: string;
+  sectionSubtitle: string;
+  sectionBadge: string;
+  offers: Offer[];
+  trustPoints: TrustPoint[];
+  footnote: string;
+}
+
+interface DefaultOffer {
+  id: string;
+  sectionTitle: string;
+  sectionSubtitle: string;
+  sectionBadge: string;
+  offers: Offer[];
+  trustPoints: TrustPoint[];
+  footnote: string;
+}
+
 function CountdownTimer({ expiresAt }: { expiresAt: string }) {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
@@ -104,15 +126,29 @@ function CountdownTimer({ expiresAt }: { expiresAt: string }) {
   );
 }
 
-export default function SeasonalOffersSection() {
-  const offers = promotionalOffers.offers as Offer[];
-  const trustPoints = promotionalOffers.trustPoints as TrustPoint[];
-  const expiryDate = new Date(promotionalOffers.expiresAt);
+function getActiveHoliday(): { holiday: HolidayOffer | null; endDate: string | null } {
   const now = new Date();
-
-  if (now > expiryDate) {
-    return null;
+  const holidays = promotionalOffers.holidays as HolidayOffer[];
+  
+  for (const holiday of holidays) {
+    const startDate = new Date(holiday.startDate);
+    const endDate = new Date(holiday.endDate);
+    endDate.setHours(23, 59, 59, 999);
+    
+    if (now >= startDate && now <= endDate) {
+      return { holiday, endDate: holiday.endDate + "T23:59:59Z" };
+    }
   }
+  
+  return { holiday: null, endDate: null };
+}
+
+export default function SeasonalOffersSection() {
+  const { holiday: activeHoliday, endDate } = useMemo(() => getActiveHoliday(), []);
+  
+  const currentOffer = activeHoliday || (promotionalOffers.defaultOffer as DefaultOffer);
+  const offers = currentOffer.offers as Offer[];
+  const trustPoints = currentOffer.trustPoints as TrustPoint[];
 
   return (
     <section
@@ -130,18 +166,20 @@ export default function SeasonalOffersSection() {
         >
           <Badge className="mb-3 bg-gradient-to-r from-red-500 via-green-500 to-red-500 text-white animate-pulse">
             <Gift className="w-3 h-3 mr-1" />
-            {promotionalOffers.sectionBadge}
+            {currentOffer.sectionBadge}
           </Badge>
           <h2 className="text-3xl md:text-4xl font-bold mb-2" data-testid="text-offers-title">
-            {promotionalOffers.sectionTitle}
+            {currentOffer.sectionTitle}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
-            {promotionalOffers.sectionSubtitle}
+            {currentOffer.sectionSubtitle}
           </p>
-          <CountdownTimer expiresAt={promotionalOffers.expiresAt} />
+          {activeHoliday && endDate && (
+            <CountdownTimer expiresAt={endDate} />
+          )}
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div className={`grid grid-cols-1 ${offers.length === 1 ? 'md:max-w-md md:mx-auto' : offers.length === 2 ? 'md:grid-cols-2 md:max-w-3xl md:mx-auto' : 'md:grid-cols-3'} gap-6 mb-8`}>
           {offers.map((offer, index) => {
             const IconComponent = iconMap[offer.icon] || Gift;
             const theme = themeColors[offer.theme] || themeColors.gold;
@@ -251,7 +289,7 @@ export default function SeasonalOffersSection() {
         </motion.div>
 
         <p className="text-xs text-center text-muted-foreground max-w-2xl mx-auto">
-          {promotionalOffers.footnote}
+          {currentOffer.footnote}
         </p>
       </div>
     </section>
