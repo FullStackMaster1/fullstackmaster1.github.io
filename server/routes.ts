@@ -189,6 +189,10 @@ export async function registerRoutes(
     }
   });
 
+  // Cache for playlist videos (5 minute TTL)
+  const playlistCache = new Map<string, { data: any[]; expiry: number }>();
+  const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+
   app.get("/api/youtube/playlists", async (_req: Request, res: Response) => {
     try {
       if (!YOUTUBE_API_KEY) {
@@ -218,6 +222,51 @@ export async function registerRoutes(
     } catch (error) {
       console.error("YouTube fetch error:", error);
       res.status(500).json({ error: "Failed to fetch YouTube playlists" });
+    }
+  });
+
+  // Get videos from a specific playlist
+  app.get("/api/youtube/playlist/:playlistId/videos", async (req: Request, res: Response) => {
+    try {
+      const { playlistId } = req.params;
+      const maxResults = Math.min(Number(req.query.maxResults) || 10, 50);
+
+      if (!YOUTUBE_API_KEY) {
+        return res.status(500).json({ error: "YouTube API key not configured" });
+      }
+
+      // Check cache first
+      const cached = playlistCache.get(playlistId);
+      if (cached && cached.expiry > Date.now()) {
+        return res.json(cached.data.slice(0, maxResults));
+      }
+
+      const videosUrl = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,contentDetails&playlistId=${playlistId}&maxResults=50&key=${YOUTUBE_API_KEY}`;
+      
+      const response = await fetch(videosUrl);
+      const data = await response.json();
+
+      if (!response.ok) {
+        console.error("YouTube API error:", data);
+        return res.status(response.status).json({ error: data.error?.message || "Failed to fetch playlist videos" });
+      }
+
+      const videos = data.items?.map((item: any) => ({
+        id: item.contentDetails.videoId,
+        title: item.snippet.title,
+        description: item.snippet.description,
+        thumbnail: item.snippet.thumbnails?.medium?.url || item.snippet.thumbnails?.default?.url || item.snippet.thumbnails?.high?.url,
+        position: item.snippet.position,
+        publishedAt: item.snippet.publishedAt,
+      })).filter((v: any) => v.title !== "Private video" && v.title !== "Deleted video") || [];
+
+      // Cache the results
+      playlistCache.set(playlistId, { data: videos, expiry: Date.now() + CACHE_TTL });
+
+      res.json(videos.slice(0, maxResults));
+    } catch (error) {
+      console.error("YouTube playlist videos fetch error:", error);
+      res.status(500).json({ error: "Failed to fetch playlist videos" });
     }
   });
 

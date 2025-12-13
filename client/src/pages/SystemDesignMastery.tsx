@@ -30,7 +30,7 @@ import WhatsAppWidget from "@/components/WhatsAppWidget";
 import Breadcrumb from "@/components/Breadcrumb";
 import ScrollReveal from "@/components/ScrollReveal";
 import VideoTipsCarousel from "@/components/VideoTipsCarousel";
-import MermaidDiagram from "@/components/MermaidDiagram";
+import FlowDiagram from "@/components/FlowDiagram";
 import pageData from "@/data/systemDesignPage.json";
 import profile from "@/data/profile.json";
 import { trackEvent } from "@/lib/analytics";
@@ -41,16 +41,6 @@ const iconMap: Record<string, typeof GraduationCap> = {
   Users,
   Building
 };
-
-function generateMermaidChart(components: string[]): string {
-  const nodeIds = components.map((_, i) => `n${i}`);
-  const nodeDefinitions = components.map((comp, i) => `    ${nodeIds[i]}["${comp}"]`).join("\n");
-  const connections = nodeIds.slice(0, -1).map((id, i) => `    ${id} --> ${nodeIds[i + 1]}`).join("\n");
-  
-  return `flowchart LR
-${nodeDefinitions}
-${connections}`;
-}
 
 export default function SystemDesignMastery() {
   const handleCTAClick = (ctaType: string) => {
@@ -378,8 +368,8 @@ export default function SystemDesignMastery() {
                         <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
                           Architecture Flow
                         </p>
-                        <MermaidDiagram 
-                          chart={generateMermaidChart(diagram.components)} 
+                        <FlowDiagram 
+                          components={diagram.components}
                           className="bg-background rounded-md p-2"
                         />
                       </div>
