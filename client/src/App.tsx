@@ -23,6 +23,8 @@ import ResumeChecklist from "@/pages/ResumeChecklist";
 import SolutionArchitectRoadmap from "@/pages/SolutionArchitectRoadmap";
 import SoftSkillsGuide from "@/pages/SoftSkillsGuide";
 import AWSLoopPrep from "@/pages/AWSLoopPrep";
+import PhoneScreenPrep from "@/pages/PhoneScreenPrep";
+import HiringManagerPrep from "@/pages/HiringManagerPrep";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -40,6 +42,8 @@ function Router() {
       <Route path="/solution-architect" component={SolutionArchitectRoadmap} />
       <Route path="/soft-skills" component={SoftSkillsGuide} />
       <Route path="/aws-loop" component={AWSLoopPrep} />
+      <Route path="/phone-screen" component={PhoneScreenPrep} />
+      <Route path="/hiring-manager-round" component={HiringManagerPrep} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/confidentiality" component={Confidentiality} />
       <Route path="/nda-document" component={NDADocument} />

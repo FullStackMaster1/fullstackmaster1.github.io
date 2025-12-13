@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, LucideIcon, Target, Users, Sparkles, ChevronDown, Presentation, FileText, Rocket, MessageSquare, Award } from "lucide-react";
+import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, LucideIcon, Target, Users, Sparkles, ChevronDown, Presentation, FileText, Rocket, MessageSquare, Award, Phone, UserCheck } from "lucide-react";
 import SearchBox from "@/components/SearchBox";
 import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
@@ -262,6 +262,32 @@ export default function Navigation() {
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   className="flex items-start gap-3 p-3 cursor-pointer"
+                  onClick={() => handleNavClick('/phone-screen', true)}
+                  data-testid="link-phone-screen-nav"
+                >
+                  <div className="p-2 rounded-md bg-blue-500/10">
+                    <Phone className="w-4 h-4 text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">Phone Screen Prep</div>
+                    <div className="text-xs text-muted-foreground">First Round Interview Guide</div>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="flex items-start gap-3 p-3 cursor-pointer"
+                  onClick={() => handleNavClick('/hiring-manager-round', true)}
+                  data-testid="link-hm-round-nav"
+                >
+                  <div className="p-2 rounded-md bg-purple-500/10">
+                    <UserCheck className="w-4 h-4 text-purple-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">Hiring Manager Round</div>
+                    <div className="text-xs text-muted-foreground">Win Your Future Boss</div>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="flex items-start gap-3 p-3 cursor-pointer"
                   onClick={() => handleNavClick('/aws-loop', true)}
                   data-testid="link-aws-loop-nav"
                 >
@@ -457,6 +483,34 @@ export default function Navigation() {
                     <div className="flex-1">
                       <span className="text-sm font-medium">Resume Checklist</span>
                       <span className="block text-[10px] text-muted-foreground">Role-Specific Resume Guides</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/phone-screen', true)}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-blue-500/5 border border-blue-500/20 hover:bg-blue-500/10 transition-colors text-left"
+                    data-testid="mobile-link-phone-screen"
+                  >
+                    <div className="p-2 rounded-md bg-blue-500/10">
+                      <Phone className="w-5 h-5 text-blue-600" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-sm font-medium">Phone Screen Prep</span>
+                      <span className="block text-[10px] text-muted-foreground">First Round Interview Guide</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/hiring-manager-round', true)}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-purple-500/5 border border-purple-500/20 hover:bg-purple-500/10 transition-colors text-left"
+                    data-testid="mobile-link-hm-round"
+                  >
+                    <div className="p-2 rounded-md bg-purple-500/10">
+                      <UserCheck className="w-5 h-5 text-purple-600" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-sm font-medium">Hiring Manager Round</span>
+                      <span className="block text-[10px] text-muted-foreground">Win Your Future Boss</span>
                     </div>
                     <ChevronRight className="w-4 h-4 text-muted-foreground" />
                   </button>
