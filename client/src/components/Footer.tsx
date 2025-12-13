@@ -35,7 +35,7 @@ const getSocialUrl = (name: string): string => {
 
 export default function Footer() {
   const { personal, contact, brand, socialLinks, descriptions } = profileData;
-  const { links, legalLinks, socialIcons, quickLinks, contact: footerContact, verification, copyright } = footerData;
+  const { links, legalLinks, educationalLinks, socialIcons, quickLinks, contact: footerContact, verification, copyright } = footerData;
 
   const handleScrollTo = (href: string) => {
     const element = document.querySelector(href);
@@ -88,6 +88,24 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
+            {educationalLinks && (
+              <div className="mt-4 pt-4 border-t border-border">
+                <h4 className="font-medium text-sm mb-2">Free Guides</h4>
+                <ul className="space-y-2">
+                  {educationalLinks.map((link: { label: string; href: string }) => (
+                    <li key={link.href}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-primary hover:text-primary/80 transition-colors font-medium"
+                        data-testid={`link-footer-${link.label.toLowerCase().replace(/ /g, "-")}`}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           <div>

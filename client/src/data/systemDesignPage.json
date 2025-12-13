@@ -1,0 +1,189 @@
+{
+  "seo": {
+    "title": "System Design Interview Mastery | Rupesh Tiwari Coaching",
+    "description": "Master system design interviews for FAANG companies. Learn the IFRAIL+T framework, common patterns, and get personalized coaching from an AWS Senior CSM with 20+ years experience.",
+    "keywords": ["system design interview", "FAANG interview prep", "system design coaching", "architecture interview", "senior engineer interview", "staff engineer interview", "principal engineer interview"]
+  },
+  "hero": {
+    "badge": "System Design Mastery",
+    "title": "Ace Your System Design Interview",
+    "subtitle": "The #1 challenge for senior engineers, architects, and tech leaders",
+    "description": "System design interviews are the make-or-break round for senior roles at FAANG companies. Whether you're a new developer learning the fundamentals or a 15-year veteran transitioning to leadership, my structured coaching approach has helped hundreds land offers at Amazon, Google, Meta, and more.",
+    "stats": [
+      { "value": "95%", "label": "Success Rate" },
+      { "value": "200+", "label": "Engineers Coached" },
+      { "value": "20+", "label": "Years Experience" }
+    ]
+  },
+  "whatIsSystemDesign": {
+    "badge": "Understanding the Basics",
+    "title": "What is a System Design Interview?",
+    "description": "A system design interview tests your ability to architect large-scale distributed systems. Unlike coding interviews that focus on algorithms, system design evaluates how you think about building real-world applications that can handle millions of users.",
+    "keyPoints": [
+      {
+        "title": "Not About Perfect Answers",
+        "description": "There's no single 'right' answer. Interviewers want to see your thought process, how you make trade-offs, and how you communicate complex ideas."
+      },
+      {
+        "title": "Evaluates Senior-Level Thinking",
+        "description": "This interview separates senior engineers from juniors. It tests your experience with scalability, reliability, and real-world constraints."
+      },
+      {
+        "title": "Communication is Half the Battle",
+        "description": "How you explain your design matters as much as the design itself. Clear communication shows leadership potential."
+      }
+    ]
+  },
+  "whoIsThisFor": {
+    "badge": "Is This For You?",
+    "title": "Who Needs System Design Coaching?",
+    "personas": [
+      {
+        "title": "New to System Design",
+        "icon": "GraduationCap",
+        "description": "You've been focused on coding but haven't designed large systems. Terms like 'CAP theorem' or 'sharding' feel foreign.",
+        "painPoints": [
+          "Don't know where to start learning",
+          "Overwhelmed by the breadth of topics",
+          "Never worked on distributed systems",
+          "Struggle to think at scale"
+        ],
+        "solution": "I'll build your foundation from scratch with clear explanations and hands-on practice on real interview questions."
+      },
+      {
+        "title": "Experienced Developer (15+ years)",
+        "icon": "Code",
+        "description": "You know how to build systems, but explaining your thought process to an interviewer is challenging.",
+        "painPoints": [
+          "Know the concepts but can't articulate them well",
+          "Used to working, not presenting",
+          "Struggle with interview time pressure",
+          "Haven't interviewed in years"
+        ],
+        "solution": "We'll focus on structured communication frameworks that turn your deep experience into compelling interview performances."
+      },
+      {
+        "title": "Transitioning to Management",
+        "icon": "Users",
+        "description": "Moving from IC to Manager/Director. You need to demonstrate architectural judgment, not just coding ability.",
+        "painPoints": [
+          "Expected to show broader system thinking",
+          "Need to balance technical depth with leadership signals",
+          "Interviews focus on different aspects",
+          "Higher stakes, less familiar territory"
+        ],
+        "solution": "I tailor coaching for leadership roles, emphasizing the communication patterns and strategic thinking directors need to demonstrate."
+      },
+      {
+        "title": "Executive/VP Nervous About Tech Rounds",
+        "icon": "Building",
+        "description": "You're targeting Director or VP roles but worried about the technical system design component.",
+        "painPoints": [
+          "Haven't done hands-on design in years",
+          "Fear of looking out of touch technically",
+          "Different expectations at executive level",
+          "Need to balance breadth vs depth"
+        ],
+        "solution": "For executives, I focus on demonstrating architectural judgment and technical leadership without getting lost in implementation details."
+      }
+    ]
+  },
+  "methodology": {
+    "badge": "Proven Framework",
+    "title": "The IFRAIL+T Framework",
+    "subtitle": "A structured approach to tackle any system design question",
+    "description": "After coaching 200+ engineers, I've developed a repeatable framework that ensures you cover all the bases while keeping your interview on track.",
+    "steps": [
+      {
+        "letter": "I",
+        "name": "Intent",
+        "description": "Clarify what you're building and why. Understanding the problem is 20% of the solution.",
+        "timeAllocation": "3-5 minutes"
+      },
+      {
+        "letter": "F",
+        "name": "Functional Requirements",
+        "description": "Define what the system must do. List core features and user stories.",
+        "timeAllocation": "3-5 minutes"
+      },
+      {
+        "letter": "R",
+        "name": "Resource Estimation",
+        "description": "Calculate scale: users, requests per second, storage needs. Shows quantitative thinking.",
+        "timeAllocation": "5 minutes"
+      },
+      {
+        "letter": "A",
+        "name": "Architecture (High-Level)",
+        "description": "Draw the box diagram. Start with major components: clients, servers, databases, caches.",
+        "timeAllocation": "10-15 minutes"
+      },
+      {
+        "letter": "I",
+        "name": "Interface Design",
+        "description": "Define APIs between components. Shows you think about contracts and boundaries.",
+        "timeAllocation": "5 minutes"
+      },
+      {
+        "letter": "L",
+        "name": "Logic & Data Flow",
+        "description": "Walk through how data flows for key operations. Show sequence diagrams if helpful.",
+        "timeAllocation": "5-10 minutes"
+      },
+      {
+        "letter": "T",
+        "name": "Trade-offs & Bottlenecks",
+        "description": "Discuss what you'd optimize, alternative approaches, and known limitations.",
+        "timeAllocation": "5-10 minutes"
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "id": "sd-faq-1",
+      "question": "How should I organize my system design answer?",
+      "answer": "Start by clarifying requirements (2-3 minutes), then move to high-level architecture, API design, and database schema. Save 5-10 minutes at the end for discussing trade-offs and scaling considerations. Never start drawing before understanding what you're building."
+    },
+    {
+      "id": "sd-faq-2",
+      "question": "How much time should I spend on each part?",
+      "answer": "For a 45-minute interview: Requirements gathering (5 min), high-level design (15 min), deep dive into 1-2 components (15 min), trade-offs and scaling (10 min). Adjust based on interviewer signals—if they want to go deeper on something, follow their lead."
+    },
+    {
+      "id": "sd-faq-3",
+      "question": "Should I start with requirements or the architecture diagram?",
+      "answer": "Always start with requirements. Jumping to diagrams is the #1 mistake I see. Asking clarifying questions shows maturity and prevents you from designing the wrong thing. Spend 3-5 minutes understanding functional and non-functional requirements before picking up the marker."
+    },
+    {
+      "id": "sd-faq-4",
+      "question": "Should I keep talking continuously or pause for discussion?",
+      "answer": "Strike a balance. Don't monologue for 20 minutes, but don't pause every 30 seconds asking 'is this okay?' Check in at natural transition points: after requirements, after high-level design, before going deep. This creates dialogue and lets you adjust based on feedback."
+    },
+    {
+      "id": "sd-faq-5",
+      "question": "How deep should I go into the architecture?",
+      "answer": "Start broad (boxes and arrows), then go deep on 1-2 critical components the interviewer cares about. Going deep on everything is impossible in 45 minutes. Let the interviewer guide which areas to explore. Depth in the right areas shows expertise; depth everywhere shows poor prioritization."
+    },
+    {
+      "id": "sd-faq-6",
+      "question": "What if I don't know a specific technology they ask about?",
+      "answer": "Be honest, then pivot to what you know. Say 'I haven't worked with X directly, but I'm familiar with Y which solves similar problems.' Interviewers value honesty and the ability to reason about solutions over memorized technology names."
+    },
+    {
+      "id": "sd-faq-7",
+      "question": "How do I handle scale questions if I've never built systems at FAANG scale?",
+      "answer": "Focus on principles, not experience. Understand horizontal scaling, database sharding, caching strategies, and load balancing conceptually. Practice back-of-envelope calculations. I've helped many engineers from smaller companies ace these questions through targeted practice."
+    },
+    {
+      "id": "sd-faq-8",
+      "question": "What are the most common system design questions for senior roles?",
+      "answer": "Design a URL shortener, design Twitter/Instagram feed, design a chat system, design a rate limiter, design a distributed cache, design a notification system. For principal/staff roles, expect more ambiguous problems like 'design our cloud infrastructure' where scoping is crucial."
+    }
+  ],
+  "cta": {
+    "title": "Ready to Master System Design?",
+    "description": "Book a free 15-minute discovery call to discuss your target role and create a personalized prep plan.",
+    "primaryButton": "Book Free Discovery Call",
+    "secondaryButton": "View All Services"
+  }
+}

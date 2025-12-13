@@ -59,6 +59,23 @@
           "description": "All my services"
         }
       ]
+    },
+    "educationalPages": {
+      "title": "Free Guides",
+      "items": [
+        {
+          "label": "System Design Mastery",
+          "icon": "Target",
+          "href": "/system-design",
+          "description": "Learn the IFRAIL+T framework"
+        },
+        {
+          "label": "Behavioral Interview Guide",
+          "icon": "Users",
+          "href": "/behavioral-interview",
+          "description": "STAR method & Amazon LPs"
+        }
+      ]
     }
   },
   "hero": {
