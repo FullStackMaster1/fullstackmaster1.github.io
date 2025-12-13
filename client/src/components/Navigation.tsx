@@ -120,18 +120,49 @@ export default function Navigation() {
             </button>
           </div>
 
-          <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
+          <div className="hidden lg:flex items-center gap-0.5">
+            {/* Show only essential nav links: About, Process, Services, Reviews, Pricing */}
+            {navLinks.slice(0, 5).map((link) => (
               <Button
                 key={link.href}
                 variant="ghost"
                 size="sm"
+                className="px-2 text-sm"
                 onClick={() => handleNavClick(link.href, link.isPage, link.external)}
                 data-testid={`link-${link.label.toLowerCase().replace(" ", "-")}`}
               >
                 {link.label}
               </Button>
             ))}
+            
+            {/* More dropdown for Blog and Resources */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="px-2 text-sm"
+                  data-testid="dropdown-more"
+                >
+                  More
+                  <ChevronDown className="w-3 h-3 ml-1 opacity-50" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-48">
+                {navLinks.slice(5).map((link) => (
+                  <DropdownMenuItem
+                    key={link.href}
+                    className="cursor-pointer"
+                    onClick={() => handleNavClick(link.href, link.isPage, link.external)}
+                    data-testid={`link-more-${link.label.toLowerCase().replace(" ", "-")}`}
+                  >
+                    {link.label === "Blog" && <BookOpen className="w-4 h-4 mr-2" />}
+                    {link.label === "Resources" && <Briefcase className="w-4 h-4 mr-2" />}
+                    {link.label}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
             
             {/* Free Guides Dropdown with visual highlight */}
             <DropdownMenu>
