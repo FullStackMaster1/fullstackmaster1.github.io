@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, LucideIcon, Target, Users, Sparkles, ChevronDown, Presentation, FileText } from "lucide-react";
+import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, LucideIcon, Target, Users, Sparkles, ChevronDown, Presentation, FileText, Rocket } from "lucide-react";
 import SearchBox from "@/components/SearchBox";
 import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
@@ -151,6 +151,19 @@ export default function Navigation() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-64">
+                <DropdownMenuItem
+                  className="flex items-start gap-3 p-3 cursor-pointer"
+                  onClick={() => handleNavClick('/solution-architect', true)}
+                  data-testid="link-solution-architect-nav"
+                >
+                  <div className="p-2 rounded-md bg-orange-500/10">
+                    <Rocket className="w-4 h-4 text-orange-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">Solution Architect Roadmap</div>
+                    <div className="text-xs text-muted-foreground">From service company to FAANG</div>
+                  </div>
+                </DropdownMenuItem>
                 <DropdownMenuItem
                   className="flex items-start gap-3 p-3 cursor-pointer"
                   onClick={() => handleNavClick('/system-design', true)}
@@ -306,6 +319,20 @@ export default function Navigation() {
                   </Badge>
                 </div>
                 <div className="grid grid-cols-1 gap-2">
+                  <button
+                    onClick={() => handleNavClick('/solution-architect', true)}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-orange-500/5 border border-orange-500/20 hover:bg-orange-500/10 transition-colors text-left"
+                    data-testid="mobile-link-solution-architect"
+                  >
+                    <div className="p-2 rounded-md bg-orange-500/10">
+                      <Rocket className="w-5 h-5 text-orange-600" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-sm font-medium">Solution Architect Roadmap</span>
+                      <span className="block text-[10px] text-muted-foreground">From service company to FAANG</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                  </button>
                   <button
                     onClick={() => handleNavClick('/system-design', true)}
                     className="flex items-center gap-3 p-3 rounded-lg bg-blue-500/5 border border-blue-500/20 hover:bg-blue-500/10 transition-colors text-left"

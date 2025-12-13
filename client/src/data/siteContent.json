@@ -63,6 +63,12 @@
       "title": "Free Guides",
       "items": [
         {
+          "label": "Solution Architect Roadmap",
+          "icon": "Rocket",
+          "href": "/solution-architect",
+          "description": "From service company to FAANG"
+        },
+        {
           "label": "System Design Mastery",
           "icon": "Target",
           "href": "/system-design",
