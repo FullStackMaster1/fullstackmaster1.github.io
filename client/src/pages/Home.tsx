@@ -65,6 +65,10 @@ export default function Home() {
         </ScrollReveal>
         
         <ScrollReveal type="scale" delay={0.1}>
+          <FreeResourcesHighlight />
+        </ScrollReveal>
+        
+        <ScrollReveal type="scale" delay={0.1}>
           <ServicesSection />
         </ScrollReveal>
         
@@ -82,10 +86,6 @@ export default function Home() {
         
         <ScrollReveal type="slide-up">
           <WebinarSection />
-        </ScrollReveal>
-        
-        <ScrollReveal type="scale" delay={0.1}>
-          <FreeResourcesHighlight />
         </ScrollReveal>
         
         <ScrollReveal type="slide-up" delay={0.1}>
