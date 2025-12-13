@@ -8,7 +8,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, LucideIcon, Target, Users, Sparkles, ChevronDown, Presentation, FileText, Rocket, MessageSquare, Award, Phone, UserCheck } from "lucide-react";
+import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, LucideIcon, Target, Users, Sparkles, ChevronDown, Presentation, FileText, Rocket, MessageSquare, Award, Phone, UserCheck, Database } from "lucide-react";
 import SearchBox from "@/components/SearchBox";
 import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
@@ -184,32 +184,6 @@ export default function Navigation() {
               <DropdownMenuContent align="end" className="w-64">
                 <DropdownMenuItem
                   className="flex items-start gap-3 p-3 cursor-pointer"
-                  onClick={() => handleNavClick('/solution-architect', true)}
-                  data-testid="link-solution-architect-nav"
-                >
-                  <div className="p-2 rounded-md bg-orange-500/10">
-                    <Rocket className="w-4 h-4 text-orange-600" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-medium text-sm">Solution Architect Roadmap</div>
-                    <div className="text-xs text-muted-foreground">From service company to FAANG</div>
-                  </div>
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  className="flex items-start gap-3 p-3 cursor-pointer"
-                  onClick={() => handleNavClick('/soft-skills', true)}
-                  data-testid="link-soft-skills-nav"
-                >
-                  <div className="p-2 rounded-md bg-purple-500/10">
-                    <MessageSquare className="w-4 h-4 text-purple-600" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-medium text-sm">Soft Skills Guide</div>
-                    <div className="text-xs text-muted-foreground">Communication & Interview Tips</div>
-                  </div>
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  className="flex items-start gap-3 p-3 cursor-pointer"
                   onClick={() => handleNavClick('/system-design', true)}
                   data-testid="link-system-design-nav"
                 >
@@ -232,6 +206,71 @@ export default function Navigation() {
                   <div className="flex-1">
                     <div className="font-medium text-sm">Behavioral Interview Guide</div>
                     <div className="text-xs text-muted-foreground">STAR Method & Amazon LPs</div>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="flex items-start gap-3 p-3 cursor-pointer"
+                  onClick={() => handleNavClick('/aws-loop', true)}
+                  data-testid="link-aws-loop-nav"
+                >
+                  <div className="p-2 rounded-md bg-orange-500/10">
+                    <Award className="w-4 h-4 text-orange-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">AWS Loop Prep</div>
+                    <div className="text-xs text-muted-foreground">Amazon Interview Mastery</div>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="flex items-start gap-3 p-3 cursor-pointer"
+                  onClick={() => handleNavClick('/hiring-manager-round', true)}
+                  data-testid="link-hm-round-nav"
+                >
+                  <div className="p-2 rounded-md bg-purple-500/10">
+                    <UserCheck className="w-4 h-4 text-purple-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">Hiring Manager Round</div>
+                    <div className="text-xs text-muted-foreground">Win Your Future Boss</div>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="flex items-start gap-3 p-3 cursor-pointer"
+                  onClick={() => handleNavClick('/phone-screen', true)}
+                  data-testid="link-phone-screen-nav"
+                >
+                  <div className="p-2 rounded-md bg-blue-500/10">
+                    <Phone className="w-4 h-4 text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">Phone Screen Prep</div>
+                    <div className="text-xs text-muted-foreground">First Round Interview Guide</div>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="flex items-start gap-3 p-3 cursor-pointer"
+                  onClick={() => handleNavClick('/data-engineer', true)}
+                  data-testid="link-data-engineer-nav"
+                >
+                  <div className="p-2 rounded-md bg-emerald-500/10">
+                    <Database className="w-4 h-4 text-emerald-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">Data Engineer Roadmap</div>
+                    <div className="text-xs text-muted-foreground">Build Data Pipelines at FAANG</div>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="flex items-start gap-3 p-3 cursor-pointer"
+                  onClick={() => handleNavClick('/solution-architect', true)}
+                  data-testid="link-solution-architect-nav"
+                >
+                  <div className="p-2 rounded-md bg-orange-500/10">
+                    <Rocket className="w-4 h-4 text-orange-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">Solution Architect Roadmap</div>
+                    <div className="text-xs text-muted-foreground">From service company to FAANG</div>
                   </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem
@@ -262,41 +301,15 @@ export default function Navigation() {
                 </DropdownMenuItem>
                 <DropdownMenuItem
                   className="flex items-start gap-3 p-3 cursor-pointer"
-                  onClick={() => handleNavClick('/phone-screen', true)}
-                  data-testid="link-phone-screen-nav"
-                >
-                  <div className="p-2 rounded-md bg-blue-500/10">
-                    <Phone className="w-4 h-4 text-blue-600" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-medium text-sm">Phone Screen Prep</div>
-                    <div className="text-xs text-muted-foreground">First Round Interview Guide</div>
-                  </div>
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  className="flex items-start gap-3 p-3 cursor-pointer"
-                  onClick={() => handleNavClick('/hiring-manager-round', true)}
-                  data-testid="link-hm-round-nav"
+                  onClick={() => handleNavClick('/soft-skills', true)}
+                  data-testid="link-soft-skills-nav"
                 >
                   <div className="p-2 rounded-md bg-purple-500/10">
-                    <UserCheck className="w-4 h-4 text-purple-600" />
+                    <MessageSquare className="w-4 h-4 text-purple-600" />
                   </div>
                   <div className="flex-1">
-                    <div className="font-medium text-sm">Hiring Manager Round</div>
-                    <div className="text-xs text-muted-foreground">Win Your Future Boss</div>
-                  </div>
-                </DropdownMenuItem>
-                <DropdownMenuItem
-                  className="flex items-start gap-3 p-3 cursor-pointer"
-                  onClick={() => handleNavClick('/aws-loop', true)}
-                  data-testid="link-aws-loop-nav"
-                >
-                  <div className="p-2 rounded-md bg-orange-500/10">
-                    <Award className="w-4 h-4 text-orange-600" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-medium text-sm">AWS Loop Prep</div>
-                    <div className="text-xs text-muted-foreground">Amazon Interview Mastery</div>
+                    <div className="font-medium text-sm">Soft Skills Guide</div>
+                    <div className="text-xs text-muted-foreground">Communication & Interview Tips</div>
                   </div>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -403,34 +416,6 @@ export default function Navigation() {
                 </div>
                 <div className="grid grid-cols-1 gap-2">
                   <button
-                    onClick={() => handleNavClick('/solution-architect', true)}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-orange-500/5 border border-orange-500/20 hover:bg-orange-500/10 transition-colors text-left"
-                    data-testid="mobile-link-solution-architect"
-                  >
-                    <div className="p-2 rounded-md bg-orange-500/10">
-                      <Rocket className="w-5 h-5 text-orange-600" />
-                    </div>
-                    <div className="flex-1">
-                      <span className="text-sm font-medium">Solution Architect Roadmap</span>
-                      <span className="block text-[10px] text-muted-foreground">From service company to FAANG</span>
-                    </div>
-                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('/soft-skills', true)}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-purple-500/5 border border-purple-500/20 hover:bg-purple-500/10 transition-colors text-left"
-                    data-testid="mobile-link-soft-skills"
-                  >
-                    <div className="p-2 rounded-md bg-purple-500/10">
-                      <MessageSquare className="w-5 h-5 text-purple-600" />
-                    </div>
-                    <div className="flex-1">
-                      <span className="text-sm font-medium">Soft Skills Guide</span>
-                      <span className="block text-[10px] text-muted-foreground">Communication & Interview Tips</span>
-                    </div>
-                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
-                  </button>
-                  <button
                     onClick={() => handleNavClick('/system-design', true)}
                     className="flex items-center gap-3 p-3 rounded-lg bg-blue-500/5 border border-blue-500/20 hover:bg-blue-500/10 transition-colors text-left"
                     data-testid="mobile-link-system-design"
@@ -455,6 +440,76 @@ export default function Navigation() {
                     <div className="flex-1">
                       <span className="text-sm font-medium">Behavioral Interview Guide</span>
                       <span className="block text-[10px] text-muted-foreground">STAR Method & Amazon LPs</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/aws-loop', true)}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-orange-500/5 border border-orange-500/20 hover:bg-orange-500/10 transition-colors text-left"
+                    data-testid="mobile-link-aws-loop"
+                  >
+                    <div className="p-2 rounded-md bg-orange-500/10">
+                      <Award className="w-5 h-5 text-orange-600" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-sm font-medium">AWS Loop Prep</span>
+                      <span className="block text-[10px] text-muted-foreground">Amazon Interview Mastery</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/hiring-manager-round', true)}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-purple-500/5 border border-purple-500/20 hover:bg-purple-500/10 transition-colors text-left"
+                    data-testid="mobile-link-hm-round"
+                  >
+                    <div className="p-2 rounded-md bg-purple-500/10">
+                      <UserCheck className="w-5 h-5 text-purple-600" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-sm font-medium">Hiring Manager Round</span>
+                      <span className="block text-[10px] text-muted-foreground">Win Your Future Boss</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/phone-screen', true)}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-blue-500/5 border border-blue-500/20 hover:bg-blue-500/10 transition-colors text-left"
+                    data-testid="mobile-link-phone-screen"
+                  >
+                    <div className="p-2 rounded-md bg-blue-500/10">
+                      <Phone className="w-5 h-5 text-blue-600" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-sm font-medium">Phone Screen Prep</span>
+                      <span className="block text-[10px] text-muted-foreground">First Round Interview Guide</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/data-engineer', true)}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-emerald-500/5 border border-emerald-500/20 hover:bg-emerald-500/10 transition-colors text-left"
+                    data-testid="mobile-link-data-engineer"
+                  >
+                    <div className="p-2 rounded-md bg-emerald-500/10">
+                      <Database className="w-5 h-5 text-emerald-600" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-sm font-medium">Data Engineer Roadmap</span>
+                      <span className="block text-[10px] text-muted-foreground">Build Data Pipelines at FAANG</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/solution-architect', true)}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-orange-500/5 border border-orange-500/20 hover:bg-orange-500/10 transition-colors text-left"
+                    data-testid="mobile-link-solution-architect"
+                  >
+                    <div className="p-2 rounded-md bg-orange-500/10">
+                      <Rocket className="w-5 h-5 text-orange-600" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-sm font-medium">Solution Architect Roadmap</span>
+                      <span className="block text-[10px] text-muted-foreground">From service company to FAANG</span>
                     </div>
                     <ChevronRight className="w-4 h-4 text-muted-foreground" />
                   </button>
@@ -487,44 +542,16 @@ export default function Navigation() {
                     <ChevronRight className="w-4 h-4 text-muted-foreground" />
                   </button>
                   <button
-                    onClick={() => handleNavClick('/phone-screen', true)}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-blue-500/5 border border-blue-500/20 hover:bg-blue-500/10 transition-colors text-left"
-                    data-testid="mobile-link-phone-screen"
-                  >
-                    <div className="p-2 rounded-md bg-blue-500/10">
-                      <Phone className="w-5 h-5 text-blue-600" />
-                    </div>
-                    <div className="flex-1">
-                      <span className="text-sm font-medium">Phone Screen Prep</span>
-                      <span className="block text-[10px] text-muted-foreground">First Round Interview Guide</span>
-                    </div>
-                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('/hiring-manager-round', true)}
+                    onClick={() => handleNavClick('/soft-skills', true)}
                     className="flex items-center gap-3 p-3 rounded-lg bg-purple-500/5 border border-purple-500/20 hover:bg-purple-500/10 transition-colors text-left"
-                    data-testid="mobile-link-hm-round"
+                    data-testid="mobile-link-soft-skills"
                   >
                     <div className="p-2 rounded-md bg-purple-500/10">
-                      <UserCheck className="w-5 h-5 text-purple-600" />
+                      <MessageSquare className="w-5 h-5 text-purple-600" />
                     </div>
                     <div className="flex-1">
-                      <span className="text-sm font-medium">Hiring Manager Round</span>
-                      <span className="block text-[10px] text-muted-foreground">Win Your Future Boss</span>
-                    </div>
-                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
-                  </button>
-                  <button
-                    onClick={() => handleNavClick('/aws-loop', true)}
-                    className="flex items-center gap-3 p-3 rounded-lg bg-orange-500/5 border border-orange-500/20 hover:bg-orange-500/10 transition-colors text-left"
-                    data-testid="mobile-link-aws-loop"
-                  >
-                    <div className="p-2 rounded-md bg-orange-500/10">
-                      <Award className="w-5 h-5 text-orange-600" />
-                    </div>
-                    <div className="flex-1">
-                      <span className="text-sm font-medium">AWS Loop Prep</span>
-                      <span className="block text-[10px] text-muted-foreground">Amazon Interview Mastery</span>
+                      <span className="text-sm font-medium">Soft Skills Guide</span>
+                      <span className="block text-[10px] text-muted-foreground">Communication & Interview Tips</span>
                     </div>
                     <ChevronRight className="w-4 h-4 text-muted-foreground" />
                   </button>

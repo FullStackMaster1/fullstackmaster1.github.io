@@ -25,6 +25,7 @@ import SoftSkillsGuide from "@/pages/SoftSkillsGuide";
 import AWSLoopPrep from "@/pages/AWSLoopPrep";
 import PhoneScreenPrep from "@/pages/PhoneScreenPrep";
 import HiringManagerPrep from "@/pages/HiringManagerPrep";
+import DataEngineerRoadmap from "@/pages/DataEngineerRoadmap";
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -44,6 +45,7 @@ function Router() {
       <Route path="/aws-loop" component={AWSLoopPrep} />
       <Route path="/phone-screen" component={PhoneScreenPrep} />
       <Route path="/hiring-manager-round" component={HiringManagerPrep} />
+      <Route path="/data-engineer" component={DataEngineerRoadmap} />
       <Route path="/privacy-policy" component={PrivacyPolicy} />
       <Route path="/confidentiality" component={Confidentiality} />
       <Route path="/nda-document" component={NDADocument} />

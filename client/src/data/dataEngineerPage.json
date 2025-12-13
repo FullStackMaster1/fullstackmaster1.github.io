@@ -1,0 +1,237 @@
+{
+  "seo": {
+    "title": "Become a Data Engineer | Free Roadmap for Engineers | Rupesh Tiwari",
+    "description": "Your complete roadmap to becoming a Data Engineer at FAANG companies. Learn data pipelines, ETL, cloud data platforms, and land your dream job. No prior data experience required.",
+    "keywords": ["data engineer roadmap", "data engineering career", "AWS data engineer", "become data engineer", "data pipeline interview", "ETL interview prep", "big data engineer", "spark interview", "data engineer FAANG", "snowflake data engineer"]
+  },
+  "hero": {
+    "badge": "Your Path to Data Engineering",
+    "title": "You CAN Become a Data Engineer",
+    "highlight": "at FAANG & Top Tech Companies",
+    "subtitle": "No PhD required. Start from backend/fullstack and transition.",
+    "description": "Think Data Engineering is only for data scientists? Think again. I've helped software engineers, backend developers, and DBAs transition into Data Engineer roles at AWS, Google, Meta, and more. Here's your complete roadmap."
+  },
+  "mythBusters": {
+    "badge": "Reality Check",
+    "title": "Breaking the Myths",
+    "subtitle": "What's really stopping you isn't what you think",
+    "myths": [
+      {
+        "myth": "I need a PhD or Statistics background",
+        "reality": "Data Engineering focuses on building pipelines, not statistical modeling. Your software engineering skills are exactly what companies need. Most data engineers come from backend/fullstack backgrounds.",
+        "icon": "XCircle"
+      },
+      {
+        "myth": "I need to know Machine Learning",
+        "reality": "Data Engineers build the infrastructure FOR ML teams, not the models. Focus on data pipelines, storage, and processing. ML knowledge is a nice-to-have, not a requirement.",
+        "icon": "XCircle"
+      },
+      {
+        "myth": "I need Hadoop/Spark experience from day one",
+        "reality": "Start with SQL and Python. Add Spark when you're comfortable. Modern cloud platforms (AWS, GCP, Snowflake) abstract much of the complexity. Learn incrementally.",
+        "icon": "XCircle"
+      },
+      {
+        "myth": "Data Engineering is just ETL scripting",
+        "reality": "Modern Data Engineering involves distributed systems, real-time streaming, data governance, and platform architecture. It's highly technical and strategic.",
+        "icon": "XCircle"
+      },
+      {
+        "myth": "The market is saturated",
+        "reality": "Data Engineer demand is exploding. Every company needs to process and analyze data. The shortage of skilled data engineers means excellent compensation and job security.",
+        "icon": "XCircle"
+      }
+    ]
+  },
+  "roadmap": {
+    "badge": "Your Roadmap",
+    "title": "From Developer to Data Engineer",
+    "subtitle": "A practical 6-month journey",
+    "description": "This roadmap is designed for working professionals. 1-2 hours daily is enough. No need to quit your job.",
+    "phases": [
+      {
+        "phase": 1,
+        "title": "Master SQL & Python",
+        "duration": "Month 1",
+        "description": "These are your bread and butter. Most interviews start here.",
+        "topics": [
+          {
+            "name": "Advanced SQL",
+            "items": ["Window functions (ROW_NUMBER, LAG, LEAD)", "CTEs and recursive queries", "Query optimization & EXPLAIN", "Indexes and partitioning"]
+          },
+          {
+            "name": "Python for Data",
+            "items": ["Pandas for data manipulation", "File formats (CSV, JSON, Parquet)", "Working with APIs", "Error handling & logging"]
+          },
+          {
+            "name": "Data Modeling Basics",
+            "items": ["Star schema vs Snowflake schema", "Fact vs Dimension tables", "Slowly Changing Dimensions (SCD)", "Normalization vs Denormalization"]
+          }
+        ],
+        "milestone": "Can write complex SQL queries and Python scripts for data transformation"
+      },
+      {
+        "phase": 2,
+        "title": "Cloud Data Platforms",
+        "duration": "Month 2-3",
+        "description": "Pick ONE cloud and go deep. All major clouds have similar patterns.",
+        "options": [
+          {
+            "cloud": "AWS",
+            "services": "S3, Glue, Athena, Redshift, EMR",
+            "why": "Largest market share, most job openings"
+          },
+          {
+            "cloud": "GCP",
+            "services": "GCS, Dataflow, BigQuery, Dataproc",
+            "why": "Best-in-class data warehouse (BigQuery)"
+          },
+          {
+            "cloud": "Azure",
+            "services": "Blob, Data Factory, Synapse, Databricks",
+            "why": "Strong in enterprise, Microsoft ecosystem"
+          }
+        ],
+        "tips": [
+          "Get hands-on with free tier",
+          "Build at least 2 end-to-end pipelines",
+          "Learn cost optimization early"
+        ],
+        "milestone": "Can build a complete data pipeline on your chosen cloud"
+      },
+      {
+        "phase": 3,
+        "title": "Big Data Processing",
+        "duration": "Month 3-4",
+        "description": "Learn to process data at scale. This is where you differentiate yourself.",
+        "topics": [
+          "Apache Spark fundamentals",
+          "DataFrames and SparkSQL",
+          "Partitioning and bucketing",
+          "Performance tuning (broadcast joins, caching)",
+          "PySpark for production workloads"
+        ],
+        "framework": {
+          "name": "Batch vs Stream",
+          "description": "Understand when to use batch processing vs real-time streaming",
+          "steps": ["Batch: Historical analysis, reports", "Streaming: Real-time dashboards, alerts", "Lambda: Combine both approaches", "Kappa: Stream-first architecture"]
+        },
+        "milestone": "Can optimize Spark jobs and explain tradeoffs"
+      },
+      {
+        "phase": 4,
+        "title": "Orchestration & Streaming",
+        "duration": "Month 4-5",
+        "description": "Production pipelines need scheduling, monitoring, and real-time capabilities.",
+        "topics": [
+          "Apache Airflow (DAGs, operators)",
+          "Data quality and testing (Great Expectations)",
+          "Apache Kafka basics",
+          "Event-driven architectures",
+          "Monitoring and alerting"
+        ],
+        "milestone": "Can build and monitor production-grade data pipelines"
+      },
+      {
+        "phase": 5,
+        "title": "Interview Preparation",
+        "duration": "Month 5-6",
+        "description": "Time to put it all together and practice for interviews.",
+        "topics": [
+          "System design for data systems",
+          "SQL coding interviews",
+          "Behavioral interviews (STAR method)",
+          "Case studies (design a data platform)",
+          "Resume optimization for Data Engineering"
+        ],
+        "milestone": "Ready to ace Data Engineer interviews"
+      }
+    ]
+  },
+  "targetRoles": {
+    "badge": "Target Roles",
+    "title": "Data Engineering Career Paths",
+    "subtitle": "Where this roadmap can take you",
+    "roles": [
+      {
+        "title": "Data Engineer",
+        "level": "L4-L5",
+        "description": "Build and maintain data pipelines, ETL processes, and data infrastructure.",
+        "companies": ["Amazon", "Google", "Meta", "Netflix", "Uber"],
+        "salary": "$140K - $200K"
+      },
+      {
+        "title": "Senior Data Engineer",
+        "level": "L5-L6",
+        "description": "Design data architectures, mentor teams, drive technical decisions.",
+        "companies": ["AWS", "Snowflake", "Databricks", "Airbnb"],
+        "salary": "$180K - $280K"
+      },
+      {
+        "title": "Staff Data Engineer",
+        "level": "L6-L7",
+        "description": "Define data strategy, architect cross-team platforms, influence org-wide standards.",
+        "companies": ["FAANG", "Stripe", "LinkedIn", "Spotify"],
+        "salary": "$250K - $400K"
+      },
+      {
+        "title": "Data Platform Engineer",
+        "level": "L5-L7",
+        "description": "Build internal data platforms, tooling, and self-service infrastructure.",
+        "companies": ["Tech companies with data teams"],
+        "salary": "$200K - $350K"
+      }
+    ]
+  },
+  "skills": {
+    "badge": "Core Skills",
+    "title": "What You'll Master",
+    "subtitle": "The complete Data Engineer toolkit",
+    "categories": [
+      {
+        "name": "Languages & Tools",
+        "items": ["Python", "SQL", "Spark/PySpark", "Airflow", "dbt"]
+      },
+      {
+        "name": "Cloud Platforms",
+        "items": ["AWS (Glue, Redshift)", "GCP (BigQuery)", "Snowflake", "Databricks"]
+      },
+      {
+        "name": "Data Processing",
+        "items": ["Batch processing", "Stream processing", "Kafka", "Data lakes"]
+      },
+      {
+        "name": "Best Practices",
+        "items": ["Data modeling", "Data quality", "Testing", "Monitoring"]
+      }
+    ]
+  },
+  "faqs": [
+    {
+      "question": "Can I become a Data Engineer without a CS degree?",
+      "answer": "Absolutely! Many successful Data Engineers come from non-CS backgrounds. What matters is your ability to learn SQL, Python, and understand data systems. Your analytical mindset and problem-solving skills are more important than your degree."
+    },
+    {
+      "question": "Should I learn Spark or focus on cloud-native tools?",
+      "answer": "Learn both, but prioritize based on your target companies. Spark is still widely used and great for interviews. Cloud-native tools (AWS Glue, Dataflow) are increasingly popular. Start with cloud tools for faster wins, add Spark for depth."
+    },
+    {
+      "question": "How is Data Engineering different from Data Science?",
+      "answer": "Data Engineers build the infrastructure and pipelines that move and transform data. Data Scientists analyze that data and build models. Think of it as: Data Engineers build the kitchen, Data Scientists cook the food. Both are essential."
+    },
+    {
+      "question": "What's the best certification for Data Engineering?",
+      "answer": "AWS Data Analytics Specialty or GCP Professional Data Engineer are highly valued. Databricks certifications are also growing in popularity. Pick one aligned with your target companies and cloud preference."
+    },
+    {
+      "question": "How long does it take to transition to Data Engineering?",
+      "answer": "With dedicated effort (1-2 hours daily), most software engineers can transition in 4-6 months. Your existing programming skills give you a head start. Focus on SQL, Python, and one cloud platform first."
+    }
+  ],
+  "cta": {
+    "title": "Ready to Start Your Data Engineering Journey?",
+    "description": "Book a free consultation to discuss your background and create a personalized roadmap.",
+    "primaryButton": "Book Free Consultation",
+    "secondaryButton": "View Success Stories"
+  }
+}
