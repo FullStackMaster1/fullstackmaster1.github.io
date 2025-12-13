@@ -13,7 +13,7 @@ import {
 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import profile from "@/data/profile.json";
-import { trackEvent } from "@/lib/analytics";
+import { trackWhatsApp, trackBookCall } from "@/lib/analytics";
 
 interface Myth {
   myth: string;
@@ -49,9 +49,21 @@ interface Props {
 }
 
 export default function EmotionalConnectionSection({ content, pageKey }: Props) {
-  const handleCTAClick = (ctaType: string) => {
-    trackEvent("emotional_cta_click", pageKey, ctaType);
+  const handleWhatsAppClick = () => {
+    trackWhatsApp(`emotional_section_${pageKey}`);
   };
+
+  const handleBookClick = () => {
+    trackBookCall(`emotional_section_${pageKey}`);
+  };
+
+  const buildWhatsAppUrl = (message: string) => {
+    const url = new URL(profile.contact.whatsappLink);
+    url.searchParams.set("text", message);
+    return url.toString();
+  };
+
+  const whatsAppHref = buildWhatsAppUrl("Hi Rupesh, I've been reading your coaching content and I'd like to discuss my interview preparation.");
 
   return (
     <>
@@ -188,11 +200,11 @@ export default function EmotionalConnectionSection({ content, pageKey }: Props) 
                 size="lg" 
                 variant="secondary"
                 asChild
-                onClick={() => handleCTAClick("whatsapp")}
+                onClick={handleWhatsAppClick}
                 data-testid={`button-${pageKey}-emotional-whatsapp`}
               >
                 <a 
-                  href={`${profile.contact.whatsappLink}?text=${encodeURIComponent("Hi Rupesh, I've been reading your coaching content and I'd like to discuss my interview preparation.")}`} 
+                  href={whatsAppHref} 
                   target="_blank" 
                   rel="noopener noreferrer"
                 >
@@ -203,9 +215,9 @@ export default function EmotionalConnectionSection({ content, pageKey }: Props) 
               <Button 
                 size="lg" 
                 variant="outline" 
-                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10"
+                className="border-primary-foreground/30 text-primary-foreground"
                 asChild
-                onClick={() => handleCTAClick("book")}
+                onClick={handleBookClick}
                 data-testid={`button-${pageKey}-emotional-book`}
               >
                 <a href={profile.contact.bookingLink} target="_blank" rel="noopener noreferrer">

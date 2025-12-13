@@ -33,7 +33,9 @@ import {
 } from "lucide-react";
 import pageData from "@/data/awsLoopPage.json";
 import profileData from "@/data/profile.json";
+import emotionalContent from "@/data/emotionalContent.json";
 import VideoTipsCarousel from "@/components/VideoTipsCarousel";
+import EmotionalConnectionSection from "@/components/EmotionalConnectionSection";
 
 const roleIcons: Record<string, LucideIcon> = {
   Server,
@@ -441,6 +443,8 @@ export default function AWSLoopPrep() {
             </div>
           </div>
         </section>
+
+        <EmotionalConnectionSection content={emotionalContent.awsLoop} pageKey="awsLoop" />
 
         {/* How I Help */}
         <section className="py-16 bg-muted/30">

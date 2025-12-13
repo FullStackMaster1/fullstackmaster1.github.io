@@ -31,8 +31,10 @@ import WhatsAppWidget from "@/components/WhatsAppWidget";
 import Breadcrumb from "@/components/Breadcrumb";
 import ScrollReveal from "@/components/ScrollReveal";
 import VideoTipsCarousel from "@/components/VideoTipsCarousel";
+import EmotionalConnectionSection from "@/components/EmotionalConnectionSection";
 import pageData from "@/data/executiveCommunicationPage.json";
 import profile from "@/data/profile.json";
+import emotionalContent from "@/data/emotionalContent.json";
 import { trackEvent } from "@/lib/analytics";
 
 const iconMap: Record<string, typeof Code> = {
@@ -395,6 +397,8 @@ export default function ExecutiveCommunication() {
             </div>
           </section>
         </ScrollReveal>
+
+        <EmotionalConnectionSection content={emotionalContent.executiveCommunication} pageKey="executiveCommunication" />
 
         <ScrollReveal type="fade">
           <section className="py-16 bg-muted/50">

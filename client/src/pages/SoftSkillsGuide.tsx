@@ -32,7 +32,9 @@ import {
 } from "lucide-react";
 import pageData from "@/data/softSkillsPage.json";
 import profileData from "@/data/profile.json";
+import emotionalContent from "@/data/emotionalContent.json";
 import VideoTipsCarousel from "@/components/VideoTipsCarousel";
+import EmotionalConnectionSection from "@/components/EmotionalConnectionSection";
 
 const personalityIcons: Record<string, typeof BarChart> = {
   BarChart,
@@ -393,6 +395,8 @@ export default function SoftSkillsGuide() {
             </div>
           </div>
         </section>
+
+        <EmotionalConnectionSection content={emotionalContent.softSkills} pageKey="softSkills" />
 
         {/* Soft Skills Roadmap */}
         <section className="py-16">

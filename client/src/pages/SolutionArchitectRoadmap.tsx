@@ -25,7 +25,9 @@ import {
 } from "lucide-react";
 import pageData from "@/data/solutionArchitectPage.json";
 import profileData from "@/data/profile.json";
+import emotionalContent from "@/data/emotionalContent.json";
 import VideoTipsCarousel from "@/components/VideoTipsCarousel";
+import EmotionalConnectionSection from "@/components/EmotionalConnectionSection";
 
 export default function SolutionArchitectRoadmap() {
   return (
@@ -308,6 +310,8 @@ export default function SolutionArchitectRoadmap() {
             ))}
           </div>
         </section>
+
+        <EmotionalConnectionSection content={emotionalContent.solutionArchitect} pageKey="solutionArchitect" />
 
         {/* Success Stories / Motivation */}
         <section className="py-16">

@@ -22,7 +22,9 @@ import {
 } from "lucide-react";
 import pageData from "@/data/dataEngineerPage.json";
 import profileData from "@/data/profile.json";
+import emotionalContent from "@/data/emotionalContent.json";
 import VideoTipsCarousel from "@/components/VideoTipsCarousel";
+import EmotionalConnectionSection from "@/components/EmotionalConnectionSection";
 
 export default function DataEngineerRoadmap() {
   return (
@@ -291,6 +293,8 @@ export default function DataEngineerRoadmap() {
             </div>
           </div>
         </section>
+
+        <EmotionalConnectionSection content={emotionalContent.dataEngineer} pageKey="dataEngineer" />
 
         {/* FAQ Section */}
         <section className="py-16 bg-muted/30">

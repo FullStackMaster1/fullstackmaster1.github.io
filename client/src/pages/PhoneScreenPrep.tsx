@@ -27,7 +27,9 @@ import {
 } from "lucide-react";
 import pageData from "@/data/phoneScreenPage.json";
 import profileData from "@/data/profile.json";
+import emotionalContent from "@/data/emotionalContent.json";
 import VideoTipsCarousel from "@/components/VideoTipsCarousel";
+import EmotionalConnectionSection from "@/components/EmotionalConnectionSection";
 
 const roleIcons: Record<string, LucideIcon> = {
   Users,
@@ -345,6 +347,8 @@ export default function PhoneScreenPrep() {
             </div>
           </div>
         </section>
+
+        <EmotionalConnectionSection content={emotionalContent.phoneScreen} pageKey="phoneScreen" />
 
         {/* How I Help */}
         <section className="py-16">
