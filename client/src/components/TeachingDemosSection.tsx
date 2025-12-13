@@ -22,6 +22,7 @@ const teachingDemos = [
     title: "Leadership Principles Coaching",
     description: "Master Amazon's 16 Leadership Principles with real-world STAR stories and behavioral interview techniques.",
     image: lpImage,
+    altText: "Live coaching session screenshot showing Amazon Leadership Principles behavioral interview preparation with Rupesh Tiwari",
     icon: Lightbulb,
     tags: ["Behavioral", "STAR Method", "Amazon LP"],
   },
@@ -30,6 +31,7 @@ const teachingDemos = [
     title: "System Design Deep-Dive",
     description: "Learn to design scalable distributed systems with hands-on whiteboarding sessions and real architecture diagrams.",
     image: sysDesignImage,
+    altText: "System design interview coaching session showing distributed architecture whiteboard diagram with AWS components",
     icon: Code,
     tags: ["Architecture", "Scalability", "AWS"],
   },
@@ -38,6 +40,7 @@ const teachingDemos = [
     title: "Resume & Profile Review",
     description: "Get your resume optimized with bar-raiser keywords, quantified impact statements, and FAANG-ready formatting.",
     image: resumeImage,
+    altText: "Resume review coaching session showing FAANG-optimized resume with bar raiser keywords and impact statements",
     icon: FileText,
     tags: ["Resume", "LinkedIn", "Bar Raiser"],
   },
@@ -46,6 +49,7 @@ const teachingDemos = [
     title: "Coding Interview Practice",
     description: "Practice coding problems with live feedback, optimal solutions, and time management strategies.",
     image: codingImage,
+    altText: "Coding interview practice session showing live problem solving with optimal solutions and time management",
     icon: Code,
     tags: ["DSA", "Problem Solving", "Live Coding"],
   },
@@ -102,7 +106,7 @@ export default function TeachingDemosSection() {
                     <div className="aspect-video relative overflow-hidden bg-muted">
                       <img
                         src={demo.image}
-                        alt={demo.title}
+                        alt={demo.altText}
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute top-3 left-3">

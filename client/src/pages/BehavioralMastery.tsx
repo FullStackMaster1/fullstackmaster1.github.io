@@ -22,12 +22,14 @@ import {
   Lightbulb,
   HelpCircle,
   Star,
-  BookOpen
+  BookOpen,
+  Code
 } from "lucide-react";
 import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import Breadcrumb from "@/components/Breadcrumb";
 import ScrollReveal from "@/components/ScrollReveal";
 import pageData from "@/data/behavioralPage.json";
 import profile from "@/data/profile.json";
@@ -51,14 +53,90 @@ export default function BehavioralMastery() {
         <title>{pageData.seo.title}</title>
         <meta name="description" content={pageData.seo.description} />
         <meta name="keywords" content={pageData.seo.keywords.join(", ")} />
-        <link rel="canonical" href="https://fullstackmaster.net/behavioral-interview" />
+        <link rel="canonical" href="https://www.fullstackmaster.net/behavioral-interview" />
         <meta property="og:title" content={pageData.seo.title} />
         <meta property="og:description" content={pageData.seo.description} />
-        <meta property="og:url" content="https://fullstackmaster.net/behavioral-interview" />
-        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.fullstackmaster.net/behavioral-interview" />
+        <meta property="og:type" content="article" />
+        <meta property="og:image" content="https://www.fullstackmaster.net/og-image.png" />
+        <meta property="og:site_name" content="FullStack Master" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageData.seo.title} />
+        <meta name="twitter:description" content={pageData.seo.description} />
+        <meta name="author" content={profile.personal.name} />
+        <meta name="robots" content="index, follow" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": pageData.faqs.map(faq => ({
+              "@type": "Question",
+              "name": faq.question,
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": faq.answer
+              }
+            }))
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": pageData.seo.title,
+            "description": pageData.seo.description,
+            "author": {
+              "@type": "Person",
+              "name": profile.personal.name,
+              "url": "https://www.fullstackmaster.net"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "FullStack Master",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.fullstackmaster.net/icon-512.png"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://www.fullstackmaster.net/behavioral-interview"
+            }
+          })}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.fullstackmaster.net/"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Free Guides",
+                "item": "https://www.fullstackmaster.net/#resources"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Behavioral Interview Mastery",
+                "item": "https://www.fullstackmaster.net/behavioral-interview"
+              }
+            ]
+          })}
+        </script>
       </Helmet>
 
       <Navigation />
+      <Breadcrumb items={[
+        { label: "Free Guides", href: "/#resources" },
+        { label: "Behavioral Interview Mastery" }
+      ]} />
 
       <main className="pt-20">
         <section className="py-16 md:py-24 bg-gradient-to-b from-primary/5 to-background">
@@ -361,6 +439,30 @@ export default function BehavioralMastery() {
                   </AccordionItem>
                 ))}
               </Accordion>
+            </div>
+          </section>
+        </ScrollReveal>
+
+        <ScrollReveal type="fade">
+          <section className="py-16 bg-muted/50">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+              <Badge variant="secondary" className="mb-4">
+                <Code className="w-3 h-3 mr-1" />
+                Related Guide
+              </Badge>
+              <h2 className="text-2xl md:text-3xl font-bold mb-4">
+                Also Prepare for System Design Interviews
+              </h2>
+              <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
+                For senior engineering roles, system design is equally important. Learn the IFRAILST framework to ace your architecture interviews.
+              </p>
+              <Button size="lg" variant="outline" asChild data-testid="link-to-system-design">
+                <Link href="/system-design">
+                  <Code className="w-4 h-4 mr-2" />
+                  Read: System Design Mastery
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Link>
+              </Button>
             </div>
           </section>
         </ScrollReveal>
