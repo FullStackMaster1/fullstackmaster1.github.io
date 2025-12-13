@@ -13,17 +13,11 @@ export default function PWAUpdateNotification({ registration }: PWAUpdateNotific
   useEffect(() => {
     if (!registration) return;
 
-    const handleUpdate = () => {
-      if (registration.waiting) {
-        setShowUpdate(true);
-      }
-    };
-
     if (registration.waiting) {
       setShowUpdate(true);
     }
 
-    registration.addEventListener("updatefound", () => {
+    const handleUpdateFound = () => {
       const newWorker = registration.installing;
       if (newWorker) {
         newWorker.addEventListener("statechange", () => {
@@ -32,14 +26,18 @@ export default function PWAUpdateNotification({ registration }: PWAUpdateNotific
           }
         });
       }
-    });
+    };
 
-    navigator.serviceWorker.addEventListener("controllerchange", () => {
+    const handleControllerChange = () => {
       window.location.reload();
-    });
+    };
+
+    registration.addEventListener("updatefound", handleUpdateFound);
+    navigator.serviceWorker.addEventListener("controllerchange", handleControllerChange);
 
     return () => {
-      registration.removeEventListener("updatefound", handleUpdate);
+      registration.removeEventListener("updatefound", handleUpdateFound);
+      navigator.serviceWorker.removeEventListener("controllerchange", handleControllerChange);
     };
   }, [registration]);
 
