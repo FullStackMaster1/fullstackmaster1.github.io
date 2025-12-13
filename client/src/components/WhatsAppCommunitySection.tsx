@@ -1,12 +1,14 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MessageCircle, Users, Lightbulb, Gift, ArrowRight, CheckCircle, TrendingUp, Clock, Zap } from "lucide-react";
-import { SiWhatsapp } from "react-icons/si";
+import { MessageCircle, Users, Lightbulb, Gift, ArrowRight, CheckCircle, TrendingUp, Clock, Zap, Calendar, Share2, Percent, Star, Sparkles, Copy } from "lucide-react";
+import { SiWhatsapp, SiLinkedin, SiTwitter } from "react-icons/si";
 import { trackEvent } from "@/lib/analytics";
+import { useState } from "react";
 
 const MEMBER_COUNT = 500;
 const SPOTS_LEFT = 47;
+const GENERAL_CHAT_LINK = "https://chat.whatsapp.com/Jeuap5XBXIqCQ52ZSrZ0iX";
 
 const benefits = [
   {
@@ -16,18 +18,19 @@ const benefits = [
   },
   {
     icon: Lightbulb,
-    title: "Free Weekly Tips",
-    description: "Get actionable interview tips, system design patterns, and career advice"
+    title: "Interview Tip Tuesday",
+    description: "Get weekly actionable tips every Tuesday to boost your prep",
+    highlight: true
   },
   {
     icon: MessageCircle,
-    title: "Direct Access",
-    description: "Ask questions and get answers from Rupesh and the community"
+    title: "Monthly Live Q&A",
+    description: "Ask Rupesh anything in monthly live sessions - free for members"
   },
   {
     icon: Gift,
-    title: "Exclusive Content",
-    description: "Early access to new resources, webinars, and coaching discounts"
+    title: "Member-Only Discounts",
+    description: "Exclusive 20% off coaching sessions for community members"
   }
 ];
 
@@ -40,9 +43,34 @@ const communityGroups = [
   { name: "Ask Rupesh", members: "VIP", link: "https://chat.whatsapp.com/IhjKvkdty0ACYtxIuXz6ZO", description: "Direct Q&A" },
 ];
 
+const shareableQuotes = [
+  "System Design Tip: Always start with requirements before jumping into architecture.",
+  "Behavioral Interview Tip: Use STAR method - Situation, Task, Action, Result.",
+  "FAANG Prep Tip: Focus on one company's interview style at a time.",
+  "Leadership Principle: Customer Obsession - Start with the customer and work backwards.",
+];
+
 export default function WhatsAppCommunitySection() {
+  const [copied, setCopied] = useState(false);
+  const [currentQuote] = useState(() => shareableQuotes[Math.floor(Math.random() * shareableQuotes.length)]);
+
   const handleJoinClick = () => {
     trackEvent("whatsapp_community_join", "homepage", "cta_click");
+  };
+
+  const handleShareClick = (platform: string) => {
+    trackEvent("community_share", "homepage", platform);
+    const shareText = `Join FullStackMaster WhatsApp Community - Free FAANG interview prep tips, networking, and job postings! ${GENERAL_CHAT_LINK}`;
+    
+    if (platform === 'linkedin') {
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(GENERAL_CHAT_LINK)}`, '_blank');
+    } else if (platform === 'twitter') {
+      window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`, '_blank');
+    } else if (platform === 'copy') {
+      navigator.clipboard.writeText(GENERAL_CHAT_LINK);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   return (
@@ -53,7 +81,7 @@ export default function WhatsAppCommunitySection() {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
-          <div className="flex items-center justify-center gap-3 mb-4">
+          <div className="flex flex-wrap items-center justify-center gap-2 mb-4">
             <Badge variant="secondary" className="bg-green-500/10 text-green-600 border-green-500/20">
               <SiWhatsapp className="w-3 h-3 mr-1" />
               Free Community
@@ -62,13 +90,17 @@ export default function WhatsAppCommunitySection() {
               <TrendingUp className="w-3 h-3 mr-1" />
               {MEMBER_COUNT}+ Members
             </Badge>
+            <Badge variant="secondary" className="bg-blue-500/10 text-blue-600 border-blue-500/20">
+              <Calendar className="w-3 h-3 mr-1" />
+              Tip Tuesday Weekly
+            </Badge>
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-community-title">
             Join <span className="text-green-600">FullStackMaster</span> WhatsApp Community
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-4">
             Connect with {MEMBER_COUNT}+ senior professionals preparing for FAANG interviews. 
-            Get free tips, ask questions, and accelerate your career growth.
+            Get free weekly tips, exclusive discounts, and accelerate your career growth.
           </p>
           <div 
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-red-500/10 border border-red-500/20 text-red-600 text-sm font-medium"
@@ -79,18 +111,29 @@ export default function WhatsAppCommunitySection() {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 items-center">
-          <div className="order-2 lg:order-1">
+        <div className="grid lg:grid-cols-2 gap-8 items-start">
+          <div className="order-2 lg:order-1 space-y-6">
             <div className="grid sm:grid-cols-2 gap-4">
               {benefits.map((benefit, idx) => (
-                <Card key={idx} className="hover-elevate" data-testid={`card-benefit-${idx}`}>
+                <Card 
+                  key={idx} 
+                  className={`hover-elevate ${benefit.highlight ? 'border-amber-500/30 bg-amber-500/5' : ''}`} 
+                  data-testid={`card-benefit-${idx}`}
+                >
                   <CardContent className="p-5">
                     <div className="flex items-start gap-3">
-                      <div className="p-2 rounded-lg bg-green-500/10">
-                        <benefit.icon className="w-5 h-5 text-green-600" />
+                      <div className={`p-2 rounded-lg ${benefit.highlight ? 'bg-amber-500/10' : 'bg-green-500/10'}`}>
+                        <benefit.icon className={`w-5 h-5 ${benefit.highlight ? 'text-amber-600' : 'text-green-600'}`} />
                       </div>
                       <div>
-                        <h3 className="font-semibold text-sm mb-1">{benefit.title}</h3>
+                        <h3 className="font-semibold text-sm mb-1 flex items-center gap-1">
+                          {benefit.title}
+                          {benefit.highlight && (
+                            <Badge variant="secondary" className="text-[10px] px-1 py-0 bg-amber-500/10 text-amber-600 border-amber-500/20">
+                              NEW
+                            </Badge>
+                          )}
+                        </h3>
                         <p className="text-xs text-muted-foreground">{benefit.description}</p>
                       </div>
                     </div>
@@ -99,22 +142,44 @@ export default function WhatsAppCommunitySection() {
               ))}
             </div>
 
-            <div className="mt-6 p-4 rounded-lg bg-muted/50 border">
+            <Card className="border-purple-500/20 bg-purple-500/5">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="p-2 rounded-lg bg-purple-500/10">
+                    <Percent className="w-5 h-5 text-purple-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-sm">Exclusive Member Discount</h3>
+                    <p className="text-xs text-muted-foreground">Community members get 20% off all coaching packages</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-2 text-xs text-purple-600 font-medium">
+                  <Star className="w-3 h-3" />
+                  <span>Use code: COMMUNITY20 when booking</span>
+                </div>
+              </CardContent>
+            </Card>
+
+            <div className="p-4 rounded-lg bg-muted/50 border">
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <CheckCircle className="w-4 h-4 text-green-600" />
                 <span>100% Free to join</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground mt-2">
                 <CheckCircle className="w-4 h-4 text-green-600" />
-                <span>No spam, only valuable content</span>
+                <span>Weekly Interview Tip Tuesday posts</span>
               </div>
               <div className="flex items-center gap-2 text-sm text-muted-foreground mt-2">
                 <CheckCircle className="w-4 h-4 text-green-600" />
-                <span>Leave anytime with one click</span>
+                <span>Monthly live AMA with Rupesh</span>
+              </div>
+              <div className="flex items-center gap-2 text-sm text-muted-foreground mt-2">
+                <CheckCircle className="w-4 h-4 text-green-600" />
+                <span>Job postings from FAANG network</span>
               </div>
             </div>
 
-            <div className="mt-6">
+            <div>
               <p className="text-sm font-semibold mb-3 flex items-center gap-2">
                 <Zap className="w-4 h-4 text-amber-500" />
                 Join Specific Groups (click to join):
@@ -143,7 +208,7 @@ export default function WhatsAppCommunitySection() {
             </div>
           </div>
 
-          <div className="order-1 lg:order-2">
+          <div className="order-1 lg:order-2 space-y-4">
             <Card className="overflow-hidden border-green-500/20">
               <div className="bg-green-600 text-white text-center py-2 text-sm font-medium">
                 <span className="animate-pulse">Join {MEMBER_COUNT}+ professionals today</span>
@@ -167,7 +232,7 @@ export default function WhatsAppCommunitySection() {
                     onClick={handleJoinClick}
                   >
                     <a 
-                      href="https://chat.whatsapp.com/Jeuap5XBXIqCQ52ZSrZ0iX"
+                      href={GENERAL_CHAT_LINK}
                       target="_blank"
                       rel="noopener noreferrer"
                       data-testid="link-join-community"
@@ -212,6 +277,65 @@ export default function WhatsAppCommunitySection() {
                     </div>
                   </div>
                 </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-blue-500/20 bg-blue-500/5">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-2 mb-3">
+                  <Share2 className="w-4 h-4 text-blue-600" />
+                  <span className="text-sm font-semibold">Invite 2 Friends & Unlock Bonus</span>
+                </div>
+                <p className="text-xs text-muted-foreground mb-3">
+                  Share with friends who are preparing for interviews. When 2 friends join, get a free 15-min resume review!
+                </p>
+                <div className="flex gap-2">
+                  <Button 
+                    size="sm" 
+                    variant="outline"
+                    className="flex-1 text-xs"
+                    onClick={() => handleShareClick('linkedin')}
+                    data-testid="button-share-linkedin"
+                  >
+                    <SiLinkedin className="w-3 h-3 mr-1 text-blue-600" />
+                    LinkedIn
+                  </Button>
+                  <Button 
+                    size="sm" 
+                    variant="outline"
+                    className="flex-1 text-xs"
+                    onClick={() => handleShareClick('twitter')}
+                    data-testid="button-share-twitter"
+                  >
+                    <SiTwitter className="w-3 h-3 mr-1 text-sky-500" />
+                    Twitter
+                  </Button>
+                  <Button 
+                    size="sm" 
+                    variant="outline"
+                    className="flex-1 text-xs"
+                    onClick={() => handleShareClick('copy')}
+                    data-testid="button-share-copy"
+                  >
+                    <Copy className="w-3 h-3 mr-1" />
+                    {copied ? 'Copied!' : 'Copy'}
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card className="border-amber-500/20 bg-amber-500/5">
+              <CardContent className="p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Sparkles className="w-4 h-4 text-amber-600" />
+                  <span className="text-sm font-semibold">Today's Shareable Tip</span>
+                </div>
+                <blockquote className="text-sm italic text-muted-foreground border-l-2 border-amber-500 pl-3 mb-3">
+                  "{currentQuote}"
+                </blockquote>
+                <p className="text-[10px] text-muted-foreground">
+                  Share this on LinkedIn and tag @FullStackMaster for a feature!
+                </p>
               </CardContent>
             </Card>
           </div>
