@@ -12,6 +12,10 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { Loader2 } from "lucide-react";
 
 const TrustBar = lazy(() => import("@/components/TrustBar"));
+const ClientLogosBar = lazy(() => import("@/components/ClientLogosBar"));
+const FeaturedOnStrip = lazy(() => import("@/components/FeaturedOnStrip"));
+const SalaryCalculator = lazy(() => import("@/components/SalaryCalculator"));
+const ReferralProgramSection = lazy(() => import("@/components/ReferralProgramSection"));
 const WhyLeadersFailSection = lazy(() => import("@/components/WhyLeadersFailSection"));
 const AboutSection = lazy(() => import("@/components/AboutSection"));
 const MethodologySection = lazy(() => import("@/components/MethodologySection"));
@@ -58,6 +62,10 @@ export default function Home() {
         <USATrustBar />
         
         <Suspense fallback={<SectionLoader />}>
+          <ClientLogosBar />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="fade" duration={0.7}>
             <ExecutiveCaseStudies />
           </ScrollReveal>
@@ -73,6 +81,10 @@ export default function Home() {
           <ScrollReveal type="fade" delay={0.1} duration={0.6}>
             <TrustBar />
           </ScrollReveal>
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <FeaturedOnStrip />
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
@@ -121,6 +133,18 @@ export default function Home() {
         <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="scale" duration={0.7}>
             <SeasonalOffersSection />
+          </ScrollReveal>
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <ScrollReveal type="fade" duration={0.7}>
+            <ReferralProgramSection />
+          </ScrollReveal>
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <ScrollReveal type="scale" duration={0.6}>
+            <SalaryCalculator />
           </ScrollReveal>
         </Suspense>
         

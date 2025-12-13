@@ -1,8 +1,9 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Star, Award, CheckCircle, ExternalLink, Shield, Building2, Sparkles } from "lucide-react";
-import { SiAmazon, SiGoogle, SiDatabricks, SiRedhat } from "react-icons/si";
+import { Star, Award, CheckCircle, ExternalLink, Shield, Building2, Sparkles, Share2 } from "lucide-react";
+import { SiAmazon, SiGoogle, SiDatabricks, SiRedhat, SiLinkedin, SiWhatsapp } from "react-icons/si";
+import { FaXTwitter } from "react-icons/fa6";
 import successStoriesData from "@/data/successStories.json";
 
 const companyIcons: Record<string, typeof SiAmazon | typeof Building2 | typeof Sparkles> = {
@@ -227,11 +228,65 @@ export default function SuccessStoriesSection() {
                     </div>
                   )}
 
-                  <div className="flex items-center justify-between text-xs text-muted-foreground">
+                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-3">
                     <Badge variant="outline" className="text-xs">
                       {story.sessionType}
                     </Badge>
                     <span>{story.date}</span>
+                  </div>
+                  
+                  <div className="flex items-center justify-between pt-3 border-t border-border/50">
+                    <span className="text-xs text-muted-foreground flex items-center gap-1">
+                      <Share2 className="w-3 h-3" />
+                      Share this win
+                    </span>
+                    <div className="flex gap-1">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        asChild
+                        data-testid={`share-linkedin-${story.id}`}
+                      >
+                        <a
+                          href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://fullstackmaster.net?story=${story.id}`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Share on LinkedIn"
+                        >
+                          <SiLinkedin className="w-3.5 h-3.5 text-blue-600" />
+                        </a>
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        asChild
+                        data-testid={`share-twitter-${story.id}`}
+                      >
+                        <a
+                          href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`${story.name} landed a ${story.role} role at ${story.company} after coaching with @FullStackMaster! Check out their success story:`)}&url=${encodeURIComponent(`https://fullstackmaster.net`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Share on X/Twitter"
+                        >
+                          <FaXTwitter className="w-3.5 h-3.5" />
+                        </a>
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        asChild
+                        data-testid={`share-whatsapp-${story.id}`}
+                      >
+                        <a
+                          href={`https://wa.me/?text=${encodeURIComponent(`Check out this success story: ${story.name} landed a ${story.role} role at ${story.company} after coaching! https://fullstackmaster.net`)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Share on WhatsApp"
+                        >
+                          <SiWhatsapp className="w-3.5 h-3.5 text-green-600" />
+                        </a>
+                      </Button>
+                    </div>
                   </div>
                 </CardContent>
               </Card>
