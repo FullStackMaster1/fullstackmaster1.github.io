@@ -132,12 +132,16 @@ export default function Footer() {
                 Chat on WhatsApp
               </a>
               <a
-                href={`mailto:${contact.email}`}
+                href={`mailto:${contact.email.split('@')[0]}@${contact.email.split('@')[1]}`}
                 className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                 data-testid="link-footer-email"
+                onClick={(e) => {
+                  e.preventDefault();
+                  window.location.href = `mailto:${contact.email}`;
+                }}
               >
                 <Mail className="w-4 h-4 text-primary" />
-                {contact.email}
+                <span>{contact.email.split('@')[0]}<span className="select-none">@</span>{contact.email.split('@')[1]}</span>
               </a>
                             <p className="text-muted-foreground pt-2 text-xs">
                 {footerContact.availabilityText}

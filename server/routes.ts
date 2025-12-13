@@ -38,37 +38,20 @@ function checkVoteRateLimit(identifier: string): boolean {
 
 function requireAdminAuth(req: Request, res: Response, next: NextFunction) {
   if (!ADMIN_TOKEN) {
-    console.error("❌ ADMIN_TOKEN environment variable is not set");
-    return res.status(500).json({ error: "Admin token not configured. Please contact the administrator." });
+    return res.status(500).json({ error: "Admin token not configured." });
   }
   
   let token = req.headers["x-admin-token"];
-  
-  // Handle token being an array (Express sometimes does this)
   if (Array.isArray(token)) {
     token = token[0];
   }
   
-  // Ensure token is a string and trim whitespace
   token = String(token || "").trim();
-  const expectedToken = ADMIN_TOKEN;
   
-  console.log(`🔐 Auth attempt - received token length: ${token.length}, expected length: ${expectedToken.length}`);
-  
-  if (!token) {
-    console.error("❌ No token provided in request");
-    return res.status(401).json({ error: "Unauthorized. No admin token provided." });
+  if (!token || token !== ADMIN_TOKEN) {
+    return res.status(401).json({ error: "Unauthorized." });
   }
   
-  if (token !== expectedToken) {
-    // Debug: show character-by-character comparison for first 5 chars
-    const receivedStart = token.substring(0, 5);
-    const expectedStart = expectedToken.substring(0, 5);
-    console.error(`❌ Token mismatch - received start: [${receivedStart}], expected start: [${expectedStart}]`);
-    return res.status(401).json({ error: "Unauthorized. Invalid admin token." });
-  }
-  
-  console.log("✅ Admin authentication successful");
   next();
 }
 
@@ -76,41 +59,6 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  // Debug endpoint - shows token status
-  app.get("/api/debug/token-status", (req: Request, res: Response) => {
-    const hasToken = !!ADMIN_TOKEN;
-    const tokenLength = ADMIN_TOKEN?.length || 0;
-    res.json({
-      isTokenConfigured: hasToken,
-      tokenLength: tokenLength,
-      firstChars: hasToken ? ADMIN_TOKEN.substring(0, 5) + "..." : "NO_TOKEN",
-      environment: process.env.NODE_ENV,
-      message: hasToken 
-        ? `✅ Token configured (${tokenLength} chars)` 
-        : "❌ Token NOT found in environment"
-    });
-  });
-
-  // Test endpoint - verify token works
-  app.post("/api/debug/test-token", (req: Request, res: Response) => {
-    const testToken = req.body.token;
-    if (!testToken) {
-      return res.status(400).json({ error: "No token provided in body" });
-    }
-    
-    const cleanTestToken = String(testToken).trim();
-    const match = cleanTestToken === ADMIN_TOKEN;
-    
-    res.json({
-      match,
-      receivedLength: cleanTestToken.length,
-      expectedLength: ADMIN_TOKEN.length,
-      received: cleanTestToken.substring(0, 10) + "...",
-      expected: ADMIN_TOKEN.substring(0, 10) + "...",
-      message: match ? "✅ Token matches!" : "❌ Token does NOT match"
-    });
-  });
-
   app.post("/api/webinar/register", async (req: Request, res: Response) => {
     try {
       const validatedData = insertWebinarRegistrationSchema.parse(req.body);
