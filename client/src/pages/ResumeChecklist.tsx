@@ -31,6 +31,7 @@ import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import Breadcrumb from "@/components/Breadcrumb";
 import ScrollReveal from "@/components/ScrollReveal";
+import YouTubeShorts from "@/components/YouTubeShorts";
 import pageData from "@/data/resumeChecklistPage.json";
 import profile from "@/data/profile.json";
 import { trackEvent } from "@/lib/analytics";
@@ -475,6 +476,8 @@ export default function ResumeChecklist() {
             </div>
           </section>
         </ScrollReveal>
+
+        <YouTubeShorts pageKey="resumeChecklist" />
       </main>
 
       <Footer />

@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import pageData from "@/data/hiringManagerPage.json";
 import profileData from "@/data/profile.json";
+import YouTubeShorts from "@/components/YouTubeShorts";
 
 const roleIcons: Record<string, LucideIcon> = {
   Users,
@@ -384,6 +385,8 @@ export default function HiringManagerPrep() {
             </div>
           </div>
         </section>
+
+        <YouTubeShorts pageKey="hiringManager" />
       </main>
       <Footer />
       <WhatsAppWidget />

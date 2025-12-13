@@ -22,6 +22,7 @@ import {
 } from "lucide-react";
 import pageData from "@/data/dataEngineerPage.json";
 import profileData from "@/data/profile.json";
+import YouTubeShorts from "@/components/YouTubeShorts";
 
 export default function DataEngineerRoadmap() {
   return (
@@ -336,6 +337,8 @@ export default function DataEngineerRoadmap() {
             </div>
           </div>
         </section>
+
+        <YouTubeShorts pageKey="dataEngineer" />
       </main>
       <Footer />
       <WhatsAppWidget />

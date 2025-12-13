@@ -8,6 +8,11 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
 import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, LucideIcon, Target, Users, Sparkles, ChevronDown, Presentation, FileText, Rocket, MessageSquare, Award, Phone, UserCheck, Database } from "lucide-react";
 import SearchBox from "@/components/SearchBox";
 import { SiWhatsapp } from "react-icons/si";
@@ -35,6 +40,7 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
+  const [guidesOpen, setGuidesOpen] = useState(false);
   const lastScrollY = useRef(0);
   const { navigation } = siteContent;
   const { contact } = profileData;
@@ -375,8 +381,8 @@ export default function Navigation() {
         </div>
 
         {isOpen && (
-          <div className="lg:hidden pb-4 bg-background/95 backdrop-blur-sm border-t border-border">
-            <div className="flex flex-col pt-4">
+          <div className="lg:hidden bg-background/95 backdrop-blur-sm border-t border-border max-h-[calc(100vh-4rem)] overflow-y-auto">
+            <div className="flex flex-col py-4">
               {/* Quick Actions */}
               {navigation.quickActions && (
                 <div className="px-4 mb-4">
@@ -403,18 +409,23 @@ export default function Navigation() {
                 </div>
               )}
 
-              {/* Free Guides - Highlighted Section */}
-              <div className="px-4 mb-4 border-t border-border pt-4">
-                <div className="flex items-center gap-2 mb-2">
-                  <Sparkles className="w-4 h-4 text-amber-500" />
-                  <p className="text-xs font-semibold text-amber-600 uppercase tracking-wide">
-                    Free Guides
-                  </p>
-                  <Badge variant="secondary" className="px-1.5 py-0 text-[10px] bg-amber-500/10 text-amber-600 border-amber-500/20">
-                    NEW
-                  </Badge>
-                </div>
-                <div className="grid grid-cols-1 gap-2">
+              {/* Free Guides - Collapsible Section */}
+              <Collapsible open={guidesOpen} onOpenChange={setGuidesOpen} className="px-4 mb-4 border-t border-border pt-4">
+                <CollapsibleTrigger className="flex items-center justify-between w-full">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-amber-500" />
+                    <p className="text-xs font-semibold text-amber-600 uppercase tracking-wide">
+                      Free Guides
+                    </p>
+                    <Badge variant="secondary" className="px-1.5 py-0 text-[10px] bg-amber-500/10 text-amber-600 border-amber-500/20">
+                      10
+                    </Badge>
+                  </div>
+                  <ChevronDown className={`w-4 h-4 text-muted-foreground transition-transform ${guidesOpen ? 'rotate-180' : ''}`} />
+                </CollapsibleTrigger>
+                
+                {/* Always visible: Top 3 guides */}
+                <div className="grid grid-cols-1 gap-2 mt-2">
                   <button
                     onClick={() => handleNavClick('/system-design', true)}
                     className="flex items-center gap-3 p-3 rounded-lg bg-blue-500/5 border border-blue-500/20 hover:bg-blue-500/10 transition-colors text-left"
@@ -457,6 +468,10 @@ export default function Navigation() {
                     </div>
                     <ChevronRight className="w-4 h-4 text-muted-foreground" />
                   </button>
+                </div>
+
+                {/* Collapsible: Remaining guides */}
+                <CollapsibleContent className="grid grid-cols-1 gap-2 mt-2">
                   <button
                     onClick={() => handleNavClick('/hiring-manager-round', true)}
                     className="flex items-center gap-3 p-3 rounded-lg bg-purple-500/5 border border-purple-500/20 hover:bg-purple-500/10 transition-colors text-left"
@@ -555,8 +570,8 @@ export default function Navigation() {
                     </div>
                     <ChevronRight className="w-4 h-4 text-muted-foreground" />
                   </button>
-                </div>
-              </div>
+                </CollapsibleContent>
+              </Collapsible>
 
               {/* Navigation Links */}
               <div className="border-t border-border pt-3">

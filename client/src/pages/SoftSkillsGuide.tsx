@@ -32,6 +32,7 @@ import {
 } from "lucide-react";
 import pageData from "@/data/softSkillsPage.json";
 import profileData from "@/data/profile.json";
+import YouTubeShorts from "@/components/YouTubeShorts";
 
 const personalityIcons: Record<string, typeof BarChart> = {
   BarChart,
@@ -457,6 +458,8 @@ export default function SoftSkillsGuide() {
             </div>
           </div>
         </section>
+
+        <YouTubeShorts pageKey="softSkills" />
       </main>
       <Footer />
       <WhatsAppWidget />

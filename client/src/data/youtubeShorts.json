@@ -1,0 +1,81 @@
+{
+  "playlists": {
+    "behavioralAmazon": {
+      "title": "Amazon Behavioral Interview Mastery",
+      "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJqdUI07gmFg4vBBYtx6ta_f",
+      "description": "Quick tips for Amazon leadership principles and behavioral interviews"
+    },
+    "systemDesign": {
+      "title": "System Design Mastery Shorts",
+      "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJrhB1lo3F65IjnOhgMHUR4C",
+      "description": "Bite-sized system design concepts and patterns"
+    },
+    "executiveComm": {
+      "title": "Senior Director Executive Communication",
+      "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJo7aNmMW_WSlSXA7fmiq1-e",
+      "description": "Executive presence and communication skills for senior leaders"
+    },
+    "directorKickstart": {
+      "title": "Senior Director Interview Kickstart",
+      "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJpMrZnvVI6qBgnahpRrYXrp",
+      "description": "Quick-start tips for director-level interviews"
+    },
+    "directorSystemDesign": {
+      "title": "Senior Director System Design Playbook",
+      "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJqg4m6Prj8UW2VoOUTVe7wP",
+      "description": "System design at the director level - FAANG style"
+    },
+    "directorBehavioral": {
+      "title": "Senior Director Behavioral Mastery",
+      "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJqvpYq5H9emqJeM8zV4LK2c",
+      "description": "Behavioral interview strategies for director+ roles"
+    },
+    "sreManager": {
+      "title": "SRE Manager Interview Mastery",
+      "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJq8rvc04p6rXhzToUFP1wmN",
+      "description": "SRE Manager interviews: behavioral, system design & outage mastery"
+    },
+    "tpmSecurity": {
+      "title": "TPM Security & Redteaming",
+      "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJrXvSQgQvM1sUTwh-axuVCt",
+      "description": "Security and red-teaming concepts for TPM interviews"
+    },
+    "dataEngineering": {
+      "title": "Data Engineering Shorts",
+      "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJq83AWLf-SMqZyO0ba7r2OM",
+      "description": "Data engineering concepts, patterns, and interview prep"
+    },
+    "tpmInterview": {
+      "title": "TPM Interview Coaching",
+      "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJqVHAdy69B6BUNagto2dLI2",
+      "description": "Technical Program Manager interview preparation"
+    },
+    "sweInterview": {
+      "title": "SWE Interview Prep Shorts",
+      "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJpZ2mf0o9DRSieapJW_ShhZ",
+      "description": "Software Engineer interview prep: coding, system design, LPs"
+    },
+    "solutionsArchitect": {
+      "title": "Cloud Solutions Architect Playbook",
+      "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJrxE8-tW8xOXy0RTLoyO5VV",
+      "description": "Strategy, growth & impact for solutions architects"
+    },
+    "fullStackGenAI": {
+      "title": "Full Stack Generative AI with AWS",
+      "url": "https://www.youtube.com/playlist?list=PLZed_adPqIJqbqELMjv3BUlry9Vd04_SV",
+      "description": "Build AI applications with AWS and React JS"
+    }
+  },
+  "pageMapping": {
+    "systemDesign": ["systemDesign", "directorSystemDesign"],
+    "behavioral": ["behavioralAmazon", "directorBehavioral"],
+    "executiveCommunication": ["executiveComm", "directorKickstart"],
+    "resumeChecklist": ["directorKickstart", "sweInterview"],
+    "solutionArchitect": ["solutionsArchitect", "systemDesign"],
+    "softSkills": ["executiveComm", "directorBehavioral"],
+    "awsLoop": ["behavioralAmazon", "sreManager", "directorKickstart"],
+    "phoneScreen": ["sweInterview", "behavioralAmazon"],
+    "hiringManager": ["directorKickstart", "directorBehavioral"],
+    "dataEngineer": ["dataEngineering", "systemDesign"]
+  }
+}

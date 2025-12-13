@@ -33,6 +33,7 @@ import {
 } from "lucide-react";
 import pageData from "@/data/awsLoopPage.json";
 import profileData from "@/data/profile.json";
+import YouTubeShorts from "@/components/YouTubeShorts";
 
 const roleIcons: Record<string, LucideIcon> = {
   Server,
@@ -507,6 +508,8 @@ export default function AWSLoopPrep() {
             </div>
           </div>
         </section>
+
+        <YouTubeShorts pageKey="awsLoop" />
       </main>
       <Footer />
       <WhatsAppWidget />

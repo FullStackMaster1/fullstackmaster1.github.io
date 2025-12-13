@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import pageData from "@/data/phoneScreenPage.json";
 import profileData from "@/data/profile.json";
+import YouTubeShorts from "@/components/YouTubeShorts";
 
 const roleIcons: Record<string, LucideIcon> = {
   Users,
@@ -398,6 +399,8 @@ export default function PhoneScreenPrep() {
             </div>
           </div>
         </section>
+
+        <YouTubeShorts pageKey="phoneScreen" />
       </main>
       <Footer />
       <WhatsAppWidget />
