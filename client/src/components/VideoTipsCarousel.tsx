@@ -1,20 +1,12 @@
-import { useState, useEffect } from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-  type CarouselApi,
-} from "@/components/ui/carousel";
+import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Play, X, ExternalLink, Gift } from "lucide-react";
+import { Play, X, ExternalLink, Gift, ChevronLeft, ChevronRight } from "lucide-react";
 import { SiYoutube } from "react-icons/si";
 import { trackEvent } from "@/lib/analytics";
-import Autoplay from "embla-carousel-autoplay";
 import youtubeData from "@/data/youtubeShorts.json";
+import ScrollReveal from "@/components/ScrollReveal";
 
 interface PlaylistData {
   title: string;
@@ -75,7 +67,7 @@ interface VideoPlayerProps {
 function VideoPlayer({ playlistId, title, onClose }: VideoPlayerProps) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4">
-      <div className="relative w-full max-w-4xl">
+      <div className="relative w-full max-w-5xl">
         <Button
           variant="ghost"
           size="icon"
@@ -100,49 +92,66 @@ function VideoPlayer({ playlistId, title, onClose }: VideoPlayerProps) {
   );
 }
 
-interface PlaylistCardProps {
+interface PlaylistRowProps {
   playlist: Playlist;
   onPlay: (playlist: Playlist) => void;
 }
 
-function PlaylistCard({ playlist, onPlay }: PlaylistCardProps) {
+function PlaylistRow({ playlist, onPlay }: PlaylistRowProps) {
   return (
-    <Card 
-      className="overflow-hidden hover-elevate cursor-pointer group h-full"
-      onClick={() => onPlay(playlist)}
-      data-testid={`card-playlist-${playlist.key}`}
-    >
-      <div className="aspect-video relative bg-muted overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-red-500 to-red-700 flex items-center justify-center">
-          <SiYoutube className="w-12 h-12 text-white/80" />
-        </div>
-        <div className="absolute inset-0 flex items-center justify-center bg-black/30 group-hover:bg-black/50 transition-colors">
-          <div className="w-14 h-14 rounded-full bg-red-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-            <Play className="w-7 h-7 text-white ml-1" />
+    <div className="mb-10" data-testid={`playlist-row-${playlist.key}`}>
+      <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-red-500/10 rounded-lg">
+            <SiYoutube className="w-5 h-5 text-red-500" />
+          </div>
+          <div>
+            <h3 className="font-semibold text-lg">{playlist.title}</h3>
+            <p className="text-sm text-muted-foreground">{playlist.description}</p>
           </div>
         </div>
-        <Badge className="absolute top-2 left-2 bg-red-600 text-white border-0 text-xs">
-          Playlist
-        </Badge>
+        <div className="flex gap-2">
+          <Button
+            variant="default"
+            size="sm"
+            onClick={() => onPlay(playlist)}
+            data-testid={`button-play-${playlist.key}`}
+          >
+            <Play className="w-4 h-4 mr-1" />
+            Play All
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            asChild
+          >
+            <a
+              href={playlist.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid={`link-playlist-${playlist.key}`}
+            >
+              <ExternalLink className="w-4 h-4 mr-1" />
+              YouTube
+            </a>
+          </Button>
+        </div>
       </div>
-      <CardContent className="p-4">
-        <h3 className="font-semibold text-sm line-clamp-2">{playlist.title}</h3>
-        <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{playlist.description}</p>
-        <Button
-          variant="ghost"
-          size="sm"
-          className="p-0 h-auto mt-2 text-red-600 hover:text-red-700 hover:bg-transparent"
-          onClick={(e) => {
-            e.stopPropagation();
-            window.open(playlist.url, "_blank");
-          }}
-          data-testid={`link-playlist-${playlist.key}`}
-        >
-          <ExternalLink className="w-3 h-3 mr-1" />
-          View on YouTube
-        </Button>
-      </CardContent>
-    </Card>
+      
+      <Card className="overflow-hidden">
+        <CardContent className="p-0">
+          <div className="aspect-video md:aspect-[21/9] bg-black">
+            <iframe
+              src={`https://www.youtube.com/embed/videoseries?list=${playlist.playlistId}`}
+              title={playlist.title}
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="w-full h-full"
+            />
+          </div>
+        </CardContent>
+      </Card>
+    </div>
   );
 }
 
@@ -154,22 +163,12 @@ interface VideoTipsCarouselProps {
 
 export default function VideoTipsCarousel({ 
   pageKey, 
-  title = "Quick Video Tips",
-  subtitle = "Watch interview tips right here. Click any playlist to start learning instantly."
+  title = "Video Playlists",
+  subtitle = "Watch these curated video playlists for quick, actionable interview tips you can apply immediately."
 }: VideoTipsCarouselProps) {
   const [activeVideo, setActiveVideo] = useState<Playlist | null>(null);
-  const [api, setApi] = useState<CarouselApi>();
-  const [current, setCurrent] = useState(0);
   
-  const playlists = pageKey ? getPlaylistsForPage(pageKey) : getAllPlaylists();
-  
-  useEffect(() => {
-    if (!api) return;
-    
-    api.on("select", () => {
-      setCurrent(api.selectedScrollSnap());
-    });
-  }, [api]);
+  const playlists = pageKey ? getPlaylistsForPage(pageKey) : getAllPlaylists().slice(0, 4);
 
   const handlePlay = (playlist: Playlist) => {
     setActiveVideo(playlist);
@@ -183,83 +182,42 @@ export default function VideoTipsCarousel({
 
   if (playlists.length === 0) return null;
 
-  const autoplayPlugin = Autoplay({
-    delay: 4000,
-    stopOnInteraction: true,
-    stopOnMouseEnter: true,
-  });
-
   return (
     <>
       <section
-        className="py-10 md:py-14 bg-gradient-to-b from-red-500/5 to-background"
+        className="py-12 md:py-16 bg-gradient-to-b from-red-500/5 to-background"
         data-testid="section-video-tips"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8">
-            <div className="flex items-center justify-center gap-2 mb-3">
-              <SiYoutube className="w-6 h-6 text-red-500" />
-            </div>
-            <div className="flex justify-center gap-2 mb-3">
-              <Badge variant="secondary" className="bg-red-500/10 text-red-600 border-red-500/20">
-                <Play className="w-3 h-3 mr-1" />
-                Watch & Learn
-              </Badge>
-              <Badge className="bg-green-500 text-white border-0">
-                <Gift className="w-3 h-3 mr-1" />
-                100% FREE
-              </Badge>
-            </div>
-            <h2 className="text-2xl md:text-3xl font-bold mb-3" data-testid="text-video-tips-title">
-              {title} <span className="text-red-600">Playlists</span>
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              {subtitle}
-            </p>
-          </div>
-
-          <Carousel
-            setApi={setApi}
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            plugins={[autoplayPlugin]}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-4">
-              {playlists.map((playlist) => (
-                <CarouselItem
-                  key={playlist.id}
-                  className="pl-4 basis-full sm:basis-1/2 lg:basis-1/3"
-                >
-                  <PlaylistCard playlist={playlist} onPlay={handlePlay} />
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            {playlists.length > 2 && (
-              <div className="hidden md:block">
-                <CarouselPrevious className="-left-12" data-testid="button-video-prev" />
-                <CarouselNext className="-right-12" data-testid="button-video-next" />
+          <ScrollReveal type="fade">
+            <div className="text-center mb-10">
+              <div className="flex justify-center gap-2 mb-4">
+                <Badge variant="secondary" className="bg-red-500/10 text-red-600 border-red-500/20">
+                  <SiYoutube className="w-3 h-3 mr-1" />
+                  YouTube Shorts
+                </Badge>
+                <Badge className="bg-green-500 text-white border-0">
+                  <Gift className="w-3 h-3 mr-1" />
+                  FREE
+                </Badge>
               </div>
-            )}
-          </Carousel>
+              <h2 className="text-2xl md:text-3xl font-bold mb-3" data-testid="text-video-tips-title">
+                {title}
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                {subtitle}
+              </p>
+            </div>
+          </ScrollReveal>
 
-          <div className="flex items-center justify-center gap-2 mt-4">
-            {playlists.map((_, idx) => (
-              <button
-                key={idx}
-                className={`w-2 h-2 rounded-full transition-colors ${
-                  current === idx ? "bg-red-500" : "bg-muted-foreground/30"
-                }`}
-                onClick={() => api?.scrollTo(idx)}
-                data-testid={`dot-${idx}`}
-              />
-            ))}
-          </div>
+          {playlists.map((playlist, idx) => (
+            <ScrollReveal key={playlist.id} type="slide-up">
+              <PlaylistRow playlist={playlist} onPlay={handlePlay} />
+            </ScrollReveal>
+          ))}
 
           <div className="flex justify-center mt-6">
-            <Button variant="outline" size="sm" asChild>
+            <Button variant="outline" asChild>
               <a
                 href="https://www.youtube.com/@FullStackMaster/playlists"
                 target="_blank"
@@ -267,7 +225,7 @@ export default function VideoTipsCarousel({
                 data-testid="link-all-playlists"
               >
                 <SiYoutube className="w-4 h-4 mr-2 text-red-500" />
-                View All Playlists
+                View All Playlists on YouTube
                 <ExternalLink className="w-4 h-4 ml-2" />
               </a>
             </Button>
