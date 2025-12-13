@@ -30,6 +30,8 @@ import ScrollToTop from "@/components/ScrollToTop";
 import CompanySection from "@/components/CompanySection";
 import FreeResourcesHighlight from "@/components/FreeResourcesHighlight";
 import SeasonalOffersSection from "@/components/SeasonalOffersSection";
+import WhatsAppCommunitySection from "@/components/WhatsAppCommunitySection";
+import InlineShortsCarousel from "@/components/InlineShortsCarousel";
 
 export default function Home() {
   return (
@@ -103,6 +105,14 @@ export default function Home() {
         
         <ScrollReveal type="slide-up" delay={0.1}>
           <PlaylistsCarousel />
+        </ScrollReveal>
+        
+        <ScrollReveal type="scale" delay={0.1}>
+          <InlineShortsCarousel />
+        </ScrollReveal>
+        
+        <ScrollReveal type="fade" delay={0.1}>
+          <WhatsAppCommunitySection />
         </ScrollReveal>
         
         <ScrollReveal type="fade">
