@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Download, Share, Plus } from "lucide-react";
+import { X, Download, Share, Plus, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
 
@@ -10,7 +10,8 @@ interface BeforeInstallPromptEvent extends Event {
 }
 
 const PWA_INSTALLED_KEY = "pwa-installed";
-const PWA_DISMISSED_KEY = "pwa-prompt-dismissed";
+const PWA_LAST_PROMPT_KEY = "pwa-last-prompt";
+const PROMPT_INTERVAL_HOURS = 24;
 
 export default function PWAInstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
@@ -18,13 +19,16 @@ export default function PWAInstallPrompt() {
   const [isIOS, setIsIOS] = useState(false);
   const [isStandalone, setIsStandalone] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const checkIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
+    const checkMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     const checkStandalone = window.matchMedia("(display-mode: standalone)").matches || 
                            (navigator as any).standalone === true;
     
     setIsIOS(checkIOS);
+    setIsMobile(checkMobile);
     setIsStandalone(checkStandalone);
 
     // Check if already installed (persistent across sessions)
@@ -37,28 +41,32 @@ export default function PWAInstallPrompt() {
       return;
     }
 
-    // Check session dismissal
-    const dismissed = sessionStorage.getItem(PWA_DISMISSED_KEY);
-    if (dismissed || wasInstalled) {
-      setIsInstalled(wasInstalled);
+    // Check if we should show prompt based on time interval (always remind on mobile)
+    const lastPrompt = localStorage.getItem(PWA_LAST_PROMPT_KEY);
+    const now = Date.now();
+    const shouldShowAgain = !lastPrompt || 
+      (now - parseInt(lastPrompt)) > (PROMPT_INTERVAL_HOURS * 60 * 60 * 1000);
+
+    if (wasInstalled) {
+      setIsInstalled(true);
       return;
     }
 
     const handleBeforeInstall = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
-      // Clear installed flag since beforeinstallprompt only fires when NOT installed
       localStorage.removeItem(PWA_INSTALLED_KEY);
       setIsInstalled(false);
       
-      // Show prompt after receiving the event (app is installable)
-      setTimeout(() => {
-        setShowPrompt(true);
-        trackEvent("pwa_prompt_shown", "engagement", checkIOS ? "ios" : "android");
-      }, 15000);
+      // Show prompt immediately on mobile if enough time has passed
+      if (checkMobile && shouldShowAgain) {
+        setTimeout(() => {
+          setShowPrompt(true);
+          trackEvent("pwa_prompt_shown", "engagement", checkIOS ? "ios" : "android");
+        }, 3000);
+      }
     };
 
-    // Listen for successful installation
     const handleAppInstalled = () => {
       localStorage.setItem(PWA_INSTALLED_KEY, "true");
       setIsInstalled(true);
@@ -70,13 +78,13 @@ export default function PWAInstallPrompt() {
     window.addEventListener("beforeinstallprompt", handleBeforeInstall);
     window.addEventListener("appinstalled", handleAppInstalled);
 
-    // For iOS, show manual instructions after delay (no beforeinstallprompt event)
+    // For iOS, show manual instructions after delay
     let iosTimer: ReturnType<typeof setTimeout> | null = null;
-    if (checkIOS && !wasInstalled) {
+    if (checkIOS && !wasInstalled && shouldShowAgain) {
       iosTimer = setTimeout(() => {
         setShowPrompt(true);
         trackEvent("pwa_prompt_shown", "engagement", "ios");
-      }, 15000);
+      }, 3000);
     }
 
     return () => {
@@ -88,7 +96,6 @@ export default function PWAInstallPrompt() {
 
   const handleInstall = async () => {
     if (!deferredPrompt) {
-      // No install prompt available - shouldn't happen but handle gracefully
       setShowPrompt(false);
       return;
     }
@@ -106,9 +113,8 @@ export default function PWAInstallPrompt() {
       
       setDeferredPrompt(null);
       setShowPrompt(false);
-      sessionStorage.setItem(PWA_DISMISSED_KEY, "true");
+      localStorage.setItem(PWA_LAST_PROMPT_KEY, Date.now().toString());
     } catch (error) {
-      // Handle any errors during install
       console.error("PWA install error:", error);
       setShowPrompt(false);
     }
@@ -116,17 +122,16 @@ export default function PWAInstallPrompt() {
 
   const handleDismiss = () => {
     setShowPrompt(false);
-    sessionStorage.setItem(PWA_DISMISSED_KEY, "true");
+    localStorage.setItem(PWA_LAST_PROMPT_KEY, Date.now().toString());
     trackEvent("pwa_prompt_dismissed", "engagement", "closed");
   };
 
   // Don't show if: already in standalone mode, already installed, or prompt not ready
   if (isStandalone || isInstalled || !showPrompt) return null;
   
-  // For Android, only show if we have the deferred prompt (means browser says it's installable)
+  // For Android, only show if we have the deferred prompt
   if (!isIOS && !deferredPrompt) return null;
 
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
   if (!isMobile) return null;
 
   return (
@@ -138,10 +143,10 @@ export default function PWAInstallPrompt() {
         className="fixed bottom-0 left-0 right-0 z-50 p-4 pb-safe"
         data-testid="pwa-install-prompt"
       >
-        <div className="bg-card border border-border rounded-xl shadow-lg p-4 max-w-md mx-auto">
+        <div className="bg-gradient-to-r from-primary to-blue-600 text-primary-foreground rounded-xl shadow-2xl p-4 max-w-md mx-auto border border-primary-foreground/20">
           <button
             onClick={handleDismiss}
-            className="absolute top-3 right-3 text-muted-foreground hover:text-foreground"
+            className="absolute top-3 right-3 text-primary-foreground/70 hover:text-primary-foreground"
             aria-label="Dismiss"
             data-testid="button-dismiss-pwa-prompt"
           >
@@ -149,40 +154,47 @@ export default function PWAInstallPrompt() {
           </button>
 
           <div className="flex items-start gap-4">
-            <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-              <Download className="w-6 h-6 text-primary" />
+            <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-white/20 flex items-center justify-center">
+              <Smartphone className="w-7 h-7 text-white" />
             </div>
             
             <div className="flex-1 pr-6">
-              <h3 className="font-semibold text-foreground mb-1">
-                Install FullStack Master
+              <h3 className="font-bold text-lg mb-1">
+                Install Our App
               </h3>
               
               {isIOS ? (
-                <div className="text-sm text-muted-foreground">
-                  <p className="mb-2">Add to your home screen for quick access:</p>
-                  <div className="flex items-center gap-2 text-xs bg-muted/50 p-2 rounded-lg">
-                    <span className="flex items-center gap-1">
-                      1. Tap <Share className="w-4 h-4 inline" />
-                    </span>
-                    <span className="flex items-center gap-1">
-                      2. Select <Plus className="w-4 h-4 inline" /> Add to Home Screen
-                    </span>
+                <div className="text-sm">
+                  <p className="mb-3 opacity-90">Get quick access to coaching resources anytime!</p>
+                  <div className="flex flex-col gap-2 text-xs bg-white/10 p-3 rounded-lg">
+                    <div className="flex items-center gap-2">
+                      <span className="bg-white/20 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">1</span>
+                      <span className="flex items-center gap-1">
+                        Tap <Share className="w-4 h-4 inline" /> Share button
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="bg-white/20 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">2</span>
+                      <span className="flex items-center gap-1">
+                        Select <Plus className="w-4 h-4 inline" /> "Add to Home Screen"
+                      </span>
+                    </div>
                   </div>
                 </div>
               ) : (
                 <div>
-                  <p className="text-sm text-muted-foreground mb-3">
-                    Get instant access to coaching resources, courses, and booking.
+                  <p className="text-sm opacity-90 mb-3">
+                    Get instant access to coaching, courses & booking - works offline too!
                   </p>
                   <Button 
                     onClick={handleInstall} 
-                    size="sm" 
-                    className="w-full"
+                    size="default" 
+                    variant="secondary"
+                    className="w-full font-bold"
                     data-testid="button-install-pwa"
                   >
                     <Download className="w-4 h-4 mr-2" />
-                    Install App
+                    Install Free App
                   </Button>
                 </div>
               )}
