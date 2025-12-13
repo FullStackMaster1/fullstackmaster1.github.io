@@ -1,0 +1,77 @@
+{
+  "sectionTitle": "Holiday Special Offers",
+  "sectionSubtitle": "Limited Time Deals to Accelerate Your Career",
+  "sectionBadge": "Holiday Season 2024-2025",
+  "expiresAt": "2025-01-31T23:59:59Z",
+  "offers": [
+    {
+      "id": "new-year-bundle",
+      "title": "New Year Career Boost",
+      "subtitle": "Start 2025 with your dream job",
+      "icon": "Sparkles",
+      "theme": "gold",
+      "badge": "Most Popular",
+      "originalValue": "$845",
+      "offerValue": "$600",
+      "savings": "SAVE $245",
+      "includes": [
+        "5 coaching sessions (60 min each)",
+        "FREE Resume Review & Overhaul",
+        "FREE LinkedIn Profile Optimization",
+        "WhatsApp support between sessions"
+      ],
+      "bonus": "Resume + LinkedIn reviews included FREE (normally $100 each)",
+      "ctaText": "Claim New Year Offer",
+      "ctaLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%20I'm%20interested%20in%20the%20New%20Year%20Career%20Boost%20bundle%20with%20FREE%20resume%20and%20LinkedIn%20review.%20Let's%20start%20my%20transformation!",
+      "urgency": "Ends Jan 31st"
+    },
+    {
+      "id": "quick-start-bundle",
+      "title": "Interview Fast Track",
+      "subtitle": "For those with interviews coming up",
+      "icon": "Zap",
+      "theme": "blue",
+      "badge": "Quick Results",
+      "originalValue": "$282",
+      "offerValue": "$250",
+      "savings": "SAVE $32",
+      "includes": [
+        "2 intensive coaching sessions",
+        "Mock interview + feedback",
+        "FREE Resume Quick Review",
+        "Priority scheduling available"
+      ],
+      "bonus": "Get your first session within 48 hours",
+      "ctaText": "Book Fast Track",
+      "ctaLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%20I%20have%20an%20interview%20coming%20up%20and%20need%20the%20Interview%20Fast%20Track%20bundle.%20Can%20we%20schedule%20quickly?",
+      "urgency": "Limited slots"
+    },
+    {
+      "id": "referral-bonus",
+      "title": "Refer a Friend Bonus",
+      "subtitle": "You both win when they succeed",
+      "icon": "Users",
+      "theme": "green",
+      "badge": "Ongoing",
+      "originalValue": "$141",
+      "offerValue": "FREE",
+      "savings": "FREE SESSION",
+      "includes": [
+        "You get 1 FREE session when friend books",
+        "Friend gets 10% off their first package",
+        "Stack with any other offer",
+        "No limit on referrals"
+      ],
+      "bonus": "Unlimited referrals = Unlimited free sessions",
+      "ctaText": "Refer a Friend",
+      "ctaLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%20I%20want%20to%20refer%20a%20friend%20for%20coaching.%20My%20name%20is%20______%20and%20my%20friend's%20name%20is%20______.%20Please%20let%20us%20know%20how%20to%20claim%20the%20bonus!",
+      "urgency": "Always available"
+    }
+  ],
+  "trustPoints": [
+    { "icon": "ShieldCheck", "text": "100% satisfaction guarantee" },
+    { "icon": "Clock", "text": "Sessions never expire" },
+    { "icon": "Star", "text": "85% offer success rate" }
+  ],
+  "footnote": "All offers valid for new bookings. Resume and LinkedIn reviews are 30-minute sessions conducted via video call."
+}

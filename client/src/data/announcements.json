@@ -1,11 +1,20 @@
 [
   {
+    "id": "holiday-2024-2025",
+    "highlight": "Holiday Special",
+    "message": "Book 5 sessions & get FREE Resume + LinkedIn Review (worth $200)!",
+    "linkText": "Claim Offer",
+    "linkHref": "https://wa.me/16094424081?text=Hi%20Rupesh!%20I'm%20interested%20in%20the%20Holiday%20Special%20-%205%20sessions%20with%20FREE%20Resume%20and%20LinkedIn%20Review.%20Let's%20start!",
+    "active": true,
+    "expiresAt": "2025-01-31T23:59:59Z"
+  },
+  {
     "id": "winter-2024",
     "highlight": "New Year Special",
     "message": "Book 5 sessions and get 1 FREE resume review call!",
     "linkText": "Claim Offer",
     "linkHref": "https://wa.me/16094424081?text=Hi%20Rupesh,%20I'm%20interested%20in%20the%20New%20Year%20special%20offer%20-%20Book%205%20sessions%20get%201%20FREE%20resume%20review.",
-    "active": true,
+    "active": false,
     "expiresAt": "2025-01-31T23:59:59Z"
   },
   {

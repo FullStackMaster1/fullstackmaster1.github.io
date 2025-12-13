@@ -29,6 +29,7 @@ import FullServicesSection from "@/components/FullServicesSection";
 import ScrollToTop from "@/components/ScrollToTop";
 import CompanySection from "@/components/CompanySection";
 import FreeResourcesHighlight from "@/components/FreeResourcesHighlight";
+import SeasonalOffersSection from "@/components/SeasonalOffersSection";
 
 export default function Home() {
   return (
@@ -74,6 +75,10 @@ export default function Home() {
         
         <ScrollReveal type="fade" duration={0.7}>
           <FullServicesSection />
+        </ScrollReveal>
+        
+        <ScrollReveal type="scale" duration={0.7}>
+          <SeasonalOffersSection />
         </ScrollReveal>
         
         <ScrollReveal type="slide-up" duration={0.7}>
