@@ -8,7 +8,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, Search, LucideIcon, Target, Users, Sparkles, ChevronDown } from "lucide-react";
+import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, LucideIcon, Target, Users, Sparkles, ChevronDown, Presentation, FileText } from "lucide-react";
+import SearchBox from "@/components/SearchBox";
 import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
 import siteContent from "@/data/siteContent.json";
@@ -118,21 +119,10 @@ export default function Navigation() {
               <span className="hidden sm:block font-bold text-lg">{navigation.brandName}</span>
             </button>
             
-            {/* Search Icon */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="hidden md:flex"
-              onClick={() => {
-                // Scroll to FAQ section for now as search destination
-                const element = document.querySelector('#faq');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
-              aria-label="Search frequently asked questions"
-              data-testid="button-search"
-            >
-              <Search className="h-5 w-5" />
-            </Button>
+            {/* Search Box */}
+            <div className="hidden md:block">
+              <SearchBox className="w-48 lg:w-64" placeholder="Search..." />
+            </div>
           </div>
 
           <div className="hidden lg:flex items-center gap-1">
@@ -176,7 +166,7 @@ export default function Navigation() {
                   </div>
                   <div className="flex-1">
                     <div className="font-medium text-sm">System Design Mastery</div>
-                    <div className="text-xs text-muted-foreground">IFRAILST Framework Guide</div>
+                    <div className="text-xs text-muted-foreground">IFRAIL+T Framework Guide</div>
                   </div>
                 </DropdownMenuItem>
                 <DropdownMenuItem
@@ -190,6 +180,32 @@ export default function Navigation() {
                   <div className="flex-1">
                     <div className="font-medium text-sm">Behavioral Interview Guide</div>
                     <div className="text-xs text-muted-foreground">STAR Method & Amazon LPs</div>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="flex items-start gap-3 p-3 cursor-pointer"
+                  onClick={() => handleNavClick('/executive-communication', true)}
+                  data-testid="link-exec-comm-nav"
+                >
+                  <div className="p-2 rounded-md bg-purple-500/10">
+                    <Presentation className="w-4 h-4 text-purple-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">Executive Communication</div>
+                    <div className="text-xs text-muted-foreground">CLEAR Framework Guide</div>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="flex items-start gap-3 p-3 cursor-pointer"
+                  onClick={() => handleNavClick('/resume-checklist', true)}
+                  data-testid="link-resume-nav"
+                >
+                  <div className="p-2 rounded-md bg-amber-500/10">
+                    <FileText className="w-4 h-4 text-amber-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">Resume Checklist</div>
+                    <div className="text-xs text-muted-foreground">Role-Specific Resume Guides</div>
                   </div>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -302,7 +318,7 @@ export default function Navigation() {
                     </div>
                     <div className="flex-1">
                       <span className="text-sm font-medium">System Design Mastery</span>
-                      <span className="block text-[10px] text-muted-foreground">IFRAILST Framework Guide</span>
+                      <span className="block text-[10px] text-muted-foreground">IFRAIL+T Framework Guide</span>
                     </div>
                     <ChevronRight className="w-4 h-4 text-muted-foreground" />
                   </button>
@@ -317,6 +333,34 @@ export default function Navigation() {
                     <div className="flex-1">
                       <span className="text-sm font-medium">Behavioral Interview Guide</span>
                       <span className="block text-[10px] text-muted-foreground">STAR Method & Amazon LPs</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/executive-communication', true)}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-purple-500/5 border border-purple-500/20 hover:bg-purple-500/10 transition-colors text-left"
+                    data-testid="mobile-link-exec-comm"
+                  >
+                    <div className="p-2 rounded-md bg-purple-500/10">
+                      <Presentation className="w-5 h-5 text-purple-600" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-sm font-medium">Executive Communication</span>
+                      <span className="block text-[10px] text-muted-foreground">CLEAR Framework Guide</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/resume-checklist', true)}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-amber-500/5 border border-amber-500/20 hover:bg-amber-500/10 transition-colors text-left"
+                    data-testid="mobile-link-resume"
+                  >
+                    <div className="p-2 rounded-md bg-amber-500/10">
+                      <FileText className="w-5 h-5 text-amber-600" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-sm font-medium">Resume Checklist</span>
+                      <span className="block text-[10px] text-muted-foreground">Role-Specific Resume Guides</span>
                     </div>
                     <ChevronRight className="w-4 h-4 text-muted-foreground" />
                   </button>

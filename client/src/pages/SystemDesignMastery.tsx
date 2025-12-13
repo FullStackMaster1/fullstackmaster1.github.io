@@ -20,7 +20,8 @@ import {
   Calendar,
   ArrowRight,
   Lightbulb,
-  HelpCircle
+  HelpCircle,
+  Layers
 } from "lucide-react";
 import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
@@ -326,7 +327,82 @@ export default function SystemDesignMastery() {
         </ScrollReveal>
 
         <ScrollReveal type="slide-up">
-          <section className="py-16" id="faqs">
+          <section className="py-16" id="architecture-patterns">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12">
+                <Badge variant="secondary" className="mb-4">
+                  <Layers className="w-3 h-3 mr-1" />
+                  {pageData.architectureDiagrams.badge}
+                </Badge>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-sd-patterns-title">
+                  {pageData.architectureDiagrams.title}
+                </h2>
+                <p className="text-muted-foreground max-w-3xl mx-auto">
+                  {pageData.architectureDiagrams.description}
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-6">
+                {pageData.architectureDiagrams.diagrams.map((diagram, idx) => (
+                  <Card key={diagram.id} className="hover-elevate" data-testid={`card-pattern-${idx}`}>
+                    <CardHeader className="pb-3">
+                      <div className="flex items-start justify-between gap-2">
+                        <div>
+                          <CardTitle className="text-lg mb-1">{diagram.title}</CardTitle>
+                          <p className="text-sm text-primary font-medium">{diagram.subtitle}</p>
+                        </div>
+                        <Badge 
+                          variant={diagram.complexity === "Beginner" ? "secondary" : diagram.complexity === "Intermediate" ? "outline" : "default"}
+                          className="text-xs flex-shrink-0"
+                        >
+                          {diagram.complexity}
+                        </Badge>
+                      </div>
+                    </CardHeader>
+                    <CardContent className="space-y-4">
+                      <p className="text-sm text-muted-foreground">{diagram.description}</p>
+                      
+                      <div className="bg-muted/50 rounded-lg p-4">
+                        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
+                          Architecture Flow
+                        </p>
+                        <div className="flex flex-wrap items-center gap-1.5">
+                          {diagram.components.map((component, cIdx) => (
+                            <div key={cIdx} className="flex items-center">
+                              <div className="px-2 py-1 bg-background border border-border rounded text-xs font-medium">
+                                {component}
+                              </div>
+                              {cIdx < diagram.components.length - 1 && (
+                                <ArrowRight className="w-3 h-3 mx-1 text-muted-foreground flex-shrink-0" />
+                              )}
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div>
+                        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-2">
+                          Key Design Points
+                        </p>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1">
+                          {diagram.keyPoints.map((point, pIdx) => (
+                            <li key={pIdx} className="text-xs text-muted-foreground flex items-start gap-1.5" data-testid={`keypoint-${diagram.id}-${pIdx}`}>
+                              <CheckCircle className="w-3 h-3 text-primary mt-0.5 flex-shrink-0" />
+                              {point}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+          </section>
+        </ScrollReveal>
+
+        <ScrollReveal type="slide-up">
+          <section className="py-16 bg-card" id="faqs">
             <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
               <div className="text-center mb-12">
                 <Badge variant="secondary" className="mb-4">

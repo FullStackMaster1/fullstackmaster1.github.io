@@ -194,6 +194,49 @@
       "answer": "Design a URL shortener, design Twitter/Instagram feed, design a chat system, design a rate limiter, design a distributed cache, design a notification system. For principal/staff roles, expect more ambiguous problems like 'design our cloud infrastructure' where scoping is crucial."
     }
   ],
+  "architectureDiagrams": {
+    "badge": "Common Patterns",
+    "title": "System Design Architecture Patterns",
+    "description": "Master these fundamental patterns that appear in nearly every FAANG system design interview. Understanding these building blocks helps you tackle any design question.",
+    "diagrams": [
+      {
+        "id": "read-heavy",
+        "title": "Read-Heavy Service Pattern",
+        "subtitle": "URL Shortener, Config Service, Feature Flags",
+        "description": "Optimized for services with high read-to-write ratio (100:1 or more). Uses multi-layer caching and read replicas to handle massive read traffic.",
+        "components": ["Clients", "Load Balancer", "API Servers", "Cache Layer (Redis)", "Primary DB", "Read Replicas"],
+        "keyPoints": ["CDN for static content", "Local + distributed caching", "Read replicas for queries", "Async writes via queue"],
+        "complexity": "Beginner"
+      },
+      {
+        "id": "chat-system",
+        "title": "Real-Time Messaging Pattern",
+        "subtitle": "Chat Apps, Notifications, Collaboration Tools",
+        "description": "Handles bidirectional real-time communication with persistent connections. Requires connection management and message delivery guarantees.",
+        "components": ["Clients", "WebSocket Gateway", "Connection Manager", "Message Queue", "Chat Service", "User Presence", "Message Store"],
+        "keyPoints": ["WebSocket for real-time", "Fanout via pub/sub", "Offline message queue", "Presence heartbeats"],
+        "complexity": "Intermediate"
+      },
+      {
+        "id": "feed-ranking",
+        "title": "Feed & Ranking Pattern",
+        "subtitle": "Social Media Feed, News Aggregation, Recommendations",
+        "description": "Generates personalized content feeds using ML ranking. Balances precomputation (push) vs on-demand (pull) based on user follower counts.",
+        "components": ["Clients", "Feed Service", "Ranking Service", "Social Graph", "Post Storage", "Cache (Hot Users)", "ML Ranking Model"],
+        "keyPoints": ["Push for most users", "Pull for celebrities", "Hybrid approach scales", "Pre-ranked feed cache"],
+        "complexity": "Advanced"
+      },
+      {
+        "id": "distributed-storage",
+        "title": "Distributed Storage Pattern",
+        "subtitle": "Object Storage, File Systems, Data Lakes",
+        "description": "Stores massive amounts of data across multiple nodes with replication and partitioning. Handles node failures gracefully.",
+        "components": ["Clients", "Gateway/API", "Metadata Service", "Chunk Servers", "Replication Manager", "Consistency Protocol"],
+        "keyPoints": ["Consistent hashing", "3x replication", "Quorum reads/writes", "Gossip protocol"],
+        "complexity": "Advanced"
+      }
+    ]
+  },
   "cta": {
     "title": "Ready to Master System Design?",
     "description": "Book a free 15-minute discovery call to discuss your target role and create a personalized prep plan.",
