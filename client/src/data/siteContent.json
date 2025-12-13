@@ -14,9 +14,8 @@
       { "label": "Services", "href": "#services", "isPage": false },
       { "label": "Reviews", "href": "#reviews", "isPage": false },
       { "label": "Pricing", "href": "#pricing", "isPage": false },
-      { "label": "Blog", "href": "https://rupeshtiwari.com", "isPage": false, "external": true },
-      { "label": "Resources", "href": "/resources", "isPage": true },
-      { "label": "NDA", "href": "/confidentiality", "isPage": true }
+      { "label": "Blog", "href": "http://blog.rupeshtiwari.com/", "isPage": false, "external": true },
+      { "label": "Resources", "href": "/resources", "isPage": true }
     ],
     "ctaButtons": {
       "whatsapp": {

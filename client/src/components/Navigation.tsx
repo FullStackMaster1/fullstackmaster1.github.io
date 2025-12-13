@@ -1,7 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, Search, LucideIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Menu, X, Video, BookOpen, Zap, Briefcase, ChevronRight, Calendar, Search, LucideIcon, Target, Users, Sparkles, ChevronDown } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
 import siteContent from "@/data/siteContent.json";
@@ -140,6 +147,53 @@ export default function Navigation() {
                 {link.label}
               </Button>
             ))}
+            
+            {/* Free Guides Dropdown with visual highlight */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  className="relative group"
+                  data-testid="dropdown-free-guides"
+                >
+                  <Sparkles className="w-4 h-4 mr-1 text-amber-500" />
+                  Free Guides
+                  <Badge variant="secondary" className="ml-1.5 px-1.5 py-0 text-[10px] bg-amber-500/10 text-amber-600 border-amber-500/20">
+                    NEW
+                  </Badge>
+                  <ChevronDown className="w-3 h-3 ml-1 opacity-50" />
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-64">
+                <DropdownMenuItem
+                  className="flex items-start gap-3 p-3 cursor-pointer"
+                  onClick={() => handleNavClick('/system-design', true)}
+                  data-testid="link-system-design-nav"
+                >
+                  <div className="p-2 rounded-md bg-blue-500/10">
+                    <Target className="w-4 h-4 text-blue-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">System Design Mastery</div>
+                    <div className="text-xs text-muted-foreground">IFRAIL+T Framework Guide</div>
+                  </div>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  className="flex items-start gap-3 p-3 cursor-pointer"
+                  onClick={() => handleNavClick('/behavioral-interview', true)}
+                  data-testid="link-behavioral-nav"
+                >
+                  <div className="p-2 rounded-md bg-green-500/10">
+                    <Users className="w-4 h-4 text-green-600" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-medium text-sm">Behavioral Interview Guide</div>
+                    <div className="text-xs text-muted-foreground">STAR Method & Amazon LPs</div>
+                  </div>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
 
           {/* Mobile Center CTA - Book Session button */}
@@ -225,6 +279,49 @@ export default function Navigation() {
                   </div>
                 </div>
               )}
+
+              {/* Free Guides - Highlighted Section */}
+              <div className="px-4 mb-4 border-t border-border pt-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <Sparkles className="w-4 h-4 text-amber-500" />
+                  <p className="text-xs font-semibold text-amber-600 uppercase tracking-wide">
+                    Free Guides
+                  </p>
+                  <Badge variant="secondary" className="px-1.5 py-0 text-[10px] bg-amber-500/10 text-amber-600 border-amber-500/20">
+                    NEW
+                  </Badge>
+                </div>
+                <div className="grid grid-cols-1 gap-2">
+                  <button
+                    onClick={() => handleNavClick('/system-design', true)}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-blue-500/5 border border-blue-500/20 hover:bg-blue-500/10 transition-colors text-left"
+                    data-testid="mobile-link-system-design"
+                  >
+                    <div className="p-2 rounded-md bg-blue-500/10">
+                      <Target className="w-5 h-5 text-blue-600" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-sm font-medium">System Design Mastery</span>
+                      <span className="block text-[10px] text-muted-foreground">IFRAIL+T Framework Guide</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                  </button>
+                  <button
+                    onClick={() => handleNavClick('/behavioral-interview', true)}
+                    className="flex items-center gap-3 p-3 rounded-lg bg-green-500/5 border border-green-500/20 hover:bg-green-500/10 transition-colors text-left"
+                    data-testid="mobile-link-behavioral"
+                  >
+                    <div className="p-2 rounded-md bg-green-500/10">
+                      <Users className="w-5 h-5 text-green-600" />
+                    </div>
+                    <div className="flex-1">
+                      <span className="text-sm font-medium">Behavioral Interview Guide</span>
+                      <span className="block text-[10px] text-muted-foreground">STAR Method & Amazon LPs</span>
+                    </div>
+                    <ChevronRight className="w-4 h-4 text-muted-foreground" />
+                  </button>
+                </div>
+              </div>
 
               {/* Navigation Links */}
               <div className="border-t border-border pt-3">
