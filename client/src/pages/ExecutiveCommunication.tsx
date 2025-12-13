@@ -30,7 +30,7 @@ import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import Breadcrumb from "@/components/Breadcrumb";
 import ScrollReveal from "@/components/ScrollReveal";
-import YouTubeShorts from "@/components/YouTubeShorts";
+import VideoTipsCarousel from "@/components/VideoTipsCarousel";
 import pageData from "@/data/executiveCommunicationPage.json";
 import profile from "@/data/profile.json";
 import { trackEvent } from "@/lib/analytics";
@@ -475,7 +475,7 @@ export default function ExecutiveCommunication() {
           </section>
         </ScrollReveal>
 
-        <YouTubeShorts pageKey="executiveCommunication" />
+        <VideoTipsCarousel pageKey="executiveCommunication" />
       </main>
 
       <Footer />

@@ -32,7 +32,7 @@ import {
 } from "lucide-react";
 import pageData from "@/data/softSkillsPage.json";
 import profileData from "@/data/profile.json";
-import YouTubeShorts from "@/components/YouTubeShorts";
+import VideoTipsCarousel from "@/components/VideoTipsCarousel";
 
 const personalityIcons: Record<string, typeof BarChart> = {
   BarChart,
@@ -459,7 +459,7 @@ export default function SoftSkillsGuide() {
           </div>
         </section>
 
-        <YouTubeShorts pageKey="softSkills" />
+        <VideoTipsCarousel pageKey="softSkills" />
       </main>
       <Footer />
       <WhatsAppWidget />

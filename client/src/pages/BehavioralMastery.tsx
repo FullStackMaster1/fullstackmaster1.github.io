@@ -31,7 +31,7 @@ import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import Breadcrumb from "@/components/Breadcrumb";
 import ScrollReveal from "@/components/ScrollReveal";
-import YouTubeShorts from "@/components/YouTubeShorts";
+import VideoTipsCarousel from "@/components/VideoTipsCarousel";
 import pageData from "@/data/behavioralPage.json";
 import profile from "@/data/profile.json";
 import { trackEvent } from "@/lib/analytics";
@@ -507,7 +507,7 @@ export default function BehavioralMastery() {
           </section>
         </ScrollReveal>
 
-        <YouTubeShorts pageKey="behavioral" />
+        <VideoTipsCarousel pageKey="behavioral" />
       </main>
 
       <Footer />

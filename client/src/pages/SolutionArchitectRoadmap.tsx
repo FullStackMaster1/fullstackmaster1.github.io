@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import pageData from "@/data/solutionArchitectPage.json";
 import profileData from "@/data/profile.json";
-import YouTubeShorts from "@/components/YouTubeShorts";
+import VideoTipsCarousel from "@/components/VideoTipsCarousel";
 
 export default function SolutionArchitectRoadmap() {
   return (
@@ -363,7 +363,7 @@ export default function SolutionArchitectRoadmap() {
           </div>
         </section>
 
-        <YouTubeShorts pageKey="solutionArchitect" />
+        <VideoTipsCarousel pageKey="solutionArchitect" />
       </main>
       <Footer />
       <WhatsAppWidget />
