@@ -70,7 +70,7 @@ export default function PricingSection() {
   return (
     <section
       id="pricing"
-      className="py-10 md:py-14"
+      className="py-10 md:py-14 gradient-pricing relative"
       data-testid="section-pricing"
     >
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

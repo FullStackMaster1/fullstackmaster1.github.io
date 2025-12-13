@@ -21,7 +21,7 @@ export default function FAQSection() {
   return (
     <section
       id="faq"
-      className="py-10 md:py-14 bg-card"
+      className="py-10 md:py-14 bg-gradient-to-br from-purple-50/30 via-card to-green-50/30 dark:from-purple-950/20 dark:via-card dark:to-green-950/20"
       data-testid="section-faq"
     >
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

@@ -77,7 +77,7 @@ export default function SuccessStoriesSection() {
   return (
     <section
       id="success-stories"
-      className="py-10 md:py-14 bg-gradient-to-b from-green-500/5 to-background"
+      className="py-10 md:py-14 gradient-success relative"
       data-testid="section-success-stories"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

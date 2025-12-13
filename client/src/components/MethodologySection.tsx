@@ -28,7 +28,7 @@ export default function MethodologySection() {
   return (
     <section
       id="methodology"
-      className="py-10 md:py-14 bg-muted/30"
+      className="py-10 md:py-14 bg-gradient-to-br from-orange-50/50 via-muted/30 to-blue-50/50 dark:from-orange-950/20 dark:via-muted/30 dark:to-blue-950/20"
       data-testid="section-methodology"
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -80,7 +80,7 @@ export default function MethodologySection() {
                     </Card>
                   </div>
 
-                  <div className="relative z-10 w-12 h-12 rounded-full bg-primary flex items-center justify-center shadow-lg flex-shrink-0">
+                  <div className="relative z-10 w-12 h-12 rounded-full bg-gradient-to-br from-primary to-purple-600 flex items-center justify-center shadow-lg flex-shrink-0">
                     <IconComponent className="w-5 h-5 text-primary-foreground" />
                   </div>
 

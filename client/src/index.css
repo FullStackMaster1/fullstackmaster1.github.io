@@ -2,48 +2,59 @@
 @tailwind components;
 @tailwind utilities;
 
-/* LIGHT MODE */
+/* LIGHT MODE - Vibrant Professional Color Scheme */
 :root {
   --button-outline: rgba(0,0,0, .10);
   --badge-outline: rgba(0,0,0, .05);
   --opaque-button-border-intensity: -8;
   --elevate-1: rgba(0,0,0, .03);
   --elevate-2: rgba(0,0,0, .08);
-  --background: 0 0% 100%;
-  --foreground: 0 0% 9%;
-  --border: 0 0% 89%;
-  --card: 0 0% 98%;
-  --card-foreground: 0 0% 9%;
-  --card-border: 0 0% 94%;
-  --sidebar: 0 0% 96%;
-  --sidebar-foreground: 0 0% 9%;
-  --sidebar-border: 0 0% 91%;
-  --sidebar-primary: 217 91% 35%;
-  --sidebar-primary-foreground: 0 0% 98%;
-  --sidebar-accent: 0 0% 92%;
-  --sidebar-accent-foreground: 0 0% 9%;
-  --sidebar-ring: 217 91% 35%;
-  --popover: 0 0% 94%;
-  --popover-foreground: 0 0% 9%;
-  --popover-border: 0 0% 89%;
-  --primary: 217 91% 35%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 0 0% 90%;
-  --secondary-foreground: 0 0% 9%;
-  --muted: 0 0% 92%;
-  --muted-foreground: 0 0% 35%;
-  --accent: 217 15% 93%;
-  --accent-foreground: 0 0% 9%;
-  --destructive: 0 84% 42%;
-  --destructive-foreground: 0 0% 98%;
-  --input: 0 0% 75%;
-  --ring: 217 91% 35%;
-  --chart-1: 217 91% 35%;
-  --chart-2: 142 76% 36%;
-  --chart-3: 262 83% 48%;
-  --chart-4: 43 96% 45%;
-  --chart-5: 27 87% 47%;
-  --font-sans: Open Sans, sans-serif;
+  --background: 220 20% 98%;
+  --foreground: 222 47% 11%;
+  --border: 214 32% 91%;
+  --card: 0 0% 100%;
+  --card-foreground: 222 47% 11%;
+  --card-border: 214 32% 91%;
+  --sidebar: 220 14% 96%;
+  --sidebar-foreground: 222 47% 11%;
+  --sidebar-border: 214 32% 91%;
+  --sidebar-primary: 217 91% 50%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 217 91% 95%;
+  --sidebar-accent-foreground: 222 47% 11%;
+  --sidebar-ring: 217 91% 50%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222 47% 11%;
+  --popover-border: 214 32% 91%;
+  --primary: 217 91% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 222 47% 11%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 215 16% 47%;
+  --accent: 217 91% 95%;
+  --accent-foreground: 222 47% 11%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --input: 214 32% 91%;
+  --ring: 217 91% 50%;
+  
+  /* Vibrant Color Palette */
+  --chart-1: 217 91% 50%;
+  --chart-2: 142 76% 42%;
+  --chart-3: 280 85% 55%;
+  --chart-4: 35 100% 50%;
+  --chart-5: 340 82% 52%;
+  
+  /* Brand Colors */
+  --success: 142 76% 42%;
+  --success-foreground: 0 0% 100%;
+  --warning: 35 100% 50%;
+  --warning-foreground: 0 0% 100%;
+  --info: 199 89% 48%;
+  --info-foreground: 0 0% 100%;
+  
+  --font-sans: Inter, system-ui, sans-serif;
   --font-serif: Georgia, serif;
   --font-mono: Menlo, monospace;
   --radius: .5rem;
@@ -87,46 +98,57 @@
   --destructive-border: hsl(from hsl(var(--destructive)) h s calc(l + var(--opaque-button-border-intensity)) / alpha);
 }
 
+/* DARK MODE - Vibrant Professional Color Scheme */
 .dark {
   --button-outline: rgba(255,255,255, .10);
   --badge-outline: rgba(255,255,255, .05);
   --opaque-button-border-intensity: 9;
   --elevate-1: rgba(255,255,255, .04);
   --elevate-2: rgba(255,255,255, .09);
-  --background: 0 0% 7%;
-  --foreground: 0 0% 98%;
-  --border: 0 0% 18%;
-  --card: 0 0% 9%;
-  --card-foreground: 0 0% 98%;
-  --card-border: 0 0% 12%;
-  --sidebar: 0 0% 11%;
-  --sidebar-foreground: 0 0% 98%;
-  --sidebar-border: 0 0% 14%;
-  --sidebar-primary: 217 91% 45%;
-  --sidebar-primary-foreground: 0 0% 98%;
-  --sidebar-accent: 0 0% 14%;
-  --sidebar-accent-foreground: 0 0% 98%;
-  --sidebar-ring: 217 91% 45%;
-  --popover: 0 0% 13%;
-  --popover-foreground: 0 0% 98%;
-  --popover-border: 0 0% 16%;
-  --primary: 217 91% 35%;
-  --primary-foreground: 0 0% 98%;
-  --secondary: 0 0% 15%;
-  --secondary-foreground: 0 0% 98%;
-  --muted: 0 0% 15%;
-  --muted-foreground: 0 0% 65%;
-  --accent: 217 15% 16%;
-  --accent-foreground: 0 0% 98%;
-  --destructive: 0 84% 42%;
-  --destructive-foreground: 0 0% 98%;
-  --input: 0 0% 30%;
-  --ring: 217 91% 45%;
-  --chart-1: 217 91% 60%;
+  --background: 222 47% 6%;
+  --foreground: 210 40% 98%;
+  --border: 217 33% 17%;
+  --card: 222 47% 9%;
+  --card-foreground: 210 40% 98%;
+  --card-border: 217 33% 17%;
+  --sidebar: 222 47% 8%;
+  --sidebar-foreground: 210 40% 98%;
+  --sidebar-border: 217 33% 17%;
+  --sidebar-primary: 217 91% 60%;
+  --sidebar-primary-foreground: 0 0% 100%;
+  --sidebar-accent: 217 91% 15%;
+  --sidebar-accent-foreground: 210 40% 98%;
+  --sidebar-ring: 217 91% 60%;
+  --popover: 222 47% 9%;
+  --popover-foreground: 210 40% 98%;
+  --popover-border: 217 33% 17%;
+  --primary: 217 91% 60%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 217 33% 17%;
+  --secondary-foreground: 210 40% 98%;
+  --muted: 217 33% 17%;
+  --muted-foreground: 215 20% 65%;
+  --accent: 217 91% 15%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --input: 217 33% 17%;
+  --ring: 217 91% 60%;
+  
+  /* Vibrant Color Palette */
+  --chart-1: 217 91% 65%;
   --chart-2: 142 76% 55%;
-  --chart-3: 262 83% 70%;
-  --chart-4: 43 96% 65%;
-  --chart-5: 27 87% 65%;
+  --chart-3: 280 85% 65%;
+  --chart-4: 35 100% 55%;
+  --chart-5: 340 82% 60%;
+  
+  /* Brand Colors */
+  --success: 142 76% 50%;
+  --success-foreground: 0 0% 100%;
+  --warning: 35 100% 55%;
+  --warning-foreground: 0 0% 100%;
+  --info: 199 89% 55%;
+  --info-foreground: 0 0% 100%;
   --shadow-2xs: 0px 2px 0px 0px hsl(0 0% 0% / 0.00);
   --shadow-xs: 0px 2px 0px 0px hsl(0 0% 0% / 0.00);
   --shadow-sm: 0px 2px 0px 0px hsl(0 0% 0% / 0.00), 0px 1px 2px -1px hsl(0 0% 0% / 0.00);
@@ -285,4 +307,205 @@
   .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
     inset: -1px;
   }
+}
+
+/* ============================================
+   COLORFUL GRADIENT BACKGROUNDS
+   ============================================ */
+
+/* Section gradient backgrounds */
+.gradient-hero {
+  background: linear-gradient(135deg, 
+    hsl(217 91% 98%) 0%, 
+    hsl(280 85% 98%) 50%, 
+    hsl(217 91% 96%) 100%);
+}
+
+.dark .gradient-hero {
+  background: linear-gradient(135deg, 
+    hsl(222 47% 8%) 0%, 
+    hsl(280 85% 10%) 50%, 
+    hsl(217 91% 10%) 100%);
+}
+
+.gradient-services {
+  background: linear-gradient(180deg, 
+    hsl(217 91% 97%) 0%, 
+    hsl(142 76% 97%) 100%);
+}
+
+.dark .gradient-services {
+  background: linear-gradient(180deg, 
+    hsl(217 91% 8%) 0%, 
+    hsl(142 76% 8%) 100%);
+}
+
+.gradient-success {
+  background: linear-gradient(135deg, 
+    hsl(142 76% 97%) 0%, 
+    hsl(35 100% 97%) 100%);
+}
+
+.dark .gradient-success {
+  background: linear-gradient(135deg, 
+    hsl(142 76% 8%) 0%, 
+    hsl(35 100% 8%) 100%);
+}
+
+.gradient-pricing {
+  background: linear-gradient(180deg, 
+    hsl(280 85% 97%) 0%, 
+    hsl(217 91% 97%) 100%);
+}
+
+.dark .gradient-pricing {
+  background: linear-gradient(180deg, 
+    hsl(280 85% 8%) 0%, 
+    hsl(217 91% 8%) 100%);
+}
+
+.gradient-cta {
+  background: linear-gradient(135deg, 
+    hsl(217 91% 50%) 0%, 
+    hsl(280 85% 55%) 100%);
+}
+
+/* Colorful accent stripes and decorations */
+.accent-stripe {
+  position: relative;
+}
+
+.accent-stripe::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    hsl(217 91% 50%) 0%, 
+    hsl(280 85% 55%) 25%, 
+    hsl(340 82% 52%) 50%, 
+    hsl(35 100% 50%) 75%, 
+    hsl(142 76% 42%) 100%);
+}
+
+/* Glass morphism effect for cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dark .glass-card {
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Colorful icon backgrounds */
+.icon-bg-blue {
+  background: linear-gradient(135deg, hsl(217 91% 50%) 0%, hsl(217 91% 60%) 100%);
+  color: white;
+}
+
+.icon-bg-purple {
+  background: linear-gradient(135deg, hsl(280 85% 55%) 0%, hsl(280 85% 65%) 100%);
+  color: white;
+}
+
+.icon-bg-green {
+  background: linear-gradient(135deg, hsl(142 76% 42%) 0%, hsl(142 76% 52%) 100%);
+  color: white;
+}
+
+.icon-bg-orange {
+  background: linear-gradient(135deg, hsl(35 100% 50%) 0%, hsl(35 100% 60%) 100%);
+  color: white;
+}
+
+.icon-bg-pink {
+  background: linear-gradient(135deg, hsl(340 82% 52%) 0%, hsl(340 82% 62%) 100%);
+  color: white;
+}
+
+/* Shimmer animation for buttons and badges */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shimmer-effect {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+/* Colorful text gradients */
+.text-gradient-primary {
+  background: linear-gradient(135deg, hsl(217 91% 50%) 0%, hsl(280 85% 55%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-success {
+  background: linear-gradient(135deg, hsl(142 76% 42%) 0%, hsl(199 89% 48%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-warm {
+  background: linear-gradient(135deg, hsl(35 100% 50%) 0%, hsl(340 82% 52%) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Colorful border accents */
+.border-gradient {
+  border: 2px solid transparent;
+  background: linear-gradient(white, white) padding-box,
+              linear-gradient(135deg, hsl(217 91% 50%), hsl(280 85% 55%)) border-box;
+}
+
+.dark .border-gradient {
+  background: linear-gradient(hsl(222 47% 9%), hsl(222 47% 9%)) padding-box,
+              linear-gradient(135deg, hsl(217 91% 60%), hsl(280 85% 65%)) border-box;
+}
+
+/* Pulse animation for CTAs */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 hsla(217, 91%, 50%, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 10px hsla(217, 91%, 50%, 0);
+  }
+}
+
+.pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Colorful section dividers */
+.section-divider {
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    hsl(217 91% 50%) 20%, 
+    hsl(280 85% 55%) 50%, 
+    hsl(217 91% 50%) 80%, 
+    transparent 100%);
+  margin: 0 auto;
+  max-width: 200px;
 }

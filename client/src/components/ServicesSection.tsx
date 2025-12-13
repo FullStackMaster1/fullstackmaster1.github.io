@@ -103,7 +103,7 @@ export default function ServicesSection() {
   return (
     <section
       id="services"
-      className="py-10 md:py-14 bg-muted/30"
+      className="py-10 md:py-14 gradient-services relative"
       data-testid="section-services"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

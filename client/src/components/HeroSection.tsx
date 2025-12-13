@@ -55,7 +55,7 @@ export default function HeroSection() {
 
   return (
     <section
-      className="py-8 lg:py-12 bg-gradient-to-br from-background via-background to-primary/5"
+      className="py-8 lg:py-12 gradient-hero relative overflow-hidden"
       data-testid="section-hero"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -109,7 +109,7 @@ export default function HeroSection() {
               {hero.description}
             </p>
 
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6 p-4 bg-muted/30 rounded-lg">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6 p-4 bg-gradient-to-r from-primary/5 via-purple-500/5 to-green-500/5 rounded-lg border border-primary/10">
               {(hero.proofPoints as ProofPoint[]).map((point) => {
                 const IconComponent = proofIcons[point.icon] || Users;
                 return (
