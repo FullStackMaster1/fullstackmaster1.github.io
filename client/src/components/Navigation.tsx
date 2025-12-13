@@ -103,8 +103,8 @@ export default function Navigation() {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Left side: Logo and Search */}
-          <div className="flex items-center gap-2">
+          {/* Left side: Logo */}
+          <div className="flex items-center">
             <button
               onClick={() => setLocation("/")}
               className="flex items-center gap-2 hover:opacity-80 transition-opacity"
@@ -118,11 +118,6 @@ export default function Navigation() {
               />
               <span className="hidden sm:block font-bold text-lg">{navigation.brandName}</span>
             </button>
-            
-            {/* Search Box */}
-            <div className="hidden md:block">
-              <SearchBox className="w-48 lg:w-64" placeholder="Search..." />
-            </div>
           </div>
 
           <div className="hidden lg:flex items-center gap-1">
@@ -228,6 +223,9 @@ export default function Navigation() {
           </div>
 
           <div className="hidden md:flex items-center gap-2">
+            {/* Search Box */}
+            <SearchBox className="w-40 lg:w-48" placeholder="Search..." />
+            
             <Button
               variant="outline"
               size="sm"
