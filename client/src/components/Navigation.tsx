@@ -344,6 +344,16 @@ export default function Navigation() {
             <Button
               variant="outline"
               size="sm"
+              className="border-green-500/30 text-green-600"
+              onClick={() => handleNavClick('#community', false)}
+              data-testid="button-join-community-nav"
+            >
+              <Users className="w-4 h-4 mr-1" />
+              Join Free Community
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
               asChild
             >
               <a
