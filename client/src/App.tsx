@@ -33,6 +33,7 @@ const DataEngineerRoadmap = lazy(() => import("@/pages/DataEngineerRoadmap"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
+const NewsletterPopup = lazy(() => import("@/components/NewsletterPopup"));
 
 function PageLoader() {
   return (
@@ -89,6 +90,7 @@ function App() {
             <Toaster />
             <Suspense fallback={null}>
               <CookieConsent />
+              <NewsletterPopup />
             </Suspense>
             <PWAUpdateNotification registration={registration} />
             <Router />
