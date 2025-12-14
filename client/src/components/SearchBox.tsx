@@ -174,6 +174,21 @@ const allFaqs: SearchResult[] = [
 
 const allSearchItems = [...pages, ...sections, ...allFaqs];
 
+const popularSuggestions = [
+  { text: "How to crack FAANG interviews?", icon: Target, color: "text-blue-600" },
+  { text: "How to become a Solution Architect?", icon: Briefcase, color: "text-purple-600" },
+  { text: "What is system design interview?", icon: Target, color: "text-blue-600" },
+  { text: "How to prepare for Amazon Loop?", icon: Briefcase, color: "text-amber-600" },
+  { text: "How to answer behavioral questions?", icon: Users, color: "text-green-600" },
+  { text: "How to negotiate salary at FAANG?", icon: Briefcase, color: "text-primary" },
+  { text: "What are Amazon Leadership Principles?", icon: Users, color: "text-green-600" },
+  { text: "How to become like Rupesh?", icon: Users, color: "text-primary" },
+  { text: "How to transition to cloud roles?", icon: Target, color: "text-blue-600" },
+  { text: "What is STAR method?", icon: HelpCircle, color: "text-amber-600" },
+  { text: "How to prepare resume for FAANG?", icon: FileText, color: "text-amber-600" },
+  { text: "Book a coaching session", icon: Briefcase, color: "text-primary" },
+];
+
 interface SearchBoxProps {
   className?: string;
   placeholder?: string;
@@ -183,6 +198,7 @@ export default function SearchBox({ className = "", placeholder = "Search guides
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<SearchResult[]>([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -195,6 +211,7 @@ export default function SearchBox({ className = "", placeholder = "Search guides
       return;
     }
 
+    setShowSuggestions(false);
     const lowerQuery = query.toLowerCase();
     const filtered = allSearchItems.filter(
       item =>
@@ -220,11 +237,26 @@ export default function SearchBox({ className = "", placeholder = "Search guides
     const handleClickOutside = (e: MouseEvent) => {
       if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
         setIsOpen(false);
+        setShowSuggestions(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  const handleSuggestionClick = (suggestionText: string) => {
+    setQuery(suggestionText);
+    setShowSuggestions(false);
+    inputRef.current?.focus();
+  };
+
+  const handleFocus = () => {
+    if (query.length >= 2 && results.length > 0) {
+      setIsOpen(true);
+    } else if (query.length < 2) {
+      setShowSuggestions(true);
+    }
+  };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (!isOpen) return;
@@ -269,6 +301,7 @@ export default function SearchBox({ className = "", placeholder = "Search guides
     setQuery("");
     setResults([]);
     setIsOpen(false);
+    setShowSuggestions(true);
     inputRef.current?.focus();
   };
 
@@ -291,7 +324,7 @@ export default function SearchBox({ className = "", placeholder = "Search guides
           value={query}
           onChange={e => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
-          onFocus={() => query.length >= 2 && results.length > 0 && setIsOpen(true)}
+          onFocus={handleFocus}
           className="pl-9 pr-8 h-9 w-full"
           data-testid="input-search"
         />
@@ -346,6 +379,35 @@ export default function SearchBox({ className = "", placeholder = "Search guides
               </button>
             );
           })}
+        </div>
+      )}
+
+      {showSuggestions && !isOpen && (
+        <div 
+          className="absolute top-full left-0 right-0 mt-1 bg-background border border-border rounded-md shadow-lg z-50 max-h-[400px] overflow-y-auto"
+          data-testid="search-suggestions"
+        >
+          <div className="px-3 py-2 border-b border-border">
+            <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
+              Popular Questions
+            </span>
+          </div>
+          <div className="p-1">
+            {popularSuggestions.map((suggestion, idx) => {
+              const IconComponent = suggestion.icon;
+              return (
+                <button
+                  key={idx}
+                  onClick={() => handleSuggestionClick(suggestion.text)}
+                  className="w-full flex items-center gap-3 px-3 py-2 text-left rounded-sm hover:bg-muted/50 transition-colors"
+                  data-testid={`suggestion-${idx}`}
+                >
+                  <IconComponent className={`w-4 h-4 ${suggestion.color}`} />
+                  <span className="text-sm">{suggestion.text}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>
