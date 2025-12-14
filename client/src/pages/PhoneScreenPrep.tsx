@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import FloatingSocialShare from "@/components/FloatingSocialShare";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -414,6 +415,7 @@ export default function PhoneScreenPrep() {
       </main>
       <Footer />
       <WhatsAppWidget />
+      <FloatingSocialShare title="Phone Screen Prep" />
     </div>
   );
 }

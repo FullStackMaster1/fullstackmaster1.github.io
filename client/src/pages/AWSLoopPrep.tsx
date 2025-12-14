@@ -2,6 +2,7 @@ import Navigation from "@/components/Navigation";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import FloatingSocialShare from "@/components/FloatingSocialShare";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -523,6 +524,7 @@ export default function AWSLoopPrep() {
       </main>
       <Footer />
       <WhatsAppWidget />
+      <FloatingSocialShare title="AWS Loop Prep" />
     </div>
   );
 }

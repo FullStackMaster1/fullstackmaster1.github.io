@@ -28,6 +28,7 @@ import { Link } from "wouter";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import FloatingSocialShare from "@/components/FloatingSocialShare";
 import Breadcrumb from "@/components/Breadcrumb";
 import ScrollReveal from "@/components/ScrollReveal";
 import VideoTipsCarousel from "@/components/VideoTipsCarousel";
@@ -484,6 +485,7 @@ export default function ExecutiveCommunication() {
 
       <Footer />
       <WhatsAppWidget />
+      <FloatingSocialShare title="Executive Communication" />
     </div>
   );
 }

@@ -6,6 +6,7 @@ import PlaylistsCarousel from "@/components/PlaylistsCarousel";
 import ArticlesSection from "@/components/ArticlesSection";
 import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import FloatingSocialShare from "@/components/FloatingSocialShare";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -316,6 +317,7 @@ export default function Resources() {
       </main>
       <Footer />
       <WhatsAppWidget />
+      <FloatingSocialShare title="Free Resources" />
     </div>
   );
 }

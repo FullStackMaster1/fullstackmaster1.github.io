@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import SEOHead from "@/components/SEOHead";
 import AnnouncementBar from "@/components/AnnouncementBar";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import FloatingSocialShare from "@/components/FloatingSocialShare";
 import USATrustBar from "@/components/USATrustBar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -621,6 +622,7 @@ export default function Book() {
 
       <Footer />
       <WhatsAppWidget />
+      <FloatingSocialShare title="Book Coaching Session" />
       
       <AnimatePresence>
         {showExitPopup && (

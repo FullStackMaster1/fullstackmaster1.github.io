@@ -31,6 +31,7 @@ import {
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
+import FloatingSocialShare from "@/components/FloatingSocialShare";
 import Breadcrumb from "@/components/Breadcrumb";
 import ScrollReveal from "@/components/ScrollReveal";
 import cohortData from "@/data/cohortProgram.json";
@@ -729,6 +730,7 @@ export default function CohortProgram() {
 
       <Footer />
       <WhatsAppWidget />
+      <FloatingSocialShare title="Cohort Program" />
     </div>
   );
 }
