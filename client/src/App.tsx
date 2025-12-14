@@ -30,6 +30,7 @@ const AWSLoopPrep = lazy(() => import("@/pages/AWSLoopPrep"));
 const PhoneScreenPrep = lazy(() => import("@/pages/PhoneScreenPrep"));
 const HiringManagerPrep = lazy(() => import("@/pages/HiringManagerPrep"));
 const DataEngineerRoadmap = lazy(() => import("@/pages/DataEngineerRoadmap"));
+const CohortProgram = lazy(() => import("@/pages/CohortProgram"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
@@ -67,6 +68,7 @@ function Router() {
         <Route path="/phone-screen" component={PhoneScreenPrep} />
         <Route path="/hiring-manager-round" component={HiringManagerPrep} />
         <Route path="/data-engineer" component={DataEngineerRoadmap} />
+        <Route path="/cohort" component={CohortProgram} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/terms-of-service" component={TermsOfService} />
         <Route path="/confidentiality" component={Confidentiality} />
