@@ -14,7 +14,7 @@ export default function WhatsAppWidget() {
   const whatsappUrl = `${contact.whatsappLink}?text=${encodeURIComponent(widget.defaultMessage)}`;
 
   return (
-    <div className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-50" data-testid="whatsapp-widget">
+    <div className="hidden md:block fixed bottom-6 right-6 z-50" data-testid="whatsapp-widget">
       {isExpanded && (
         <div className="absolute bottom-16 right-0 mb-2 bg-card border border-card-border rounded-lg shadow-xl p-4 w-72 animate-in slide-in-from-bottom-2 max-h-[50vh] overflow-y-auto">
           <div className="flex items-center justify-between mb-3">

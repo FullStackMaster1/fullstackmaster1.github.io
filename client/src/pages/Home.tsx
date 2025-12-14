@@ -6,7 +6,6 @@ import USATrustBar from "@/components/USATrustBar";
 import SEOHead from "@/components/SEOHead";
 import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
-import StickyMobileCTA from "@/components/StickyMobileCTA";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Loader2 } from "lucide-react";
@@ -229,7 +228,6 @@ export default function Home() {
       </main>
       <Footer />
       <WhatsAppWidget />
-      <StickyMobileCTA />
       <ScrollToTop />
       <Suspense fallback={null}>
         <RecentlyBookedPopup />

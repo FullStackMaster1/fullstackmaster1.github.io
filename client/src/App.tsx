@@ -36,10 +36,10 @@ const NotFound = lazy(() => import("@/pages/not-found"));
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
 const NewsletterPopup = lazy(() => import("@/components/NewsletterPopup"));
 const StickyBookingBar = lazy(() => import("@/components/StickyBookingBar"));
-const FloatingWhatsApp = lazy(() => import("@/components/FloatingWhatsApp"));
 const ExitIntentPopup = lazy(() => import("@/components/ExitIntentPopup"));
 const RecentlyBookedPopup = lazy(() => import("@/components/RecentlyBookedPopup"));
 const OfferCountdownBanner = lazy(() => import("@/components/OfferCountdownBanner"));
+const StickyMobileCTA = lazy(() => import("@/components/StickyMobileCTA"));
 
 function PageLoader() {
   return (
@@ -102,7 +102,7 @@ function App() {
               <CookieConsent />
               <NewsletterPopup />
               <StickyBookingBar />
-              <FloatingWhatsApp />
+              <StickyMobileCTA />
               <ExitIntentPopup />
               <RecentlyBookedPopup />
             </Suspense>
