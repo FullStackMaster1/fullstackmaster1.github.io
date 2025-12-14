@@ -13,6 +13,7 @@ import { Loader2 } from "lucide-react";
 
 const TrustBar = lazy(() => import("@/components/TrustBar"));
 const ClientLogosBar = lazy(() => import("@/components/ClientLogosBar"));
+const LinkedInNewsletterSection = lazy(() => import("@/components/LinkedInNewsletterSection"));
 const FeaturedOnStrip = lazy(() => import("@/components/FeaturedOnStrip"));
 const SalaryCalculator = lazy(() => import("@/components/SalaryCalculator"));
 const ReferralProgramSection = lazy(() => import("@/components/ReferralProgramSection"));
@@ -63,6 +64,12 @@ export default function Home() {
         
         <Suspense fallback={<SectionLoader />}>
           <ClientLogosBar />
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <ScrollReveal type="fade" duration={0.6}>
+            <LinkedInNewsletterSection />
+          </ScrollReveal>
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
