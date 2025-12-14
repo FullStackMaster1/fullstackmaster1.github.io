@@ -35,12 +35,6 @@ const SuccessStories = lazy(() => import("@/pages/SuccessStories"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
-const NewsletterPopup = lazy(() => import("@/components/NewsletterPopup"));
-const StickyBookingBar = lazy(() => import("@/components/StickyBookingBar"));
-const ExitIntentPopup = lazy(() => import("@/components/ExitIntentPopup"));
-const RecentlyBookedPopup = lazy(() => import("@/components/RecentlyBookedPopup"));
-const OfferCountdownBanner = lazy(() => import("@/components/OfferCountdownBanner"));
-const StickyMobileCTA = lazy(() => import("@/components/StickyMobileCTA"));
 
 function PageLoader() {
   return (
@@ -98,15 +92,7 @@ function App() {
             <SEOStructuredData />
             <Toaster />
             <Suspense fallback={null}>
-              <OfferCountdownBanner />
-            </Suspense>
-            <Suspense fallback={null}>
               <CookieConsent />
-              <NewsletterPopup />
-              <StickyBookingBar />
-              <StickyMobileCTA />
-              <ExitIntentPopup />
-              <RecentlyBookedPopup />
             </Suspense>
             <PWAUpdateNotification registration={registration} />
             <Router />
