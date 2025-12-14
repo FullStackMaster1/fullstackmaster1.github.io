@@ -113,7 +113,7 @@
       "features": ["Group coaching", "Peer learning", "5 live sessions"],
       "popular": true,
       "highlight": true,
-      "link": "/cohort-program"
+      "link": "/cohort"
     },
     {
       "id": "system-design",

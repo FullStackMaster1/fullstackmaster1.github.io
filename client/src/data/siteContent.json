@@ -12,7 +12,7 @@
       { "label": "About", "href": "#about", "isPage": false },
       { "label": "Process", "href": "#methodology", "isPage": false },
       { "label": "Services", "href": "#services", "isPage": false },
-      { "label": "Cohort", "href": "/cohort-program", "isPage": true, "highlight": true, "badge": "NEW" },
+      { "label": "Cohort", "href": "/cohort", "isPage": true, "highlight": true, "badge": "NEW" },
       { "label": "Reviews", "href": "#reviews", "isPage": false },
       { "label": "Pricing", "href": "#pricing", "isPage": false },
       { "label": "Blog", "href": "http://blog.rupeshtiwari.com/", "isPage": false, "external": true },
@@ -37,7 +37,7 @@
         {
           "label": "Join Cohort Program",
           "icon": "Users",
-          "href": "/cohort-program",
+          "href": "/cohort",
           "description": "5-Week Group Coaching",
           "highlight": true
         },
