@@ -1,5 +1,0 @@
-{
-  "version": "1.0.4",
-  "buildDate": "2025-12-14",
-  "releaseNotes": "Improved PWA install detection after uninstall, better versioning"
-}
