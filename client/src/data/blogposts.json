@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Cloud Solution Architect Technical Interview Questions",
     "description": "Essential technical questions you must know for your next cloud solution architect interview. Comprehensive guide with detailed answers.",
-    "url": "https://www.rupeshtiwari.com/cloud-solution-architect-technical-interview-questions/",
+    "url": "https://blog.rupeshtiwari.com/cloud-solution-architect-technical-interview-questions/",
     "category": "Interview Prep",
     "readTime": "37 min"
   },
@@ -11,7 +11,7 @@
     "id": 2,
     "title": "Introduction to CAP Theorem",
     "description": "Planning to design your next advanced distributed architecture? Learn about high availability, consistency and partition tolerance.",
-    "url": "https://www.rupeshtiwari.com/introduction-to-cap-theorem/",
+    "url": "https://blog.rupeshtiwari.com/introduction-to-cap-theorem/",
     "category": "System Design",
     "readTime": "5 min"
   },
@@ -19,7 +19,7 @@
     "id": 3,
     "title": "Mandatory Algorithms for Coding Interview",
     "description": "Basic algorithms that you must know if you want to crack your coding interview. Essential preparation guide for technical interviews.",
-    "url": "https://www.rupeshtiwari.com/mandatory-algorithms-for-coding-interview/",
+    "url": "https://blog.rupeshtiwari.com/mandatory-algorithms-for-coding-interview/",
     "category": "Coding Interview",
     "readTime": "2 min"
   },
@@ -27,7 +27,7 @@
     "id": 4,
     "title": "How to Improve Reliability in the Cloud",
     "description": "Got a phone call from your customer about improving application reliability in the cloud? Here's your comprehensive guide.",
-    "url": "https://www.rupeshtiwari.com/how-to-improve-reliability-in-the-cloud/",
+    "url": "https://blog.rupeshtiwari.com/how-to-improve-reliability-in-the-cloud/",
     "category": "Cloud Architecture",
     "readTime": "9 min"
   },
@@ -35,7 +35,7 @@
     "id": 5,
     "title": "Cloud Security Defense In-Depth Azure Approach",
     "description": "Learn how to create secure cloud architecture with defense-in-depth strategy. Comprehensive security framework guide.",
-    "url": "https://www.rupeshtiwari.com/cloud-security-defense-in-depth-azure-approach/",
+    "url": "https://blog.rupeshtiwari.com/cloud-security-defense-in-depth-azure-approach/",
     "category": "Cloud Security",
     "readTime": "10 min"
   },
@@ -43,7 +43,7 @@
     "id": 6,
     "title": "Essential Technical Definitions for Solution Architects",
     "description": "IT lingo, jargons, and abbreviations every solution architect should know. Complete glossary for cloud professionals.",
-    "url": "https://www.rupeshtiwari.com/essential-definitions-for-solution-architects/",
+    "url": "https://blog.rupeshtiwari.com/essential-definitions-for-solution-architects/",
     "category": "Architecture",
     "readTime": "17 min"
   },
@@ -51,7 +51,7 @@
     "id": 7,
     "title": "Cost Optimization with Amazon EC2 Spot Instances",
     "description": "Creating cost-optimized highly scalable cloud architecture is challenging but possible! Learn to use Spot EC2 instances effectively.",
-    "url": "https://www.rupeshtiwari.com/cost-optimization-with-aws-spot-ec2-instances/",
+    "url": "https://blog.rupeshtiwari.com/cost-optimization-with-aws-spot-ec2-instances/",
     "category": "AWS",
     "readTime": "11 min"
   },
@@ -59,7 +59,7 @@
     "id": 8,
     "title": "How to Maintain Well-Architected-Framework on Cloud",
     "description": "How to make sure your workload in the cloud is secure and reliable. Monitor costs and automate with proven frameworks.",
-    "url": "https://www.rupeshtiwari.com/how-to-maintain-well-architected-framework-on-cloud/",
+    "url": "https://blog.rupeshtiwari.com/how-to-maintain-well-architected-framework-on-cloud/",
     "category": "Cloud Architecture",
     "readTime": "4 min"
   },
@@ -67,7 +67,7 @@
     "id": 9,
     "title": "Cloud Security Best Practices",
     "description": "As of 2021, around 50% of all corporate data is stored in the cloud. Learn essential security best practices for applications and networks.",
-    "url": "https://www.rupeshtiwari.com/cloud-security-best-practices/",
+    "url": "https://blog.rupeshtiwari.com/cloud-security-best-practices/",
     "category": "Cloud Security",
     "readTime": "12 min"
   },
@@ -75,7 +75,7 @@
     "id": 10,
     "title": "Getting Started with Monorepo with Nx Nrwl",
     "description": "Do you have lots of JavaScript projects? Learn how to manage dependencies effectively with monorepo architecture.",
-    "url": "https://www.rupeshtiwari.com/getting-started-with-monorepo-with-nx-nrwl/",
+    "url": "https://blog.rupeshtiwari.com/getting-started-with-monorepo-with-nx-nrwl/",
     "category": "Architecture",
     "readTime": "28 min"
   }

@@ -150,7 +150,7 @@ export default function BlogSection() {
         <div className="text-center mt-10">
           <Button size="lg" variant="outline" asChild>
             <a
-              href="https://www.rupeshtiwari.com/posts/"
+              href="https://blog.rupeshtiwari.com"
               target="_blank"
               rel="noopener noreferrer"
               data-testid="button-blog-all"
