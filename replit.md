@@ -20,6 +20,20 @@ The backend is an Express.js application with TypeScript on Node.js. Vite is use
 
 All user-facing content is stored in JSON files within `client/src/data/`, enabling content updates without code changes. This includes a `profile.json` (master profile data), `siteContent.json` (navigation, hero, SEO), and numerous section-specific JSON files for about, methodology, services, FAQs, reviews, courses, articles, and educational landing pages (e.g., system design, AWS loop). New components and business growth features (e.g., `ClientLogosBar.tsx`, `SalaryCalculator.tsx`, `ReferralProgramSection.tsx`, `SeasonalOffersSection.tsx`) are data-driven from these JSON files. An automatic date-based seasonal offers system is implemented via `promotionalOffers.json`. SEO infrastructure includes Google Analytics 4 tracking, GDPR-compliant cookie consent, XML sitemap, robots.txt, and structured data schemas.
 
+## Conversion Optimization Components
+
+The site includes several components designed to drive bookings and conversions:
+
+- **StickyBookingBar**: Appears when user scrolls past hero section, shows urgency messaging ("Only X slots left this week") with Book Session and WhatsApp CTAs. Uses IntersectionObserver for responsive triggering.
+- **FloatingWhatsApp**: Expandable WhatsApp chat button in bottom-right corner. Shows Rupesh's name and "Start Chat" CTA when expanded.
+- **ExitIntentPopup**: Triggers when mouse leaves window (desktop), offers free STAR Story Framework lead magnet. Coordinated with other popups to prevent fatigue.
+- **OfferCountdownBanner**: Top banner with countdown timer for "Book 5 sessions, get 1 FREE" offer. Auto-hides when deadline passes.
+- **NewsletterPopup**: LinkedIn newsletter subscription popup, appears after 8 seconds, dismissible for 7 days.
+- **RecentlyBookedPopup**: Social proof highlights showing popular services and success rates.
+- **UrgencyBanner**: Embedded banner showing limited USA slots and timezone availability.
+
+All conversion components have GA4 event tracking for analytics (popup shown, dismissed, CTA clicked).
+
 # External Dependencies
 
 ## Third-Party Libraries
