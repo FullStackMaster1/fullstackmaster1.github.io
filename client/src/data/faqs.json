@@ -118,5 +118,15 @@
     "id": "faq-24",
     "question": "What's the best way to practice for interviews?",
     "answer": "Practice out loud, not just in your head. Record yourself answering questions and review for filler words, pacing, and clarity. Do mock interviews with someone who can give feedback—friends, colleagues, or a coach. For system design, practice drawing diagrams while explaining. Time yourself to stay within interview limits. Quality repetition builds the muscle memory you need for high-pressure situations."
+  },
+  {
+    "id": "faq-25",
+    "question": "What do all the acronyms and frameworks on this site mean?",
+    "answer": "Here's a quick glossary: **FAANG** = Facebook (Meta), Apple, Amazon, Netflix, Google - top tech companies. **STAR** = Situation, Task, Action, Result - behavioral answer structure. **START** = STAR + Takeaway - adds reflection/learning at the end. **IFRAILT** = Intent, Functional/Non-Functional, Rates/Scale, Architecture, Interfaces, Latency/Reliability, Trade-offs - my 8-step system design framework. **CAMPERSO** = Consumers, Aggregation, Messaging, Processing, Enrichment, Reporting, Storage, Orchestration - data engineering framework. **CLEAR** = Context, Leadership, Evidence, Action, Results - executive communication framework. **LP** = Leadership Principles (Amazon's 16 core values). **OOD/LLD** = Object-Oriented Design / Low-Level Design. **HLD** = High-Level Design. **SRE** = Site Reliability Engineer. **TPM** = Technical Program Manager. **SA** = Solutions Architect. **CSM** = Customer Solutions Manager. **Bar Raiser** = Amazon's independent interviewer who can veto any hire."
+  },
+  {
+    "id": "faq-26",
+    "question": "What is the CLEAR framework for executive communication?",
+    "answer": "CLEAR is my framework for VP/Director-level presentations: **C**ontext (set the stage - what's the situation, why now?), **L**eadership (what's your point of view and recommendation?), **E**vidence (data, metrics, and proof points supporting your position), **A**ction (specific next steps with owners and timelines), **R**esults (expected outcomes and how you'll measure success). Use this structure when presenting to senior leadership to show strategic thinking and executive presence."
   }
 ]
