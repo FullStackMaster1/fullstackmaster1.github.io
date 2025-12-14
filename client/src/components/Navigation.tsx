@@ -21,7 +21,7 @@ import logoImage from "@assets/fullstack_master_logo_1764259679495.jpeg";
 import siteContent from "@/data/siteContent.json";
 import profileData from "@/data/profile.json";
 import whatsappData from "@/data/whatsapp.json";
-import { trackWhatsApp, trackBookCall, trackSectionView } from "@/lib/analytics";
+import { trackWhatsApp, trackBookCall, trackSectionView, trackNavClick } from "@/lib/analytics";
 
 const quickActionIcons: Record<string, LucideIcon> = {
   Video,
@@ -75,8 +75,9 @@ export default function Navigation() {
 
   const [location, setLocation] = useLocation();
 
-  const handleNavClick = (href: string, isPage?: boolean, external?: boolean) => {
+  const handleNavClick = (href: string, isPage?: boolean, external?: boolean, label?: string) => {
     setIsOpen(false);
+    trackNavClick(label || href);
     if (external) {
       window.open(href, "_blank", "noopener,noreferrer");
       return;
@@ -135,7 +136,7 @@ export default function Navigation() {
                 variant="ghost"
                 size="sm"
                 className="px-2 text-sm"
-                onClick={() => handleNavClick(link.href, link.isPage, link.external)}
+                onClick={() => handleNavClick(link.href, link.isPage, link.external, link.label)}
                 data-testid={`link-${link.label.toLowerCase().replace(" ", "-")}`}
               >
                 {link.label}
@@ -160,7 +161,7 @@ export default function Navigation() {
                   <DropdownMenuItem
                     key={link.href}
                     className="cursor-pointer"
-                    onClick={() => handleNavClick(link.href, link.isPage, link.external)}
+                    onClick={() => handleNavClick(link.href, link.isPage, link.external, link.label)}
                     data-testid={`link-more-${link.label.toLowerCase().replace(" ", "-")}`}
                   >
                     {link.label === "Blog" && <BookOpen className="w-4 h-4 mr-2" />}
@@ -598,7 +599,7 @@ export default function Navigation() {
                       key={link.href}
                       variant="ghost"
                       className="justify-between h-10"
-                      onClick={() => handleNavClick(link.href, link.isPage, link.external)}
+                      onClick={() => handleNavClick(link.href, link.isPage, link.external, link.label)}
                       data-testid={`link-mobile-${link.label.toLowerCase().replace(" ", "-")}`}
                     >
                       {link.label}

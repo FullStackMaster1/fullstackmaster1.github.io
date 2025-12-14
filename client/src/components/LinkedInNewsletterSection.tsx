@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Users, BookOpen, TrendingUp } from "lucide-react";
 import articlesData from "@/data/articles.json";
+import { trackEvent } from "@/lib/analytics";
 
 export default function LinkedInNewsletterSection() {
   const { newsletterName, newsletterTagline, newsletterUrl } = articlesData;
@@ -63,6 +64,7 @@ export default function LinkedInNewsletterSection() {
                     href={newsletterUrl} 
                     target="_blank" 
                     rel="noopener noreferrer"
+                    onClick={() => trackEvent('newsletter_subscribe_click', 'engagement', 'linkedin_newsletter')}
                   >
                     <SiLinkedin className="w-5 h-5" />
                     Subscribe Free
