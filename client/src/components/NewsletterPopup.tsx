@@ -27,6 +27,11 @@ export default function NewsletterPopup() {
     }
 
     const timer = setTimeout(() => {
+      const exitDismissed = localStorage.getItem("exit_intent_dismissed");
+      const now = Date.now();
+      if (exitDismissed && (now - parseInt(exitDismissed)) < 30000) {
+        return;
+      }
       setIsAnimating(true);
       setTimeout(() => setIsVisible(true), 50);
       trackEvent('newsletter_popup_shown', 'engagement', 'popup');

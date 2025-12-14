@@ -34,6 +34,11 @@ const NotFound = lazy(() => import("@/pages/not-found"));
 
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
 const NewsletterPopup = lazy(() => import("@/components/NewsletterPopup"));
+const StickyBookingBar = lazy(() => import("@/components/StickyBookingBar"));
+const FloatingWhatsApp = lazy(() => import("@/components/FloatingWhatsApp"));
+const ExitIntentPopup = lazy(() => import("@/components/ExitIntentPopup"));
+const RecentlyBookedPopup = lazy(() => import("@/components/RecentlyBookedPopup"));
+const OfferCountdownBanner = lazy(() => import("@/components/OfferCountdownBanner"));
 
 function PageLoader() {
   return (
@@ -89,8 +94,15 @@ function App() {
             <SEOStructuredData />
             <Toaster />
             <Suspense fallback={null}>
+              <OfferCountdownBanner />
+            </Suspense>
+            <Suspense fallback={null}>
               <CookieConsent />
               <NewsletterPopup />
+              <StickyBookingBar />
+              <FloatingWhatsApp />
+              <ExitIntentPopup />
+              <RecentlyBookedPopup />
             </Suspense>
             <PWAUpdateNotification registration={registration} />
             <Router />

@@ -1,180 +1,141 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, Calendar, MessageCircle, Shield, Award, Clock, ArrowRight } from "lucide-react";
+import { useState, useEffect, useCallback } from "react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { trackEvent } from "@/lib/analytics";
-import profile from "@/data/profile.json";
-import { SiWhatsapp, SiLinkedin } from "react-icons/si";
+import { X, Gift, CheckCircle, Download, Clock } from "lucide-react";
+import { SiWhatsapp } from "react-icons/si";
+import profileData from "@/data/profile.json";
+import { trackEvent, trackWhatsApp } from "@/lib/analytics";
+
+const STORAGE_KEY = "exit_intent_dismissed";
+const DISMISS_DURATION_DAYS = 3;
 
 export default function ExitIntentPopup() {
   const [isVisible, setIsVisible] = useState(false);
-  const [hasShown, setHasShown] = useState(false);
+  const { contact, personal } = profileData;
+
+  const handleDismiss = useCallback(() => {
+    setIsVisible(false);
+    localStorage.setItem(STORAGE_KEY, Date.now().toString());
+    trackEvent('exit_intent_dismissed', 'engagement', 'popup');
+  }, []);
 
   useEffect(() => {
-    const alreadyShown = sessionStorage.getItem("exit-intent-shown");
-    if (alreadyShown) {
-      setHasShown(true);
-      return;
+    const dismissedAt = localStorage.getItem(STORAGE_KEY);
+    if (dismissedAt) {
+      const dismissedDate = new Date(parseInt(dismissedAt));
+      const now = new Date();
+      const daysSinceDismissed = (now.getTime() - dismissedDate.getTime()) / (1000 * 60 * 60 * 24);
+      if (daysSinceDismissed < DISMISS_DURATION_DAYS) {
+        return;
+      }
     }
 
-    // Delay exit intent detection to avoid triggering during initial page interaction
-    let isReady = false;
-    const readyTimer = setTimeout(() => {
-      isReady = true;
-    }, 10000); // Wait 10 seconds before enabling exit intent
+    let hasTriggered = false;
 
     const handleMouseLeave = (e: MouseEvent) => {
-      // Only trigger if mouse actually leaves top of viewport, user has scrolled, and enough time passed
-      const hasScrolled = window.scrollY > 300;
-      if (e.clientY <= 0 && !hasShown && isReady && hasScrolled) {
+      if (e.clientY < 10 && !hasTriggered) {
+        const newsletterDismissed = localStorage.getItem("newsletter_popup_dismissed");
+        const now = Date.now();
+        if (newsletterDismissed && (now - parseInt(newsletterDismissed)) < 30000) {
+          return;
+        }
+        hasTriggered = true;
         setIsVisible(true);
-        setHasShown(true);
-        sessionStorage.setItem("exit-intent-shown", "true");
-        trackEvent("exit_intent_shown", "engagement", "popup");
+        trackEvent('exit_intent_shown', 'engagement', 'popup');
       }
     };
 
-    const handleBeforeUnload = () => {
-      if (!hasShown) {
-        trackEvent("page_exit_attempt", "engagement", "before_unload");
-      }
-    };
-
-    document.addEventListener("mouseleave", handleMouseLeave);
-    window.addEventListener("beforeunload", handleBeforeUnload);
+    const timer = setTimeout(() => {
+      document.addEventListener("mouseleave", handleMouseLeave);
+    }, 5000);
 
     return () => {
-      clearTimeout(readyTimer);
+      clearTimeout(timer);
       document.removeEventListener("mouseleave", handleMouseLeave);
-      window.removeEventListener("beforeunload", handleBeforeUnload);
     };
-  }, [hasShown]);
+  }, []);
 
-  const handleClose = () => {
-    setIsVisible(false);
-    trackEvent("exit_intent_closed", "engagement", "popup");
-  };
-
-  const handleCTAClick = (action: string) => {
-    trackEvent("exit_intent_cta_clicked", "buy_intent", action);
-    if (action === "whatsapp") {
-      window.open(`${profile.contact.whatsappLink}?text=${encodeURIComponent("Hi Rupesh, I was on your coaching site and wanted to connect about FAANG interview preparation.")}`, "_blank");
-    } else if (action === "book") {
-      window.open(profile.contact.bookingLink, "_blank");
-    } else if (action === "linkedin") {
-      window.open(profile.socialLinks.linkedIn.personal, "_blank");
-    }
-    setIsVisible(false);
-  };
+  if (!isVisible) return null;
 
   return (
-    <AnimatePresence>
-      {isVisible && (
-        <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100]"
-            onClick={handleClose}
-          />
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
-            className="fixed inset-0 z-[101] flex items-center justify-center p-4"
-            data-testid="popup-exit-intent"
-          >
-            <div className="bg-card border border-border rounded-xl shadow-2xl overflow-hidden w-full max-w-md">
-              <div className="bg-gradient-to-br from-primary via-primary to-primary/80 p-6 text-primary-foreground relative">
-                <button
-                  onClick={handleClose}
-                  className="absolute top-4 right-4 text-primary-foreground/80 hover:text-primary-foreground transition-colors"
-                  aria-label="Close popup"
-                  data-testid="button-close-exit-popup"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-                
-                <div className="flex items-center gap-2 mb-3">
-                  <Badge className="bg-white/20 text-white border-0 text-xs">
-                    <Clock className="w-3 h-3 mr-1" />
-                    4 slots left this week
-                  </Badge>
-                </div>
-                
-                <h3 className="text-xl font-bold mb-2">Let's Connect Personally</h3>
-                <p className="text-primary-foreground/90 text-sm">
-                  I personally respond to every message. Choose how you'd like to reach me:
-                </p>
-              </div>
-              
-              <div className="p-5 space-y-3">
-                <button
-                  onClick={() => handleCTAClick("book")}
-                  className="w-full flex items-center gap-4 p-4 bg-muted/50 hover:bg-muted rounded-lg transition-colors group text-left"
-                  data-testid="button-exit-book-call"
-                >
-                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Calendar className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-semibold text-sm">Book a Strategy Call</p>
-                    <p className="text-xs text-muted-foreground">Free 15-min call to discuss your goals</p>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
-                </button>
-                
-                <button
-                  onClick={() => handleCTAClick("whatsapp")}
-                  className="w-full flex items-center gap-4 p-4 bg-green-500/5 hover:bg-green-500/10 rounded-lg transition-colors group text-left border border-green-500/20"
-                  data-testid="button-exit-whatsapp"
-                >
-                  <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center flex-shrink-0">
-                    <SiWhatsapp className="w-5 h-5 text-green-600" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-semibold text-sm">WhatsApp Me Directly</p>
-                    <p className="text-xs text-muted-foreground">Quick response within hours</p>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-green-600 transition-colors" />
-                </button>
-                
-                <button
-                  onClick={() => handleCTAClick("linkedin")}
-                  className="w-full flex items-center gap-4 p-4 bg-blue-500/5 hover:bg-blue-500/10 rounded-lg transition-colors group text-left border border-blue-500/20"
-                  data-testid="button-exit-linkedin"
-                >
-                  <div className="w-10 h-10 rounded-full bg-blue-500/20 flex items-center justify-center flex-shrink-0">
-                    <SiLinkedin className="w-5 h-5 text-[#0077b5]" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="font-semibold text-sm">Connect on LinkedIn</p>
-                    <p className="text-xs text-muted-foreground">See my posts & recommendations</p>
-                  </div>
-                  <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-[#0077b5] transition-colors" />
-                </button>
-                
-                <div className="pt-3 border-t border-border">
-                  <div className="flex items-center justify-center gap-4 text-xs text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <Shield className="w-3 h-3 text-green-500" />
-                      <span>No spam ever</span>
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Award className="w-3 h-3 text-primary" />
-                      <span>Verified AWS Coach</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <div 
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
+      data-testid="popup-exit-intent"
+    >
+      <div className="relative bg-card rounded-xl shadow-2xl max-w-md w-full overflow-hidden animate-in zoom-in-95 duration-200">
+        <button
+          onClick={handleDismiss}
+          className="absolute top-3 right-3 p-1.5 text-muted-foreground hover:text-foreground transition-colors z-10"
+          data-testid="button-exit-close"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
+        <div className="bg-gradient-to-r from-primary to-primary/80 p-5 text-white">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
+              <Gift className="w-5 h-5" />
             </div>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+            <div>
+              <h3 className="font-bold text-lg">Wait! Don't leave empty-handed</h3>
+            </div>
+          </div>
+          <p className="text-white/90 text-sm">
+            Get my free STAR Story Framework that helped 50+ clients land FAANG offers
+          </p>
+        </div>
+
+        <div className="p-5">
+          <div className="space-y-3 mb-5">
+            <div className="flex items-start gap-2">
+              <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+              <span className="text-sm">12 pre-built STAR templates for leadership principles</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+              <span className="text-sm">Examples from real Amazon & Google interviews</span>
+            </div>
+            <div className="flex items-start gap-2">
+              <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
+              <span className="text-sm">Bonus: 5 system design diagrams</span>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
+            <Clock className="w-3.5 h-3.5" />
+            <span>Limited time offer - usually $49</span>
+          </div>
+
+          <div className="space-y-2">
+            <Button
+              className="w-full"
+              asChild
+            >
+              <a
+                href={`${contact.whatsappLink}?text=${encodeURIComponent(`Hi ${personal.firstName}, I'd like to get the free STAR Story Framework!`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => {
+                  trackWhatsApp('exit-intent');
+                  handleDismiss();
+                }}
+                data-testid="button-exit-get-free"
+              >
+                <Download className="w-4 h-4 mr-2" />
+                Get It Free via WhatsApp
+              </a>
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              className="w-full text-muted-foreground"
+              onClick={handleDismiss}
+              data-testid="button-exit-no-thanks"
+            >
+              No thanks, I'll figure it out myself
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
