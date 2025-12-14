@@ -256,7 +256,7 @@ export default function Footer() {
         <Separator className="my-8" />
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted-foreground">
-          <p>&copy; {copyright.showYear ? new Date().getFullYear() : ''} {copyright.text}</p>
+          <p>&copy; {copyright.showYear ? `${(copyright as any).startYear || 2018}-${new Date().getFullYear()}` : ''} {copyright.text}</p>
           <div className="flex items-center gap-4 flex-wrap justify-center">
             {legalLinks?.map((link: { label: string; href: string }) => (
               <Link

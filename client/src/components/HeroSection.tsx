@@ -7,6 +7,7 @@ import profileImage from "@assets/image_1764282508840.png";
 import siteContent from "@/data/siteContent.json";
 import profileData from "@/data/profile.json";
 import { trackBookCall, trackWhatsApp, trackEmailClick, trackLinkedInClick } from "@/lib/analytics";
+import AnimatedCounter from "@/components/AnimatedCounter";
 
 const companyIcons: Record<string, typeof SiAmazon | typeof FaMicrosoft | typeof Building2> = {
   Amazon: SiAmazon,
@@ -112,11 +113,19 @@ export default function HeroSection() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6 p-4 bg-gradient-to-r from-primary/5 via-purple-500/5 to-green-500/5 rounded-lg border border-primary/10">
               {(hero.proofPoints as ProofPoint[]).map((point) => {
                 const IconComponent = proofIcons[point.icon] || Users;
+                const match = point.value.match(/^(\d+(?:\.\d+)?)(.*)/);
+                const numericValue = match ? parseFloat(match[1]) : 0;
+                const suffix = match ? match[2] : "";
                 return (
                   <div key={point.label} className="text-center">
                     <div className="flex items-center justify-center gap-1 mb-1">
                       <IconComponent className="w-4 h-4 text-primary" />
-                      <span className="text-2xl font-bold">{point.value}</span>
+                      <AnimatedCounter 
+                        end={numericValue} 
+                        suffix={suffix} 
+                        className="text-2xl font-bold"
+                        duration={2000}
+                      />
                     </div>
                     <p className="text-xs text-muted-foreground">{point.label}</p>
                   </div>
