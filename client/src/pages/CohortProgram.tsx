@@ -25,7 +25,8 @@ import {
   Award,
   MessageCircle,
   ChevronRight,
-  Sparkles
+  Sparkles,
+  BookOpen
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
@@ -641,6 +642,42 @@ export default function CohortProgram() {
                   </AccordionItem>
                 ))}
               </Accordion>
+            </div>
+          </section>
+        </ScrollReveal>
+
+        <ScrollReveal type="fade">
+          <section className="py-16 bg-card/50" data-testid="section-glossary">
+            <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="text-center mb-12">
+                <Badge variant="secondary" className="mb-4" data-testid="badge-glossary">
+                  <BookOpen className="w-3 h-3 mr-1" />
+                  Quick Reference
+                </Badge>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4" data-testid="text-glossary-title">
+                  {cohortData.glossary.title}
+                </h2>
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto" data-testid="text-glossary-subtitle">
+                  {cohortData.glossary.subtitle}
+                </p>
+              </div>
+
+              <div className="grid gap-4 md:grid-cols-2">
+                {cohortData.glossary.terms.map((item, idx) => (
+                  <Card key={idx} className="hover-elevate" data-testid={`card-glossary-${idx}`}>
+                    <CardContent className="pt-4 pb-4">
+                      <div className="flex items-start gap-3">
+                        <Badge variant="outline" className="shrink-0 font-mono" data-testid={`badge-term-${idx}`}>
+                          {item.term}
+                        </Badge>
+                        <p className="text-sm text-muted-foreground" data-testid={`text-definition-${idx}`}>
+                          {item.definition}
+                        </p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </section>
         </ScrollReveal>

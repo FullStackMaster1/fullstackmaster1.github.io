@@ -237,5 +237,51 @@
     "primary": "Reserve Your Spot",
     "secondary": "Questions? Chat on WhatsApp",
     "urgency": "Next cohort starts January 18, 2025. Only 12 spots available."
+  },
+  "glossary": {
+    "title": "Industry Terms Explained",
+    "subtitle": "New to tech interview terminology? Here's what these terms mean.",
+    "terms": [
+      {
+        "term": "FAANG",
+        "definition": "Facebook (now Meta), Amazon, Apple, Netflix, Google — the top-tier tech companies known for rigorous interviews and high compensation."
+      },
+      {
+        "term": "STAR",
+        "definition": "Situation, Task, Action, Result — a framework for structuring behavioral interview answers to clearly demonstrate your impact."
+      },
+      {
+        "term": "Bar Raiser",
+        "definition": "An experienced interviewer (often from a different team) who ensures hiring standards stay high. They have veto power over hiring decisions."
+      },
+      {
+        "term": "LP",
+        "definition": "Leadership Principles — Amazon's 16 core values used to evaluate candidates in every interview. Other companies have similar frameworks."
+      },
+      {
+        "term": "IC",
+        "definition": "Individual Contributor — a technical role without direct reports, like Senior Engineer, Staff Engineer, or Principal Engineer."
+      },
+      {
+        "term": "VP",
+        "definition": "Vice President — a senior leadership role typically overseeing multiple teams or an entire department."
+      },
+      {
+        "term": "Director",
+        "definition": "A leadership role managing multiple teams of engineers or managers, typically 20-50+ people."
+      },
+      {
+        "term": "Staff/Principal Engineer",
+        "definition": "Senior IC roles equivalent to Director/VP level in impact, but focused on technical leadership rather than people management."
+      },
+      {
+        "term": "System Design",
+        "definition": "Interview round where you design large-scale systems (like Twitter or Uber) to demonstrate architectural thinking and trade-off analysis."
+      },
+      {
+        "term": "Loop",
+        "definition": "The full-day onsite interview, typically 4-6 back-to-back interviews covering technical, behavioral, and leadership topics."
+      }
+    ]
   }
 }
