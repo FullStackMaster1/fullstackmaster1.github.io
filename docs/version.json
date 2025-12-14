@@ -1,5 +1,5 @@
 {
-  "version": "1.0.2",
+  "version": "1.0.3",
   "buildDate": "2025-12-14",
-  "releaseNotes": "Enhanced colorful design, improved mobile architecture diagrams, PWA update fix"
+  "releaseNotes": "Fixed system design architecture icons, forced PWA cache refresh"
 }
