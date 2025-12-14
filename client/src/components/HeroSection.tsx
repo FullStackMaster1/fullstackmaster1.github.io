@@ -228,6 +228,7 @@ export default function HeroSection() {
                   href={socialLinks.linkedIn.personal}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackLinkedInClick('hero')}
                   data-testid="button-hero-linkedin"
                 >
                   <SiLinkedin className="w-4 h-4 mr-2" />

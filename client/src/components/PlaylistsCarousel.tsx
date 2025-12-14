@@ -12,6 +12,7 @@ import playlistsData from "@/data/playlists.json";
 import { ExternalLink, Youtube, PlayCircle, Gift } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef } from "react";
+import { trackEvent } from "@/lib/analytics";
 
 interface Playlist {
   id: string | number;
@@ -55,6 +56,7 @@ function PlaylistCard({ playlist }: { playlist: Playlist }) {
         target="_blank"
         rel="noopener noreferrer"
         className="block"
+        onClick={() => trackEvent('youtube_playlist_click', 'engagement', playlist.title)}
       >
         {hasValidThumbnail ? (
           <div className="aspect-video relative overflow-hidden bg-muted">

@@ -4,7 +4,7 @@ import { X, MessageCircle } from "lucide-react";
 import { SiWhatsapp, SiLinkedin } from "react-icons/si";
 import profileData from "@/data/profile.json";
 import whatsappData from "@/data/whatsapp.json";
-import { trackWhatsApp } from "@/lib/analytics";
+import { trackWhatsApp, trackLinkedInClick } from "@/lib/analytics";
 
 export default function WhatsAppWidget() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -67,6 +67,7 @@ export default function WhatsAppWidget() {
                 href={socialLinks.linkedIn.personal}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => trackLinkedInClick('widget')}
                 data-testid="button-linkedin-chat"
               >
                 <SiLinkedin className="w-4 h-4 mr-2" />
