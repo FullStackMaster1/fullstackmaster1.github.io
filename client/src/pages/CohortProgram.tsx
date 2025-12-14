@@ -36,6 +36,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import cohortData from "@/data/cohortProgram.json";
 import profile from "@/data/profile.json";
 import { trackEvent } from "@/lib/analytics";
+import { SectionShareButtons } from "@/components/SocialShare";
 
 const painIconMap: Record<string, typeof Video> = {
   Video,
@@ -211,6 +212,8 @@ export default function CohortProgram() {
               <p className="mt-6 text-sm text-muted-foreground" data-testid="text-cohort-urgency">
                 {cohortData.cta.urgency}
               </p>
+              
+              <SectionShareButtons sectionName="FAANG Interview Cohort Program" className="mt-6" />
             </div>
           </div>
         </section>

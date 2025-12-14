@@ -4,6 +4,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge";
 import { ChevronLeft, ChevronRight, Clock, ExternalLink, BookOpen, FileText } from "lucide-react";
 import blogPosts from "@/data/blogposts.json";
+import { SectionShareButtons } from "@/components/SocialShare";
 
 const categoryColors: Record<string, string> = {
   "Interview Prep": "bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20",
@@ -160,6 +161,8 @@ export default function BlogSection() {
               <ExternalLink className="w-4 h-4 ml-2" />
             </a>
           </Button>
+          
+          <SectionShareButtons sectionName="Technical Articles" />
         </div>
       </div>
     </section>

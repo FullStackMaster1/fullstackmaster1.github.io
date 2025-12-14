@@ -13,6 +13,7 @@ import reviewsData from "@/data/reviews.json";
 import { useState, useRef } from "react";
 import { ExternalLink, Star, Trophy, CheckCircle, Quote, ChevronRight, Sparkles, Shield } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
+import { SectionShareButtons } from "@/components/SocialShare";
 import { motion } from "framer-motion";
 
 // Helper to parse date strings like "Nov 09, 2025" to Date objects
@@ -222,6 +223,8 @@ export default function ReviewsCarousel() {
               </a>
             </Button>
           </div>
+          
+          <SectionShareButtons sectionName="Client Success Stories" />
         </div>
       </div>
     </section>

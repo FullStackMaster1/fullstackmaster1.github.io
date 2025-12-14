@@ -28,6 +28,7 @@ import {
 } from "lucide-react";
 import { SiWhatsapp } from "react-icons/si";
 import servicesData from "@/data/services.json";
+import { SectionShareButtons } from "@/components/SocialShare";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef, useState, useEffect } from "react";
 
@@ -300,6 +301,8 @@ export default function ServicesSection() {
               <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
+          
+          <SectionShareButtons sectionName="Coaching Services" />
         </div>
       </div>
     </section>
