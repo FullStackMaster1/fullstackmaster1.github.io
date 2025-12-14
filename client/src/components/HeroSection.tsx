@@ -113,16 +113,21 @@ export default function HeroSection() {
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6 p-4 bg-gradient-to-r from-primary/5 via-purple-500/5 to-green-500/5 rounded-lg border border-primary/10">
               {(hero.proofPoints as ProofPoint[]).map((point) => {
                 const IconComponent = proofIcons[point.icon] || Users;
-                const match = point.value.match(/^(\d+(?:\.\d+)?)(.*)/);
-                const numericValue = match ? parseFloat(match[1]) : 0;
-                const suffix = match ? match[2] : "";
+                const match = point.value.trim().match(/^([^\d]*)([\d,]+(?:\.\d+)?)(.*)$/);
+                const prefix = match ? match[1].trim() : "";
+                const numericStr = match ? match[2].replace(/,/g, '') : "0";
+                const numericValue = parseFloat(numericStr);
+                const suffix = match ? match[3].trim() : "";
+                const decimals = numericStr.includes('.') ? (numericStr.split('.')[1]?.length || 0) : 0;
                 return (
                   <div key={point.label} className="text-center">
                     <div className="flex items-center justify-center gap-1 mb-1">
                       <IconComponent className="w-4 h-4 text-primary" />
                       <AnimatedCounter 
                         end={numericValue} 
+                        prefix={prefix}
                         suffix={suffix} 
+                        decimals={decimals}
                         className="text-2xl font-bold"
                         duration={2000}
                       />
