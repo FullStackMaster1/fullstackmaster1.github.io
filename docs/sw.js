@@ -1,5 +1,5 @@
 // App Version - increment this when deploying updates
-const APP_VERSION = '1.0.2';
+const APP_VERSION = '1.0.3';
 const CACHE_NAME = `fullstack-master-v${APP_VERSION}`;
 const OFFLINE_URL = '/';
 
