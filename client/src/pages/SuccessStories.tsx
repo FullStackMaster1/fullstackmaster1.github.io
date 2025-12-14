@@ -532,7 +532,12 @@ export default function SuccessStories() {
                             </AvatarFallback>
                           </Avatar>
                           <div>
-                            <div className="font-semibold">{story.name}</div>
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <span className="font-semibold">{story.name}</span>
+                              <Badge className="bg-blue-500 text-xs">
+                                {story.outcome}
+                              </Badge>
+                            </div>
                             <div className="text-sm text-muted-foreground flex items-center gap-1">
                               <IconComponent className={`w-3 h-3 ${colorClass}`} />
                               {story.newRole} at {story.newCompany}
