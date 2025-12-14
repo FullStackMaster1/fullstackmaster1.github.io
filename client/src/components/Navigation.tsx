@@ -35,6 +35,8 @@ interface NavLink {
   href: string;
   isPage: boolean;
   external?: boolean;
+  highlight?: boolean;
+  badge?: string;
 }
 
 export default function Navigation() {
@@ -129,17 +131,22 @@ export default function Navigation() {
           </div>
 
           <div className="hidden lg:flex items-center gap-0.5">
-            {/* Show only essential nav links: About, Process, Services, Reviews, Pricing */}
-            {navLinks.slice(0, 5).map((link) => (
+            {/* Show only essential nav links: About, Process, Services, Cohort, Reviews, Pricing */}
+            {navLinks.slice(0, 6).map((link) => (
               <Button
                 key={link.href}
-                variant="ghost"
+                variant={link.highlight ? "default" : "ghost"}
                 size="sm"
-                className="px-2 text-sm"
+                className={`px-2 text-sm ${link.highlight ? "bg-primary/90 hover:bg-primary animate-pulse" : ""}`}
                 onClick={() => handleNavClick(link.href, link.isPage, link.external, link.label)}
                 data-testid={`link-${link.label.toLowerCase().replace(" ", "-")}`}
               >
                 {link.label}
+                {link.badge && (
+                  <Badge variant="secondary" className="ml-1 text-[10px] px-1 py-0 h-4 bg-amber-500 text-white">
+                    {link.badge}
+                  </Badge>
+                )}
               </Button>
             ))}
             
@@ -157,7 +164,7 @@ export default function Navigation() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
-                {navLinks.slice(5).map((link) => (
+                {navLinks.slice(6).map((link) => (
                   <DropdownMenuItem
                     key={link.href}
                     className="cursor-pointer"

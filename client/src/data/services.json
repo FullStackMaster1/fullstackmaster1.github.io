@@ -106,6 +106,16 @@
   },
   "services": [
     {
+      "id": "cohort-program",
+      "title": "5-Week Cohort Program",
+      "description": "Join a small group of senior engineers for intensive prep. Live sessions, peer learning, and structured accountability to land your dream role.",
+      "icon": "Users",
+      "features": ["Group coaching", "Peer learning", "5 live sessions"],
+      "popular": true,
+      "highlight": true,
+      "link": "/cohort-program"
+    },
+    {
       "id": "system-design",
       "title": "System Design Gaps",
       "description": "Most senior candidates can design systems. But can you explain WHY you made each decision? That's where bar raisers catch you.",
