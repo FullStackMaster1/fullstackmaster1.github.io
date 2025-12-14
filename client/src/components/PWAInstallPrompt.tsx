@@ -11,7 +11,7 @@ interface BeforeInstallPromptEvent extends Event {
 
 const PWA_INSTALLED_KEY = "pwa-installed";
 const PWA_LAST_PROMPT_KEY = "pwa-last-prompt";
-const PROMPT_INTERVAL_HOURS = 24;
+const PROMPT_INTERVAL_HOURS = 6; // Show every 6 hours if not installed
 
 export default function PWAInstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
@@ -41,13 +41,22 @@ export default function PWAInstallPrompt() {
       return;
     }
 
-    // Check if we should show prompt based on time interval (always remind on mobile)
+    // IMPORTANT: If user previously installed but is now NOT in standalone mode,
+    // it means they uninstalled the app - clear the flag and show prompt again!
+    if (wasInstalled && !checkStandalone && checkMobile) {
+      localStorage.removeItem(PWA_INSTALLED_KEY);
+      localStorage.removeItem(PWA_LAST_PROMPT_KEY);
+      // Don't set isInstalled to true - allow prompt to show
+    }
+
+    // Check if we should show prompt based on time interval
     const lastPrompt = localStorage.getItem(PWA_LAST_PROMPT_KEY);
     const now = Date.now();
     const shouldShowAgain = !lastPrompt || 
       (now - parseInt(lastPrompt)) > (PROMPT_INTERVAL_HOURS * 60 * 60 * 1000);
 
-    if (wasInstalled) {
+    // Only consider installed if in standalone mode
+    if (wasInstalled && checkStandalone) {
       setIsInstalled(true);
       return;
     }

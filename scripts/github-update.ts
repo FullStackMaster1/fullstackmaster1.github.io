@@ -32,32 +32,44 @@ async function getAccessToken() {
   return accessToken;
 }
 
-async function updateFile(octokit: Octokit, owner: string, repo: string, filePath: string, content: string, message: string) {
-  let sha: string | undefined;
-  
-  try {
-    const { data } = await octokit.repos.getContent({
-      owner,
-      repo,
-      path: filePath
-    });
-    if (!Array.isArray(data)) {
-      sha = data.sha;
+async function updateFile(octokit: Octokit, owner: string, repo: string, filePath: string, content: string, message: string, retries = 3) {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    let sha: string | undefined;
+    
+    try {
+      const { data } = await octokit.repos.getContent({
+        owner,
+        repo,
+        path: filePath
+      });
+      if (!Array.isArray(data)) {
+        sha = data.sha;
+      }
+    } catch (e: any) {
+      if (e.status !== 404) throw e;
     }
-  } catch (e: any) {
-    if (e.status !== 404) throw e;
-  }
 
-  await octokit.repos.createOrUpdateFileContents({
-    owner,
-    repo,
-    path: filePath,
-    message,
-    content: Buffer.from(content).toString('base64'),
-    sha
-  });
-  
-  console.log(`Updated: ${filePath}`);
+    try {
+      await octokit.repos.createOrUpdateFileContents({
+        owner,
+        repo,
+        path: filePath,
+        message,
+        content: Buffer.from(content).toString('base64'),
+        sha
+      });
+      
+      console.log(`Updated: ${filePath}`);
+      return;
+    } catch (e: any) {
+      if (e.status === 409 && attempt < retries) {
+        console.log(`SHA conflict on ${filePath}, retrying (attempt ${attempt + 1})...`);
+        await new Promise(r => setTimeout(r, 1000));
+        continue;
+      }
+      throw e;
+    }
+  }
 }
 
 async function updateDocsFolder() {
