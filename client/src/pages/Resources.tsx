@@ -46,6 +46,12 @@ export default function Resources() {
         <title>{resourcesData.seo.title}</title>
         <meta name="description" content={resourcesData.seo.description} />
         <meta name="keywords" content={resourcesData.seo.keywords.join(", ")} />
+        <meta property="og:title" content={resourcesData.seo.title} />
+        <meta property="og:description" content={resourcesData.seo.description} />
+        <meta property="og:image" content="https://www.fullstackmaster.net/og-image.png" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.fullstackmaster.net/og-image.png" />
       </Helmet>
       <AnnouncementBar />
       <Navigation />

@@ -64,6 +64,12 @@ export default function HiringManagerPrep() {
         <title>{pageData.seo.title}</title>
         <meta name="description" content={pageData.seo.description} />
         <meta name="keywords" content={pageData.seo.keywords.join(", ")} />
+        <meta property="og:title" content={pageData.seo.title} />
+        <meta property="og:description" content={pageData.seo.description} />
+        <meta property="og:image" content="https://www.fullstackmaster.net/og-image.png" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.fullstackmaster.net/og-image.png" />
       </Helmet>
       <AnnouncementBar />
       <Navigation />

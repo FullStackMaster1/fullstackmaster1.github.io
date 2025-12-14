@@ -42,6 +42,12 @@ export default function TermsOfService() {
         <meta name="description" content={`Terms of Service for ${brand.name} professional interview coaching services. Review our booking policies, cancellation terms, and service guidelines.`} />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://fullstackmaster.net/terms-of-service" />
+        <meta property="og:title" content={`Terms of Service | ${brand.name}`} />
+        <meta property="og:description" content={`Terms of Service for ${brand.name} professional interview coaching.`} />
+        <meta property="og:image" content="https://www.fullstackmaster.net/og-image.png" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.fullstackmaster.net/og-image.png" />
       </Helmet>
 
       <div className="min-h-screen bg-background">

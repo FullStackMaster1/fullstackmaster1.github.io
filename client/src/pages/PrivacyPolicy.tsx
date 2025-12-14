@@ -52,6 +52,12 @@ export default function PrivacyPolicy() {
       <Helmet>
         <title>Privacy Policy | {brand.name}</title>
         <meta name="description" content={`Privacy Policy for ${brand.name} coaching services. Learn how we protect your data and handle session recordings.`} />
+        <meta property="og:title" content={`Privacy Policy | ${brand.name}`} />
+        <meta property="og:description" content={`Privacy Policy for ${brand.name} coaching services. Learn how we protect your data.`} />
+        <meta property="og:image" content="https://www.fullstackmaster.net/og-image.png" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content="https://www.fullstackmaster.net/og-image.png" />
       </Helmet>
 
       <div className="min-h-screen bg-background">
