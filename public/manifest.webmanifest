@@ -2,7 +2,7 @@
   "name": "FullStack Master - FAANG Interview Coaching",
   "short_name": "FSM Coach",
   "description": "FAANG Interview Coaching for Senior Tech Leaders by Rupesh Tiwari",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "start_url": "/?source=pwa",
   "display": "standalone",
   "background_color": "#1e3a5f",
