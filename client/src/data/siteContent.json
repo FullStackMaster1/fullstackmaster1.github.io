@@ -14,6 +14,7 @@
       { "label": "Services", "href": "#services", "isPage": false },
       { "label": "Cohort", "href": "/cohort", "isPage": true, "highlight": true, "badge": "NEW" },
       { "label": "Reviews", "href": "#reviews", "isPage": false },
+      { "label": "Success Stories", "href": "/success-stories", "isPage": true },
       { "label": "Pricing", "href": "#pricing", "isPage": false },
       { "label": "Blog", "href": "http://blog.rupeshtiwari.com/", "isPage": false, "external": true },
       { "label": "Resources", "href": "/resources", "isPage": true }
