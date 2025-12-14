@@ -10,38 +10,34 @@ import ScrollToTop from "@/components/ScrollToTop";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Loader2 } from "lucide-react";
 
-const TrustBar = lazy(() => import("@/components/TrustBar"));
 const ClientLogosBar = lazy(() => import("@/components/ClientLogosBar"));
-const LinkedInNewsletterSection = lazy(() => import("@/components/LinkedInNewsletterSection"));
 const FeaturedOnStrip = lazy(() => import("@/components/FeaturedOnStrip"));
-const SalaryCalculator = lazy(() => import("@/components/SalaryCalculator"));
-const ReferralProgramSection = lazy(() => import("@/components/ReferralProgramSection"));
-const WhyLeadersFailSection = lazy(() => import("@/components/WhyLeadersFailSection"));
-const AboutSection = lazy(() => import("@/components/AboutSection"));
-const MethodologySection = lazy(() => import("@/components/MethodologySection"));
-const ServicesSection = lazy(() => import("@/components/ServicesSection"));
+const ExecutiveCaseStudies = lazy(() => import("@/components/ExecutiveCaseStudies"));
 const SuccessStoriesSection = lazy(() => import("@/components/SuccessStoriesSection"));
 const ReviewsCarousel = lazy(() => import("@/components/ReviewsCarousel"));
+const WhyLeadersFailSection = lazy(() => import("@/components/WhyLeadersFailSection"));
+const MethodologySection = lazy(() => import("@/components/MethodologySection"));
+const ServicesSection = lazy(() => import("@/components/ServicesSection"));
+const PricingSection = lazy(() => import("@/components/PricingSection"));
+const BookingSection = lazy(() => import("@/components/BookingSection"));
+const AvailabilityBanner = lazy(() => import("@/components/AvailabilityBanner"));
+const SeasonalOffersSection = lazy(() => import("@/components/SeasonalOffersSection"));
+const SalaryCalculator = lazy(() => import("@/components/SalaryCalculator"));
+const FAQSection = lazy(() => import("@/components/FAQSection"));
+const WebinarSection = lazy(() => import("@/components/WebinarSection"));
+const FreeResourcesHighlight = lazy(() => import("@/components/FreeResourcesHighlight"));
 const CoursesCarousel = lazy(() => import("@/components/CoursesCarousel"));
 const PlaylistsCarousel = lazy(() => import("@/components/PlaylistsCarousel"));
-const WebinarSection = lazy(() => import("@/components/WebinarSection"));
-const PricingSection = lazy(() => import("@/components/PricingSection"));
-const FAQSection = lazy(() => import("@/components/FAQSection"));
-const BookingSection = lazy(() => import("@/components/BookingSection"));
-const ArticlesSection = lazy(() => import("@/components/ArticlesSection"));
+const InlineShortsCarousel = lazy(() => import("@/components/InlineShortsCarousel"));
+const BlogSection = lazy(() => import("@/components/BlogSection"));
+const AboutSection = lazy(() => import("@/components/AboutSection"));
+const LinkedInNewsletterSection = lazy(() => import("@/components/LinkedInNewsletterSection"));
+const WhatsAppCommunitySection = lazy(() => import("@/components/WhatsAppCommunitySection"));
+const ReferralProgramSection = lazy(() => import("@/components/ReferralProgramSection"));
 const RecentlyBookedPopup = lazy(() => import("@/components/RecentlyBookedPopup"));
 const ExitIntentPopup = lazy(() => import("@/components/ExitIntentPopup"));
 const PWAInstallPrompt = lazy(() => import("@/components/PWAInstallPrompt"));
-const ExecutiveCaseStudies = lazy(() => import("@/components/ExecutiveCaseStudies"));
-const FullServicesSection = lazy(() => import("@/components/FullServicesSection"));
-const CompanySection = lazy(() => import("@/components/CompanySection"));
-const FreeResourcesHighlight = lazy(() => import("@/components/FreeResourcesHighlight"));
-const SeasonalOffersSection = lazy(() => import("@/components/SeasonalOffersSection"));
-const WhatsAppCommunitySection = lazy(() => import("@/components/WhatsAppCommunitySection"));
-const InlineShortsCarousel = lazy(() => import("@/components/InlineShortsCarousel"));
 const EmailCapturePopup = lazy(() => import("@/components/EmailCapturePopup"));
-const AvailabilityBanner = lazy(() => import("@/components/AvailabilityBanner"));
-const BlogSection = lazy(() => import("@/components/BlogSection"));
 
 function SectionLoader() {
   return (
@@ -58,6 +54,7 @@ export default function Home() {
       <AnnouncementBar />
       <Navigation />
       <main>
+        {/* HERO & TRUST - First Impressions */}
         <HeroSection />
         <USATrustBar />
         
@@ -66,31 +63,14 @@ export default function Home() {
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="fade" duration={0.6}>
-            <LinkedInNewsletterSection />
-          </ScrollReveal>
+          <FeaturedOnStrip />
         </Suspense>
         
+        {/* SOCIAL PROOF & RESULTS - Build Credibility Fast */}
         <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="fade" duration={0.7}>
             <ExecutiveCaseStudies />
           </ScrollReveal>
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="slide-up" duration={0.8}>
-            <WhyLeadersFailSection />
-          </ScrollReveal>
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="fade" delay={0.1} duration={0.6}>
-            <TrustBar />
-          </ScrollReveal>
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <FeaturedOnStrip />
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
@@ -100,17 +80,17 @@ export default function Home() {
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="fade" duration={0.6}>
-            <AvailabilityBanner slotsLeft={3} />
-          </ScrollReveal>
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="slide-up" delay={0.1}>
             <ReviewsCarousel />
           </ScrollReveal>
         </Suspense>
         
+        {/* PROBLEM & SOLUTION - Create Urgency */}
+        <Suspense fallback={<SectionLoader />}>
+          <ScrollReveal type="slide-up" duration={0.8}>
+            <WhyLeadersFailSection />
+          </ScrollReveal>
+        </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="slide-up" duration={0.8}>
@@ -118,39 +98,10 @@ export default function Home() {
           </ScrollReveal>
         </Suspense>
         
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="scale" delay={0.1}>
-            <FreeResourcesHighlight />
-          </ScrollReveal>
-        </Suspense>
-        
+        {/* SERVICES & PRICING - Drive Conversions */}
         <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="scale" delay={0.1}>
             <ServicesSection />
-          </ScrollReveal>
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="fade" duration={0.7}>
-            <FullServicesSection />
-          </ScrollReveal>
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="scale" duration={0.7}>
-            <SeasonalOffersSection />
-          </ScrollReveal>
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="fade" duration={0.7}>
-            <ReferralProgramSection />
-          </ScrollReveal>
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="scale" duration={0.6}>
-            <SalaryCalculator />
           </ScrollReveal>
         </Suspense>
         
@@ -166,6 +117,34 @@ export default function Home() {
           </ScrollReveal>
         </Suspense>
         
+        {/* URGENCY & OFFERS */}
+        <Suspense fallback={<SectionLoader />}>
+          <ScrollReveal type="fade" duration={0.6}>
+            <AvailabilityBanner slotsLeft={3} />
+          </ScrollReveal>
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <ScrollReveal type="scale" duration={0.7}>
+            <SeasonalOffersSection />
+          </ScrollReveal>
+        </Suspense>
+        
+        {/* INTERACTIVE & ENGAGEMENT */}
+        <Suspense fallback={<SectionLoader />}>
+          <ScrollReveal type="scale" duration={0.6}>
+            <SalaryCalculator />
+          </ScrollReveal>
+        </Suspense>
+        
+        {/* FAQ - Handle Objections */}
+        <Suspense fallback={<SectionLoader />}>
+          <ScrollReveal type="slide-up">
+            <FAQSection />
+          </ScrollReveal>
+        </Suspense>
+        
+        {/* FREE CONTENT & RESOURCES - Value Add */}
         <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="slide-up">
             <WebinarSection />
@@ -173,11 +152,12 @@ export default function Home() {
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="slide-up" delay={0.1}>
-            <ArticlesSection />
+          <ScrollReveal type="scale" delay={0.1}>
+            <FreeResourcesHighlight />
           </ScrollReveal>
         </Suspense>
         
+        {/* VIDEO CONTENT - Grouped Together */}
         <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="scale">
             <CoursesCarousel />
@@ -196,9 +176,23 @@ export default function Home() {
           </ScrollReveal>
         </Suspense>
         
+        {/* BLOG & CONTENT */}
         <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="fade" duration={0.7}>
             <BlogSection />
+          </ScrollReveal>
+        </Suspense>
+        
+        {/* ABOUT & COMMUNITY - Lower Priority */}
+        <Suspense fallback={<SectionLoader />}>
+          <ScrollReveal type="fade">
+            <AboutSection />
+          </ScrollReveal>
+        </Suspense>
+        
+        <Suspense fallback={<SectionLoader />}>
+          <ScrollReveal type="fade" duration={0.6}>
+            <LinkedInNewsletterSection />
           </ScrollReveal>
         </Suspense>
         
@@ -209,20 +203,8 @@ export default function Home() {
         </Suspense>
         
         <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="fade">
-            <AboutSection />
-          </ScrollReveal>
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="scale" delay={0.1}>
-            <CompanySection />
-          </ScrollReveal>
-        </Suspense>
-        
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="slide-up">
-            <FAQSection />
+          <ScrollReveal type="fade" duration={0.7}>
+            <ReferralProgramSection />
           </ScrollReveal>
         </Suspense>
       </main>
