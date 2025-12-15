@@ -28,6 +28,7 @@ const quickActionIcons: Record<string, LucideIcon> = {
   BookOpen,
   Zap,
   Briefcase,
+  Users,
 };
 
 interface NavLink {
@@ -131,8 +132,8 @@ export default function Navigation() {
           </div>
 
           <div className="hidden lg:flex items-center gap-0.5">
-            {/* Show only essential nav links: About, Process, Services, Cohort, Reviews, Pricing */}
-            {navLinks.slice(0, 6).map((link) => (
+            {/* Show essential nav links: About, Services, Cohort, Reviews, Pricing */}
+            {navLinks.slice(0, 5).map((link) => (
               <Button
                 key={link.href}
                 variant={link.highlight ? "default" : "ghost"}
@@ -150,7 +151,7 @@ export default function Navigation() {
               </Button>
             ))}
             
-            {/* More dropdown for Blog and Resources */}
+            {/* More dropdown for Success Stories and Blog */}
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
@@ -164,7 +165,7 @@ export default function Navigation() {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48">
-                {navLinks.slice(6).map((link) => (
+                {navLinks.slice(5).map((link) => (
                   <DropdownMenuItem
                     key={link.href}
                     className="cursor-pointer"
@@ -172,7 +173,7 @@ export default function Navigation() {
                     data-testid={`link-more-${link.label.toLowerCase().replace(" ", "-")}`}
                   >
                     {link.label === "Blog" && <BookOpen className="w-4 h-4 mr-2" />}
-                    {link.label === "Resources" && <Briefcase className="w-4 h-4 mr-2" />}
+                    {link.label === "Success Stories" && <Award className="w-4 h-4 mr-2" />}
                     {link.label}
                   </DropdownMenuItem>
                 ))}

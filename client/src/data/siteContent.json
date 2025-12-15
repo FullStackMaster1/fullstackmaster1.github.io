@@ -10,14 +10,12 @@
     "brandName": "FullStack Master",
     "links": [
       { "label": "About", "href": "#about", "isPage": false },
-      { "label": "Process", "href": "#methodology", "isPage": false },
       { "label": "Services", "href": "#services", "isPage": false },
       { "label": "Cohort", "href": "/cohort", "isPage": true, "highlight": true, "badge": "NEW" },
       { "label": "Reviews", "href": "#reviews", "isPage": false },
-      { "label": "Success Stories", "href": "/success-stories", "isPage": true },
       { "label": "Pricing", "href": "#pricing", "isPage": false },
-      { "label": "Blog", "href": "http://blog.rupeshtiwari.com/", "isPage": false, "external": true },
-      { "label": "Resources", "href": "/resources", "isPage": true }
+      { "label": "Success Stories", "href": "/success-stories", "isPage": true },
+      { "label": "Blog", "href": "http://blog.rupeshtiwari.com/", "isPage": false, "external": true }
     ],
     "ctaButtons": {
       "whatsapp": {
@@ -36,35 +34,29 @@
       "title": "Quick Actions",
       "items": [
         {
-          "label": "Join Cohort Program",
-          "icon": "Users",
-          "href": "/cohort",
-          "description": "5-Week Group Coaching",
+          "label": "Book 1-on-1 Session",
+          "icon": "Zap",
+          "href": "/book",
+          "description": "From $141/session",
           "highlight": true
         },
         {
-          "label": "Register for Free Webinar",
-          "icon": "Video",
-          "href": "#webinars",
-          "description": "Join 130+ waiting"
+          "label": "Join Cohort Program",
+          "icon": "Users",
+          "href": "/cohort",
+          "description": "5-Week Group Coaching"
         },
         {
-          "label": "Browse My Courses",
-          "icon": "BookOpen",
-          "href": "#courses",
-          "description": "Udemy & Pluralsight"
-        },
-        {
-          "label": "View Coaching Packages",
-          "icon": "Zap",
-          "href": "#pricing",
-          "description": "From $141/session"
-        },
-        {
-          "label": "See What I Offer",
+          "label": "View Pricing",
           "icon": "Briefcase",
-          "href": "#services",
-          "description": "All my services"
+          "href": "#pricing",
+          "description": "See all packages"
+        },
+        {
+          "label": "Read Reviews",
+          "icon": "BookOpen",
+          "href": "#reviews",
+          "description": "50+ verified reviews"
         }
       ]
     },

@@ -36,6 +36,7 @@ const NotFound = lazy(() => import("@/pages/not-found"));
 
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
 const LeadMagnetPopup = lazy(() => import("@/components/LeadMagnetPopup"));
+const StickyBookingBar = lazy(() => import("@/components/StickyBookingBar"));
 
 function PageLoader() {
   return (
@@ -95,6 +96,7 @@ function App() {
             <Suspense fallback={null}>
               <CookieConsent />
               <LeadMagnetPopup />
+              <StickyBookingBar />
             </Suspense>
             <PWAUpdateNotification registration={registration} />
             <Router />
