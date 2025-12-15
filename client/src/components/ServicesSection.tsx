@@ -31,6 +31,7 @@ import servicesData from "@/data/services.json";
 import { SectionShareButtons } from "@/components/SocialShare";
 import Autoplay from "embla-carousel-autoplay";
 import { useRef, useState, useEffect } from "react";
+import { useSectionTracking } from "@/hooks/useSectionTracking";
 
 const iconMap: Record<string, LucideIcon> = {
   Target,
@@ -76,6 +77,11 @@ interface CaseStudy {
 }
 
 export default function ServicesSection() {
+  const sectionRef = useSectionTracking({ 
+    sectionName: 'services',
+    funnelStep: 'interest'
+  });
+
   const { sectionBadge, sectionTitle, sectionTitleHighlight, sectionDescription, services, ctaButtons, caseStudies, caseStudyShowcase, popularBadgeText } = servicesData;
   const [api, setApi] = useState<CarouselApi>();
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -103,6 +109,7 @@ export default function ServicesSection() {
 
   return (
     <section
+      ref={sectionRef}
       id="services"
       className="py-10 md:py-14 gradient-services relative"
       data-testid="section-services"

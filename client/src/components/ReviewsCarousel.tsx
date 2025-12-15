@@ -11,6 +11,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import ReviewCard from "./ReviewCard";
 import reviewsData from "@/data/reviews.json";
 import { useState, useRef } from "react";
+import { useSectionTracking } from "@/hooks/useSectionTracking";
 import { ExternalLink, Star, Trophy, CheckCircle, Quote, ChevronRight, Sparkles, Shield } from "lucide-react";
 import Autoplay from "embla-carousel-autoplay";
 import { SectionShareButtons } from "@/components/SocialShare";
@@ -28,6 +29,11 @@ const sortedReviews = [...reviewsData].sort((a, b) =>
 );
 
 export default function ReviewsCarousel() {
+  const sectionRef = useSectionTracking({ 
+    sectionName: 'reviews',
+    funnelStep: 'desire'
+  });
+
   const [showAll, setShowAll] = useState(false);
   const totalReviews = sortedReviews.length;
   
@@ -46,6 +52,7 @@ export default function ReviewsCarousel() {
 
   return (
     <section
+      ref={sectionRef}
       id="reviews"
       className="py-12 md:py-16"
       data-testid="section-reviews"

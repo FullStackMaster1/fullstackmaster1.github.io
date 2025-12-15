@@ -7,6 +7,7 @@ import profileData from "@/data/profile.json";
 import whatsappData from "@/data/whatsapp.json";
 import bookingData from "@/data/booking.json";
 import CapacityIndicator from "@/components/CapacityIndicator";
+import { useSectionTracking } from "@/hooks/useSectionTracking";
 
 const iconMap: Record<string, LucideIcon> = {
   Calendar,
@@ -31,6 +32,11 @@ interface AvailabilitySlot {
 }
 
 export default function BookingSection() {
+  const sectionRef = useSectionTracking({ 
+    sectionName: 'booking',
+    funnelStep: 'action'
+  });
+
   const { contact, socialLinks } = profileData;
   const { 
     sectionBadge, 
@@ -78,6 +84,7 @@ export default function BookingSection() {
 
   return (
     <section
+      ref={sectionRef}
       id="booking"
       className="py-10 md:py-14 bg-gradient-to-br from-primary/5 via-background to-accent/10"
       data-testid="section-booking"

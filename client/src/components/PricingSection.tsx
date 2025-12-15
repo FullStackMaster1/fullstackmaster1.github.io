@@ -6,6 +6,7 @@ import { SiWhatsapp } from "react-icons/si";
 import packagesData from "@/data/packages.json";
 import UrgencyBanner from "@/components/UrgencyBanner";
 import { motion } from "framer-motion";
+import { useSectionTracking } from "@/hooks/useSectionTracking";
 
 const iconMap: Record<string, LucideIcon> = {
   Zap,
@@ -63,12 +64,18 @@ interface ProcessStep {
 }
 
 export default function PricingSection() {
+  const sectionRef = useSectionTracking({ 
+    sectionName: 'pricing',
+    funnelStep: 'decision'
+  });
+
   const packages = packagesData.packages as Package[];
   const testimonials = packagesData.testimonials.items as Testimonial[];
   const processSteps = packagesData.directBookingProcess.steps as ProcessStep[];
 
   return (
     <section
+      ref={sectionRef}
       id="pricing"
       className="py-10 md:py-14 gradient-pricing relative"
       data-testid="section-pricing"

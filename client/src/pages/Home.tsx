@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import USATrustBar from "@/components/USATrustBar";
@@ -8,15 +8,23 @@ import WhatsAppWidget from "@/components/WhatsAppWidget";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Loader2 } from "lucide-react";
+import { 
+  initGA, 
+  setupScrollTracking, 
+  setupExitIntentTracking, 
+  setupTimeTracking,
+  trackConversionFunnel 
+} from "@/lib/analytics";
 
 const ClientLogosBar = lazy(() => import("@/components/ClientLogosBar"));
+const WhoThisIsForSection = lazy(() => import("@/components/WhoThisIsForSection"));
+const ServicesSection = lazy(() => import("@/components/ServicesSection"));
 const SuccessStoriesSection = lazy(() => import("@/components/SuccessStoriesSection"));
 const ReviewsCarousel = lazy(() => import("@/components/ReviewsCarousel"));
-const ServicesSection = lazy(() => import("@/components/ServicesSection"));
 const PricingSection = lazy(() => import("@/components/PricingSection"));
+const BookingSection = lazy(() => import("@/components/BookingSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
 const AboutSection = lazy(() => import("@/components/AboutSection"));
-const BookingSection = lazy(() => import("@/components/BookingSection"));
 
 function SectionLoader() {
   return (
@@ -27,65 +35,87 @@ function SectionLoader() {
 }
 
 export default function Home() {
+  useEffect(() => {
+    initGA();
+    trackConversionFunnel('awareness', 'homepage_load');
+    
+    const cleanupScroll = setupScrollTracking();
+    const cleanupExit = setupExitIntentTracking('homepage');
+    const cleanupTime = setupTimeTracking('homepage');
+    
+    return () => {
+      cleanupScroll?.();
+      cleanupExit?.();
+      cleanupTime?.();
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <SEOHead page="home" />
       <Navigation />
       <main>
-        {/* HERO - Strong first impression with clear CTA */}
+        {/* ATTENTION: Hero with strong first impression and clear CTA */}
         <HeroSection />
         
-        {/* TRUST BAR - Location, timezone, client count */}
+        {/* TRUST: Location, timezone, client count strip */}
         <USATrustBar />
         
-        {/* CLIENT LOGOS - Build credibility */}
+        {/* CREDIBILITY: Client company logos */}
         <Suspense fallback={<SectionLoader />}>
           <ClientLogosBar />
         </Suspense>
         
-        {/* SUCCESS STORIES - Featured wins with verified reviews */}
+        {/* INTEREST: Problem framing - Who this coaching is for */}
         <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="scale" duration={0.7}>
-            <SuccessStoriesSection />
+          <ScrollReveal type="fade" duration={0.6}>
+            <WhoThisIsForSection />
           </ScrollReveal>
         </Suspense>
         
-        {/* REVIEWS CAROUSEL - More social proof */}
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="slide-up" delay={0.1}>
-            <ReviewsCarousel />
-          </ScrollReveal>
-        </Suspense>
-        
-        {/* SERVICES - What you offer */}
+        {/* INTEREST: What services are offered */}
         <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="scale" delay={0.1}>
             <ServicesSection />
           </ScrollReveal>
         </Suspense>
         
-        {/* PRICING - Clear pricing options */}
+        {/* DESIRE: Social proof - Success stories */}
+        <Suspense fallback={<SectionLoader />}>
+          <ScrollReveal type="scale" duration={0.7}>
+            <SuccessStoriesSection />
+          </ScrollReveal>
+        </Suspense>
+        
+        {/* DESIRE: More social proof - Reviews carousel */}
+        <Suspense fallback={<SectionLoader />}>
+          <ScrollReveal type="slide-up" delay={0.1}>
+            <ReviewsCarousel />
+          </ScrollReveal>
+        </Suspense>
+        
+        {/* DECISION: Pricing with guarantee */}
         <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="slide-up" duration={0.7}>
             <PricingSection />
           </ScrollReveal>
         </Suspense>
         
-        {/* BOOKING - Direct booking CTA */}
+        {/* ACTION: Direct booking CTA */}
         <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="fade" delay={0.1}>
             <BookingSection />
           </ScrollReveal>
         </Suspense>
         
-        {/* FAQ - Handle objections */}
+        {/* OBJECTION HANDLING: FAQ section */}
         <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="slide-up">
             <FAQSection />
           </ScrollReveal>
         </Suspense>
         
-        {/* ABOUT - Brief introduction */}
+        {/* CREDIBILITY: About the coach */}
         <Suspense fallback={<SectionLoader />}>
           <ScrollReveal type="fade">
             <AboutSection />

@@ -5,6 +5,7 @@ import { Star, Award, CheckCircle, ExternalLink, Shield, Building2, Sparkles, Sh
 import { SiAmazon, SiGoogle, SiDatabricks, SiRedhat, SiLinkedin, SiWhatsapp } from "react-icons/si";
 import { FaXTwitter } from "react-icons/fa6";
 import successStoriesData from "@/data/successStories.json";
+import { useSectionTracking } from "@/hooks/useSectionTracking";
 
 const companyIcons: Record<string, typeof SiAmazon | typeof Building2 | typeof Sparkles> = {
   amazon: SiAmazon,
@@ -53,6 +54,11 @@ const parseStoryDate = (dateStr: string): Date => {
 };
 
 export default function SuccessStoriesSection() {
+  const sectionRef = useSectionTracking({ 
+    sectionName: 'success_stories',
+    funnelStep: 'desire'
+  });
+
   const {
     sectionBadge,
     sectionTitle,
@@ -76,6 +82,7 @@ export default function SuccessStoriesSection() {
 
   return (
     <section
+      ref={sectionRef}
       id="success-stories"
       className="py-10 md:py-14 gradient-success relative"
       data-testid="section-success-stories"

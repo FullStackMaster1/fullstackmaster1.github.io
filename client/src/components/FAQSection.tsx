@@ -8,6 +8,7 @@ import {
 import { HelpCircle } from "lucide-react";
 import faqsData from "@/data/faqs.json";
 import siteContent from "@/data/siteContent.json";
+import { trackFAQExpand } from "@/lib/analytics";
 
 interface FAQ {
   id: string;
@@ -17,6 +18,15 @@ interface FAQ {
 
 export default function FAQSection() {
   const { faq } = siteContent;
+
+  const handleFAQExpand = (value: string) => {
+    if (value) {
+      const faqItem = (faqsData as FAQ[]).find(item => item.id === value);
+      if (faqItem) {
+        trackFAQExpand(faqItem.question);
+      }
+    }
+  };
 
   return (
     <section
@@ -41,7 +51,7 @@ export default function FAQSection() {
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="w-full">
+        <Accordion type="single" collapsible className="w-full" onValueChange={handleFAQExpand}>
           {(faqsData as FAQ[]).map((item, index) => (
             <AccordionItem
               key={item.id}

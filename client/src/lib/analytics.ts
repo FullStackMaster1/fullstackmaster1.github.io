@@ -198,7 +198,7 @@ export const trackEngagement = (engagementType: 'scroll' | 'click' | 'hover', el
   trackEvent(`user_${engagementType}`, 'engagement', element);
 };
 
-export const trackConversionFunnel = (step: 'awareness' | 'interest' | 'decision' | 'action', detail: string) => {
+export const trackConversionFunnel = (step: 'awareness' | 'interest' | 'desire' | 'decision' | 'action', detail: string) => {
   trackEvent(`funnel_${step}`, 'conversion', detail);
 };
 
