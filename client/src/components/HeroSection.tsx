@@ -8,6 +8,7 @@ import siteContent from "@/data/siteContent.json";
 import profileData from "@/data/profile.json";
 import { trackBookCall, trackWhatsApp, trackEmailClick, trackLinkedInClick } from "@/lib/analytics";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import GoogleBusinessBadge from "@/components/GoogleBusinessBadge";
 
 const companyIcons: Record<string, typeof SiAmazon | typeof FaMicrosoft | typeof Building2> = {
   Amazon: SiAmazon,
@@ -302,7 +303,8 @@ export default function HeroSection() {
               </div>
             )}
 
-            <div className="flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+            <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+              <GoogleBusinessBadge variant="compact" />
               <a
                 href={contact.whatsappLink}
                 target="_blank"
