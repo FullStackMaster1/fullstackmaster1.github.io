@@ -73,16 +73,26 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground mb-4 max-w-md">
               {descriptions.short}
             </p>
-            <div className="text-xs text-muted-foreground space-y-1 mt-4 pt-4 border-t border-border">
-              <p className="font-semibold text-foreground">FullStack Master</p>
-              <p className="flex items-center gap-1">
-                <MapPin className="w-3 h-3" />
-                Plot No 126, Pragathi Nagar, Hyderabad, Telangana 500090, India
-              </p>
-              <p className="flex items-center gap-1">
-                <Phone className="w-3 h-3" />
-                +1 609-442-4081
-              </p>
+            <div className="text-xs text-muted-foreground space-y-2 mt-4 pt-4 border-t border-border">
+              <p className="font-semibold text-foreground">FullStack Master - Global Offices</p>
+              <div className="space-y-1">
+                <p className="font-medium text-foreground/80">USA Headquarters</p>
+                <p className="flex items-center gap-1">
+                  <MapPin className="w-3 h-3 flex-shrink-0" />
+                  North Brunswick, NJ, USA
+                </p>
+                <p className="flex items-center gap-1">
+                  <Phone className="w-3 h-3 flex-shrink-0" />
+                  +1 609-442-4081
+                </p>
+              </div>
+              <div className="space-y-1">
+                <p className="font-medium text-foreground/80">India Headquarters</p>
+                <p className="flex items-center gap-1">
+                  <MapPin className="w-3 h-3 flex-shrink-0" />
+                  Plot No 126, Pragathi Nagar, Hyderabad, Telangana 500090, India
+                </p>
+              </div>
             </div>
           </div>
 
