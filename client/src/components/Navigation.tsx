@@ -116,12 +116,12 @@ export default function Navigation() {
       data-testid="navigation"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-16 gap-4">
           {/* Left side: Logo */}
-          <div className="flex items-center">
+          <div className="flex items-center flex-shrink-0">
             <button
               onClick={() => setLocation("/")}
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity flex-shrink-0"
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
               data-testid="link-home"
             >
               <img
@@ -130,11 +130,11 @@ export default function Navigation() {
                 className="h-10 w-auto rounded flex-shrink-0"
                 data-testid="img-logo"
               />
-              <span className="hidden sm:block font-bold text-lg whitespace-nowrap">{navigation.brandName}</span>
+              <span className="hidden lg:block font-bold text-lg whitespace-nowrap">{navigation.brandName}</span>
             </button>
           </div>
 
-          <div className="hidden lg:flex items-center gap-0.5">
+          <div className="hidden lg:flex items-center gap-1">
             {/* Show essential nav links: About, Services, Cohort, Reviews, Pricing */}
             {navLinks.slice(0, 5).map((link) => (
               <Button
