@@ -83,14 +83,18 @@ export default function Footer() {
                 </p>
                 <p className="flex items-center gap-1">
                   <Phone className="w-3 h-3 flex-shrink-0" />
-                  +1 609-442-4081
+                  <span aria-label="USA phone">+1 (609) 442-4081</span>
                 </p>
               </div>
               <div className="space-y-1">
                 <p className="font-medium text-foreground/80">India Headquarters</p>
                 <p className="flex items-center gap-1">
                   <MapPin className="w-3 h-3 flex-shrink-0" />
-                  Plot No 126, Pragathi Nagar, Hyderabad, Telangana 500090, India
+                  Patancheru, Hyderabad, Telangana, India
+                </p>
+                <p className="flex items-center gap-1">
+                  <Phone className="w-3 h-3 flex-shrink-0" />
+                  <span aria-label="India phone">+91 (720) 861-9392</span>
                 </p>
               </div>
             </div>
