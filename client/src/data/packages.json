@@ -30,7 +30,7 @@
       "perSession": "$120/session",
       "savings": "SAVE $105",
       "savingsPercent": "15% OFF",
-      "platformComparison": "vs $141/session on coaching platforms",
+      "platformComparison": "vs $175/session on coaching platforms",
       "badge": "Most Popular",
       "featured": true,
       "topBenefits": [
@@ -57,7 +57,7 @@
       "id": "single-session",
       "name": "Single Deep-Dive",
       "icon": "Clock",
-      "price": "$141",
+      "price": "$130",
       "originalPrice": null,
       "perSession": "60 focused minutes",
       "savings": null,
@@ -69,8 +69,8 @@
         "Walk out with clear action items",
         "Follow-up notes via WhatsApp"
       ],
-      "buttonText": "Book on IGotAnOffer",
-      "buttonLink": "https://igotanoffer.com/en/coach/rupesh",
+      "buttonText": "Book Session",
+      "buttonLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%20I%27d%20like%20to%20book%20a%20single%20session.%20My%20focus%20area%20is%20______.",
       "secondaryButtonText": "Or message me directly",
       "secondaryButtonLink": "https://wa.me/16094424081?text=Hi%20Rupesh!%0A%0AI%20need%20a%20quick%20session%20to%20fix%20a%20specific%20gap.%0A%0AMy%20biggest%20weakness:%20%0A%0ACan%20you%20help?",
       "paymentNote": null
