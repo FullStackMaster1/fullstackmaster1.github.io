@@ -347,22 +347,18 @@ export default function Navigation() {
             </Button>
           </div>
 
-          <div className="hidden md:flex items-center gap-2">
-            {/* Theme Toggle */}
+          <div className="hidden lg:flex items-center gap-1.5">
             <ThemeToggle />
-            
-            {/* Search Box */}
-            <SearchBox className="w-40 lg:w-48" placeholder="Search..." />
-            
+            <SearchBox className="w-32 xl:w-40" placeholder="Search..." />
             <Button
               variant="outline"
               size="sm"
-              className="border-green-500/30 text-green-600"
+              className="hidden xl:flex border-green-500/30 text-green-600"
               onClick={() => handleNavClick('#community', false)}
               data-testid="button-join-community-nav"
             >
               <Users className="w-4 h-4 mr-1" />
-              Join Free Community
+              Community
             </Button>
             <Button
               variant="outline"
@@ -376,8 +372,7 @@ export default function Navigation() {
                 onClick={() => trackWhatsApp('navigation')}
                 data-testid="button-whatsapp-nav"
               >
-                <SiWhatsapp className="w-4 h-4 mr-1 text-green-500" />
-                {navigation.ctaButtons.whatsapp.text}
+                <SiWhatsapp className="w-4 h-4 text-green-500" />
               </a>
             </Button>
             <Button
@@ -388,14 +383,14 @@ export default function Navigation() {
               }}
               data-testid="button-book-now"
             >
-              {navigation.ctaButtons.book.text}
+              Book
             </Button>
           </div>
 
           <Button
             variant="ghost"
             size="icon"
-            className="md:hidden"
+            className="lg:hidden"
             onClick={() => setIsOpen(!isOpen)}
             data-testid="button-mobile-menu"
           >
