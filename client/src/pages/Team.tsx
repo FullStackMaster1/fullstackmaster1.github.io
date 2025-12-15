@@ -8,7 +8,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Users, Award, Briefcase, GraduationCap, Star, ArrowRight, Mail } from "lucide-react";
 import { SiLinkedin, SiWhatsapp } from "react-icons/si";
 import { useLocation } from "wouter";
-import rupeshImage from "@assets/RupeshTiwari.png";
 import profileData from "@/data/profile.json";
 
 interface Coach {
@@ -30,7 +29,6 @@ const coaches: Coach[] = [
     id: "rupesh",
     name: "Rupesh Tiwari",
     title: "Lead Coach & Founder",
-    image: rupeshImage,
     experience: "18+ years",
     specialties: ["System Design", "Behavioral Interviews", "AWS Architecture", "Leadership Coaching"],
     companies: ["Amazon", "Microsoft"],
