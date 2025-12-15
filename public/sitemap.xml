@@ -5,9 +5,17 @@
   <!-- Homepage - Main Landing Page -->
   <url>
     <loc>https://www.fullstackmaster.net/</loc>
-    <lastmod>2025-12-13</lastmod>
+    <lastmod>2025-12-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+  
+  <!-- Google Business Profile -->
+  <url>
+    <loc>https://g.page/FullStackMaster</loc>
+    <lastmod>2025-12-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   
   <!-- Educational Landing Pages - High Priority for SEO -->
