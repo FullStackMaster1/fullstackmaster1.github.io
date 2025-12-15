@@ -1,8 +1,8 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, Clock, Video, MessageCircle, ExternalLink, LucideIcon, Heart, Shield, Infinity, AlertCircle } from "lucide-react";
-import { SiWhatsapp } from "react-icons/si";
+import { Calendar, Clock, Video, MessageCircle, ExternalLink, LucideIcon, Heart, Shield, Infinity, AlertCircle, MapPin } from "lucide-react";
+import { SiWhatsapp, SiGoogle } from "react-icons/si";
 import profileData from "@/data/profile.json";
 import whatsappData from "@/data/whatsapp.json";
 import bookingData from "@/data/booking.json";
@@ -337,6 +337,45 @@ export default function BookingSection() {
                       <Calendar className="w-4 h-4 mr-2" />
                       Book Now
                       <ExternalLink className="w-4 h-4 ml-2" />
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {/* Google Maps Location Card */}
+              <Card className="mt-6" data-testid="card-google-maps">
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-2 mb-3">
+                    <MapPin className="w-4 h-4 text-primary" />
+                    <h4 className="font-semibold text-sm">Location</h4>
+                  </div>
+                  <div className="rounded-lg overflow-hidden border mb-3">
+                    <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243647.25176947664!2d78.24323234999999!3d17.412608499999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb99daeaebd2c7%3A0xae93b78392bafbc2!2sHyderabad%2C%20Telangana%2C%20India!5e0!3m2!1sen!2sus!4v1702656000000!5m2!1sen!2sus"
+                      width="100%"
+                      height="150"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="Location - Hyderabad, India"
+                      data-testid="iframe-google-maps"
+                    />
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-2">
+                    <MapPin className="w-3 h-3" />
+                    <span>Hyderabad, Telangana, India</span>
+                  </div>
+                  <Button size="sm" variant="outline" className="w-full" asChild>
+                    <a
+                      href="https://g.page/fullstackmaster"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-testid="button-view-google-business"
+                    >
+                      <SiGoogle className="w-3 h-3 mr-2 text-[#4285F4]" />
+                      View on Google
+                      <ExternalLink className="w-3 h-3 ml-2" />
                     </a>
                   </Button>
                 </CardContent>
