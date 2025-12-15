@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollReveal from "@/components/ScrollReveal";
+import SocialShareButtons from "@/components/SocialShareButtons";
 import { Loader2 } from "lucide-react";
 import { 
   initGA, 
@@ -56,74 +57,97 @@ export default function Home() {
       <Navigation />
       <main>
         {/* ATTENTION: Hero with strong first impression and clear CTA */}
-        <HeroSection />
+        <section id="hero">
+          <HeroSection />
+        </section>
         
         {/* TRUST: Location, timezone, client count strip */}
-        <USATrustBar />
+        <section id="trust">
+          <USATrustBar />
+        </section>
         
         {/* CREDIBILITY: Client company logos */}
-        <Suspense fallback={<SectionLoader />}>
-          <ClientLogosBar />
-        </Suspense>
+        <section id="clients">
+          <Suspense fallback={<SectionLoader />}>
+            <ClientLogosBar />
+          </Suspense>
+        </section>
         
         {/* INTEREST: Problem framing - Who this coaching is for */}
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="fade" duration={0.6}>
-            <WhoThisIsForSection />
-          </ScrollReveal>
-        </Suspense>
+        <section id="who">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="fade" duration={0.6}>
+              <WhoThisIsForSection />
+            </ScrollReveal>
+          </Suspense>
+        </section>
         
         {/* INTEREST: What services are offered */}
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="scale" delay={0.1}>
-            <ServicesSection />
-          </ScrollReveal>
-        </Suspense>
+        <section id="services">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="scale" delay={0.1}>
+              <ServicesSection />
+            </ScrollReveal>
+          </Suspense>
+        </section>
         
         {/* DESIRE: Social proof - Success stories */}
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="scale" duration={0.7}>
-            <SuccessStoriesSection />
-          </ScrollReveal>
-        </Suspense>
+        <section id="success-stories">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="scale" duration={0.7}>
+              <SuccessStoriesSection />
+            </ScrollReveal>
+          </Suspense>
+        </section>
         
         {/* DESIRE: More social proof - Reviews carousel */}
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="slide-up" delay={0.1}>
-            <ReviewsCarousel />
-          </ScrollReveal>
-        </Suspense>
+        <section id="reviews">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="slide-up" delay={0.1}>
+              <ReviewsCarousel />
+            </ScrollReveal>
+          </Suspense>
+        </section>
         
         {/* DECISION: Pricing with guarantee */}
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="slide-up" duration={0.7}>
-            <PricingSection />
-          </ScrollReveal>
-        </Suspense>
+        <section id="pricing">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="slide-up" duration={0.7}>
+              <PricingSection />
+            </ScrollReveal>
+          </Suspense>
+        </section>
         
         {/* ACTION: Direct booking CTA */}
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="fade" delay={0.1}>
-            <BookingSection />
-          </ScrollReveal>
-        </Suspense>
+        <section id="booking">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="fade" delay={0.1}>
+              <BookingSection />
+            </ScrollReveal>
+          </Suspense>
+        </section>
         
         {/* OBJECTION HANDLING: FAQ section */}
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="slide-up">
-            <FAQSection />
-          </ScrollReveal>
-        </Suspense>
+        <section id="faq">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="slide-up">
+              <FAQSection />
+            </ScrollReveal>
+          </Suspense>
+        </section>
         
         {/* CREDIBILITY: About the coach */}
-        <Suspense fallback={<SectionLoader />}>
-          <ScrollReveal type="fade">
-            <AboutSection />
-          </ScrollReveal>
-        </Suspense>
+        <section id="about">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="fade">
+              <AboutSection />
+            </ScrollReveal>
+          </Suspense>
+        </section>
       </main>
       <Footer />
       <WhatsAppWidget />
+      <SocialShareButtons />
       <ScrollToTop />
     </div>
   );
