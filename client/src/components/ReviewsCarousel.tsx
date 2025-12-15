@@ -75,10 +75,16 @@ export default function ReviewsCarousel() {
         {/* Header with trust signals */}
         <div className="text-center mb-10">
           <div className="flex flex-wrap items-center justify-center gap-3 mb-4">
-            <Badge className="bg-gradient-to-r from-amber-500 to-yellow-500 text-white text-sm px-4 py-1.5 shadow-sm">
-              <Star className="w-4 h-4 fill-white mr-1.5" />
-              {avgRating} Average Rating
-            </Badge>
+            <motion.div
+              initial={{ scale: 1 }}
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+            >
+              <Badge className="bg-gradient-to-r from-amber-500 to-yellow-500 text-white text-sm px-4 py-1.5 shadow-sm cursor-pointer">
+                <Star className="w-4 h-4 fill-white mr-1.5" />
+                {avgRating} Average Rating
+              </Badge>
+            </motion.div>
             <Badge variant="secondary" className="text-sm px-3 py-1.5">
               <Trophy className="w-3.5 h-3.5 text-amber-500 mr-1.5" />
               {totalReviews}+ Verified Reviews

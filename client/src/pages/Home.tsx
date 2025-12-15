@@ -8,6 +8,7 @@ import WhatsAppWidget from "@/components/WhatsAppWidget";
 import ScrollToTop from "@/components/ScrollToTop";
 import ScrollReveal from "@/components/ScrollReveal";
 import SocialShareButtons from "@/components/SocialShareButtons";
+import FeedbackButton from "@/components/FeedbackButton";
 import { Loader2 } from "lucide-react";
 import { 
   initGA, 
@@ -148,6 +149,7 @@ export default function Home() {
       <Footer />
       <WhatsAppWidget />
       <SocialShareButtons />
+      <FeedbackButton />
       <ScrollToTop />
     </div>
   );

@@ -118,16 +118,16 @@ export default function Navigation() {
           <div className="flex items-center">
             <button
               onClick={() => setLocation("/")}
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
+              className="flex items-center gap-2 hover:opacity-80 transition-opacity flex-shrink-0"
               data-testid="link-home"
             >
               <img
                 src={logoImage}
                 alt={navigation.brandName}
-                className="h-10 w-auto rounded"
+                className="h-10 w-auto rounded flex-shrink-0"
                 data-testid="img-logo"
               />
-              <span className="hidden sm:block font-bold text-lg">{navigation.brandName}</span>
+              <span className="hidden sm:block font-bold text-lg whitespace-nowrap">{navigation.brandName}</span>
             </button>
           </div>
 
