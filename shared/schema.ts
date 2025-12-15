@@ -51,3 +51,41 @@ export const insertWebinarInterestSchema = createInsertSchema(webinarInterests).
 
 export type InsertWebinarInterest = z.infer<typeof insertWebinarInterestSchema>;
 export type WebinarInterest = typeof webinarInterests.$inferSelect;
+
+// Referral System
+export const referrals = pgTable("referrals", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  referrerName: text("referrer_name").notNull(),
+  referrerEmail: text("referrer_email").notNull().unique(),
+  referralCode: text("referral_code").notNull().unique(),
+  referralCount: text("referral_count").default("0"),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertReferralSchema = createInsertSchema(referrals).omit({
+  id: true,
+  createdAt: true,
+  referralCount: true,
+});
+
+export type InsertReferral = z.infer<typeof insertReferralSchema>;
+export type Referral = typeof referrals.$inferSelect;
+
+// Track referred signups
+export const referredUsers = pgTable("referred_users", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  referralCode: text("referral_code").notNull(),
+  referredName: text("referred_name").notNull(),
+  referredEmail: text("referred_email").notNull(),
+  status: text("status").default("pending"), // pending, enrolled, completed
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
+export const insertReferredUserSchema = createInsertSchema(referredUsers).omit({
+  id: true,
+  createdAt: true,
+  status: true,
+});
+
+export type InsertReferredUser = z.infer<typeof insertReferredUserSchema>;
+export type ReferredUser = typeof referredUsers.$inferSelect;

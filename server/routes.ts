@@ -1,9 +1,16 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertWebinarRegistrationSchema, insertWebinarInterestSchema } from "@shared/schema";
+import { insertWebinarRegistrationSchema, insertWebinarInterestSchema, insertReferralSchema, insertReferredUserSchema } from "@shared/schema";
 import { z } from "zod";
 import { sendWebinarRegistrationNotification } from "./email";
+
+// Generate a unique referral code
+function generateReferralCode(name: string): string {
+  const namePart = name.replace(/[^a-zA-Z]/g, '').toUpperCase().slice(0, 4);
+  const randomPart = Math.random().toString(36).substring(2, 6).toUpperCase();
+  return `${namePart}${randomPart}`;
+}
 
 const ADMIN_TOKEN = (process.env.ADMIN_TOKEN || "").trim();
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
@@ -282,6 +289,131 @@ export async function registerRoutes(
       }
       console.error("Vote error:", error);
       res.status(500).json({ error: "Failed to record vote" });
+    }
+  });
+
+  // ========== REFERRAL SYSTEM ROUTES ==========
+
+  // Create or get existing referral code
+  app.post("/api/referral/create", async (req: Request, res: Response) => {
+    try {
+      const createSchema = z.object({
+        name: z.string().min(2),
+        email: z.string().email()
+      });
+      
+      const { name, email } = createSchema.parse(req.body);
+      
+      // Check if user already has a referral code
+      const existing = await storage.getReferralByEmail(email);
+      if (existing) {
+        return res.json({ 
+          referral: existing,
+          isNew: false,
+          message: "Welcome back! Here's your existing referral code."
+        });
+      }
+      
+      // Generate unique referral code
+      let referralCode = generateReferralCode(name);
+      let attempts = 0;
+      while (await storage.getReferralByCode(referralCode) && attempts < 5) {
+        referralCode = generateReferralCode(name);
+        attempts++;
+      }
+      
+      const referral = await storage.createReferral({
+        referrerName: name,
+        referrerEmail: email,
+        referralCode
+      });
+      
+      res.status(201).json({ 
+        referral,
+        isNew: true,
+        message: "Your referral code has been created!"
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
+      console.error("Referral creation error:", error);
+      res.status(500).json({ error: "Failed to create referral code" });
+    }
+  });
+
+  // Get referral stats by code
+  app.get("/api/referral/stats/:code", async (req: Request, res: Response) => {
+    try {
+      const { code } = req.params;
+      
+      const referral = await storage.getReferralByCode(code);
+      if (!referral) {
+        return res.status(404).json({ error: "Referral code not found" });
+      }
+      
+      const stats = await storage.getReferralStats(code);
+      const referredUsers = await storage.getReferredUsersByCode(code);
+      
+      res.json({
+        referral,
+        stats,
+        referredUsers: referredUsers.map(u => ({
+          name: u.referredName,
+          status: u.status,
+          createdAt: u.createdAt
+        }))
+      });
+    } catch (error) {
+      console.error("Referral stats error:", error);
+      res.status(500).json({ error: "Failed to fetch referral stats" });
+    }
+  });
+
+  // Track a referred user
+  app.post("/api/referral/track", async (req: Request, res: Response) => {
+    try {
+      const validatedData = insertReferredUserSchema.parse(req.body);
+      
+      // Verify referral code exists
+      const referral = await storage.getReferralByCode(validatedData.referralCode);
+      if (!referral) {
+        return res.status(404).json({ error: "Invalid referral code" });
+      }
+      
+      const referredUser = await storage.createReferredUser(validatedData);
+      
+      res.status(201).json({ 
+        success: true,
+        message: "Referral tracked successfully",
+        referredUser
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
+      console.error("Referral tracking error:", error);
+      res.status(500).json({ error: "Failed to track referral" });
+    }
+  });
+
+  // Validate a referral code (public endpoint)
+  app.get("/api/referral/validate/:code", async (req: Request, res: Response) => {
+    try {
+      const { code } = req.params;
+      const referral = await storage.getReferralByCode(code);
+      
+      if (!referral) {
+        return res.json({ valid: false });
+      }
+      
+      res.json({ 
+        valid: true,
+        referrerName: referral.referrerName
+      });
+    } catch (error) {
+      console.error("Referral validation error:", error);
+      res.status(500).json({ error: "Failed to validate referral code" });
     }
   });
 

@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type WebinarRegistration, type InsertWebinarRegistration, webinarRegistrations, type WebinarInterest, type InsertWebinarInterest, webinarInterests } from "@shared/schema";
+import { type User, type InsertUser, type WebinarRegistration, type InsertWebinarRegistration, webinarRegistrations, type WebinarInterest, type InsertWebinarInterest, webinarInterests, type Referral, type InsertReferral, referrals, type ReferredUser, type InsertReferredUser, referredUsers } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { db } from "./db";
 import { desc, eq, and, sql } from "drizzle-orm";
@@ -15,6 +15,14 @@ export interface IStorage {
   upsertWebinarInterest(interest: InsertWebinarInterest): Promise<WebinarInterest>;
   getWebinarInterestCounts(webinarId: string): Promise<{ upvotes: number; downvotes: number }>;
   getWebinarInterestBySession(webinarId: string, sessionId: string): Promise<WebinarInterest | undefined>;
+  // Referral system
+  createReferral(referral: InsertReferral): Promise<Referral>;
+  getReferralByEmail(email: string): Promise<Referral | undefined>;
+  getReferralByCode(code: string): Promise<Referral | undefined>;
+  incrementReferralCount(code: string): Promise<void>;
+  createReferredUser(referredUser: InsertReferredUser): Promise<ReferredUser>;
+  getReferredUsersByCode(code: string): Promise<ReferredUser[]>;
+  getReferralStats(code: string): Promise<{ total: number; pending: number; enrolled: number }>;
 }
 
 export class MemStorage implements IStorage {
@@ -107,6 +115,50 @@ export class MemStorage implements IStorage {
         eq(webinarInterests.sessionId, sessionId)
       ));
     return result;
+  }
+
+  // Referral system methods
+  async createReferral(referral: InsertReferral): Promise<Referral> {
+    const [result] = await db.insert(referrals).values(referral).returning();
+    return result;
+  }
+
+  async getReferralByEmail(email: string): Promise<Referral | undefined> {
+    const [result] = await db.select().from(referrals).where(eq(referrals.referrerEmail, email));
+    return result;
+  }
+
+  async getReferralByCode(code: string): Promise<Referral | undefined> {
+    const [result] = await db.select().from(referrals).where(eq(referrals.referralCode, code));
+    return result;
+  }
+
+  async incrementReferralCount(code: string): Promise<void> {
+    const existing = await this.getReferralByCode(code);
+    if (existing) {
+      const newCount = (parseInt(existing.referralCount || "0") + 1).toString();
+      await db.update(referrals).set({ referralCount: newCount }).where(eq(referrals.referralCode, code));
+    }
+  }
+
+  async createReferredUser(referredUser: InsertReferredUser): Promise<ReferredUser> {
+    const [result] = await db.insert(referredUsers).values(referredUser).returning();
+    // Also increment the referral count
+    await this.incrementReferralCount(referredUser.referralCode);
+    return result;
+  }
+
+  async getReferredUsersByCode(code: string): Promise<ReferredUser[]> {
+    return await db.select().from(referredUsers).where(eq(referredUsers.referralCode, code)).orderBy(desc(referredUsers.createdAt));
+  }
+
+  async getReferralStats(code: string): Promise<{ total: number; pending: number; enrolled: number }> {
+    const users = await this.getReferredUsersByCode(code);
+    return {
+      total: users.length,
+      pending: users.filter(u => u.status === "pending").length,
+      enrolled: users.filter(u => u.status === "enrolled" || u.status === "completed").length
+    };
   }
 }
 

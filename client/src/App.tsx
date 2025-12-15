@@ -32,6 +32,9 @@ const HiringManagerPrep = lazy(() => import("@/pages/HiringManagerPrep"));
 const DataEngineerRoadmap = lazy(() => import("@/pages/DataEngineerRoadmap"));
 const CohortProgram = lazy(() => import("@/pages/CohortProgram"));
 const SuccessStories = lazy(() => import("@/pages/SuccessStories"));
+const ReferralProgram = lazy(() => import("@/pages/ReferralProgram"));
+const Team = lazy(() => import("@/pages/Team"));
+const CommunityResources = lazy(() => import("@/pages/CommunityResources"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
@@ -67,6 +70,9 @@ function Router() {
         <Route path="/data-engineer" component={DataEngineerRoadmap} />
         <Route path="/cohort" component={CohortProgram} />
         <Route path="/success-stories" component={SuccessStories} />
+        <Route path="/referral" component={ReferralProgram} />
+        <Route path="/team" component={Team} />
+        <Route path="/community-resources" component={CommunityResources} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/terms-of-service" component={TermsOfService} />
         <Route path="/confidentiality" component={Confidentiality} />
