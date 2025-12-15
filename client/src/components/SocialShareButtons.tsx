@@ -63,7 +63,7 @@ export default function SocialShareButtons() {
   };
 
   return (
-    <div className="fixed left-4 bottom-32 z-40 flex flex-col items-center gap-2">
+    <div className="fixed left-4 bottom-20 z-50 flex flex-col items-center gap-2">
       {isOpen && (
         <div className="flex flex-col gap-2 mb-2 animate-in slide-in-from-bottom-2 duration-200">
           {shareLinks.map((link) => (

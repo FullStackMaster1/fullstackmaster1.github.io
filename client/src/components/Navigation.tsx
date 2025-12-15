@@ -88,13 +88,16 @@ export default function Navigation() {
     if (isPage) {
       setLocation(href);
     } else {
+      // Update URL hash and scroll to section
       if (location !== "/") {
-        setLocation("/");
+        setLocation("/" + href);
         setTimeout(() => {
           const element = document.querySelector(href);
           if (element) element.scrollIntoView({ behavior: "smooth" });
         }, 100);
       } else {
+        // Update the URL hash
+        window.history.pushState(null, "", href);
         const element = document.querySelector(href);
         if (element) element.scrollIntoView({ behavior: "smooth" });
       }
