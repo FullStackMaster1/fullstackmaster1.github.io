@@ -76,7 +76,7 @@ export default function FeaturedVideoSection() {
                   ))}
                 </div>
                 <span className="text-sm text-muted-foreground">
-                  Trusted by 100+ senior professionals
+                  Trusted by 5000+ clients
                 </span>
               </div>
             </div>
