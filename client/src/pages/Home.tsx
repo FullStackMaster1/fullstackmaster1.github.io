@@ -18,6 +18,7 @@ import {
   trackConversionFunnel 
 } from "@/lib/analytics";
 
+const FeaturedVideoSection = lazy(() => import("@/components/FeaturedVideoSection"));
 const ClientLogosBar = lazy(() => import("@/components/ClientLogosBar"));
 const WhoThisIsForSection = lazy(() => import("@/components/WhoThisIsForSection"));
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
@@ -65,6 +66,15 @@ export default function Home() {
         {/* TRUST: Location, timezone, client count strip */}
         <section id="trust">
           <USATrustBar />
+        </section>
+        
+        {/* FEATURED: Video introduction from Rupesh */}
+        <section id="featured-video">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="fade" duration={0.6}>
+              <FeaturedVideoSection />
+            </ScrollReveal>
+          </Suspense>
         </section>
         
         {/* CREDIBILITY: Client company logos */}
