@@ -32,7 +32,7 @@ export default function FloatingSocialShare({
   };
 
   return (
-    <div className="fixed bottom-36 right-4 z-40" data-testid="floating-social-share">
+    <div className="fixed bottom-48 right-4 z-40" data-testid="floating-social-share">
       {isExpanded && (
         <div className="mb-3 bg-card rounded-lg shadow-2xl border border-border overflow-hidden w-56 animate-in slide-in-from-bottom-2 duration-200">
           <div className="bg-gradient-to-r from-primary/90 to-primary p-3 flex items-center justify-between">

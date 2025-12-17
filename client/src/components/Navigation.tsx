@@ -402,7 +402,7 @@ export default function Navigation() {
         </div>
 
         {isOpen && (
-          <div className="lg:hidden bg-background/95 backdrop-blur-sm border-t border-border max-h-[calc(100vh-4rem)] overflow-y-auto">
+          <div className="lg:hidden bg-background/95 backdrop-blur-sm border-t border-border max-h-[calc(100vh-4rem)] overflow-y-auto overscroll-contain pb-20">
             <div className="flex flex-col py-4">
               {/* Quick Actions */}
               {navigation.quickActions && (

@@ -28,6 +28,7 @@ const PricingSection = lazy(() => import("@/components/PricingSection"));
 const BookingSection = lazy(() => import("@/components/BookingSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
 const AboutSection = lazy(() => import("@/components/AboutSection"));
+const CoursesCarousel = lazy(() => import("@/components/CoursesCarousel"));
 
 function SectionLoader() {
   return (
@@ -152,6 +153,15 @@ export default function Home() {
           <Suspense fallback={<SectionLoader />}>
             <ScrollReveal type="fade">
               <AboutSection />
+            </ScrollReveal>
+          </Suspense>
+        </section>
+        
+        {/* EDUCATION: Online courses on Udemy and Pluralsight */}
+        <section id="courses">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="slide-up" delay={0.1}>
+              <CoursesCarousel />
             </ScrollReveal>
           </Suspense>
         </section>
