@@ -35,6 +35,7 @@ const SuccessStories = lazy(() => import("@/pages/SuccessStories"));
 const ReferralProgram = lazy(() => import("@/pages/ReferralProgram"));
 const Team = lazy(() => import("@/pages/Team"));
 const CommunityResources = lazy(() => import("@/pages/CommunityResources"));
+const BrandingAdmin = lazy(() => import("@/pages/BrandingAdmin"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
@@ -73,6 +74,7 @@ function Router() {
         <Route path="/referral" component={ReferralProgram} />
         <Route path="/team" component={Team} />
         <Route path="/community-resources" component={CommunityResources} />
+        <Route path="/admin/branding" component={BrandingAdmin} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/terms-of-service" component={TermsOfService} />
         <Route path="/confidentiality" component={Confidentiality} />
