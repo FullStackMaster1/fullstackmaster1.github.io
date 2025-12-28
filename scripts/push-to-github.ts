@@ -1,4 +1,4 @@
-// Script to push code to GitHub using Replit's GitHub integration
+// Script to push code to GitHub /docs folder for GitHub Pages
 import { Octokit } from '@octokit/rest';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -6,10 +6,6 @@ import * as path from 'path';
 let connectionSettings: any;
 
 async function getAccessToken() {
-  if (connectionSettings && connectionSettings.settings.expires_at && new Date(connectionSettings.settings.expires_at).getTime() > Date.now()) {
-    return connectionSettings.settings.access_token;
-  }
-  
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
   const xReplitToken = process.env.REPL_IDENTITY 
     ? 'repl ' + process.env.REPL_IDENTITY 
@@ -17,55 +13,32 @@ async function getAccessToken() {
     ? 'depl ' + process.env.WEB_REPL_RENEWAL 
     : null;
 
-  if (!xReplitToken) {
-    throw new Error('X_REPLIT_TOKEN not found');
-  }
-
   connectionSettings = await fetch(
     'https://' + hostname + '/api/v2/connection?include_secrets=true&connector_names=github',
     {
       headers: {
         'Accept': 'application/json',
-        'X_REPLIT_TOKEN': xReplitToken
+        'X_REPLIT_TOKEN': xReplitToken!
       }
     }
   ).then(res => res.json()).then(data => data.items?.[0]);
 
-  const accessToken = connectionSettings?.settings?.access_token || connectionSettings.settings?.oauth?.credentials?.access_token;
-
-  if (!connectionSettings || !accessToken) {
-    throw new Error('GitHub not connected');
-  }
-  return accessToken;
-}
-
-async function getGitHubClient() {
-  const accessToken = await getAccessToken();
-  return new Octokit({ auth: accessToken });
+  return connectionSettings?.settings?.access_token || connectionSettings.settings?.oauth?.credentials?.access_token;
 }
 
 async function pushToGitHub() {
-  const octokit = await getGitHubClient();
-  
-  // Get authenticated user
-  const { data: user } = await octokit.users.getAuthenticated();
-  console.log(`Authenticated as: ${user.login}`);
+  const accessToken = await getAccessToken();
+  const octokit = new Octokit({ auth: accessToken });
   
   const owner = 'fullstackmaster1';
   const repo = 'fullstackmaster1.github.io';
   
-  // Get the default branch
-  let defaultBranch = 'main';
-  try {
-    const { data: repoData } = await octokit.repos.get({ owner, repo });
-    defaultBranch = repoData.default_branch;
-    console.log(`Repository: ${owner}/${repo}, Default branch: ${defaultBranch}`);
-  } catch (error: any) {
-    console.error('Error getting repo:', error.message);
-    throw error;
-  }
+  // Get repo info
+  const { data: repoData } = await octokit.repos.get({ owner, repo });
+  const defaultBranch = repoData.default_branch;
+  console.log(`Repository: ${owner}/${repo}, Branch: ${defaultBranch}`);
   
-  // Get latest commit SHA
+  // Get latest commit
   const { data: refData } = await octokit.git.getRef({
     owner,
     repo,
@@ -81,16 +54,16 @@ async function pushToGitHub() {
     commit_sha: latestCommitSha,
   });
   
-  // Build the dist folder first
+  // Build first
   console.log('Building production files...');
   const { execSync } = await import('child_process');
   execSync('npm run build', { stdio: 'inherit' });
   
-  // Read all files from dist folder
+  // Read all files from dist/public
   const distPath = path.join(process.cwd(), 'dist', 'public');
   
-  async function getAllFiles(dir: string, baseDir: string = dir): Promise<{path: string, content: string}[]> {
-    const files: {path: string, content: string}[] = [];
+  async function getAllFiles(dir: string, baseDir: string = dir): Promise<{path: string, content: Buffer}[]> {
+    const files: {path: string, content: Buffer}[] = [];
     const entries = fs.readdirSync(dir, { withFileTypes: true });
     
     for (const entry of entries) {
@@ -100,10 +73,9 @@ async function pushToGitHub() {
       if (entry.isDirectory()) {
         files.push(...await getAllFiles(fullPath, baseDir));
       } else {
-        const content = fs.readFileSync(fullPath);
         files.push({
-          path: relativePath,
-          content: content.toString('base64')
+          path: 'docs/' + relativePath,  // Push to /docs folder
+          content: fs.readFileSync(fullPath)
         });
       }
     }
@@ -111,15 +83,15 @@ async function pushToGitHub() {
   }
   
   const files = await getAllFiles(distPath);
-  console.log(`Found ${files.length} files to upload`);
+  console.log(`Found ${files.length} files to upload to /docs`);
   
-  // Create blobs for each file
+  // Create blobs
   const treeItems: any[] = [];
   for (const file of files) {
     const { data: blob } = await octokit.git.createBlob({
       owner,
       repo,
-      content: file.content,
+      content: file.content.toString('base64'),
       encoding: 'base64',
     });
     treeItems.push({
@@ -128,10 +100,25 @@ async function pushToGitHub() {
       type: 'blob',
       sha: blob.sha,
     });
-    console.log(`Created blob for: ${file.path}`);
+    process.stdout.write('.');
   }
+  console.log('\nBlobs created');
   
-  // Create new tree
+  // Also add CNAME to docs folder
+  const { data: cnameBlob } = await octokit.git.createBlob({
+    owner,
+    repo,
+    content: Buffer.from('www.fullstackmaster.net').toString('base64'),
+    encoding: 'base64',
+  });
+  treeItems.push({
+    path: 'docs/CNAME',
+    mode: '100644',
+    type: 'blob',
+    sha: cnameBlob.sha,
+  });
+  
+  // Create new tree with base tree (preserves other files)
   const { data: newTree } = await octokit.git.createTree({
     owner,
     repo,
@@ -144,7 +131,7 @@ async function pushToGitHub() {
   const { data: newCommit } = await octokit.git.createCommit({
     owner,
     repo,
-    message: 'Deploy: Add 5 viral marketing features with WhatsApp lead capture',
+    message: 'Deploy to /docs: Add 5 viral marketing features with WhatsApp lead capture',
     tree: newTree.sha,
     parents: [latestCommitSha],
   });
@@ -158,8 +145,8 @@ async function pushToGitHub() {
     sha: newCommit.sha,
   });
   
-  console.log(`\n✅ Successfully pushed to https://github.com/${owner}/${repo}`);
-  console.log(`Your site will be live at https://${owner}.github.io shortly!`);
+  console.log(`\n✅ Successfully pushed to https://github.com/${owner}/${repo}/tree/main/docs`);
+  console.log(`Your site will be live at https://www.fullstackmaster.net shortly!`);
 }
 
 pushToGitHub().catch(console.error);
