@@ -188,7 +188,7 @@ export default function WhatsAppWidget() {
             </Button>
             
             <p className="text-[10px] text-muted-foreground text-center">
-              Your info helps me respond faster. I typically reply within a few hours.
+              {widget.availabilityNote || "I respond during EST business hours (9 AM - 6 PM)."}
             </p>
           </form>
         </div>

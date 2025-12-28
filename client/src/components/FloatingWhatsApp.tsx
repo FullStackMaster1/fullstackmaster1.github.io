@@ -162,7 +162,7 @@ export default function FloatingWhatsApp() {
             </Button>
             
             <p className="text-[10px] text-muted-foreground text-center">
-              Your info helps me respond faster. I typically reply within a few hours.
+              I respond during EST business hours (9 AM - 6 PM). For urgent needs, book a session directly.
             </p>
           </form>
         </div>
