@@ -1,0 +1,42 @@
+{
+  "title": "100 Real STAR Stories for FAANG Interviews",
+  "subtitle": "Proven behavioral examples from successful candidates",
+  "badge": "FREE Download",
+  "description": "Get access to 100 real STAR story examples organized by Amazon Leadership Principles and common behavioral themes.",
+  "highlights": [
+    "12 stories for each Amazon Leadership Principle",
+    "Examples from real Amazon, Google, Meta interviews",
+    "Metrics and impact statements included",
+    "Downloadable PDF + printable cheat sheet",
+    "Bonus: 10 system design diagram templates"
+  ],
+  "categories": [
+    { "name": "Customer Obsession", "count": 12 },
+    { "name": "Ownership", "count": 12 },
+    { "name": "Invent and Simplify", "count": 10 },
+    { "name": "Leaders are Right, A Lot", "count": 8 },
+    { "name": "Learn and Be Curious", "count": 10 },
+    { "name": "Hire and Develop the Best", "count": 8 },
+    { "name": "Insist on the Highest Standards", "count": 10 },
+    { "name": "Think Big", "count": 8 },
+    { "name": "Bias for Action", "count": 10 },
+    { "name": "Earn Trust", "count": 12 }
+  ],
+  "socialProof": {
+    "downloads": "2,500+",
+    "rating": "4.9/5",
+    "testimonial": "These examples helped me understand exactly what FAANG interviewers are looking for. I landed my Amazon L6 offer!",
+    "author": "Sarah K., AWS Solutions Architect"
+  },
+  "urgency": {
+    "text": "Usually $49 - FREE for a limited time",
+    "countdown": false
+  },
+  "downloadUrl": "/downloads/star-stories",
+  "cta": {
+    "title": "Get Your Free Copy",
+    "buttonText": "Download Free PDF",
+    "secondaryButtonText": "Chat on WhatsApp Instead",
+    "whatsappMessage": "Hi Rupesh! I'd like to get the free 100 STAR Stories PDF for FAANG interview prep. Please send it to me!"
+  }
+}

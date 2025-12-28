@@ -22,9 +22,13 @@ const FeaturedVideoSection = lazy(() => import("@/components/FeaturedVideoSectio
 const ClientLogosBar = lazy(() => import("@/components/ClientLogosBar"));
 const WhoThisIsForSection = lazy(() => import("@/components/WhoThisIsForSection"));
 const ServicesSection = lazy(() => import("@/components/ServicesSection"));
+const InterviewQuiz = lazy(() => import("@/components/InterviewQuiz"));
 const SuccessStoriesSection = lazy(() => import("@/components/SuccessStoriesSection"));
 const ReviewsCarousel = lazy(() => import("@/components/ReviewsCarousel"));
+const SalaryCalculator = lazy(() => import("@/components/SalaryCalculator"));
 const PricingSection = lazy(() => import("@/components/PricingSection"));
+const LinkedInGenerator = lazy(() => import("@/components/LinkedInGenerator"));
+const ReferralProgramSection = lazy(() => import("@/components/ReferralProgramSection"));
 const BookingSection = lazy(() => import("@/components/BookingSection"));
 const FAQSection = lazy(() => import("@/components/FAQSection"));
 const AboutSection = lazy(() => import("@/components/AboutSection"));
@@ -103,6 +107,15 @@ export default function Home() {
           </Suspense>
         </section>
         
+        {/* VIRAL: Interview Readiness Assessment Quiz */}
+        <section id="quiz">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="fade" duration={0.6}>
+              <InterviewQuiz />
+            </ScrollReveal>
+          </Suspense>
+        </section>
+        
         {/* DESIRE: Social proof - Success stories */}
         <section id="success-stories">
           <Suspense fallback={<SectionLoader />}>
@@ -121,11 +134,38 @@ export default function Home() {
           </Suspense>
         </section>
         
+        {/* VIRAL: Salary Calculator with urgency */}
+        <section id="calculator">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="fade" duration={0.6}>
+              <SalaryCalculator />
+            </ScrollReveal>
+          </Suspense>
+        </section>
+        
         {/* DECISION: Pricing with guarantee */}
         <section id="pricing">
           <Suspense fallback={<SectionLoader />}>
             <ScrollReveal type="slide-up" duration={0.7}>
               <PricingSection />
+            </ScrollReveal>
+          </Suspense>
+        </section>
+        
+        {/* VIRAL: LinkedIn Post Generator */}
+        <section id="linkedin-generator">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="fade" duration={0.6}>
+              <LinkedInGenerator />
+            </ScrollReveal>
+          </Suspense>
+        </section>
+        
+        {/* VIRAL: Referral Program with unique links */}
+        <section id="referral">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="slide-up" duration={0.6}>
+              <ReferralProgramSection />
             </ScrollReveal>
           </Suspense>
         </section>

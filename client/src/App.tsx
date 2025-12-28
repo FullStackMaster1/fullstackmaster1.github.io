@@ -36,11 +36,13 @@ const ReferralProgram = lazy(() => import("@/pages/ReferralProgram"));
 const Team = lazy(() => import("@/pages/Team"));
 const CommunityResources = lazy(() => import("@/pages/CommunityResources"));
 const BrandingAdmin = lazy(() => import("@/pages/BrandingAdmin"));
+const StarStoriesDownload = lazy(() => import("@/pages/StarStoriesDownload"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
 const LeadMagnetPopup = lazy(() => import("@/components/LeadMagnetPopup"));
 const StickyBookingBar = lazy(() => import("@/components/StickyBookingBar"));
+const StarStoriesPopup = lazy(() => import("@/components/StarStoriesPopup"));
 
 function PageLoader() {
   return (
@@ -75,6 +77,7 @@ function Router() {
         <Route path="/team" component={Team} />
         <Route path="/community-resources" component={CommunityResources} />
         <Route path="/admin/branding" component={BrandingAdmin} />
+        <Route path="/downloads/star-stories" component={StarStoriesDownload} />
         <Route path="/privacy-policy" component={PrivacyPolicy} />
         <Route path="/terms-of-service" component={TermsOfService} />
         <Route path="/confidentiality" component={Confidentiality} />
@@ -105,6 +108,7 @@ function App() {
               <CookieConsent />
               <LeadMagnetPopup />
               <StickyBookingBar />
+              <StarStoriesPopup />
             </Suspense>
             <PWAUpdateNotification registration={registration} />
             <Router />

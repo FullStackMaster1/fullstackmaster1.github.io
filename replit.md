@@ -34,6 +34,20 @@ The site includes several components designed to drive bookings and conversions:
 
 All conversion components have GA4 event tracking for analytics (popup shown, dismissed, CTA clicked).
 
+## Viral Marketing Features (New)
+
+Five viral marketing components designed to generate WhatsApp leads and encourage sharing:
+
+1. **InterviewQuiz (InterviewQuiz.tsx)**: 10-question assessment quiz evaluating FAANG interview readiness across behavioral, system design, leadership, and other categories. Shows personalized score (out of 40), identifies weak areas, provides recommendations, and captures leads via WhatsApp with pre-filled quiz results. Data in `interviewQuiz.json`.
+
+2. **SalaryCalculator (Enhanced)**: Now includes urgency messaging showing monthly opportunity cost ("Every month you wait costs you $X") and 3-year opportunity cost calculation. Drives action with clear financial impact.
+
+3. **ReferralProgramSection (Enhanced)**: Now includes unique referral link generator. Users enter their name to generate a persistent referral code. Links can be copied or shared directly to WhatsApp, LinkedIn, and Twitter. Referral registration goes through WhatsApp.
+
+4. **LinkedInGenerator (LinkedInGenerator.tsx)**: Template-based LinkedIn viral post generator with 3 templates (Career Milestone, Rejection to Success, Interview Tips). Users fill in fields and generate shareable posts with copy functionality. Data in `linkedInGenerator.json`.
+
+5. **StarStoriesPopup (StarStoriesPopup.tsx)**: Exit-intent popup offering "100 Real STAR Stories for FAANG Interviews" lead magnet. Shows social proof (2,500+ downloads, 4.9/5 rating), testimonials, and urgency messaging. Coordinated with other popups to prevent fatigue. Data in `starStories.json`.
+
 # External Dependencies
 
 ## Third-Party Libraries

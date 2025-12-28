@@ -5,9 +5,11 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { motion } from "framer-motion";
-import { Calculator, TrendingUp, DollarSign, Briefcase, ArrowRight, Sparkles } from "lucide-react";
+import { Calculator, TrendingUp, DollarSign, Briefcase, ArrowRight, Sparkles, AlertTriangle, Clock } from "lucide-react";
 import { SiWhatsapp, SiLinkedin } from "react-icons/si";
 import { FaXTwitter } from "react-icons/fa6";
+import { trackEvent, trackWhatsApp } from "@/lib/analytics";
+import profileData from "@/data/profile.json";
 
 const roles = [
   { value: "senior-engineer", label: "Senior Engineer", avgIncrease: 35 },
@@ -23,17 +25,24 @@ export default function SalaryCalculator() {
   const [currentSalary, setCurrentSalary] = useState(180000);
   const [targetRole, setTargetRole] = useState("staff-engineer");
   const [showResult, setShowResult] = useState(false);
+  const { contact } = profileData;
 
   const selectedRole = roles.find(r => r.value === targetRole) || roles[1];
   const potentialIncrease = Math.round(currentSalary * (selectedRole.avgIncrease / 100));
   const potentialSalary = currentSalary + potentialIncrease;
   const roi = Math.round((potentialIncrease / 600) * 100);
+  const monthlyLoss = Math.round(potentialIncrease / 12);
+  const yearsWaiting = 3;
+  const opportunityCost = potentialIncrease * yearsWaiting;
 
   const shareText = `I just calculated my potential salary increase with FAANG coaching: $${potentialIncrease.toLocaleString()}/year! Check out @FullStackMaster for interview coaching.`;
   const shareUrl = "https://fullstackmaster.net";
+  
+  const whatsappMessage = `Hi Rupesh! I used the salary calculator and discovered I could be earning $${potentialIncrease.toLocaleString()} more per year as a ${selectedRole.label}. I'm ready to discuss coaching!`;
 
   const handleCalculate = () => {
     setShowResult(true);
+    trackEvent('salary_calculated', 'engagement', `${targetRole}_${currentSalary}`);
   };
 
   return (
@@ -173,6 +182,23 @@ export default function SalaryCalculator() {
                     </div>
                   </div>
 
+                  <div className="p-4 rounded-lg bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-950/30 dark:to-orange-950/30 border border-red-200 dark:border-red-800">
+                    <div className="flex items-start gap-3">
+                      <div className="p-2 rounded-full bg-red-100 dark:bg-red-900/50">
+                        <AlertTriangle className="w-5 h-5 text-red-600 dark:text-red-400" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-red-800 dark:text-red-300 text-sm mb-1">
+                          Every Month You Wait Costs You ${monthlyLoss.toLocaleString()}
+                        </p>
+                        <p className="text-xs text-muted-foreground">
+                          If you delay your career move by {yearsWaiting} years, you'll lose{" "}
+                          <span className="font-bold text-red-600">${opportunityCost.toLocaleString()}</span> in potential earnings.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="flex flex-col sm:flex-row gap-3">
                     <Button
                       size="lg"
@@ -180,16 +206,22 @@ export default function SalaryCalculator() {
                       asChild
                     >
                       <a
-                        href="https://wa.me/16094424081?text=Hi%20Rupesh!%20I%20used%20the%20salary%20calculator%20and%20I'm%20ready%20to%20discuss%20coaching%20to%20reach%20my%20potential!"
+                        href={`${contact.whatsappLink}?text=${encodeURIComponent(whatsappMessage)}`}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => trackWhatsApp('salary-calculator')}
                         data-testid="button-book-coaching"
                       >
-                        <Sparkles className="w-4 h-4 mr-2" />
-                        Unlock This Potential
+                        <SiWhatsapp className="w-4 h-4 mr-2" />
+                        Start Earning More Now
                         <ArrowRight className="w-4 h-4 ml-2" />
                       </a>
                     </Button>
+                  </div>
+                  
+                  <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+                    <Clock className="w-3 h-3" />
+                    <span>Most clients see results in 4-6 weeks</span>
                   </div>
 
                   <div className="pt-4 border-t border-border">

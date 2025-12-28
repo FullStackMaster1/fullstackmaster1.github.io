@@ -1,0 +1,159 @@
+{
+  "title": "FAANG Interview Readiness Assessment",
+  "subtitle": "Find out how prepared you are for senior-level tech interviews",
+  "badge": "Free Assessment",
+  "questions": [
+    {
+      "id": 1,
+      "category": "Behavioral",
+      "question": "How confident are you in structuring STAR stories for leadership principles?",
+      "options": [
+        { "text": "Very confident - I have 15+ polished stories", "score": 4 },
+        { "text": "Somewhat confident - I have a few good examples", "score": 3 },
+        { "text": "Not very confident - I struggle with structure", "score": 2 },
+        { "text": "Not at all - I don't know what STAR means", "score": 1 }
+      ]
+    },
+    {
+      "id": 2,
+      "category": "System Design",
+      "question": "Can you design a distributed system like YouTube or Uber from scratch?",
+      "options": [
+        { "text": "Yes, with detailed trade-offs and scaling strategies", "score": 4 },
+        { "text": "Mostly, but I miss some components", "score": 3 },
+        { "text": "I can do basic designs but struggle with scale", "score": 2 },
+        { "text": "I haven't practiced system design interviews", "score": 1 }
+      ]
+    },
+    {
+      "id": 3,
+      "category": "Leadership",
+      "question": "How do you handle 'Tell me about a time you failed' questions?",
+      "options": [
+        { "text": "I have compelling failure stories with strong learnings", "score": 4 },
+        { "text": "I can answer but struggle to show growth", "score": 3 },
+        { "text": "I tend to avoid admitting real failures", "score": 2 },
+        { "text": "I freeze up on these questions", "score": 1 }
+      ]
+    },
+    {
+      "id": 4,
+      "category": "Technical",
+      "question": "How comfortable are you explaining complex technical concepts to non-technical stakeholders?",
+      "options": [
+        { "text": "Very comfortable - I do this regularly", "score": 4 },
+        { "text": "Comfortable with preparation", "score": 3 },
+        { "text": "I struggle to simplify technical jargon", "score": 2 },
+        { "text": "I prefer talking to technical people only", "score": 1 }
+      ]
+    },
+    {
+      "id": 5,
+      "category": "Salary",
+      "question": "Do you know your market value and how to negotiate offers?",
+      "options": [
+        { "text": "Yes, I've negotiated multiple offers successfully", "score": 4 },
+        { "text": "I have some idea but haven't negotiated much", "score": 3 },
+        { "text": "I usually accept the first offer given", "score": 2 },
+        { "text": "I have no idea how to negotiate", "score": 1 }
+      ]
+    },
+    {
+      "id": 6,
+      "category": "Company Research",
+      "question": "How well do you research companies before interviews?",
+      "options": [
+        { "text": "Extensively - culture, leadership principles, recent news", "score": 4 },
+        { "text": "Basic research - website, job description", "score": 3 },
+        { "text": "Minimal research - just the role", "score": 2 },
+        { "text": "I don't research much beforehand", "score": 1 }
+      ]
+    },
+    {
+      "id": 7,
+      "category": "Mock Interviews",
+      "question": "How many mock interviews have you done in the past 3 months?",
+      "options": [
+        { "text": "10+ with experienced interviewers", "score": 4 },
+        { "text": "5-10 with peers or online platforms", "score": 3 },
+        { "text": "1-4 casual practice sessions", "score": 2 },
+        { "text": "None - I plan to wing it", "score": 1 }
+      ]
+    },
+    {
+      "id": 8,
+      "category": "Metrics",
+      "question": "Can you quantify your impact with specific metrics (revenue, users, efficiency)?",
+      "options": [
+        { "text": "Yes, I have metrics for all major projects", "score": 4 },
+        { "text": "For some projects, but not all", "score": 3 },
+        { "text": "I struggle to find measurable impact", "score": 2 },
+        { "text": "I've never thought about quantifying impact", "score": 1 }
+      ]
+    },
+    {
+      "id": 9,
+      "category": "Handling Pressure",
+      "question": "How do you perform under pressure during interviews?",
+      "options": [
+        { "text": "I thrive under pressure and think clearly", "score": 4 },
+        { "text": "I manage okay but get nervous", "score": 3 },
+        { "text": "I often blank out or rush answers", "score": 2 },
+        { "text": "I panic and can't think straight", "score": 1 }
+      ]
+    },
+    {
+      "id": 10,
+      "category": "Career Story",
+      "question": "Do you have a compelling 2-minute career narrative?",
+      "options": [
+        { "text": "Yes, polished and practiced", "score": 4 },
+        { "text": "I have a rough version", "score": 3 },
+        { "text": "I ramble when telling my story", "score": 2 },
+        { "text": "I've never prepared one", "score": 1 }
+      ]
+    }
+  ],
+  "results": {
+    "excellent": {
+      "minScore": 35,
+      "title": "FAANG Ready!",
+      "emoji": "trophy",
+      "color": "green",
+      "description": "You're well-prepared for senior-level interviews. A coach can help you polish your stories and maximize your offer.",
+      "recommendation": "Consider 1-2 sessions for final polish and offer negotiation strategy."
+    },
+    "good": {
+      "minScore": 26,
+      "title": "Almost There",
+      "emoji": "target",
+      "color": "blue",
+      "description": "You have a solid foundation but need targeted practice in specific areas to stand out.",
+      "recommendation": "3-4 coaching sessions can close your gaps and boost confidence significantly."
+    },
+    "needsWork": {
+      "minScore": 16,
+      "title": "Needs Development",
+      "emoji": "construction",
+      "color": "amber",
+      "description": "You have potential but need structured preparation across multiple areas.",
+      "recommendation": "A 5-session intensive program will transform your interview performance."
+    },
+    "beginner": {
+      "minScore": 0,
+      "title": "Start Your Journey",
+      "emoji": "seedling",
+      "color": "purple",
+      "description": "Don't worry! Everyone starts somewhere. With the right coaching, you can be interview-ready in weeks.",
+      "recommendation": "Start with our comprehensive 8-session transformation program."
+    }
+  },
+  "cta": {
+    "title": "Get Your Personalized Prep Plan",
+    "description": "Chat with me to discuss your gaps and create a custom coaching roadmap.",
+    "buttonText": "Get My Free Consultation",
+    "whatsappMessage": "Hi Rupesh! I just took the Interview Readiness Assessment and scored [SCORE]/40. My weakest areas are [AREAS]. I'd like to discuss how coaching can help me improve."
+  },
+  "shareText": "I scored [SCORE]/40 on the FAANG Interview Readiness Assessment! How ready are you? Take the quiz:",
+  "shareUrl": "https://fullstackmaster.net/#quiz"
+}

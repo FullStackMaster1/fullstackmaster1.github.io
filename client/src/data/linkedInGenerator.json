@@ -1,0 +1,62 @@
+{
+  "title": "LinkedIn Viral Post Generator",
+  "subtitle": "Turn your career story into a viral LinkedIn post in 30 seconds",
+  "badge": "AI-Powered",
+  "templates": [
+    {
+      "id": "career-milestone",
+      "name": "Career Milestone",
+      "description": "Share a promotion, new job, or achievement",
+      "template": "I just [MILESTONE] and here's what I learned:\n\n[LESSON_1]\n[LESSON_2]\n[LESSON_3]\n\nThe biggest surprise? [SURPRISE]\n\nIf you're working toward [GOAL], remember:\n\n→ [TIP_1]\n→ [TIP_2]\n→ [TIP_3]\n\nWhat's the best career advice you've ever received?\n\n#CareerGrowth #TechLeadership #FAANG",
+      "fields": [
+        { "id": "MILESTONE", "label": "What did you achieve?", "placeholder": "got promoted to Staff Engineer at Google" },
+        { "id": "LESSON_1", "label": "Lesson 1", "placeholder": "Technical skills got me in the door" },
+        { "id": "LESSON_2", "label": "Lesson 2", "placeholder": "Communication got me to the next level" },
+        { "id": "LESSON_3", "label": "Lesson 3", "placeholder": "Mentorship accelerated everything" },
+        { "id": "SURPRISE", "label": "Biggest surprise", "placeholder": "The interview was more about leadership than coding" },
+        { "id": "GOAL", "label": "What goal are readers working toward?", "placeholder": "a senior tech role" },
+        { "id": "TIP_1", "label": "Tip 1", "placeholder": "Document your impact with metrics" },
+        { "id": "TIP_2", "label": "Tip 2", "placeholder": "Practice storytelling, not just answers" },
+        { "id": "TIP_3", "label": "Tip 3", "placeholder": "Find a mentor who's been there" }
+      ]
+    },
+    {
+      "id": "rejection-success",
+      "name": "Rejection to Success",
+      "description": "Share how you bounced back from failure",
+      "template": "I was rejected from [COMPANY] in [YEAR].\n\nToday, I [CURRENT_SUCCESS].\n\nHere's what changed:\n\n1. [CHANGE_1]\n2. [CHANGE_2]\n3. [CHANGE_3]\n\nThe rejection felt like the end. It was actually the beginning.\n\nIf you're facing rejection right now:\n\n→ It's not about you, it's about fit\n→ Every 'no' teaches you something\n→ Your next opportunity might be better\n\nWhat rejection turned into your biggest success?\n\n#Rejection #GrowthMindset #TechCareers",
+      "fields": [
+        { "id": "COMPANY", "label": "Company that rejected you", "placeholder": "Amazon" },
+        { "id": "YEAR", "label": "Year of rejection", "placeholder": "2019" },
+        { "id": "CURRENT_SUCCESS", "label": "Where are you now?", "placeholder": "I'm a Senior Manager at AWS" },
+        { "id": "CHANGE_1", "label": "What changed? #1", "placeholder": "I got a coach who helped me see my blind spots" },
+        { "id": "CHANGE_2", "label": "What changed? #2", "placeholder": "I practiced 50+ mock interviews" },
+        { "id": "CHANGE_3", "label": "What changed? #3", "placeholder": "I learned to tell my story with impact" }
+      ]
+    },
+    {
+      "id": "interview-tips",
+      "name": "Interview Tips",
+      "description": "Share valuable interview advice",
+      "template": "I've done [NUMBER] interviews at FAANG companies.\n\nHere are [TIP_COUNT] things I wish I knew earlier:\n\n1. [TIP_1]\n\n2. [TIP_2]\n\n3. [TIP_3]\n\n4. [TIP_4]\n\n5. [TIP_5]\n\nThe biggest myth? [MYTH]\n\nThe truth: [TRUTH]\n\nSave this for your next interview prep.\n\n#InterviewTips #FAANG #TechCareers #CareerAdvice",
+      "fields": [
+        { "id": "NUMBER", "label": "How many interviews?", "placeholder": "30+" },
+        { "id": "TIP_COUNT", "label": "Number of tips", "placeholder": "5" },
+        { "id": "TIP_1", "label": "Tip 1", "placeholder": "Your resume is just a conversation starter" },
+        { "id": "TIP_2", "label": "Tip 2", "placeholder": "STAR format is mandatory, not optional" },
+        { "id": "TIP_3", "label": "Tip 3", "placeholder": "Ask questions that show you've done research" },
+        { "id": "TIP_4", "label": "Tip 4", "placeholder": "Silence is okay - take time to think" },
+        { "id": "TIP_5", "label": "Tip 5", "placeholder": "Always negotiate the first offer" },
+        { "id": "MYTH", "label": "Common myth", "placeholder": "You need to code perfectly in interviews" },
+        { "id": "TRUTH", "label": "The truth", "placeholder": "They care more about your thought process" }
+      ]
+    }
+  ],
+  "cta": {
+    "title": "Want More Career Content?",
+    "description": "Get weekly interview tips and career advice delivered to your WhatsApp",
+    "buttonText": "Join My WhatsApp Insider List",
+    "whatsappMessage": "Hi Rupesh! I used your LinkedIn Post Generator and loved it. I'd like to join your WhatsApp insider list for career tips!"
+  },
+  "sharePrompt": "I just created a viral LinkedIn post with FullStack Master's free generator! Try it yourself:"
+}

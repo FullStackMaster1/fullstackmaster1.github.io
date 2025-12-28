@@ -1,9 +1,14 @@
+import { useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
-import { Gift, Users, DollarSign, ArrowRight, Check, Sparkles, Heart, Share2 } from "lucide-react";
-import { SiWhatsapp } from "react-icons/si";
+import { Gift, Users, DollarSign, ArrowRight, Check, Sparkles, Heart, Share2, Copy, Link2, Trophy } from "lucide-react";
+import { SiWhatsapp, SiLinkedin } from "react-icons/si";
+import { FaXTwitter } from "react-icons/fa6";
+import profileData from "@/data/profile.json";
+import { trackEvent, trackWhatsApp } from "@/lib/analytics";
 
 const benefits = [
   {
@@ -35,6 +40,39 @@ const steps = [
 ];
 
 export default function ReferralProgramSection() {
+  const [referrerName, setReferrerName] = useState("");
+  const [copied, setCopied] = useState(false);
+  const [showReferralLink, setShowReferralLink] = useState(false);
+  const [generatedCode, setGeneratedCode] = useState("");
+  const { contact } = profileData;
+
+  const generateReferralCode = (name: string) => {
+    const cleanName = name.trim().toLowerCase().replace(/\s+/g, '-').slice(0, 20);
+    const random = Math.random().toString(36).substring(2, 6);
+    return `${cleanName}-${random}`;
+  };
+
+  const referralLink = `https://fullstackmaster.net?ref=${generatedCode}`;
+  const referralMessage = `Hey! I've been working with Rupesh from FullStack Master on my FAANG interview prep and it's been amazing. He's offering 10% off your first coaching session if you use my referral. Check it out: ${referralLink}`;
+  
+  const whatsappMessage = `Hi Rupesh! I want to refer a friend for coaching. My name is ${referrerName}. My referral code is: ${generatedCode}. Please let me know when my friend books so I can claim my free session!`;
+
+  const handleGenerateLink = () => {
+    if (referrerName.trim()) {
+      const code = generateReferralCode(referrerName);
+      setGeneratedCode(code);
+      setShowReferralLink(true);
+      trackEvent('referral_link_generated', 'engagement', code);
+    }
+  };
+
+  const copyToClipboard = async () => {
+    await navigator.clipboard.writeText(referralMessage);
+    setCopied(true);
+    trackEvent('referral_link_copied', 'engagement', generatedCode);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <section
       id="referral"
@@ -138,22 +176,130 @@ export default function ReferralProgramSection() {
                     <p className="text-xs text-muted-foreground mt-1">Per successful referral</p>
                   </div>
 
-                  <Button
-                    size="lg"
-                    className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold shadow-lg"
-                    asChild
-                  >
-                    <a
-                      href="https://wa.me/16094424081?text=Hi%20Rupesh!%20I%20want%20to%20refer%20a%20friend%20for%20coaching.%20My%20name%20is%20______%20and%20my%20friend's%20name%20is%20______.%20Please%20let%20us%20know%20how%20to%20claim%20the%20referral%20bonus!"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      data-testid="button-refer-friend"
+                  {!showReferralLink ? (
+                    <div className="space-y-3">
+                      <div className="space-y-1">
+                        <label className="text-sm font-medium">Your Name</label>
+                        <Input
+                          placeholder="Enter your name to generate link"
+                          value={referrerName}
+                          onChange={(e) => setReferrerName(e.target.value)}
+                          className="text-sm"
+                          data-testid="input-referrer-name"
+                        />
+                      </div>
+                      <Button
+                        size="lg"
+                        className="w-full bg-gradient-to-r from-green-500 to-emerald-500 text-white font-bold shadow-lg"
+                        onClick={handleGenerateLink}
+                        disabled={!referrerName.trim()}
+                        data-testid="button-generate-referral"
+                      >
+                        <Link2 className="w-4 h-4 mr-2" />
+                        Generate My Referral Link
+                      </Button>
+                    </div>
+                  ) : (
+                    <motion.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="space-y-3"
                     >
-                      <SiWhatsapp className="w-5 h-5 mr-2" />
-                      Refer a Friend Now
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </a>
-                  </Button>
+                      <div className="p-3 bg-white dark:bg-black/30 rounded-lg border border-green-300 dark:border-green-700">
+                        <div className="flex items-center justify-between mb-2">
+                          <Badge className="bg-green-600 text-white text-xs">
+                            <Trophy className="w-3 h-3 mr-1" />
+                            Your Unique Link
+                          </Badge>
+                          <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={copyToClipboard}
+                            data-testid="button-copy-referral"
+                          >
+                            {copied ? (
+                              <Check className="w-4 h-4 text-green-600" />
+                            ) : (
+                              <Copy className="w-4 h-4" />
+                            )}
+                          </Button>
+                        </div>
+                        <p className="text-xs font-mono text-muted-foreground break-all">{referralLink}</p>
+                      </div>
+
+                      <div className="flex gap-2">
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="flex-1"
+                          asChild
+                        >
+                          <a
+                            href={`https://api.whatsapp.com/send?text=${encodeURIComponent(referralMessage)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => trackEvent('referral_shared', 'social', 'whatsapp')}
+                            data-testid="button-share-referral-whatsapp"
+                          >
+                            <SiWhatsapp className="w-4 h-4 mr-1 text-green-600" />
+                            Share
+                          </a>
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="flex-1"
+                          asChild
+                        >
+                          <a
+                            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(referralLink)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => trackEvent('referral_shared', 'social', 'linkedin')}
+                            data-testid="button-share-referral-linkedin"
+                          >
+                            <SiLinkedin className="w-4 h-4 mr-1 text-blue-600" />
+                            Share
+                          </a>
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="flex-1"
+                          asChild
+                        >
+                          <a
+                            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(referralMessage)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => trackEvent('referral_shared', 'social', 'twitter')}
+                            data-testid="button-share-referral-twitter"
+                          >
+                            <FaXTwitter className="w-4 h-4 mr-1" />
+                            Share
+                          </a>
+                        </Button>
+                      </div>
+
+                      <Button
+                        size="lg"
+                        className="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-bold"
+                        asChild
+                      >
+                        <a
+                          href={`${contact.whatsappLink}?text=${encodeURIComponent(whatsappMessage)}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={() => trackWhatsApp('referral-program')}
+                          data-testid="button-refer-friend"
+                        >
+                          <SiWhatsapp className="w-5 h-5 mr-2" />
+                          Register My Referral
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </a>
+                      </Button>
+                    </motion.div>
+                  )}
                 </div>
               </CardContent>
             </Card>
