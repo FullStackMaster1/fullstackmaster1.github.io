@@ -74,29 +74,31 @@ export default function Footer() {
               {descriptions.short}
             </p>
             <div className="text-xs text-muted-foreground space-y-2 mt-4 pt-4 border-t border-border">
-              <p className="font-semibold text-foreground">FullStack Master - Global Offices</p>
+              <p className="font-semibold text-foreground">FullStack Master - Global Presence</p>
               <div className="space-y-1">
-                <p className="font-medium text-foreground/80">USA Headquarters</p>
+                <p className="font-medium text-foreground/80">USA Office</p>
                 <p className="flex items-center gap-1">
                   <MapPin className="w-3 h-3 flex-shrink-0" />
                   North Brunswick, NJ, USA
                 </p>
-                <p className="flex items-center gap-1">
-                  <Phone className="w-3 h-3 flex-shrink-0" />
-                  <span aria-label="USA phone">+1 (609) 442-4081</span>
-                </p>
               </div>
               <div className="space-y-1">
-                <p className="font-medium text-foreground/80">India Headquarters</p>
+                <p className="font-medium text-foreground/80">India Office</p>
                 <p className="flex items-center gap-1">
                   <MapPin className="w-3 h-3 flex-shrink-0" />
-                  Patancheru, Hyderabad, Telangana, India
-                </p>
-                <p className="flex items-center gap-1">
-                  <Phone className="w-3 h-3 flex-shrink-0" />
-                  <span aria-label="India phone">+91 (720) 861-9392</span>
+                  Hyderabad, Telangana, India
                 </p>
               </div>
+              <a
+                href={`${contact.whatsappLink}?text=${encodeURIComponent(whatsappData.widget.defaultMessage)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 text-green-600 hover:text-green-500 transition-colors font-medium mt-2"
+                data-testid="link-footer-contact-chat"
+              >
+                <SiWhatsapp className="w-3 h-3" />
+                Contact Us via Chat
+              </a>
             </div>
           </div>
 
