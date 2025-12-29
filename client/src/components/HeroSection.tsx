@@ -206,15 +206,15 @@ export default function HeroSection() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
               <Button
                 size="lg"
-                className="w-full flex items-center justify-center"
+                className="w-full flex items-center justify-center gap-2"
                 onClick={() => {
                   trackBookCall('hero-primary');
                   window.location.href = '/book';
                 }}
                 data-testid="button-hero-primary"
               >
-                <Calendar className="w-4 h-4 mr-2 flex-shrink-0" />
-                {hero.buttons.primary}
+                <Calendar className="w-4 h-4 flex-shrink-0 self-center" />
+                <span>{hero.buttons.primary}</span>
               </Button>
               <Button
                 size="lg"
@@ -228,10 +228,10 @@ export default function HeroSection() {
                   rel="noopener noreferrer"
                   onClick={() => trackWhatsApp('hero')}
                   data-testid="button-hero-secondary"
-                  className="flex items-center justify-center"
+                  className="flex items-center justify-center gap-2"
                 >
-                  <SiWhatsapp className="w-4 h-4 mr-2 flex-shrink-0" />
-                  {hero.buttons.secondary}
+                  <SiWhatsapp className="w-4 h-4 flex-shrink-0 self-center" />
+                  <span>{hero.buttons.secondary}</span>
                 </a>
               </Button>
               <Button
@@ -246,10 +246,10 @@ export default function HeroSection() {
                   rel="noopener noreferrer"
                   onClick={() => trackLinkedInClick('hero')}
                   data-testid="button-hero-linkedin"
-                  className="flex items-center justify-center"
+                  className="flex items-center justify-center gap-2"
                 >
-                  <SiLinkedin className="w-4 h-4 mr-2 flex-shrink-0" />
-                  Message on LinkedIn
+                  <SiLinkedin className="w-4 h-4 flex-shrink-0 self-center" />
+                  <span>Message on LinkedIn</span>
                 </a>
               </Button>
             </div>
@@ -487,10 +487,10 @@ export default function HeroSection() {
                     rel="noopener noreferrer"
                     onClick={() => trackWhatsApp('coach-highlights')}
                     data-testid="button-coach-highlights-whatsapp"
-                    className="flex items-center justify-center"
+                    className="flex items-center justify-center gap-2"
                   >
-                    <SiWhatsapp className="w-4 h-4 mr-2 flex-shrink-0" />
-                    WhatsApp Me
+                    <SiWhatsapp className="w-4 h-4 flex-shrink-0 self-center" />
+                    <span>WhatsApp Me</span>
                   </a>
                 </Button>
               </div>

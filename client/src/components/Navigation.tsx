@@ -377,7 +377,7 @@ export default function Navigation() {
                 data-testid="button-whatsapp-nav"
                 className="flex items-center justify-center"
               >
-                <SiWhatsapp className="w-4 h-4 text-green-500 flex-shrink-0" />
+                <SiWhatsapp className="w-4 h-4 text-green-500 flex-shrink-0 self-center" />
               </a>
             </Button>
             <Button

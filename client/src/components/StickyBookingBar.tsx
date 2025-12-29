@@ -68,15 +68,15 @@ export default function StickyBookingBar() {
             <div className="flex items-center gap-2">
               <Button
                 size="sm"
-                className="bg-primary hover:bg-primary/90 flex items-center justify-center"
+                className="bg-primary hover:bg-primary/90 flex items-center justify-center gap-2"
                 onClick={() => {
                   trackBookCall('sticky-bar');
                   window.location.href = '/book';
                 }}
                 data-testid="button-sticky-book"
               >
-                <Calendar className="w-4 h-4 mr-2 flex-shrink-0" />
-                Book Session
+                <Calendar className="w-4 h-4 flex-shrink-0 self-center" />
+                <span>Book Session</span>
               </Button>
               <Button
                 size="sm"
@@ -90,10 +90,10 @@ export default function StickyBookingBar() {
                   rel="noopener noreferrer"
                   onClick={() => trackWhatsApp('sticky-bar')}
                   data-testid="button-sticky-whatsapp"
-                  className="flex items-center justify-center"
+                  className="flex items-center justify-center gap-2"
                 >
-                  <SiWhatsapp className="w-4 h-4 mr-2 flex-shrink-0" />
-                  Quick Chat
+                  <SiWhatsapp className="w-4 h-4 flex-shrink-0 self-center" />
+                  <span>Quick Chat</span>
                 </a>
               </Button>
               <button

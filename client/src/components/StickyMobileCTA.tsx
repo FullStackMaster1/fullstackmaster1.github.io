@@ -39,10 +39,10 @@ export default function StickyMobileCTA() {
             rel="noopener noreferrer"
             onClick={() => trackBookCall('sticky_mobile')}
             data-testid="button-sticky-book"
-            className="flex items-center justify-center"
+            className="flex items-center justify-center gap-1"
           >
-            <Calendar className="w-4 h-4 mr-1 flex-shrink-0" />
-            Book
+            <Calendar className="w-4 h-4 flex-shrink-0 self-center" />
+            <span>Book</span>
           </a>
         </Button>
         <Button
@@ -57,10 +57,10 @@ export default function StickyMobileCTA() {
             rel="noopener noreferrer"
             onClick={() => trackWhatsApp('sticky_mobile')}
             data-testid="button-sticky-whatsapp"
-            className="flex items-center justify-center"
+            className="flex items-center justify-center gap-1"
           >
-            <SiWhatsapp className="w-4 h-4 mr-1 flex-shrink-0" />
-            WhatsApp
+            <SiWhatsapp className="w-4 h-4 flex-shrink-0 self-center" />
+            <span>WhatsApp</span>
           </a>
         </Button>
         <Button
@@ -74,10 +74,10 @@ export default function StickyMobileCTA() {
             target="_blank"
             rel="noopener noreferrer"
             data-testid="button-sticky-linkedin"
-            className="flex items-center justify-center"
+            className="flex items-center justify-center gap-1"
           >
-            <SiLinkedin className="w-4 h-4 mr-1 flex-shrink-0" />
-            LinkedIn
+            <SiLinkedin className="w-4 h-4 flex-shrink-0 self-center" />
+            <span>LinkedIn</span>
           </a>
         </Button>
       </div>
