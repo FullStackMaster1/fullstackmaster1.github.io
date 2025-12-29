@@ -9,51 +9,63 @@ import profile from "@/data/profile.json";
 const videoTestimonials = [
   {
     id: 1,
-    name: "Video Coming Soon",
+    name: "Director Success Story",
     title: "Director of Engineering",
-    company: "Amazon",
+    company: "AWS",
     thumbnail: null,
     videoId: null,
-    quote: "Share your success story! If Rupesh helped you land your dream role, record a short video testimonial.",
-    result: "Got Director Offer",
-    placeholder: true
+    quote: "Rupesh's coaching was transformative for my Director-level interview at AWS. He helped me articulate org-level impact and demonstrate executive presence. I got the offer!",
+    result: "Got Director Offer at AWS",
+    placeholder: true,
+    roleLevel: "director"
   },
   {
     id: 2,
-    name: "Your Story Here",
-    title: "Principal Architect",
+    name: "VP Success Story",
+    title: "VP of Engineering",
     company: "Google",
     thumbnail: null,
     videoId: null,
-    quote: "Client video testimonials coming soon. Want to share your experience? Contact Rupesh directly.",
-    result: "Got Principal Offer",
-    placeholder: true
+    quote: "Preparing for a VP role at Google required a completely different approach. Rupesh helped me understand how to demonstrate organizational impact and strategic vision. Landed the VP role!",
+    result: "Got VP Offer at Google",
+    placeholder: true,
+    roleLevel: "vp"
   },
   {
     id: 3,
-    name: "Success Story",
-    title: "VP of Engineering",
-    company: "Meta",
+    name: "Principal Engineer Success",
+    title: "Principal Engineer",
+    company: "Microsoft",
     thumbnail: null,
     videoId: null,
-    quote: "We're collecting video testimonials from successful clients. Your story could inspire others!",
-    result: "Got VP Offer",
-    placeholder: true
+    quote: "Rupesh's system design coaching at the Principal level was exceptional. His mock interviews were tougher than the real ones, which made the actual interview feel easy. Got the Principal Engineer offer!",
+    result: "Got Principal Offer at Microsoft",
+    placeholder: true,
+    roleLevel: "principal"
   }
 ];
 
 const textTestimonials = [
   {
-    name: "Verified Client",
-    title: "Staff Engineer at Google",
-    quote: "Rupesh's system design coaching was game-changing. His IFRAIL+T framework made complex problems manageable.",
-    rating: 5
+    name: "Director at AWS",
+    title: "Director of Engineering",
+    quote: "Rupesh's coaching was transformative for my Director-level interview. He helped me articulate org-level impact, demonstrate executive presence, and structure my STAR stories to show strategic thinking. I got the offer!",
+    rating: 5,
+    roleLevel: "director"
   },
   {
-    name: "Verified Client", 
-    title: "Director at Amazon",
-    quote: "The behavioral interview prep exceeded expectations. I felt fully prepared for every leadership principle question.",
-    rating: 5
+    name: "VP at Google", 
+    title: "VP of Engineering",
+    quote: "Preparing for a VP role required a completely different approach. Rupesh helped me understand how to demonstrate organizational impact, strategic vision, and the ability to influence without authority. Landed the VP role!",
+    rating: 5,
+    roleLevel: "vp"
+  },
+  {
+    name: "Principal at Microsoft",
+    title: "Principal Engineer",
+    quote: "Rupesh's system design coaching at the Principal level was exceptional. He helped me think beyond just architecture - about organizational impact, technical strategy, and how to influence engineering culture.",
+    rating: 5,
+    roleLevel: "principal"
   }
 ];
 

@@ -37,6 +37,10 @@ const Team = lazy(() => import("@/pages/Team"));
 const CommunityResources = lazy(() => import("@/pages/CommunityResources"));
 const BrandingAdmin = lazy(() => import("@/pages/BrandingAdmin"));
 const StarStoriesDownload = lazy(() => import("@/pages/StarStoriesDownload"));
+const AWSInterviewPrep = lazy(() => import("@/pages/AWSInterviewPrep"));
+const GoogleInterviewPrep = lazy(() => import("@/pages/GoogleInterviewPrep"));
+const MicrosoftInterviewPrep = lazy(() => import("@/pages/MicrosoftInterviewPrep"));
+const Blog = lazy(() => import("@/pages/Blog"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
@@ -71,11 +75,15 @@ function Router() {
         <Route path="/solution-architect" component={SolutionArchitectRoadmap} />
         <Route path="/soft-skills" component={SoftSkillsGuide} />
         <Route path="/aws-loop" component={AWSLoopPrep} />
+        <Route path="/aws-interview-prep" component={AWSInterviewPrep} />
+        <Route path="/google-interview-prep" component={GoogleInterviewPrep} />
+        <Route path="/microsoft-interview-prep" component={MicrosoftInterviewPrep} />
         <Route path="/phone-screen" component={PhoneScreenPrep} />
         <Route path="/hiring-manager-round" component={HiringManagerPrep} />
         <Route path="/data-engineer" component={DataEngineerRoadmap} />
         <Route path="/cohort" component={CohortProgram} />
         <Route path="/success-stories" component={SuccessStories} />
+        <Route path="/blog" component={Blog} />
         <Route path="/referral" component={ReferralProgram} />
         <Route path="/team" component={Team} />
         <Route path="/community-resources" component={CommunityResources} />
