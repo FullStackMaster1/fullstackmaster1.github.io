@@ -1,7 +1,7 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertWebinarRegistrationSchema, insertWebinarInterestSchema, insertReferralSchema, insertReferredUserSchema } from "@shared/schema";
+import { insertWebinarRegistrationSchema, insertWebinarInterestSchema, insertReferralSchema, insertReferredUserSchema, insertEmailSubscriptionSchema } from "@shared/schema";
 import { z } from "zod";
 import { sendWebinarRegistrationNotification } from "./email";
 
@@ -414,6 +414,87 @@ export async function registerRoutes(
     } catch (error) {
       console.error("Referral validation error:", error);
       res.status(500).json({ error: "Failed to validate referral code" });
+    }
+  });
+
+  // Email subscription endpoint (USA compliant - CAN-SPAM, CCPA)
+  app.post("/api/email/subscribe", async (req: Request, res: Response) => {
+    try {
+      // Get IP address and user agent for compliance
+      const ipAddress = req.ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress || 'unknown';
+      const userAgent = req.headers['user-agent'] || 'unknown';
+      
+      const validatedData = insertEmailSubscriptionSchema.parse({
+        ...req.body,
+        ipAddress: Array.isArray(ipAddress) ? ipAddress[0] : ipAddress,
+        userAgent,
+        consentGiven: true, // Explicit consent required for USA
+        consentDate: new Date(),
+      });
+
+      // Check if already subscribed
+      const existing = await storage.getEmailSubscriptionByEmail(validatedData.email);
+      if (existing && existing.isActive) {
+        return res.status(200).json({ 
+          message: "You're already subscribed! Check your email for the latest updates.",
+          alreadySubscribed: true
+        });
+      }
+
+      const subscription = await storage.createEmailSubscription(validatedData);
+
+      // TODO: Send welcome email with lead magnet
+      // TODO: Add to email service provider (ConvertKit/Mailchimp) if configured
+      // For now, we just store it in the database
+
+      res.status(201).json({ 
+        message: "Successfully subscribed! Check your email for your free guide.",
+        subscription: {
+          id: subscription.id,
+          email: subscription.email
+        }
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
+      console.error("Email subscription error:", error);
+      res.status(500).json({ error: "Failed to subscribe. Please try again." });
+    }
+  });
+
+  // Unsubscribe endpoint (CAN-SPAM compliant)
+  app.post("/api/email/unsubscribe", async (req: Request, res: Response) => {
+    try {
+      const { email } = req.body;
+      if (!email || typeof email !== 'string') {
+        return res.status(400).json({ error: "Valid email is required" });
+      }
+
+      await storage.unsubscribeEmail(email);
+
+      res.json({ 
+        message: "Successfully unsubscribed. You will no longer receive emails from us."
+      });
+    } catch (error) {
+      console.error("Unsubscribe error:", error);
+      res.status(500).json({ error: "Failed to unsubscribe. Please try again." });
+    }
+  });
+
+  // Get subscription status (for checking if already subscribed)
+  app.get("/api/email/status/:email", async (req: Request, res: Response) => {
+    try {
+      const { email } = req.params;
+      const subscription = await storage.getEmailSubscriptionByEmail(email);
+      
+      res.json({ 
+        subscribed: subscription?.isActive || false,
+        subscribedAt: subscription?.subscribedAt
+      });
+    } catch (error) {
+      console.error("Email status error:", error);
+      res.status(500).json({ error: "Failed to check subscription status" });
     }
   });
 

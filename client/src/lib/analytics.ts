@@ -202,6 +202,99 @@ export const trackConversionFunnel = (step: 'awareness' | 'interest' | 'desire' 
   trackEvent(`funnel_${step}`, 'conversion', detail);
 };
 
+// Enhanced Funnel Tracking
+export const trackFunnelAwareness = (action: string, detail?: string) => {
+  trackEvent('funnel_awareness', 'conversion', `${action}_${detail || ''}`);
+};
+
+export const trackFunnelInterest = (action: string, detail?: string) => {
+  trackEvent('funnel_interest', 'conversion', `${action}_${detail || ''}`);
+};
+
+export const trackFunnelDesire = (action: string, detail?: string) => {
+  trackEvent('funnel_desire', 'conversion', `${action}_${detail || ''}`);
+};
+
+export const trackFunnelDecision = (action: string, detail?: string) => {
+  trackEvent('funnel_decision', 'conversion', `${action}_${detail || ''}`);
+};
+
+export const trackFunnelAction = (action: string, detail?: string) => {
+  trackEvent('funnel_action', 'conversion', `${action}_${detail || ''}`);
+};
+
+// Revenue Tracking
+export const trackRevenue = (packageName: string, amount: number, currency: string = 'USD') => {
+  trackEvent('purchase', 'revenue', packageName, amount);
+  // Also send to GA4 ecommerce
+  if (window.gtag) {
+    window.gtag('event', 'purchase', {
+      transaction_id: `pkg_${Date.now()}`,
+      value: amount,
+      currency: currency,
+      items: [{
+        item_id: packageName,
+        item_name: packageName,
+        price: amount,
+        quantity: 1
+      }]
+    });
+  }
+};
+
+// Lead Quality Scoring
+export const trackLeadQuality = (score: number, factors: string[]) => {
+  trackEvent('lead_quality_score', 'lead_quality', factors.join('_'), score);
+  // Set custom dimension
+  if (window.gtag) {
+    window.gtag('set', 'user_properties', {
+      lead_quality_score: score,
+      lead_quality_factors: factors.join(',')
+    });
+  }
+};
+
+// Engagement Quality
+export const trackDeepEngagement = (type: string, contentId: string, completionPercent?: number) => {
+  trackEvent('deep_engagement', 'engagement', `${type}_${contentId}`, completionPercent);
+};
+
+// User Journey Tracking
+let userJourney: string[] = [];
+export const trackUserJourneyStep = (pageName: string) => {
+  userJourney.push(pageName);
+  if (userJourney.length > 1) {
+    const journey = userJourney.slice(-3).join(' -> '); // Last 3 steps
+    trackEvent('user_journey', 'path', journey);
+  }
+};
+
+// Return Visitor Detection
+let lastVisitTime = localStorage.getItem('last_visit_time');
+export const trackReturnVisitor = () => {
+  if (lastVisitTime) {
+    const daysSince = Math.floor((Date.now() - parseInt(lastVisitTime)) / (1000 * 60 * 60 * 24));
+    trackEvent('return_visitor', 'engagement', `days_${daysSince}`);
+  }
+  localStorage.setItem('last_visit_time', Date.now().toString());
+};
+
+// Multi-Session Lead
+let sessionCount = parseInt(localStorage.getItem('session_count') || '0');
+export const trackMultiSessionLead = () => {
+  sessionCount++;
+  localStorage.setItem('session_count', sessionCount.toString());
+  if (sessionCount > 1) {
+    trackEvent('multi_session_lead', 'lead_quality', `session_${sessionCount}`);
+  }
+};
+
+// Package Selection Tracking
+export const trackPackageSelect = (packageName: string, price: number) => {
+  trackFunnelDecision('pricing_package_click', packageName);
+  trackEvent('pricing_package_select', 'buy_intent', packageName, price);
+};
+
 export const trackLeadGeneration = (source: string, method: 'whatsapp' | 'booking' | 'email') => {
   trackEvent('generate_lead', 'conversion', `${method}_${source}`);
 };

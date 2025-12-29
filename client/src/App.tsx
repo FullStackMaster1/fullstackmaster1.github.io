@@ -40,7 +40,10 @@ const StarStoriesDownload = lazy(() => import("@/pages/StarStoriesDownload"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
+const CCPABanner = lazy(() => import("@/components/CCPABanner"));
 const LeadMagnetPopup = lazy(() => import("@/components/LeadMagnetPopup"));
+const ExitIntentPopup = lazy(() => import("@/components/ExitIntentPopup"));
+const SocialProofWidget = lazy(() => import("@/components/SocialProofWidget"));
 const StickyBookingBar = lazy(() => import("@/components/StickyBookingBar"));
 const StarStoriesPopup = lazy(() => import("@/components/StarStoriesPopup"));
 
@@ -106,7 +109,10 @@ function App() {
             <Toaster />
             <Suspense fallback={null}>
               <CookieConsent />
+              <CCPABanner />
               <LeadMagnetPopup />
+              <ExitIntentPopup />
+              <SocialProofWidget />
               <StickyBookingBar />
               <StarStoriesPopup />
             </Suspense>

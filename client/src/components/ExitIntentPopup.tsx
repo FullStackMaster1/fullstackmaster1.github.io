@@ -1,141 +1,101 @@
-import { useState, useEffect, useCallback } from "react";
-import { Button } from "@/components/ui/button";
-import { X, Gift, CheckCircle, Download, Clock } from "lucide-react";
-import { SiWhatsapp } from "react-icons/si";
-import profileData from "@/data/profile.json";
-import { trackEvent, trackWhatsApp } from "@/lib/analytics";
-
-const STORAGE_KEY = "exit_intent_dismissed";
-const DISMISS_DURATION_DAYS = 3;
+import { useState, useEffect } from 'react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { X, Gift, Download, CheckCircle } from 'lucide-react';
+import { trackEvent } from '@/lib/analytics';
+import EmailCaptureForm from './EmailCaptureForm';
 
 export default function ExitIntentPopup() {
-  const [isVisible, setIsVisible] = useState(false);
-  const { contact, personal } = profileData;
-
-  const handleDismiss = useCallback(() => {
-    setIsVisible(false);
-    localStorage.setItem(STORAGE_KEY, Date.now().toString());
-    trackEvent('exit_intent_dismissed', 'engagement', 'popup');
-  }, []);
+  const [isOpen, setIsOpen] = useState(false);
+  const [hasShown, setHasShown] = useState(false);
 
   useEffect(() => {
-    const dismissedAt = localStorage.getItem(STORAGE_KEY);
-    if (dismissedAt) {
-      const dismissedDate = new Date(parseInt(dismissedAt));
-      const now = new Date();
-      const daysSinceDismissed = (now.getTime() - dismissedDate.getTime()) / (1000 * 60 * 60 * 24);
-      if (daysSinceDismissed < DISMISS_DURATION_DAYS) {
-        return;
-      }
-    }
-
-    let hasTriggered = false;
+    const dismissed = localStorage.getItem('exit_intent_dismissed');
+    const dismissedAt = dismissed ? parseInt(dismissed) : 0;
+    const daysSinceDismissed = (Date.now() - dismissedAt) / (1000 * 60 * 60 * 24);
+    
+    // Don't show if dismissed within last 7 days
+    if (daysSinceDismissed < 7) return;
 
     const handleMouseLeave = (e: MouseEvent) => {
-      if (e.clientY < 10 && !hasTriggered) {
-        const newsletterDismissed = localStorage.getItem("newsletter_popup_dismissed");
-        const now = Date.now();
-        if (newsletterDismissed && (now - parseInt(newsletterDismissed)) < 30000) {
-          return;
-        }
-        hasTriggered = true;
-        setIsVisible(true);
-        trackEvent('exit_intent_shown', 'engagement', 'popup');
+      // Only trigger on desktop (mouse leaving top of screen)
+      if (e.clientY <= 0 && !hasShown && window.innerWidth > 768) {
+        setIsOpen(true);
+        setHasShown(true);
+        trackEvent('exit_intent_popup_shown', 'lead_capture', 'mouse_leave');
       }
     };
 
-    const timer = setTimeout(() => {
-      document.addEventListener("mouseleave", handleMouseLeave);
-    }, 5000);
+    document.addEventListener('mouseleave', handleMouseLeave);
+    return () => document.removeEventListener('mouseleave', handleMouseLeave);
+  }, [hasShown]);
 
-    return () => {
-      clearTimeout(timer);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-    };
-  }, []);
+  const handleClose = () => {
+    setIsOpen(false);
+    localStorage.setItem('exit_intent_dismissed', Date.now().toString());
+    trackEvent('exit_intent_popup_dismissed', 'lead_capture', 'dismiss');
+  };
 
-  if (!isVisible) return null;
+  const handleSuccess = () => {
+    // Keep open for a moment to show success, then close
+    setTimeout(() => {
+      handleClose();
+    }, 2000);
+  };
 
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200"
-      data-testid="popup-exit-intent"
-    >
-      <div className="relative bg-card rounded-xl shadow-2xl max-w-md w-full overflow-hidden animate-in zoom-in-95 duration-200">
-        <button
-          onClick={handleDismiss}
-          className="absolute top-3 right-3 p-1.5 text-muted-foreground hover:text-foreground transition-colors z-10"
-          data-testid="button-exit-close"
-        >
-          <X className="w-5 h-5" />
-        </button>
-
-        <div className="bg-gradient-to-r from-primary to-primary/80 p-5 text-white">
-          <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center">
-              <Gift className="w-5 h-5" />
-            </div>
-            <div>
-              <h3 className="font-bold text-lg">Wait! Don't leave empty-handed</h3>
-            </div>
-          </div>
-          <p className="text-white/90 text-sm">
-            Get my free STAR Story Framework that helped 50+ clients land FAANG offers
-          </p>
-        </div>
-
-        <div className="p-5">
-          <div className="space-y-3 mb-5">
-            <div className="flex items-start gap-2">
-              <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-              <span className="text-sm">12 pre-built STAR templates for leadership principles</span>
-            </div>
-            <div className="flex items-start gap-2">
-              <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-              <span className="text-sm">Examples from real Amazon & Google interviews</span>
-            </div>
-            <div className="flex items-start gap-2">
-              <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 flex-shrink-0" />
-              <span className="text-sm">Bonus: 5 system design diagrams</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4">
-            <Clock className="w-3.5 h-3.5" />
-            <span>Limited time offer - usually $49</span>
-          </div>
-
-          <div className="space-y-2">
-            <Button
-              className="w-full"
-              asChild
-            >
-              <a
-                href={`${contact.whatsappLink}?text=${encodeURIComponent(`Hi ${personal.firstName}, I'd like to get the free STAR Story Framework!`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => {
-                  trackWhatsApp('exit-intent');
-                  handleDismiss();
-                }}
-                data-testid="button-exit-get-free"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                Get It Free via WhatsApp
-              </a>
-            </Button>
+    <Dialog open={isOpen} onOpenChange={handleClose}>
+      <DialogContent className="sm:max-w-md" data-testid="dialog-exit-intent">
+        <DialogHeader>
+          <div className="flex items-center justify-between mb-2">
+            <Badge className="bg-green-500">
+              <Gift className="w-3 h-3 mr-1" />
+              FREE DOWNLOAD
+            </Badge>
             <Button
               variant="ghost"
-              size="sm"
-              className="w-full text-muted-foreground"
-              onClick={handleDismiss}
-              data-testid="button-exit-no-thanks"
+              size="icon"
+              onClick={handleClose}
+              className="h-6 w-6"
             >
-              No thanks, I'll figure it out myself
+              <X className="h-4 w-4" />
             </Button>
           </div>
+          <DialogTitle className="text-2xl">
+            Wait! Don't Leave Empty-Handed
+          </DialogTitle>
+          <DialogDescription className="text-base">
+            Get my FREE STAR Story Framework - the exact templates I use with 4,000+ coaching clients
+          </DialogDescription>
+        </DialogHeader>
+
+        <div className="space-y-3 my-4">
+          <div className="flex items-start gap-2 text-sm">
+            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+            <span>50+ STAR story templates for Amazon Leadership Principles</span>
+          </div>
+          <div className="flex items-start gap-2 text-sm">
+            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+            <span>System design interview cheat sheet</span>
+          </div>
+          <div className="flex items-start gap-2 text-sm">
+            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+            <span>Behavioral question bank (100+ questions)</span>
+          </div>
+          <div className="flex items-start gap-2 text-sm">
+            <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
+            <span>Free 15-min strategy call included</span>
+          </div>
         </div>
-      </div>
-    </div>
+
+        <EmailCaptureForm
+          source="exit_intent"
+          leadMagnet="star_framework"
+          onSuccess={handleSuccess}
+          buttonText="Get Free Framework"
+        />
+      </DialogContent>
+    </Dialog>
   );
 }

@@ -27,6 +27,8 @@ const SuccessStoriesSection = lazy(() => import("@/components/SuccessStoriesSect
 const ReviewsCarousel = lazy(() => import("@/components/ReviewsCarousel"));
 const SalaryCalculator = lazy(() => import("@/components/SalaryCalculator"));
 const PricingSection = lazy(() => import("@/components/PricingSection"));
+const GuaranteeSection = lazy(() => import("@/components/GuaranteeSection"));
+const ComparisonTable = lazy(() => import("@/components/ComparisonTable"));
 const LinkedInGenerator = lazy(() => import("@/components/LinkedInGenerator"));
 const ReferralProgramSection = lazy(() => import("@/components/ReferralProgramSection"));
 const BookingSection = lazy(() => import("@/components/BookingSection"));
@@ -148,6 +150,24 @@ export default function Home() {
           <Suspense fallback={<SectionLoader />}>
             <ScrollReveal type="slide-up" duration={0.7}>
               <PricingSection />
+            </ScrollReveal>
+          </Suspense>
+        </section>
+        
+        {/* DECISION: Money-back guarantee */}
+        <section id="guarantee">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="fade" duration={0.6}>
+              <GuaranteeSection />
+            </ScrollReveal>
+          </Suspense>
+        </section>
+        
+        {/* DECISION: Comparison table */}
+        <section id="comparison">
+          <Suspense fallback={<SectionLoader />}>
+            <ScrollReveal type="slide-up" duration={0.6}>
+              <ComparisonTable />
             </ScrollReveal>
           </Suspense>
         </section>

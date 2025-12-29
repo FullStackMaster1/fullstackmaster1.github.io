@@ -1,11 +1,9 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, FileText, CheckCircle, Gift, ArrowRight, Clock, Users } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { X, FileText, Gift, Users } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { trackEvent } from "@/lib/analytics";
-
-const GUMROAD_LINK = "https://rupeshtiwari.gumroad.com/l/rupesh-kit";
+import EmailCaptureForm from "./EmailCaptureForm";
 
 export default function EmailCapturePopup() {
   const [isVisible, setIsVisible] = useState(false);
@@ -59,11 +57,12 @@ export default function EmailCapturePopup() {
     trackEvent("email_popup_closed", "lead_capture", "dismiss");
   };
 
-  const handleGetGuide = () => {
-    trackEvent("email_popup_click", "lead_capture", "gumroad_redirect");
+  const handleSuccess = () => {
     localStorage.setItem("email-subscribed", "true");
-    window.open(GUMROAD_LINK, "_blank");
-    setIsVisible(false);
+    // Keep popup open briefly to show success, then close
+    setTimeout(() => {
+      setIsVisible(false);
+    }, 2000);
   };
 
   return (
@@ -122,42 +121,13 @@ export default function EmailCapturePopup() {
               </div>
               
               <div className="p-5">
-                <div className="space-y-2 mb-5">
-                  <div className="flex items-center gap-2 text-sm">
-                    <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
-                    <span>5-step preparation framework for senior roles</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
-                    <span>System design template used by Staff+ engineers</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
-                    <span>Amazon LP cheat sheet with example answers</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm">
-                    <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
-                    <span>Bar raiser expectations at Director/VP level</span>
-                  </div>
-                </div>
-
-                <Button 
-                  onClick={handleGetGuide}
-                  className="w-full" 
-                  size="lg"
-                  data-testid="button-popup-get-guide"
-                >
-                  <Gift className="w-4 h-4 mr-2" />
-                  Get Free Guide Now
-                  <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
-
-                <div className="pt-4 border-t border-border mt-4">
-                  <div className="flex items-center justify-center gap-1 text-xs text-muted-foreground">
-                    <Clock className="w-3 h-3" />
-                    <span>Instant download • No spam • Unsubscribe anytime</span>
-                  </div>
-                </div>
+                <EmailCaptureForm
+                  source="email_popup"
+                  leadMagnet="star_framework"
+                  onSuccess={handleSuccess}
+                  buttonText="Get Free Guide Now"
+                  showName={true}
+                />
               </div>
             </div>
           </motion.div>

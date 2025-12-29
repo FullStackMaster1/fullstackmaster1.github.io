@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Gift, Download, CheckCircle, X, Star } from "lucide-react";
+import { Gift, X, Star } from "lucide-react";
 import { trackEvent } from "@/lib/analytics";
+import EmailCaptureForm from "./EmailCaptureForm";
 
 export default function LeadMagnetPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,11 +27,13 @@ export default function LeadMagnetPopup() {
     return () => clearTimeout(timer);
   }, [hasShown]);
 
-  const handleDownload = () => {
-    trackEvent("lead_magnet_download", "conversion", "star_framework");
-    window.open("https://rupeshtiwari.gumroad.com/l/rupesh-kit", "_blank");
+  const handleSuccess = () => {
     localStorage.setItem("leadMagnetDismissed", Date.now().toString());
-    setIsOpen(false);
+    trackEvent("lead_magnet_download", "conversion", "star_framework");
+    // Keep open briefly to show success, then close
+    setTimeout(() => {
+      setIsOpen(false);
+    }, 2000);
   };
 
   const handleDismiss = () => {
@@ -39,13 +41,6 @@ export default function LeadMagnetPopup() {
     trackEvent("lead_magnet_dismissed", "conversion", "star_framework");
     setIsOpen(false);
   };
-
-  const benefits = [
-    "50+ STAR story templates for Amazon LPs",
-    "System design interview cheat sheet",
-    "Behavioral question bank (100+ questions)",
-    "Free 15-min strategy call"
-  ];
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -75,23 +70,13 @@ export default function LeadMagnetPopup() {
           </DialogDescription>
         </DialogHeader>
 
-        <div className="space-y-3 my-4">
-          {benefits.map((benefit, index) => (
-            <div key={index} className="flex items-start gap-2">
-              <CheckCircle className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-              <span className="text-sm">{benefit}</span>
-            </div>
-          ))}
-        </div>
-
-        <Button onClick={handleDownload} className="w-full" size="lg" data-testid="button-get-framework">
-          <Download className="w-4 h-4 mr-2" />
-          Download Free Framework
-        </Button>
-
-        <p className="text-xs text-center text-muted-foreground mt-3">
-          Instant access - no email required
-        </p>
+        <EmailCaptureForm
+          source="lead_magnet_popup"
+          leadMagnet="star_framework"
+          onSuccess={handleSuccess}
+          buttonText="Download Free Framework"
+          showName={true}
+        />
       </DialogContent>
     </Dialog>
   );

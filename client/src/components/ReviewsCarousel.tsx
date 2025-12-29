@@ -12,7 +12,9 @@ import ReviewCard from "./ReviewCard";
 import reviewsData from "@/data/reviews.json";
 import { useState, useRef } from "react";
 import { useSectionTracking } from "@/hooks/useSectionTracking";
-import { ExternalLink, Star, Trophy, CheckCircle, Quote, ChevronRight, Sparkles, Shield } from "lucide-react";
+import { ExternalLink, Star, Trophy, CheckCircle, Quote, ChevronRight, Sparkles, Shield, Filter, X } from "lucide-react";
+import { Input } from "@/components/ui/input";
+import { trackEvent } from "@/lib/analytics";
 import Autoplay from "embla-carousel-autoplay";
 import { SectionShareButtons } from "@/components/SocialShare";
 import { motion } from "framer-motion";
@@ -35,13 +37,49 @@ export default function ReviewsCarousel() {
   });
 
   const [showAll, setShowAll] = useState(false);
+  const [filterCompany, setFilterCompany] = useState<string | null>(null);
+  const [filterRole, setFilterRole] = useState<string | null>(null);
+  const [filterOutcome, setFilterOutcome] = useState<'all' | 'success'>('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  
   const totalReviews = sortedReviews.length;
   
+  // Get unique companies and roles for filters
+  const companies = Array.from(new Set(sortedReviews.map((r: any) => r.company || r.offerCompany).filter(Boolean)));
+  const roles = Array.from(new Set(sortedReviews.map((r: any) => r.title).filter(Boolean)));
+  
+  // Filter reviews based on active filters
+  const filteredReviews = sortedReviews.filter((r: any) => {
+    if (filterCompany && r.company !== filterCompany && r.offerCompany !== filterCompany) return false;
+    if (filterRole && !r.title?.toLowerCase().includes(filterRole.toLowerCase())) return false;
+    if (filterOutcome === 'success' && !r.gotOffer) return false;
+    if (searchQuery && !r.text.toLowerCase().includes(searchQuery.toLowerCase()) && 
+        !r.name.toLowerCase().includes(searchQuery.toLowerCase())) return false;
+    return true;
+  });
+  
   // Featured reviews with offers - sorted newest first
-  const featuredReviews = sortedReviews.filter((r: any) => r.gotOffer === true).slice(0, 3);
+  const featuredReviews = filteredReviews.filter((r: any) => r.gotOffer === true).slice(0, 3);
   
   // Other reviews for carousel - sorted newest first
-  const carouselReviews = sortedReviews.filter((r: any) => !r.gotOffer).slice(0, showAll ? 30 : 12);
+  const carouselReviews = filteredReviews.filter((r: any) => !r.gotOffer).slice(0, showAll ? 30 : 12);
+  
+  const hasActiveFilters = filterCompany || filterRole || filterOutcome !== 'all' || searchQuery;
+  
+  const clearFilters = () => {
+    setFilterCompany(null);
+    setFilterRole(null);
+    setFilterOutcome('all');
+    setSearchQuery('');
+    trackEvent('review_filters_cleared', 'engagement', 'reviews');
+  };
+  
+  const handleFilterChange = (type: string, value: string) => {
+    trackEvent('review_filter_applied', 'engagement', `${type}_${value}`);
+    if (type === 'company') setFilterCompany(value === filterCompany ? null : value);
+    if (type === 'role') setFilterRole(value === filterRole ? null : value);
+    if (type === 'outcome') setFilterOutcome(value as 'all' | 'success');
+  };
 
   const autoplayPlugin = useRef(
     Autoplay({ delay: 4000, stopOnInteraction: true, stopOnMouseEnter: true })
@@ -100,10 +138,76 @@ export default function ReviewsCarousel() {
           >
             What <span className="text-primary">Rupesh's Clients</span> Say
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-6">
             Real feedback from engineers, architects, and executives who 
             landed offers at Amazon, Google, DraftKings, Red Hat, and more.
           </p>
+          
+          {/* Search and Filters */}
+          <div className="max-w-4xl mx-auto space-y-4">
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Input
+                type="text"
+                placeholder="Search reviews..."
+                value={searchQuery}
+                onChange={(e) => {
+                  setSearchQuery(e.target.value);
+                  trackEvent('review_search', 'engagement', e.target.value);
+                }}
+                className="flex-1"
+              />
+              {hasActiveFilters && (
+                <Button variant="outline" onClick={clearFilters} size="sm">
+                  <X className="w-4 h-4 mr-1" />
+                  Clear Filters
+                </Button>
+              )}
+            </div>
+            
+            <div className="flex flex-wrap items-center gap-2 justify-center">
+              <span className="text-sm text-muted-foreground flex items-center gap-1">
+                <Filter className="w-4 h-4" />
+                Filter by:
+              </span>
+              
+              <Button
+                variant={filterOutcome === 'success' ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => handleFilterChange('outcome', filterOutcome === 'success' ? 'all' : 'success')}
+              >
+                <Trophy className="w-3 h-3 mr-1" />
+                Success Stories Only
+              </Button>
+              
+              {companies.slice(0, 5).map((company) => (
+                <Button
+                  key={company}
+                  variant={filterCompany === company ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => handleFilterChange('company', company)}
+                >
+                  {company}
+                </Button>
+              ))}
+              
+              {roles.slice(0, 3).map((role) => (
+                <Button
+                  key={role}
+                  variant={filterRole === role ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => handleFilterChange('role', role)}
+                >
+                  {role}
+                </Button>
+              ))}
+            </div>
+            
+            {hasActiveFilters && (
+              <p className="text-sm text-center text-muted-foreground">
+                Showing {filteredReviews.length} of {totalReviews} reviews
+              </p>
+            )}
+          </div>
         </div>
 
         {/* STATIC FEATURED REVIEWS - Best for SEO */}

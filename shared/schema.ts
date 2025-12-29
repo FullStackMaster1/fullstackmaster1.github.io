@@ -89,3 +89,29 @@ export const insertReferredUserSchema = createInsertSchema(referredUsers).omit({
 
 export type InsertReferredUser = z.infer<typeof insertReferredUserSchema>;
 export type ReferredUser = typeof referredUsers.$inferSelect;
+
+// Email Subscriptions (for lead magnets and marketing)
+export const emailSubscriptions = pgTable("email_subscriptions", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  email: text("email").notNull(),
+  name: text("name"),
+  source: text("source").notNull(), // where they signed up from
+  leadMagnet: text("lead_magnet"), // what they downloaded
+  subscribedAt: timestamp("subscribed_at").defaultNow(),
+  unsubscribedAt: timestamp("unsubscribed_at"),
+  isActive: boolean("is_active").default(true),
+  // USA Compliance fields
+  consentGiven: boolean("consent_given").default(true),
+  consentDate: timestamp("consent_date").defaultNow(),
+  ipAddress: text("ip_address"), // For CCPA compliance
+  userAgent: text("user_agent"),
+});
+
+export const insertEmailSubscriptionSchema = createInsertSchema(emailSubscriptions).omit({
+  id: true,
+  subscribedAt: true,
+  unsubscribedAt: true,
+});
+
+export type InsertEmailSubscription = z.infer<typeof insertEmailSubscriptionSchema>;
+export type EmailSubscription = typeof emailSubscriptions.$inferSelect;

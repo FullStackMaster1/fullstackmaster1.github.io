@@ -1,4 +1,4 @@
-import { type User, type InsertUser, type WebinarRegistration, type InsertWebinarRegistration, webinarRegistrations, type WebinarInterest, type InsertWebinarInterest, webinarInterests, type Referral, type InsertReferral, referrals, type ReferredUser, type InsertReferredUser, referredUsers } from "@shared/schema";
+import { type User, type InsertUser, type WebinarRegistration, type InsertWebinarRegistration, webinarRegistrations, type WebinarInterest, type InsertWebinarInterest, webinarInterests, type Referral, type InsertReferral, referrals, type ReferredUser, type InsertReferredUser, referredUsers, type EmailSubscription, type InsertEmailSubscription, emailSubscriptions } from "@shared/schema";
 import { randomUUID } from "crypto";
 import { db } from "./db";
 import { desc, eq, and, sql } from "drizzle-orm";
@@ -23,6 +23,11 @@ export interface IStorage {
   createReferredUser(referredUser: InsertReferredUser): Promise<ReferredUser>;
   getReferredUsersByCode(code: string): Promise<ReferredUser[]>;
   getReferralStats(code: string): Promise<{ total: number; pending: number; enrolled: number }>;
+  // Email subscriptions
+  createEmailSubscription(subscription: InsertEmailSubscription): Promise<EmailSubscription>;
+  getEmailSubscriptionByEmail(email: string): Promise<EmailSubscription | undefined>;
+  unsubscribeEmail(email: string): Promise<void>;
+  getActiveSubscriptions(): Promise<EmailSubscription[]>;
 }
 
 export class MemStorage implements IStorage {
@@ -159,6 +164,54 @@ export class MemStorage implements IStorage {
       pending: users.filter(u => u.status === "pending").length,
       enrolled: users.filter(u => u.status === "enrolled" || u.status === "completed").length
     };
+  }
+
+  // Email subscription methods
+  async createEmailSubscription(subscription: InsertEmailSubscription): Promise<EmailSubscription> {
+    // Check if email already exists and is active
+    const existing = await this.getEmailSubscriptionByEmail(subscription.email);
+    if (existing && existing.isActive) {
+      // Update existing subscription
+      const [updated] = await db.update(emailSubscriptions)
+        .set({
+          name: subscription.name || existing.name,
+          source: subscription.source,
+          leadMagnet: subscription.leadMagnet,
+          consentGiven: subscription.consentGiven ?? true,
+          consentDate: new Date(),
+          ipAddress: subscription.ipAddress,
+          userAgent: subscription.userAgent,
+        })
+        .where(eq(emailSubscriptions.email, subscription.email))
+        .returning();
+      return updated;
+    }
+    
+    const [result] = await db.insert(emailSubscriptions).values(subscription).returning();
+    return result;
+  }
+
+  async getEmailSubscriptionByEmail(email: string): Promise<EmailSubscription | undefined> {
+    const [result] = await db.select().from(emailSubscriptions)
+      .where(eq(emailSubscriptions.email, email))
+      .orderBy(desc(emailSubscriptions.subscribedAt))
+      .limit(1);
+    return result;
+  }
+
+  async unsubscribeEmail(email: string): Promise<void> {
+    await db.update(emailSubscriptions)
+      .set({
+        isActive: false,
+        unsubscribedAt: new Date()
+      })
+      .where(eq(emailSubscriptions.email, email));
+  }
+
+  async getActiveSubscriptions(): Promise<EmailSubscription[]> {
+    return await db.select().from(emailSubscriptions)
+      .where(eq(emailSubscriptions.isActive, true))
+      .orderBy(desc(emailSubscriptions.subscribedAt));
   }
 }
 

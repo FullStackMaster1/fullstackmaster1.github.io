@@ -6,6 +6,7 @@ import AnnouncementBar from "@/components/AnnouncementBar";
 import WhatsAppWidget from "@/components/WhatsAppWidget";
 import FloatingSocialShare from "@/components/FloatingSocialShare";
 import USATrustBar from "@/components/USATrustBar";
+import EmailGateModal from "@/components/EmailGateModal";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -263,9 +264,30 @@ export default function Book() {
     trackEvent("book_whatsapp_click", "contact_intent", source);
   };
 
+  const [showEmailGate, setShowEmailGate] = useState(false);
+  const [emailGateSource, setEmailGateSource] = useState('');
+  const BOOKING_URL = "https://calendar.google.com/calendar/appointments/AcZssZ2dMNXqXzYcl2NKLpclDV9w0p4-9cp4UvTHii0=?gv=true";
+
   const handleCalendarClick = (source: string) => {
     trackBookCall(`book_page_${source}`);
     trackEvent("book_calendar_click", "buy_intent", source);
+    
+    // Check if user has already provided email
+    const hasEmail = localStorage.getItem('email-subscribed');
+    
+    if (!hasEmail) {
+      // Show email gate
+      setEmailGateSource(source);
+      setShowEmailGate(true);
+    } else {
+      // Direct redirect
+      window.open(BOOKING_URL, '_blank');
+    }
+  };
+
+  const handleEmailGateSuccess = () => {
+    trackEvent("email_gate_completed", "conversion", emailGateSource);
+    setShowEmailGate(false);
   };
 
   return (
@@ -424,17 +446,18 @@ export default function Book() {
                       <span className="text-sm">Calendar invite to your email</span>
                     </div>
                   </div>
-                  <a
-                    href="https://calendar.google.com/calendar/appointments/AcZssZ2dMNXqXzYcl2NKLpclDV9w0p4-9cp4UvTHii0=?gv=true"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => handleCalendarClick("card")}
+                  <Button
+                    size="lg"
+                    className="w-full"
+                    data-testid="button-google-calendar-book"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleCalendarClick("card");
+                    }}
                   >
-                    <Button size="lg" className="w-full" data-testid="button-google-calendar-book">
-                      <Calendar className="w-4 h-4 mr-2" />
-                      Schedule on Google Calendar
-                    </Button>
-                  </a>
+                    <Calendar className="w-4 h-4 mr-2" />
+                    Schedule on Google Calendar
+                  </Button>
                 </Card>
               </div>
             </div>
@@ -603,17 +626,19 @@ export default function Book() {
                     WhatsApp Me
                   </Button>
                 </a>
-                <a
-                  href="https://calendar.google.com/calendar/appointments/AcZssZ2dMNXqXzYcl2NKLpclDV9w0p4-9cp4UvTHii0=?gv=true"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  onClick={() => handleCalendarClick("cta")}
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="w-full sm:w-auto" 
+                  data-testid="button-google-calendar-cta"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleCalendarClick("cta");
+                  }}
                 >
-                  <Button size="lg" variant="outline" className="w-full sm:w-auto" data-testid="button-google-calendar-cta">
-                    <Calendar className="w-5 h-5 mr-2" />
-                    Schedule Now
-                  </Button>
-                </a>
+                  <Calendar className="w-5 h-5 mr-2" />
+                  Schedule Now
+                </Button>
               </div>
             </motion.div>
           </div>
@@ -629,6 +654,13 @@ export default function Book() {
           <BookPageExitPopup onClose={() => setShowExitPopup(false)} />
         )}
       </AnimatePresence>
+      
+      <EmailGateModal
+        isOpen={showEmailGate}
+        onClose={() => setShowEmailGate(false)}
+        onSuccess={handleEmailGateSuccess}
+        bookingUrl={BOOKING_URL}
+      />
     </div>
   );
 }
