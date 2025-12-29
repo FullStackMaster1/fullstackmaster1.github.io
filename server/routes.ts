@@ -483,6 +483,43 @@ export async function registerRoutes(
   });
 
   // Get subscription status (for checking if already subscribed)
+  // Get capacity information (for dynamic capacity indicator)
+  app.get("/api/capacity", async (_req: Request, res: Response) => {
+    try {
+      // TODO: Integrate with Calendly API or Google Calendar API to get real availability
+      // For now, return static data from booking.json
+      // When ready, replace with actual API calls:
+      // - Calendly: https://developer.calendly.com/api-docs
+      // - Google Calendar: https://developers.google.com/calendar/api
+      
+      const bookingData = {
+        totalWeeklySlots: 6,
+        bookedSlots: 2,
+      };
+
+      // If CALENDLY_API_KEY or GOOGLE_CALENDAR_API_KEY is set, fetch real data
+      // Example:
+      // if (process.env.CALENDLY_API_KEY) {
+      //   const response = await fetch('https://api.calendly.com/...');
+      //   const data = await response.json();
+      //   bookingData.bookedSlots = data.booked_count;
+      // }
+
+      res.json({
+        ...bookingData,
+        lastUpdated: new Date().toISOString(),
+      });
+    } catch (error) {
+      console.error("Capacity fetch error:", error);
+      // Return fallback data on error
+      res.json({
+        totalWeeklySlots: 6,
+        bookedSlots: 2,
+        lastUpdated: new Date().toISOString(),
+      });
+    }
+  });
+
   app.get("/api/email/status/:email", async (req: Request, res: Response) => {
     try {
       const { email } = req.params;

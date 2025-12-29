@@ -8,7 +8,8 @@
     "rating": 5,
     "text": "Rupesh was so helpful! I passed my phone screen and will work with him to prep for my loop now. He helped me tighten up my interview answers, and identified gaps where I was missing metrics, mechanisms and other elements. It was specific to the role and company so very tailored. And he's really nice and easy to work with.",
     "session": "Phone Screen Prep",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "manager"
   },
   {
     "id": 36,
@@ -19,7 +20,8 @@
     "rating": 5,
     "text": "Rupesh has amazing technical and behavioral depth and a great coach. He can adapt to your level easily and always encourages and guides positively. Highly recommended.",
     "session": "Interview Coaching",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "engineer"
   },
   {
     "id": 1,
@@ -31,7 +33,8 @@
     "text": "THANK YOU RUPESH!!! I landed a role at DraftKings after Rupesh's coaching session. His OOD interview prep was exactly what I needed!",
     "session": "Object-Oriented Design Interview",
     "gotOffer": true,
-    "offerCompany": "DraftKings"
+    "offerCompany": "DraftKings",
+    "roleLevel": "engineer"
   },
   {
     "id": 2,
@@ -43,7 +46,8 @@
     "text": "I had a prep session with Rupesh for my Amazon interview. His experience as an Amazon Solutions Architect shows in his coaching. Rupesh gave clear feedback on my technical answers and communication style, spotting weaknesses I missed. I recommend Rupesh to anyone preparing for a technical interview.",
     "session": "Amazon Interview Prep",
     "gotOffer": true,
-    "offerCompany": "Amazon"
+    "offerCompany": "Amazon",
+    "roleLevel": "architect"
   },
   {
     "id": 3,
@@ -55,7 +59,8 @@
     "text": "Rupesh was amazing to work with. As a beginning Solutions Architect, I was stuck in my career, and he provided guidance for sharpening my skills, demonstrating competence, building my brand. By the end of the session, I had a 90-day step-by-step plan to turn my career around.",
     "session": "Career Coaching",
     "gotOffer": true,
-    "offerCompany": "Amazon"
+    "offerCompany": "Amazon",
+    "roleLevel": "architect"
   },
   {
     "id": 4,
@@ -67,7 +72,8 @@
     "text": "Rupesh is patient, thorough, and a confidence-booster. I had an excellent experience learning from him!",
     "session": "Interview Coaching",
     "gotOffer": true,
-    "offerCompany": "Red Hat"
+    "offerCompany": "Red Hat",
+    "roleLevel": "senior_engineer"
   },
   {
     "id": 5,
@@ -79,7 +85,8 @@
     "text": "Rupesh helped me crack my dream role! His insights on how to approach technical and behavioral rounds were spot-on. I can't recommend him enough for anyone serious about landing a senior tech role.",
     "session": "Interview Coaching",
     "gotOffer": true,
-    "offerCompany": "FAANG"
+    "offerCompany": "FAANG",
+    "roleLevel": "senior_engineer"
   },
   {
     "id": 6,
@@ -90,7 +97,8 @@
     "rating": 5,
     "text": "This was my >2 times with Rupesh for mock interview! He holds a very high bar and treats each mock interview as seriously as if it were his own team's hiring process. The session was incredibly valuable, and I truly believe his guidance will help me ace the interview!",
     "session": "System Design & Panel Prep",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "architect"
   },
   {
     "id": 7,
@@ -101,7 +109,8 @@
     "rating": 5,
     "text": "I had the opportunity to interview with Rupesh for the Senior Site Reliability Engineer role. The session was very engaging, he created a comfortable environment that allowed me to share my experiences openly. His questions were thoughtful and well-structured, focusing not only on technical depth but also on collaboration, ownership, and leadership.",
     "session": "SRE Mock Interview",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "senior_engineer"
   },
   {
     "id": 8,
@@ -112,7 +121,8 @@
     "rating": 5,
     "text": "I took multiple sessions with Rupesh and have consistently been impressed by his deep expertise in DevOps and the AWS cloud domain. He is genuinely passionate about his work and goes above and beyond to support his students. I highly recommend him for coaching in Java, DevOps, Cloud (AWS), and SRE domains.",
     "session": "DevOps & AWS Coaching",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "engineer"
   },
   {
     "id": 9,
@@ -123,7 +133,8 @@
     "rating": 5,
     "text": "I really enjoyed my session with Rupesh. He was able to quickly understand my position in my career, provide a clear, outside perspective, and leave me with both concrete action items for the short-term and big questions to think about in the long-term. I found his feedback to be very direct, sincere, and helpful.",
     "session": "Career Roadmap",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "director"
   },
   {
     "id": 10,
@@ -134,7 +145,8 @@
     "rating": 5,
     "text": "Rupesh is amazing! He has extensive knowledge in technology and really helped me think at a higher level. His coaching has given me a framework to answer questions with numbers and always aim to raise the bar. Highly recommend him.",
     "session": "Leadership Interview",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "sr_manager"
   },
   {
     "id": 11,
@@ -145,7 +157,8 @@
     "rating": 5,
     "text": "A fantastic call with Rupesh. I learned a huge amount of practical and valuable information. Rupesh gave me a clear, structured plan towards my interviews.",
     "session": "TPM Interview Prep",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "senior_engineer"
   },
   {
     "id": 12,
@@ -156,7 +169,8 @@
     "rating": 5,
     "text": "The best coaching session I've ever had. Rupesh is exceptional at what he does.",
     "session": "Interview Coaching",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "manager"
   },
   {
     "id": 13,
@@ -167,7 +181,8 @@
     "rating": 5,
     "text": "Rupesh pointed a lot of helpful things during our mock interview. I really appreciated it and he also provided some extra resources which are really helpful. I'll be booking another session with him. Recommended!",
     "session": "Mock Interview",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "principal"
   },
   {
     "id": 14,
@@ -178,7 +193,8 @@
     "rating": 5,
     "text": "Rupesh was great to work with again; I'm glad I booked him for a second session! He familiarized me with crucial design principles and patterns. The exercises we went through highlighted areas I could improve on.",
     "session": "System Design",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "senior_engineer"
   },
   {
     "id": 15,
@@ -189,7 +205,8 @@
     "rating": 5,
     "text": "Rupesh is great! He provided me with more information in one hour than I could ever get in weeks of research. I now have a 6 month roadmap to data engineering. Look forward to keep working with him.",
     "session": "Data Engineering",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "engineer"
   },
   {
     "id": 16,
@@ -200,7 +217,8 @@
     "rating": 5,
     "text": "Rupesh is a wonderful and kind coach who helped me through a full session of understanding System Design fundamentals. Prior to our session, I was intimidated by the thoughts of my upcoming interview but Rupesh has given me a solid framework which I can use to be confident.",
     "session": "System Design",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "engineer"
   },
   {
     "id": 17,
@@ -211,7 +229,8 @@
     "rating": 5,
     "text": "I had my first mock interview session with Rupesh, and it was extremely insightful. He quickly identified the areas I needed to focus on and tailored the session specifically for the Solution Architect role I'm targeting.",
     "session": "Solution Architect",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "architect"
   },
   {
     "id": 18,
@@ -222,7 +241,8 @@
     "rating": 5,
     "text": "Awesome experience. I got great insights about how to prepare well for the data modeling and how to structure my answers for designing systems. Strongly recommend anyone who is looking for interview preparation to reach out to Rupesh.",
     "session": "Data Modeling",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "senior_engineer"
   },
   {
     "id": 19,
@@ -233,7 +253,8 @@
     "rating": 5,
     "text": "Rupesh was great. He gave good feedback on how to prepare stories for Amazon and how the thought process needs to be of a senior software engineer. He gave many insights on how Amazon works and what are the points they look in interview process.",
     "session": "Amazon Interview",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "senior_engineer"
   },
   {
     "id": 20,
@@ -244,7 +265,8 @@
     "rating": 5,
     "text": "Rupesh was great to work with. He has good knowledge, and provided valuable feedback and actionable items.",
     "session": "Interview Coaching",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "manager"
   },
   {
     "id": 21,
@@ -255,7 +277,8 @@
     "rating": 5,
     "text": "It was great to work with Rupesh, learned new things about behavioral interview. It was a very detailed and informative session. He also shared lot of resources which are helpful for preparation.",
     "session": "Behavioral Interview",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "principal"
   },
   {
     "id": 22,
@@ -266,7 +289,8 @@
     "rating": 5,
     "text": "Rupesh gave insightful, honest feedback. He clearly defined best pathways and methods to get in front of hiring managers and break down the initial barrier. I highly recommend Rupesh.",
     "session": "Career Strategy",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "architect"
   },
   {
     "id": 23,
@@ -277,7 +301,8 @@
     "rating": 5,
     "text": "Rupesh is an exceptional professional who can provide me with all the necessary guidance to excel in my next interviews. Your view and tips surely will help me stand out in the crowd.",
     "session": "Interview Strategy",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "senior_engineer"
   },
   {
     "id": 24,
@@ -288,7 +313,8 @@
     "rating": 5,
     "text": "It was a very informative session. Rupesh shared his journey to becoming a Solutions Architect, walked through the interview process, and gave me the confidence to start my own transition into the role.",
     "session": "Solutions Architect",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "architect"
   },
   {
     "id": 25,
@@ -299,7 +325,8 @@
     "rating": 5,
     "text": "I loved the session with Rupesh. It has allowed me to gain a lot of confidence in a span of an hour. I got a structure on how to answer questions from him. Thank you sir!",
     "session": "Interview Strategy",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "engineer"
   },
   {
     "id": 26,
@@ -310,7 +337,8 @@
     "rating": 5,
     "text": "I recently had a coaching session with Rupesh and it was amazing. He has strong experience with interview structure and walked me through the parts that I would face in the interview process.",
     "session": "Interview Strategy",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "senior_engineer"
   },
   {
     "id": 27,
@@ -321,7 +349,8 @@
     "rating": 5,
     "text": "I recently had a coaching session to prepare for my upcoming AWS interview. During the session, Rupesh explained how Solution Architects work in AWS, which was very helpful for my preparation.",
     "session": "AWS Interview",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "architect"
   },
   {
     "id": 28,
@@ -332,7 +361,8 @@
     "rating": 5,
     "text": "Rupesh is a great coach. Very attentive to my needs and always helpful with follow ups. I felt well prepared going into my interview. 10/10 coach! Thank you for the help Rupesh!",
     "session": "Interview Coaching",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "engineer"
   },
   {
     "id": 29,
@@ -343,7 +373,8 @@
     "rating": 5,
     "text": "My session with Rupesh was extremely helpful, I gained new knowledge, tactics, and strategies for approaching interviews, specifically for AWS roles. I feel more confident going into my next interviews.",
     "session": "AWS Interview",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "engineer"
   },
   {
     "id": 30,
@@ -354,7 +385,8 @@
     "rating": 5,
     "text": "I had a great session with Rupesh. He is a great listener. He understood my current situation and provided me with a clear roadmap for the next 3 months. I would highly recommend him.",
     "session": "Career Roadmap",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "engineer"
   },
   {
     "id": 31,
@@ -365,7 +397,8 @@
     "rating": 5,
     "text": "I'm immensely grateful for Rupesh's dedicated support! His coaching transformed my interview preparation approach completely. The frameworks and strategies he shared were game-changers.",
     "session": "Interview Coaching",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "principal"
   },
   {
     "id": 32,
@@ -376,7 +409,8 @@
     "rating": 5,
     "text": "Rupesh's coaching was exactly what I needed. He helped me structure my STAR stories and gave specific feedback on how to improve my delivery. Highly recommended for anyone preparing for FAANG interviews!",
     "session": "Behavioral Interview",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "senior_engineer"
   },
   {
     "id": 33,
@@ -387,7 +421,8 @@
     "rating": 5,
     "text": "Excellent session! Rupesh has deep knowledge of the AWS ecosystem and interview process. His coaching helped me understand what interviewers are looking for at the senior level.",
     "session": "AWS Interview",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "architect"
   },
   {
     "id": 34,
@@ -398,7 +433,8 @@
     "rating": 5,
     "text": "One of the best coaching sessions I've had. Rupesh is patient, knowledgeable, and genuinely invested in your success. He provided a clear roadmap for my preparation.",
     "session": "Career Coaching",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "senior_engineer"
   },
   {
     "id": 35,
@@ -409,6 +445,7 @@
     "rating": 5,
     "text": "Rupesh helped me prepare for my senior engineering role interview. His feedback on system design and behavioral questions was invaluable. I feel much more confident now!",
     "session": "Senior Engineer Prep",
-    "gotOffer": false
+    "gotOffer": false,
+    "roleLevel": "senior_engineer"
   }
 ]
