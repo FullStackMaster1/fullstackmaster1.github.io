@@ -15,7 +15,7 @@
       { "label": "Reviews", "href": "#reviews", "isPage": false },
       { "label": "Pricing", "href": "#pricing", "isPage": false },
       { "label": "Success Stories", "href": "/success-stories", "isPage": true },
-      { "label": "Blog", "href": "http://blog.rupeshtiwari.com/", "isPage": false, "external": true }
+      { "label": "Blog", "href": "/blog", "isPage": true, "external": false }
     ],
     "ctaButtons": {
       "whatsapp": {

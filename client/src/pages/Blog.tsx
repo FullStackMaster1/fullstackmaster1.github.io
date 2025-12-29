@@ -230,6 +230,40 @@ export default function Blog() {
           </div>
         </section>
 
+        {/* External Blog Link Section */}
+        <section className="py-20 bg-muted/50">
+          <div className="container mx-auto px-4 text-center max-w-3xl">
+            <ScrollReveal type="fade" duration={0.6}>
+              <Card className="border-primary/20 bg-primary/5">
+                <CardContent className="p-8">
+                  <BookOpen className="w-12 h-12 mx-auto mb-4 text-primary" />
+                  <h2 className="text-2xl md:text-3xl font-bold mb-4">Explore More Tech Content</h2>
+                  <p className="text-lg text-muted-foreground mb-6">
+                    Looking for more technical articles, tutorials, and deep dives? Check out my full blog with 300+ articles on system design, cloud architecture, and software engineering.
+                  </p>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    asChild
+                    className="border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                  >
+                    <a
+                      href="https://blog.rupeshtiwari.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={() => trackEvent("external_blog_click", "navigation", "blog_page")}
+                    >
+                      <BookOpen className="w-4 h-4 mr-2" />
+                      Visit Full Blog (300+ Articles)
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </a>
+                  </Button>
+                </CardContent>
+              </Card>
+            </ScrollReveal>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="py-20 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4 text-center">
