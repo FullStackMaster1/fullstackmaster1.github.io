@@ -41,6 +41,7 @@ const AWSInterviewPrep = lazy(() => import("@/pages/AWSInterviewPrep"));
 const GoogleInterviewPrep = lazy(() => import("@/pages/GoogleInterviewPrep"));
 const MicrosoftInterviewPrep = lazy(() => import("@/pages/MicrosoftInterviewPrep"));
 const Blog = lazy(() => import("@/pages/Blog"));
+const RoleAssessment = lazy(() => import("@/pages/RoleAssessment"));
 const NotFound = lazy(() => import("@/pages/not-found"));
 
 const CookieConsent = lazy(() => import("@/components/CookieConsent"));
@@ -84,6 +85,7 @@ function Router() {
         <Route path="/cohort" component={CohortProgram} />
         <Route path="/success-stories" component={SuccessStories} />
         <Route path="/blog" component={Blog} />
+        <Route path="/role-assessment" component={RoleAssessment} />
         <Route path="/referral" component={ReferralProgram} />
         <Route path="/team" component={Team} />
         <Route path="/community-resources" component={CommunityResources} />

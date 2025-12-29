@@ -61,8 +61,40 @@
       ]
     },
     "educationalPages": {
-      "title": "Free Guides",
+      "title": "Free Guides & Roadmaps",
       "items": [
+        {
+          "label": "Find Your Path Quiz",
+          "icon": "Sparkles",
+          "href": "/role-assessment",
+          "description": "Get personalized roadmap in 2 minutes",
+          "highlight": true,
+          "badge": "NEW"
+        },
+        {
+          "label": "Director Roadmap",
+          "icon": "Crown",
+          "href": "/director-roadmap",
+          "description": "90-day plan to Director role"
+        },
+        {
+          "label": "VP Roadmap",
+          "icon": "TrendingUp",
+          "href": "/vp-roadmap",
+          "description": "6-month path to VP role"
+        },
+        {
+          "label": "Senior PM Roadmap",
+          "icon": "Target",
+          "href": "/senior-pm-roadmap",
+          "description": "FAANG Product Manager prep"
+        },
+        {
+          "label": "Senior TPM Roadmap",
+          "icon": "Users",
+          "href": "/senior-tpm-roadmap",
+          "description": "Technical Program Manager guide"
+        },
         {
           "label": "Solution Architect Roadmap",
           "icon": "Rocket",
