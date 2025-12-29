@@ -237,7 +237,7 @@ export default function HeroSection() {
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full border-[#0077b5] text-[#0077b5] hover:bg-blue-50 dark:hover:bg-blue-950 flex items-center justify-center"
+                className="w-full border-[#0077b5] text-[#0077b5] hover:bg-blue-50 dark:hover:bg-blue-950"
                 asChild
               >
                 <a
@@ -246,10 +246,10 @@ export default function HeroSection() {
                   rel="noopener noreferrer"
                   onClick={() => trackLinkedInClick('hero')}
                   data-testid="button-hero-linkedin"
-                  className="flex items-center justify-center gap-2"
+                  className="flex items-center justify-center gap-2 w-full"
                 >
-                  <SiLinkedin className="w-4 h-4 flex-shrink-0 self-center" />
-                  <span>Message on LinkedIn</span>
+                  <SiLinkedin className="w-4 h-4 flex-shrink-0" />
+                  <span className="flex items-center">Message on LinkedIn</span>
                 </a>
               </Button>
             </div>
@@ -269,13 +269,14 @@ export default function HeroSection() {
                     target="_blank"
                     rel="noopener noreferrer"
                     data-testid="button-lead-capture"
+                    className="flex items-center justify-center gap-2 w-full sm:w-auto"
                   >
                     {hero.leadCapture.type === 'whatsapp' ? (
-                      <SiWhatsapp className="w-4 h-4 mr-2 flex-shrink-0" />
+                      <SiWhatsapp className="w-4 h-4 flex-shrink-0" />
                     ) : (
-                      <Download className="w-4 h-4 mr-2 flex-shrink-0" />
+                      <Download className="w-4 h-4 flex-shrink-0" />
                     )}
-                    {hero.leadCapture.buttonText}
+                    <span>{hero.leadCapture.buttonText}</span>
                   </a>
                 </Button>
               </div>
