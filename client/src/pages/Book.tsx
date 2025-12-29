@@ -293,8 +293,8 @@ export default function Book() {
   return (
     <div className="min-h-screen bg-background">
       <SEOHead 
-        customTitle="Book 1-on-1 FAANG Interview Coaching | USA-Based Coach | Rupesh Tiwari"
-        customDescription="Schedule personalized FAANG interview coaching with Rupesh Tiwari, USA-based AWS Senior CSM. 85%+ success rate. Directors, VPs, Principal Engineers. EST/PST friendly scheduling."
+        customTitle="Book Director & VP Interview Coaching | AWS, Google, Microsoft Interview Prep | USA-Based"
+        customDescription="Schedule 1-on-1 interview coaching for Director, VP, and Principal Engineer roles at AWS, Google, Microsoft, Amazon. USA-based coach with 85% success rate. EST/PST scheduling available. Book your session today."
       />
       <AnnouncementBar />
       <Navigation />

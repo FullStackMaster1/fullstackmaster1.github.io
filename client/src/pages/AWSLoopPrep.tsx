@@ -72,12 +72,19 @@ export default function AWSLoopPrep() {
         <title>{pageData.seo.title}</title>
         <meta name="description" content={pageData.seo.description} />
         <meta name="keywords" content={pageData.seo.keywords.join(", ")} />
+        <link rel="canonical" href="https://www.fullstackmaster.net/aws-loop" />
         <meta property="og:title" content={pageData.seo.title} />
         <meta property="og:description" content={pageData.seo.description} />
+        <meta property="og:url" content="https://www.fullstackmaster.net/aws-loop" />
         <meta property="og:image" content="https://www.fullstackmaster.net/og-image.png" />
-        <meta property="og:type" content="website" />
+        <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="FullStack Master" />
         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={pageData.seo.title} />
+        <meta name="twitter:description" content={pageData.seo.description} />
         <meta name="twitter:image" content="https://www.fullstackmaster.net/og-image.png" />
+        <meta name="author" content="Rupesh Tiwari" />
+        <meta name="robots" content="index, follow" />
       </Helmet>
       <AnnouncementBar />
       <Navigation />

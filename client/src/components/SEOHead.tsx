@@ -251,7 +251,11 @@ export default function SEOHead({ page = 'home', customTitle, customDescription 
       <meta name="twitter:image" content={seo.ogImage} />
       
       <meta name="author" content={personal.name} />
-      <meta name="robots" content="index, follow" />
+      <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+      <meta name="geo.region" content="US" />
+      <meta name="geo.placename" content="United States" />
+      <meta name="language" content="English" />
+      <meta name="revisit-after" content="7 days" />
       
       <script type="application/ld+json">
         {JSON.stringify(personSchema)}
