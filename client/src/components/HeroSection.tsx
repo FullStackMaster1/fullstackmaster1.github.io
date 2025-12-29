@@ -206,20 +206,20 @@ export default function HeroSection() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-3">
               <Button
                 size="lg"
-                className="w-full"
+                className="w-full flex items-center justify-center"
                 onClick={() => {
                   trackBookCall('hero-primary');
                   window.location.href = '/book';
                 }}
                 data-testid="button-hero-primary"
               >
-                <Calendar className="w-4 h-4 mr-2" />
+                <Calendar className="w-4 h-4 mr-2 flex-shrink-0" />
                 {hero.buttons.primary}
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full border-green-500 text-green-600 hover:bg-green-50 dark:hover:bg-green-950"
+                className="w-full border-green-500 text-green-600 hover:bg-green-50 dark:hover:bg-green-950 flex items-center justify-center"
                 asChild
               >
                 <a
@@ -228,15 +228,16 @@ export default function HeroSection() {
                   rel="noopener noreferrer"
                   onClick={() => trackWhatsApp('hero')}
                   data-testid="button-hero-secondary"
+                  className="flex items-center justify-center"
                 >
-                  <SiWhatsapp className="w-4 h-4 mr-2" />
+                  <SiWhatsapp className="w-4 h-4 mr-2 flex-shrink-0" />
                   {hero.buttons.secondary}
                 </a>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="w-full border-[#0077b5] text-[#0077b5] hover:bg-blue-50 dark:hover:bg-blue-950"
+                className="w-full border-[#0077b5] text-[#0077b5] hover:bg-blue-50 dark:hover:bg-blue-950 flex items-center justify-center"
                 asChild
               >
                 <a
@@ -245,8 +246,9 @@ export default function HeroSection() {
                   rel="noopener noreferrer"
                   onClick={() => trackLinkedInClick('hero')}
                   data-testid="button-hero-linkedin"
+                  className="flex items-center justify-center"
                 >
-                  <SiLinkedin className="w-4 h-4 mr-2" />
+                  <SiLinkedin className="w-4 h-4 mr-2 flex-shrink-0" />
                   Message on LinkedIn
                 </a>
               </Button>
@@ -269,9 +271,9 @@ export default function HeroSection() {
                     data-testid="button-lead-capture"
                   >
                     {hero.leadCapture.type === 'whatsapp' ? (
-                      <SiWhatsapp className="w-4 h-4 mr-2" />
+                      <SiWhatsapp className="w-4 h-4 mr-2 flex-shrink-0" />
                     ) : (
-                      <Download className="w-4 h-4 mr-2" />
+                      <Download className="w-4 h-4 mr-2 flex-shrink-0" />
                     )}
                     {hero.leadCapture.buttonText}
                   </a>
@@ -312,7 +314,7 @@ export default function HeroSection() {
                 className="flex items-center gap-2 hover:text-foreground transition-colors"
                 data-testid="link-whatsapp"
               >
-                <SiWhatsapp className="w-4 h-4 text-green-500" />
+                <SiWhatsapp className="w-4 h-4 text-green-500 flex-shrink-0" />
                 WhatsApp
               </a>
               <a
@@ -320,7 +322,7 @@ export default function HeroSection() {
                 className="flex items-center gap-2 hover:text-foreground transition-colors"
                 data-testid="link-email"
               >
-                <Mail className="w-4 h-4 text-primary" />
+                <Mail className="w-4 h-4 text-primary flex-shrink-0" />
                 {contact.email}
               </a>
               <a
@@ -330,7 +332,7 @@ export default function HeroSection() {
                 className="flex items-center gap-2 hover:text-foreground transition-colors"
                 data-testid="link-linkedin"
               >
-                <SiLinkedin className="w-4 h-4 text-[#0077b5]" />
+                <SiLinkedin className="w-4 h-4 text-[#0077b5] flex-shrink-0" />
                 LinkedIn
               </a>
             </div>
@@ -476,7 +478,7 @@ export default function HeroSection() {
                 <Button
                   size="sm"
                   variant="outline"
-                  className="w-full border-green-500 text-green-600 hover:bg-green-50 dark:hover:bg-green-950"
+                  className="w-full border-green-500 text-green-600 hover:bg-green-50 dark:hover:bg-green-950 flex items-center justify-center"
                   asChild
                 >
                   <a
@@ -485,8 +487,9 @@ export default function HeroSection() {
                     rel="noopener noreferrer"
                     onClick={() => trackWhatsApp('coach-highlights')}
                     data-testid="button-coach-highlights-whatsapp"
+                    className="flex items-center justify-center"
                   >
-                    <SiWhatsapp className="w-4 h-4 mr-2" />
+                    <SiWhatsapp className="w-4 h-4 mr-2 flex-shrink-0" />
                     WhatsApp Me
                   </a>
                 </Button>

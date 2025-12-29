@@ -30,7 +30,7 @@ export default function StickyMobileCTA() {
       <div className="flex gap-2">
         <Button
           size="sm"
-          className="flex-1"
+          className="flex-1 flex items-center justify-center"
           asChild
         >
           <a
@@ -39,15 +39,16 @@ export default function StickyMobileCTA() {
             rel="noopener noreferrer"
             onClick={() => trackBookCall('sticky_mobile')}
             data-testid="button-sticky-book"
+            className="flex items-center justify-center"
           >
-            <Calendar className="w-4 h-4 mr-1" />
+            <Calendar className="w-4 h-4 mr-1 flex-shrink-0" />
             Book
           </a>
         </Button>
         <Button
           size="sm"
           variant="outline"
-          className="flex-1 border-green-500 text-green-600"
+          className="flex-1 border-green-500 text-green-600 flex items-center justify-center"
           asChild
         >
           <a
@@ -56,15 +57,16 @@ export default function StickyMobileCTA() {
             rel="noopener noreferrer"
             onClick={() => trackWhatsApp('sticky_mobile')}
             data-testid="button-sticky-whatsapp"
+            className="flex items-center justify-center"
           >
-            <SiWhatsapp className="w-4 h-4 mr-1" />
+            <SiWhatsapp className="w-4 h-4 mr-1 flex-shrink-0" />
             WhatsApp
           </a>
         </Button>
         <Button
           size="sm"
           variant="outline"
-          className="flex-1 border-[#0077b5] text-[#0077b5]"
+          className="flex-1 border-[#0077b5] text-[#0077b5] flex items-center justify-center"
           asChild
         >
           <a
@@ -72,8 +74,9 @@ export default function StickyMobileCTA() {
             target="_blank"
             rel="noopener noreferrer"
             data-testid="button-sticky-linkedin"
+            className="flex items-center justify-center"
           >
-            <SiLinkedin className="w-4 h-4 mr-1" />
+            <SiLinkedin className="w-4 h-4 mr-1 flex-shrink-0" />
             LinkedIn
           </a>
         </Button>

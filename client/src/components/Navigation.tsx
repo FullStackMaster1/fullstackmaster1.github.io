@@ -366,6 +366,7 @@ export default function Navigation() {
             <Button
               variant="outline"
               size="sm"
+              className="flex items-center justify-center"
               asChild
             >
               <a
@@ -374,8 +375,9 @@ export default function Navigation() {
                 rel="noopener noreferrer"
                 onClick={() => trackWhatsApp('navigation')}
                 data-testid="button-whatsapp-nav"
+                className="flex items-center justify-center"
               >
-                <SiWhatsapp className="w-4 h-4 text-green-500" />
+                <SiWhatsapp className="w-4 h-4 text-green-500 flex-shrink-0" />
               </a>
             </Button>
             <Button
@@ -629,7 +631,7 @@ export default function Navigation() {
                     rel="noopener noreferrer"
                     data-testid="button-mobile-whatsapp"
                   >
-                    <SiWhatsapp className="w-4 h-4 mr-1 text-green-500" />
+                    <SiWhatsapp className="w-4 h-4 mr-1 text-green-500 flex-shrink-0" />
                     {navigation.ctaButtons.whatsapp.text}
                   </a>
                 </Button>

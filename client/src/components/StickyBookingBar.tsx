@@ -68,20 +68,20 @@ export default function StickyBookingBar() {
             <div className="flex items-center gap-2">
               <Button
                 size="sm"
-                className="bg-primary hover:bg-primary/90"
+                className="bg-primary hover:bg-primary/90 flex items-center justify-center"
                 onClick={() => {
                   trackBookCall('sticky-bar');
                   window.location.href = '/book';
                 }}
                 data-testid="button-sticky-book"
               >
-                <Calendar className="w-4 h-4 mr-2" />
+                <Calendar className="w-4 h-4 mr-2 flex-shrink-0" />
                 Book Session
               </Button>
               <Button
                 size="sm"
                 variant="outline"
-                className="border-green-500 text-green-600 hover:bg-green-50 dark:hover:bg-green-950"
+                className="border-green-500 text-green-600 hover:bg-green-50 dark:hover:bg-green-950 flex items-center justify-center"
                 asChild
               >
                 <a
@@ -90,8 +90,9 @@ export default function StickyBookingBar() {
                   rel="noopener noreferrer"
                   onClick={() => trackWhatsApp('sticky-bar')}
                   data-testid="button-sticky-whatsapp"
+                  className="flex items-center justify-center"
                 >
-                  <SiWhatsapp className="w-4 h-4 mr-2" />
+                  <SiWhatsapp className="w-4 h-4 mr-2 flex-shrink-0" />
                   Quick Chat
                 </a>
               </Button>

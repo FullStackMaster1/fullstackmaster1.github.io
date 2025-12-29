@@ -96,7 +96,7 @@ export default function Footer() {
                 className="flex items-center gap-1 text-green-600 hover:text-green-500 transition-colors font-medium mt-2"
                 data-testid="link-footer-contact-chat"
               >
-                <SiWhatsapp className="w-3 h-3" />
+                <SiWhatsapp className="w-3 h-3 flex-shrink-0" />
                 Contact Us via Chat
               </a>
             </div>
@@ -155,7 +155,7 @@ export default function Footer() {
                 className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors"
                 data-testid="link-footer-whatsapp"
               >
-                <SiWhatsapp className="w-4 h-4 text-green-500" />
+                <SiWhatsapp className="w-4 h-4 text-green-500 flex-shrink-0" />
                 Chat on WhatsApp
               </a>
               <a
