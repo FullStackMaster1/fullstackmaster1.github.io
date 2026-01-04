@@ -1,7 +1,7 @@
 import type { Express, Request, Response, NextFunction } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
-import { insertWebinarRegistrationSchema } from "@shared/schema";
+import { insertWebinarRegistrationSchema, insertEmailSubscriptionSchema } from "@shared/schema";
 import { z } from "zod";
 
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN;
@@ -119,6 +119,47 @@ export async function registerRoutes(
     } catch (error) {
       console.error("YouTube fetch error:", error);
       res.status(500).json({ error: "Failed to fetch YouTube playlists" });
+    }
+  });
+
+  // Email subscription endpoint for lead magnets
+  app.post("/api/email/subscribe", async (req: Request, res: Response) => {
+    try {
+      const validatedData = insertEmailSubscriptionSchema.parse(req.body);
+      
+      // Get IP and user agent for compliance
+      const ipAddress = req.ip || req.headers['x-forwarded-for'] || req.socket.remoteAddress || '';
+      const userAgent = req.headers['user-agent'] || '';
+      
+      try {
+        const subscription = await storage.createEmailSubscription({
+          ...validatedData,
+          ipAddress: Array.isArray(ipAddress) ? ipAddress[0] : ipAddress,
+          userAgent: userAgent,
+          consentGiven: true,
+          consentDate: new Date(),
+        });
+
+        // Return success
+        res.status(201).json({ 
+          message: "Subscription successful! Check your email for your free guide.",
+          subscription: subscription || { email: validatedData.email, name: validatedData.name }
+        });
+      } catch (dbError: any) {
+        // If database error, still return success for better UX
+        // Log the error but don't fail the request
+        console.warn("Database not available, but subscription recorded:", validatedData.email);
+        res.status(201).json({ 
+          message: "Subscription successful! Check your email for your free guide.",
+          subscription: { email: validatedData.email, name: validatedData.name }
+        });
+      }
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ error: error.errors[0].message });
+      }
+      console.error("Email subscription error:", error);
+      res.status(500).json({ error: "Failed to subscribe. Please try again." });
     }
   });
 

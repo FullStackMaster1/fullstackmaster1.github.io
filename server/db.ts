@@ -4,9 +4,16 @@ import ws from "ws";
 
 neonConfig.webSocketConstructor = ws;
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("DATABASE_URL must be set");
+// Make database optional for development
+let db: ReturnType<typeof drizzle> | null = null;
+
+if (process.env.DATABASE_URL) {
+  const pool = new Pool({ connectionString: process.env.DATABASE_URL });
+  db = drizzle(pool);
+} else if (process.env.NODE_ENV === "production") {
+  throw new Error("DATABASE_URL must be set in production");
+} else {
+  console.warn("⚠️  DATABASE_URL not set - running in development mode without database");
 }
 
-const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-export const db = drizzle(pool);
+export { db };

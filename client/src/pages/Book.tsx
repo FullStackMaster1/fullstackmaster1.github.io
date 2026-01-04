@@ -17,10 +17,13 @@ import reviews from "@/data/reviews.json";
 import { 
   MessageCircle, Calendar, CheckCircle, Star, Users, Trophy, ArrowLeft, 
   Linkedin, Clock, Shield, Zap, ChevronLeft, ChevronRight, X, Gift,
-  TrendingUp, Award
+  TrendingUp, Award, MapPin, ExternalLink, Sparkles, Play, ArrowRight,
+  Video, Download, FileText, MessageSquare, Repeat, BookOpen, Headphones,
+  Infinity, DollarSign
 } from "lucide-react";
-import { useLocation } from "wouter";
-import rupeshPhoto from "@assets/rupesh-seating-confidently_1764278393371.png";
+import { SiAmazon } from "react-icons/si";
+import { useLocation, Link } from "wouter";
+import rupeshPhoto from "@assets/rupesh-headshot_1764261897457.png";
 import { trackEvent, trackWhatsApp, trackBookCall } from "@/lib/analytics";
 
 function AnimatedCounter({ end, duration = 2000, suffix = "" }: { end: number; duration?: number; suffix?: string }) {
@@ -60,16 +63,35 @@ function AnimatedCounter({ end, duration = 2000, suffix = "" }: { end: number; d
 
 function TestimonialCarousel() {
   const [current, setCurrent] = useState(0);
-  const topReviews = reviews.filter(r => r.gotOffer).slice(0, 5);
+  // Show top 5 reviews - prioritize ones with company (likely got offers) or just top rated ones
+  const topReviews = reviews
+    .sort((a, b) => {
+      // Prioritize reviews with company (likely got offers)
+      if (a.company && !b.company) return -1;
+      if (!a.company && b.company) return 1;
+      // Then sort by rating (all are 5, but keep this for consistency)
+      return b.rating - a.rating;
+    })
+    .slice(0, 5);
 
   useEffect(() => {
+    if (topReviews.length === 0) return;
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % topReviews.length);
     }, 5000);
     return () => clearInterval(timer);
   }, [topReviews.length]);
 
+  if (topReviews.length === 0) {
+    return (
+      <Card className="p-6 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
+        <p className="text-sm text-muted-foreground">No testimonials available yet.</p>
+      </Card>
+    );
+  }
+
   const review = topReviews[current];
+  if (!review) return null;
 
   return (
     <div className="relative">
@@ -87,16 +109,47 @@ function TestimonialCarousel() {
                 <Star key={i} className="w-4 h-4 fill-yellow-500 text-yellow-500" />
               ))}
             </div>
-            <p className="text-sm mb-4 italic">"{review.text}"</p>
-            <div className="flex items-center justify-between">
+            <p className="text-sm mb-4 italic">"{review.text || 'Great coaching experience!'}"</p>
+            <div className="flex items-center justify-between mb-4">
               <div>
-                <p className="font-semibold text-sm">{review.name}</p>
-                <p className="text-xs text-muted-foreground">{review.title} at {review.company}</p>
+                <p className="font-semibold text-sm">{review.name || 'Client'}</p>
+                <p className="text-xs text-muted-foreground">{review.title || ''} {review.title && review.company ? 'at' : ''} {review.company || ''}</p>
               </div>
-              {review.gotOffer && (
+              {review.company && (
                 <Badge variant="secondary" className="bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300">
-                  Got Offer
+                  {review.company}
                 </Badge>
+              )}
+            </div>
+            <div className="flex items-center gap-2 pt-4 border-t">
+              <Link href="/success-stories">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  className="flex items-center gap-2"
+                  onClick={() => trackEvent("testimonial_view_stories_click", "engagement", "book_page")}
+                >
+                  <Trophy className="w-3 h-3" />
+                  View Success Stories
+                  <ArrowRight className="w-3 h-3" />
+                </Button>
+              </Link>
+              {(review as any).videoUrl && (
+                <a
+                  href={(review as any).videoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent("testimonial_video_click", "engagement", "book_page")}
+                >
+                  <Button 
+                    variant="ghost" 
+                    size="sm" 
+                    className="flex items-center gap-2"
+                  >
+                    <Play className="w-3 h-3" />
+                    Watch Video
+                  </Button>
+                </a>
               )}
             </div>
           </Card>
@@ -316,160 +369,545 @@ export default function Book() {
           </div>
         </div>
 
-        <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <div className="mb-6 flex justify-center gap-2 flex-wrap">
-                <Badge variant="secondary" className="text-sm">
-                  <Clock className="w-3 h-3 mr-1" />
-                  Limited Slots Available
-                </Badge>
-                <Badge variant="secondary" className="text-sm bg-green-600 text-white">
-                  <Zap className="w-3 h-3 mr-1" />
-                  85% Get Offers
-                </Badge>
-              </div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4 text-white">
-                Book Your 1-on-1 Coaching
-              </h1>
-              <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-                Get personalized FAANG interview preparation from someone who's lived every role you're interviewing for.
-              </p>
-              
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-2xl mx-auto">
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-2xl md:text-3xl font-bold text-white">
-                    <AnimatedCounter end={4000} suffix="+" />
+        {/* Profile Header Section - iGotAnOffer Style */}
+        <section className="py-12 md:py-16 px-4 md:px-8 bg-background border-b">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-[300px_1fr] gap-12 items-start">
+              {/* Profile Photo & Stats */}
+              <div className="flex flex-col items-center md:items-start">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.4 }}
+                  className="relative mb-6"
+                >
+                  <div className="w-48 h-48 rounded-full overflow-hidden border-4 border-primary/20 shadow-xl bg-background">
+                    <img
+                      src={rupeshPhoto}
+                      alt={profile.personal.name}
+                      className="w-full h-full object-cover"
+                      data-testid="img-profile-headshot"
+                    />
                   </div>
-                  <div className="text-xs text-slate-400">Coached</div>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-2xl md:text-3xl font-bold text-white">
-                    <AnimatedCounter end={85} suffix="%" />
+                  <Badge className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-primary text-primary-foreground px-3 py-1 shadow-lg whitespace-nowrap">
+                    <Sparkles className="w-3 h-3 mr-1 inline" />
+                    SuperCoach
+                  </Badge>
+                </motion.div>
+                
+                {/* Key Stats */}
+                <div className="space-y-3 w-full">
+                  <div className="flex items-center gap-2 text-sm">
+                    <MapPin className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+                    <span className="text-muted-foreground">{profile.personal.location.country} ({profile.personal.location.timezone})</span>
                   </div>
-                  <div className="text-xs text-slate-400">Success Rate</div>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-2xl md:text-3xl font-bold text-white">
-                    <AnimatedCounter end={20} suffix="+" />
+                  <div className="flex items-center gap-2">
+                    <Star className="w-5 h-5 fill-yellow-500 text-yellow-500 flex-shrink-0" />
+                    <span className="font-semibold">5.0</span>
+                    <span className="text-sm text-muted-foreground">(53 reviews)</span>
                   </div>
-                  <div className="text-xs text-slate-400">Years Exp</div>
-                </div>
-                <div className="bg-white/10 rounded-lg p-4">
-                  <div className="text-2xl md:text-3xl font-bold text-white">5.0</div>
-                  <div className="text-xs text-slate-400">Rating</div>
+                  <div className="flex items-center gap-2 text-sm">
+                    <Users className="w-4 h-4 text-muted-foreground flex-shrink-0" />
+                    <span className="text-muted-foreground">67 clients (31% rebook rate)</span>
+                  </div>
                 </div>
               </div>
-            </motion.div>
+
+              {/* Bio & Info */}
+              <div>
+                <div className="mb-4">
+                  <h1 className="text-3xl md:text-4xl font-bold mb-3">{profile.personal.name}</h1>
+                  <Badge variant="secondary" className="mb-3 text-sm">
+                    {profile.personal.title}
+                  </Badge>
+                  <div className="flex items-center gap-2 mb-4">
+                    <SiAmazon className="w-5 h-5 text-orange-600 flex-shrink-0" />
+                    <span className="text-sm text-muted-foreground">{profile.personal.company}</span>
+                  </div>
+                </div>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  {profile.descriptions.medium}
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Engineering manager", "Product manager", "Solutions architect", "Technical program manager"].map((tag) => (
+                    <Badge key={tag} variant="outline" className="text-xs">
+                      {tag}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-        <section className="py-16 md:py-24 px-4 md:px-8">
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Choose How to Connect</h2>
+        {/* Pricing Section */}
+        <section className="py-16 md:py-24 px-4 md:px-8 bg-gradient-to-br from-primary/5 via-background to-primary/5">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <Badge variant="secondary" className="mb-4">Your Investment</Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Transparent Pricing</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Choose the package that fits your needs. All sessions include recordings, notes, and follow-up support.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              {/* Single Session */}
+              <Card className="p-6 border-2 hover:shadow-lg transition-all">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-muted rounded-lg">
+                    <Clock className="w-5 h-5 text-muted-foreground" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold">Single Deep-Dive</h3>
+                    <Badge variant="outline" className="text-xs mt-1">Try First</Badge>
+                  </div>
+                </div>
+                <div className="mb-4">
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-4xl font-bold">$130</span>
+                    <span className="text-muted-foreground">/session</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground mt-1">60 focused minutes</p>
+                </div>
+                <div className="space-y-2 mb-6">
+                  {[
+                    "One gap. One hour. Fixed.",
+                    "Pick your weakest area",
+                    "Walk out with clear action items",
+                    "Follow-up notes via WhatsApp"
+                  ].map((feature, idx) => (
+                    <div key={idx} className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-sm">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="w-full"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleCalendarClick("pricing_single");
+                  }}
+                >
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Book Single Session
+                </Button>
+              </Card>
+
+              {/* 5-Session Package */}
+              <Card className="p-6 border-2 border-primary hover:shadow-xl transition-all relative overflow-hidden">
+                <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-4 py-1 text-xs font-semibold rounded-bl-lg">
+                  MOST POPULAR
+                </div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Zap className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold">Complete Interview Mastery</h3>
+                    <Badge className="text-xs mt-1 bg-primary text-primary-foreground">Best Value</Badge>
+                  </div>
+                </div>
+                <div className="mb-4">
+                  <div className="flex items-baseline gap-3">
+                    <span className="text-4xl font-bold text-primary">$600</span>
+                    <div className="flex flex-col">
+                      <span className="text-xl text-muted-foreground line-through decoration-red-500 decoration-2">$705</span>
+                      <span className="text-xs text-red-500 font-medium">on platforms</span>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 mt-2">
+                    <span className="text-sm text-muted-foreground">$120/session</span>
+                    <Badge variant="secondary" className="text-xs">SAVE $105</Badge>
+                  </div>
+                  <p className="text-xs text-muted-foreground mt-1">vs $175/session on coaching platforms</p>
+                </div>
+                <div className="space-y-2 mb-6">
+                  {[
+                    "5 deep-dive sessions (60 min each)",
+                    "System Design + Behavioral + Leadership",
+                    "Resume & LinkedIn pitch overhaul",
+                    "Personalized homework after each session",
+                    "WhatsApp access for quick questions",
+                    "You book when YOU'RE ready — no rush",
+                    "Session notes + action items delivered"
+                  ].map((feature, idx) => (
+                    <div key={idx} className="flex items-start gap-2">
+                      <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-sm">{feature}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex gap-2 mb-4">
+                  <Badge variant="outline" className="text-xs">
+                    <Infinity className="w-3 h-3 mr-1" />
+                    Never Expires
+                  </Badge>
+                  <Badge variant="outline" className="text-xs">
+                    <Calendar className="w-3 h-3 mr-1" />
+                    Book Anytime
+                  </Badge>
+                </div>
+                <Button
+                  size="sm"
+                  className="w-full bg-primary hover:bg-primary/90"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleCalendarClick("pricing_package");
+                  }}
+                >
+                  <Zap className="w-4 h-4 mr-2" />
+                  Start My Transformation
+                </Button>
+                <p className="text-xs text-center text-muted-foreground mt-2">
+                  Pay after our first call. Zelle, PayPal, or Card accepted.
+                </p>
+              </Card>
+            </div>
+
+            {/* ROI Section */}
+            <Card className="p-6 bg-gradient-to-br from-primary/10 to-primary/5 border-primary/20">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold mb-2">The ROI Math for Directors & VPs</h3>
+                <p className="text-sm text-muted-foreground">What our executive clients typically unlock:</p>
+              </div>
+              <div className="grid md:grid-cols-3 gap-4 mb-6">
+                <div className="text-center p-4 bg-background rounded-lg border">
+                  <TrendingUp className="w-6 h-6 text-primary mx-auto mb-2" />
+                  <p className="text-xs text-muted-foreground mb-1">Avg Director/VP Comp Increase</p>
+                  <p className="text-xl font-bold">$285K/year</p>
+                </div>
+                <div className="text-center p-4 bg-background rounded-lg border">
+                  <DollarSign className="w-6 h-6 text-primary mx-auto mb-2" />
+                  <p className="text-xs text-muted-foreground mb-1">Typical Signing Bonus</p>
+                  <p className="text-xl font-bold">$80K-200K</p>
+                </div>
+                <div className="text-center p-4 bg-background rounded-lg border">
+                  <Gift className="w-6 h-6 text-primary mx-auto mb-2" />
+                  <p className="text-xs text-muted-foreground mb-1">Your Investment</p>
+                  <p className="text-xl font-bold">$600</p>
+                </div>
+              </div>
+              <div className="text-center">
+                <p className="font-semibold text-lg mb-1">
+                  Your $600 investment can unlock $285K+ in annual compensation gains.
+                </p>
+                <p className="text-sm text-muted-foreground">
+                  That's a 475x return. Based on 50+ Director/VP placements. This isn't an expense — it's due diligence.
+                </p>
+              </div>
+            </Card>
+          </div>
+        </section>
+
+        {/* Booking Options Section - iGotAnOffer Style */}
+        <section className="py-16 md:py-24 px-4 md:px-8 bg-muted/30">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Book Your Session</h2>
             <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Both options lead to the same quality coaching. Choose what works best for you.
+              Choose your preferred booking method. All options lead to the same quality coaching.
             </p>
             
-            <div className="grid md:grid-cols-2 gap-6 mb-12">
-              <div>
-                <Card className="p-8 h-full border-green-200 dark:border-green-800 hover-elevate transition-shadow">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 bg-green-100 dark:bg-green-900 rounded-lg">
-                      <MessageCircle className="w-6 h-6 text-green-600 dark:text-green-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-bold">WhatsApp Me</h3>
-                      <Badge variant="outline" className="text-xs">Recommended</Badge>
-                    </div>
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              {/* WhatsApp Option */}
+              <Card className="p-6 h-full border-2 hover:border-green-300 dark:hover:border-green-700 transition-all hover:shadow-lg">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-green-100 dark:bg-green-900 rounded-lg">
+                    <MessageCircle className="w-5 h-5 text-green-600 dark:text-green-400" />
                   </div>
-                  <p className="text-muted-foreground mb-6">
-                    For quick questions, NDA requests, or to discuss your specific situation before booking.
-                  </p>
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">Personal 1-on-1 conversation</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">Discuss your specific needs</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">Get instant answers</span>
-                    </div>
+                  <div>
+                    <h3 className="text-xl font-bold">WhatsApp</h3>
+                    <Badge variant="outline" className="text-xs mt-1">Recommended</Badge>
                   </div>
-                  <a
-                    href={`${profile.contact.whatsappLink}?text=${encodeURIComponent(whatsappData.widget.defaultMessage)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={() => handleWhatsAppClick("card")}
-                  >
-                    <Button size="lg" className="w-full bg-green-600 hover:bg-green-700 text-white" data-testid="button-whatsapp-book">
-                      <MessageCircle className="w-4 h-4 mr-2" />
-                      Message Me on WhatsApp
-                    </Button>
-                  </a>
-                </Card>
-              </div>
+                </div>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Quick questions, NDA requests, or discuss your situation before booking.
+                </p>
+                <div className="space-y-2 mb-4">
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-xs">Personal 1-on-1</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-xs">Instant answers</span>
+                  </div>
+                </div>
+                <a
+                  href={`${profile.contact.whatsappLink}?text=${encodeURIComponent(whatsappData.widget.defaultMessage)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => handleWhatsAppClick("card")}
+                >
+                  <Button size="sm" className="w-full bg-green-600 hover:bg-green-700 text-white" data-testid="button-whatsapp-book">
+                    <MessageCircle className="w-4 h-4 mr-2" />
+                    Message Me
+                  </Button>
+                </a>
+              </Card>
 
-              <div>
-                <Card className="p-8 h-full border-blue-200 dark:border-blue-800 hover-elevate transition-shadow">
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-lg">
-                      <Calendar className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+              {/* Google Calendar Option - Personal Booking with Benefits */}
+              <Card className="p-6 h-full border-2 border-blue-500 hover:border-blue-400 dark:hover:border-blue-600 transition-all hover:shadow-xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 bg-blue-500 text-white px-3 py-1 text-xs font-semibold rounded-bl-lg">
+                  BEST VALUE
+                </div>
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-blue-100 dark:bg-blue-900 rounded-lg">
+                    <Calendar className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold">Book Directly</h3>
+                    <Badge variant="outline" className="text-xs mt-1 bg-blue-50 dark:bg-blue-950">Personal Session</Badge>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Schedule your personal 1-on-1 session directly. Get exclusive benefits not available on platforms.
+                </p>
+                <div className="space-y-2 mb-4">
+                  <div className="flex items-start gap-2">
+                    <Video className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-xs font-medium">All calls recorded & shared personally</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Download className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-xs font-medium">Download recordings anytime</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <MessageSquare className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-xs font-medium">Reply & learn from sessions anytime</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <FileText className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-xs font-medium">Personalized session notes</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Repeat className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-xs font-medium">Follow-up support via email</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <BookOpen className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-xs font-medium">Access to exclusive resources</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <Headphones className="w-4 h-4 text-blue-600 mt-0.5 flex-shrink-0" />
+                    <span className="text-xs font-medium">Priority support between sessions</span>
+                  </div>
+                </div>
+                <Button
+                  size="sm"
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white"
+                  data-testid="button-google-calendar-book"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleCalendarClick("card");
+                  }}
+                >
+                  <Calendar className="w-4 h-4 mr-2" />
+                  Schedule Now
+                </Button>
+              </Card>
+
+              {/* iGotAnOffer Option */}
+              <Card className="p-6 h-full border-2 hover:border-primary transition-all hover:shadow-lg">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <ExternalLink className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold">iGotAnOffer</h3>
+                    <Badge variant="outline" className="text-xs mt-1">Platform</Badge>
+                  </div>
+                </div>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Book through iGotAnOffer platform with credit system and flexible scheduling.
+                </p>
+                <div className="space-y-2 mb-4">
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-xs">3 credits per session</span>
+                  </div>
+                  <div className="flex items-start gap-2">
+                    <CheckCircle className="w-4 h-4 text-primary mt-0.5 flex-shrink-0" />
+                    <span className="text-xs">Platform verified</span>
+                  </div>
+                </div>
+                <a
+                  href={profile.socialLinks.igotanoffer.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackEvent("igotanoffer_book_click", "buy_intent", "book_page")}
+                >
+                  <Button size="sm" variant="outline" className="w-full" data-testid="button-igotanoffer-book">
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    Book on iGotAnOffer
+                  </Button>
+                </a>
+              </Card>
+            </div>
+
+            {/* Personal Booking Benefits Section */}
+            <div className="mt-12 p-8 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 rounded-xl border-2 border-blue-200 dark:border-blue-800">
+              <div className="max-w-4xl mx-auto">
+                <div className="text-center mb-8">
+                  <div className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-full mb-4">
+                    <Sparkles className="w-4 h-4" />
+                    <span className="font-semibold">Exclusive Benefits with Personal Booking</span>
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold mb-3">Why Book Directly?</h3>
+                  <p className="text-muted-foreground">
+                    Get more value and personalized support when you book directly with me
+                  </p>
+                </div>
+                
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="flex gap-4 p-4 bg-white dark:bg-gray-900 rounded-lg border border-blue-100 dark:border-blue-900">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                        <Video className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                      </div>
                     </div>
                     <div>
-                      <h3 className="text-2xl font-bold">Book Directly</h3>
-                      <Badge variant="outline" className="text-xs">Instant Confirm</Badge>
+                      <h4 className="font-semibold mb-1">Recorded Sessions</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Every call is recorded and shared personally with you via email. No platform limitations or restrictions.
+                      </p>
                     </div>
                   </div>
-                  <p className="text-muted-foreground mb-6">
-                    Ready to start? Schedule your session directly through Google Calendar.
-                  </p>
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">Instant booking confirmation</span>
+
+                  <div className="flex gap-4 p-4 bg-white dark:bg-gray-900 rounded-lg border border-blue-100 dark:border-blue-900">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                        <Download className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                      </div>
                     </div>
-                    <div className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">Multiple time slots available</span>
-                    </div>
-                    <div className="flex items-start gap-2">
-                      <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 flex-shrink-0" />
-                      <span className="text-sm">Calendar invite to your email</span>
+                    <div>
+                      <h4 className="font-semibold mb-1">Lifetime Access</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Download recordings anytime, anywhere. Keep them forever for reference and continuous learning.
+                      </p>
                     </div>
                   </div>
+
+                  <div className="flex gap-4 p-4 bg-white dark:bg-gray-900 rounded-lg border border-blue-100 dark:border-blue-900">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                        <MessageSquare className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Reply & Learn Anytime</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Ask follow-up questions via email. I'll personally respond to help you understand concepts better.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 p-4 bg-white dark:bg-gray-900 rounded-lg border border-blue-100 dark:border-blue-900">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                        <FileText className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Personalized Notes</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Receive detailed session notes with action items, key takeaways, and personalized feedback.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 p-4 bg-white dark:bg-gray-900 rounded-lg border border-blue-100 dark:border-blue-900">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                        <Repeat className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Follow-Up Support</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Get email support between sessions. I'll help clarify doubts and provide additional resources.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 p-4 bg-white dark:bg-gray-900 rounded-lg border border-blue-100 dark:border-blue-900">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                        <BookOpen className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Exclusive Resources</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Access to private templates, frameworks, and study materials not available elsewhere.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 p-4 bg-white dark:bg-gray-900 rounded-lg border border-blue-100 dark:border-blue-900">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                        <Headphones className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Priority Support</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Faster response times and priority scheduling for your follow-up sessions.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex gap-4 p-4 bg-white dark:bg-gray-900 rounded-lg border border-blue-100 dark:border-blue-900">
+                    <div className="flex-shrink-0">
+                      <div className="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center">
+                        <Zap className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                      </div>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold mb-1">Flexible Scheduling</h4>
+                      <p className="text-sm text-muted-foreground">
+                        Choose your preferred time slots. Reschedule easily with 24-hour notice.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 text-center">
                   <Button
                     size="lg"
-                    className="w-full"
-                    data-testid="button-google-calendar-book"
+                    className="bg-blue-600 hover:bg-blue-700 text-white"
                     onClick={(e) => {
                       e.preventDefault();
-                      handleCalendarClick("card");
+                      handleCalendarClick("benefits_section");
                     }}
                   >
-                    <Calendar className="w-4 h-4 mr-2" />
-                    Schedule on Google Calendar
+                    <Calendar className="w-5 h-5 mr-2" />
+                    Book Your Personal Session Now
                   </Button>
-                </Card>
+                  <p className="text-xs text-muted-foreground mt-3">
+                    All benefits included at no extra cost
+                  </p>
+                </div>
               </div>
             </div>
 
-            <div className="flex items-center justify-center gap-4 text-sm text-muted-foreground">
-              <div className="flex items-center gap-1">
-                <Shield className="w-4 h-4 text-green-600" />
-                <span>100% Confidential</span>
+            {/* Trust Indicators */}
+            <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-muted-foreground pt-8 border-t">
+              <div className="flex items-center gap-2">
+                <Users className="w-4 h-4 text-primary" />
+                <span>Use credits with any coach</span>
               </div>
-              <div className="flex items-center gap-1">
-                <Award className="w-4 h-4 text-primary" />
-                <span>NDA Available</span>
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-primary" />
+                <span>Credits never expire</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Shield className="w-4 h-4 text-primary" />
+                <span>100% risk-free trial</span>
               </div>
             </div>
           </div>

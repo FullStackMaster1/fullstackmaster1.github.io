@@ -6,7 +6,8 @@
     "linkText": "Claim Offer",
     "linkHref": "https://wa.me/16094424081?text=Hi%20Rupesh!%20I'm%20interested%20in%20the%20Holiday%20Special%20-%205%20sessions%20with%20FREE%20Resume%20and%20LinkedIn%20Review.%20Let's%20start!",
     "active": true,
-    "expiresAt": "2026-01-31T23:59:59Z"
+    "startDate": "2025-12-03T00:00:00Z",
+    "expiresAt": "2025-12-25T23:59:59Z"
   },
   {
     "id": "winter-2024",

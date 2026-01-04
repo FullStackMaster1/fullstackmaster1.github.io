@@ -3,6 +3,14 @@ import { randomUUID } from "crypto";
 import { db } from "./db";
 import { desc, eq, and, sql } from "drizzle-orm";
 
+// Helper to check if database is available
+function requireDb() {
+  if (!db) {
+    throw new Error("Database not configured. Please set DATABASE_URL environment variable.");
+  }
+  return db;
+}
+
 export interface IStorage {
   getUser(id: string): Promise<User | undefined>;
   getUserByUsername(username: string): Promise<User | undefined>;
@@ -55,20 +63,24 @@ export class MemStorage implements IStorage {
   }
 
   async createWebinarRegistration(registration: InsertWebinarRegistration): Promise<WebinarRegistration> {
-    const [result] = await db.insert(webinarRegistrations).values(registration).returning();
+    const database = requireDb();
+    const [result] = await database.insert(webinarRegistrations).values(registration).returning();
     return result;
   }
 
   async getWebinarRegistrations(): Promise<WebinarRegistration[]> {
-    return await db.select().from(webinarRegistrations).orderBy(desc(webinarRegistrations.registeredAt));
+    const database = requireDb();
+    return await database.select().from(webinarRegistrations).orderBy(desc(webinarRegistrations.registeredAt));
   }
 
   async getWebinarRegistrationsByWebinarId(webinarId: string): Promise<WebinarRegistration[]> {
-    return await db.select().from(webinarRegistrations).where(eq(webinarRegistrations.webinarId, webinarId)).orderBy(desc(webinarRegistrations.registeredAt));
+    const database = requireDb();
+    return await database.select().from(webinarRegistrations).where(eq(webinarRegistrations.webinarId, webinarId)).orderBy(desc(webinarRegistrations.registeredAt));
   }
 
   async getWebinarRegistrationByEmail(email: string, webinarId: string): Promise<WebinarRegistration | undefined> {
-    const [result] = await db.select().from(webinarRegistrations)
+    const database = requireDb();
+    const [result] = await database.select().from(webinarRegistrations)
       .where(and(
         eq(webinarRegistrations.email, email),
         eq(webinarRegistrations.webinarId, webinarId)
@@ -77,7 +89,8 @@ export class MemStorage implements IStorage {
   }
 
   async getRegistrationCountByWebinarId(webinarId: string): Promise<number> {
-    const result = await db.select({ count: sql<number>`count(*)` })
+    const database = requireDb();
+    const result = await database.select({ count: sql<number>`count(*)` })
       .from(webinarRegistrations)
       .where(eq(webinarRegistrations.webinarId, webinarId));
     return Number(result[0]?.count || 0);
@@ -87,23 +100,23 @@ export class MemStorage implements IStorage {
     const existing = await this.getWebinarInterestBySession(interest.webinarId, interest.sessionId);
     
     if (existing) {
-      const [updated] = await db.update(webinarInterests)
+      const [updated] = await requireDb().update(webinarInterests)
         .set({ vote: interest.vote })
         .where(eq(webinarInterests.id, existing.id))
         .returning();
       return updated;
     }
     
-    const [created] = await db.insert(webinarInterests).values(interest).returning();
+    const [created] = await requireDb().insert(webinarInterests).values(interest).returning();
     return created;
   }
 
   async getWebinarInterestCounts(webinarId: string): Promise<{ upvotes: number; downvotes: number }> {
-    const upvoteResult = await db.select({ count: sql<number>`count(*)` })
+    const upvoteResult = await requireDb().select({ count: sql<number>`count(*)` })
       .from(webinarInterests)
       .where(and(eq(webinarInterests.webinarId, webinarId), eq(webinarInterests.vote, "upvote")));
     
-    const downvoteResult = await db.select({ count: sql<number>`count(*)` })
+    const downvoteResult = await requireDb().select({ count: sql<number>`count(*)` })
       .from(webinarInterests)
       .where(and(eq(webinarInterests.webinarId, webinarId), eq(webinarInterests.vote, "downvote")));
     
@@ -114,7 +127,7 @@ export class MemStorage implements IStorage {
   }
 
   async getWebinarInterestBySession(webinarId: string, sessionId: string): Promise<WebinarInterest | undefined> {
-    const [result] = await db.select().from(webinarInterests)
+    const [result] = await requireDb().select().from(webinarInterests)
       .where(and(
         eq(webinarInterests.webinarId, webinarId),
         eq(webinarInterests.sessionId, sessionId)
@@ -124,17 +137,17 @@ export class MemStorage implements IStorage {
 
   // Referral system methods
   async createReferral(referral: InsertReferral): Promise<Referral> {
-    const [result] = await db.insert(referrals).values(referral).returning();
+    const [result] = await requireDb().insert(referrals).values(referral).returning();
     return result;
   }
 
   async getReferralByEmail(email: string): Promise<Referral | undefined> {
-    const [result] = await db.select().from(referrals).where(eq(referrals.referrerEmail, email));
+    const [result] = await requireDb().select().from(referrals).where(eq(referrals.referrerEmail, email));
     return result;
   }
 
   async getReferralByCode(code: string): Promise<Referral | undefined> {
-    const [result] = await db.select().from(referrals).where(eq(referrals.referralCode, code));
+    const [result] = await requireDb().select().from(referrals).where(eq(referrals.referralCode, code));
     return result;
   }
 
@@ -142,19 +155,19 @@ export class MemStorage implements IStorage {
     const existing = await this.getReferralByCode(code);
     if (existing) {
       const newCount = (parseInt(existing.referralCount || "0") + 1).toString();
-      await db.update(referrals).set({ referralCount: newCount }).where(eq(referrals.referralCode, code));
+      await requireDb().update(referrals).set({ referralCount: newCount }).where(eq(referrals.referralCode, code));
     }
   }
 
   async createReferredUser(referredUser: InsertReferredUser): Promise<ReferredUser> {
-    const [result] = await db.insert(referredUsers).values(referredUser).returning();
+    const [result] = await requireDb().insert(referredUsers).values(referredUser).returning();
     // Also increment the referral count
     await this.incrementReferralCount(referredUser.referralCode);
     return result;
   }
 
   async getReferredUsersByCode(code: string): Promise<ReferredUser[]> {
-    return await db.select().from(referredUsers).where(eq(referredUsers.referralCode, code)).orderBy(desc(referredUsers.createdAt));
+    return await requireDb().select().from(referredUsers).where(eq(referredUsers.referralCode, code)).orderBy(desc(referredUsers.createdAt));
   }
 
   async getReferralStats(code: string): Promise<{ total: number; pending: number; enrolled: number }> {
@@ -172,7 +185,7 @@ export class MemStorage implements IStorage {
     const existing = await this.getEmailSubscriptionByEmail(subscription.email);
     if (existing && existing.isActive) {
       // Update existing subscription
-      const [updated] = await db.update(emailSubscriptions)
+      const [updated] = await requireDb().update(emailSubscriptions)
         .set({
           name: subscription.name || existing.name,
           source: subscription.source,
@@ -187,12 +200,12 @@ export class MemStorage implements IStorage {
       return updated;
     }
     
-    const [result] = await db.insert(emailSubscriptions).values(subscription).returning();
+    const [result] = await requireDb().insert(emailSubscriptions).values(subscription).returning();
     return result;
   }
 
   async getEmailSubscriptionByEmail(email: string): Promise<EmailSubscription | undefined> {
-    const [result] = await db.select().from(emailSubscriptions)
+    const [result] = await requireDb().select().from(emailSubscriptions)
       .where(eq(emailSubscriptions.email, email))
       .orderBy(desc(emailSubscriptions.subscribedAt))
       .limit(1);
@@ -200,7 +213,7 @@ export class MemStorage implements IStorage {
   }
 
   async unsubscribeEmail(email: string): Promise<void> {
-    await db.update(emailSubscriptions)
+    await requireDb().update(emailSubscriptions)
       .set({
         isActive: false,
         unsubscribedAt: new Date()
@@ -209,7 +222,7 @@ export class MemStorage implements IStorage {
   }
 
   async getActiveSubscriptions(): Promise<EmailSubscription[]> {
-    return await db.select().from(emailSubscriptions)
+    return await requireDb().select().from(emailSubscriptions)
       .where(eq(emailSubscriptions.isActive, true))
       .orderBy(desc(emailSubscriptions.subscribedAt));
   }

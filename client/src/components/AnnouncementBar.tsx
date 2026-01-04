@@ -9,6 +9,7 @@ interface Announcement {
   linkText?: string;
   linkHref?: string;
   active: boolean;
+  startDate?: string;
   expiresAt?: string;
 }
 
@@ -18,11 +19,21 @@ export default function AnnouncementBar() {
   const activeAnnouncements = (announcementsData as Announcement[]).filter(
     (a) => {
       if (!a.active || dismissed.has(a.id)) return false;
+      
+      const now = new Date();
+      
+      // Check start date - announcement must have started
+      if (a.startDate) {
+        const startDate = new Date(a.startDate);
+        if (now < startDate) return false;
+      }
+      
+      // Check expiration date - announcement must not have expired
       if (a.expiresAt) {
         const expiryDate = new Date(a.expiresAt);
-        const now = new Date();
         if (now > expiryDate) return false;
       }
+      
       return true;
     }
   );
