@@ -1,0 +1,12 @@
+const e={replyTime:"Responds within 24 hours",greeting:"Have questions about interview prep? Leave your details below and I'll get back to you during business hours (EST timezone).",buttonText:"Send Message",defaultMessage:`Hi Rupesh,
+
+I found your coaching website and I'm interested in preparing for FAANG interviews.
+
+Current Role: [Your Role]
+Target Companies: [Amazon/Google/Meta/etc.]
+Target Level: [L6/L7/Director/VP]
+Interview Timeline: [When]
+
+Could we schedule a discovery call to discuss my preparation strategy?
+
+Thank you!`,availabilityNote:"I respond to messages during EST business hours (9 AM - 6 PM). For urgent inquiries, please book a session directly."},n={widget:e};export{n as w};
